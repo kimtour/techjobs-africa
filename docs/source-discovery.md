@@ -12,7 +12,7 @@ Environment: local
 - **Elevolt:** not approved for production ingestion. Its Terms grant personal use and require written consent for downloading or modification. Obtain written permission before enabling an automated adapter.
 - **Greenhouse:** the configured generic search URL redirected to a MyGreenhouse sign-in page. It remains a discovery aid only; production ingestion must use verified company Job Board API boards.
 - **MyJobMag:** approved by the source owner for minimal, attributed link-out aggregation through its advertised detailed XML feed. Do not persist descriptions.
-- **Corporate Staffing:** technically reachable and permitted by its `robots.txt` path in this local probe. Its Terms review remains pending.
+- **Corporate Staffing:** approved by the source owner for fair-use, attributed access through its public WordPress jobs API. Do not persist descriptions.
 - **Ashby:** use the official public API confirmed below instead of HTML collection; the GitHub Actions probe also confirmed its board page is reachable.
 
 ### GitHub Actions confirmation
@@ -37,7 +37,7 @@ The TalentSafari Ashby board is available through Ashby's documented public Job 
 - RSS: `https://www.corporatestaffing.co.ke/category/it-jobs-in-kenya/feed/` returned HTTP 200, `application/rss+xml`, and 40 entries.
 - Public JSON: `https://www.corporatestaffing.co.ke/wp-json/wp/v2/job?categories=10` is a standard WordPress jobs endpoint. A one-record check returned HTTP 200 and pagination headers (`X-WP-Total: 1986`, `X-WP-TotalPages: 1986`).
 - Confirmed useful fields: stable `id`, `date_gmt`, `link`, rendered `title`, `employment_type`, and `hiring_organizations`.
-- Status: a technically suitable candidate only. Do not implement production collection until the source Terms review is complete.
+- Status: approved by the source owner for fair-use, attributed access. Use the public WordPress jobs endpoint; do not persist descriptions.
 
 ### MyJobMag public-feed confirmation
 
