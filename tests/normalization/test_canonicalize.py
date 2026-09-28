@@ -1,5 +1,5 @@
 from ingest.models import RawJob
-from ingest.normalize.canonicalize import canonicalize_ashby_job
+from ingest.normalize.canonicalize import canonicalize_ashby_job, canonicalize_raw_job
 
 
 def raw_ashby_job(title: str) -> RawJob:
@@ -27,3 +27,23 @@ def test_canonicalization_preserves_apply_url_and_eligibility():
     assert str(job.preferred_apply_url).endswith("/application")
     assert job.eligibility_level == "CONFIRMED"
     assert job.is_agency_posting is True
+
+
+def test_generic_source_uses_external_id_and_classifies_qa_title():
+    raw = RawJob(
+        source_id="elevolt",
+        external_id="stable-listing-id",
+        title="QA Automation Engineer",
+        company="Example Technologies",
+        location="Nairobi, Kenya",
+        source_url="https://jobs.elevolt.co.ke/job/qa-automation-engineer",
+        apply_url="https://jobs.elevolt.co.ke/job/qa-automation-engineer",
+    )
+
+    job = canonicalize_raw_job(raw)
+
+    assert job.job_id == "elevolt:stable-listing-id"
+    assert job.category == "QA / Testing"
+    assert job.posting_company == "Example Technologies"
+    assert job.hiring_company is None
+    assert job.is_agency_posting is False

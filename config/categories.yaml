@@ -102,8 +102,12 @@ categories:
   title: QA / Testing
   keywords:
   - qa engineer
+  - qa automation
+  - qa analyst
   - quality assurance engineer
+  - quality assurance analyst
   - test automation engineer
+  - test engineer
   - software tester
   - sdet
 - key: database
@@ -196,4 +200,5 @@ non_tech_exclusions:
 rules:
 - Apply strong technical inclusions before generic exclusions.
 - Generic Product Manager roles are included under Technical Product by product decision.
+- QA and test automation roles are included under QA / Testing.
 - One role may have secondary categories.

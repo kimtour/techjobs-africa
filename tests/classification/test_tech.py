@@ -12,6 +12,10 @@ def test_generic_product_manager_is_included_as_technical_product():
     assert classify_technology_title("Product Manager").category == "Technical Product"
 
 
+def test_qa_automation_role_is_included_as_qa_testing():
+    assert classify_technology_title("QA Automation Engineer").category == "QA / Testing"
+
+
 def test_technical_product_manager_requires_strong_evidence():
     assert classify_technology_title("Technical Product Manager").category == "Technical Product"
 
