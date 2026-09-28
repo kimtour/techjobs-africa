@@ -2,9 +2,8 @@ from __future__ import annotations
 
 import json
 import os
-import sys
 import time
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
 from urllib.parse import urlparse
 from urllib.robotparser import RobotFileParser
@@ -185,10 +184,11 @@ def write_markdown(results: list[dict]) -> None:
     lines = [
         "# M0 Source Discovery",
         "",
-        f"Generated: {datetime.now(timezone.utc).isoformat()}",
+        f"Generated: {datetime.now(UTC).isoformat()}",
         f"Environment: {RUN_ENVIRONMENT}",
         "",
-        "> This is a technical probe only. Terms of Service review still requires manual confirmation.",
+        "> This is a technical probe only. Terms of Service review still requires manual "
+        "confirmation.",
         "",
         "| Source | HTTP | Access | Format | Redirects | Robots allowed? | Bytes |",
         "|---|---:|---|---|---:|---|---:|",
@@ -259,7 +259,7 @@ def main() -> int:
         json.dumps(
             {
                 "schema_version": 1,
-                "generated_at": datetime.now(timezone.utc).isoformat(),
+                "generated_at": datetime.now(UTC).isoformat(),
                 "user_agent": USER_AGENT,
                 "environment": RUN_ENVIRONMENT,
                 "results": results,

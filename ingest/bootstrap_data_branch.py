@@ -40,7 +40,9 @@ def write_json(path: Path, content: object, overwrite: bool) -> bool:
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--data-dir", required=True, type=Path)
-    parser.add_argument("--force", action="store_true", help="replace existing bootstrap JSON files")
+    parser.add_argument(
+        "--force", action="store_true", help="replace existing bootstrap JSON files"
+    )
     args = parser.parse_args()
 
     root = args.data_dir.resolve()

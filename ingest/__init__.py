@@ -1,0 +1,1 @@
+"""TechJobs Africa ingestion package."""
