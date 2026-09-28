@@ -1,0 +1,45 @@
+---
+import Base from "../layouts/Base.astro";
+import { companyLabel, jobs, locationLabel, sourceName } from "../lib/jobs";
+
+const visibleJobs = jobs.filter((job) => job.eligibility_level !== "RESTRICTED");
+---
+
+<Base title="TechJobs Africa">
+  <section class="hero">
+    <p class="eyebrow">TechJobs Africa</p>
+    <h1>Technical roles, linked to the original application.</h1>
+    <p class="lede">
+      We aggregate minimal public listing details from approved sources. Apply on the original site.
+    </p>
+  </section>
+
+  <section class="results" aria-labelledby="jobs-heading">
+    <div class="results-heading">
+      <h2 id="jobs-heading">Open technical jobs</h2>
+      <p>{visibleJobs.length} active roles</p>
+    </div>
+    {
+      visibleJobs.length ? (
+        <ul class="job-list">
+          {visibleJobs.map((job) => (
+            <li class="job-card">
+              <div>
+                <p class="category">{job.category}</p>
+                <h3>{job.title}</h3>
+                <p class="company">{companyLabel(job)}</p>
+                <p class="meta">{locationLabel(job)} · {job.eligibility_level}</p>
+                <p class="source">Source: {job.sources.map(sourceName).join(", ")}</p>
+              </div>
+              <a class="apply" href={job.preferred_apply_url} rel="noreferrer" target="_blank">
+                View original listing <span aria-hidden="true">↗</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p class="empty">The first verified job update will appear here soon.</p>
+      )
+    }
+  </section>
+</Base>

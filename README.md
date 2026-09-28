@@ -21,6 +21,16 @@ The first engineering phase is **M0 source discovery**. Do not implement product
 - No database
 - No runtime backend
 
+## Local frontend preview
+
+The site reads `site/src/data/jobs.json`, a safe static export produced by the ingestion pipeline. It ships empty in the application branch; deployment automation will copy the private data-branch export into this path before building.
+
+```bash
+cd site
+npm install
+npm run dev
+```
+
 ## First instruction for your VS Code coding agent
 
 > Read `PROJECT_CONTEXT.md` completely and treat it as the authoritative v0.1 specification. Start with M0 source discovery. Do not implement speculative production adapters before discovery is recorded.
