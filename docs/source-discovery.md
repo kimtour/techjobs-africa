@@ -11,7 +11,8 @@ Environment: local
 - **OpenedCareer:** disabled. Its Terms and Conditions prohibit collecting content in bulk, directly or through third parties, without consent. Written permission is required before reconsidering this source.
 - **Elevolt:** not approved for production ingestion. Its Terms grant personal use and require written consent for downloading or modification. Obtain written permission before enabling an automated adapter.
 - **Greenhouse:** the configured generic search URL redirected to a MyGreenhouse sign-in page. It remains a discovery aid only; production ingestion must use verified company Job Board API boards.
-- **MyJobMag and Corporate Staffing:** technically reachable and permitted by their respective `robots.txt` paths in this local probe. MyJobMag's Terms have been reviewed but do not expressly license automation; Corporate Staffing's Terms review and the GitHub Actions probe remain pending.
+- **MyJobMag:** approved by the source owner for minimal, attributed link-out aggregation through its advertised detailed XML feed. Do not persist descriptions.
+- **Corporate Staffing:** technically reachable and permitted by its `robots.txt` path in this local probe. Its Terms review remains pending.
 - **Ashby:** use the official public API confirmed below instead of HTML collection; the GitHub Actions probe also confirmed its board page is reachable.
 
 ### GitHub Actions confirmation
@@ -45,7 +46,7 @@ The `/feeds/` page is HTML, but it explicitly publishes XML feed URLs.
 - Summary feed: `https://www.myjobmag.co.ke/jobsxml.xml` returned HTTP 200, `application/xml`, and 100 entries.
 - Detailed feed: `https://www.myjobmag.co.ke/jobsxml_by_categories.xml` returned HTTP 200, `application/xml`, and 100 entries.
 - Confirmed useful detailed-feed fields: `title`, `company`, `location`, `industry`, `position`, `pubDate`, `expiryDate`, and `link`.
-- Status: a technically suitable public-feed candidate. MyJobMag's Terms do not explicitly authorize automated collection, so production use requires an explicit legal/product decision or written confirmation.
+- Status: approved by the source owner for minimal, attributed link-out aggregation. Use the detailed XML feed; do not persist descriptions.
 
 | Source | HTTP | Access | Format | Redirects | Robots allowed? | Bytes |
 |---|---:|---|---|---:|---|---:|

@@ -29,7 +29,7 @@ sources:
     enabled: true
     discovery_url: "https://www.myjobmag.co.ke/jobs-by-field/information-technology"
     method: public_xml_feed
-    production_method: null
+    production_method: public_xml_feed
     feed_url: "https://www.myjobmag.co.ke/jobsxml_by_categories.xml"
     interval_hours: 3
     timezone: Africa/Nairobi
@@ -45,8 +45,8 @@ sources:
     legal:
       robots_checked: true
       tos_checked: true
-      permission: public_feed_not_explicitly_licensed
-      notes: "M0 confirmed publicly advertised XML feeds. Terms were reviewed but do not explicitly grant automated collection permission; complete a legal/product decision before production use."
+      permission: approved_by_source_owner
+      notes: "Source owner approved use of the advertised detailed XML feed for minimal, attributed link-out aggregation. Do not persist descriptions."
 
   - id: corporate_staffing
     name: Corporate Staffing Kenya
