@@ -1,0 +1,15 @@
+{
+  "data": [
+    {
+      "jid": "27e92546-921f-49bd-a0a0-98b70b421065",
+      "slug": "principal-software-developer-at-britam",
+      "title": "Principal Software Developer",
+      "location": "nairobi",
+      "location_display": "Nairobi, Kenya",
+      "created_at": "2026-09-25T09:16:39.000000Z",
+      "owner": {"name": "BRITAM"},
+      "description": "This must never be read."
+    }
+  ],
+  "meta": {"current_page": 1, "last_page": 2}
+}

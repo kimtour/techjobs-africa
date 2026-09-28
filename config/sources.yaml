@@ -102,7 +102,7 @@ sources:
     discovery_url: "https://jobs.elevolt.co.ke/jobs/category/software-it?page=1&location=&type=&qualification=&search="
     method: public_json
     production_method: public_json
-    api_url: "https://api.elevolt.co.ke/api/jobposts/filter?skill=software-it"
+    api_url: "https://api.elevolt.co.ke/api/jobposts/filter"
     interval_hours: 3
     timezone: Africa/Nairobi
     crawl:

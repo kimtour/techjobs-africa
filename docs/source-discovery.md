@@ -18,7 +18,7 @@ Environment: local
 ### Newly approved source routes
 
 - **OpenedCareer:** its public WordPress API exposes `https://openedcareer.com/wp-json/wp/v2/job_listing`, with stable IDs, dates, titles, and original listing links.
-- **Elevolt:** the approved Software/IT page exposes public JSON at `https://api.elevolt.co.ke/api/jobposts/filter?skill=software-it`, with 22 listings across two pages during this verification. The data includes stable `jid`, title, slug, location, type, and created date.
+- **Elevolt:** the approved Software/IT page uses public JSON at `https://api.elevolt.co.ke/api/jobposts/filter`. It accepts the JSON request body `{"skill":"software_it","page":1}` and returned 22 listings across two pages during verification. The data includes stable `jid`, title, slug, location, type, and created date.
 
 ### GitHub Actions confirmation
 
