@@ -74,10 +74,11 @@ sources:
 
   - id: openedcareer
     name: OpenedCareer
-    enabled: false
+    enabled: true
     discovery_url: "https://openedcareer.com/job-category/computer-science/"
-    method: unknown
-    production_method: null
+    method: public_wordpress_json
+    production_method: public_wordpress_json
+    api_url: "https://openedcareer.com/wp-json/wp/v2/job_listing"
     interval_hours: 3
     timezone: null
     crawl:
@@ -92,15 +93,16 @@ sources:
     legal:
       robots_checked: true
       tos_checked: true
-      permission: denied
-      notes: "OpenedCareer Terms and Conditions prohibit collecting content in bulk, directly or through third parties, without OpenedCareer consent. Disabled pending written permission."
+      permission: approved_by_source_owner
+      notes: "Source owner gave verbal approval by phone on 2026-09-28 for fair-use, attributed access. Use only public endpoints; do not persist descriptions."
 
   - id: elevolt
     name: Elevolt Kenya
-    enabled: false
+    enabled: true
     discovery_url: "https://jobs.elevolt.co.ke/jobs/category/software-it?page=1&location=&type=&qualification=&search="
-    method: unknown
-    production_method: null
+    method: public_json
+    production_method: public_json
+    api_url: "https://api.elevolt.co.ke/api/jobposts/filter?skill=software-it"
     interval_hours: 3
     timezone: Africa/Nairobi
     crawl:
@@ -115,8 +117,8 @@ sources:
     legal:
       robots_checked: true
       tos_checked: true
-      permission: requires_written_consent
-      notes: "Elevolt Terms grant a limited licence for personal use and prohibit downloading or modification without written consent. Do not automate production ingestion unless written permission is obtained."
+      permission: approved_by_source_owner
+      notes: "Source owner gave verbal approval by phone on 2026-09-28 for fair-use, attributed access. Use only public endpoints; do not persist descriptions."
 
   - id: greenhouse
     name: Greenhouse Discovery
