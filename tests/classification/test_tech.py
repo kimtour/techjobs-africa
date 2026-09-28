@@ -8,8 +8,8 @@ def test_technical_title_is_classified_from_config():
     assert decision.source == "title_rule"
 
 
-def test_generic_product_manager_is_not_assumed_technical():
-    assert classify_technology_title("Product Manager").category is None
+def test_generic_product_manager_is_included_as_technical_product():
+    assert classify_technology_title("Product Manager").category == "Technical Product"
 
 
 def test_technical_product_manager_requires_strong_evidence():

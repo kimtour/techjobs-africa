@@ -381,7 +381,8 @@ Primary taxonomy:
 
 Use reliable source categories first, then deterministic title/keyword rules.
 
-Do not treat a generic "Product Manager" as technical without supporting technical context.
+Treat generic "Product Manager" as Technical Product, per the explicit product decision recorded
+in `config/categories.yaml`.
 
 Experience filter is conditional on M0 data quality.
 

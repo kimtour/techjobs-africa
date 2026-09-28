@@ -155,6 +155,8 @@ categories:
   - developer platform product manager
   weak_keywords:
   - product manager
+  keywords:
+  - product manager
 - key: technology-leadership
   title: Technology Leadership
   keywords:
@@ -193,6 +195,5 @@ non_tech_exclusions:
 - customer care agent
 rules:
 - Apply strong technical inclusions before generic exclusions.
-- A generic Product Manager is not automatically technical; require supporting technical
-  context.
+- Generic Product Manager roles are included under Technical Product by product decision.
 - One role may have secondary categories.
