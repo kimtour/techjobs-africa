@@ -3,6 +3,7 @@ import Base from "../layouts/Base.astro";
 import { companyLabel, jobs, locationLabel, sourceName } from "../lib/jobs";
 
 const visibleJobs = jobs.filter((job) => job.eligibility_level !== "RESTRICTED");
+const categories = [...new Set(visibleJobs.map((job) => job.category).filter(Boolean))].sort();
 ---
 
 <Base title="TechJobs Africa">
@@ -17,13 +18,32 @@ const visibleJobs = jobs.filter((job) => job.eligibility_level !== "RESTRICTED")
   <section class="results" aria-labelledby="jobs-heading">
     <div class="results-heading">
       <h2 id="jobs-heading">Open technical jobs</h2>
-      <p>{visibleJobs.length} active roles</p>
+      <p id="job-count">{visibleJobs.length} active roles</p>
     </div>
     {
       visibleJobs.length ? (
-        <ul class="job-list">
+        <>
+          <form class="filters" id="job-filters">
+            <label>
+              <span>Search roles</span>
+              <input id="job-search" name="search" placeholder="e.g. QA, Product, Python" type="search" />
+            </label>
+            <label>
+              <span>Category</span>
+              <select id="category-filter" name="category">
+                <option value="">All categories</option>
+                {categories.map((category) => <option value={category}>{category}</option>)}
+              </select>
+            </label>
+          </form>
+          <p class="empty" hidden id="no-results">No jobs match those filters.</p>
+          <ul class="job-list" id="job-list">
           {visibleJobs.map((job) => (
-            <li class="job-card">
+            <li
+              class="job-card"
+              data-category={job.category}
+              data-search={[job.title, companyLabel(job), locationLabel(job), job.category].filter(Boolean).join(" ")}
+            >
               <div>
                 <p class="category">{job.category}</p>
                 <h3>{job.title}</h3>
@@ -36,10 +56,12 @@ const visibleJobs = jobs.filter((job) => job.eligibility_level !== "RESTRICTED")
               </a>
             </li>
           ))}
-        </ul>
+          </ul>
+        </>
       ) : (
         <p class="empty">The first verified job update will appear here soon.</p>
       )
     }
   </section>
+  <script is:inline src="/filters.js"></script>
 </Base>

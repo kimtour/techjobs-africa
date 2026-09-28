@@ -1,0 +1,75 @@
+name: Ingest and build static site
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 */3 * * *"
+
+permissions:
+  contents: write
+
+jobs:
+  ingest-and-build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out application branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+          cache-dependency-path: requirements-dev.txt
+
+      - name: Install Python dependencies
+        run: pip install -r requirements-dev.txt
+
+      - name: Validate ingestion code
+        run: |
+          pytest -q
+          ruff check ingest tests
+
+      - name: Check out private data branch
+        run: |
+          git fetch origin data
+          git worktree add "$RUNNER_TEMP/techjobs-africa-data" origin/data
+
+      - name: Ingest approved sources
+        run: python -m ingest.main --output-dir "$RUNNER_TEMP/techjobs-africa-data"
+
+      - name: Commit changed data state
+        run: |
+          data_dir="$RUNNER_TEMP/techjobs-africa-data"
+          git -C "$data_dir" config user.name "github-actions[bot]"
+          git -C "$data_dir" config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git -C "$data_dir" add canonical public state
+          if git -C "$data_dir" diff --cached --quiet; then
+            echo "No data changes to commit."
+          else
+            git -C "$data_dir" commit -m "Refresh approved-source job export"
+            git -C "$data_dir" push origin HEAD:data
+          fi
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: site/package-lock.json
+
+      - name: Build static site from private data
+        run: |
+          cp "$RUNNER_TEMP/techjobs-africa-data/public/jobs.json" site/src/data/jobs.json
+          npm ci --prefix site
+          npm run check --prefix site
+          npm run build --prefix site
+
+      - name: Upload deployable static site
+        uses: actions/upload-artifact@v4
+        with:
+          name: techjobs-africa-static-site
+          path: site/dist
+          if-no-files-found: error
