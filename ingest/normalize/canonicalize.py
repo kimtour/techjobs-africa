@@ -87,6 +87,7 @@ def canonicalize_raw_job(
         eligibility_evidence=eligibility.evidence,
         eligibility_source=eligibility.source,
         published_at=raw.published_at,
+        published_date=raw.published_date,
         preferred_apply_url=raw.apply_url,
         sources=[raw.source_id],
     )

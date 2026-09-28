@@ -11,6 +11,7 @@ export type Job = {
   category: string | null;
   eligibility_level: "CONFIRMED" | "LIKELY" | "VERIFY" | "RESTRICTED" | "UNKNOWN";
   published_at: string | null;
+  published_date: string | null;
   preferred_apply_url: string;
   sources: string[];
   status: "ACTIVE" | "STALE" | "CLOSED" | "EXPIRED";
@@ -45,9 +46,15 @@ export const locationLabel = (job: Job) =>
 export const companyLabel = (job: Job) => job.hiring_company || job.posting_company || "Company not listed";
 
 export const postedLabel = (job: Job) => {
-  if (!job.published_at) return "Posting time not published by source";
+  if (job.published_date && !job.published_at) {
+    const postedDate = new Date(`${job.published_date}T00:00:00Z`);
+    if (!Number.isNaN(postedDate.getTime())) {
+      return new Intl.DateTimeFormat("en-KE", { dateStyle: "medium", timeZone: "UTC" }).format(postedDate);
+    }
+  }
+  if (!job.published_at) return "Posting date not published by source";
   const postedAt = new Date(job.published_at);
-  if (Number.isNaN(postedAt.getTime())) return "Posting time not published by source";
+  if (Number.isNaN(postedAt.getTime())) return "Posting date not published by source";
   return `${new Intl.DateTimeFormat("en-KE", {
     dateStyle: "medium",
     timeStyle: "short",

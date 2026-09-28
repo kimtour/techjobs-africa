@@ -66,9 +66,10 @@ def parse_myjobmag_feed(content: bytes) -> list[RawJob]:
 class _ListingPageParser(HTMLParser):
     """Read listing metadata and pagination links, never descriptions or excerpts."""
 
-    def __init__(self, page_url: str) -> None:
+    def __init__(self, page_url: str, today: date | None = None) -> None:
         super().__init__(convert_charrefs=True)
         self.page_url = page_url
+        self.today = today
         self.jobs: list[RawJob] = []
         self.jobs_with_days: list[tuple[RawJob, date | None]] = []
         self.page_links: set[str] = set()
@@ -167,8 +168,10 @@ class _ListingPageParser(HTMLParser):
             source_url=link,
             apply_url=link,
         )
-        self.jobs.append(job)
-        self.jobs_with_days.append((job, _listing_day(self._card.get("date"))))
+        listing_day = _listing_day(self._card.get("date"), self.today)
+        job_with_day = job.model_copy(update={"published_date": listing_day})
+        self.jobs.append(job_with_day)
+        self.jobs_with_days.append((job_with_day, listing_day))
 
 
 def _listing_day(value: str | None, today: date | None = None) -> date | None:
@@ -234,7 +237,7 @@ class MyJobMagAdapter:
                 sleep(self.request_delay_seconds)
             response = self._client.get(page_url, timeout=15.0)
             response.raise_for_status()
-            parser = _ListingPageParser(page_url)
+            parser = _ListingPageParser(page_url, self.today)
             parser.feed(response.text)
             parser.close()
             visited.add(page_url)

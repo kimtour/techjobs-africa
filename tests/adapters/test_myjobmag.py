@@ -71,6 +71,7 @@ def test_listing_page_keeps_only_minimal_card_metadata_and_page_links() -> None:
     assert jobs[0].company == "Example Co"
     assert jobs[0].location == "Nairobi"
     assert jobs[0].published_at is None  # Source category cards do not publish a time.
+    assert jobs[0].published_date is not None
     assert "description" not in jobs[0].model_dump()
     assert links == {"https://www.myjobmag.co.ke/jobs-by-field/information-technology/2"}
 

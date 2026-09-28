@@ -80,7 +80,7 @@ const sourceGroups = orderedSources
                         <p class="company">{companyLabel(job)}</p>
                         <p class="meta">{locationLabel(job)} · {job.eligibility_level}</p>
                         <p class="posted">
-                          Posted: {job.published_at ? <time datetime={job.published_at}>{postedLabel(job)}</time> : postedLabel(job)}
+                          Posted: {(job.published_at || job.published_date) ? <time datetime={job.published_at || job.published_date}>{postedLabel(job)}</time> : postedLabel(job)}
                         </p>
                         {job.sources.length > 1 && <p class="source">Also listed by: {job.sources.map(sourceName).join(", ")}</p>}
                       </div>

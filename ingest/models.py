@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from datetime import datetime
+from datetime import date, datetime
 from enum import StrEnum
 
 from pydantic import AnyHttpUrl, BaseModel, ConfigDict, Field
@@ -48,6 +48,7 @@ class RawJob(BaseModel):
     source_url: AnyHttpUrl
     apply_url: AnyHttpUrl
     published_at: datetime | None = None
+    published_date: date | None = None
 
 
 class SourceHealth(BaseModel):
@@ -81,6 +82,7 @@ class CanonicalJob(BaseModel):
     eligibility_evidence: str
     eligibility_source: str
     published_at: datetime | None = None
+    published_date: date | None = None
     status: JobStatus = JobStatus.ACTIVE
     preferred_apply_url: AnyHttpUrl
     sources: list[str] = Field(min_length=1)
