@@ -28,14 +28,14 @@ sources:
     name: MyJobMag Kenya
     enabled: true
     discovery_url: "https://www.myjobmag.co.ke/jobs-by-field/information-technology"
-    method: public_xml_feed
-    production_method: public_xml_feed
+    method: public_html_pagination
+    production_method: public_html_pagination
     feed_url: "https://www.myjobmag.co.ke/jobsxml_by_categories.xml"
     interval_hours: 3
     timezone: Africa/Nairobi
     crawl:
-      max_pages: 1
-      max_requests_per_run: 1
+      max_pages: 0
+      max_requests_per_run: 0
       request_delay_ms: 1500
       timeout_seconds: 15
       retry_delays_seconds: [5, 20, 60]
@@ -46,7 +46,7 @@ sources:
       robots_checked: true
       tos_checked: true
       permission: approved_by_source_owner
-      notes: "Source owner approved use of the advertised detailed XML feed for minimal, attributed link-out aggregation. Do not persist descriptions."
+      notes: "Use the public IT category pagination for minimal, attributed link-out aggregation; do not persist descriptions. The XML feed remains a fallback only."
 
   - id: corporate_staffing
     name: Corporate Staffing Kenya

@@ -31,7 +31,9 @@ ADAPTERS: Mapping[str, AdapterFactory] = {
 }
 # These endpoints are explicitly scoped by their sources to IT/software listings.
 # A missing title keyword must not discard a listing from that verified category.
-SOURCE_SCOPED_TECH_SOURCES = frozenset({"corporate_staffing", "elevolt", "openedcareer"})
+SOURCE_SCOPED_TECH_SOURCES = frozenset(
+    {"corporate_staffing", "elevolt", "myjobmag", "openedcareer"}
+)
 
 
 def approved_source_ids(config_path: Path = CONFIG_PATH) -> list[str]:
