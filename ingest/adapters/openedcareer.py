@@ -59,7 +59,9 @@ def parse_openedcareer_jobs(payload: Sequence[Mapping[str, Any]]) -> list[RawJob
                 source_url=link,
                 apply_url=link,
                 published_at=(
-                    datetime.fromisoformat(date_gmt) if isinstance(date_gmt, str) else None
+                    datetime.fromisoformat(f"{date_gmt}+00:00")
+                    if isinstance(date_gmt, str)
+                    else None
                 ),
             )
         )

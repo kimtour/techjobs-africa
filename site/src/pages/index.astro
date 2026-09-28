@@ -1,23 +1,41 @@
 ---
 import Base from "../layouts/Base.astro";
-import { companyLabel, jobs, locationLabel, sourceName } from "../lib/jobs";
+import {
+  companyLabel,
+  jobs,
+  locationLabel,
+  postedLabel,
+  primarySource,
+  sourceName,
+  sourceOrder,
+} from "../lib/jobs";
 
 const visibleJobs = jobs.filter((job) => job.eligibility_level !== "RESTRICTED");
 const categories = [...new Set(visibleJobs.map((job) => job.category).filter(Boolean))].sort();
+const orderedSources = [
+  ...sourceOrder,
+  ...[...new Set(visibleJobs.flatMap((job) => job.sources))].filter(
+    (sourceId) => !sourceOrder.includes(sourceId),
+  ),
+];
+const sourceGroups = orderedSources
+  .map((sourceId) => ({
+    sourceId,
+    jobs: visibleJobs.filter((job) => primarySource(job) === sourceId),
+  }))
+  .filter((group) => group.jobs.length > 0);
 ---
 
 <Base title="TechJobs Africa">
   <section class="hero">
     <p class="eyebrow">TechJobs Africa</p>
-    <h1>Technical roles, linked to the original application.</h1>
-    <p class="lede">
-      We aggregate minimal public listing details from approved sources. Apply on the original site.
-    </p>
+    <h1>Technical jobs for African candidates.</h1>
+    <p class="lede">Minimal listings from approved sources. Apply on the original site.</p>
   </section>
 
   <section class="results" aria-labelledby="jobs-heading">
     <div class="results-heading">
-      <h2 id="jobs-heading">Open technical jobs</h2>
+      <h2 id="jobs-heading">Open roles</h2>
       <p id="job-count">{visibleJobs.length} active roles</p>
     </div>
     {
@@ -25,8 +43,8 @@ const categories = [...new Set(visibleJobs.map((job) => job.category).filter(Boo
         <>
           <form class="filters" id="job-filters">
             <label>
-              <span>Search roles</span>
-              <input id="job-search" name="search" placeholder="e.g. QA, Product, Python" type="search" />
+              <span>Search</span>
+              <input id="job-search" name="search" placeholder="QA, Product, Python…" type="search" />
             </label>
             <label>
               <span>Category</span>
@@ -37,31 +55,50 @@ const categories = [...new Set(visibleJobs.map((job) => job.category).filter(Boo
             </label>
           </form>
           <p class="empty" hidden id="no-results">No jobs match those filters.</p>
-          <ul class="job-list" id="job-list">
-          {visibleJobs.map((job) => (
-            <li
-              class="job-card"
-              data-category={job.category}
-              data-search={[job.title, companyLabel(job), locationLabel(job), job.category].filter(Boolean).join(" ")}
-            >
-              <div>
-                <p class="category">{job.category}</p>
-                <h3>{job.title}</h3>
-                <p class="company">{companyLabel(job)}</p>
-                <p class="meta">{locationLabel(job)} · {job.eligibility_level}</p>
-                <p class="source">Source: {job.sources.map(sourceName).join(", ")}</p>
-              </div>
-              <a class="apply" href={job.preferred_apply_url} rel="noreferrer" target="_blank">
-                View original listing <span aria-hidden="true">↗</span>
-              </a>
-            </li>
-          ))}
-          </ul>
+          <div id="source-groups">
+            {sourceGroups.map((group) => (
+              <section class="source-group" data-source-group data-limit="10" aria-labelledby={`source-${group.sourceId}`}>
+                <div class="source-heading">
+                  <h3 id={`source-${group.sourceId}`}>{sourceName(group.sourceId)}</h3>
+                  <p>{group.jobs.length} recent listing{group.jobs.length === 1 ? "" : "s"}</p>
+                </div>
+                <ul class="job-list">
+                  {group.jobs.map((job, index) => (
+                    <li
+                      class="job-card"
+                      data-source-card
+                      data-index={index}
+                      data-category={job.category ?? ""}
+                      data-search={[job.title, companyLabel(job), locationLabel(job), job.category]
+                        .filter(Boolean)
+                        .join(" ")}
+                      hidden={index >= 10}
+                    >
+                      <div>
+                        {job.category && <p class="category">{job.category}</p>}
+                        <h4>{job.title}</h4>
+                        <p class="company">{companyLabel(job)}</p>
+                        <p class="meta">{locationLabel(job)} · {job.eligibility_level}</p>
+                        <p class="posted">
+                          Posted: {job.published_at ? <time datetime={job.published_at}>{postedLabel(job)}</time> : postedLabel(job)}
+                        </p>
+                        {job.sources.length > 1 && <p class="source">Also listed by: {job.sources.map(sourceName).join(", ")}</p>}
+                      </div>
+                      <a class="apply" href={job.preferred_apply_url} rel="noreferrer" target="_blank">
+                        Original listing <span aria-hidden="true">↗</span>
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+                {group.jobs.length > 10 && <button class="more" data-more type="button">Show 10 more</button>}
+              </section>
+            ))}
+          </div>
         </>
       ) : (
         <p class="empty">The first verified job update will appear here soon.</p>
       )
     }
   </section>
-  <script is:inline src="/filters.js"></script>
+  <script src="/filters.js" defer></script>
 </Base>

@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import re
 from collections.abc import Mapping, Sequence
 from datetime import datetime
 from html import unescape
@@ -40,6 +41,24 @@ def _title(record: Mapping[str, Any]) -> str | None:
     return _plain_text(title.get("rendered")) if isinstance(title, Mapping) else None
 
 
+def _company_from_title(title: str) -> str | None:
+    """Recover an explicitly named employer from this source's title convention.
+
+    Corporate Staffing commonly publishes titles such as ``Role Job HFCB Group``
+    while leaving its structured employer field empty.  This uses only the public
+    title, and deliberately rejects location/preposition tails such as ``Job in
+    Nairobi`` rather than guessing an employer.
+    """
+
+    match = re.search(r"\s+Job\s+(?P<company>.+)$", title, flags=re.IGNORECASE)
+    if not match:
+        return None
+    company = match.group("company").strip(" -–—")
+    if not company or re.match(r"^(in|at|for|with|near)\b", company, flags=re.IGNORECASE):
+        return None
+    return company
+
+
 def parse_corporate_staffing_jobs(payload: Sequence[Mapping[str, Any]]) -> list[RawJob]:
     """Parse minimum permitted fields; descriptions and excerpts are never read."""
 
@@ -56,10 +75,13 @@ def parse_corporate_staffing_jobs(payload: Sequence[Mapping[str, Any]]) -> list[
                 source_id=SOURCE_ID,
                 external_id=str(external_id),
                 title=title,
+                company=_company_from_title(title),
                 source_url=link,
                 apply_url=link,
                 published_at=(
-                    datetime.fromisoformat(date_gmt) if isinstance(date_gmt, str) else None
+                    datetime.fromisoformat(f"{date_gmt}+00:00")
+                    if isinstance(date_gmt, str)
+                    else None
                 ),
             )
         )

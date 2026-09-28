@@ -25,6 +25,8 @@ const payload = jobsPayload as JobsPayload;
 
 export const jobs = payload.jobs.filter((job) => job.status === "ACTIVE");
 
+export const sourceOrder = ["myjobmag", "corporate_staffing", "openedcareer", "elevolt", "ashby"];
+
 export const sourceName = (sourceId: string) =>
   ({
     ashby: "TalentSafari",
@@ -34,7 +36,21 @@ export const sourceName = (sourceId: string) =>
     openedcareer: "OpenedCareer",
   })[sourceId] ?? sourceId;
 
+export const primarySource = (job: Job) =>
+  sourceOrder.find((sourceId) => job.sources.includes(sourceId)) ?? job.sources[0];
+
 export const locationLabel = (job: Job) =>
   [job.workplace_type, job.city, job.country].filter(Boolean).join(" · ") || "Location not listed";
 
 export const companyLabel = (job: Job) => job.hiring_company || job.posting_company || "Company not listed";
+
+export const postedLabel = (job: Job) => {
+  if (!job.published_at) return "Posting time not published by source";
+  const postedAt = new Date(job.published_at);
+  if (Number.isNaN(postedAt.getTime())) return "Posting time not published by source";
+  return `${new Intl.DateTimeFormat("en-KE", {
+    dateStyle: "medium",
+    timeStyle: "short",
+    timeZone: "Africa/Nairobi",
+  }).format(postedAt)} EAT`;
+};
