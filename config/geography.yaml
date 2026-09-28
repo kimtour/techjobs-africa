@@ -1,0 +1,420 @@
+schema_version: 1
+regions:
+- id: africa
+  name: Africa
+  aliases:
+  - Pan-Africa
+  - Pan African
+- id: sub_saharan_africa
+  name: Sub-Saharan Africa
+  aliases:
+  - SSA
+- id: emea
+  name: EMEA
+  aliases:
+  - Europe Middle East and Africa
+- id: worldwide
+  name: Worldwide
+  aliases:
+  - Global
+  - Remote - Anywhere
+countries:
+- code: DZ
+  name: Algeria
+  aliases:
+  - Algerian
+  cities:
+  - Algiers
+- code: AO
+  name: Angola
+  aliases:
+  - Angolan
+  cities:
+  - Luanda
+- code: BJ
+  name: Benin
+  aliases:
+  - Beninese
+  cities:
+  - Cotonou
+  - Porto-Novo
+- code: BW
+  name: Botswana
+  aliases:
+  - Batswana
+  cities:
+  - Gaborone
+- code: BF
+  name: Burkina Faso
+  aliases:
+  - Burkinabe
+  cities:
+  - Ouagadougou
+- code: BI
+  name: Burundi
+  aliases:
+  - Burundian
+  cities:
+  - Bujumbura
+  - Gitega
+- code: CV
+  name: Cabo Verde
+  aliases:
+  - Cape Verde
+  - Cape Verdean
+  cities:
+  - Praia
+- code: CM
+  name: Cameroon
+  aliases:
+  - Cameroonian
+  cities:
+  - Douala
+  - Yaounde
+- code: CF
+  name: Central African Republic
+  aliases:
+  - Central African
+  cities:
+  - Bangui
+- code: TD
+  name: Chad
+  aliases:
+  - Chadian
+  cities:
+  - N'Djamena
+- code: KM
+  name: Comoros
+  aliases:
+  - Comorian
+  cities:
+  - Moroni
+- code: CD
+  name: Democratic Republic of the Congo
+  aliases:
+  - DR Congo
+  - DRC
+  - Congolese
+  cities:
+  - Kinshasa
+  - Lubumbashi
+- code: CG
+  name: Republic of the Congo
+  aliases:
+  - Congo-Brazzaville
+  - Congolese
+  cities:
+  - Brazzaville
+  - Pointe-Noire
+- code: CI
+  name: Cote d'Ivoire
+  aliases:
+  - Ivory Coast
+  - Ivorian
+  cities:
+  - Abidjan
+  - Yamoussoukro
+- code: DJ
+  name: Djibouti
+  aliases:
+  - Djiboutian
+  cities:
+  - Djibouti
+- code: EG
+  name: Egypt
+  aliases:
+  - Egyptian
+  cities:
+  - Cairo
+  - Alexandria
+  - Giza
+- code: GQ
+  name: Equatorial Guinea
+  aliases:
+  - Equatoguinean
+  cities:
+  - Malabo
+  - Bata
+- code: ER
+  name: Eritrea
+  aliases:
+  - Eritrean
+  cities:
+  - Asmara
+- code: SZ
+  name: Eswatini
+  aliases:
+  - Swaziland
+  - Swazi
+  cities:
+  - Mbabane
+  - Manzini
+- code: ET
+  name: Ethiopia
+  aliases:
+  - Ethiopian
+  cities:
+  - Addis Ababa
+- code: GA
+  name: Gabon
+  aliases:
+  - Gabonese
+  cities:
+  - Libreville
+- code: GM
+  name: Gambia
+  aliases:
+  - Gambian
+  cities:
+  - Banjul
+- code: GH
+  name: Ghana
+  aliases:
+  - Ghanaian
+  cities:
+  - Accra
+  - Kumasi
+  - Tema
+- code: GN
+  name: Guinea
+  aliases:
+  - Guinean
+  cities:
+  - Conakry
+- code: GW
+  name: Guinea-Bissau
+  aliases:
+  - Bissau-Guinean
+  cities:
+  - Bissau
+- code: KE
+  name: Kenya
+  aliases:
+  - Kenyan
+  cities:
+  - Nairobi
+  - Mombasa
+  - Kisumu
+  - Nakuru
+  - Eldoret
+- code: LS
+  name: Lesotho
+  aliases:
+  - Basotho
+  cities:
+  - Maseru
+- code: LR
+  name: Liberia
+  aliases:
+  - Liberian
+  cities:
+  - Monrovia
+- code: LY
+  name: Libya
+  aliases:
+  - Libyan
+  cities:
+  - Tripoli
+  - Benghazi
+- code: MG
+  name: Madagascar
+  aliases:
+  - Malagasy
+  cities:
+  - Antananarivo
+- code: MW
+  name: Malawi
+  aliases:
+  - Malawian
+  cities:
+  - Lilongwe
+  - Blantyre
+- code: ML
+  name: Mali
+  aliases:
+  - Malian
+  cities:
+  - Bamako
+- code: MR
+  name: Mauritania
+  aliases:
+  - Mauritanian
+  cities:
+  - Nouakchott
+- code: MU
+  name: Mauritius
+  aliases:
+  - Mauritian
+  cities:
+  - Port Louis
+- code: MA
+  name: Morocco
+  aliases:
+  - Moroccan
+  cities:
+  - Casablanca
+  - Rabat
+  - Marrakech
+- code: MZ
+  name: Mozambique
+  aliases:
+  - Mozambican
+  cities:
+  - Maputo
+- code: NA
+  name: Namibia
+  aliases:
+  - Namibian
+  cities:
+  - Windhoek
+- code: NE
+  name: Niger
+  aliases:
+  - Nigerien
+  cities:
+  - Niamey
+- code: NG
+  name: Nigeria
+  aliases:
+  - Nigerian
+  cities:
+  - Lagos
+  - Abuja
+  - Ibadan
+  - Port Harcourt
+  - Kano
+- code: RW
+  name: Rwanda
+  aliases:
+  - Rwandan
+  cities:
+  - Kigali
+- code: ST
+  name: Sao Tome and Principe
+  aliases:
+  - Sao Tomean
+  cities:
+  - Sao Tome
+- code: SN
+  name: Senegal
+  aliases:
+  - Senegalese
+  cities:
+  - Dakar
+- code: SC
+  name: Seychelles
+  aliases:
+  - Seychellois
+  cities:
+  - Victoria
+- code: SL
+  name: Sierra Leone
+  aliases:
+  - Sierra Leonean
+  cities:
+  - Freetown
+- code: SO
+  name: Somalia
+  aliases:
+  - Somali
+  cities:
+  - Mogadishu
+- code: ZA
+  name: South Africa
+  aliases:
+  - South African
+  - RSA
+  cities:
+  - Cape Town
+  - Johannesburg
+  - Durban
+  - Pretoria
+  - Sandton
+- code: SS
+  name: South Sudan
+  aliases:
+  - South Sudanese
+  cities:
+  - Juba
+- code: SD
+  name: Sudan
+  aliases:
+  - Sudanese
+  cities:
+  - Khartoum
+- code: TZ
+  name: Tanzania
+  aliases:
+  - Tanzanian
+  cities:
+  - Dar es Salaam
+  - Arusha
+  - Dodoma
+- code: TG
+  name: Togo
+  aliases:
+  - Togolese
+  cities:
+  - Lome
+- code: TN
+  name: Tunisia
+  aliases:
+  - Tunisian
+  cities:
+  - Tunis
+- code: UG
+  name: Uganda
+  aliases:
+  - Ugandan
+  cities:
+  - Kampala
+  - Entebbe
+- code: ZM
+  name: Zambia
+  aliases:
+  - Zambian
+  cities:
+  - Lusaka
+  - Ndola
+  - Kitwe
+- code: ZW
+  name: Zimbabwe
+  aliases:
+  - Zimbabwean
+  cities:
+  - Harare
+  - Bulawayo
+restricted_regions:
+- id: united_states
+  name: United States
+  phrases:
+  - must reside in the united states
+  - us work authorization required
+  - us citizens only
+  - must be located in the united states
+- id: united_kingdom
+  name: United Kingdom
+  phrases:
+  - uk right to work required
+  - must reside in the uk
+  - must be located in the uk
+- id: european_union
+  name: European Union
+  phrases:
+  - eu residents only
+  - eu work authorization required
+- id: canada
+  name: Canada
+  phrases:
+  - canada-based applicants only
+  - must be located in canada
+notes:
+- Do not freely match 2-letter country codes in prose. Prefer structured fields or
+  full country names.
+- Worldwide is never an alias for Africa.
+timezone_overlap_phrases:
+- hours overlap with est
+- pst working hours
+- us business-hours overlap
+- cet working hours
+- west timezone

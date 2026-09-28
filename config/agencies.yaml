@@ -1,0 +1,21 @@
+schema_version: 1
+
+agencies:
+  - name: Corporate Staffing Services
+    aliases:
+      - Corporate Staffing
+  - name: TalentSafari
+    aliases: []
+  - name: Confidential Client
+    aliases:
+      - Confidential
+  - name: Executive Search
+    aliases: []
+  - name: Recruitment Agency
+    aliases: []
+
+agency_markers:
+  - confidential
+  - recruitment
+  - executive search
+  - staffing

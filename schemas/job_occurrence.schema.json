@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "JobOccurrence",
+  "type": "object",
+  "required": ["occurrence_id", "job_id", "source_id", "source_url", "active", "schema_version"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "occurrence_id": {"type": "string", "minLength": 1},
+    "job_id": {"type": "string", "minLength": 1},
+    "source_id": {"type": "string", "minLength": 1},
+    "external_id": {"type": ["string", "null"]},
+    "source_url": {"type": "string", "format": "uri"},
+    "apply_url_original": {"type": ["string", "null"], "format": "uri"},
+    "apply_url_canonical": {"type": ["string", "null"], "format": "uri"},
+    "active": {"type": "boolean"}
+  },
+  "additionalProperties": true
+}

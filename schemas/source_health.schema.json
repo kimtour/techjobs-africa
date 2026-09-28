@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SourceHealth",
+  "type": "object",
+  "required": ["schema_version", "source_id", "status", "safe_to_process_absences"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "source_id": {"type": "string", "minLength": 1},
+    "status": {"enum": ["SUCCESS", "PARTIAL", "FAILED", "BLOCKED", "DISABLED"]},
+    "records_found": {"type": "integer", "minimum": 0},
+    "pages_fetched": {"type": "integer", "minimum": 0},
+    "crawl_complete": {"type": "boolean"},
+    "safe_to_process_absences": {"type": "boolean"}
+  },
+  "additionalProperties": true
+}

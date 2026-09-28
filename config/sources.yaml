@@ -1,0 +1,166 @@
+schema_version: 1
+
+sources:
+  - id: linkedin
+    name: LinkedIn Jobs Search
+    enabled: false
+    discovery_url: "https://www.linkedin.com/jobs/search-results/?currentJobId=4468141996&keywords=software&origin=JOB_SEARCH_PAGE_JOB_FILTER&referralSearchId=77EhxrwAZOrZUZlMI13L%2BA%3D%3D&f_TPR=r604800"
+    method: no_supported_read_api
+    production_method: null
+    interval_hours: 3
+    timezone: null
+    crawl:
+      max_pages: 0
+      max_requests_per_run: 0
+      request_delay_ms: 0
+      timeout_seconds: 15
+      retry_delays_seconds: [5, 20, 60]
+      complete_when: not_applicable
+    closed_markers: []
+    ttl_days: 30
+    legal:
+      robots_checked: false
+      tos_checked: true
+      permission: denied
+      notes: "LinkedIn's User Agreement prohibits scraping, bots, and copying or distributing Service content without consent. Its Job Posting API is a partner posting API, not a general job-search read API. Disabled; reconsider only with a written LinkedIn agreement that permits this use."
+
+  - id: myjobmag
+    name: MyJobMag Kenya
+    enabled: true
+    discovery_url: "https://www.myjobmag.co.ke/jobs-by-field/information-technology"
+    method: public_xml_feed
+    production_method: null
+    feed_url: "https://www.myjobmag.co.ke/jobsxml_by_categories.xml"
+    interval_hours: 3
+    timezone: Africa/Nairobi
+    crawl:
+      max_pages: 5
+      max_requests_per_run: 10
+      request_delay_ms: 1500
+      timeout_seconds: 15
+      retry_delays_seconds: [5, 20, 60]
+      complete_when: unknown
+    closed_markers: []
+    ttl_days: 30
+    legal:
+      robots_checked: true
+      tos_checked: true
+      permission: public_feed_not_explicitly_licensed
+      notes: "M0 confirmed publicly advertised XML feeds. Terms were reviewed but do not explicitly grant automated collection permission; complete a legal/product decision before production use."
+
+  - id: corporate_staffing
+    name: Corporate Staffing Kenya
+    enabled: true
+    discovery_url: "https://www.corporatestaffing.co.ke/category/it-jobs-in-kenya/"
+    method: public_wordpress_json
+    production_method: null
+    api_url: "https://www.corporatestaffing.co.ke/wp-json/wp/v2/job?categories=10"
+    interval_hours: 3
+    timezone: Africa/Nairobi
+    crawl:
+      max_pages: 5
+      max_requests_per_run: 10
+      request_delay_ms: 1500
+      timeout_seconds: 15
+      retry_delays_seconds: [5, 20, 60]
+      complete_when: unknown
+    closed_markers: []
+    ttl_days: 30
+    legal:
+      robots_checked: true
+      tos_checked: false
+      permission: unknown
+      notes: "M0 confirmed a public WordPress jobs endpoint and category RSS feed. Production approval remains pending Terms review."
+
+  - id: openedcareer
+    name: OpenedCareer
+    enabled: false
+    discovery_url: "https://openedcareer.com/job-category/computer-science/"
+    method: unknown
+    production_method: null
+    interval_hours: 3
+    timezone: null
+    crawl:
+      max_pages: 5
+      max_requests_per_run: 10
+      request_delay_ms: 1500
+      timeout_seconds: 15
+      retry_delays_seconds: [5, 20, 60]
+      complete_when: unknown
+    closed_markers: []
+    ttl_days: 30
+    legal:
+      robots_checked: true
+      tos_checked: true
+      permission: denied
+      notes: "OpenedCareer Terms and Conditions prohibit collecting content in bulk, directly or through third parties, without OpenedCareer consent. Disabled pending written permission."
+
+  - id: elevolt
+    name: Elevolt Kenya
+    enabled: false
+    discovery_url: "https://jobs.elevolt.co.ke/jobs/category/software-it?page=1&location=&type=&qualification=&search="
+    method: unknown
+    production_method: null
+    interval_hours: 3
+    timezone: Africa/Nairobi
+    crawl:
+      max_pages: 5
+      max_requests_per_run: 10
+      request_delay_ms: 1500
+      timeout_seconds: 15
+      retry_delays_seconds: [5, 20, 60]
+      complete_when: unknown
+    closed_markers: []
+    ttl_days: 30
+    legal:
+      robots_checked: true
+      tos_checked: true
+      permission: requires_written_consent
+      notes: "Elevolt Terms grant a limited licence for personal use and prohibit downloading or modification without written consent. Do not automate production ingestion unless written permission is obtained."
+
+  - id: greenhouse
+    name: Greenhouse Discovery
+    enabled: true
+    discovery_url: "https://my.greenhouse.io/jobs/search?location=Kenya&lat=0.554064&lon=37.903148&location_type=country&country_short_name=KE&work_type[]=remote"
+    method: discovery
+    production_method: null
+    interval_hours: 3
+    timezone: null
+    crawl:
+      max_pages: 1
+      max_requests_per_run: 10
+      request_delay_ms: 500
+      timeout_seconds: 15
+      retry_delays_seconds: [5, 20, 60]
+      complete_when: unknown
+    closed_markers: []
+    ttl_days: 30
+    legal:
+      robots_checked: true
+      tos_checked: false
+      permission: unknown
+      notes: "Generic Greenhouse search is a discovery aid. Production ingestion should use company-specific Job Board API tokens discovered during M0."
+
+  - id: ashby
+    name: TalentSafari / Ashby
+    enabled: true
+    discovery_url: "https://jobs.ashbyhq.com/talentsafari"
+    method: official_public_api
+    production_method: official_public_api
+    api_url: "https://api.ashbyhq.com/posting-api/job-board/talentsafari"
+    interval_hours: 3
+    timezone: null
+    crawl:
+      max_pages: 1
+      max_requests_per_run: 10
+      request_delay_ms: 500
+      timeout_seconds: 15
+      retry_delays_seconds: [5, 20, 60]
+      complete_when: unknown
+    closed_markers: []
+    ttl_days: 30
+    legal:
+      robots_checked: true
+      tos_checked: true
+      permission: official_public_api
+      notes: "M0 confirmed Ashby's public Job Postings API for the talentsafari board. Fetch listed public postings only; do not persist descriptions."

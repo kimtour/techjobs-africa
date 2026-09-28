@@ -1,0 +1,198 @@
+schema_version: 1
+categories:
+- key: software-engineering
+  title: Software Engineering
+  keywords:
+  - software engineer
+  - software developer
+  - backend engineer
+  - backend developer
+  - frontend engineer
+  - frontend developer
+  - full stack engineer
+  - full stack developer
+  - web developer
+  - mobile developer
+  - ios developer
+  - android developer
+  - python developer
+  - java developer
+  - golang developer
+- key: ai-machine-learning
+  title: AI / Machine Learning
+  keywords:
+  - ai engineer
+  - machine learning engineer
+  - ml engineer
+  - deep learning engineer
+  - computer vision engineer
+  - nlp engineer
+  - llm engineer
+  - applied ai
+- key: data-engineering
+  title: Data Engineering
+  keywords:
+  - data engineer
+  - analytics engineer
+  - etl developer
+  - data warehouse engineer
+  - big data engineer
+- key: data-science
+  title: Data Science
+  keywords:
+  - data scientist
+  - applied scientist
+  - quantitative data scientist
+  - data analyst
+  - business intelligence analyst
+- key: devops-sre
+  title: DevOps / SRE
+  keywords:
+  - devops engineer
+  - site reliability engineer
+  - sre engineer
+  - platform engineer
+  - release engineer
+- key: cloud
+  title: Cloud
+  keywords:
+  - cloud engineer
+  - cloud architect
+  - cloud administrator
+  - azure engineer
+  - aws engineer
+  - gcp engineer
+  - infrastructure engineer
+- key: cybersecurity
+  title: Cybersecurity
+  keywords:
+  - cybersecurity
+  - security engineer
+  - information security
+  - soc analyst
+  - penetration tester
+  - security analyst
+  - application security
+- key: application-support
+  title: Application Support
+  keywords:
+  - application support
+  - production support
+  - application analyst
+  - support engineer
+  - erp support
+- key: systems-administration
+  title: Systems Administration
+  keywords:
+  - systems administrator
+  - system administrator
+  - server administrator
+  - windows administrator
+  - linux administrator
+- key: networking
+  title: Networking
+  keywords:
+  - network engineer
+  - network administrator
+  - network specialist
+  - noc engineer
+  - ccna
+  - ccnp
+- key: qa-testing
+  title: QA / Testing
+  keywords:
+  - qa engineer
+  - quality assurance engineer
+  - test automation engineer
+  - software tester
+  - sdet
+- key: database
+  title: Database
+  keywords:
+  - database administrator
+  - database engineer
+  - dba
+  - sql developer
+- key: erp-enterprise
+  title: ERP / Enterprise Systems
+  keywords:
+  - erp consultant
+  - erp developer
+  - sap consultant
+  - sap developer
+  - dynamics 365
+  - oracle ebs
+  - enterprise systems
+- key: solutions-architecture
+  title: Solutions Architecture
+  keywords:
+  - solutions architect
+  - solution architect
+  - enterprise architect
+  - technical architect
+- key: technical-support
+  title: Technical Support
+  keywords:
+  - technical support engineer
+  - technical support specialist
+  - it support engineer
+  - service desk engineer
+  - helpdesk engineer
+- key: ui-ux
+  title: UI / UX
+  keywords:
+  - ui designer
+  - ux designer
+  - ui/ux designer
+  - product designer
+  - ux researcher
+- key: technical-product
+  title: Technical Product
+  strong_keywords:
+  - technical product manager
+  - platform product manager
+  - api product manager
+  - developer platform product manager
+  weak_keywords:
+  - product manager
+- key: technology-leadership
+  title: Technology Leadership
+  keywords:
+  - chief technology officer
+  - cto
+  - vp engineering
+  - head of engineering
+  - engineering manager
+  - director of engineering
+  - head of technology
+  - technology manager
+  - it director
+- key: graduate-intern
+  title: Internship / Graduate Technology
+  keywords:
+  - software engineering intern
+  - technology intern
+  - it intern
+  - graduate software engineer
+  - graduate technology
+  - junior software engineer
+  - attachment
+  - trainee developer
+non_tech_exclusions:
+- human resources
+- hr officer
+- sales representative
+- account executive
+- legal counsel
+- accountant
+- finance manager
+- office administrator
+- receptionist
+- digital marketer
+- social media manager
+- customer care agent
+rules:
+- Apply strong technical inclusions before generic exclusions.
+- A generic Product Manager is not automatically technical; require supporting technical
+  context.
+- One role may have secondary categories.

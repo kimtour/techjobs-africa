@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CanonicalJob",
+  "type": "object",
+  "required": ["schema_version", "job_id", "title", "status", "sources"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "job_id": {"type": "string", "minLength": 1},
+    "title": {"type": "string", "minLength": 1},
+    "status": {"enum": ["ACTIVE", "STALE", "CLOSED", "EXPIRED"]},
+    "eligibility_level": {"enum": ["CONFIRMED", "LIKELY", "VERIFY", "RESTRICTED", "UNKNOWN"]},
+    "preferred_apply_url": {"type": ["string", "null"], "format": "uri"},
+    "sources": {"type": "array", "items": {"type": "string"}}
+  },
+  "additionalProperties": true
+}

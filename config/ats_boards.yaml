@@ -1,0 +1,16 @@
+schema_version: 1
+
+greenhouse:
+  boards: []
+
+ashby:
+  boards:
+    - name: TalentSafari
+      board: talentsafari
+      verified: true
+      discovery_method: official_public_api
+      api_url: "https://api.ashbyhq.com/posting-api/job-board/talentsafari"
+
+notes:
+  - "TalentSafari was verified during M0 through Ashby's documented public Job Postings API."
+  - "Populate Greenhouse and additional Ashby boards only after M0 discovery or explicit verification."

@@ -1,0 +1,16 @@
+{
+  "apiVersion": "1",
+  "jobs": [
+    {
+      "id": "8a5c7ebf-02e3-4492-9efc-ce83b879757e",
+      "title": "Talent Consultant",
+      "location": "Nairobi",
+      "workplaceType": "Hybrid",
+      "isRemote": true,
+      "employmentType": "FullTime",
+      "publishedAt": "2025-07-30T12:18:02.225+00:00",
+      "applyUrl": "https://jobs.ashbyhq.com/talentsafari/8a5c7ebf-02e3-4492-9efc-ce83b879757e/application",
+      "jobUrl": "https://jobs.ashbyhq.com/talentsafari/8a5c7ebf-02e3-4492-9efc-ce83b879757e"
+    }
+  ]
+}
