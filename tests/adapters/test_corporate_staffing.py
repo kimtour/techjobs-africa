@@ -1,7 +1,32 @@
 import json
 from pathlib import Path
 
-from ingest.adapters.corporate_staffing import parse_corporate_staffing_jobs
+from ingest.adapters.corporate_staffing import (
+    CorporateStaffingAdapter,
+    parse_corporate_staffing_jobs,
+)
+
+
+class _Response:
+    def __init__(self, payload, total_pages: str):
+        self._payload = payload
+        self.headers = {"X-WP-TotalPages": total_pages}
+
+    def raise_for_status(self):
+        return None
+
+    def json(self):
+        return self._payload
+
+
+class _PaginatedClient:
+    def __init__(self, responses):
+        self.responses = iter(responses)
+        self.calls = []
+
+    def get(self, url, *, params, timeout):
+        self.calls.append((url, params, timeout))
+        return next(self.responses)
 
 
 def test_public_jobs_api_keeps_minimal_fields_only():
@@ -31,3 +56,14 @@ def test_recovers_explicit_company_from_title_when_source_field_is_empty() -> No
     )
 
     assert jobs[0].company == "HFCB Group"
+
+
+def test_fetch_follows_wordpress_page_count() -> None:
+    first = [{"id": 1, "link": "https://example.com/1", "title": {"rendered": "First"}}]
+    second = [{"id": 2, "link": "https://example.com/2", "title": {"rendered": "Second"}}]
+    client = _PaginatedClient([_Response(first, "2"), _Response(second, "2")])
+
+    jobs = CorporateStaffingAdapter(client=client, request_delay_seconds=0).fetch()
+
+    assert [job.external_id for job in jobs] == ["1", "2"]
+    assert [call[1]["page"] for call in client.calls] == [1, 2]

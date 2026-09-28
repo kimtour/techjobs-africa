@@ -94,7 +94,7 @@ class CorporateStaffingAdapter:
     def __init__(
         self,
         client: httpx.Client | None = None,
-        max_pages: int = 5,
+        max_pages: int | None = None,
         request_delay_seconds: float = 1.5,
     ) -> None:
         self._client = client or httpx.Client(
@@ -105,7 +105,8 @@ class CorporateStaffingAdapter:
 
     def fetch(self) -> list[RawJob]:
         jobs: list[RawJob] = []
-        for page in range(1, self.max_pages + 1):
+        page = 1
+        while self.max_pages is None or page <= self.max_pages:
             if page > 1:
                 sleep(self.request_delay_seconds)
             response = self._client.get(
@@ -119,6 +120,12 @@ class CorporateStaffingAdapter:
                 raise ValueError("Corporate Staffing response must be a JSON list.")
             page_jobs = parse_corporate_staffing_jobs(payload)
             jobs.extend(page_jobs)
-            if len(payload) < 100:
+            total_pages = response.headers.get("X-WP-TotalPages")
+            try:
+                has_next_page = page < int(total_pages) if total_pages else len(payload) == 100
+            except ValueError:
+                has_next_page = len(payload) == 100
+            if not has_next_page:
                 break
+            page += 1
         return jobs

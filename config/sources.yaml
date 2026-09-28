@@ -34,8 +34,8 @@ sources:
     interval_hours: 3
     timezone: Africa/Nairobi
     crawl:
-      max_pages: 5
-      max_requests_per_run: 10
+      max_pages: 1
+      max_requests_per_run: 1
       request_delay_ms: 1500
       timeout_seconds: 15
       retry_delays_seconds: [5, 20, 60]
@@ -58,8 +58,8 @@ sources:
     interval_hours: 3
     timezone: Africa/Nairobi
     crawl:
-      max_pages: 5
-      max_requests_per_run: 10
+      max_pages: 0
+      max_requests_per_run: 25
       request_delay_ms: 1500
       timeout_seconds: 15
       retry_delays_seconds: [5, 20, 60]
@@ -82,8 +82,8 @@ sources:
     interval_hours: 3
     timezone: null
     crawl:
-      max_pages: 5
-      max_requests_per_run: 10
+      max_pages: 0
+      max_requests_per_run: 5
       request_delay_ms: 1500
       timeout_seconds: 15
       retry_delays_seconds: [5, 20, 60]

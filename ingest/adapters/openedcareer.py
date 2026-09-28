@@ -15,6 +15,7 @@ from ingest.models import RawJob
 
 SOURCE_ID = "openedcareer"
 API_URL = "https://openedcareer.com/wp-json/wp/v2/job_listing"
+COMPUTER_SCIENCE_CATEGORY_ID = 732
 
 
 class _TextExtractor(HTMLParser):
@@ -74,7 +75,7 @@ class OpenedCareerAdapter:
     def __init__(
         self,
         client: httpx.Client | None = None,
-        max_pages: int = 5,
+        max_pages: int | None = None,
         request_delay_seconds: float = 1.5,
     ) -> None:
         self._client = client or httpx.Client(
@@ -85,17 +86,30 @@ class OpenedCareerAdapter:
 
     def fetch(self) -> list[RawJob]:
         jobs: list[RawJob] = []
-        for page in range(1, self.max_pages + 1):
+        page = 1
+        while self.max_pages is None or page <= self.max_pages:
             if page > 1:
                 sleep(self.request_delay_seconds)
             response = self._client.get(
-                API_URL, params={"per_page": 100, "page": page}, timeout=15.0
+                API_URL,
+                params={
+                    "job_listing_category": COMPUTER_SCIENCE_CATEGORY_ID,
+                    "per_page": 100,
+                    "page": page,
+                },
+                timeout=15.0,
             )
             response.raise_for_status()
             payload = response.json()
             if not isinstance(payload, list):
                 raise ValueError("OpenedCareer response must be a JSON list.")
             jobs.extend(parse_openedcareer_jobs(payload))
-            if len(payload) < 100:
+            total_pages = response.headers.get("X-WP-TotalPages")
+            try:
+                has_next_page = page < int(total_pages) if total_pages else len(payload) == 100
+            except ValueError:
+                has_next_page = len(payload) == 100
+            if not has_next_page:
                 break
+            page += 1
         return jobs
