@@ -31,6 +31,17 @@ npm install
 npm run dev
 ```
 
+## Production deployment
+
+This project uses Cloudflare Pages Direct Upload so the GitHub workflow can build from the private `data` branch and deploy only the resulting static files.
+
+1. In Cloudflare, create a **Workers & Pages → Create application → Get started → Direct Upload** project. Use the project name `techjobs-africa` (or another unique name you choose).
+2. Create a Cloudflare API token with **Account → Cloudflare Pages → Edit** permission.
+3. In GitHub repository Settings → Secrets and variables → Actions, add repository secrets `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID`.
+4. Add a repository variable named `CLOUDFLARE_PAGES_PROJECT` containing the exact Pages project name.
+
+The scheduled `Ingest and build static site` workflow deploys only when all three values are present. Tokens must never be committed or pasted into project files.
+
 ## First instruction for your VS Code coding agent
 
 > Read `PROJECT_CONTEXT.md` completely and treat it as the authoritative v0.1 specification. Start with M0 source discovery. Do not implement speculative production adapters before discovery is recorded.
