@@ -6,6 +6,7 @@ from collections.abc import Mapping, Sequence
 from datetime import datetime
 from html import unescape
 from html.parser import HTMLParser
+from time import sleep
 from typing import Any
 
 import httpx
@@ -68,15 +69,23 @@ def parse_corporate_staffing_jobs(payload: Sequence[Mapping[str, Any]]) -> list[
 class CorporateStaffingAdapter:
     source_id = SOURCE_ID
 
-    def __init__(self, client: httpx.Client | None = None, max_pages: int = 5) -> None:
+    def __init__(
+        self,
+        client: httpx.Client | None = None,
+        max_pages: int = 5,
+        request_delay_seconds: float = 1.5,
+    ) -> None:
         self._client = client or httpx.Client(
             headers={"Accept": "application/json", "User-Agent": "TechJobsAfricaBot/0.1"}
         )
         self.max_pages = max_pages
+        self.request_delay_seconds = request_delay_seconds
 
     def fetch(self) -> list[RawJob]:
         jobs: list[RawJob] = []
         for page in range(1, self.max_pages + 1):
+            if page > 1:
+                sleep(self.request_delay_seconds)
             response = self._client.get(
                 API_URL,
                 params={"categories": 10, "per_page": 100, "page": page},
