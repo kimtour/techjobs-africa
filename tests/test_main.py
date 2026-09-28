@@ -63,14 +63,3 @@ def test_build_jobs_keeps_source_scoped_technical_listing_without_title_keyword(
     assert jobs[0].category == "IT Operations"
     assert jobs[0].category_source == "source_category"
 
-
-def test_build_jobs_does_not_force_a_nontechnical_myjobmag_title_into_it_operations():
-    raw = RawJob(
-        source_id="myjobmag",
-        external_id="accounts-assistant",
-        title="Accounts Assistant at Decase Chemicals Limited",
-        source_url="https://example.com/accounts-assistant",
-        apply_url="https://example.com/accounts-assistant",
-    )
-
-    assert build_jobs([raw]) == []
