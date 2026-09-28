@@ -137,9 +137,9 @@ sources:
     ttl_days: 30
     legal:
       robots_checked: true
-      tos_checked: false
-      permission: unknown
-      notes: "Generic Greenhouse search is a discovery aid. Production ingestion should use company-specific Job Board API tokens discovered during M0."
+      tos_checked: true
+      permission: approved_by_source_owner
+      notes: "Source owner approved attributed access. The generic search remains a discovery aid because it redirects to sign-in; production ingestion requires verified company-specific Job Board API tokens."
 
   - id: ashby
     name: TalentSafari / Ashby
