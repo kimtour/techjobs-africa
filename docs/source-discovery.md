@@ -12,7 +12,15 @@ Environment: local
 - **Elevolt:** not approved for production ingestion. Its Terms grant personal use and require written consent for downloading or modification. Obtain written permission before enabling an automated adapter.
 - **Greenhouse:** the configured generic search URL redirected to a MyGreenhouse sign-in page. It remains a discovery aid only; production ingestion must use verified company Job Board API boards.
 - **MyJobMag and Corporate Staffing:** technically reachable and permitted by their respective `robots.txt` paths in this local probe. MyJobMag's Terms have been reviewed but do not expressly license automation; Corporate Staffing's Terms review and the GitHub Actions probe remain pending.
-- **Ashby:** use the official public API confirmed below instead of HTML collection; the GitHub Actions probe remains pending.
+- **Ashby:** use the official public API confirmed below instead of HTML collection; the GitHub Actions probe also confirmed its board page is reachable.
+
+### GitHub Actions confirmation
+
+The required hosted-runner probe completed successfully on 2026-09-28 in [run 36403117088](https://github.com/kimtour/techjobs-africa/actions/runs/36403117088).
+
+- **MyJobMag, Corporate Staffing, Greenhouse, and Ashby:** HTTP 200, `ACCESSIBLE`, and allowed by their current `robots.txt` paths.
+- **LinkedIn, OpenedCareer, and Elevolt:** `SKIPPED` because they are disabled in `config/sources.yaml`; the probe made no request to them.
+- The GitHub result matches the local technical baseline for every active source.
 
 ### Official API confirmation
 
