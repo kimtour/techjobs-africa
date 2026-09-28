@@ -45,6 +45,7 @@ class RawJob(BaseModel):
     title: str = Field(min_length=1, max_length=300)
     company: str | None = Field(default=None, max_length=300)
     location: str | None = Field(default=None, max_length=300)
+    source_url: AnyHttpUrl
     apply_url: AnyHttpUrl
     published_at: datetime | None = None
 
