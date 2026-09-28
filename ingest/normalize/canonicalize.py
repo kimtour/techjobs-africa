@@ -6,6 +6,7 @@ import re
 import unicodedata
 
 from ingest.classify.eligibility import classify_eligibility
+from ingest.classify.tech import classify_technology_title
 from ingest.models import CanonicalJob, RawJob
 
 ASHBY_POSTING_COMPANY = "TalentSafari"
@@ -27,6 +28,7 @@ def canonicalize_ashby_job(
         raise ValueError("Ashby canonicalization requires a RawJob with an Ashby external ID.")
 
     eligibility = classify_eligibility(location=raw.location, title=raw.title)
+    category = classify_technology_title(raw.title)
     location_parts = [part.strip() for part in (raw.location or "").split(",") if part.strip()]
     city = location_parts[0] if location_parts else None
     country = location_parts[-1] if len(location_parts) > 1 else None
@@ -41,6 +43,9 @@ def canonicalize_ashby_job(
         city=city,
         country=country,
         workplace_type=None,
+        category=category.category,
+        secondary_categories=category.secondary_categories,
+        category_source=category.source,
         eligibility_level=eligibility.level,
         eligibility_evidence=eligibility.evidence,
         eligibility_source=eligibility.source,

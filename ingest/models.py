@@ -74,6 +74,9 @@ class CanonicalJob(BaseModel):
     country: str | None = Field(default=None, max_length=120)
     country_code: str | None = Field(default=None, max_length=2)
     workplace_type: str | None = Field(default=None, max_length=50)
+    category: str | None = Field(default=None, max_length=80)
+    secondary_categories: list[str] = Field(default_factory=list)
+    category_source: str | None = Field(default=None, max_length=50)
     eligibility_level: EligibilityLevel
     eligibility_evidence: str
     eligibility_source: str
