@@ -29,6 +29,9 @@ ADAPTERS: Mapping[str, AdapterFactory] = {
     "openedcareer": OpenedCareerAdapter,
     "elevolt": ElevoltAdapter,
 }
+# These endpoints are explicitly scoped by their sources to IT/software listings.
+# A missing title keyword must not discard a listing from that verified category.
+SOURCE_SCOPED_TECH_SOURCES = frozenset({"corporate_staffing", "elevolt"})
 
 
 def approved_source_ids(config_path: Path = CONFIG_PATH) -> list[str]:
@@ -48,6 +51,10 @@ def build_jobs(raw_jobs: Sequence[RawJob]) -> list[CanonicalJob]:
     technical_jobs = []
     for raw in raw_jobs:
         job = canonicalize_raw_job(raw)
+        if not job.category and raw.source_id in SOURCE_SCOPED_TECH_SOURCES:
+            job = job.model_copy(
+                update={"category": "IT Operations", "category_source": "source_category"}
+            )
         if job.category:
             technical_jobs.append(job)
     return deduplicate_exact(technical_jobs)

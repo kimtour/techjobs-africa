@@ -40,7 +40,12 @@ categories:
 - key: data-science
   title: Data Science
   keywords:
+  - data science
   - data scientist
+  - data analysis
+  - statistics
+  - statistical programmer
+  - actuarial science
   - applied scientist
   - quantitative data scientist
   - data analyst
@@ -77,10 +82,25 @@ categories:
   title: Application Support
   keywords:
   - application support
+  - system support analyst
   - production support
   - application analyst
   - support engineer
   - erp support
+- key: it-operations
+  title: IT Operations
+  keywords:
+  - information technology
+  - ict
+  - it assistant
+  - it clerk
+  - it project assistant
+  - digital business support
+  - ftth technician
+  - systems technician
+  - database intern
+  - it officer
+  - application development
 - key: systems-administration
   title: Systems Administration
   keywords:
@@ -106,6 +126,7 @@ categories:
   - qa analyst
   - quality assurance engineer
   - quality assurance analyst
+  - quality assurance
   - test automation engineer
   - test engineer
   - software tester
@@ -161,6 +182,8 @@ categories:
   - product manager
   keywords:
   - product manager
+  - project manager
+  - fintech
 - key: technology-leadership
   title: Technology Leadership
   keywords:
@@ -179,6 +202,8 @@ categories:
   - software engineering intern
   - technology intern
   - it intern
+  - computer science
+  - software development intern
   - graduate software engineer
   - graduate technology
   - junior software engineer

@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import re
 from pathlib import Path
 
 import yaml
@@ -18,7 +19,10 @@ class CategoryDecision(BaseModel):
 
 def _matches(title: str, keywords: list[str]) -> bool:
     normalized = title.casefold()
-    return any(keyword.casefold() in normalized for keyword in keywords)
+    return any(
+        re.search(rf"(?<!\w){re.escape(keyword.casefold())}(?!\w)", normalized)
+        for keyword in keywords
+    )
 
 
 def classify_technology_title(title: str, config_path: Path = CONFIG_PATH) -> CategoryDecision:

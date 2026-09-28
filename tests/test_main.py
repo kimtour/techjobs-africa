@@ -1,6 +1,6 @@
 import json
 
-from ingest.main import approved_source_ids, run_ingestion
+from ingest.main import approved_source_ids, build_jobs, run_ingestion
 from ingest.models import RawJob, SourceHealthStatus
 
 
@@ -46,3 +46,19 @@ def test_run_isolates_a_failed_source_and_writes_static_output(tmp_path):
     public_jobs = json.loads((tmp_path / "public/jobs.json").read_text())
     assert public_jobs["jobs"][0]["category"] == "Technical Product"
     assert "description" not in public_jobs["jobs"][0]
+
+
+def test_build_jobs_keeps_source_scoped_technical_listing_without_title_keyword():
+    raw = RawJob(
+        source_id="corporate_staffing",
+        external_id="source-scoped-1",
+        title="Role without a known keyword",
+        source_url="https://example.com/source-scoped-1",
+        apply_url="https://example.com/source-scoped-1",
+    )
+
+    jobs = build_jobs([raw])
+
+    assert len(jobs) == 1
+    assert jobs[0].category == "IT Operations"
+    assert jobs[0].category_source == "source_category"
