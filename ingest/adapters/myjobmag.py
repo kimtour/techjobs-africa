@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from collections.abc import Sequence
+from datetime import date, datetime, timedelta
 from email.utils import parsedate_to_datetime
 from html import unescape
 from html.parser import HTMLParser
@@ -69,11 +70,13 @@ class _ListingPageParser(HTMLParser):
         super().__init__(convert_charrefs=True)
         self.page_url = page_url
         self.jobs: list[RawJob] = []
+        self.jobs_with_days: list[tuple[RawJob, date | None]] = []
         self.page_links: set[str] = set()
         self._card: dict[str, str] | None = None
         self._card_li_depth = 0
         self._in_heading = False
         self._in_date = False
+        self._date_li_depth: int | None = None
         self._in_location_link = False
 
     def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
@@ -90,6 +93,7 @@ class _ListingPageParser(HTMLParser):
             self._card_li_depth += 1
             if attributes.get("id") == "job-date":
                 self._in_date = True
+                self._date_li_depth = self._card_li_depth
         if self._card is not None and tag == "h2":
             self._in_heading = True
         if self._card is not None and tag == "img":
@@ -123,12 +127,16 @@ class _ListingPageParser(HTMLParser):
         if self._card is not None and tag == "a":
             self._in_location_link = False
         if self._card is not None and tag == "li":
+            if self._date_li_depth == self._card_li_depth:
+                self._in_date = False
+                self._date_li_depth = None
             self._card_li_depth -= 1
             if self._card_li_depth == 0:
                 self._append_card()
                 self._card = None
                 self._in_heading = False
                 self._in_date = False
+                self._date_li_depth = None
                 self._in_location_link = False
 
     def handle_data(self, data: str) -> None:
@@ -150,17 +158,35 @@ class _ListingPageParser(HTMLParser):
         link = self._card.get("url")
         if not title or not link:
             return
-        self.jobs.append(
-            RawJob(
-                source_id=SOURCE_ID,
-                external_id=_external_id(link),
-                title=title[:300],
-                company=self._card.get("company") or None,
-                location=self._card.get("location") or None,
-                source_url=link,
-                apply_url=link,
-            )
+        job = RawJob(
+            source_id=SOURCE_ID,
+            external_id=_external_id(link),
+            title=title[:300],
+            company=self._card.get("company") or None,
+            location=self._card.get("location") or None,
+            source_url=link,
+            apply_url=link,
         )
+        self.jobs.append(job)
+        self.jobs_with_days.append((job, _listing_day(self._card.get("date"))))
+
+
+def _listing_day(value: str | None, today: date | None = None) -> date | None:
+    """Parse the day MyJobMag exposes without inventing a posting time."""
+
+    if not value:
+        return None
+    reference_day = today or date.today()
+    normalized = " ".join(value.split())
+    for fmt in ("%d %B", "%d %b"):
+        try:
+            parsed = datetime.strptime(
+                f"{normalized} {reference_day.year}", f"{fmt} %Y"
+            ).date()
+        except ValueError:
+            continue
+        return parsed.replace(year=parsed.year - 1) if parsed > reference_day else parsed
+    return None
 
 
 def parse_myjobmag_listing_page(content: str, page_url: str) -> tuple[list[RawJob], set[str]]:
@@ -181,6 +207,8 @@ class MyJobMagAdapter:
         listing_url: str = LISTING_URL,
         max_pages: int | None = None,
         request_delay_seconds: float = 1.5,
+        lookback_days: int = 30,
+        today: date | None = None,
     ) -> None:
         self._client = client or httpx.Client(
             headers={"Accept": "text/html", "User-Agent": "TechJobsAfricaBot/0.1"}
@@ -188,6 +216,8 @@ class MyJobMagAdapter:
         self.listing_url = listing_url
         self.max_pages = max_pages
         self.request_delay_seconds = request_delay_seconds
+        self.lookback_days = lookback_days
+        self.today = today
 
     def fetch(self) -> list[RawJob]:
         """Follow only pagination links published by the IT category pages."""
@@ -195,6 +225,7 @@ class MyJobMagAdapter:
         pending = [self.listing_url]
         visited: set[str] = set()
         jobs_by_id: dict[str, RawJob] = {}
+        cutoff = (self.today or date.today()) - timedelta(days=self.lookback_days)
         while pending and (self.max_pages is None or len(visited) < self.max_pages):
             page_url = pending.pop(0)
             if page_url in visited:
@@ -203,9 +234,17 @@ class MyJobMagAdapter:
                 sleep(self.request_delay_seconds)
             response = self._client.get(page_url, timeout=15.0)
             response.raise_for_status()
-            page_jobs, page_links = parse_myjobmag_listing_page(response.text, page_url)
+            parser = _ListingPageParser(page_url)
+            parser.feed(response.text)
+            parser.close()
             visited.add(page_url)
-            for job in page_jobs:
+            dated_jobs = parser.jobs_with_days
+            for job, listing_day in dated_jobs:
+                if listing_day is not None and listing_day < cutoff:
+                    continue
                 jobs_by_id[job.external_id or str(job.source_url)] = job
-            pending.extend(sorted(page_links - visited - set(pending)))
+            page_days = [listing_day for _, listing_day in dated_jobs if listing_day is not None]
+            if page_days and max(page_days) < cutoff:
+                break
+            pending.extend(sorted(parser.page_links - visited - set(pending)))
         return list(jobs_by_id.values())

@@ -12,6 +12,7 @@ sources:
     crawl:
       max_pages: 0
       max_requests_per_run: 0
+      recent_days: 30
       request_delay_ms: 0
       timeout_seconds: 15
       retry_delays_seconds: [5, 20, 60]
@@ -46,7 +47,7 @@ sources:
       robots_checked: true
       tos_checked: true
       permission: approved_by_source_owner
-      notes: "Use the public IT category pagination for minimal, attributed link-out aggregation; do not persist descriptions. The XML feed remains a fallback only."
+      notes: "Use the public IT category pagination for minimal, attributed link-out aggregation. Capture the most recent 30 days only; do not persist descriptions. The XML feed remains a fallback only."
 
   - id: corporate_staffing
     name: Corporate Staffing Kenya

@@ -1,3 +1,4 @@
+from datetime import date
 from pathlib import Path
 
 from ingest.adapters.myjobmag import (
@@ -38,12 +39,18 @@ class _PaginatedClient:
         return _Response(self.pages[url])
 
 
-def _listing(title: str, slug: str, company: str, location: str) -> str:
+def _listing(
+    title: str,
+    slug: str,
+    company: str,
+    location: str,
+    posted_date: str = "28 September",
+) -> str:
     return f'''<li class="job-list-li"><ul>
       <li class="job-logo"><img alt="{company} logo"></li>
       <li class="job-info"><h2><a href="/job/{slug}">{title}</a></h2>
         <li class="job-desc">This description must never be retained.</li>
-        <li id="job-date">28 September
+        <li id="job-date">{posted_date}
           <a href="/jobs-location/{location.lower()}">{location}</a>
         </li>
       </li></ul></li>'''
@@ -82,3 +89,30 @@ def test_fetch_follows_discovered_pagination_without_guessing_urls() -> None:
     ).fetch()
 
     assert [job.external_id for job in jobs] == ["/job/first-role", "/job/second-role"]
+
+
+def test_fetch_keeps_last_thirty_days_and_stops_after_an_older_page() -> None:
+    root = "https://www.myjobmag.co.ke/jobs-by-field/information-technology"
+    page_two = f"{root}/2"
+    page_three = f"{root}/3"
+    client = _PaginatedClient(
+        {
+            root: _listing("Recent role", "recent", "Example", "Nairobi")
+            + '<a href="/jobs-by-field/information-technology/2">2</a>',
+            page_two: _listing(
+                "Old role", "old", "Example", "Nairobi", posted_date="20 August"
+            )
+            + '<a href="/jobs-by-field/information-technology/3">3</a>',
+            page_three: _listing("Must not fetch", "never", "Example", "Nairobi"),
+        }
+    )
+
+    jobs = MyJobMagAdapter(
+        client=client,
+        listing_url=root,
+        request_delay_seconds=0,
+        today=date(2026, 9, 28),
+    ).fetch()
+
+    assert [job.external_id for job in jobs] == ["/job/recent"]
+    assert client.calls == [root, page_two]
