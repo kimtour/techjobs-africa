@@ -8,6 +8,7 @@ import unicodedata
 from ingest.classify.eligibility import classify_eligibility
 from ingest.classify.tech import classify_technology_title
 from ingest.models import CanonicalJob, RawJob
+from ingest.normalize.location import normalize_location
 
 ASHBY_POSTING_COMPANY = "TalentSafari"
 
@@ -39,11 +40,6 @@ def canonicalize_ashby_job(
     )
 
 
-def _location_parts(location: str | None) -> tuple[str | None, str | None]:
-    parts = [part.strip() for part in (location or "").split(",") if part.strip()]
-    return (parts[0] if parts else None, parts[-1] if len(parts) > 1 else None)
-
-
 def canonicalize_raw_job(
     raw: RawJob,
     *,
@@ -62,7 +58,7 @@ def canonicalize_raw_job(
 
     eligibility = classify_eligibility(location=raw.location, title=raw.title)
     category = classify_technology_title(raw.title)
-    city, country = _location_parts(raw.location)
+    location = normalize_location(raw.location)
     resolved_posting_company = posting_company or raw.company
     resolved_hiring_company = hiring_company or (
         raw.company if is_agency_posting else None
@@ -80,9 +76,10 @@ def canonicalize_raw_job(
             else None
         ),
         is_agency_posting=is_agency_posting,
-        city=city,
-        country=country,
-        workplace_type=None,
+        city=location.city,
+        country=location.country,
+        country_code=location.country_code,
+        workplace_type=location.workplace_type,
         category=category.category,
         secondary_categories=category.secondary_categories,
         category_source=category.source,

@@ -47,3 +47,5 @@ def test_generic_source_uses_external_id_and_classifies_qa_title():
     assert job.posting_company == "Example Technologies"
     assert job.hiring_company is None
     assert job.is_agency_posting is False
+    assert job.city == "Nairobi"
+    assert job.country_code == "KE"
