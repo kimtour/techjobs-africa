@@ -57,7 +57,7 @@ const sourceGroups = orderedSources
           <p class="empty" hidden id="no-results">No jobs match those filters.</p>
           <div id="source-groups">
             {sourceGroups.map((group) => (
-              <section class="source-group" data-source-group data-limit="10" aria-labelledby={`source-${group.sourceId}`}>
+              <section class="source-group" data-source={group.sourceId} data-source-group data-limit="10" aria-labelledby={`source-${group.sourceId}`}>
                 <div class="source-heading">
                   <h3 id={`source-${group.sourceId}`}>{sourceName(group.sourceId)}</h3>
                   <p>{group.jobs.length} recent listing{group.jobs.length === 1 ? "" : "s"}</p>
