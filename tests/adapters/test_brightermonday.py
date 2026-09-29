@@ -1,5 +1,8 @@
+from datetime import date
+
 from ingest.adapters.brightermonday import (
     BrighterMondayAdapter,
+    _relative_listing_day,
     parse_brightermonday_listing_page,
 )
 
@@ -28,6 +31,7 @@ def _listing(title: str, slug: str, company: str, location: str) -> str:
       <p class="text-sm text-blue-700 mt-3">{company}</p>
       <span class="bg-brand-secondary-100">{location}</span>
       <p>This description must never be retained.</p>
+      <div class="ml-auto"><p>6 days ago</p></div>
     </div></div>'''
 
 
@@ -37,12 +41,13 @@ def test_listing_page_keeps_minimal_metadata_and_next_page_only() -> None:
         '<link rel="next" href="https://www.brightermonday.co.ke/jobs/it-telecoms?page=2">'
     )
 
-    jobs, next_page = parse_brightermonday_listing_page(html, root)
+    jobs, next_page = parse_brightermonday_listing_page(html, root, date(2026, 9, 29))
 
     assert len(jobs) == 1
     assert jobs[0].external_id == "/listings/software-developer"
     assert jobs[0].company == "Example Co"
     assert jobs[0].location == "Nairobi"
+    assert jobs[0].published_date == date(2026, 9, 23)
     assert "description" not in jobs[0].model_dump()
     assert next_page == f"{root}?page=2"
 
@@ -64,3 +69,12 @@ def test_fetch_follows_the_published_next_page_link() -> None:
 
     assert [job.external_id for job in jobs] == ["/listings/first", "/listings/second"]
     assert client.calls == [root, page_two]
+
+
+def test_relative_posting_day_uses_only_explicit_source_relative_dates() -> None:
+    today = date(2026, 9, 29)
+
+    assert _relative_listing_day("today", today) == today
+    assert _relative_listing_day("yesterday", today) == date(2026, 9, 28)
+    assert _relative_listing_day("6 days ago", today) == date(2026, 9, 23)
+    assert _relative_listing_day("New", today) is None
