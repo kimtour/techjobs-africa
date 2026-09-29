@@ -4,6 +4,7 @@ from pathlib import Path
 from ingest.adapters.openedcareer import (
     COMPUTER_SCIENCE_CATEGORY_ID,
     OpenedCareerAdapter,
+    _company_from_title,
     parse_openedcareer_jobs,
 )
 
@@ -44,6 +45,15 @@ def test_parses_minimum_openedcareer_listing_metadata() -> None:
     assert str(jobs[0].source_url) == "https://openedcareer.com/job/security-support-assistant/"
     assert jobs[0].company is None
     assert "content" not in jobs[0].model_dump()
+
+
+def test_extracts_explicit_company_from_listing_title() -> None:
+    assert (
+        _company_from_title("HoD Digital Business Support Systems at Safaricom PLC")
+        == "Safaricom PLC"
+    )
+    assert _company_from_title("Security Support Assistant – All Interested Applicants") is None
+    assert _company_from_title("Software Developer") is None
 
 
 def test_fetch_uses_computer_science_taxonomy_and_follows_all_pages() -> None:

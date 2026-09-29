@@ -18,6 +18,24 @@ API_URL = "https://openedcareer.com/wp-json/wp/v2/job_listing"
 COMPUTER_SCIENCE_CATEGORY_ID = 732
 
 
+def _company_from_title(title: str) -> str | None:
+    """Return an explicitly named employer from an OpenedCareer listing title.
+
+    OpenedCareer’s public category API does not expose a company field.  Many
+    of its titles do, however, use the unambiguous ``Role at Employer`` form.
+    This deliberately extracts only that explicit metadata; it does not guess
+    from descriptions or send listing data to a third-party AI service.
+    """
+
+    role, separator, company = title.rpartition(" at ")
+    if not separator or not role.strip() or not company.strip():
+        return None
+    normalized = company.strip(" -–—:,")
+    if normalized.casefold() in {"all interested applicants", "various employers"}:
+        return None
+    return normalized[:300] or None
+
+
 class _TextExtractor(HTMLParser):
     def __init__(self) -> None:
         super().__init__()
@@ -59,6 +77,7 @@ def parse_openedcareer_jobs(payload: Sequence[Mapping[str, Any]]) -> list[RawJob
                 title=title,
                 source_url=link,
                 apply_url=link,
+                company=_company_from_title(title),
                 published_at=(
                     datetime.fromisoformat(f"{date_gmt}+00:00")
                     if isinstance(date_gmt, str)
