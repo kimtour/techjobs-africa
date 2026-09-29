@@ -78,7 +78,7 @@ const sourceGroups = orderedSources
                         {job.category && <p class="category">{job.category}</p>}
                         <h4>{job.title}</h4>
                         <p class="company">{companyLabel(job)}</p>
-                        <p class="meta">{locationLabel(job)} · {job.eligibility_level}</p>
+                        <p class="meta">{locationLabel(job)}</p>
                         <p class="posted">
                           Posted: {(job.published_at || job.published_date) ? <time datetime={job.published_at || job.published_date}>{postedLabel(job)}</time> : postedLabel(job)}
                         </p>
