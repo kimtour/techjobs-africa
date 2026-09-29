@@ -77,4 +77,7 @@ def test_relative_posting_day_uses_only_explicit_source_relative_dates() -> None
     assert _relative_listing_day("today", today) == today
     assert _relative_listing_day("yesterday", today) == date(2026, 9, 28)
     assert _relative_listing_day("6 days ago", today) == date(2026, 9, 23)
+    assert _relative_listing_day("2 weeks ago", today) == date(2026, 9, 15)
+    assert _relative_listing_day("1 month ago", today) == date(2026, 8, 29)
+    assert _relative_listing_day("1 month ago", date(2026, 3, 31)) == date(2026, 2, 28)
     assert _relative_listing_day("New", today) is None

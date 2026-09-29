@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import re
+from calendar import monthrange
 from datetime import date, timedelta
 from html import unescape
 from html.parser import HTMLParser
@@ -148,7 +149,19 @@ def _relative_listing_day(value: object, today: date | None = None) -> date | No
     if normalized == "yesterday":
         return reference_day - timedelta(days=1)
     match = re.fullmatch(r"(\d+) days? ago", normalized)
-    return reference_day - timedelta(days=int(match.group(1))) if match else None
+    if match:
+        return reference_day - timedelta(days=int(match.group(1)))
+    match = re.fullmatch(r"(\d+) weeks? ago", normalized)
+    if match:
+        return reference_day - timedelta(weeks=int(match.group(1)))
+    match = re.fullmatch(r"(\d+) months? ago", normalized)
+    if match:
+        months_ago = int(match.group(1))
+        month_index = reference_day.year * 12 + reference_day.month - 1 - months_ago
+        year, month_index = divmod(month_index, 12)
+        month = month_index + 1
+        return date(year, month, min(reference_day.day, monthrange(year, month)[1]))
+    return None
 
 
 def parse_brightermonday_listing_page(
