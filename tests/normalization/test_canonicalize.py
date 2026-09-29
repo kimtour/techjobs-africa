@@ -49,3 +49,18 @@ def test_generic_source_uses_external_id_and_classifies_qa_title():
     assert job.is_agency_posting is False
     assert job.city == "Nairobi"
     assert job.country_code == "KE"
+
+
+def test_uses_explicit_title_city_when_source_location_is_missing():
+    raw = RawJob(
+        source_id="myjobmag",
+        external_id="nyeri-role",
+        title="Sales (Data Analysis & Insights)-Intern – Nyeri at Diageo",
+        company="Diageo",
+        source_url="https://example.com/nyeri-role",
+        apply_url="https://example.com/nyeri-role",
+    )
+
+    job = canonicalize_raw_job(raw)
+
+    assert (job.city, job.country, job.country_code) == ("Nyeri", "Kenya", "KE")
