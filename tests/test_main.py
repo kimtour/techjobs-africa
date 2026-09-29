@@ -28,6 +28,7 @@ def test_approved_sources_exclude_discovery_and_disabled_sources():
     assert approved_source_ids() == [
         "myjobmag",
         "corporate_staffing",
+        "brightermonday",
         "openedcareer",
         "elevolt",
         "ashby",
@@ -62,4 +63,3 @@ def test_build_jobs_keeps_source_scoped_technical_listing_without_title_keyword(
     assert len(jobs) == 1
     assert jobs[0].category == "IT Operations"
     assert jobs[0].category_source == "source_category"
-

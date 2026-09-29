@@ -11,6 +11,7 @@ from tempfile import NamedTemporaryFile
 import yaml
 
 from ingest.adapters.ashby import AshbyAdapter
+from ingest.adapters.brightermonday import BrighterMondayAdapter
 from ingest.adapters.corporate_staffing import CorporateStaffingAdapter
 from ingest.adapters.elevolt import ElevoltAdapter
 from ingest.adapters.myjobmag import MyJobMagAdapter
@@ -24,6 +25,7 @@ CONFIG_PATH = Path("config/sources.yaml")
 AdapterFactory = Callable[[], object]
 ADAPTERS: Mapping[str, AdapterFactory] = {
     "ashby": lambda: AshbyAdapter("talentsafari"),
+    "brightermonday": BrighterMondayAdapter,
     "myjobmag": MyJobMagAdapter,
     "corporate_staffing": CorporateStaffingAdapter,
     "openedcareer": OpenedCareerAdapter,

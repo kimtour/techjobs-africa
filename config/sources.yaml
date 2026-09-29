@@ -73,6 +73,52 @@ sources:
       permission: approved_by_source_owner
       notes: "Source owner approved fair-use, attributed access through the public WordPress jobs endpoint. Do not persist descriptions."
 
+  - id: brightermonday
+    name: BrighterMonday Kenya
+    enabled: true
+    discovery_url: "https://www.brightermonday.co.ke/jobs/it-telecoms"
+    method: public_html_pagination
+    production_method: public_html_pagination
+    interval_hours: 3
+    timezone: Africa/Nairobi
+    crawl:
+      max_pages: 0
+      max_requests_per_run: 0
+      request_delay_ms: 1500
+      timeout_seconds: 15
+      retry_delays_seconds: [5, 20, 60]
+      complete_when: published_next_link_absent
+    closed_markers: []
+    ttl_days: 30
+    legal:
+      robots_checked: true
+      tos_checked: true
+      permission: approved_by_source_owner
+      notes: "Source owner granted fair-use, attributed access by phone on 2026-09-29. Use the public IT & Telecoms category pages only; do not persist descriptions, salary, or contacts."
+
+  - id: fuzu
+    name: Fuzu Kenya
+    enabled: false
+    discovery_url: "https://www.fuzu.com/job/computers-software-development?filters%5Bcountry_id%5D=1&filters%5Bjob_id%5D=1011172"
+    method: approved_access_pending_endpoint
+    production_method: null
+    interval_hours: 3
+    timezone: Africa/Nairobi
+    crawl:
+      max_pages: 0
+      max_requests_per_run: 0
+      request_delay_ms: 1500
+      timeout_seconds: 15
+      retry_delays_seconds: [5, 20, 60]
+      complete_when: not_applicable
+    closed_markers: []
+    ttl_days: 30
+    legal:
+      robots_checked: true
+      tos_checked: true
+      permission: approved_by_source_owner
+      notes: "Source owner granted fair-use, attributed access by phone on 2026-09-29. The public category and listed sitemap return HTTP 403 from the scheduled ingestion network; enable only after Fuzu provides an allowed endpoint or access route."
+
   - id: openedcareer
     name: OpenedCareer
     enabled: true
