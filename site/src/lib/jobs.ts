@@ -30,6 +30,7 @@ export const sourceOrder = [
   "myjobmag",
   "brightermonday",
   "corporate_staffing",
+  "fuzu",
   "openedcareer",
   "elevolt",
   "ashby",
@@ -41,6 +42,7 @@ export const sourceName = (sourceId: string) =>
     brightermonday: "BrighterMonday",
     corporate_staffing: "Corporate Staffing",
     elevolt: "Elevolt",
+    fuzu: "Fuzu",
     myjobmag: "MyJobMag",
     openedcareer: "OpenedCareer",
   })[sourceId] ?? sourceId;

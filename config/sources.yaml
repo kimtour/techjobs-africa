@@ -98,26 +98,26 @@ sources:
 
   - id: fuzu
     name: Fuzu Kenya
-    enabled: false
-    discovery_url: "https://www.fuzu.com/job/computers-software-development?filters%5Bcountry_id%5D=1&filters%5Bjob_id%5D=1011172"
-    method: approved_access_pending_endpoint
-    production_method: null
+    enabled: true
+    discovery_url: "https://www.fuzu.com/job/computers-software-development?filters%5Bcountry_id%5D=1"
+    method: public_html_pagination
+    production_method: public_html_pagination
     interval_hours: 3
     timezone: Africa/Nairobi
     crawl:
       max_pages: 0
       max_requests_per_run: 0
-      request_delay_ms: 1500
-      timeout_seconds: 15
-      retry_delays_seconds: [5, 20, 60]
-      complete_when: not_applicable
+      request_delay_ms: 2000
+      timeout_seconds: 30
+      retry_delays_seconds: [10, 30, 90]
+      complete_when: published_next_link_absent
     closed_markers: []
     ttl_days: 30
     legal:
       robots_checked: true
       tos_checked: true
       permission: approved_by_source_owner
-      notes: "Source owner granted fair-use, attributed access by phone on 2026-09-29. The public category and listed sitemap return HTTP 403 from the scheduled ingestion network; enable only after Fuzu provides an allowed endpoint or access route."
+      notes: "Source owner granted fair-use, attributed access by phone on 2026-09-29. Cloudflare Bot Management returns HTTP 403 to HTTP/2 clients; plain HTTP/1.1 via the requests library reaches the Rails origin with a 200 and schema.org ItemList JSON embedded in the HTML. No descriptions, salary, or contacts persisted."
 
   - id: openedcareer
     name: OpenedCareer

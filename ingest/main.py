@@ -14,6 +14,7 @@ from ingest.adapters.ashby import AshbyAdapter
 from ingest.adapters.brightermonday import BrighterMondayAdapter
 from ingest.adapters.corporate_staffing import CorporateStaffingAdapter
 from ingest.adapters.elevolt import ElevoltAdapter
+from ingest.adapters.fuzu import FuzuAdapter
 from ingest.adapters.myjobmag import MyJobMagAdapter
 from ingest.adapters.openedcareer import OpenedCareerAdapter
 from ingest.dedupe.exact import deduplicate_exact
@@ -26,15 +27,16 @@ AdapterFactory = Callable[[], object]
 ADAPTERS: Mapping[str, AdapterFactory] = {
     "ashby": lambda: AshbyAdapter("talentsafari"),
     "brightermonday": BrighterMondayAdapter,
-    "myjobmag": MyJobMagAdapter,
     "corporate_staffing": CorporateStaffingAdapter,
-    "openedcareer": OpenedCareerAdapter,
     "elevolt": ElevoltAdapter,
+    "fuzu": FuzuAdapter,
+    "myjobmag": MyJobMagAdapter,
+    "openedcareer": OpenedCareerAdapter,
 }
 # These endpoints are explicitly scoped by their sources to IT/software listings.
 # A missing title keyword must not discard a listing from that verified category.
 SOURCE_SCOPED_TECH_SOURCES = frozenset(
-    {"brightermonday", "corporate_staffing", "elevolt", "myjobmag", "openedcareer"}
+    {"brightermonday", "corporate_staffing", "elevolt", "fuzu", "myjobmag", "openedcareer"}
 )
 
 
