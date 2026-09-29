@@ -7,7 +7,6 @@ const noResults = document.querySelector("#no-results");
 function applyFilters() {
   const searchTerm = (search?.value ?? "").trim().toLocaleLowerCase();
   const selectedCategory = category?.value ?? "";
-  const filtering = Boolean(searchTerm || selectedCategory);
   let visible = 0;
 
   for (const group of groups) {
@@ -20,12 +19,12 @@ function applyFilters() {
       const matchesCategory = !selectedCategory || card.dataset.category === selectedCategory;
       const matches = matchesSearch && matchesCategory;
       if (matches) matching += 1;
-      card.hidden = !matches || (!filtering && Number(card.dataset.index) >= limit);
+      card.hidden = !matches || matching > limit;
     }
 
     group.hidden = matching === 0;
     const more = group.querySelector("[data-more]");
-    if (more) more.hidden = filtering || matching <= limit;
+    if (more) more.hidden = matching <= limit;
     visible += matching;
   }
 
@@ -41,6 +40,11 @@ for (const more of document.querySelectorAll("[data-more]")) {
   });
 }
 
-search?.addEventListener("input", applyFilters);
-category?.addEventListener("change", applyFilters);
+function resetLimitsAndApplyFilters() {
+  for (const group of groups) group.dataset.limit = "10";
+  applyFilters();
+}
+
+search?.addEventListener("input", resetLimitsAndApplyFilters);
+category?.addEventListener("change", resetLimitsAndApplyFilters);
 applyFilters();
