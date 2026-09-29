@@ -26,11 +26,19 @@ const payload = jobsPayload as JobsPayload;
 
 export const jobs = payload.jobs.filter((job) => job.status === "ACTIVE");
 
-export const sourceOrder = ["myjobmag", "corporate_staffing", "openedcareer", "elevolt", "ashby"];
+export const sourceOrder = [
+  "myjobmag",
+  "brightermonday",
+  "corporate_staffing",
+  "openedcareer",
+  "elevolt",
+  "ashby",
+];
 
 export const sourceName = (sourceId: string) =>
   ({
     ashby: "TalentSafari",
+    brightermonday: "BrighterMonday",
     corporate_staffing: "Corporate Staffing",
     elevolt: "Elevolt",
     myjobmag: "MyJobMag",
