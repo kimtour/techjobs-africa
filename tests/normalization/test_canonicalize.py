@@ -64,3 +64,4 @@ def test_uses_explicit_title_city_when_source_location_is_missing():
     job = canonicalize_raw_job(raw)
 
     assert (job.city, job.country, job.country_code) == ("Nyeri", "Kenya", "KE")
+    assert job.eligibility_level == "CONFIRMED"

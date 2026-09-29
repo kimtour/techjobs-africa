@@ -56,13 +56,16 @@ def canonicalize_raw_job(
     if not raw.external_id:
         raise ValueError("Canonicalization requires a RawJob external ID.")
 
-    eligibility = classify_eligibility(location=raw.location, title=raw.title)
     category = classify_technology_title(raw.title)
     # Some approved listing cards put a structured city in their title rather
     # than in the card's location field (for example, "... – Nyeri at
     # Diageo"). Use that explicit title signal only when the source field is
     # absent; `normalize_location` still accepts only configured places.
     location = normalize_location(raw.location or raw.title)
+    eligibility_location = " ".join(
+        part for part in (raw.location, location.city, location.country) if part
+    ) or None
+    eligibility = classify_eligibility(location=eligibility_location, title=raw.title)
     resolved_posting_company = posting_company or raw.company
     resolved_hiring_company = hiring_company or (
         raw.company if is_agency_posting else None
