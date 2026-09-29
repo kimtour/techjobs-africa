@@ -27,6 +27,7 @@ from __future__ import annotations
 import json
 import logging
 import re
+from datetime import UTC, date, datetime
 from html import unescape
 from time import sleep
 from urllib.parse import urljoin, urlparse
@@ -66,6 +67,10 @@ _LD_JSON_RE = re.compile(
     r'<script[^>]*type=["\']application/ld\+json["\'][^>]*>(.*?)</script>',
     re.DOTALL | re.IGNORECASE,
 )
+_REACT_JSON_RE = re.compile(
+    r'<script[^>]*type=["\']application/json["\'][^>]*>(.*?)</script>',
+    re.DOTALL | re.IGNORECASE,
+)
 
 
 def _external_id(url: str) -> str:
@@ -85,6 +90,32 @@ def _safe_next_url(href: str, page_url: str) -> str | None:
     return None
 
 
+def _campaign_start_dates(html: str) -> dict[str, date]:
+    """Read Fuzu's listing-date field from its server-rendered app state.
+
+    Fuzu exposes a campaign start timestamp but no posting time. It represents
+    the listing's published calendar date, so callers deliberately store only
+    ``published_date`` rather than inventing a time of day.
+    """
+    dates: dict[str, object] = {}
+    for block in _REACT_JSON_RE.finditer(html):
+        try:
+            payload = json.loads(block.group(1))
+            listings = payload["context"]["page_info"]["jobs"]
+        except (KeyError, TypeError, json.JSONDecodeError):
+            continue
+
+        for listing in listings:
+            path = listing.get("path")
+            timestamp = listing.get("campaign_start_date")
+            if not isinstance(path, str) or not isinstance(timestamp, (int, float)):
+                continue
+            dates[urljoin("https://www.fuzu.com", path)] = datetime.fromtimestamp(
+                timestamp, UTC
+            ).date()
+    return dates
+
+
 def parse_fuzu_listing_page(
     html: str, page_url: str
 ) -> tuple[list[RawJob], str | None]:
@@ -94,6 +125,7 @@ def parse_fuzu_listing_page(
     contact data is retained -- only title and canonical job URL.
     """
     jobs: list[RawJob] = []
+    published_dates = _campaign_start_dates(html)
 
     for raw_block in _LD_JSON_RE.finditer(html):
         try:
@@ -120,7 +152,7 @@ def parse_fuzu_listing_page(
                     location=None,
                     source_url=url,   # type: ignore[arg-type]
                     apply_url=url,    # type: ignore[arg-type]
-                    published_date=None,
+                    published_date=published_dates.get(url),
                 )
             )
 
