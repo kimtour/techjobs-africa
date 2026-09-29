@@ -90,14 +90,15 @@ def _safe_next_url(href: str, page_url: str) -> str | None:
     return None
 
 
-def _campaign_start_dates(html: str) -> dict[str, date]:
-    """Read Fuzu's listing-date field from its server-rendered app state.
+def _listing_metadata(html: str) -> dict[str, tuple[date | None, str | None]]:
+    """Read Fuzu's date and company fields from its server-rendered app state.
 
     Fuzu exposes a campaign start timestamp but no posting time. It represents
     the listing's published calendar date, so callers deliberately store only
-    ``published_date`` rather than inventing a time of day.
+    ``published_date`` rather than inventing a time of day. Company names come
+    from the source's ``company_name`` field, not from URL-slug guesses.
     """
-    dates: dict[str, object] = {}
+    metadata: dict[str, tuple[date | None, str | None]] = {}
     for block in _REACT_JSON_RE.finditer(html):
         try:
             payload = json.loads(block.group(1))
@@ -108,12 +109,17 @@ def _campaign_start_dates(html: str) -> dict[str, date]:
         for listing in listings:
             path = listing.get("path")
             timestamp = listing.get("campaign_start_date")
-            if not isinstance(path, str) or not isinstance(timestamp, (int, float)):
+            company = listing.get("company_name")
+            if not isinstance(path, str):
                 continue
-            dates[urljoin("https://www.fuzu.com", path)] = datetime.fromtimestamp(
-                timestamp, UTC
-            ).date()
-    return dates
+            published_date = (
+                datetime.fromtimestamp(timestamp, UTC).date()
+                if isinstance(timestamp, (int, float))
+                else None
+            )
+            company_name = company.strip() if isinstance(company, str) and company.strip() else None
+            metadata[urljoin("https://www.fuzu.com", path)] = (published_date, company_name)
+    return metadata
 
 
 def parse_fuzu_listing_page(
@@ -125,7 +131,7 @@ def parse_fuzu_listing_page(
     contact data is retained -- only title and canonical job URL.
     """
     jobs: list[RawJob] = []
-    published_dates = _campaign_start_dates(html)
+    listing_metadata = _listing_metadata(html)
 
     for raw_block in _LD_JSON_RE.finditer(html):
         try:
@@ -143,16 +149,17 @@ def parse_fuzu_listing_page(
                 continue
             if url.startswith("//"):
                 url = "https:" + url
+            published_date, company = listing_metadata.get(url, (None, None))
             jobs.append(
                 RawJob(
                     source_id=SOURCE_ID,
                     external_id=_external_id(url),
                     title=title[:300],
-                    company=None,
+                    company=company,
                     location=None,
                     source_url=url,   # type: ignore[arg-type]
                     apply_url=url,    # type: ignore[arg-type]
-                    published_date=published_dates.get(url),
+                    published_date=published_date,
                 )
             )
 

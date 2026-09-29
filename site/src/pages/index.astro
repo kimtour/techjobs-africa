@@ -76,7 +76,11 @@ const sourceGroups = orderedSources
                     >
                       <div>
                         {job.category && <p class="category">{job.category}</p>}
-                        <h4>{job.title}</h4>
+                        <h4>
+                          <a class="job-title" href={job.preferred_apply_url} rel="noreferrer" target="_blank">
+                            {job.title} <span aria-hidden="true">↗</span>
+                          </a>
+                        </h4>
                         <p class="company">{companyLabel(job)}</p>
                         <p class="meta">{locationLabel(job)}</p>
                         <p class="posted">
@@ -84,9 +88,6 @@ const sourceGroups = orderedSources
                         </p>
                         {job.sources.length > 1 && <p class="source">Also listed by: {job.sources.map(sourceName).join(", ")}</p>}
                       </div>
-                      <a class="apply" href={job.preferred_apply_url} rel="noreferrer" target="_blank">
-                        Original listing <span aria-hidden="true">↗</span>
-                      </a>
                     </li>
                   ))}
                 </ul>

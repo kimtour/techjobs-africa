@@ -21,13 +21,15 @@ h1 { font-size: clamp(2rem, 4vw, 3rem); letter-spacing: -.04em; line-height: 1.0
 .job-list { list-style: none; margin: 0; padding: 0; }
 .job-card { align-items: center; display: flex; gap: 1rem; justify-content: space-between; padding: .7rem 0; }
 .job-card + .job-card { border-top: 1px solid #eee; }
-.job-card h4 { color: #1264a3; font-size: 1rem; font-weight: 400; line-height: 1.25; margin-bottom: .25rem; }
+.job-card h4 { font-size: 1rem; font-weight: 400; line-height: 1.25; margin-bottom: .25rem; }
+.job-title { color: #1264a3; text-decoration: none; }
+.job-title:hover { text-decoration: underline; }
 .company, .meta, .posted, .source, .category { font-size: .86rem; margin-bottom: .22rem; }
 .category { color: #555; font-weight: 700; text-transform: uppercase; }
 .posted { font-variant-numeric: tabular-nums; }
 .source { font-size: .76rem; }
-.apply, .more { color: #1264a3; font: inherit; font-weight: 700; text-decoration: none; white-space: nowrap; }
-.apply:hover, .more:hover { text-decoration: underline; }
+.more { color: #1264a3; font: inherit; font-weight: 700; text-decoration: none; white-space: nowrap; }
+.more:hover { text-decoration: underline; }
 .more { background: transparent; border: 0; cursor: pointer; margin-top: .8rem; padding: 0; }
 [hidden] { display: none !important; }
 @media (max-width: 600px) { main { padding-top: 2rem; }.job-card { align-items: flex-start; flex-direction: column; gap: .5rem; }.source-heading { align-items: flex-start; flex-direction: column; gap: 0; } }

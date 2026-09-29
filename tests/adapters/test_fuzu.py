@@ -14,6 +14,7 @@ def test_listing_page_uses_fuzu_campaign_start_as_published_date() -> None:
       "context": {{"page_info": {{"jobs": [{{
         "path": "/kenya/jobs/data-engineer-example",
         "campaign_start_date": 1790640000,
+        "company_name": "Example Engineering Ltd",
         "description": "This must not be retained."
       }}]}}}}
     }}</script>'''
@@ -22,6 +23,7 @@ def test_listing_page_uses_fuzu_campaign_start_as_published_date() -> None:
 
     assert len(jobs) == 1
     assert jobs[0].published_date == date(2026, 9, 29)
+    assert jobs[0].company == "Example Engineering Ltd"
     assert "description" not in jobs[0].model_dump()
     assert next_page is None
 
