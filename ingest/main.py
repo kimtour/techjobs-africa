@@ -7,6 +7,7 @@ import json
 from collections.abc import Callable, Mapping, Sequence
 from pathlib import Path
 from tempfile import NamedTemporaryFile
+from urllib.parse import urlparse
 
 import yaml
 
@@ -17,6 +18,7 @@ from ingest.adapters.elevolt import ElevoltAdapter
 from ingest.adapters.fuzu import FuzuAdapter
 from ingest.adapters.myjobmag import MyJobMagAdapter
 from ingest.adapters.openedcareer import OpenedCareerAdapter
+from ingest.classify.tech import has_non_technical_exclusion
 from ingest.dedupe.exact import deduplicate_exact
 from ingest.export.static import build_public_files
 from ingest.models import CanonicalJob, RawJob, SourceHealth, SourceHealthStatus
@@ -53,7 +55,17 @@ def build_jobs(raw_jobs: Sequence[RawJob]) -> list[CanonicalJob]:
     # a technology role. BrighterMonday's IT & Telecoms page, for example, can
     # contain HR and finance vacancies. Retain a role only when its own title has
     # a deterministic technical classification.
-    technical_jobs = [job for raw in raw_jobs if (job := canonicalize_raw_job(raw)).category]
+    technical_jobs = []
+    for raw in raw_jobs:
+        # The listing URL is also a source-provided label. Reject a record if it
+        # names an excluded role, preventing malformed cards from pairing a
+        # technical title with a non-technical application URL.
+        url_label = urlparse(str(raw.source_url)).path.replace("-", " ").replace("/", " ")
+        if has_non_technical_exclusion(raw.title) or has_non_technical_exclusion(url_label):
+            continue
+        job = canonicalize_raw_job(raw)
+        if job.category:
+            technical_jobs.append(job)
     return deduplicate_exact(technical_jobs)
 
 

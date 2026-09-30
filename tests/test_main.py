@@ -74,3 +74,15 @@ def test_build_jobs_rejects_non_technical_brightermonday_listing():
     )
 
     assert build_jobs([raw]) == []
+
+
+def test_build_jobs_rejects_technical_title_paired_with_non_technical_url():
+    raw = RawJob(
+        source_id="brightermonday",
+        external_id="malformed-card",
+        title="UI/UX Designer",
+        source_url="https://example.com/listings/field-sales-representative",
+        apply_url="https://example.com/listings/field-sales-representative",
+    )
+
+    assert build_jobs([raw]) == []

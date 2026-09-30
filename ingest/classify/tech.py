@@ -25,6 +25,13 @@ def _matches(title: str, keywords: list[str]) -> bool:
     )
 
 
+def has_non_technical_exclusion(value: str, config_path: Path = CONFIG_PATH) -> bool:
+    """Return whether a title or URL label names an excluded job function."""
+
+    config = yaml.safe_load(config_path.read_text(encoding="utf-8"))
+    return _matches(value, config.get("non_tech_exclusions", []))
+
+
 def classify_technology_title(title: str, config_path: Path = CONFIG_PATH) -> CategoryDecision:
     """Return a category only when the title has deterministic technical evidence."""
 
