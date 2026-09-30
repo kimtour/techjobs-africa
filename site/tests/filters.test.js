@@ -8,7 +8,7 @@ const now = Date.parse('2026-09-30T12:00:00Z');
 const day = 86400000;
 function setup() {
   const source = (id) => `<section data-source-group data-source="${id}" data-limit="10">
-    <h3>${id}</h3><div>${['latest', 'day', 'week', 'month'].map(p => `<button data-period="${p}" aria-pressed="${p === 'latest'}">${p}</button>`).join('')}</div>
+    <h3>${id}</h3><div>${['latest', 'day', 'three-days', 'week', 'two-weeks', 'month'].map(p => `<button data-period="${p}" aria-pressed="${p === 'latest'}">${p}</button>`).join('')}</div>
     <p data-source-count></p><div data-source-feed tabindex="0">
     ${Array.from({length: 25}, (_, i) => `<article data-source-card data-search="Engineer ${i}" data-category="${i % 2 ? 'QA' : 'Software'}" data-published="${i === 24 ? '' : new Date(now - i * day).toISOString()}"></article>`).join('')}
     <p data-source-empty hidden></p><button data-more>Load more jobs</button></div><p data-source-status></p></section>`;
@@ -40,7 +40,7 @@ test('load more changes only its own source and preserves scroll', () => {
 test('bounded periods show all matching jobs while latest keeps its own pagination', () => {
   const {groups:[a,b]} = setup();
   b.querySelector('[data-more]').click();
-  for (const [period, expected] of [['day',2],['week',8],['month',24],['latest',25]]) {
+  for (const [period, expected] of [['day',2],['three-days',4],['week',8],['two-weeks',15],['month',24],['latest',25]]) {
     a.querySelector(`[data-period="${period}"]`).click();
     assert.equal(Number(a.dataset.matching), expected);
     assert.equal(shown(a), period === 'latest' ? Math.min(expected,10) : expected);

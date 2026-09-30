@@ -11,7 +11,13 @@ function matchesPeriod(card, period) {
   const publishedAt = new Date(published).getTime();
   if (Number.isNaN(publishedAt)) return false;
   const age = Date.now() - publishedAt;
-  const ranges = { day: 24 * 60 * 60 * 1000, week: 7 * 24 * 60 * 60 * 1000, month: 30 * 24 * 60 * 60 * 1000 };
+  const ranges = {
+    day: 24 * 60 * 60 * 1000,
+    "three-days": 3 * 24 * 60 * 60 * 1000,
+    week: 7 * 24 * 60 * 60 * 1000,
+    "two-weeks": 14 * 24 * 60 * 60 * 1000,
+    month: 30 * 24 * 60 * 60 * 1000,
+  };
   return age <= ranges[period] && age >= 0;
 }
 

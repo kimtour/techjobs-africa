@@ -3,7 +3,7 @@
 ## Scope and reference
 
 Requested 2026-09-30: reproduce the independent source feeds at
-https://techurls.com/, including load-more and Latest • Day • Week • Month.
+https://techurls.com/, including load-more and source period controls.
 Browser inspection found 15 initially rendered stories per source and a 334px
 scrolling body at the inspected viewport. The source header is outside that body.
 Clicks on Load more and Day did not produce a changed selection/result in that
@@ -22,17 +22,19 @@ roles found on BrighterMonday's Engineering & Technology and Software & Data pag
   on narrow screens. Each body is 26rem high (24rem on mobile), independent of
   result count. Headers and status lines are outside the scrolling body.
 - Latest initially exposes 10 jobs per source, with Load more jobs exposing 10
-  more from the static export. Day, Week, and Month expose every matching job
-  in that source's scroll region. No runtime fetch or backend is required.
+  more from the static export. Day, 3 Days, Week, 2 Weeks, and Month expose
+  every matching job in that source's scroll region. No runtime fetch or backend
+  is required.
 - Loading more retains the feed's scroll position and leaves all other sources'
   period, pagination, scroll position, and layout unchanged.
 - Latest sorts dated active jobs newest first, then undated jobs, with stable ID
   tie-breaking. Restricted jobs remain excluded.
-- Day, Week, Month select publication dates from the past 24 hours, 7 days, and
-  30 days, inclusive. Date-only values use UTC midnight, consistent with their
-  display. Undated, invalid, and future dates do not match a bounded period.
+- Day, 3 Days, Week, 2 Weeks, and Month select publication dates from the past
+  24 hours, 3 days, 7 days, 14 days, and 30 days, inclusive. Date-only values
+  use UTC midnight, consistent with their display. Undated, invalid, and future
+  dates do not match a bounded period.
 - A source period resets only that source and scrolls its body to top. Latest
-  returns to 10 rows; Day, Week, and Month expose every matching row.
+  returns to 10 rows; every bounded period exposes every matching row.
 - Search and category apply across sources and reset pagination/scroll; bounded
   periods remain fully expanded. Empty feeds retain titles, controls, and a
   recovery message.
