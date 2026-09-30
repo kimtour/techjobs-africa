@@ -50,6 +50,13 @@ function applyFilters(targetGroup) {
   if (noResults) noResults.hidden = visible !== 0;
 }
 
+function resetLimitForPeriod(group) {
+  const period = group.dataset.period ?? "latest";
+  group.dataset.limit = period === "latest"
+    ? "10"
+    : String(group.querySelectorAll("[data-source-card]").length);
+}
+
 for (const more of document.querySelectorAll("[data-more]")) {
   more.addEventListener("click", () => {
     const group = more.closest("[data-source-group]");
@@ -64,7 +71,7 @@ for (const periodButton of document.querySelectorAll("[data-period]")) {
     const group = periodButton.closest("[data-source-group]");
     if (!group) return;
     group.dataset.period = periodButton.dataset.period ?? "latest";
-    group.dataset.limit = "10";
+    resetLimitForPeriod(group);
     for (const button of group.querySelectorAll("[data-period]")) {
       button.setAttribute("aria-pressed", String(button === periodButton));
     }
@@ -75,7 +82,7 @@ for (const periodButton of document.querySelectorAll("[data-period]")) {
 
 function resetLimitsAndApplyFilters() {
   for (const group of groups) {
-    group.dataset.limit = "10";
+    resetLimitForPeriod(group);
     group.querySelector("[data-source-feed]")?.scrollTo(0, 0);
   }
   applyFilters();

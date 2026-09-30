@@ -37,13 +37,14 @@ test('load more changes only its own source and preserves scroll', () => {
   assert.equal(a.querySelector('[data-more]').hidden, true);
 });
 
-test('periods have inclusive boundaries and reset only their own source', () => {
+test('bounded periods show all matching jobs while latest keeps its own pagination', () => {
   const {groups:[a,b]} = setup();
   b.querySelector('[data-more]').click();
   for (const [period, expected] of [['day',2],['week',8],['month',24],['latest',25]]) {
     a.querySelector(`[data-period="${period}"]`).click();
     assert.equal(Number(a.dataset.matching), expected);
-    assert.equal(shown(a), Math.min(expected,10));
+    assert.equal(shown(a), period === 'latest' ? Math.min(expected,10) : expected);
+    assert.equal(a.querySelector('[data-more]').hidden, period !== 'latest');
     assert.equal(shown(b),20);
     assert.equal(a.querySelectorAll('[aria-pressed="true"]').length,1);
   }
@@ -82,4 +83,19 @@ test('search/category intersect periods and reset pagination; form stays on page
   const submit=new dom.window.Event('submit',{cancelable:true});
   doc.querySelector('form').dispatchEvent(submit);
   assert.equal(submit.defaultPrevented,true);
+});
+
+test('search and category keep bounded periods fully expanded', () => {
+  const {dom,doc,groups:[a]} = setup();
+  a.querySelector('[data-period="month"]').click();
+  assert.equal(shown(a),24);
+  const search = doc.querySelector('#job-search');
+  search.value='ENGINEER';
+  search.dispatchEvent(new dom.window.Event('input'));
+  assert.equal(shown(a),24);
+  const category = doc.querySelector('#category-filter');
+  category.value='QA';
+  category.dispatchEvent(new dom.window.Event('change'));
+  assert.equal(shown(a),12);
+  assert.equal(a.querySelector('[data-more]').hidden,true);
 });

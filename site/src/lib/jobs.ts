@@ -28,10 +28,10 @@ export const jobs = payload.jobs.filter((job) => job.status === "ACTIVE");
 
 export const sourceOrder = [
   "myjobmag",
-  "brightermonday",
   "corporate_staffing",
   "fuzu",
   "openedcareer",
+  "brightermonday",
   "elevolt",
   "ashby",
 ];

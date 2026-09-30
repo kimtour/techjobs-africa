@@ -21,8 +21,9 @@ roles found on BrighterMonday's Engineering & Technology and Software & Data pag
 - Keep the existing two-column layout and source colors, collapsing to one column
   on narrow screens. Each body is 26rem high (24rem on mobile), independent of
   result count. Headers and status lines are outside the scrolling body.
-- Initially expose 10 jobs per source, with Load more jobs exposing 10 more from
-  the static export. No runtime fetch or backend is required.
+- Latest initially exposes 10 jobs per source, with Load more jobs exposing 10
+  more from the static export. Day, Week, and Month expose every matching job
+  in that source's scroll region. No runtime fetch or backend is required.
 - Loading more retains the feed's scroll position and leaves all other sources'
   period, pagination, scroll position, and layout unchanged.
 - Latest sorts dated active jobs newest first, then undated jobs, with stable ID
@@ -30,9 +31,11 @@ roles found on BrighterMonday's Engineering & Technology and Software & Data pag
 - Day, Week, Month select publication dates from the past 24 hours, 7 days, and
   30 days, inclusive. Date-only values use UTC midnight, consistent with their
   display. Undated, invalid, and future dates do not match a bounded period.
-- A source period resets only that source to 10 rows and scrolls its body to top.
-- Search and category apply across sources and reset pagination/scroll; periods
-  remain selected. Empty feeds retain titles, controls, and a recovery message.
+- A source period resets only that source and scrolls its body to top. Latest
+  returns to 10 rows; Day, Week, and Month expose every matching row.
+- Search and category apply across sources and reset pagination/scroll; bounded
+  periods remain fully expanded. Empty feeds retain titles, controls, and a
+  recovery message.
 - Scroll regions support keyboard focus, visible focus, and contained overscroll.
   Buttons expose selection using aria-pressed; counts use a polite status region.
 
