@@ -3,6 +3,7 @@ from pathlib import Path
 
 from ingest.adapters.myjobmag import (
     MyJobMagAdapter,
+    _company_from_title,
     parse_myjobmag_feed,
     parse_myjobmag_listing_page,
 )
@@ -74,6 +75,18 @@ def test_listing_page_keeps_only_minimal_card_metadata_and_page_links() -> None:
     assert jobs[0].published_date is not None
     assert "description" not in jobs[0].model_dump()
     assert links == {"https://www.myjobmag.co.ke/jobs-by-field/information-technology/2"}
+
+
+def test_recovers_company_from_explicit_title_when_the_card_omits_it() -> None:
+    title = "Full Stack Developer at Brookfox Technologies Ltd"
+
+    jobs, _ = parse_myjobmag_listing_page(
+        _listing(title, "full-stack-developer-19", "", "Nairobi"),
+        "https://www.myjobmag.co.ke/jobs-by-field/information-technology",
+    )
+
+    assert _company_from_title(title) == "Brookfox Technologies Ltd"
+    assert jobs[0].company == "Brookfox Technologies Ltd"
 
 
 def test_fetch_follows_discovered_pagination_without_guessing_urls() -> None:

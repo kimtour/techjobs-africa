@@ -36,6 +36,16 @@ def _external_id(url: str) -> str:
     return urlparse(url).path.rstrip("/") or url
 
 
+def _company_from_title(title: str) -> str | None:
+    """Recover an explicitly named employer when a listing card omits it."""
+
+    role, separator, company = title.rpartition(" at ")
+    if not separator or not role.strip() or not company.strip():
+        return None
+    normalized = company.strip(" -–—:,")
+    return normalized[:300] or None
+
+
 def parse_myjobmag_feed(content: bytes) -> list[RawJob]:
     """Parse minimal XML fields; production uses the complete category pages."""
 
@@ -53,7 +63,7 @@ def parse_myjobmag_feed(content: bytes) -> list[RawJob]:
                 source_id=SOURCE_ID,
                 external_id=_external_id(link),
                 title=title,
-                company=_text(item, "company"),
+                company=_text(item, "company") or _company_from_title(title),
                 location=_text(item, "location"),
                 source_url=link,
                 apply_url=link,
@@ -163,7 +173,7 @@ class _ListingPageParser(HTMLParser):
             source_id=SOURCE_ID,
             external_id=_external_id(link),
             title=title[:300],
-            company=self._card.get("company") or None,
+            company=self._card.get("company") or _company_from_title(title),
             location=self._card.get("location") or None,
             source_url=link,
             apply_url=link,
