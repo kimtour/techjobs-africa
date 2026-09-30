@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import re
 import unicodedata
+from urllib.parse import urlparse
 
 from ingest.classify.eligibility import classify_eligibility
 from ingest.classify.tech import classify_technology_title
@@ -61,7 +62,16 @@ def canonicalize_raw_job(
     # than in the card's location field (for example, "... – Nyeri at
     # Diageo"). Use that explicit title signal only when the source field is
     # absent; `normalize_location` still accepts only configured places.
-    location = normalize_location(raw.location or raw.title)
+    location_text = " ".join(
+        value
+        for value in (
+            raw.location,
+            raw.title,
+            urlparse(str(raw.source_url)).path.replace("-", " ").replace("/", " "),
+        )
+        if value
+    )
+    location = normalize_location(location_text)
     eligibility_location = " ".join(
         part for part in (raw.location, location.city, location.country) if part
     ) or None

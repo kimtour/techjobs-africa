@@ -13,6 +13,7 @@ from typing import Any
 import httpx
 
 from ingest.models import RawJob
+from ingest.normalize.location import normalize_location
 
 SOURCE_ID = "corporate_staffing"
 API_URL = "https://www.corporatestaffing.co.ke/wp-json/wp/v2/job"
@@ -59,14 +60,22 @@ def _company_from_title(title: str) -> str | None:
     return company
 
 
-def _location_from_content(value: object) -> str | None:
-    """Read an explicitly labelled location from the source's public listing."""
+def _location_from_listing(*values: object) -> str:
+    """Resolve title, URL, and in-memory body signals to a safe display location."""
 
-    content = _plain_text(value)
-    if not content:
-        return None
-    match = re.search(r"\b(?:job\s+)?location\s*[:\-]\s*([^.|;]{2,100})", content, re.I)
-    return match.group(1).strip(" -–—:,")[:300] if match else None
+    parser = _TextExtractor()
+    for value in values:
+        if isinstance(value, str):
+            parser.feed(value)
+    text = " ".join(unescape(" ".join(parser.parts)).split())
+    location = normalize_location(text)
+    if location.city:
+        return f"{location.city}, {location.country}"
+    if location.workplace_type:
+        return location.workplace_type
+    if location.country:
+        return location.country
+    return "Kenya"
 
 
 def parse_corporate_staffing_jobs(payload: Sequence[Mapping[str, Any]]) -> list[RawJob]:
@@ -81,8 +90,10 @@ def parse_corporate_staffing_jobs(payload: Sequence[Mapping[str, Any]]) -> list[
             continue
         date_gmt = record.get("date_gmt")
         content = record.get("content")
-        location = _location_from_content(
-            content.get("rendered") if isinstance(content, Mapping) else None
+        location = _location_from_listing(
+            title,
+            link,
+            content.get("rendered") if isinstance(content, Mapping) else None,
         )
         jobs.append(
             RawJob(

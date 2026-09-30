@@ -73,6 +73,29 @@ def test_recovers_explicit_location_from_listing_content() -> None:
     assert jobs[0].location == "Nairobi, Kenya"
 
 
+def test_reads_locations_deep_in_content_and_defaults_kenyan_listings() -> None:
+    filler = "Responsibilities and qualifications. " * 30
+    jobs = parse_corporate_staffing_jobs(
+        [
+            {
+                "id": 1,
+                "link": "https://example.com/remote-role",
+                "title": {"rendered": "Developer"},
+                "content": {"rendered": f"<p>{filler}This post is fully remote.</p>"},
+            },
+            {
+                "id": 2,
+                "link": "https://example.com/platform-role",
+                "title": {"rendered": "Platform Engineer"},
+                "content": {"rendered": "<p>No more specific location is published.</p>"},
+            },
+        ]
+    )
+
+    assert jobs[0].location == "Remote"
+    assert jobs[1].location == "Kenya"
+
+
 def test_fetch_follows_wordpress_page_count() -> None:
     first = [{"id": 1, "link": "https://example.com/1", "title": {"rendered": "First"}}]
     second = [{"id": 2, "link": "https://example.com/2", "title": {"rendered": "Second"}}]
