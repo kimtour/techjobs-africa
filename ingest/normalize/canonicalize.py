@@ -12,6 +12,14 @@ from ingest.models import CanonicalJob, RawJob
 from ingest.normalize.location import normalize_location
 
 ASHBY_POSTING_COMPANY = "TalentSafari"
+SOURCE_COUNTRY_FALLBACKS = {
+    "brightermonday": "Kenya",
+    "corporate_staffing": "Kenya",
+    "elevolt": "Kenya",
+    "fuzu": "Kenya",
+    "myjobmag": "Kenya",
+    "openedcareer": "Kenya",
+}
 
 
 def normalize_text(value: str) -> str:
@@ -72,6 +80,8 @@ def canonicalize_raw_job(
         if value
     )
     location = normalize_location(location_text)
+    if not any((location.city, location.country, location.workplace_type)):
+        location = normalize_location(SOURCE_COUNTRY_FALLBACKS.get(raw.source_id))
     eligibility_location = " ".join(
         part for part in (raw.location, location.city, location.country) if part
     ) or None

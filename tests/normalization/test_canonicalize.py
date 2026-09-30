@@ -65,3 +65,17 @@ def test_uses_explicit_title_city_when_source_location_is_missing():
 
     assert (job.city, job.country, job.country_code) == ("Nyeri", "Kenya", "KE")
     assert job.eligibility_level == "CONFIRMED"
+
+
+def test_kenyan_source_uses_country_when_no_narrower_location_is_published():
+    raw = RawJob(
+        source_id="openedcareer",
+        external_id="platform-role",
+        title="Platform Engineer",
+        source_url="https://openedcareer.com/job/platform-engineer/",
+        apply_url="https://openedcareer.com/job/platform-engineer/",
+    )
+
+    job = canonicalize_raw_job(raw)
+
+    assert (job.city, job.country, job.country_code) == (None, "Kenya", "KE")
