@@ -76,7 +76,7 @@ sources:
   - id: brightermonday
     name: BrighterMonday Kenya
     enabled: true
-    discovery_url: "https://www.brightermonday.co.ke/jobs/it-telecoms"
+    discovery_url: "https://www.brightermonday.co.ke/jobs/engineering-technology"
     method: public_html_pagination
     production_method: public_html_pagination
     interval_hours: 3
@@ -94,7 +94,7 @@ sources:
       robots_checked: true
       tos_checked: true
       permission: approved_by_source_owner
-      notes: "Source owner granted fair-use, attributed access by phone on 2026-09-29. Use the public IT & Telecoms category pages only; do not persist descriptions, salary, or contacts."
+      notes: "Source owner granted fair-use, attributed access by phone on 2026-09-29. Use only the public Engineering & Technology and Software & Data category pages; do not persist descriptions, salary, or contacts."
 
   - id: fuzu
     name: Fuzu Kenya

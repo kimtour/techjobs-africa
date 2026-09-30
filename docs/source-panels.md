@@ -14,7 +14,7 @@ session, so the reference's server-side filtering/ranking is unverified.
 Source category pages are not a substitute for title-level technical evidence.
 They can include unrelated listings; the pipeline rejects every job that cannot
 be deterministically classified from its own title, including HR and finance
-roles found on the BrighterMonday IT & Telecoms page.
+roles found on BrighterMonday's Engineering & Technology and Software & Data pages.
 
 ## Implementation contract
 

@@ -36,9 +36,9 @@ def _listing(title: str, slug: str, company: str, location: str) -> str:
 
 
 def test_listing_page_keeps_minimal_metadata_and_next_page_only() -> None:
-    root = "https://www.brightermonday.co.ke/jobs/it-telecoms"
+    root = "https://www.brightermonday.co.ke/jobs/software-data"
     html = _listing("Software Developer", "software-developer", "Example Co", "Nairobi") + (
-        '<link rel="next" href="https://www.brightermonday.co.ke/jobs/it-telecoms?page=2">'
+        '<link rel="next" href="https://www.brightermonday.co.ke/jobs/software-data?page=2">'
     )
 
     jobs, next_page = parse_brightermonday_listing_page(html, root, date(2026, 9, 29))
@@ -53,7 +53,7 @@ def test_listing_page_keeps_minimal_metadata_and_next_page_only() -> None:
 
 
 def test_fetch_follows_the_published_next_page_link() -> None:
-    root = "https://www.brightermonday.co.ke/jobs/it-telecoms"
+    root = "https://www.brightermonday.co.ke/jobs/software-data"
     page_two = f"{root}?page=2"
     client = _PaginatedClient(
         {
@@ -64,11 +64,45 @@ def test_fetch_follows_the_published_next_page_link() -> None:
     )
 
     jobs = BrighterMondayAdapter(
-        client=client, listing_url=root, request_delay_seconds=0
+        client=client, listing_urls=(root,), request_delay_seconds=0
     ).fetch()
 
     assert [job.external_id for job in jobs] == ["/listings/first", "/listings/second"]
     assert client.calls == [root, page_two]
+
+
+def test_fetches_each_approved_category_page() -> None:
+    engineering = "https://www.brightermonday.co.ke/jobs/engineering-technology"
+    software_data = "https://www.brightermonday.co.ke/jobs/software-data"
+    client = _PaginatedClient(
+        {
+            engineering: _listing("Software Engineer", "software-engineer", "Co", "Nairobi"),
+            software_data: _listing("Data Engineer", "data-engineer", "Co", "Nairobi"),
+        }
+    )
+
+    jobs = BrighterMondayAdapter(client=client, request_delay_seconds=0).fetch()
+
+    assert [job.title for job in jobs] == ["Software Engineer", "Data Engineer"]
+    assert client.calls == [engineering, software_data]
+
+
+def test_engineering_category_excludes_non_software_engineering_disciplines() -> None:
+    root = "https://www.brightermonday.co.ke/jobs/engineering-technology"
+    html = "".join(
+        (
+            _listing("Software Engineer", "software-engineer", "Co", "Nairobi"),
+            _listing("Mechanical Engineer", "mechanical-engineer", "Co", "Nairobi"),
+            _listing("Civil Engineering Intern", "civil-engineering", "Co", "Nairobi"),
+            _listing("Electrical Engineer", "electrical-engineer", "Co", "Nairobi"),
+            _listing("Chemical Engineering Lead", "chemical-engineering", "Co", "Nairobi"),
+            _listing("Industrial Engineer", "industrial-engineer", "Co", "Nairobi"),
+        )
+    )
+
+    jobs, _ = parse_brightermonday_listing_page(html, root)
+
+    assert [job.title for job in jobs] == ["Software Engineer"]
 
 
 def test_relative_posting_day_uses_only_explicit_source_relative_dates() -> None:

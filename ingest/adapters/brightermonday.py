@@ -1,4 +1,4 @@
-"""Adapter for BrighterMonday Kenya's owner-approved IT & Telecoms listing pages."""
+"""Adapter for BrighterMonday Kenya's owner-approved technology listing pages."""
 
 from __future__ import annotations
 
@@ -15,8 +15,24 @@ import httpx
 from ingest.models import RawJob
 
 SOURCE_ID = "brightermonday"
-LISTING_URL = "https://www.brightermonday.co.ke/jobs/it-telecoms"
-_ALLOWED_PATH = "/jobs/it-telecoms"
+LISTING_URLS = (
+    "https://www.brightermonday.co.ke/jobs/engineering-technology",
+    "https://www.brightermonday.co.ke/jobs/software-data",
+)
+_ENGINEERING_TECHNOLOGY_PATH = "/jobs/engineering-technology"
+_ALLOWED_PATHS = frozenset({_ENGINEERING_TECHNOLOGY_PATH, "/jobs/software-data"})
+_NON_SOFTWARE_ENGINEERING_TITLES = (
+    "mechanical engineer",
+    "mechanical engineering",
+    "civil engineer",
+    "civil engineering",
+    "electrical engineer",
+    "electrical engineering",
+    "chemical engineer",
+    "chemical engineering",
+    "industrial engineer",
+    "industrial engineering",
+)
 
 
 def _external_id(url: str) -> str:
@@ -98,9 +114,7 @@ class _ListingPageParser(HTMLParser):
             assert isinstance(badges, list)
             badges.append(value)
         elif self._relative_date_div_depth is not None:
-            self._card["relative_date"] = (
-                f"{self._card.get('relative_date', '')} {value}".strip()
-            )
+            self._card["relative_date"] = f"{self._card.get('relative_date', '')} {value}".strip()
 
     def _set_next_page(self, href: str | None) -> None:
         if not href:
@@ -108,7 +122,7 @@ class _ListingPageParser(HTMLParser):
         candidate = urljoin(self.page_url, href)
         parsed = urlparse(candidate)
         if parsed.scheme == "https" and parsed.netloc == "www.brightermonday.co.ke":
-            if parsed.path == _ALLOWED_PATH:
+            if parsed.path in _ALLOWED_PATHS:
                 self.next_page = candidate
 
     def _append_card(self) -> None:
@@ -117,12 +131,14 @@ class _ListingPageParser(HTMLParser):
         link = self._card.get("url")
         if not isinstance(title, str) or not isinstance(link, str):
             return
+        if urlparse(
+            self.page_url
+        ).path == _ENGINEERING_TECHNOLOGY_PATH and _is_non_software_engineering_title(title):
+            return
         badges = self._card.get("badges", [])
         location = badges[0] if isinstance(badges, list) and badges else None
         company = self._card.get("company")
-        published_date = _relative_listing_day(
-            self._card.get("relative_date"), self.today
-        )
+        published_date = _relative_listing_day(self._card.get("relative_date"), self.today)
         self.jobs.append(
             RawJob(
                 source_id=SOURCE_ID,
@@ -135,6 +151,11 @@ class _ListingPageParser(HTMLParser):
                 published_date=published_date,
             )
         )
+
+
+def _is_non_software_engineering_title(title: str) -> bool:
+    normalized = " ".join(title.lower().split())
+    return any(term in normalized for term in _NON_SOFTWARE_ENGINEERING_TITLES)
 
 
 def _relative_listing_day(value: object, today: date | None = None) -> date | None:
@@ -181,31 +202,34 @@ class BrighterMondayAdapter:
     def __init__(
         self,
         client: httpx.Client | None = None,
-        listing_url: str = LISTING_URL,
+        listing_urls: tuple[str, ...] = LISTING_URLS,
         request_delay_seconds: float = 1.5,
         today: date | None = None,
     ) -> None:
         self._client = client or httpx.Client(
             headers={"Accept": "text/html", "User-Agent": "TechJobsAfricaBot/0.1"}
         )
-        self.listing_url = listing_url
+        self.listing_urls = listing_urls
         self.request_delay_seconds = request_delay_seconds
         self.today = today
 
     def fetch(self) -> list[RawJob]:
         jobs_by_id: dict[str, RawJob] = {}
-        page_url: str | None = self.listing_url
         visited: set[str] = set()
-        while page_url and page_url not in visited:
-            if visited:
-                sleep(self.request_delay_seconds)
-            response = self._client.get(page_url, timeout=15.0)
-            response.raise_for_status()
-            jobs, next_page = parse_brightermonday_listing_page(
-                response.text, page_url, self.today
-            )
-            visited.add(page_url)
-            for job in jobs:
-                jobs_by_id[job.external_id or str(job.source_url)] = job
-            page_url = next_page
+        request_count = 0
+        for listing_url in self.listing_urls:
+            page_url: str | None = listing_url
+            while page_url and page_url not in visited:
+                if request_count:
+                    sleep(self.request_delay_seconds)
+                response = self._client.get(page_url, timeout=15.0)
+                response.raise_for_status()
+                jobs, next_page = parse_brightermonday_listing_page(
+                    response.text, page_url, self.today
+                )
+                visited.add(page_url)
+                request_count += 1
+                for job in jobs:
+                    jobs_by_id[job.external_id or str(job.source_url)] = job
+                page_url = next_page
         return list(jobs_by_id.values())
