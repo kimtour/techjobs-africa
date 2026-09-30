@@ -28,8 +28,8 @@ export const jobs = payload.jobs.filter((job) => job.status === "ACTIVE");
 
 export const sourceOrder = [
   "myjobmag",
-  "corporate_staffing",
   "fuzu",
+  "corporate_staffing",
   "openedcareer",
   "brightermonday",
   "elevolt",

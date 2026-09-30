@@ -59,6 +59,16 @@ def _company_from_title(title: str) -> str | None:
     return company
 
 
+def _location_from_content(value: object) -> str | None:
+    """Read an explicitly labelled location from the source's public listing."""
+
+    content = _plain_text(value)
+    if not content:
+        return None
+    match = re.search(r"\b(?:job\s+)?location\s*[:\-]\s*([^.|;]{2,100})", content, re.I)
+    return match.group(1).strip(" -–—:,")[:300] if match else None
+
+
 def parse_corporate_staffing_jobs(payload: Sequence[Mapping[str, Any]]) -> list[RawJob]:
     """Parse minimum permitted fields; descriptions and excerpts are never read."""
 
@@ -70,12 +80,17 @@ def parse_corporate_staffing_jobs(payload: Sequence[Mapping[str, Any]]) -> list[
         if not isinstance(external_id, int) or not isinstance(link, str) or not title:
             continue
         date_gmt = record.get("date_gmt")
+        content = record.get("content")
+        location = _location_from_content(
+            content.get("rendered") if isinstance(content, Mapping) else None
+        )
         jobs.append(
             RawJob(
                 source_id=SOURCE_ID,
                 external_id=str(external_id),
                 title=title,
                 company=_company_from_title(title),
+                location=location,
                 source_url=link,
                 apply_url=link,
                 published_at=(

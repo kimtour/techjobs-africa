@@ -58,6 +58,21 @@ def test_recovers_explicit_company_from_title_when_source_field_is_empty() -> No
     assert jobs[0].company == "HFCB Group"
 
 
+def test_recovers_explicit_location_from_listing_content() -> None:
+    jobs = parse_corporate_staffing_jobs(
+        [
+            {
+                "id": 1,
+                "link": "https://example.com/1",
+                "title": {"rendered": "Developer"},
+                "content": {"rendered": "<p>Job Location: Nairobi, Kenya.</p>"},
+            }
+        ]
+    )
+
+    assert jobs[0].location == "Nairobi, Kenya"
+
+
 def test_fetch_follows_wordpress_page_count() -> None:
     first = [{"id": 1, "link": "https://example.com/1", "title": {"rendered": "First"}}]
     second = [{"id": 2, "link": "https://example.com/2", "title": {"rendered": "Second"}}]
