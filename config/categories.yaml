@@ -91,7 +91,10 @@ categories:
   title: IT Operations
   keywords:
   - information technology
-  - ict
+  - ict officer
+  - ict analyst
+  - ict technician
+  - ict intern
   - it assistant
   - it clerk
   - it project assistant
@@ -213,6 +216,7 @@ categories:
 non_tech_exclusions:
 - human resources
 - hr officer
+- sales officer
 - sales representative
 - account executive
 - legal counsel
@@ -223,8 +227,9 @@ non_tech_exclusions:
 - digital marketer
 - social media manager
 - customer care agent
+- teacher
 rules:
-- Apply strong technical inclusions before generic exclusions.
+- Reject explicit non-technical job functions before applying technical keywords.
 - Generic Product Manager roles are included under Technical Product by product decision.
 - QA and test automation roles are included under QA / Testing.
 - One role may have secondary categories.

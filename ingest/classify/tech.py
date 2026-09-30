@@ -32,6 +32,13 @@ def classify_technology_title(title: str, config_path: Path = CONFIG_PATH) -> Ca
     categories = config["categories"]
     exclusions = config.get("non_tech_exclusions", [])
 
+    # Broad technical terms can occur in non-technical commercial and support
+    # roles (for example, "Sales Officer – ICT Solutions"). A job function
+    # explicitly excluded by the taxonomy is never made technical by a generic
+    # technology keyword elsewhere in its title.
+    if _matches(title, exclusions):
+        return CategoryDecision(category=None, source=None)
+
     matches: list[str] = []
     for category in categories:
         strong = category.get("strong_keywords", [])
@@ -39,8 +46,6 @@ def classify_technology_title(title: str, config_path: Path = CONFIG_PATH) -> Ca
         if _matches(title, strong) or _matches(title, keywords):
             matches.append(category["title"])
 
-    if not matches and _matches(title, exclusions):
-        return CategoryDecision(category=None, source=None)
     if not matches:
         return CategoryDecision(category=None, source=None)
 

@@ -26,3 +26,11 @@ def test_non_technical_title_is_excluded():
 
 def test_human_resources_title_is_excluded():
     assert classify_technology_title("Human Resources Business Partner").category is None
+
+
+def test_sales_role_with_generic_ict_term_is_excluded():
+    assert classify_technology_title("Senior Sales Officer - ICT Solutions").category is None
+
+
+def test_specific_ict_role_is_classified_as_it_operations():
+    assert classify_technology_title("ICT Officer II").category == "IT Operations"
