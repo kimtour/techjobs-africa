@@ -8,6 +8,7 @@ import {
   primarySource,
   sourceName,
   sourceOrder,
+  newestFirst,
 } from "../lib/jobs";
 
 const visibleJobs = jobs.filter((job) => job.eligibility_level !== "RESTRICTED");
@@ -21,7 +22,7 @@ const orderedSources = [
 const sourceGroups = orderedSources
   .map((sourceId) => ({
     sourceId,
-    jobs: visibleJobs.filter((job) => primarySource(job) === sourceId),
+    jobs: visibleJobs.filter((job) => primarySource(job) === sourceId).sort(newestFirst),
   }))
   .filter((group) => group.jobs.length > 0);
 const sourceColumns: (typeof sourceGroups)[] = [[], []];
@@ -77,6 +78,7 @@ sourceGroups.forEach((group, index) => sourceColumns[index % sourceColumns.lengt
                   </div>
                   <p data-source-count>{group.jobs.length} recent listing{group.jobs.length === 1 ? "" : "s"}</p>
                 </div>
+                <div class="source-feed" tabindex="0" role="region" aria-labelledby={`source-${group.sourceId}`} data-source-feed>
                 <ul class="job-list">
                   {group.jobs.map((job, index) => (
                     <li
@@ -107,7 +109,10 @@ sourceGroups.forEach((group, index) => sourceColumns[index % sourceColumns.lengt
                     </li>
                   ))}
                 </ul>
-                {group.jobs.length > 10 && <button class="more" data-more type="button">Show 10 more</button>}
+                <p class="empty source-empty" data-source-empty hidden>No jobs in this period match your filters. Try Latest.</p>
+                {group.jobs.length > 10 && <button class="more" data-more type="button">Load more jobs</button>}
+                </div>
+                <p class="source-status" data-source-status role="status" aria-live="polite">Showing {Math.min(10, group.jobs.length)} of {group.jobs.length} jobs · Scroll for more</p>
               </section>
                 ))}
               </div>

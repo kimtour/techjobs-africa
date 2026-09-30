@@ -71,3 +71,12 @@ export const postedLabel = (job: Job) => {
     timeZone: "Africa/Nairobi",
   }).format(postedAt)} EAT`;
 };
+
+// Missing/invalid dates stay last; use identity for deterministic ties.
+export const newestFirst = (a: Job, b: Job) => {
+  const timestamp = (job: Job) => {
+    const value = Date.parse(job.published_at || job.published_date || "");
+    return Number.isFinite(value) ? value : 0;
+  };
+  return timestamp(b) - timestamp(a) || a.job_id.localeCompare(b.job_id);
+};

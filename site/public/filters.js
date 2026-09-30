@@ -15,12 +15,11 @@ function matchesPeriod(card, period) {
   return age <= ranges[period] && age >= 0;
 }
 
-function applyFilters() {
+function applyFilters(targetGroup) {
   const searchTerm = (search?.value ?? "").trim().toLocaleLowerCase();
   const selectedCategory = category?.value ?? "";
-  let visible = 0;
 
-  for (const group of groups) {
+  for (const group of targetGroup ? [targetGroup] : groups) {
     const limit = Number(group.dataset.limit ?? "10");
     const period = group.dataset.period ?? "latest";
     const cards = [...group.querySelectorAll("[data-source-card]")];
@@ -34,14 +33,19 @@ function applyFilters() {
       card.hidden = !matches || matching > limit;
     }
 
-    group.hidden = matching === 0;
+    // Keep the header and controls available even when a period has no matches.
+    group.dataset.matching = String(matching);
+    const empty = group.querySelector("[data-source-empty]");
+    if (empty) empty.hidden = matching !== 0;
+    const status = group.querySelector("[data-source-status]");
+    if (status) status.textContent = `Showing ${Math.min(limit, matching)} of ${matching} jobs${matching > 0 ? " · Scroll for more" : ""}`;
     const more = group.querySelector("[data-more]");
     if (more) more.hidden = matching <= limit;
     const sourceCount = group.querySelector("[data-source-count]");
     if (sourceCount) sourceCount.textContent = `${matching} listing${matching === 1 ? "" : "s"}`;
-    visible += matching;
   }
 
+  const visible = groups.reduce((total, group) => total + Number(group.dataset.matching ?? 0), 0);
   if (count) count.textContent = `${visible} active role${visible === 1 ? "" : "s"}`;
   if (noResults) noResults.hidden = visible !== 0;
 }
@@ -50,7 +54,8 @@ for (const more of document.querySelectorAll("[data-more]")) {
   more.addEventListener("click", () => {
     const group = more.closest("[data-source-group]");
     if (group) group.dataset.limit = String(Number(group.dataset.limit ?? "10") + 10);
-    applyFilters();
+    applyFilters(group);
+    if (more.hidden) group?.querySelector("[data-source-feed]")?.focus({ preventScroll: true });
   });
 }
 
@@ -63,15 +68,20 @@ for (const periodButton of document.querySelectorAll("[data-period]")) {
     for (const button of group.querySelectorAll("[data-period]")) {
       button.setAttribute("aria-pressed", String(button === periodButton));
     }
-    applyFilters();
+    applyFilters(group);
+    group.querySelector("[data-source-feed]")?.scrollTo(0, 0);
   });
 }
 
 function resetLimitsAndApplyFilters() {
-  for (const group of groups) group.dataset.limit = "10";
+  for (const group of groups) {
+    group.dataset.limit = "10";
+    group.querySelector("[data-source-feed]")?.scrollTo(0, 0);
+  }
   applyFilters();
 }
 
+document.querySelector("#job-filters")?.addEventListener("submit", (event) => event.preventDefault());
 search?.addEventListener("input", resetLimitsAndApplyFilters);
 category?.addEventListener("change", resetLimitsAndApplyFilters);
 applyFilters();
