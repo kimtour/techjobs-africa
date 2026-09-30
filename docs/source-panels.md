@@ -9,6 +9,13 @@ scrolling body at the inspected viewport. The source header is outside that body
 Clicks on Load more and Day did not produce a changed selection/result in that
 session, so the reference's server-side filtering/ranking is unverified.
 
+## Ingestion guardrail
+
+Source category pages are not a substitute for title-level technical evidence.
+They can include unrelated listings; the pipeline rejects every job that cannot
+be deterministically classified from its own title, including HR and finance
+roles found on the BrighterMonday IT & Telecoms page.
+
 ## Implementation contract
 
 - Keep the existing two-column layout and source colors, collapsing to one column

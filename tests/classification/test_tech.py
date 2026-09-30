@@ -22,3 +22,7 @@ def test_technical_product_manager_requires_strong_evidence():
 
 def test_non_technical_title_is_excluded():
     assert classify_technology_title("Finance Manager").category is None
+
+
+def test_human_resources_title_is_excluded():
+    assert classify_technology_title("Human Resources Business Partner").category is None

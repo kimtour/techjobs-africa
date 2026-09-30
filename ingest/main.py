@@ -33,11 +33,6 @@ ADAPTERS: Mapping[str, AdapterFactory] = {
     "myjobmag": MyJobMagAdapter,
     "openedcareer": OpenedCareerAdapter,
 }
-# These endpoints are explicitly scoped by their sources to IT/software listings.
-# A missing title keyword must not discard a listing from that verified category.
-SOURCE_SCOPED_TECH_SOURCES = frozenset(
-    {"brightermonday", "corporate_staffing", "elevolt", "fuzu", "myjobmag", "openedcareer"}
-)
 
 
 def approved_source_ids(config_path: Path = CONFIG_PATH) -> list[str]:
@@ -54,15 +49,11 @@ def approved_source_ids(config_path: Path = CONFIG_PATH) -> list[str]:
 def build_jobs(raw_jobs: Sequence[RawJob]) -> list[CanonicalJob]:
     """Canonicalize and retain only roles with a deterministic technical match."""
 
-    technical_jobs = []
-    for raw in raw_jobs:
-        job = canonicalize_raw_job(raw)
-        if not job.category and raw.source_id in SOURCE_SCOPED_TECH_SOURCES:
-            job = job.model_copy(
-                update={"category": "IT Operations", "category_source": "source_category"}
-            )
-        if job.category:
-            technical_jobs.append(job)
+    # Source category pages are discovery aids, not evidence that every listing is
+    # a technology role. BrighterMonday's IT & Telecoms page, for example, can
+    # contain HR and finance vacancies. Retain a role only when its own title has
+    # a deterministic technical classification.
+    technical_jobs = [job for raw in raw_jobs if (job := canonicalize_raw_job(raw)).category]
     return deduplicate_exact(technical_jobs)
 
 

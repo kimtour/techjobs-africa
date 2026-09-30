@@ -50,7 +50,7 @@ def test_run_isolates_a_failed_source_and_writes_static_output(tmp_path):
     assert "description" not in public_jobs["jobs"][0]
 
 
-def test_build_jobs_keeps_source_scoped_technical_listing_without_title_keyword():
+def test_build_jobs_rejects_unclassified_job_from_a_technical_source_page():
     raw = RawJob(
         source_id="corporate_staffing",
         external_id="source-scoped-1",
@@ -61,6 +61,16 @@ def test_build_jobs_keeps_source_scoped_technical_listing_without_title_keyword(
 
     jobs = build_jobs([raw])
 
-    assert len(jobs) == 1
-    assert jobs[0].category == "IT Operations"
-    assert jobs[0].category_source == "source_category"
+    assert jobs == []
+
+
+def test_build_jobs_rejects_non_technical_brightermonday_listing():
+    raw = RawJob(
+        source_id="brightermonday",
+        external_id="human-resources-business-partner",
+        title="Human Resources Business Partner",
+        source_url="https://example.com/human-resources-business-partner",
+        apply_url="https://example.com/human-resources-business-partner",
+    )
+
+    assert build_jobs([raw]) == []
