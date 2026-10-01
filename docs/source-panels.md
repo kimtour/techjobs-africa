@@ -18,8 +18,8 @@ roles found on BrighterMonday's Engineering & Technology and Software & Data pag
 
 ## Implementation contract
 
-- Put All Jobs in the first of three columns, followed by the existing two source
-  columns. All Jobs contains each active, unrestricted job once, newest first,
+- Keep two columns and add All Jobs as the first feed, followed by every existing
+  source feed. All Jobs contains each active, unrestricted job once, newest first,
   and displays its source. It shares the independent period and pagination controls.
   Global result counts count unique jobs across matching feeds.
 - Keep source colors, collapsing to one column

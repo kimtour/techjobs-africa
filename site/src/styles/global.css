@@ -1,7 +1,7 @@
 :root { background: #fafafa; color: #333; font-family: Arial, Helvetica, sans-serif; }
 * { box-sizing: border-box; }
 body { margin: 0; }
-main { margin: 0 auto; max-width: 1500px; padding: 3rem 1.25rem 5rem; }
+main { margin: 0 auto; max-width: 1200px; padding: 3rem 1.25rem 5rem; }
 .hero { border-bottom: 1px solid #ddd; padding-bottom: 1.8rem; }
 .eyebrow { color: #e85d45; font-size: 1.1rem; font-weight: 700; margin-bottom: .5rem; }
 h1, h2, h3, h4, p { margin-top: 0; }
@@ -14,7 +14,7 @@ h1 { font-size: clamp(2rem, 4vw, 3rem); letter-spacing: -.04em; line-height: 1.0
 .filters { display: flex; flex-wrap: wrap; gap: .75rem; margin: 1.4rem 0; }
 .filters label { display: grid; font-size: .85rem; font-weight: 700; gap: .35rem; }
 .filters input, .filters select { background: #fff; border: 1px solid #bbb; border-radius: 2px; color: #333; font: inherit; min-width: 220px; padding: .55rem .65rem; }
-#source-groups { display: grid; gap: 1.5rem; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+#source-groups { display: grid; gap: 1.5rem; grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .source-column { align-content: start; display: grid; gap: 1.5rem; min-width: 0; }
 .source-group { min-width: 0; }
 .source-heading { flex-wrap: wrap; align-items: flex-start; background: var(--source-color, #385170); border-radius: 6px; color: #fff; display: flex; gap: .7rem; justify-content: space-between; margin-bottom: .25rem; padding: .75rem .9rem; }

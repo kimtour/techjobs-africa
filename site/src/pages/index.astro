@@ -26,8 +26,8 @@ const sourceGroups = orderedSources
   }))
   .filter((group) => group.jobs.length > 0);
 const sourceColumns: (typeof sourceGroups)[] = [[], []];
-sourceGroups.forEach((group, index) => sourceColumns[index % sourceColumns.length].push(group));
-sourceColumns.unshift([{ sourceId: "all", jobs: [...visibleJobs].sort(newestFirst) }]);
+const feedGroups = [{ sourceId: "all", jobs: [...visibleJobs].sort(newestFirst) }, ...sourceGroups];
+feedGroups.forEach((group, index) => sourceColumns[index % sourceColumns.length].push(group));
 ---
 
 <Base title="TechJobs Africa">
