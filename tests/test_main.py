@@ -181,16 +181,14 @@ def test_supported_absence_requires_three_complete_crawls_and_never_counts_failu
 
         def fetch(self):
             return [
-                super()
-                .fetch()[0]
-                .model_copy(
-                    update={
-                        "source_id": "ashby",
-                        "external_id": str(i),
-                        "title": f"Product Manager {i}",
-                        "source_url": f"https://jobs.example.com/{i}",
-                        "apply_url": f"https://jobs.example.com/{i}",
-                    }
+                RawJob(
+                    source_id="ashby",
+                    external_id=str(i),
+                    title=f"Product Manager {i}",
+                    company="Example Technologies",
+                    location="Nairobi, Kenya",
+                    source_url=f"https://jobs.example.com/{i}",
+                    apply_url=f"https://jobs.example.com/{i}",
                 )
                 for i in range(self.remaining)
             ]
