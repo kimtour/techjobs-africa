@@ -32,8 +32,11 @@ permission; no written authorization was supplied. This instruction supersedes
 this source's general no-scraping restriction for the requested public category
 and bounded category pagination. Internal APIs and authentication remain unused.
 
-Production fetches up to ten public category pages daily, then fetches details
-only for titles matching the existing technical taxonomy. Structured JobPosting
+Production fetches up to ten public category pages daily (an explicit manual
+`source=bebee` refresh bypasses the daily interval), then fetches details
+only for titles matching the technical taxonomy with additional source-specific exclusions
+for recruitment, sales, and generic quality-assurance roles lacking software/test
+automation evidence. These exclusions also apply to previously saved beBee records. Structured JobPosting
 metadata supplies stable identifiers, employer, date, validity, and explicit Kenya
 country evidence. Expired and nontechnical postings are rejected; descriptions
 are never retained. Missing crawl results never close saved jobs. HTTP blocks

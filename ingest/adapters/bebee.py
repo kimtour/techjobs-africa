@@ -16,6 +16,24 @@ from ingest.models import RawJob
 LISTING_URL = "https://bebee.com/ke/jobs/industry/technology"
 
 
+def is_technical_title(title: str) -> bool:
+    """Require a technical function, not merely a tech industry or generic QA."""
+    if re.search(
+        r"\b(recruitment|recruiter|sales|business development|chef|debt collector)\b",
+        title,
+        re.IGNORECASE,
+    ):
+        return False
+    decision = classify_technology_title(title)
+    if decision.category == "QA / Testing" and not re.search(
+        r"\b(software|automation|automated|selenium|sdet|qa engineer|test engineer)\b",
+        title,
+        re.IGNORECASE,
+    ):
+        return False
+    return decision.category is not None
+
+
 class _MetadataParser(HTMLParser):
     def __init__(self):
         super().__init__()
@@ -70,7 +88,7 @@ def listing_links(html: str) -> list[str]:
             parsed.hostname == "bebee.com"
             and parsed.path.startswith("/ke/jobs/")
             and "--" in parsed.path
-            and classify_technology_title(title).category
+            and is_technical_title(title)
         ):
             links.append(url)
     return list(dict.fromkeys(links))
@@ -83,7 +101,7 @@ def parse_job(html: str, url: str) -> RawJob | None:
         if not isinstance(record, dict) or record.get("@type") != "JobPosting":
             continue
         title = record.get("title")
-        if not isinstance(title, str) or not classify_technology_title(title).category:
+        if not isinstance(title, str) or not is_technical_title(title):
             continue
         identifier = record.get("identifier", {})
         external_id = identifier.get("value") if isinstance(identifier, dict) else None

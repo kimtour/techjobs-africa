@@ -35,7 +35,17 @@ def test_minimal_metadata_stable_identity_and_technical_classification():
     assert jobs[0].country == "Kenya"
 
 
-@pytest.mark.parametrize("title", ["Line Chef", "Debt Collector", "Software Sales Executive"])
+@pytest.mark.parametrize(
+    "title",
+    [
+        "Line Chef",
+        "Debt Collector",
+        "Software Sales Executive",
+        "Recruitment Lead (Fintech/Payments/Nigerian Market)",
+        "Tupande Senior Quality Assurance Supervisor (Fixed-term)",
+        "Tupande Quality Assurance Specialist (Fixed-term)",
+    ],
+)
 def test_nontechnical_jobs_rejected(title):
     assert parse_job(metadata(title=title), URL) is None
     assert listing_links(f'<h3><a href="{URL}">{title}</a></h3>') == []
@@ -78,3 +88,42 @@ def test_bounded_pages_are_deduped_and_detail_country_is_verified():
     assert len(adapter.fetch()) == 1
     assert len(calls) == 3
     assert adapter.crawl_complete
+
+
+def test_saved_nontechnical_bebee_records_removed_without_touching_other_sources(tmp_path):
+    from ingest.main import run_ingestion
+    from ingest.models import RawJob
+    from ingest.normalize.canonicalize import canonicalize_raw_job
+
+    technical = parse_job(metadata(), URL)
+    nontech = technical.model_copy(
+        update={
+            "external_id": "t7xk-987",
+            "title": "Tupande Quality Assurance Specialist (Fixed-term)",
+            "source_url": "https://bebee.com/ke/jobs/tupande--t7xk-987",
+            "apply_url": "https://bebee.com/ke/jobs/tupande--t7xk-987",
+        }
+    )
+    other = RawJob(
+        source_id="myjobmag",
+        external_id="keep",
+        title="Software Engineer",
+        source_url="https://www.myjobmag.co.ke/job/keep",
+        apply_url="https://www.myjobmag.co.ke/job/keep",
+        location="Kenya",
+    )
+    rows = [
+        canonicalize_raw_job(row).model_dump(mode="json") for row in [technical, nontech, other]
+    ]
+    (tmp_path / "canonical").mkdir()
+    (tmp_path / "canonical/jobs.json").write_text(json.dumps({"jobs": rows}))
+
+    class Adapter:
+        crawl_complete = True
+
+        def fetch(self):
+            return [technical]
+
+    run_ingestion(tmp_path, source_ids=["bebee"], adapters={"bebee": Adapter})
+    jobs = json.loads((tmp_path / "public/jobs.json").read_text())["jobs"]
+    assert {job["job_id"] for job in jobs} == {"bebee:fj-1234", "myjobmag:keep"}
