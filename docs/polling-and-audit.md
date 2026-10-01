@@ -29,9 +29,10 @@ not establish that location parsing or listing coverage is correct.
 
 ## Current schedule
 
-The external Cloudflare replacement and its cutover checks are documented in
-[Cloudflare fetch scheduler](cloudflare-scheduler.md). Keep the native schedule
-until that replacement is deployed and verified.
+Cloudflare is the active scheduler. Its deployment evidence, live status page,
+and rollback checks are documented in
+[Cloudflare fetch scheduler](cloudflare-scheduler.md). GitHub's native cron is
+disabled to avoid requesting duplicate fetches.
 
 Use nine runs per day, every day, in Africa/Nairobi (EAT, UTC+3):
 
@@ -46,14 +47,15 @@ requests nine, shifting effort toward working hours. At the user's request, all
 triggers are scheduled at the top of the hour.
 This is an evidence-informed starting policy, not a measured optimum. There is
 not yet a reliable source-specific arrival-rate history to justify hourly full
-crawls. No separate Codex automation is needed: repository GitHub Actions owns
-polling and is configured in `.github/workflows/ingest-and-build.yml`.
+crawls. No separate Codex automation is needed: the Cloudflare Worker requests
+fetches, and `.github/workflows/ingest-and-build.yml` executes the ingestion and
+publication pipeline.
 
-GitHub can delay or drop scheduled work, and its concurrency queue can replace
+GitHub can queue externally dispatched work, and its concurrency queue can replace
 an older pending run with a newer pending run. Running work is not automatically
 cancelled. Read actual attempt times, not cron, when assessing freshness. If
-precise on-time fetching becomes a hard requirement, move the trigger to a
-scheduler with delivery guarantees while retaining the same ingestion pipeline.
+precise on-time fetching becomes a hard requirement, run ingestion in a direct
+execution environment rather than relying on GitHub runner availability.
 
 ## Safe request and publication policy
 

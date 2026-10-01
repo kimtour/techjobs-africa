@@ -42,6 +42,18 @@ limits. Deployment does not upgrade the account or change billing.
 
 ## Cutover
 
+Cloudflare is active as the sole scheduler as of 1 October 2026. The native
+GitHub cron has been removed; manual workflow dispatch remains available.
+The [deployment](https://github.com/kimtour/techjobs-africa/actions/runs/36887559538)
+and [end-to-end fetch](https://github.com/kimtour/techjobs-africa/actions/runs/36887615987)
+succeeded, all seven approved sources reported SUCCESS, and the site was
+published. The first regular 19:00 EAT fetch was dispatched at 19:00:12 and its
+source-fetch step started at 19:00:44. The
+[live status page](https://techjobs-africa-scheduler.kimani-mutua.workers.dev/)
+tracks subsequent slots.
+
+For a future replacement or rollback/redeployment:
+
 Keep GitHub's existing native cron until the external scheduler has passed its
 end-to-end test. Verify the test slot on the live status page, confirm the
 **Ingest approved sources** step started, and inspect the completed workflow and
