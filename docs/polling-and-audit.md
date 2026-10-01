@@ -29,6 +29,10 @@ not establish that location parsing or listing coverage is correct.
 
 ## Current schedule
 
+The external Cloudflare replacement and its cutover checks are documented in
+[Cloudflare fetch scheduler](cloudflare-scheduler.md). Keep the native schedule
+until that replacement is deployed and verified.
+
 Use nine runs per day, every day, in Africa/Nairobi (EAT, UTC+3):
 
 | Period | Scheduled times EAT |

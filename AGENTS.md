@@ -75,7 +75,7 @@ Astro static site. `site/src/lib/jobs.ts` exposes the `jobs` array (ACTIVE only)
 - 403/429/5xx never close a job; single 404 never expires
 - Absence processing requires healthy + complete crawl + source supports it + not bootstrap
 - No proxy/evasion logic for deliberate blocks
-- Secrets only in GitHub Secrets: `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID`, `TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID`
+- Secrets are managed in GitHub Secrets. The external scheduler token is provisioned from `SCHEDULER_GITHUB_TOKEN` into an encrypted Cloudflare Worker secret at deployment; never persist it in source, data, or logs. Existing deployment secrets: `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID`, `TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID`
 
 ## Development phases
 

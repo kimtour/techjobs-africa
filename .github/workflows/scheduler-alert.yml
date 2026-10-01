@@ -1,0 +1,44 @@
+name: Fetch scheduler alert
+run-name: 'Scheduler alert · ${{ inputs.scheduler_slot }} · ${{ inputs.alert_kind }}'
+
+on:
+  workflow_dispatch:
+    inputs:
+      scheduler_slot:
+        description: Scheduled fetch slot (UTC)
+        required: true
+        type: string
+      alert_kind:
+        description: Scheduler problem
+        required: true
+        type: choice
+        options:
+          - fetch_not_started
+          - completion_overdue
+          - workflow_failed
+
+permissions: {}
+
+jobs:
+  alert:
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    steps:
+      - name: Report a scheduler problem
+        env:
+          SLOT: ${{ inputs.scheduler_slot }}
+          KIND: ${{ inputs.alert_kind }}
+        run: |
+          python3 - <<'PY'
+          import os
+          messages = {
+              "fetch_not_started": "Source fetching did not start within ten minutes of its scheduled slot.",
+              "completion_overdue": "The fetch workflow has not completed within forty minutes of its scheduled slot.",
+              "workflow_failed": "The fetch workflow failed or was cancelled. Inspect its fetch audit before retrying.",
+          }
+          message = messages.get(os.environ["KIND"], "Unknown scheduler problem.")
+          with open(os.environ["GITHUB_STEP_SUMMARY"], "a") as summary:
+              summary.write(f"## Fetch scheduler alert\n\n{message}\n\nSlot (UTC): `{os.environ['SLOT']}`\n")
+          print(f"::error::{message}")
+          raise SystemExit(1)
+          PY

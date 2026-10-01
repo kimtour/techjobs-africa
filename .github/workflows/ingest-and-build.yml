@@ -1,7 +1,14 @@
 name: Ingest and build static site
+run-name: 'Job fetch · ${{ inputs.scheduler_slot || github.run_id }}'
 
 on:
   workflow_dispatch:
+    inputs:
+      scheduler_slot:
+        description: Cloudflare scheduler slot (leave empty for a manual fetch)
+        required: false
+        default: ''
+        type: string
   schedule:
     # EAT: 07:00, 09:00, 11:00, 13:00, 15:00, 17:00, 19:00, 21:00.
     - cron: "0 4,6,8,10,12,14,16,18 * * *"
@@ -49,11 +56,22 @@ jobs:
         run: |
           git fetch origin data
           git worktree add "$DATA_DIR" origin/data
+
+      - name: Claim scheduled fetch slot before contacting sources
+        id: claim
+        env:
+          SCHEDULER_SLOT: ${{ inputs.scheduler_slot }}
+        run: python -m ingest.claim_slot --data-dir "$DATA_DIR"
+
+      - name: Copy candidate after recording scheduler claim
+        if: steps.claim.outputs.proceed == 'true'
+        run: |
           mkdir -p "$CANDIDATE_DIR"
           cp -R "$DATA_DIR/canonical" "$DATA_DIR/public" "$DATA_DIR/state" "$CANDIDATE_DIR/"
 
       - name: Ingest approved sources
         id: fetch
+        if: steps.claim.outputs.proceed == 'true'
         run: python -u -m ingest.main --output-dir "$CANDIDATE_DIR"
 
       - name: Set up Node

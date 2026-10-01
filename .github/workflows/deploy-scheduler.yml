@@ -1,0 +1,66 @@
+name: Deploy Cloudflare fetch scheduler
+
+on:
+  workflow_dispatch:
+    inputs:
+      test_fetch:
+        description: Run an end-to-end source fetch through the deployed scheduler
+        default: true
+        type: boolean
+
+permissions:
+  contents: read
+
+concurrency:
+  group: techjobs-scheduler-deploy
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    defaults:
+      run:
+        working-directory: scheduler
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      SCHEDULER_GITHUB_TOKEN: ${{ secrets.SCHEDULER_GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: scheduler/package-lock.json
+      - name: Check Cloudflare Worker access
+        run: node scripts/check-cloudflare-access.js
+      - name: Check required secrets
+        run: |
+          test -n "$CLOUDFLARE_API_TOKEN"
+          test -n "$CLOUDFLARE_ACCOUNT_ID"
+          if [ -z "$SCHEDULER_GITHUB_TOKEN" ]; then
+            echo '::error::Add SCHEDULER_GITHUB_TOKEN: a fine-grained GitHub token for this repository with Actions read/write and Contents read.'
+            exit 1
+          fi
+      - name: Install and test scheduler
+        run: |
+          npm ci
+          npm test
+          npm run check
+      - name: Deploy worker with encrypted GitHub credential
+        run: |
+          node --input-type=module - <<'JS'
+          import { spawnSync } from 'node:child_process';
+          const result = spawnSync('npx', ['wrangler', 'deploy', '--secrets-file', '/dev/stdin'], {
+            input: JSON.stringify({ SCHEDULER_GITHUB_TOKEN: process.env.SCHEDULER_GITHUB_TOKEN }),
+            encoding: 'utf8',
+          });
+          process.stdout.write(result.stdout || '');
+          process.stderr.write(result.stderr || '');
+          process.exit(result.status ?? 1);
+          JS
+      - name: Verify status and optionally trigger a real fetch
+        env:
+          TEST_FETCH: ${{ inputs.test_fetch }}
+        run: node scripts/verify-deployment.js

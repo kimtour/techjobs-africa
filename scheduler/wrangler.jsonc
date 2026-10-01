@@ -1,0 +1,17 @@
+{
+  "name": "techjobs-africa-scheduler",
+  "main": "src/worker.js",
+  "compatibility_date": "2026-07-30",
+  "workers_dev": true,
+  "triggers": { "crons": ["* * * * *"] },
+  "vars": {
+    "GITHUB_REPOSITORY": "kimtour/techjobs-africa",
+    "GITHUB_WORKFLOW": "ingest-and-build.yml",
+    "GITHUB_REF": "main"
+  },
+  "durable_objects": {
+    "bindings": [{ "name": "SCHEDULER", "class_name": "FetchScheduler" }]
+  },
+  "migrations": [{ "tag": "v1", "new_sqlite_classes": ["FetchScheduler"] }],
+  "observability": { "enabled": true }
+}
