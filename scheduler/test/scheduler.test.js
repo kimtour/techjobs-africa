@@ -202,7 +202,8 @@ test('GitHub request restricts repository and ref, encodes inputs, and redacts H
     GITHUB_REPOSITORY: 'kimtour/techjobs-africa', GITHUB_WORKFLOW: 'ingest-and-build.yml',
     GITHUB_REF: 'main', SCHEDULER_GITHUB_TOKEN: 'test-secret',
   };
-  const client = new GitHub(env, async (url, options) => {
+  const client = new GitHub(env, async function (url, options) {
+    assert.equal(this, undefined);
     assert.equal(url, 'https://api.github.com/repos/kimtour/techjobs-africa/actions/workflows/ingest-and-build.yml/dispatches');
     assert.deepEqual(JSON.parse(options.body), { ref: 'main', inputs: { scheduler_slot: SLOT } });
     assert.equal(options.headers.Authorization, 'Bearer test-secret');

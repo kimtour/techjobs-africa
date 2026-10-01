@@ -5,7 +5,9 @@ export class GitHub {
   }
 
   async request(path, body) {
-    const response = await this.fetcher(
+    // Cloudflare's global fetch rejects the GitHub instance as its receiver.
+    const fetcher = this.fetcher;
+    const response = await fetcher(
       `https://api.github.com/repos/${this.env.GITHUB_REPOSITORY}${path}`, {
         method: body ? 'POST' : 'GET',
         headers: {
