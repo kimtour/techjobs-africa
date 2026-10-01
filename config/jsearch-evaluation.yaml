@@ -1,0 +1,10 @@
+schema_version: 1
+# Manual discovery only; never used by the production scheduler.
+country: ke
+location: Kenya
+language: en
+date_posted: week
+queries:
+  - software engineer jobs in Kenya
+  - data engineer jobs in Kenya
+

@@ -1,0 +1,56 @@
+name: Evaluate JSearch Kenya
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: jsearch-evaluation
+  cancel-in-progress: false
+
+jobs:
+  evaluate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install dependencies
+        run: pip install -r requirements-dev.txt
+      - name: Check evaluation credentials
+        env:
+          JSEARCH_API_KEY: ${{ secrets.JSEARCH_API_KEY }}
+        run: |
+          if [ -z "$JSEARCH_API_KEY" ]; then
+            echo "::error::Add the OpenWeb Ninja JSEARCH_API_KEY repository secret."
+            exit 1
+          fi
+      - name: Read accepted production jobs for comparison
+        run: |
+          git fetch origin data --depth=1
+          git show FETCH_HEAD:public/jobs.json > "$RUNNER_TEMP/jsearch-baseline.json"
+      - name: Evaluate two Kenya searches without publishing
+        env:
+          JSEARCH_API_KEY: ${{ secrets.JSEARCH_API_KEY }}
+        run: |
+          python -m ingest.jsearch_evaluation \
+            --baseline "$RUNNER_TEMP/jsearch-baseline.json" \
+            --output-dir "$RUNNER_TEMP/jsearch-evaluation"
+      - name: Show evaluation summary
+        if: always()
+        run: |
+          if [ -f "$RUNNER_TEMP/jsearch-evaluation/summary.md" ]; then
+            cat "$RUNNER_TEMP/jsearch-evaluation/summary.md" >> "$GITHUB_STEP_SUMMARY"
+          fi
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: jsearch-kenya-evaluation
+          path: ${{ runner.temp }}/jsearch-evaluation/
+          retention-days: 7
+          if-no-files-found: ignore
+
