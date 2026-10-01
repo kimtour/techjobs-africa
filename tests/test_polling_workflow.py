@@ -1,20 +1,18 @@
+import json
 from pathlib import Path
 
 import yaml
 
 
-def test_schedule_is_eat_day_weighted_and_workflows_do_not_overlap():
+def test_cloudflare_is_the_only_scheduler_and_workflows_do_not_overlap():
     # BaseLoader preserves the YAML key "on" (YAML 1.1 treats it as a boolean).
     workflow = yaml.load(
         Path(".github/workflows/ingest-and-build.yml").read_text(), Loader=yaml.BaseLoader
     )
-    schedules = workflow["on"]["schedule"]
-    hours = []
-    for schedule in schedules:
-        minute, hour, *_ = schedule["cron"].split()
-        assert minute == "0"
-        hours.extend((int(h) + 3) % 24 for h in hour.split(","))
-    assert sorted(hours) == [1, 7, 9, 11, 13, 15, 17, 19, 21]
+    assert "schedule" not in workflow["on"]
+    assert "workflow_dispatch" in workflow["on"]
+    worker = json.loads(Path("scheduler/wrangler.jsonc").read_text())
+    assert worker["triggers"]["crons"] == ["* * * * *"]
     assert workflow["concurrency"]["cancel-in-progress"] == "false"
     assert workflow["jobs"]["ingest-and-build"]["timeout-minutes"] == "25"
 

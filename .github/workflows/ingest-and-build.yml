@@ -9,11 +9,8 @@ on:
         required: false
         default: ''
         type: string
-  schedule:
-    # EAT: 07:00, 09:00, 11:00, 13:00, 15:00, 17:00, 19:00, 21:00.
-    - cron: "0 4,6,8,10,12,14,16,18 * * *"
-    # EAT: 01:00. GitHub schedules are best-effort and may be delayed.
-    - cron: "0 22 * * *"
+  # Scheduled fetches are dispatched by the Cloudflare Worker; manual fetches
+  # remain available above. Do not enable native cron alongside the Worker.
 
 permissions:
   contents: write
