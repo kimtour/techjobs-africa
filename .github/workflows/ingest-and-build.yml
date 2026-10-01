@@ -4,6 +4,12 @@ run-name: 'Job fetch · ${{ inputs.scheduler_slot || github.run_id }}'
 on:
   workflow_dispatch:
     inputs:
+      source:
+        description: Sources to fetch
+        required: false
+        default: all
+        type: choice
+        options: [all, linkedin]
       scheduler_slot:
         description: Cloudflare scheduler slot (leave empty for a manual fetch)
         required: false
@@ -69,7 +75,15 @@ jobs:
       - name: Ingest approved sources
         id: fetch
         if: steps.claim.outputs.proceed == 'true'
-        run: python -u -m ingest.main --output-dir "$CANDIDATE_DIR"
+        env:
+          JSEARCH_API_KEY: ${{ secrets.JSEARCH_API_KEY }}
+          FETCH_SOURCE: ${{ inputs.source || 'all' }}
+        run: |
+          if [ "$FETCH_SOURCE" = "linkedin" ]; then
+            python -u -m ingest.main --output-dir "$CANDIDATE_DIR" --source linkedin
+          else
+            python -u -m ingest.main --output-dir "$CANDIDATE_DIR"
+          fi
 
       - name: Set up Node
         if: steps.fetch.outputs.publishable == 'true' && steps.fetch.outputs.public_changed == 'true'

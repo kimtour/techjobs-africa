@@ -82,3 +82,27 @@ JSearch as a supplemental discovery source, but does not establish broad LinkedI
 coverage, complete technical coverage, stable IDs across repeated fetches, or
 public-display permission. No production data or website was changed. Production
 integration remains pending discovery review and provider usage-rights verification.
+
+## LinkedIn feed — requested 1 October 2026
+
+After reviewing the live evaluation and the usage-rights limitations, the user
+explicitly requested publishing a LinkedIn feed through JSearch. The production
+source retains only records with explicit Kenya evidence and actual LinkedIn
+job application links. Stable identity is `linkedin:<LinkedIn job ID>` extracted
+from the URL; Google/JSearch search identifiers are not used for this feed.
+Titles, employers, locations, and dates remain provider metadata and are not
+independently checked by scraping LinkedIn. This is not an official LinkedIn API
+integration or evidence of a provider redistribution license.
+
+Two first-page searches (software and data engineering, past month, via LinkedIn)
+run at most once per 24 hours through the existing scheduler. A 160-request monthly
+ceiling is enforced from durable request history before contacting the API. This
+ceiling covers this production source, not separate manual evaluations or other
+uses of the same account. No retries, description persistence, or absence expiry.
+Provider failures retain already-published jobs. This is a limited sample feed,
+not an exhaustive list of all Kenyan technology vacancies on LinkedIn.
+
+The source is fourth including All Jobs. Source headers identify JSearch as the
+provider, and the same canonical jobs appear in All Jobs without inflating totals.
+The existing ingest workflow receives `JSEARCH_API_KEY` from GitHub Secrets and
+has a manual `source=linkedin` option for the initial publication.

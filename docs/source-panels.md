@@ -22,6 +22,11 @@ roles found on BrighterMonday's Engineering & Technology and Software & Data pag
   source feed. All Jobs contains each active, unrestricted job once, newest first,
   and displays its source. It shares the independent period and pagination controls.
   Global result counts count unique jobs across matching feeds.
+- LinkedIn is fourth in the feed sequence (All Jobs, MyJobMag, Fuzu, LinkedIn).
+  It contains Kenya jobs with validated LinkedIn application URLs supplied by
+  JSearch. Its header says "Via JSearch · Kenya". Jobs also appear in All Jobs;
+  source feeds include every job attributed to that source even when cross-listed.
+  Mobile keeps the same feed sequence. An empty LinkedIn feed retains its controls.
 - Keep source colors, collapsing to one column
   on narrow screens. Each body is 26rem high (24rem on mobile), independent of
   result count. Headers and status lines are outside the scrolling body.

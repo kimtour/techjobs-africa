@@ -6,7 +6,7 @@ import argparse
 import json
 import time
 from collections.abc import Callable, Mapping, Sequence
-from datetime import UTC, datetime
+from datetime import UTC, datetime, timedelta
 from pathlib import Path
 from statistics import median
 from tempfile import NamedTemporaryFile
@@ -19,6 +19,7 @@ from ingest.adapters.brightermonday import BrighterMondayAdapter
 from ingest.adapters.corporate_staffing import CorporateStaffingAdapter
 from ingest.adapters.elevolt import ElevoltAdapter
 from ingest.adapters.fuzu import FuzuAdapter
+from ingest.adapters.jsearch import LinkedInJSearchAdapter
 from ingest.adapters.myjobmag import MyJobMagAdapter
 from ingest.adapters.openedcareer import OpenedCareerAdapter
 from ingest.audit import public_hash, read_json, record_run, run_identity
@@ -33,6 +34,7 @@ from ingest.normalize.canonicalize import canonicalize_raw_job
 CONFIG_PATH = Path("config/sources.yaml")
 AdapterFactory = Callable[[], object]
 ADAPTERS: Mapping[str, AdapterFactory] = {
+    "linkedin": LinkedInJSearchAdapter,
     "ashby": lambda: AshbyAdapter("talentsafari"),
     "brightermonday": BrighterMondayAdapter,
     "corporate_staffing": CorporateStaffingAdapter,
@@ -115,6 +117,21 @@ def run_ingestion(
     rows: dict[str, dict] = {}
     warnings: list[str] = []
     for source_id in selected_ids:
+        if source_id == "linkedin":
+            # Two first-page requests daily fit the free plan; share the existing
+            # pipeline lock and durable request audit rather than adding a scheduler.
+            old_attempt = previous_health.get(source_id, {}).get("last_attempt_at")
+            if old_attempt and datetime.fromisoformat(old_attempt) > started - timedelta(hours=24):
+                continue
+            used = 0
+            for path in (output_dir / "state/request-history").glob(f"{started:%Y-%m}-*.jsonl"):
+                used += sum(
+                    json.loads(line).get("source_id") == source_id
+                    for line in path.read_text().splitlines()
+                    if line.strip()
+                )
+            if used + 2 > 160:
+                continue
         factory = adapters.get(source_id)
         if factory is None:
             raise ValueError(f"No adapter is registered for {source_id!r}.")

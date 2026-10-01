@@ -14,98 +14,11 @@ import httpx
 import yaml
 from pydantic import ValidationError
 
+from ingest.adapters.jsearch import API_URL, FIELDS, parse_record
+from ingest.adapters.jsearch import safe_url as safe_url
 from ingest.dedupe.exact import canonicalize_apply_url
 from ingest.main import build_jobs
-from ingest.models import RawJob
 from ingest.normalize.canonicalize import normalize_text
-
-API_URL = "https://api.openwebninja.com/jsearch/search-v2"
-FIELDS = ",".join(
-    [
-        "job_id",
-        "job_title",
-        "employer_name",
-        "job_city",
-        "job_state",
-        "job_country",
-        "job_is_remote",
-        "job_apply_link",
-        "job_google_link",
-        "apply_options",
-        "job_posted_at_datetime_utc",
-    ]
-)
-
-
-def safe_url(value: object) -> str | None:
-    if not isinstance(value, str):
-        return None
-    try:
-        parsed = urlsplit(value)
-        if (
-            parsed.scheme in ("http", "https")
-            and parsed.hostname
-            and parsed.username is None
-            and parsed.password is None
-        ):
-            return value
-    except ValueError:
-        pass
-    return None
-
-
-def parse_record(record: dict) -> tuple[RawJob, list[str]]:
-    """Keep minimal validated fields; ignore descriptions even if projection is ignored."""
-    external_id = record.get("job_id")
-    if not isinstance(external_id, str) or not external_id.strip():
-        raise ValueError("missing_identity")
-    options = record.get("apply_options") or []
-    if not isinstance(options, list):
-        raise ValueError("invalid_apply_options")
-    links = [
-        link
-        for option in options
-        if isinstance(option, dict)
-        if (link := safe_url(option.get("apply_link")))
-    ]
-    primary = safe_url(record.get("job_apply_link"))
-    direct = next(
-        (
-            safe_url(option.get("apply_link"))
-            for option in options
-            if isinstance(option, dict)
-            and option.get("is_direct") is True
-            and safe_url(option.get("apply_link"))
-        ),
-        None,
-    )
-    apply_url = direct or primary or next(iter(links), None)
-    if not apply_url:
-        raise ValueError("missing_apply_url")
-    if primary:
-        links.append(primary)
-    published = record.get("job_posted_at_datetime_utc")
-    try:
-        posted_at = datetime.fromisoformat(published) if isinstance(published, str) else None
-        if posted_at and (posted_at.tzinfo is None or posted_at > datetime.now(UTC)):
-            posted_at = None
-    except ValueError:
-        posted_at = None
-    location = [record.get(key) for key in ("job_city", "job_state", "job_country")]
-    if record.get("job_is_remote") is True:
-        location.insert(0, "Remote")
-    # Preserve explicit country evidence rather than assuming eligibility from the query.
-    location = ["Kenya" if part == "KE" else part for part in location]
-    return RawJob(
-        source_id="jsearch",
-        external_id=external_id,
-        title=record.get("job_title"),
-        company=record.get("employer_name"),
-        location=" · ".join(part for part in location if isinstance(part, str) and part),
-        source_url=safe_url(record.get("job_google_link")) or apply_url,
-        apply_url=apply_url,
-        published_at=posted_at,
-    ), sorted(set(links))
 
 
 def evaluate(config: dict, baseline: dict, client: httpx.Client, key: str) -> dict:

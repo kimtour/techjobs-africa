@@ -2,28 +2,29 @@ schema_version: 1
 
 sources:
   - id: linkedin
-    name: LinkedIn Jobs Search
-    enabled: false
-    discovery_url: "https://www.linkedin.com/jobs/search-results/?currentJobId=4468141996&keywords=software&origin=JOB_SEARCH_PAGE_JOB_FILTER&referralSearchId=77EhxrwAZOrZUZlMI13L%2BA%3D%3D&f_TPR=r604800"
-    method: no_supported_read_api
-    production_method: null
-    interval_hours: 3
-    timezone: null
+    name: LinkedIn via JSearch
+    enabled: true
+    supports_absence_expiry: false
+    discovery_url: "https://www.openwebninja.com/api/jsearch"
+    method: documented_jsearch_api
+    production_method: documented_jsearch_api
+    interval_hours: 24
+    timezone: UTC
     crawl:
-      max_pages: 0
-      max_requests_per_run: 0
+      max_pages: 2
+      max_requests_per_run: 2
       recent_days: 30
-      request_delay_ms: 0
-      timeout_seconds: 15
-      retry_delays_seconds: [5, 20, 60]
-      complete_when: not_applicable
+      request_delay_ms: 500
+      timeout_seconds: 25
+      retry_delays_seconds: []
+      complete_when: both_bounded_queries_succeeded
     closed_markers: []
     ttl_days: 30
     legal:
       robots_checked: false
       tos_checked: true
-      permission: denied
-      notes: "LinkedIn's User Agreement prohibits scraping, bots, and copying or distributing Service content without consent. Its Job Posting API is a partner posting API, not a general job-search read API. Disabled; reconsider only with a written LinkedIn agreement that permits this use."
+      permission: user_authorized_via_jsearch
+      notes: "User requested public LinkedIn-linked results via the configured JSearch API on 2026-10-01 after reviewing discovery results and usage-rights limitations. This does not establish a LinkedIn partnership or a provider redistribution license. No direct LinkedIn scraping or access-control bypass. Retain only minimal metadata and validated LinkedIn job links; never descriptions."
 
   - id: myjobmag
     name: MyJobMag Kenya
