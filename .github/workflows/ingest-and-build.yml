@@ -22,8 +22,8 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 25
     env:
-      DATA_DIR: ${{ runner.temp }}/techjobs-africa-data
-      CANDIDATE_DIR: ${{ runner.temp }}/techjobs-africa-candidate
+      DATA_DIR: /tmp/techjobs-africa-data
+      CANDIDATE_DIR: /tmp/techjobs-africa-candidate
     steps:
       - name: Check out application branch
         uses: actions/checkout@v4
@@ -129,12 +129,12 @@ jobs:
         with:
           name: fetch-audit-${{ github.run_id }}-${{ github.run_attempt }}
           path: |
-            ${{ runner.temp }}/techjobs-africa-candidate/state/last-run.json
-            ${{ runner.temp }}/techjobs-africa-candidate/state/health.json
-            ${{ runner.temp }}/techjobs-africa-candidate/state/fetch-summary.md
-            ${{ runner.temp }}/techjobs-africa-candidate/state/fetch-progress.json
-            ${{ runner.temp }}/techjobs-africa-candidate/state/publication-history/
-            ${{ runner.temp }}/techjobs-africa-candidate/state/request-history/
+            /tmp/techjobs-africa-candidate/state/last-run.json
+            /tmp/techjobs-africa-candidate/state/health.json
+            /tmp/techjobs-africa-candidate/state/fetch-summary.md
+            /tmp/techjobs-africa-candidate/state/fetch-progress.json
+            /tmp/techjobs-africa-candidate/state/publication-history/
+            /tmp/techjobs-africa-candidate/state/request-history/
           retention-days: 90
           if-no-files-found: warn
 
