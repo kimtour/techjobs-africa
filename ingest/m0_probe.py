@@ -27,12 +27,14 @@ HEADERS = {
     "Accept": "text/html,application/xhtml+xml,application/json,application/xml;q=0.9,*/*;q=0.8",
 }
 
+
 def load_sources() -> list[dict]:
     if not CONFIG_PATH.exists():
         raise FileNotFoundError(f"{CONFIG_PATH} is missing.")
 
     data = yaml.safe_load(CONFIG_PATH.read_text(encoding="utf-8")) or {}
     return data.get("sources", [])
+
 
 def robots_info(client: httpx.Client, target_url: str) -> dict:
     parsed = urlparse(target_url)
@@ -61,6 +63,7 @@ def robots_info(client: httpx.Client, target_url: str) -> dict:
 
     return result
 
+
 def classify_format(content_type: str, text_sample: str) -> str:
     ctype = (content_type or "").lower()
     sample = (text_sample or "").lstrip().lower()
@@ -72,6 +75,7 @@ def classify_format(content_type: str, text_sample: str) -> str:
     if "text/html" in ctype or "<html" in sample or "<!doctype html" in sample:
         return "html"
     return "unknown"
+
 
 def extract_clues(text: str) -> dict:
     lower = text.lower()
@@ -85,6 +89,7 @@ def extract_clues(text: str) -> dict:
         ),
         "has_job_schema": '"jobposting"' in lower or "jobposting" in lower,
     }
+
 
 def status_class(status_code: int | None, error: str | None) -> str:
     if error:
@@ -103,6 +108,7 @@ def status_class(status_code: int | None, error: str | None) -> str:
     if 200 <= status_code <= 399:
         return "ACCESSIBLE"
     return "HTTP_ERROR"
+
 
 def probe_source(client: httpx.Client, source: dict) -> dict:
     source_id = source["id"]
@@ -178,6 +184,7 @@ def probe_source(client: httpx.Client, source: dict) -> dict:
 
     return result
 
+
 def write_markdown(results: list[dict]) -> None:
     MARKDOWN_OUTPUT.parent.mkdir(parents=True, exist_ok=True)
 
@@ -242,6 +249,7 @@ def write_markdown(results: list[dict]) -> None:
 
     MARKDOWN_OUTPUT.write_text("\n".join(lines), encoding="utf-8")
 
+
 def main() -> int:
     sources = load_sources()
     results: list[dict] = []
@@ -273,6 +281,7 @@ def main() -> int:
     print(f"Markdown: {MARKDOWN_OUTPUT}")
     print(f"JSON: {JSON_OUTPUT}")
     return 0
+
 
 if __name__ == "__main__":
     raise SystemExit(main())

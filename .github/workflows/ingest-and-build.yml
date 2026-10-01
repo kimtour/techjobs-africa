@@ -3,15 +3,27 @@ name: Ingest and build static site
 on:
   workflow_dispatch:
   schedule:
-    - cron: "17 */3 * * *"
+    # EAT: 07:17, 09:17, 11:17, 13:17, 15:17, 17:17, 19:17, 21:17.
+    - cron: "17 4,6,8,10,12,14,16,18 * * *"
+    # EAT: 01:17. GitHub schedules are best-effort and may be delayed.
+    - cron: "17 22 * * *"
 
 permissions:
   contents: write
   deployments: write
 
+# All future workflows that write the data branch must share this group.
+concurrency:
+  group: techjobs-pipeline
+  cancel-in-progress: false
+
 jobs:
   ingest-and-build:
     runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      DATA_DIR: ${{ runner.temp }}/techjobs-africa-data
+      CANDIDATE_DIR: ${{ runner.temp }}/techjobs-africa-candidate
     steps:
       - name: Check out application branch
         uses: actions/checkout@v4
@@ -33,57 +45,107 @@ jobs:
           pytest -q
           ruff check ingest tests
 
-      - name: Check out private data branch
+      - name: Prepare isolated candidate from saved data
         run: |
           git fetch origin data
-          git worktree add "$RUNNER_TEMP/techjobs-africa-data" origin/data
+          git worktree add "$DATA_DIR" origin/data
+          mkdir -p "$CANDIDATE_DIR"
+          cp -R "$DATA_DIR/canonical" "$DATA_DIR/public" "$DATA_DIR/state" "$CANDIDATE_DIR/"
 
       - name: Ingest approved sources
-        run: python -m ingest.main --output-dir "$RUNNER_TEMP/techjobs-africa-data"
-
-      - name: Commit changed data state
-        run: |
-          data_dir="$RUNNER_TEMP/techjobs-africa-data"
-          git -C "$data_dir" config user.name "github-actions[bot]"
-          git -C "$data_dir" config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git -C "$data_dir" add canonical public state
-          if git -C "$data_dir" diff --cached --quiet; then
-            echo "No data changes to commit."
-          else
-            git -C "$data_dir" commit -m "Refresh approved-source job export"
-            git -C "$data_dir" push origin HEAD:data
-          fi
+        id: fetch
+        run: python -u -m ingest.main --output-dir "$CANDIDATE_DIR"
 
       - name: Set up Node
+        if: steps.fetch.outputs.publishable == 'true' && steps.fetch.outputs.public_changed == 'true'
         uses: actions/setup-node@v4
         with:
           node-version: "22"
           cache: npm
           cache-dependency-path: site/package-lock.json
 
-      - name: Build static site from private data
+      - name: Build and validate changed candidate
+        if: steps.fetch.outputs.publishable == 'true' && steps.fetch.outputs.public_changed == 'true'
         run: |
-          cp "$RUNNER_TEMP/techjobs-africa-data/public/jobs.json" site/src/data/jobs.json
+          cp "$CANDIDATE_DIR/public/jobs.json" site/src/data/jobs.json
           npm ci --prefix site
           npm test --prefix site
           npm run check --prefix site
           npm run build --prefix site
 
       - name: Upload deployable static site
+        if: steps.fetch.outputs.publishable == 'true' && steps.fetch.outputs.public_changed == 'true'
         uses: actions/upload-artifact@v4
         with:
           name: techjobs-africa-static-site
           path: site/dist
           if-no-files-found: error
 
-      - name: Deploy to Cloudflare Pages
+      - name: Check deployment configuration
+        if: steps.fetch.outputs.publishable == 'true' && steps.fetch.outputs.public_changed == 'true'
         env:
           CF_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CF_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-        if: env.CF_API_TOKEN != '' && env.CF_ACCOUNT_ID != '' && vars.CLOUDFLARE_PAGES_PROJECT != ''
+          CF_PROJECT: ${{ vars.CLOUDFLARE_PAGES_PROJECT }}
+        run: test -n "$CF_API_TOKEN" && test -n "$CF_ACCOUNT_ID" && test -n "$CF_PROJECT"
+
+      - name: Deploy to Cloudflare Pages
+        id: deploy
+        if: steps.fetch.outputs.publishable == 'true' && steps.fetch.outputs.public_changed == 'true'
         uses: cloudflare/wrangler-action@v4
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           command: pages deploy site/dist --project-name=${{ vars.CLOUDFLARE_PAGES_PROJECT }}
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Finalize safe data and record publication outcome
+        if: always() && steps.fetch.outcome != 'skipped'
+        env:
+          FETCH_OUTCOME: ${{ steps.fetch.outcome }}
+          PUBLISHABLE: ${{ steps.fetch.outputs.publishable }}
+          PUBLIC_CHANGED: ${{ steps.fetch.outputs.public_changed }}
+          DEPLOY_OUTCOME: ${{ steps.deploy.outcome }}
+          DEPLOY_URL: ${{ steps.deploy.outputs.deployment-url }}
+          DEPLOY_ID: ${{ steps.deploy.outputs.pages-deployment-id }}
+          WORKFLOW_STATUS: ${{ job.status }}
+        run: python -m ingest.finalize --data-dir "$DATA_DIR" --candidate-dir "$CANDIDATE_DIR"
+
+      - name: Commit fetch audit and finalized data
+        if: always() && steps.fetch.outcome != 'skipped'
+        run: |
+          if [ ! -d "$DATA_DIR/state" ]; then exit 0; fi
+          git -C "$DATA_DIR" config user.name "github-actions[bot]"
+          git -C "$DATA_DIR" config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git -C "$DATA_DIR" add canonical public state
+          if ! git -C "$DATA_DIR" diff --cached --quiet; then
+            git -C "$DATA_DIR" commit -m "Record fetch audit and safe job state"
+            git -C "$DATA_DIR" push origin HEAD:data
+          fi
+
+      - name: Upload fetch audit even on failure
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: fetch-audit-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            ${{ runner.temp }}/techjobs-africa-candidate/state/last-run.json
+            ${{ runner.temp }}/techjobs-africa-candidate/state/health.json
+            ${{ runner.temp }}/techjobs-africa-candidate/state/fetch-summary.md
+            ${{ runner.temp }}/techjobs-africa-candidate/state/fetch-progress.json
+            ${{ runner.temp }}/techjobs-africa-candidate/state/publication-history/
+            ${{ runner.temp }}/techjobs-africa-candidate/state/request-history/
+          retention-days: 90
+          if-no-files-found: warn
+
+      - name: Fail visibly when no safe fetch could be published
+        if: steps.fetch.outputs.publishable == 'false'
+        run: |
+          echo "::error::Fetch blocked by source failures or quality gates. See fetch audit."
+          exit 1
+
+      - name: Flag recurring source problems for attention
+        if: steps.fetch.outputs.publishable == 'true' && steps.fetch.outputs.needs_attention == 'true'
+        run: |
+          echo "::error::A source has failed or remained incomplete for at least two consecutive runs. Safe updates were retained; inspect fetch audit."
+          exit 1

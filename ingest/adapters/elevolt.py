@@ -72,6 +72,7 @@ class ElevoltAdapter:
         self.request_delay_seconds = request_delay_seconds
 
     def fetch(self) -> list[RawJob]:
+        self.crawl_complete = False
         jobs: list[RawJob] = []
         for page in range(1, self.max_pages + 1):
             if page > 1:
@@ -87,5 +88,6 @@ class ElevoltAdapter:
             meta = payload.get("meta")
             last_page = meta.get("last_page") if isinstance(meta, Mapping) else None
             if isinstance(last_page, int) and page >= last_page:
+                self.crawl_complete = True
                 break
         return jobs

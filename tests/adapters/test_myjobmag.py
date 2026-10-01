@@ -113,9 +113,7 @@ def test_fetch_keeps_last_thirty_days_and_stops_after_an_older_page() -> None:
         {
             root: _listing("Recent role", "recent", "Example", "Nairobi")
             + '<a href="/jobs-by-field/information-technology/2">2</a>',
-            page_two: _listing(
-                "Old role", "old", "Example", "Nairobi", posted_date="20 August"
-            )
+            page_two: _listing("Old role", "old", "Example", "Nairobi", posted_date="20 August")
             + '<a href="/jobs-by-field/information-technology/3">3</a>',
             page_three: _listing("Must not fetch", "never", "Example", "Nairobi"),
         }

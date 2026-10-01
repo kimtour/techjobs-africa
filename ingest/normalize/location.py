@@ -23,9 +23,7 @@ def _contains(value: str, phrase: str) -> bool:
     return bool(re.search(rf"(?<!\w){re.escape(phrase.casefold())}(?!\w)", value.casefold()))
 
 
-def normalize_location(
-    location: str | None, config_path: Path = CONFIG_PATH
-) -> LocationDecision:
+def normalize_location(location: str | None, config_path: Path = CONFIG_PATH) -> LocationDecision:
     """Map configured city/country phrases without guessing from unknown text."""
 
     if not location or not location.strip():

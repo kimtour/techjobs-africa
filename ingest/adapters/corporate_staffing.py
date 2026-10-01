@@ -130,6 +130,7 @@ class CorporateStaffingAdapter:
         self.request_delay_seconds = request_delay_seconds
 
     def fetch(self) -> list[RawJob]:
+        self.crawl_complete = False
         jobs: list[RawJob] = []
         page = 1
         while self.max_pages is None or page <= self.max_pages:
@@ -152,6 +153,7 @@ class CorporateStaffingAdapter:
             except ValueError:
                 has_next_page = len(payload) == 100
             if not has_next_page:
+                self.crawl_complete = True
                 break
             page += 1
         return jobs

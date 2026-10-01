@@ -58,6 +58,17 @@ class SourceHealth(BaseModel):
     pages_fetched: int = Field(ge=0)
     crawl_complete: bool
     safe_to_process_absences: bool
+    last_attempt_at: datetime | None = None
+    last_success_at: datetime | None = None
+    completed_at: datetime | None = None
+    duration_seconds: float = 0
+    requests_made: int = 0
+    retries: int = 0
+    http_status_counts: dict[str, int] = Field(default_factory=dict)
+    error_type: str | None = None
+    stop_reason: str | None = None
+    next_allowed_at: datetime | None = None
+    consecutive_failures: int = 0
 
 
 class CanonicalJob(BaseModel):

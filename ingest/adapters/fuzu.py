@@ -41,10 +41,7 @@ logger = logging.getLogger(__name__)
 SOURCE_ID = "fuzu"
 
 # Public IT/Software Development category for Kenya (country_id=1)
-LISTING_URL = (
-    "https://www.fuzu.com/job/computers-software-development"
-    "?filters%5Bcountry_id%5D=1"
-)
+LISTING_URL = "https://www.fuzu.com/job/computers-software-development?filters%5Bcountry_id%5D=1"
 _ALLOWED_HOST = "www.fuzu.com"
 _ALLOWED_PATH_PREFIX = "/job/computers-software-development"
 
@@ -122,9 +119,7 @@ def _listing_metadata(html: str) -> dict[str, tuple[date | None, str | None]]:
     return metadata
 
 
-def parse_fuzu_listing_page(
-    html: str, page_url: str
-) -> tuple[list[RawJob], str | None]:
+def parse_fuzu_listing_page(html: str, page_url: str) -> tuple[list[RawJob], str | None]:
     """Extract jobs from schema.org ItemList and the next-page URL.
 
     Returns a tuple of (jobs, next_page_url).  No descriptions, salary, or
@@ -157,8 +152,8 @@ def parse_fuzu_listing_page(
                     title=title[:300],
                     company=company,
                     location=None,
-                    source_url=url,   # type: ignore[arg-type]
-                    apply_url=url,    # type: ignore[arg-type]
+                    source_url=url,  # type: ignore[arg-type]
+                    apply_url=url,  # type: ignore[arg-type]
                     published_date=published_date,
                 )
             )
@@ -198,6 +193,7 @@ class FuzuAdapter:
 
     def fetch(self) -> list[RawJob]:
         """Paginate through Fuzu's listing pages and return all jobs found."""
+        self.crawl_complete = False
         jobs_by_id: dict[str, RawJob] = {}
         page_url: str | None = self.listing_url
         visited: set[str] = set()
@@ -212,15 +208,8 @@ class FuzuAdapter:
                 sleep(self.request_delay_seconds)
 
             logger.debug("fuzu: fetching %s", page_url)
-            try:
-                response = self._session.get(page_url, timeout=30)
-                response.raise_for_status()
-            except requests.exceptions.ReadTimeout:
-                # CF rate-limits on rapid successive requests; return what we have
-                logger.warning(
-                    "fuzu: read timeout on %s -- stopping pagination", page_url
-                )
-                break
+            response = self._session.get(page_url, timeout=30)
+            response.raise_for_status()
 
             visited.add(page_url)
             pages_fetched += 1
@@ -244,4 +233,5 @@ class FuzuAdapter:
             len(jobs_by_id),
             pages_fetched,
         )
+        self.crawl_complete = page_url is None
         return list(jobs_by_id.values())

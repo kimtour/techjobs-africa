@@ -82,14 +82,12 @@ def canonicalize_raw_job(
     location = normalize_location(location_text)
     if not any((location.city, location.country, location.workplace_type)):
         location = normalize_location(SOURCE_COUNTRY_FALLBACKS.get(raw.source_id))
-    eligibility_location = " ".join(
-        part for part in (raw.location, location.city, location.country) if part
-    ) or None
+    eligibility_location = (
+        " ".join(part for part in (raw.location, location.city, location.country) if part) or None
+    )
     eligibility = classify_eligibility(location=eligibility_location, title=raw.title)
     resolved_posting_company = posting_company or raw.company
-    resolved_hiring_company = hiring_company or (
-        raw.company if is_agency_posting else None
-    )
+    resolved_hiring_company = hiring_company or (raw.company if is_agency_posting else None)
 
     return CanonicalJob(
         job_id=f"{raw.source_id}:{raw.external_id}",

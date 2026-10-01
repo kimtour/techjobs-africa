@@ -15,5 +15,8 @@ def test_parses_minimum_elevolt_listing_metadata() -> None:
     assert jobs[0].title == "Principal Software Developer"
     assert jobs[0].company == "BRITAM"
     assert jobs[0].location == "Nairobi, Kenya"
-    assert str(jobs[0].apply_url) == "https://jobs.elevolt.co.ke/job/principal-software-developer-at-britam"
+    assert (
+        str(jobs[0].apply_url)
+        == "https://jobs.elevolt.co.ke/job/principal-software-developer-at-britam"
+    )
     assert "description" not in jobs[0].model_dump()

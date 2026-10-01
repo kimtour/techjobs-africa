@@ -48,3 +48,6 @@ credentials.json
 service-account*.json
 
 data_branch/
+
+# Personal Claude Code proxy configuration
+.claude/settings.local.json

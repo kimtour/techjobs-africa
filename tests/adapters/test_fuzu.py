@@ -29,11 +29,29 @@ def test_listing_page_uses_fuzu_campaign_start_as_published_date() -> None:
 
 
 def test_listing_page_omits_date_when_fuzu_does_not_publish_one() -> None:
-    html = '''<script type="application/ld+json">{
+    html = """<script type="application/ld+json">{
       "@type": "ItemList",
       "itemListElement": [{"name": "Developer", "url": "https://www.fuzu.com/kenya/jobs/developer"}]
-    }</script>'''
+    }</script>"""
 
-    jobs, _ = parse_fuzu_listing_page(html, "https://www.fuzu.com/job/computers-software-development")
+    jobs, _ = parse_fuzu_listing_page(
+        html, "https://www.fuzu.com/job/computers-software-development"
+    )
 
     assert jobs[0].published_date is None
+
+
+def test_timeout_is_not_reported_as_a_complete_crawl():
+    import pytest
+    import requests
+
+    from ingest.adapters.fuzu import FuzuAdapter
+
+    class TimedOutSession:
+        def get(self, *args, **kwargs):
+            raise requests.exceptions.ReadTimeout()
+
+    adapter = FuzuAdapter(session=TimedOutSession())
+    with pytest.raises(requests.exceptions.ReadTimeout):
+        adapter.fetch()
+    assert adapter.crawl_complete is False

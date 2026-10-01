@@ -193,9 +193,7 @@ def _listing_day(value: str | None, today: date | None = None) -> date | None:
     normalized = " ".join(value.split())
     for fmt in ("%d %B", "%d %b"):
         try:
-            parsed = datetime.strptime(
-                f"{normalized} {reference_day.year}", f"{fmt} %Y"
-            ).date()
+            parsed = datetime.strptime(f"{normalized} {reference_day.year}", f"{fmt} %Y").date()
         except ValueError:
             continue
         return parsed.replace(year=parsed.year - 1) if parsed > reference_day else parsed
@@ -235,6 +233,7 @@ class MyJobMagAdapter:
     def fetch(self) -> list[RawJob]:
         """Follow only pagination links published by the IT category pages."""
 
+        self.crawl_complete = False
         pending = [self.listing_url]
         visited: set[str] = set()
         jobs_by_id: dict[str, RawJob] = {}
@@ -258,6 +257,8 @@ class MyJobMagAdapter:
                 jobs_by_id[job.external_id or str(job.source_url)] = job
             page_days = [listing_day for _, listing_day in dated_jobs if listing_day is not None]
             if page_days and max(page_days) < cutoff:
+                self.crawl_complete = True
                 break
             pending.extend(sorted(parser.page_links - visited - set(pending)))
+        self.crawl_complete = self.crawl_complete or not pending
         return list(jobs_by_id.values())

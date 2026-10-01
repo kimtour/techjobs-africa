@@ -205,6 +205,7 @@ class BrighterMondayAdapter:
         listing_urls: tuple[str, ...] = LISTING_URLS,
         request_delay_seconds: float = 1.5,
         today: date | None = None,
+        max_pages: int = 40,
     ) -> None:
         self._client = client or httpx.Client(
             headers={"Accept": "text/html", "User-Agent": "TechJobsAfricaBot/0.1"}
@@ -212,14 +213,18 @@ class BrighterMondayAdapter:
         self.listing_urls = listing_urls
         self.request_delay_seconds = request_delay_seconds
         self.today = today
+        self.max_pages = max_pages
 
     def fetch(self) -> list[RawJob]:
+        self.crawl_complete = False
         jobs_by_id: dict[str, RawJob] = {}
         visited: set[str] = set()
         request_count = 0
         for listing_url in self.listing_urls:
             page_url: str | None = listing_url
             while page_url and page_url not in visited:
+                if request_count >= self.max_pages:
+                    return list(jobs_by_id.values())
                 if request_count:
                     sleep(self.request_delay_seconds)
                 response = self._client.get(page_url, timeout=15.0)
@@ -231,5 +236,8 @@ class BrighterMondayAdapter:
                 request_count += 1
                 for job in jobs:
                     jobs_by_id[job.external_id or str(job.source_url)] = job
+                if next_page in visited:
+                    return list(jobs_by_id.values())
                 page_url = next_page
+        self.crawl_complete = True
         return list(jobs_by_id.values())

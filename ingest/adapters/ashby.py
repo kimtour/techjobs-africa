@@ -76,9 +76,12 @@ class AshbyAdapter:
         return API_URL_TEMPLATE.format(board=self.board)
 
     def fetch(self) -> list[RawJob]:
+        self.crawl_complete = False
         response = self._client.get(self.api_url, timeout=15.0)
         response.raise_for_status()
         payload = response.json()
         if not isinstance(payload, Mapping):
             raise ValueError("Ashby response must be a JSON object.")
-        return parse_ashby_jobs(payload)
+        jobs = parse_ashby_jobs(payload)
+        self.crawl_complete = True
+        return jobs

@@ -32,14 +32,14 @@ sources:
     method: public_html_pagination
     production_method: public_html_pagination
     feed_url: "https://www.myjobmag.co.ke/jobsxml_by_categories.xml"
-    interval_hours: 3
+    interval_hours: 2
     timezone: Africa/Nairobi
     crawl:
-      max_pages: 0
-      max_requests_per_run: 0
+      max_pages: 40
+      max_requests_per_run: 60
       request_delay_ms: 1500
       timeout_seconds: 15
-      retry_delays_seconds: [5, 20, 60]
+      retry_delays_seconds: [5, 20]
       complete_when: unknown
     closed_markers: []
     ttl_days: 30
@@ -56,14 +56,14 @@ sources:
     method: public_wordpress_json
     production_method: public_wordpress_json
     api_url: "https://www.corporatestaffing.co.ke/wp-json/wp/v2/job?categories=10"
-    interval_hours: 3
+    interval_hours: 2
     timezone: Africa/Nairobi
     crawl:
-      max_pages: 0
-      max_requests_per_run: 25
+      max_pages: 25
+      max_requests_per_run: 40
       request_delay_ms: 1500
       timeout_seconds: 15
-      retry_delays_seconds: [5, 20, 60]
+      retry_delays_seconds: [5, 20]
       complete_when: unknown
     closed_markers: []
     ttl_days: 30
@@ -79,14 +79,14 @@ sources:
     discovery_url: "https://www.brightermonday.co.ke/jobs/engineering-technology"
     method: public_html_pagination
     production_method: public_html_pagination
-    interval_hours: 3
+    interval_hours: 2
     timezone: Africa/Nairobi
     crawl:
-      max_pages: 0
-      max_requests_per_run: 0
+      max_pages: 40
+      max_requests_per_run: 60
       request_delay_ms: 1500
       timeout_seconds: 15
-      retry_delays_seconds: [5, 20, 60]
+      retry_delays_seconds: [5, 20]
       complete_when: published_next_link_absent
     closed_markers: []
     ttl_days: 30
@@ -102,14 +102,14 @@ sources:
     discovery_url: "https://www.fuzu.com/job/computers-software-development?filters%5Bcountry_id%5D=1"
     method: public_html_pagination
     production_method: public_html_pagination
-    interval_hours: 3
+    interval_hours: 2
     timezone: Africa/Nairobi
     crawl:
-      max_pages: 0
-      max_requests_per_run: 0
+      max_pages: 30
+      max_requests_per_run: 45
       request_delay_ms: 2000
       timeout_seconds: 30
-      retry_delays_seconds: [10, 30, 90]
+      retry_delays_seconds: [5, 20]
       complete_when: published_next_link_absent
     closed_markers: []
     ttl_days: 30
@@ -126,14 +126,14 @@ sources:
     method: public_wordpress_json
     production_method: public_wordpress_json
     api_url: "https://openedcareer.com/wp-json/wp/v2/job_listing"
-    interval_hours: 3
+    interval_hours: 2
     timezone: null
     crawl:
-      max_pages: 0
-      max_requests_per_run: 5
+      max_pages: 10
+      max_requests_per_run: 20
       request_delay_ms: 1500
       timeout_seconds: 15
-      retry_delays_seconds: [5, 20, 60]
+      retry_delays_seconds: [5, 20]
       complete_when: unknown
     closed_markers: []
     ttl_days: 30
@@ -150,14 +150,14 @@ sources:
     method: public_json
     production_method: public_json
     api_url: "https://api.elevolt.co.ke/api/jobposts/filter"
-    interval_hours: 3
+    interval_hours: 2
     timezone: Africa/Nairobi
     crawl:
-      max_pages: 5
-      max_requests_per_run: 10
+      max_pages: 10
+      max_requests_per_run: 20
       request_delay_ms: 1500
       timeout_seconds: 15
-      retry_delays_seconds: [5, 20, 60]
+      retry_delays_seconds: [5, 20]
       complete_when: unknown
     closed_markers: []
     ttl_days: 30
@@ -191,20 +191,21 @@ sources:
       notes: "Source owner approved attributed access. The generic search remains a discovery aid because it redirects to sign-in; production ingestion requires verified company-specific Job Board API tokens."
 
   - id: ashby
+    supports_absence_expiry: true
     name: TalentSafari / Ashby
     enabled: true
     discovery_url: "https://jobs.ashbyhq.com/talentsafari"
     method: official_public_api
     production_method: official_public_api
     api_url: "https://api.ashbyhq.com/posting-api/job-board/talentsafari"
-    interval_hours: 3
+    interval_hours: 2
     timezone: null
     crawl:
       max_pages: 1
-      max_requests_per_run: 10
+      max_requests_per_run: 3
       request_delay_ms: 500
       timeout_seconds: 15
-      retry_delays_seconds: [5, 20, 60]
+      retry_delays_seconds: [5, 20]
       complete_when: unknown
     closed_markers: []
     ttl_days: 30

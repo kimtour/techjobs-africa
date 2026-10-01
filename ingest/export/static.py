@@ -16,7 +16,9 @@ def _sort_key(job: CanonicalJob) -> tuple[str, str]:
     published = (
         job.published_at.isoformat()
         if job.published_at
-        else job.published_date.isoformat() if job.published_date else ""
+        else job.published_date.isoformat()
+        if job.published_date
+        else ""
     )
     return (published, job.job_id)
 

@@ -4,8 +4,11 @@ from __future__ import annotations
 
 import argparse
 import json
+import time
 from collections.abc import Callable, Mapping, Sequence
+from datetime import UTC, datetime
 from pathlib import Path
+from statistics import median
 from tempfile import NamedTemporaryFile
 from urllib.parse import urlparse
 
@@ -18,10 +21,13 @@ from ingest.adapters.elevolt import ElevoltAdapter
 from ingest.adapters.fuzu import FuzuAdapter
 from ingest.adapters.myjobmag import MyJobMagAdapter
 from ingest.adapters.openedcareer import OpenedCareerAdapter
+from ingest.audit import public_hash, read_json, record_run, run_identity
 from ingest.classify.tech import has_non_technical_exclusion
 from ingest.dedupe.exact import deduplicate_exact
+from ingest.expiry.absence import JobOccurrence, reconcile_occurrences
 from ingest.export.static import build_public_files
-from ingest.models import CanonicalJob, RawJob, SourceHealth, SourceHealthStatus
+from ingest.fetch import ObservedClient
+from ingest.models import CanonicalJob, JobStatus, RawJob, SourceHealth, SourceHealthStatus
 from ingest.normalize.canonicalize import canonicalize_raw_job
 
 CONFIG_PATH = Path("config/sources.yaml")
@@ -85,47 +91,293 @@ def run_ingestion(
 ) -> dict[str, SourceHealth]:
     """Fetch each source independently and write safe static files on success."""
 
+    started = datetime.now(UTC)
+    run_id, workflow_url = run_identity()
     selected_ids = list(source_ids or approved_source_ids())
-    raw_jobs: list[RawJob] = []
+    source_config = {
+        item["id"]: item for item in yaml.safe_load(CONFIG_PATH.read_text())["sources"]
+    }
+    gates = yaml.safe_load(Path("config/quality_gates.yaml").read_text())["quality_gates"]
+    previous_jobs = [
+        CanonicalJob.model_validate(job)
+        for job in read_json(output_dir / "canonical/jobs.json", {"jobs": []})["jobs"]
+    ]
+    previous_health = read_json(output_dir / "state/health.json", {"sources": {}})["sources"]
+    baselines = read_json(output_dir / "state/source-baselines.json", {})
+    occurrences = [
+        JobOccurrence.model_validate(item)
+        for item in read_json(output_dir / "state/occurrences.json", {"occurrences": []})[
+            "occurrences"
+        ]
+    ]
+    jobs_by_id = {job.job_id: job for job in previous_jobs}
     health: dict[str, SourceHealth] = {}
+    rows: dict[str, dict] = {}
+    warnings: list[str] = []
     for source_id in selected_ids:
-        adapter_factory = adapters.get(source_id)
-        if adapter_factory is None:
+        factory = adapters.get(source_id)
+        if factory is None:
             raise ValueError(f"No adapter is registered for {source_id!r}.")
+        attempt_at = datetime.now(UTC)
+        _write_json(
+            output_dir / "state/fetch-progress.json",
+            {
+                "run_id": run_id,
+                "source_id": source_id,
+                "started_at": attempt_at.isoformat(),
+                "status": "RUNNING",
+            },
+        )
+        print(f"Fetch started: {source_id} at {attempt_at.isoformat()}", flush=True)
+        tick = time.monotonic()
+        old = previous_health.get(source_id, {})
+        previous_for_source = {
+            job.job_id: job
+            for job in previous_jobs
+            if source_id in job.sources and job.status == JobStatus.ACTIVE
+        }
+        observer = None
+        fetched = []
+        source_jobs = []
+        complete = False
+        error_type = None
+        status = SourceHealthStatus.FAILED
+        reason = "fetch_failed"
+        next_allowed = old.get("next_allowed_at")
         try:
-            fetched = adapter_factory().fetch()
-        except Exception:  # Source failures are isolated and recorded below.
-            health[source_id] = SourceHealth(
-                source_id=source_id,
-                status=SourceHealthStatus.FAILED,
-                records_found=0,
-                pages_fetched=0,
-                crawl_complete=False,
-                safe_to_process_absences=False,
-            )
-            continue
-        raw_jobs.extend(fetched)
+            if next_allowed and datetime.fromisoformat(next_allowed) > attempt_at:
+                status = SourceHealthStatus.BLOCKED
+                reason = "retry_after_cooldown"
+            else:
+                next_allowed = None
+                adapter = factory()
+                policy = source_config[source_id]["crawl"]
+                if hasattr(adapter, "max_pages"):
+                    adapter.max_pages = policy["max_pages"]
+                if hasattr(adapter, "request_delay_seconds"):
+                    adapter.request_delay_seconds = policy["request_delay_ms"] / 1000
+                for attribute in ("_client", "_session"):
+                    if hasattr(adapter, attribute):
+
+                        def record_request(event):
+                            path = (
+                                output_dir / "state" / "request-history" / f"{started.date()}.jsonl"
+                            )
+                            path.parent.mkdir(parents=True, exist_ok=True)
+                            with path.open("a", encoding="utf-8") as handle:
+                                handle.write(
+                                    json.dumps(
+                                        {
+                                            "run_id": run_id,
+                                            "source_id": source_id,
+                                            **event,
+                                        },
+                                        sort_keys=True,
+                                    )
+                                    + "\n"
+                                )
+
+                        observer = ObservedClient(
+                            getattr(adapter, attribute),
+                            policy,
+                            on_event=record_request,
+                        )
+                        setattr(adapter, attribute, observer)
+                        break
+                fetched = adapter.fetch()
+                if any(raw.source_id != source_id for raw in fetched):
+                    raise ValueError("adapter returned a foreign source")
+                source_jobs = build_jobs(fetched)
+                complete = getattr(adapter, "crawl_complete", False)
+                status = SourceHealthStatus.SUCCESS if complete else SourceHealthStatus.PARTIAL
+                reason = None if complete else "pagination_incomplete"
+                counts = baselines.get(source_id, [])
+                reference = median(counts[-7:]) if counts else old.get("records_found", 0)
+                raw_drop = reference and len(fetched) < reference * (
+                    1 - gates["max_source_job_drop_percent"] / 100
+                )
+                tech_drop = previous_for_source and len(source_jobs) < len(previous_for_source) * (
+                    1 - gates["max_source_job_drop_percent"] / 100
+                )
+                if not fetched or raw_drop or tech_drop:
+                    status = SourceHealthStatus.PARTIAL
+                    reason = "suspicious_count_drop" if fetched else "unexpected_empty_result"
+        except Exception as exc:  # Never log exception text: it may contain bodies or secrets.
+            error_type = type(exc).__name__
+            if error_type == "FetchBudgetExceeded":
+                reason = "request_budget_exhausted"
+            response = getattr(exc, "response", None)
+            code = getattr(response, "status_code", None)
+            if code in (401, 403, 429):
+                status = SourceHealthStatus.BLOCKED
+                reason = "rate_limited" if code == 429 else "access_blocked"
+        finally:
+            if observer is not None:
+                next_allowed = observer.next_allowed_at
+                closer = getattr(observer.client, "close", None)
+                if closer:
+                    closer()
+        current = {job.job_id: job for job in source_jobs}
+        # Observed records can refresh; missing records need separate absence evidence.
+        if status == SourceHealthStatus.SUCCESS:
+            jobs_by_id.update(current)
+            baselines[source_id] = [*baselines.get(source_id, []), len(fetched)][-10:]
+        elif reason == "pagination_incomplete":
+            jobs_by_id.update(current)
+        last_success = (
+            datetime.now(UTC)
+            if status == SourceHealthStatus.SUCCESS
+            else old.get("last_success_at")
+        )
         health[source_id] = SourceHealth(
             source_id=source_id,
-            status=SourceHealthStatus.SUCCESS,
+            status=status,
             records_found=len(fetched),
-            pages_fetched=1,
-            crawl_complete=True,
-            safe_to_process_absences=True,
+            pages_fetched=observer.pages_fetched if observer else 0,
+            crawl_complete=complete,
+            safe_to_process_absences=(
+                status == SourceHealthStatus.SUCCESS
+                and complete
+                and source_config[source_id].get("supports_absence_expiry", False)
+                and any(item.source_id == source_id for item in occurrences)
+            ),
+            last_attempt_at=(
+                old.get("last_attempt_at") if reason == "retry_after_cooldown" else attempt_at
+            ),
+            last_success_at=last_success,
+            completed_at=datetime.now(UTC),
+            duration_seconds=round(time.monotonic() - tick, 3),
+            requests_made=observer.requests if observer else 0,
+            retries=observer.retries if observer else 0,
+            http_status_counts=dict(observer.status_codes) if observer else {},
+            error_type=error_type,
+            stop_reason=reason,
+            next_allowed_at=next_allowed,
+            consecutive_failures=(
+                0
+                if status == SourceHealthStatus.SUCCESS
+                else old.get("consecutive_failures", 0) + 1
+            ),
         )
-
-    jobs = build_jobs(raw_jobs)
-    for filename, content in build_public_files(jobs).items():
-        _write_json(output_dir / "public" / filename, content)
-    _write_json(
-        output_dir / "canonical" / "jobs.json",
-        {"schema_version": 1, "jobs": [job.model_dump(mode="json") for job in jobs]},
-    )
-    _write_json(
-        output_dir / "state" / "health.json",
+        if status == SourceHealthStatus.SUCCESS or reason == "pagination_incomplete":
+            # Seed pre-audit records on migration so the first run cannot close them.
+            if not any(item.source_id == source_id for item in occurrences):
+                occurrences = reconcile_occurrences(
+                    occurrences,
+                    list(previous_for_source.values()),
+                    health[source_id],
+                    observed_at=attempt_at,
+                    closure_threshold=3,
+                )
+            occurrences = reconcile_occurrences(
+                occurrences,
+                source_jobs,
+                health[source_id],
+                observed_at=attempt_at,
+                closure_threshold=3,
+            )
+            for occurrence in occurrences:
+                if occurrence.source_id == source_id and not occurrence.active:
+                    if occurrence.job_id in jobs_by_id:
+                        jobs_by_id[occurrence.job_id] = jobs_by_id[occurrence.job_id].model_copy(
+                            update={"status": JobStatus.EXPIRED}
+                        )
+        rows[source_id] = {
+            "health": health[source_id].model_dump(mode="json"),
+            "technical_jobs": len(source_jobs),
+            "new_jobs": len(current.keys() - previous_for_source.keys()),
+            "updated_jobs": sum(
+                current[key] != previous_for_source[key]
+                for key in current.keys() & previous_for_source.keys()
+            ),
+            "missing_jobs": len(previous_for_source.keys() - current.keys()),
+            "retained_jobs": len(previous_for_source)
+            if status != SourceHealthStatus.SUCCESS
+            else 0,
+            "requests": observer.events if observer else [],
+            "hours_since_success": (
+                round(
+                    (datetime.now(UTC) - health[source_id].last_success_at).total_seconds() / 3600,
+                    2,
+                )
+                if health[source_id].last_success_at
+                else None
+            ),
+        }
+        if status != SourceHealthStatus.SUCCESS:
+            warnings.append(f"{source_id}: {status.value} ({reason}); previous listings retained.")
+        # Persist each completed source so a later interruption leaves useful evidence.
+        _write_json(
+            output_dir / "state/health.json",
+            {
+                "schema_version": 1,
+                "sources": {
+                    **previous_health,
+                    **{key: value.model_dump(mode="json") for key, value in health.items()},
+                },
+            },
+        )
+    jobs = list(jobs_by_id.values())
+    active_jobs = [job for job in jobs if job.status == JobStatus.ACTIVE]
+    previous_active = [job for job in previous_jobs if job.status == JobStatus.ACTIVE]
+    publishable = any(item.status == SourceHealthStatus.SUCCESS for item in health.values())
+    if previous_active and len(active_jobs) < len(previous_active) * (
+        1 - gates["max_total_job_drop_percent"] / 100
+    ):
+        publishable = False
+        warnings.append("Total listing drop exceeded quality gate; publication blocked.")
+    if not publishable:
+        jobs = previous_jobs
+        active_jobs = previous_active
+        warnings.append("No safe candidate to publish; last-known-good output retained.")
+    public_files = build_public_files(active_jobs)
+    previous_public = {
+        filename: read_json(output_dir / "public" / filename, None) for filename in public_files
+    }
+    changed = public_hash(public_files) != public_hash(previous_public)
+    if publishable:
+        for filename, content in public_files.items():
+            _write_json(output_dir / "public" / filename, content)
+        _write_json(
+            output_dir / "canonical/jobs.json",
+            {
+                "schema_version": 1,
+                "jobs": [job.model_dump(mode="json") for job in jobs],
+            },
+        )
+    if publishable:
+        _write_json(
+            output_dir / "state/occurrences.json",
+            {
+                "schema_version": 1,
+                "occurrences": [item.model_dump(mode="json") for item in occurrences],
+            },
+        )
+    _write_json(output_dir / "state/source-baselines.json", baselines)
+    record_run(
+        output_dir,
         {
             "schema_version": 1,
-            "sources": {key: value.model_dump() for key, value in health.items()},
+            "run_id": run_id,
+            "workflow_url": workflow_url,
+            "started_at": started.isoformat(),
+            "completed_at": datetime.now(UTC).isoformat(),
+            "outcome": "BLOCKED" if not publishable else "DEGRADED" if warnings else "SUCCESS",
+            "publishable": publishable,
+            "needs_attention": any(item.consecutive_failures >= 2 for item in health.values()),
+            "public_changed": changed and publishable,
+            "public_hash": public_hash(public_files),
+            "sources": rows,
+            "warnings": warnings,
+        },
+        _write_json,
+    )
+    _write_json(
+        output_dir / "state/fetch-progress.json",
+        {
+            "run_id": run_id,
+            "status": "COMPLETED",
+            "completed_at": datetime.now(UTC).isoformat(),
         },
     )
     return health

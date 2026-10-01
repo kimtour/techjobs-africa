@@ -63,9 +63,7 @@ def parse_openedcareer_jobs(payload: Sequence[Mapping[str, Any]]) -> list[RawJob
         link = record.get("link")
         title_value = record.get("title")
         title = (
-            _plain_text(title_value.get("rendered"))
-            if isinstance(title_value, Mapping)
-            else None
+            _plain_text(title_value.get("rendered")) if isinstance(title_value, Mapping) else None
         )
         if not isinstance(external_id, int) or not isinstance(link, str) or not title:
             continue
@@ -104,6 +102,7 @@ class OpenedCareerAdapter:
         self.request_delay_seconds = request_delay_seconds
 
     def fetch(self) -> list[RawJob]:
+        self.crawl_complete = False
         jobs: list[RawJob] = []
         page = 1
         while self.max_pages is None or page <= self.max_pages:
@@ -129,6 +128,7 @@ class OpenedCareerAdapter:
             except ValueError:
                 has_next_page = len(payload) == 100
             if not has_next_page:
+                self.crawl_complete = True
                 break
             page += 1
         return jobs
