@@ -183,6 +183,8 @@ def run_ingestion(
                 policy = source_config[source_id]["crawl"]
                 if hasattr(adapter, "max_pages"):
                     adapter.max_pages = policy["max_pages"]
+                if hasattr(adapter, "target_jobs"):
+                    adapter.target_jobs = policy.get("target_jobs", adapter.target_jobs)
                 if hasattr(adapter, "request_delay_seconds"):
                     adapter.request_delay_seconds = policy["request_delay_ms"] / 1000
                 for attribute in ("_client", "_session"):

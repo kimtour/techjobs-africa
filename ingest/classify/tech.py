@@ -19,6 +19,9 @@ class CategoryDecision(BaseModel):
 
 def _matches(title: str, keywords: list[str]) -> bool:
     normalized = title.casefold()
+    # Seniority may appear between the domain and function (ICT Senior Analyst,
+    # Cloud Lead Engineer). It changes rank, not the technical function.
+    normalized = re.sub(r"\b(senior|junior|principal|lead|sr\.?|jr\.?)\s+", "", normalized)
     return any(
         re.search(rf"(?<!\w){re.escape(keyword.casefold())}(?!\w)", normalized)
         for keyword in keywords

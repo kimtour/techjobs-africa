@@ -34,3 +34,16 @@ def test_sales_role_with_generic_ict_term_is_excluded():
 
 def test_specific_ict_role_is_classified_as_it_operations():
     assert classify_technology_title("ICT Officer II").category == "IT Operations"
+
+
+def test_domain_function_survives_seniority_and_new_title_variants():
+    examples = {
+        "Infrastructure & Networking SME (GCP / Apigee)": "Networking",
+        "Infrastructure and Networking SME": "Networking",
+        "Data Insights": "Data Science",
+        "ICT Senior Analyst": "IT Operations",
+        "ICT Lead Analyst - Data and Business Intelligence": "Data Science",
+        "Cloud Principal Engineer": "Cloud",
+    }
+    for title, category in examples.items():
+        assert classify_technology_title(title).category == category

@@ -32,7 +32,8 @@ permission; no written authorization was supplied. This instruction supersedes
 this source's general no-scraping restriction for the requested public category
 and bounded category pagination. Internal APIs and authentication remain unused.
 
-Production fetches up to ten public category pages daily (an explicit manual
+Production fetches public category pages daily until 125 qualifying jobs are
+found, with a ceiling of 150 pages and 700 requests (an explicit manual
 `source=bebee` refresh bypasses the daily interval), then fetches details
 only for titles matching the technical taxonomy with additional source-specific exclusions
 for recruitment, sales, and generic quality-assurance roles lacking software/test
@@ -46,8 +47,20 @@ Listings are attributed to beBee inside Other/Linkedin and All Jobs. They are
 not assigned LinkedIn IDs or claimed to originate from LinkedIn. Existing JSearch
 LinkedIn listings retain their source labels and share the fourth feed.
 
-The existing two-result LinkedIn feed is a bounded JSearch sample: two first-page
+The original two-result LinkedIn feed is a bounded JSearch sample: two first-page
 queries (software engineer and data engineer), last-month window, explicit Kenya
 metadata, and validated LinkedIn application URLs. It is not an exhaustive count
 of LinkedIn technology vacancies in Kenya. Broader role queries and documented
 pagination are separate ways to improve JSearch coverage within the API budget.
+
+## Coverage correction, 2026-10-01
+
+The user identified Infrastructure & Networking SME (GCP / Apigee), Data Insights,
+and ICT Senior Analyst as false negatives and requested at least 100 beBee jobs.
+Added explicit networking and data title variants to the shared taxonomy and
+allowed seniority words between a domain and function. Recruitment, sales, and
+non-software QA exclusions remain in effect. The provided Abacus detail has a
+JobPosting country of KE; Data Insights lists "London Central, Nakuru" with KE.
+These source-provided fields are evidence, not independent verification of the
+employer's true location. The ingestion retains minimal metadata and never
+counts foreign/missing country records to meet a numeric target.

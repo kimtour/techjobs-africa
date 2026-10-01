@@ -36,8 +36,9 @@ sources:
     interval_hours: 24
     timezone: UTC
     crawl:
-      max_pages: 10
-      max_requests_per_run: 160
+      max_pages: 150
+      target_jobs: 125
+      max_requests_per_run: 700
       request_delay_ms: 1500
       timeout_seconds: 25
       retry_delays_seconds: []

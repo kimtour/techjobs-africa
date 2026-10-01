@@ -127,3 +127,35 @@ def test_saved_nontechnical_bebee_records_removed_without_touching_other_sources
     run_ingestion(tmp_path, source_ids=["bebee"], adapters={"bebee": Adapter})
     jobs = json.loads((tmp_path / "public/jobs.json").read_text())["jobs"]
     assert {job["job_id"] for job in jobs} == {"bebee:fj-1234", "myjobmag:keep"}
+
+
+@pytest.mark.parametrize(
+    "title",
+    [
+        "Infrastructure & Networking SME (GCP / Apigee)",
+        "Data Insights",
+        "ICT Senior Analyst",
+    ],
+)
+def test_omitted_technical_variants_reach_canonical_export(title):
+    row = parse_job(metadata(title=title), URL)
+    assert row is not None
+    assert len(build_jobs([row])) == 1
+    assert listing_links(f'<h3><a href="{URL}">{title}</a></h3>') == [URL]
+
+
+def test_target_stops_after_enough_valid_jobs_without_fetching_more_pages():
+    calls = []
+
+    def handler(request):
+        calls.append(str(request.url))
+        if request.url.path.endswith("technology"):
+            return httpx.Response(200, text=f'<h3><a href="{URL}">Data Scientist</a></h3>')
+        return httpx.Response(200, text=metadata())
+
+    adapter = BeBeeAdapter(httpx.Client(transport=httpx.MockTransport(handler)))
+    adapter.max_pages = 150
+    adapter.target_jobs = 1
+    assert len(adapter.fetch()) == 1
+    assert len(calls) == 2
+    assert adapter.crawl_complete

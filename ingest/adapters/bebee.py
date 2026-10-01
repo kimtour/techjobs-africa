@@ -152,7 +152,8 @@ class BeBeeAdapter:
 
     def __init__(self, client: httpx.Client | None = None):
         self._client = client or httpx.Client(headers={"User-Agent": "TechJobsAfricaBot/0.1"})
-        self.max_pages = 10
+        self.max_pages = 150
+        self.target_jobs = 125
         self.crawl_complete = False
 
     def fetch(self) -> list[RawJob]:
@@ -175,6 +176,9 @@ class BeBeeAdapter:
                 job = parse_job(detail.text, url)
                 if job:
                     jobs.append(job)
+                if len(jobs) >= self.target_jobs:
+                    self.crawl_complete = True
+                    return jobs
         # Bounded discovery does not justify closing absent jobs.
         self.crawl_complete = True
         return jobs
