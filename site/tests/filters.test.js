@@ -6,13 +6,13 @@ import { JSDOM } from 'jsdom';
 const script = readFileSync(new URL('../public/filters.js', import.meta.url), 'utf8');
 const now = Date.parse('2026-09-30T12:00:00Z');
 const day = 86400000;
-function setup() {
+function setup({ allJobs = false } = {}) {
   const source = (id) => `<section data-source-group data-source="${id}" data-limit="10">
     <h3>${id}</h3><div>${['latest', 'day', 'three-days', 'week', 'two-weeks', 'month'].map(p => `<button data-period="${p}" aria-pressed="${p === 'latest'}">${p}</button>`).join('')}</div>
     <p data-source-count></p><div data-source-feed tabindex="0">
-    ${Array.from({length: 25}, (_, i) => `<article data-source-card data-search="Engineer ${i}" data-category="${i % 2 ? 'QA' : 'Software'}" data-published="${i === 24 ? '' : new Date(now - i * day).toISOString()}"></article>`).join('')}
+    ${Array.from({length: 25}, (_, i) => `<article data-source-card data-job-id="${id === 'all' ? (i < 13 ? 'a' : 'b') : id}-${id === 'all' ? (i < 13 ? i : i - 13) : i}" data-search="Engineer ${i}" data-category="${i % 2 ? 'QA' : 'Software'}" data-published="${i === 24 ? '' : new Date(now - i * day).toISOString()}"></article>`).join('')}
     <p data-source-empty hidden></p><button data-more>Load more jobs</button></div><p data-source-status></p></section>`;
-  const dom = new JSDOM(`<form id="job-filters"><input id="job-search"><select id="category-filter"><option value=""></option><option>QA</option></select></form><p id="job-count"></p><p id="no-results" hidden></p>${source('a')}${source('b')}`, {runScripts: 'outside-only'});
+  const dom = new JSDOM(`<form id="job-filters"><input id="job-search"><select id="category-filter"><option value=""></option><option>QA</option></select></form><p id="job-count"></p><p id="no-results" hidden></p>${allJobs ? source('all') : ''}${source('a')}${source('b')}`, {runScripts: 'outside-only'});
   dom.window.Date.now = () => now;
   dom.window.HTMLElement.prototype.scrollTo = function () { this.scrollTop = 0; };
   dom.window.eval(script);
@@ -98,4 +98,25 @@ test('search and category keep bounded periods fully expanded', () => {
   category.dispatchEvent(new dom.window.Event('change'));
   assert.equal(shown(a),12);
   assert.equal(a.querySelector('[data-more]').hidden,true);
+});
+
+
+test('All Jobs keeps independent controls and counts shared job identities once', () => {
+  const {dom, doc, groups:[all,a,b]} = setup({allJobs:true});
+  assert.equal(doc.querySelector('#job-count').textContent, '50 active roles');
+  a.querySelector('[data-source-feed]').scrollTop = 80;
+  all.querySelector('[data-more]').click();
+  assert.equal(shown(all),20);
+  assert.equal(shown(a),10);
+  assert.equal(a.querySelector('[data-source-feed]').scrollTop,80);
+  all.querySelector('[data-period="day"]').click();
+  assert.equal(shown(all),2);
+  assert.equal(shown(a),10);
+  assert.equal(doc.querySelector('#job-count').textContent, '50 active roles');
+  const search = doc.querySelector('#job-search');
+  search.value='no matches';
+  search.dispatchEvent(new dom.window.Event('input'));
+  assert.equal(doc.querySelector('#job-count').textContent, '0 active roles');
+  assert.equal(doc.querySelector('#no-results').hidden,false);
+  assert.equal(shown(b),0);
 });

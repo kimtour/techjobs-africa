@@ -1,6 +1,7 @@
 const search = document.querySelector("#job-search");
 const category = document.querySelector("#category-filter");
 const groups = [...document.querySelectorAll("[data-source-group]")];
+const matchingIds = new Map();
 const count = document.querySelector("#job-count");
 const noResults = document.querySelector("#no-results");
 
@@ -30,17 +31,22 @@ function applyFilters(targetGroup) {
     const period = group.dataset.period ?? "latest";
     const cards = [...group.querySelectorAll("[data-source-card]")];
     let matching = 0;
+    const ids = [];
 
-    for (const card of cards) {
+    for (const [index, card] of cards.entries()) {
       const matchesSearch = (card.dataset.search ?? "").toLocaleLowerCase().includes(searchTerm);
       const matchesCategory = !selectedCategory || card.dataset.category === selectedCategory;
       const matches = matchesSearch && matchesCategory && matchesPeriod(card, period);
-      if (matches) matching += 1;
+      if (matches) {
+        matching += 1;
+        ids.push(card.dataset.jobId ?? `${group.dataset.source}:${index}`);
+      }
       card.hidden = !matches || matching > limit;
     }
 
     // Keep the header and controls available even when a period has no matches.
     group.dataset.matching = String(matching);
+    matchingIds.set(group, ids);
     const empty = group.querySelector("[data-source-empty]");
     if (empty) empty.hidden = matching !== 0;
     const status = group.querySelector("[data-source-status]");
@@ -51,7 +57,7 @@ function applyFilters(targetGroup) {
     if (sourceCount) sourceCount.textContent = `${matching} listing${matching === 1 ? "" : "s"}`;
   }
 
-  const visible = groups.reduce((total, group) => total + Number(group.dataset.matching ?? 0), 0);
+  const visible = new Set([...matchingIds.values()].flat()).size;
   if (count) count.textContent = `${visible} active role${visible === 1 ? "" : "s"}`;
   if (noResults) noResults.hidden = visible !== 0;
 }

@@ -1,0 +1,42 @@
+name: Deploy static site
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  deployments: write
+
+# Serialize with ingestion so an older build cannot overwrite a newer one.
+concurrency:
+  group: techjobs-pipeline
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Read the accepted job export
+        run: |
+          git fetch origin data --depth=1
+          git show FETCH_HEAD:public/jobs.json > site/src/data/jobs.json
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: site/package-lock.json
+      - name: Validate and build
+        run: |
+          npm ci --prefix site
+          npm test --prefix site
+          npm run check --prefix site
+          npm run build --prefix site
+      - name: Deploy to Cloudflare Pages
+        uses: cloudflare/wrangler-action@v4
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy site/dist --project-name=${{ vars.CLOUDFLARE_PAGES_PROJECT }} --branch=main
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}

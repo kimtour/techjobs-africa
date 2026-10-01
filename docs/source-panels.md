@@ -18,7 +18,11 @@ roles found on BrighterMonday's Engineering & Technology and Software & Data pag
 
 ## Implementation contract
 
-- Keep the existing two-column layout and source colors, collapsing to one column
+- Put All Jobs in the first of three columns, followed by the existing two source
+  columns. All Jobs contains each active, unrestricted job once, newest first,
+  and displays its source. It shares the independent period and pagination controls.
+  Global result counts count unique jobs across matching feeds.
+- Keep source colors, collapsing to one column
   on narrow screens. Each body is 26rem high (24rem on mobile), independent of
   result count. Headers and status lines are outside the scrolling body.
 - Latest initially exposes 10 jobs per source, with Load more jobs exposing 10

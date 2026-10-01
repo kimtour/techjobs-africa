@@ -27,6 +27,7 @@ const sourceGroups = orderedSources
   .filter((group) => group.jobs.length > 0);
 const sourceColumns: (typeof sourceGroups)[] = [[], []];
 sourceGroups.forEach((group, index) => sourceColumns[index % sourceColumns.length].push(group));
+sourceColumns.unshift([{ sourceId: "all", jobs: [...visibleJobs].sort(newestFirst) }]);
 ---
 
 <Base title="TechJobs Africa">
@@ -88,6 +89,7 @@ sourceGroups.forEach((group, index) => sourceColumns[index % sourceColumns.lengt
                     <li
                       class="job-card"
                       data-source-card
+                      data-job-id={job.job_id}
                       data-index={index}
                       data-category={job.category ?? ""}
                       data-published={job.published_at || job.published_date || ""}
@@ -108,7 +110,7 @@ sourceGroups.forEach((group, index) => sourceColumns[index % sourceColumns.lengt
                         <p class="posted">
                           Posted: {(job.published_at || job.published_date) ? <time datetime={job.published_at || job.published_date}>{postedLabel(job)}</time> : postedLabel(job)}
                         </p>
-                        {job.sources.length > 1 && <p class="source">Also listed by: {job.sources.map(sourceName).join(", ")}</p>}
+                        {(group.sourceId === "all" || job.sources.length > 1) && <p class="source">{group.sourceId === "all" ? "Source: " : "Also listed by: "}{job.sources.map(sourceName).join(", ")}</p>}
                       </div>
                     </li>
                   ))}

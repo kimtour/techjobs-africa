@@ -38,6 +38,7 @@ export const sourceOrder = [
 
 export const sourceName = (sourceId: string) =>
   ({
+    all: "All Jobs",
     ashby: "TalentSafari",
     brightermonday: "BrighterMonday",
     corporate_staffing: "Corporate Staffing",
