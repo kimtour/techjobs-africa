@@ -29,6 +29,7 @@ class _FailingAdapter:
 def test_approved_sources_exclude_discovery_and_disabled_sources():
     assert approved_source_ids() == [
         "linkedin",
+        "bebee",
         "myjobmag",
         "corporate_staffing",
         "brightermonday",

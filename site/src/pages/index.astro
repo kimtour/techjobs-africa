@@ -6,6 +6,7 @@ import {
   locationLabel,
   postedLabel,
   sourceName,
+  feedName,
   sourceOrder,
   newestFirst,
 } from "../lib/jobs";
@@ -15,13 +16,13 @@ const categories = [...new Set(visibleJobs.map((job) => job.category).filter(Boo
 const orderedSources = [
   ...sourceOrder,
   ...[...new Set(visibleJobs.flatMap((job) => job.sources))].filter(
-    (sourceId) => !sourceOrder.includes(sourceId),
+    (sourceId) => sourceId !== "bebee" && !sourceOrder.includes(sourceId),
   ),
 ];
 const sourceGroups = orderedSources
   .map((sourceId) => ({
     sourceId,
-    jobs: visibleJobs.filter((job) => job.sources.includes(sourceId)).sort(newestFirst),
+    jobs: visibleJobs.filter((job) => (job.sources.includes(sourceId) || (sourceId === "linkedin" && job.sources.includes("bebee")))).sort(newestFirst),
   }))
   .filter((group) => group.jobs.length > 0 || group.sourceId === "linkedin");
 const sourceColumns: (typeof sourceGroups)[] = [[], []];
@@ -65,9 +66,9 @@ feedGroups.forEach((group, index) => sourceColumns[index % sourceColumns.length]
               <section class="source-group" style={`order: ${feedGroups.indexOf(group)}`} data-source={group.sourceId} data-source-group data-limit="10" aria-labelledby={`source-${group.sourceId}`}>
                 <div class="source-heading">
                   <div>
-                    <h3 id={`source-${group.sourceId}`}>{sourceName(group.sourceId)}</h3>
-                    {group.sourceId === "linkedin" && <p class="source-provider">Via JSearch · Kenya</p>}
-                    <div class="source-periods" aria-label={`${sourceName(group.sourceId)} posting period`}>
+                    <h3 id={`source-${group.sourceId}`}>{feedName(group.sourceId)}</h3>
+                    {group.sourceId === "linkedin" && <p class="source-provider">beBee + LinkedIn via JSearch · Kenya</p>}
+                    <div class="source-periods" aria-label={`${feedName(group.sourceId)} posting period`}>
                       <button aria-pressed="true" data-period="latest" type="button">Latest</button>
                       <span aria-hidden="true">•</span>
                       <button aria-pressed="false" data-period="day" type="button">Day</button>
@@ -110,7 +111,7 @@ feedGroups.forEach((group, index) => sourceColumns[index % sourceColumns.length]
                         <p class="posted">
                           Posted: {(job.published_at || job.published_date) ? <time datetime={job.published_at || job.published_date}>{postedLabel(job)}</time> : postedLabel(job)}
                         </p>
-                        {(group.sourceId === "all" || job.sources.length > 1) && <p class="source">{group.sourceId === "all" ? "Source: " : "Also listed by: "}{job.sources.map(sourceName).join(", ")}</p>}
+                        {(group.sourceId === "all" || group.sourceId === "linkedin" || job.sources.length > 1) && <p class="source">{(group.sourceId === "all" || group.sourceId === "linkedin") ? "Source: " : "Also listed by: "}{job.sources.map(sourceName).join(", ")}</p>}
                       </div>
                     </li>
                   ))}

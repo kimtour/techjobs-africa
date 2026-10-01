@@ -9,7 +9,7 @@ on:
         required: false
         default: all
         type: choice
-        options: [all, linkedin]
+        options: [all, linkedin, bebee]
       scheduler_slot:
         description: Cloudflare scheduler slot (leave empty for a manual fetch)
         required: false
@@ -79,8 +79,8 @@ jobs:
           JSEARCH_API_KEY: ${{ secrets.JSEARCH_API_KEY }}
           FETCH_SOURCE: ${{ inputs.source || 'all' }}
         run: |
-          if [ "$FETCH_SOURCE" = "linkedin" ]; then
-            python -u -m ingest.main --output-dir "$CANDIDATE_DIR" --source linkedin
+          if [ "$FETCH_SOURCE" != "all" ]; then
+            python -u -m ingest.main --output-dir "$CANDIDATE_DIR" --source "$FETCH_SOURCE"
           else
             python -u -m ingest.main --output-dir "$CANDIDATE_DIR"
           fi

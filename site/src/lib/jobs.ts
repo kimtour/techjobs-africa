@@ -46,6 +46,7 @@ export const sourceName = (sourceId: string) =>
     elevolt: "Elevolt",
     fuzu: "Fuzu",
     linkedin: "LinkedIn",
+    bebee: "beBee",
     myjobmag: "MyJobMag",
     openedcareer: "OpenedCareer",
   })[sourceId] ?? sourceId;
@@ -83,3 +84,5 @@ export const newestFirst = (a: Job, b: Job) => {
   };
   return timestamp(b) - timestamp(a) || a.job_id.localeCompare(b.job_id);
 };
+
+export const feedName = (sourceId: string) => sourceId === "linkedin" ? "Other/Linkedin" : sourceName(sourceId);

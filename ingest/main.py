@@ -15,6 +15,7 @@ from urllib.parse import urlparse
 import yaml
 
 from ingest.adapters.ashby import AshbyAdapter
+from ingest.adapters.bebee import BeBeeAdapter
 from ingest.adapters.brightermonday import BrighterMondayAdapter
 from ingest.adapters.corporate_staffing import CorporateStaffingAdapter
 from ingest.adapters.elevolt import ElevoltAdapter
@@ -35,6 +36,7 @@ CONFIG_PATH = Path("config/sources.yaml")
 AdapterFactory = Callable[[], object]
 ADAPTERS: Mapping[str, AdapterFactory] = {
     "linkedin": LinkedInJSearchAdapter,
+    "bebee": BeBeeAdapter,
     "ashby": lambda: AshbyAdapter("talentsafari"),
     "brightermonday": BrighterMondayAdapter,
     "corporate_staffing": CorporateStaffingAdapter,
@@ -117,12 +119,13 @@ def run_ingestion(
     rows: dict[str, dict] = {}
     warnings: list[str] = []
     for source_id in selected_ids:
-        if source_id == "linkedin":
-            # Two first-page requests daily fit the free plan; share the existing
-            # pipeline lock and durable request audit rather than adding a scheduler.
+        if source_id in ("linkedin", "bebee"):
             old_attempt = previous_health.get(source_id, {}).get("last_attempt_at")
             if old_attempt and datetime.fromisoformat(old_attempt) > started - timedelta(hours=24):
                 continue
+        if source_id == "linkedin":
+            # Two first-page requests daily fit the free plan; share the existing
+            # pipeline lock and durable request audit rather than adding a scheduler.
             used = 0
             for path in (output_dir / "state/request-history").glob(f"{started:%Y-%m}-*.jsonl"):
                 used += sum(
