@@ -12,7 +12,7 @@ def test_schedule_is_eat_day_weighted_and_workflows_do_not_overlap():
     hours = []
     for schedule in schedules:
         minute, hour, *_ = schedule["cron"].split()
-        assert minute == "17"
+        assert minute == "0"
         hours.extend((int(h) + 3) % 24 for h in hour.split(","))
     assert sorted(hours) == [1, 7, 9, 11, 13, 15, 17, 19, 21]
     assert workflow["concurrency"]["cancel-in-progress"] == "false"

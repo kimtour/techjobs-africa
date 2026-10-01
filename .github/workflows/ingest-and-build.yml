@@ -3,10 +3,10 @@ name: Ingest and build static site
 on:
   workflow_dispatch:
   schedule:
-    # EAT: 07:17, 09:17, 11:17, 13:17, 15:17, 17:17, 19:17, 21:17.
-    - cron: "17 4,6,8,10,12,14,16,18 * * *"
-    # EAT: 01:17. GitHub schedules are best-effort and may be delayed.
-    - cron: "17 22 * * *"
+    # EAT: 07:00, 09:00, 11:00, 13:00, 15:00, 17:00, 19:00, 21:00.
+    - cron: "0 4,6,8,10,12,14,16,18 * * *"
+    # EAT: 01:00. GitHub schedules are best-effort and may be delayed.
+    - cron: "0 22 * * *"
 
 permissions:
   contents: write

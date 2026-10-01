@@ -27,18 +27,19 @@ observable or resilient for unattended polling. The audit on 1 October 2026 foun
 These are separate from the location extraction issue. Fetch freshness alone does
 not establish that location parsing or listing coverage is correct.
 
-## Initial recommended schedule
+## Current schedule
 
 Use nine runs per day, every day, in Africa/Nairobi (EAT, UTC+3):
 
 | Period | Scheduled times EAT |
 |---|---|
-| Day/evening, every two hours | 07:17, 09:17, 11:17, 13:17, 15:17, 17:17, 19:17, 21:17 |
-| Overnight | 01:17 |
+| Day/evening, every two hours | 07:00, 09:00, 11:00, 13:00, 15:00, 17:00, 19:00, 21:00 |
+| Overnight | 01:00 |
 
-The overnight gaps are four hours (21:17–01:17) and six hours (01:17–07:17).
+The overnight gaps are four hours (21:00–01:00) and six hours (01:00–07:00).
 The old uniform three-hour schedule requested eight runs daily; this setup
-requests nine, shifting effort toward working hours. Avoid the top of the hour.
+requests nine, shifting effort toward working hours. At the user's request, all
+triggers are scheduled at the top of the hour.
 This is an evidence-informed starting policy, not a measured optimum. There is
 not yet a reliable source-specific arrival-rate history to justify hourly full
 crawls. No separate Codex automation is needed: repository GitHub Actions owns
