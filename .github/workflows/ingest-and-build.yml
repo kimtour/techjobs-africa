@@ -15,7 +15,7 @@ permissions:
 # All future workflows that write the data branch must share this group.
 concurrency:
   group: techjobs-pipeline
-  cancel-in-progress: false
+  cancel-in-progress: "false"
 
 jobs:
   ingest-and-build:
