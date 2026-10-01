@@ -46,4 +46,4 @@ def test_external_scheduler_cannot_bypass_slot_claim_or_expose_credentials():
     assert "SCHEDULER_GITHUB_TOKEN" not in Path("scheduler/wrangler.jsonc").read_text()
     deployment = Path(".github/workflows/deploy-scheduler.yml").read_text()
     assert "secrets.SCHEDULER_GITHUB_TOKEN" in deployment
-    assert "--secrets-file', '/dev/stdin'" in deployment
+    assert "npx wrangler deploy --secrets-file /dev/stdin" in deployment

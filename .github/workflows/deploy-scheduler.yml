@@ -50,16 +50,10 @@ jobs:
           npm run check
       - name: Deploy worker with encrypted GitHub credential
         run: |
-          node --input-type=module - <<'JS'
-          import { spawnSync } from 'node:child_process';
-          const result = spawnSync('npx', ['wrangler', 'deploy', '--secrets-file', '/dev/stdin'], {
-            input: JSON.stringify({ SCHEDULER_GITHUB_TOKEN: process.env.SCHEDULER_GITHUB_TOKEN }),
-            encoding: 'utf8',
-          });
-          process.stdout.write(result.stdout || '');
-          process.stderr.write(result.stderr || '');
-          process.exit(result.status ?? 1);
-          JS
+          # A shell pipe is readable through /dev/stdin; Node spawnSync's
+          # socket-backed input is not. Keep the credential out of files/logs.
+          node --input-type=module -e 'process.stdout.write(JSON.stringify({ SCHEDULER_GITHUB_TOKEN: process.env.SCHEDULER_GITHUB_TOKEN }))' |
+            npx wrangler deploy --secrets-file /dev/stdin
       - name: Verify status and optionally trigger a real fetch
         env:
           TEST_FETCH: ${{ inputs.test_fetch }}
