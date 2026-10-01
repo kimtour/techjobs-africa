@@ -52,5 +52,33 @@ Record the discovery evidence before implementing or enabling a production adapt
 Direct LinkedIn scraping remains disabled. Production scheduling continues through
 the existing Cloudflare scheduler; this evaluation adds no recurring schedule.
 
-Live evaluation is pending until the API key is configured. Mocked regression tests
-verify parsing and safeguards, but do not establish live coverage or publication rights.
+## First live evaluation — 1 October 2026
+
+Run: https://github.com/kimtour/techjobs-africa/actions/runs/36903327217
+
+Both configured searches succeeded (HTTP 200), using two requests. The software
+query returned ten records and indicated another page; the data query returned
+three records with no further cursor. Existing filtering and exact deduplication
+retained nine technical listings with explicit Kenya country evidence. The accepted
+production baseline contained 1,054 active, unrestricted roles.
+
+- One listing had a LinkedIn application link: Software Engineer — Open Source
+  Contributions — Remote, YO AI Labs, Mombasa (LinkedIn job ID 4471084334).
+- One listing matched an existing application URL exactly: RVIBS Computer Science —
+  Software Development on MyJobMag.
+- The strict company/title/city review signature reported zero possible duplicates.
+  Manual comparison nevertheless identified likely overlaps for Mastercard,
+  Food for Education/Food4Education, Watu, and the alternate RVIBS listing. These
+  are review candidates, not confirmed duplicate merges. Mastercard and Mastercard
+  Foundation must not be treated as the same employer merely from similar names.
+- The YO AI Labs title/company/location also appeared through another aggregator
+  under a different URL and upstream ID, illustrating within-sample duplication.
+- A result attributed to On used an aggregator URL containing both London and
+  Nakuru. Country metadata alone therefore does not establish original location
+  accuracy. Application validity, location, and employer identity need manual checks.
+
+The nine listings are not nine proven new vacancies. The sample supports using
+JSearch as a supplemental discovery source, but does not establish broad LinkedIn
+coverage, complete technical coverage, stable IDs across repeated fetches, or
+public-display permission. No production data or website was changed. Production
+integration remains pending discovery review and provider usage-rights verification.
