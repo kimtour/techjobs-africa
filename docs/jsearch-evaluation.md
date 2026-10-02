@@ -187,3 +187,22 @@ robots.txt permits the requested search path but disallows /api/. No block bypas
 or direct production adapter is enabled. A source-provided accessible feed or API
 is required to finish direct-source discovery. Indexed listings retain the actual
 publisher and original application URL and also appear in All Jobs.
+
+
+Verification: commit ee3085f was successfully imported and published in
+https://github.com/kimtour/techjobs-africa/actions/runs/36995778328 . The API used
+five requests, returned 26 validated Kenya records, and accepted 19 technical
+records. The combined fourth feed grew from 8 to 21 listings. Production has
+1,098 active listings; every ID from the prior 1,080-job Google publication is
+retained (other scheduled source updates also occurred between publications).
+Examples now visible include Yassir Senior Mobile IOS Engineer, Scrums Mobile App
+Developer, Azenia .NET Software Developer, and Adanian Software Engineering Trainer.
+No Expertini-published job was returned by this first indexed discovery attempt;
+Expertini direct ingestion remains blocked pending an accessible approved feed.
+
+126 Python tests, lint, six frontend tests, Astro check and production build passed.
+Production data was browser-checked locally and live: the fourth feed's load-more
+expands 10 to 20 without changing other feeds; Day shows one dated listing and
+Latest restores ten. At 390px the fourth feed retains its position with no horizontal
+overflow. Screenshot evidence: /tmp/google-coverage-live.png. The tracked example
+JSON was restored after local verification; production data remains on data branch.
