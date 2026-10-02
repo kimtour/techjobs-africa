@@ -124,7 +124,8 @@ def parse_rss_item(item: ElementTree.Element) -> RawJob | None:
         ):
             return None
         identity = re.fullmatch(
-            r"/jobs/job/[a-z0-9-]+?-(?P<id>[a-f0-9]{32}(?:[a-f0-9]{3})?|\d{6,}|\d{1,8}-\d{1,12})/", url.path
+            r"/jobs/job/[a-z0-9-]+?-(?P<id>[a-f0-9]{32}(?:[a-f0-9]{3})?|\d{6,}|\d{1,8}-\d{1,12})/",
+            url.path,
         )
         if (
             not identity
