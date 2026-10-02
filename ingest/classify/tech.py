@@ -20,6 +20,7 @@ class CategoryDecision(BaseModel):
 def _matches(title: str, keywords: list[str]) -> bool:
     normalized = title.casefold()
     normalized = re.sub(r"[-–—]", " ", normalized)
+    normalized = re.sub(r"\b(front|back)\s+end\b", r"\1end", normalized)
     normalized = re.sub(r"\b(engineers|developers|interns)\b", lambda m: m[0][:-1], normalized)
     normalized = re.sub(r"\s+", " ", normalized)
     # Seniority may appear between the domain and function (ICT Senior Analyst,

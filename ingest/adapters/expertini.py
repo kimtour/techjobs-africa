@@ -76,7 +76,7 @@ def parse_listing_link(value: object) -> RawJob | None:
         ):
             return None
         if decision.category == "QA / Testing" and not re.search(
-            r"\b(qa|software|automation|sdet|test)\b", title
+            r"\b(qa|software|automation|sdet|test|quality assurance engineer)\b", title
         ):
             return None
         if (

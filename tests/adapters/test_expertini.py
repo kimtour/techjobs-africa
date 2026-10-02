@@ -49,6 +49,35 @@ def test_native_identity_survives_changed_slug_and_dates_remain_unknown():
 
 
 @pytest.mark.parametrize(
+    "title",
+    [
+        "ai-automation-engineer",
+        "ai-prompt-engineer",
+        "seo-automation-engineer",
+        "front-end-engineer-lead",
+        "tech-lead-android-experience-engineering",
+        "qa-chapter-lead",
+        "data-and-automation-systems-builder",
+        "quality-assurance-engineer",
+    ],
+)
+def test_missing_nairobi_technical_titles_are_discovered(title):
+    job = parse_listing_link(JOB.replace("senior-backend-engineer", title))
+    assert job is not None
+    assert job.external_id == "636490169546311236"
+    assert job.published_at is None
+    assert canonicalize_raw_job(job).country_code == "KE"
+
+
+@pytest.mark.parametrize(
+    "title",
+    ["quality-assurance", "quality-assurance-engineer-pharmaceutical", "test-engineer-civil"],
+)
+def test_qa_discovery_still_requires_specific_role_and_rejects_non_it_industries(title):
+    assert parse_listing_link(JOB.replace("senior-backend-engineer", title)) is None
+
+
+@pytest.mark.parametrize(
     "url",
     [
         JOB.replace("https:", "http:"),

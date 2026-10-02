@@ -80,3 +80,30 @@ def test_broad_engineer_search_does_not_admit_unrelated_engineering():
         "HR Officer - Platform Engineering",
     ]:
         assert classify_technology_title(title).category is None, title
+
+
+def test_expertini_technical_title_variants():
+    examples = {
+        "AI Automation Engineer": "AI / Machine Learning",
+        "AI Prompt Engineer": "AI / Machine Learning",
+        "SEO Automation Engineer": "Software Engineering",
+        "Front End Engineer Lead": "Software Engineering",
+        "Back End Developer": "Software Engineering",
+        "Tech Lead - Android Experience Engineering": "Software Engineering",
+        "QA Chapter Lead": "QA / Testing",
+        "Data and Automation Systems Builder": "Data Engineering",
+    }
+    for title, category in examples.items():
+        assert classify_technology_title(title).category == category, title
+
+
+def test_automation_titles_do_not_admit_industrial_or_uncertain_roles():
+    for title in [
+        "Industrial Automation Engineer",
+        "Senior Process Automation Engineer",
+        "Water Engineer",
+        "Sales Engineer (Industrial Equipments)",
+        "Chief Engineer",
+        "Senior Petroleum/Production Engineer",
+    ]:
+        assert classify_technology_title(title).category is None, title
