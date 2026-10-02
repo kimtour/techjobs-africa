@@ -31,25 +31,26 @@ sources:
     name: Expertini Kenya
     enabled: true
     supports_absence_expiry: false
-    discovery_url: "https://ke.expertini.com/sitemapindex.xml"
-    method: public_job_sitemap_xml
-    production_method: public_job_sitemap_xml
+    discovery_url: "https://ke.expertini.com/jobs/feed.xml"
+    feed_url: "https://ke.expertini.com/jobs/feed.xml"
+    method: public_rss_and_job_sitemap_xml
+    production_method: public_rss_and_job_sitemap_xml
     interval_hours: 2
     timezone: Africa/Nairobi
     crawl:
       max_pages: 5
-      max_requests_per_run: 6
+      max_requests_per_run: 7
       request_delay_ms: 1500
       timeout_seconds: 25
       retry_delays_seconds: []
-      complete_when: all_advertised_listing_sitemaps_fetched
+      complete_when: rss_and_all_advertised_listing_sitemaps_fetched
     closed_markers: []
     ttl_days: 30
     legal:
       robots_checked: true
       tos_checked: false
       permission: user_authorized_public_xml_discovery
-      notes: "M0 verified 200 XML access locally and on GitHub runner on 2026-10-02. Use only advertised public job_listing XML, never protected job/search pages or /api/. User explicitly requested direct Expertini discovery. Native numeric IDs, URL-label title prefixes and locality only; employer and publication date are unknown. Label URL-derived titles. lastmod is not a posting date. Sitemaps indicate discoverability, not verified vacancy status; absence expiry disabled. Terms pages remain behind verification; do not infer a redistribution licence."
+      notes: "M0 verified 200 XML access locally and on GitHub runner on 2026-10-02. Use the public RSS and advertised job_listing XML, never protected job/search pages or /api/. User explicitly requested direct Expertini discovery. Stable native numeric/composite/hex IDs; RSS titles and publication dates take precedence over URL labels. Employer remains unknown. Label URL-derived titles; lastmod is not a posting date. Sitemaps indicate discoverability, not verified vacancy status; absence expiry disabled. Terms pages remain behind verification; do not infer a redistribution licence."
 
   - id: careerjet
     name: Careerjet Kenya

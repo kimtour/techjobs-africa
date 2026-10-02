@@ -72,7 +72,8 @@ restore the previous successful deployment through Cloudflare Pages. Do not
 rewrite the persistent data branch to roll back a frontend change.
 
 
-Expertini's direct XML supplies URL-derived technical titles and no publication
-fields. Labels explicitly identify titles from listing links; dates stay unknown.
-These records appear in Latest and All Jobs, and are intentionally absent from
-bounded date periods. No separate Expertini panel is added.
+Expertini's RSS supplies original titles and RSS publication dates; these records
+participate in date periods and carry Expertini RSS labels. Sitemap-only records
+have labelled URL-derived technical titles and unknown dates, so they appear in
+Latest and All Jobs and are absent from bounded periods. No separate Expertini
+panel is added. Same-ID source refreshes preserve cross-source attribution.

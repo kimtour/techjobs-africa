@@ -52,7 +52,7 @@ export const sourceName = (sourceId: string) =>
     fuzu: "Fuzu",
     linkedin: "LinkedIn",
     jsearch: "Google Jobs via JSearch",
-    expertini: "Expertini (title from listing link)",
+    expertini: "Expertini",
     careerjet: "Careerjet",
     myjobmag: "MyJobMag",
     openedcareer: "OpenedCareer",
@@ -95,7 +95,9 @@ export const newestFirst = (a: Job, b: Job) => {
 export const feedName = (sourceId: string) => sourceId === "linkedin" ? "Other/Google/Linkedin" : sourceName(sourceId);
 
 export const sourceLabels = (job: Job) => job.sources.map((source) =>
-  source === "jsearch" && job.source_publisher
+  source === "expertini"
+    ? (job.source_publisher === "Expertini RSS" ? "Expertini RSS" : "Expertini (title from listing link)")
+    : source === "jsearch" && job.source_publisher
     ? `${job.source_publisher} via Google Jobs / JSearch`
     : sourceName(source)
 ).join(", ");

@@ -66,3 +66,24 @@ XML export are available. Jobviewtrack returned 418 to the single redirect probe
 no deliberate block is bypassed. Official publisher XML access requires sign-in;
 the inspected account page is logged out. Expertini's direct XML route avoids both
 JSearch quota and these Careerjet identity limitations.
+
+
+## RSS enrichment — verified following the user-supplied endpoint
+
+`https://ke.expertini.com/jobs/feed.xml` returns HTTP 200 and valid RSS with 313
+items (198,651 bytes in the inspected response). Verification also passed on the
+GitHub runner: https://github.com/kimtour/techjobs-africa/actions/runs/37007784499 .
+Only title/link/GUID/pubDate were saved in sanitized probe evidence; descriptions
+are processed in memory and never persisted. Eight RSS titles currently pass the
+technical taxonomy; total RSS count must not be represented as technical-job count.
+
+Production combines RSS and advertised job sitemaps in up to seven requests. RSS
+has genuine titles and source publication timestamps, which take precedence over
+URL labels when numeric IDs coincide. GUID/link suffixes also expose stable
+composite and 32- or 35-character hex IDs. Publication dates are RSS syndication dates,
+not independently verified employer posting dates. No employer fields are supplied.
+Only sitemap-only titles retain the listing-link label and unknown dates. Coverage
+is still partial; disappearance never closes jobs. The sampled RSS-linked detail
+page remained behind verification in this environment, so no job-page enrichment
+or blocker bypass is enabled. Other-source attribution now survives a same-ID
+refresh while current metadata updates; records are not fuzzy-merged.

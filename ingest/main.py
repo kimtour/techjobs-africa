@@ -310,10 +310,14 @@ def run_ingestion(
                             0
                         ]
             else:
-                jobs_by_id.update(current)
+                for key, job in current.items():
+                    existing = jobs_by_id.get(key)
+                    jobs_by_id[key] = deduplicate_exact([job, existing])[0] if existing else job
             baselines[source_id] = [*baselines.get(source_id, []), len(fetched)][-10:]
         elif reason == "pagination_incomplete":
-            jobs_by_id.update(current)
+            for key, job in current.items():
+                existing = jobs_by_id.get(key)
+                jobs_by_id[key] = deduplicate_exact([job, existing])[0] if existing else job
         last_success = (
             datetime.now(UTC)
             if status == SourceHealthStatus.SUCCESS
