@@ -91,6 +91,7 @@ def canonicalize_raw_job(
 
     return CanonicalJob(
         job_id=f"{raw.source_id}:{raw.external_id}",
+        source_publisher=raw.source_publisher,
         title=raw.title,
         normalized_title=normalize_text(raw.title),
         posting_company=resolved_posting_company,

@@ -29,6 +29,7 @@ class SourceHealthStatus(StrEnum):
     FAILED = "FAILED"
     BLOCKED = "BLOCKED"
     DISABLED = "DISABLED"
+    SKIPPED = "SKIPPED"
 
 
 class EligibilityDecision(BaseModel):
@@ -41,6 +42,7 @@ class RawJob(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
     source_id: str = Field(min_length=1)
+    source_publisher: str | None = Field(default=None, max_length=300)
     external_id: str | None = None
     title: str = Field(min_length=1, max_length=300)
     company: str | None = Field(default=None, max_length=300)
@@ -97,3 +99,4 @@ class CanonicalJob(BaseModel):
     status: JobStatus = JobStatus.ACTIVE
     preferred_apply_url: AnyHttpUrl
     sources: list[str] = Field(min_length=1)
+    source_publisher: str | None = Field(default=None, max_length=300)

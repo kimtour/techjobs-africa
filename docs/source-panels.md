@@ -22,10 +22,10 @@ roles found on BrighterMonday's Engineering & Technology and Software & Data pag
   source feed. All Jobs contains each active, unrestricted job once, newest first,
   and displays its source. It shares the independent period and pagination controls.
   Global result counts count unique jobs across matching feeds.
-- Other/Linkedin is fourth (All Jobs, MyJobMag, Fuzu, Other/Linkedin).
-  It combines Kenya jobs from the written-authorized Careerjet publisher feed and
-  validated LinkedIn links from JSearch. Each job retains its true source label.
-  The header names both providers. Jobs also appear in All Jobs;
+- Google Jobs via JSearch is fourth (All Jobs, MyJobMag, Fuzu, Google Jobs via JSearch).
+  It combines Kenya Google Jobs discoveries, previously accepted LinkedIn jobs,
+  and Careerjet if that provider is activated. Each job retains its true publisher
+  label and original application destination. Jobs also appear in All Jobs;
   source feeds include every job attributed to that source even when cross-listed.
   Mobile keeps the same feed sequence. An empty LinkedIn feed retains its controls.
 - Keep source colors, collapsing to one column

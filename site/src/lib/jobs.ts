@@ -14,6 +14,7 @@ export type Job = {
   published_date: string | null;
   preferred_apply_url: string;
   sources: string[];
+  source_publisher?: string | null;
   status: "ACTIVE" | "STALE" | "CLOSED" | "EXPIRED";
 };
 
@@ -50,6 +51,7 @@ export const sourceName = (sourceId: string) =>
     elevolt: "Elevolt",
     fuzu: "Fuzu",
     linkedin: "LinkedIn",
+    jsearch: "Google Jobs via JSearch",
     careerjet: "Careerjet",
     myjobmag: "MyJobMag",
     openedcareer: "OpenedCareer",
@@ -89,4 +91,10 @@ export const newestFirst = (a: Job, b: Job) => {
   return timestamp(b) - timestamp(a) || a.job_id.localeCompare(b.job_id);
 };
 
-export const feedName = (sourceId: string) => sourceId === "linkedin" ? "Other/Linkedin" : sourceName(sourceId);
+export const feedName = (sourceId: string) => sourceId === "linkedin" ? "Google Jobs via JSearch" : sourceName(sourceId);
+
+export const sourceLabels = (job: Job) => job.sources.map((source) =>
+  source === "jsearch" && job.source_publisher
+    ? `${job.source_publisher} via Google Jobs / JSearch`
+    : sourceName(source)
+).join(", ");

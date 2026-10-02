@@ -1,30 +1,30 @@
 schema_version: 1
 
 sources:
-  - id: linkedin
-    name: LinkedIn via JSearch
+  - id: jsearch
+    name: Google Jobs via JSearch
     enabled: true
     supports_absence_expiry: false
     discovery_url: "https://www.openwebninja.com/api/jsearch"
     method: documented_jsearch_api
     production_method: documented_jsearch_api
     interval_hours: 24
-    timezone: UTC
+    timezone: Africa/Nairobi
     crawl:
-      max_pages: 2
-      max_requests_per_run: 2
-      recent_days: 30
+      max_pages: 5
+      max_requests_per_run: 5
+      recent_days: 7
       request_delay_ms: 500
       timeout_seconds: 25
       retry_delays_seconds: []
-      complete_when: both_bounded_queries_succeeded
+      complete_when: cursor_exhausted_or_five_page_window_succeeded
     closed_markers: []
     ttl_days: 30
     legal:
       robots_checked: false
       tos_checked: true
       permission: user_authorized_via_jsearch
-      notes: "User requested public LinkedIn-linked results via the configured JSearch API on 2026-10-01 after reviewing discovery results and usage-rights limitations. This does not establish a LinkedIn partnership or a provider redistribution license. No direct LinkedIn scraping or access-control bypass. Retain only minimal metadata and validated LinkedIn job links; never descriptions."
+      notes: "User requested Google Jobs discovery across publishers via the configured JSearch API on 2026-10-02 after reviewing discovery results and usage-rights limitations. This does not establish a LinkedIn partnership or a provider redistribution license. No direct LinkedIn scraping or access-control bypass. Retain only minimal metadata, explicit Kenya evidence, upstream identifiers, publisher labels and original application links; never descriptions. Exclude the retired beBee source. Up to five cursor pages of software engineer jobs in Kenya from the past week per Kenya calendar day share the 160-request monthly ceiling with historical LinkedIn requests."
 
   - id: careerjet
     name: Careerjet Kenya

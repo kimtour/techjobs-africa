@@ -1,4 +1,4 @@
-"""Minimal JSearch response parsing and LinkedIn-linked Kenya job ingestion."""
+"""Minimal Google Jobs discovery through the documented JSearch API."""
 
 from __future__ import annotations
 
@@ -17,6 +17,7 @@ FIELDS = ",".join(
     [
         "job_id",
         "job_title",
+        "job_publisher",
         "employer_name",
         "job_city",
         "job_state",
@@ -177,5 +178,130 @@ class LinkedInJSearchAdapter:
                     )
         # This is a bounded discovery window, never an exhaustive LinkedIn crawl.
         # Absence-based expiry is disabled regardless of successful query completion.
+        self.crawl_complete = True
+        return list(jobs.values())
+
+
+def acceptable_destination(value: object) -> bool:
+    url = safe_url(value)
+    if not url:
+        return False
+    host = (urlsplit(url).hostname or "").casefold()
+    return host != "bebee.com" and not host.endswith(".bebee.com")
+
+
+class GoogleJobsJSearchAdapter:
+    """Bounded Kenya discovery across publishers; no direct Google scraping."""
+
+    source_id = "jsearch"
+    query = "software engineer jobs in Kenya"
+
+    def __init__(self, client: httpx.Client | None = None) -> None:
+        self._client = client or httpx.Client()
+        self.crawl_complete = False
+        self.max_pages = 5
+
+    def fetch(self) -> list[RawJob]:
+        self.crawl_complete = False
+        key = os.environ.get("JSEARCH_API_KEY", "").strip()
+        if not key:
+            raise ValueError("Missing JSearch credential")
+        jobs: dict[str, RawJob] = {}
+        cursor = None
+        seen_cursors = set()
+        for _ in range(self.max_pages):
+            params = {
+                "query": self.query,
+                "country": "ke",
+                "language": "en",
+                "date_posted": "week",
+                "num_pages": 1,
+                "fields": FIELDS,
+                "exclude_job_publishers": "beBee",
+            }
+            if cursor:
+                params["cursor"] = cursor
+            response = self._client.get(
+                API_URL,
+                headers={"x-api-key": key, "Accept": "application/json"},
+                params=params,
+                timeout=25,
+                follow_redirects=False,
+            )
+            response.raise_for_status()
+            payload = response.json()
+            data = payload.get("data") if isinstance(payload, dict) else None
+            records = data.get("jobs") if isinstance(data, dict) else None
+            if (
+                not isinstance(payload, dict)
+                or payload.get("status") != "OK"
+                or not isinstance(records, list)
+            ):
+                raise ValueError("Invalid JSearch response")
+            for record in records:
+                if not isinstance(record, dict) or str(
+                    record.get("job_country", "")
+                ).upper() not in ("KE", "KENYA"):
+                    continue
+                # Remove forbidden destinations before choosing a direct option.
+                cleaned = dict(record)
+                cleaned["apply_options"] = (
+                    [
+                        option
+                        for option in record.get("apply_options", []) or []
+                        if isinstance(option, dict)
+                        and acceptable_destination(option.get("apply_link"))
+                    ]
+                    if isinstance(record.get("apply_options", []), list)
+                    else []
+                )
+                if not acceptable_destination(cleaned.get("job_apply_link")):
+                    cleaned["job_apply_link"] = None
+                try:
+                    raw, _ = parse_record(cleaned)
+                except (ValueError, ValidationError):
+                    continue
+                publisher = record.get("job_publisher")
+                publisher = publisher.strip()[:300] if isinstance(publisher, str) else None
+                if not publisher or publisher.casefold() == "bebee":
+                    selected = next(
+                        (
+                            o
+                            for o in cleaned["apply_options"]
+                            if o.get("apply_link") == str(raw.apply_url)
+                        ),
+                        {},
+                    )
+                    publisher = selected.get("publisher")
+                    publisher = publisher.strip()[:300] if isinstance(publisher, str) else None
+                    if not publisher or publisher.casefold() == "bebee":
+                        publisher = urlsplit(str(raw.apply_url)).hostname
+                native_linkedin_id = linkedin_identity(str(raw.apply_url))
+                apply_url = (
+                    f"https://www.linkedin.com/jobs/view/{native_linkedin_id}/"
+                    if native_linkedin_id
+                    else str(raw.apply_url)
+                )
+                external_id = (
+                    f"linkedin-{native_linkedin_id}" if native_linkedin_id else raw.external_id
+                )
+                jobs.setdefault(
+                    external_id,
+                    raw.model_copy(
+                        update={
+                            "source_url": apply_url,
+                            "apply_url": apply_url,
+                            "external_id": external_id,
+                            "source_publisher": publisher,
+                        }
+                    ),
+                )
+            cursor = data.get("cursor")
+            if not cursor:
+                break
+            if not isinstance(cursor, str) or cursor in seen_cursors:
+                raise ValueError("Invalid or repeated JSearch cursor")
+            seen_cursors.add(cursor)
+        # Query completion is only a bounded window, never evidence of absence.
         self.crawl_complete = True
         return list(jobs.values())

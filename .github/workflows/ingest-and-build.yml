@@ -9,7 +9,7 @@ on:
         required: false
         default: all
         type: choice
-        options: [all, linkedin]
+        options: [all, jsearch]
       scheduler_slot:
         description: Cloudflare scheduler slot (leave empty for a manual fetch)
         required: false

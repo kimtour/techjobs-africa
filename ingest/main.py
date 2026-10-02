@@ -6,7 +6,7 @@ import argparse
 import json
 import time
 from collections.abc import Callable, Mapping, Sequence
-from datetime import UTC, datetime, timedelta
+from datetime import UTC, datetime, timedelta, timezone
 from pathlib import Path
 from statistics import median
 from tempfile import NamedTemporaryFile
@@ -19,12 +19,12 @@ from ingest.adapters.brightermonday import BrighterMondayAdapter
 from ingest.adapters.corporate_staffing import CorporateStaffingAdapter
 from ingest.adapters.elevolt import ElevoltAdapter
 from ingest.adapters.fuzu import FuzuAdapter
-from ingest.adapters.jsearch import LinkedInJSearchAdapter
+from ingest.adapters.jsearch import GoogleJobsJSearchAdapter
 from ingest.adapters.myjobmag import MyJobMagAdapter
 from ingest.adapters.openedcareer import OpenedCareerAdapter
 from ingest.audit import public_hash, read_json, record_run, run_identity
 from ingest.classify.tech import has_non_technical_exclusion
-from ingest.dedupe.exact import deduplicate_exact
+from ingest.dedupe.exact import canonicalize_apply_url, deduplicate_exact
 from ingest.expiry.absence import JobOccurrence, reconcile_occurrences
 from ingest.export.static import build_public_files
 from ingest.fetch import ObservedClient
@@ -34,7 +34,7 @@ from ingest.normalize.canonicalize import canonicalize_raw_job
 CONFIG_PATH = Path("config/sources.yaml")
 AdapterFactory = Callable[[], object]
 ADAPTERS: Mapping[str, AdapterFactory] = {
-    "linkedin": LinkedInJSearchAdapter,
+    "jsearch": GoogleJobsJSearchAdapter,
     "ashby": lambda: AshbyAdapter("talentsafari"),
     "brightermonday": BrighterMondayAdapter,
     "corporate_staffing": CorporateStaffingAdapter,
@@ -126,22 +126,59 @@ def run_ingestion(
     health: dict[str, SourceHealth] = {}
     rows: dict[str, dict] = {}
     warnings: list[str] = []
+
+    def record_policy_skip(source_id, reason):
+        old = previous_health.get(source_id, {})
+        skipped = SourceHealth(
+            source_id=source_id,
+            status=SourceHealthStatus.SKIPPED,
+            records_found=0,
+            pages_fetched=0,
+            crawl_complete=False,
+            safe_to_process_absences=False,
+            last_attempt_at=old.get("last_attempt_at"),
+            last_success_at=old.get("last_success_at"),
+            stop_reason=reason,
+        )
+        rows[source_id] = {
+            "health": skipped.model_dump(mode="json"),
+            "technical_jobs": 0,
+            "new_jobs": 0,
+            "updated_jobs": 0,
+            "missing_jobs": 0,
+            "retained_jobs": sum(source_id in j.sources for j in previous_jobs),
+            "requests": [],
+            "hours_since_success": None,
+        }
+
     for source_id in selected_ids:
-        if source_id == "linkedin":
-            old_attempt = previous_health.get(source_id, {}).get("last_attempt_at")
-            if old_attempt and datetime.fromisoformat(old_attempt) > started - timedelta(hours=24):
+        if source_id in ("linkedin", "jsearch"):
+            kenya_now = started.astimezone(timezone(timedelta(hours=3)))
+            if source_id == "jsearch" and source_ids is None and kenya_now.hour < 7:
+                record_policy_skip(source_id, "before_morning_refresh_eat")
                 continue
-        if source_id == "linkedin":
-            # Two first-page requests daily fit the free plan; share the existing
-            # pipeline lock and durable request audit rather than adding a scheduler.
+            old_attempt = previous_health.get(source_id, {}).get("last_attempt_at")
+            # Refresh on the next Kenya calendar day, rather than drifting later
+            # after a manual afternoon run. Keep the shared account within quota.
+            if (
+                old_attempt
+                and datetime.fromisoformat(old_attempt)
+                .astimezone(timezone(timedelta(hours=3)))
+                .date()
+                == started.astimezone(timezone(timedelta(hours=3))).date()
+            ):
+                record_policy_skip(source_id, "already_checked_today_eat")
+                continue
             used = 0
             for path in (output_dir / "state/request-history").glob(f"{started:%Y-%m}-*.jsonl"):
                 used += sum(
-                    json.loads(line).get("source_id") == source_id
+                    json.loads(line).get("source_id") in ("linkedin", "jsearch")
                     for line in path.read_text().splitlines()
                     if line.strip()
                 )
-            if used + 2 > 160:
+            required_requests = 5 if source_id == "jsearch" else 2
+            if used + required_requests > 160:
+                record_policy_skip(source_id, "monthly_request_budget")
                 continue
         factory = adapters.get(source_id)
         if factory is None:
@@ -250,7 +287,26 @@ def run_ingestion(
         current = {job.job_id: job for job in source_jobs}
         # Observed records can refresh; missing records need separate absence evidence.
         if status == SourceHealthStatus.SUCCESS:
-            jobs_by_id.update(current)
+            if source_id == "jsearch":
+                by_url = {
+                    canonicalize_apply_url(str(job.preferred_apply_url)): key
+                    for key, job in jobs_by_id.items()
+                }
+                for key, job in current.items():
+                    url = canonicalize_apply_url(str(job.preferred_apply_url))
+                    existing_id = key if key in jobs_by_id else by_url.get(url)
+                    if existing_id is None:
+                        jobs_by_id[key] = job
+                        by_url[url] = key
+                    elif existing_id == key:
+                        jobs_by_id[key] = deduplicate_exact([job, jobs_by_id[key]])[0]
+                    else:
+                        # Preserve the accepted source's stable identity and fields.
+                        jobs_by_id[existing_id] = deduplicate_exact([jobs_by_id[existing_id], job])[
+                            0
+                        ]
+            else:
+                jobs_by_id.update(current)
             baselines[source_id] = [*baselines.get(source_id, []), len(fetched)][-10:]
         elif reason == "pagination_incomplete":
             jobs_by_id.update(current)

@@ -26,7 +26,10 @@ def canonicalize_apply_url(url: str) -> str:
 
 def _merge(primary: CanonicalJob, duplicate: CanonicalJob) -> CanonicalJob:
     return primary.model_copy(
-        update={"sources": sorted(set(primary.sources).union(duplicate.sources))}
+        update={
+            "sources": sorted(set(primary.sources).union(duplicate.sources)),
+            "source_publisher": primary.source_publisher or duplicate.source_publisher,
+        }
     )
 
 

@@ -89,13 +89,13 @@ def test_linkedin_identity_handles_locale_urls_and_rejects_non_posting_links():
     assert linkedin_identity("https://linkedin.com/jobs/search?currentJobId=123456") is None
 
 
-class SuccessfulLinkedInAdapter:
+class SuccessfulGoogleAdapter:
     crawl_complete = True
 
     def fetch(self):
         return [
             RawJob(
-                source_id="linkedin",
+                source_id="jsearch",
                 external_id="123456",
                 title="Software Engineer",
                 location="Nairobi, Kenya",
@@ -106,43 +106,39 @@ class SuccessfulLinkedInAdapter:
 
 
 def test_daily_refresh_skip_keeps_saved_jobs_without_contacting_provider(tmp_path):
-    run_ingestion(
-        tmp_path, source_ids=["linkedin"], adapters={"linkedin": SuccessfulLinkedInAdapter}
-    )
+    run_ingestion(tmp_path, source_ids=["jsearch"], adapters={"jsearch": SuccessfulGoogleAdapter})
     before = (tmp_path / "public/jobs.json").read_text()
 
     def forbidden():
         pytest.fail("Daily cooldown must avoid API requests")
 
-    run_ingestion(tmp_path, source_ids=["linkedin"], adapters={"linkedin": forbidden})
+    run_ingestion(tmp_path, source_ids=["jsearch"], adapters={"jsearch": forbidden})
     assert (tmp_path / "public/jobs.json").read_text() == before
     occurrences = json.loads((tmp_path / "state/occurrences.json").read_text())
     assert occurrences["occurrences"][0]["active"] is True
     health = json.loads((tmp_path / "state/health.json").read_text())
-    assert health["sources"]["linkedin"]["safe_to_process_absences"] is False
+    assert health["sources"]["jsearch"]["safe_to_process_absences"] is False
 
 
 def test_monthly_budget_skips_before_contacting_provider(tmp_path):
     history = tmp_path / "state/request-history"
     history.mkdir(parents=True)
     (history / f"{datetime.now(UTC):%Y-%m-%d}.jsonl").write_text(
-        "\n".join(json.dumps({"source_id": "linkedin"}) for _ in range(160)) + "\n"
+        "\n".join(json.dumps({"source_id": "jsearch"}) for _ in range(160)) + "\n"
     )
 
     def forbidden():
         pytest.fail("Monthly ceiling must avoid API requests")
 
-    assert run_ingestion(tmp_path, source_ids=["linkedin"], adapters={"linkedin": forbidden}) == {}
+    assert run_ingestion(tmp_path, source_ids=["jsearch"], adapters={"jsearch": forbidden}) == {}
 
 
 def test_failed_refresh_retains_previously_published_jobs(tmp_path):
-    run_ingestion(
-        tmp_path, source_ids=["linkedin"], adapters={"linkedin": SuccessfulLinkedInAdapter}
-    )
+    run_ingestion(tmp_path, source_ids=["jsearch"], adapters={"jsearch": SuccessfulGoogleAdapter})
     before = (tmp_path / "public/jobs.json").read_text()
     path = tmp_path / "state/health.json"
     health = json.loads(path.read_text())
-    health["sources"]["linkedin"]["last_attempt_at"] = (
+    health["sources"]["jsearch"]["last_attempt_at"] = (
         datetime.now(UTC) - timedelta(days=2)
     ).isoformat()
     path.write_text(json.dumps(health))
@@ -151,5 +147,5 @@ def test_failed_refresh_retains_previously_published_jobs(tmp_path):
         def fetch(self):
             raise RuntimeError("failure")
 
-    run_ingestion(tmp_path, source_ids=["linkedin"], adapters={"linkedin": Failed})
+    run_ingestion(tmp_path, source_ids=["jsearch"], adapters={"jsearch": Failed})
     assert (tmp_path / "public/jobs.json").read_text() == before

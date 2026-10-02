@@ -106,3 +106,40 @@ The source is fourth including All Jobs. Source headers identify JSearch as the
 provider, and the same canonical jobs appear in All Jobs without inflating totals.
 The existing ingest workflow receives `JSEARCH_API_KEY` from GitHub Secrets and
 has a manual `source=linkedin` option for the initial publication.
+
+
+## Google Jobs feed — requested 2 October 2026
+
+The user authorised broadening the production feed beyond LinkedIn and specified
+`software engineer jobs in Kenya`, country `ke`, language `en`, the past week,
+all publishers except beBee, pagination within quota, and fourth-feed placement.
+Prior live discovery established non-LinkedIn results and exact application-URL
+overlaps. Official `/search-v2` documentation confirms `job_publisher`,
+`apply_options`, field projection, `data.cursor` and one credit per returned page.
+
+Production source `jsearch` supersedes LinkedIn-only polling; previously accepted
+LinkedIn jobs remain. Up to five cursor pages are requested once per Kenya
+calendar day, normally at the 07:00 scheduler slot. Fewer requests are made when
+pagination ends early. Production JSearch and historical LinkedIn requests share
+a 160-credit monthly ceiling; manual evaluations/other account users are outside
+this history. Same-day and budget skips are explicit in the run audit. The bounded
+five-page window is not an exhaustive Google Jobs crawl; absence expiry is off.
+
+Records require explicit Kenya country evidence and the existing title-level
+technical classifier. Both the API exclusion and local application-link checks
+remove beBee. If another safe application option exists it can be retained with
+its actual publisher; no record is relabelled as beBee or Careerjet. Safe direct
+application options take preference. Publisher labels are provider metadata,
+not independent publisher verification. Missing publisher labels use the chosen
+application hostname. Descriptions, secrets and response bodies are never saved.
+
+Identifiers use the upstream job ID; a chosen LinkedIn application URL uses its
+native LinkedIn ID. Exact IDs and canonical application URLs deduplicate the
+new discoveries; matches to an accepted source preserve that source's identity
+and add JSearch attribution. Company/title/location resemblance never auto-merges.
+Failures retain accepted listings. No direct Google/LinkedIn scraping, proxy,
+verification bypass, runtime backend or additional scheduler is introduced.
+
+The homepage's fourth feed is labelled Google Jobs via JSearch. Original publisher
+labels appear on its cards and in All Jobs; the two-column layout, other sources,
+independent periods, pagination, mobile order and unique counts are retained.
