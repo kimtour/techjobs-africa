@@ -87,3 +87,23 @@ is still partial; disappearance never closes jobs. The sampled RSS-linked detail
 page remained behind verification in this environment, so no job-page enrichment
 or blocker bypass is enabled. Other-source attribution now survives a same-ID
 refresh while current metadata updates; records are not fuzzy-merged.
+
+
+## Delivery verification
+
+The combined direct importer was successfully published from commit 1572ca7:
+https://github.com/kimtour/techjobs-africa/actions/runs/37008462964 . It used three
+HTTP 200 requests (RSS, sitemap index, one listing sitemap), all to ke.expertini.com,
+with no JSearch call. It exported 47 accepted Expertini listings: 8 RSS records
+with source publication timestamps and 39 sitemap-only records with unknown dates.
+The fourth feed contains 65 listings; the accepted site export contains 1,183 roles.
+Every ID from the prior 1,098-job publication and the 1,176-job sitemap export is
+retained. RSS enrichment adds seven identities and updates one existing identity.
+
+153 Python tests, lint, six frontend tests, Astro validation and production build
+passed. Full-data browser checks passed locally and live. The DOM confirms identical
+sets of all 47 Expertini IDs in All Jobs and Other/Google/Linkedin. Load more expands
+only the fourth feed from 10 to 20; Week shows 12 dated listings including all eight
+RSS records. Latest restores ten. Mobile at 390px retains fourth position and has
+no horizontal overflow. Screenshot: /tmp/expertini-direct-live.png. The tracked
+example data was restored after local verification; production stays on data branch.

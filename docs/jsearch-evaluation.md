@@ -206,3 +206,9 @@ expands 10 to 20 without changing other feeds; Day shows one dated listing and
 Latest restores ten. At 390px the fourth feed retains its position with no horizontal
 overflow. Screenshot evidence: /tmp/google-coverage-live.png. The tracked example
 JSON was restored after local verification; production data remains on data branch.
+
+
+Expertini follow-up: the previously unavailable indexed route was superseded by
+verified direct RSS and job-sitemap ingestion. Expertini no longer consumes a
+JSearch query; Kenya and Nairobi discovery remain. See
+[direct Expertini evidence and delivery](expertini-discovery.md).
