@@ -1,4 +1,8 @@
-# beBee Kenya discovery
+# beBee Kenya discovery (retired)
+
+Retired on 2026-10-02 at the user’s request. Careerjet is the replacement
+provider. This document records historical discovery only; no beBee adapter
+remains active. See [Careerjet discovery](careerjet-discovery.md).
 
 Inspected 2026-10-01 at the user's request as a possible supplemental source
 for the fourth (LinkedIn) feed. Production integration authorized later in the same session.

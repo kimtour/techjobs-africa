@@ -16,13 +16,13 @@ const categories = [...new Set(visibleJobs.map((job) => job.category).filter(Boo
 const orderedSources = [
   ...sourceOrder,
   ...[...new Set(visibleJobs.flatMap((job) => job.sources))].filter(
-    (sourceId) => sourceId !== "bebee" && !sourceOrder.includes(sourceId),
+    (sourceId) => sourceId !== "careerjet" && !sourceOrder.includes(sourceId),
   ),
 ];
 const sourceGroups = orderedSources
   .map((sourceId) => ({
     sourceId,
-    jobs: visibleJobs.filter((job) => (job.sources.includes(sourceId) || (sourceId === "linkedin" && job.sources.includes("bebee")))).sort(newestFirst),
+    jobs: visibleJobs.filter((job) => (job.sources.includes(sourceId) || (sourceId === "linkedin" && job.sources.includes("careerjet")))).sort(newestFirst),
   }))
   .filter((group) => group.jobs.length > 0 || group.sourceId === "linkedin");
 const sourceColumns: (typeof sourceGroups)[] = [[], []];
@@ -67,7 +67,7 @@ feedGroups.forEach((group, index) => sourceColumns[index % sourceColumns.length]
                 <div class="source-heading">
                   <div>
                     <h3 id={`source-${group.sourceId}`}>{feedName(group.sourceId)}</h3>
-                    {group.sourceId === "linkedin" && <p class="source-provider">beBee + LinkedIn via JSearch · Kenya</p>}
+                    {group.sourceId === "linkedin" && <p class="source-provider">{visibleJobs.some((job) => job.sources.includes("careerjet")) ? "Careerjet + LinkedIn via JSearch · Kenya" : "Careerjet listings pending · LinkedIn via JSearch · Kenya"}</p>}
                     <div class="source-periods" aria-label={`${feedName(group.sourceId)} posting period`}>
                       <button aria-pressed="true" data-period="latest" type="button">Latest</button>
                       <span aria-hidden="true">•</span>

@@ -29,7 +29,6 @@ class _FailingAdapter:
 def test_approved_sources_exclude_discovery_and_disabled_sources():
     assert approved_source_ids() == [
         "linkedin",
-        "bebee",
         "myjobmag",
         "corporate_staffing",
         "brightermonday",
@@ -253,3 +252,25 @@ def test_http_metrics_are_persisted_per_source_without_descriptions(tmp_path):
     assert "private description" not in str(list(tmp_path.rglob("*")))
     for path in tmp_path.rglob("*.json*"):
         assert "private description" not in path.read_text()
+
+
+def test_retired_bebee_removed_and_other_sources_preserved(tmp_path):
+    from ingest.normalize.canonicalize import canonicalize_raw_job
+
+    other = _SuccessfulAdapter().fetch()[0]
+    retired = other.model_copy(update={"source_id": "bebee", "external_id": "retired"})
+    kept = canonicalize_raw_job(other)
+    kept.sources.append("bebee")
+    rows = [canonicalize_raw_job(retired).model_dump(mode="json"), kept.model_dump(mode="json")]
+    (tmp_path / "canonical").mkdir()
+    (tmp_path / "canonical/jobs.json").write_text(json.dumps({"jobs": rows}))
+    (tmp_path / "state").mkdir()
+    (tmp_path / "state/health.json").write_text(json.dumps({"sources": {"bebee": {}}}))
+    (tmp_path / "state/source-baselines.json").write_text(json.dumps({"bebee": [125]}))
+
+    run_ingestion(tmp_path, source_ids=["elevolt"], adapters={"elevolt": _SuccessfulAdapter})
+    jobs = json.loads((tmp_path / "public/jobs.json").read_text())["jobs"]
+    assert {job["job_id"] for job in jobs} == {"elevolt:1"}
+    assert jobs[0]["sources"] == ["elevolt"]
+    assert "bebee" not in json.loads((tmp_path / "state/health.json").read_text())["sources"]
+    assert "bebee" not in json.loads((tmp_path / "state/source-baselines.json").read_text())

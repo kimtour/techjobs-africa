@@ -15,8 +15,6 @@ from urllib.parse import urlparse
 import yaml
 
 from ingest.adapters.ashby import AshbyAdapter
-from ingest.adapters.bebee import BeBeeAdapter
-from ingest.adapters.bebee import is_technical_title as bebee_technical_title
 from ingest.adapters.brightermonday import BrighterMondayAdapter
 from ingest.adapters.corporate_staffing import CorporateStaffingAdapter
 from ingest.adapters.elevolt import ElevoltAdapter
@@ -37,7 +35,6 @@ CONFIG_PATH = Path("config/sources.yaml")
 AdapterFactory = Callable[[], object]
 ADAPTERS: Mapping[str, AdapterFactory] = {
     "linkedin": LinkedInJSearchAdapter,
-    "bebee": BeBeeAdapter,
     "ashby": lambda: AshbyAdapter("talentsafari"),
     "brightermonday": BrighterMondayAdapter,
     "corporate_staffing": CorporateStaffingAdapter,
@@ -107,28 +104,30 @@ def run_ingestion(
         CanonicalJob.model_validate(job)
         for job in read_json(output_dir / "canonical/jobs.json", {"jobs": []})["jobs"]
     ]
-    # Reapply the source's stricter technical evidence on saved records too.
-    # Classification corrections must not remain visible merely because absence
-    # expiry is disabled. Never discard other sources' records here.
+    # Explicit source retirement is separate from absence/closure processing.
+    # Preserve other providers' identities and remove retired attribution.
     previous_jobs = [
-        job for job in previous_jobs if job.sources != ["bebee"] or bebee_technical_title(job.title)
+        job.model_copy(update={"sources": [source for source in job.sources if source != "bebee"]})
+        for job in previous_jobs
+        if not job.job_id.startswith("bebee:") and any(source != "bebee" for source in job.sources)
     ]
     previous_health = read_json(output_dir / "state/health.json", {"sources": {}})["sources"]
+    previous_health.pop("bebee", None)
     baselines = read_json(output_dir / "state/source-baselines.json", {})
+    baselines.pop("bebee", None)
     occurrences = [
         JobOccurrence.model_validate(item)
         for item in read_json(output_dir / "state/occurrences.json", {"occurrences": []})[
             "occurrences"
         ]
     ]
+    occurrences = [item for item in occurrences if item.source_id != "bebee"]
     jobs_by_id = {job.job_id: job for job in previous_jobs}
     health: dict[str, SourceHealth] = {}
     rows: dict[str, dict] = {}
     warnings: list[str] = []
     for source_id in selected_ids:
-        if source_id in ("linkedin", "bebee") and not (
-            source_id == "bebee" and source_ids is not None and list(source_ids) == ["bebee"]
-        ):
+        if source_id == "linkedin":
             old_attempt = previous_health.get(source_id, {}).get("last_attempt_at")
             if old_attempt and datetime.fromisoformat(old_attempt) > started - timedelta(hours=24):
                 continue

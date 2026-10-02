@@ -24,7 +24,11 @@ type JobsPayload = {
 
 const payload = jobsPayload as JobsPayload;
 
-export const jobs = payload.jobs.filter((job) => job.status === "ACTIVE");
+export const jobs = payload.jobs
+  .filter((job) => job.status === "ACTIVE"
+    && !job.job_id.startsWith("bebee:")
+    && job.sources.some((source) => source !== "bebee"))
+  .map((job) => ({ ...job, sources: job.sources.filter((source) => source !== "bebee") }));
 
 export const sourceOrder = [
   "myjobmag",
@@ -46,7 +50,7 @@ export const sourceName = (sourceId: string) =>
     elevolt: "Elevolt",
     fuzu: "Fuzu",
     linkedin: "LinkedIn",
-    bebee: "beBee",
+    careerjet: "Careerjet",
     myjobmag: "MyJobMag",
     openedcareer: "OpenedCareer",
   })[sourceId] ?? sourceId;

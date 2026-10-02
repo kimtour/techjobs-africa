@@ -26,30 +26,19 @@ sources:
       permission: user_authorized_via_jsearch
       notes: "User requested public LinkedIn-linked results via the configured JSearch API on 2026-10-01 after reviewing discovery results and usage-rights limitations. This does not establish a LinkedIn partnership or a provider redistribution license. No direct LinkedIn scraping or access-control bypass. Retain only minimal metadata and validated LinkedIn job links; never descriptions."
 
-  - id: bebee
-    name: beBee Kenya
-    enabled: true
+  - id: careerjet
+    name: Careerjet Kenya
+    enabled: false
     supports_absence_expiry: false
-    discovery_url: "https://bebee.com/ke/jobs/industry/technology"
-    method: authorized_public_html
-    production_method: authorized_public_html
-    interval_hours: 24
-    timezone: UTC
-    crawl:
-      max_pages: 150
-      target_jobs: 125
-      max_requests_per_run: 700
-      request_delay_ms: 1500
-      timeout_seconds: 25
-      retry_delays_seconds: []
-      complete_when: bounded_category_pages_succeeded
-    closed_markers: []
-    ttl_days: 30
+    discovery_url: "https://www.careerjet.co.ke/jobs?s=software+OR+engineer&l=Kenya"
+    method: publisher_access_pending
+    interval_hours: 2
+    timezone: Africa/Nairobi
     legal:
       robots_checked: true
-      tos_checked: true
-      permission: owner_authorized_by_phone
-      notes: "On 2026-10-01 the user reported obtaining authorization from beBee by phone and requested ingestion from the supplied Kenya technology category. This authorization covers bounded public category pagination despite general robots restrictions. No internal API, login, proxy, or block bypass. Keep only minimal JobPosting metadata, require Kenya country evidence, and filter titles for technical roles. Attribute to beBee inside Other/Linkedin and All Jobs; do not claim LinkedIn origin."
+      tos_checked: false
+      permission: owner_authorized_in_writing
+      notes: "On 2026-10-02 the user reported written permission, verified freshness, and requested replacement of beBee with Careerjet. Publisher XML feed or approved API access is pending. Public search requests currently return a verification page; do not bypass it. Enable production fetching only after the provided access method has been verified. Keep only minimal metadata and technical Kenya jobs, attributed to Careerjet in Other/Linkedin and All Jobs."
 
   - id: myjobmag
     name: MyJobMag Kenya

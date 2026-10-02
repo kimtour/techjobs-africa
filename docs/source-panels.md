@@ -23,7 +23,7 @@ roles found on BrighterMonday's Engineering & Technology and Software & Data pag
   and displays its source. It shares the independent period and pagination controls.
   Global result counts count unique jobs across matching feeds.
 - Other/Linkedin is fourth (All Jobs, MyJobMag, Fuzu, Other/Linkedin).
-  It combines Kenya jobs from the phone-authorized beBee public category and
+  It combines Kenya jobs from the written-authorized Careerjet publisher feed and
   validated LinkedIn links from JSearch. Each job retains its true source label.
   The header names both providers. Jobs also appear in All Jobs;
   source feeds include every job attributed to that source even when cross-listed.
