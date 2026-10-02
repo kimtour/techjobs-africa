@@ -6,9 +6,13 @@ freshness, and requested removal of beBee in favour of Careerjet.
 ## Verified access
 
 - Public search: https://www.careerjet.co.ke/jobs?s=software+OR+engineer&l=Kenya
-- Requests from the development environment and its normal browser both return
-  an unusual-traffic verification page. HTTP 200 does not establish a successful
-  listing fetch. Do not parse that page as an empty feed or evade the block.
+- Direct HTTP requests from the development environment return an unusual-traffic
+  verification page. The normal browser initially showed verification, then
+  completed automatically and displayed 1,426 results. A subsequent direct HTTP
+  request remained blocked. No challenge was manually solved and no browser
+  cookies or identity were transferred to the fetcher. HTTP 200 alone does not
+  establish a successful listing fetch. Do not parse verification as an empty
+  feed or evade the block.
 - https://www.careerjet.co.ke/partners/publishers explicitly offers publisher
   XML feeds and an API. XML is preferred for scheduled static ingestion.
 - https://www.careerjet.com/partners/api documents the v4 JSON search endpoint,
