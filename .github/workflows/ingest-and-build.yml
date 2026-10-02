@@ -9,7 +9,7 @@ on:
         required: false
         default: all
         type: choice
-        options: [all, jsearch]
+        options: [all, jsearch, expertini]
       refresh_jsearch:
         description: Refresh changed Google queries today (still respects monthly quota)
         required: false

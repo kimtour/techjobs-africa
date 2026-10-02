@@ -14,7 +14,7 @@ sources:
       max_pages: 5
       max_requests_per_run: 5
       date_posted: all
-      queries: [software engineer jobs in Kenya, software engineer jobs near Nairobi, technology engineer jobs in Kenya via expertini]
+      queries: [software engineer jobs in Kenya, software engineer jobs near Nairobi]
       request_delay_ms: 500
       timeout_seconds: 25
       retry_delays_seconds: []
@@ -25,21 +25,31 @@ sources:
       robots_checked: false
       tos_checked: true
       permission: user_authorized_via_jsearch
-      notes: "User requested Google Jobs discovery across publishers via the configured JSearch API on 2026-10-02 after reviewing discovery results and usage-rights limitations. This does not establish a LinkedIn partnership or a provider redistribution license. No direct LinkedIn scraping or access-control bypass. Retain only minimal metadata, explicit Kenya evidence, upstream identifiers, publisher labels and original application links; never descriptions. Exclude the retired beBee source. Up to five total requests shared across Kenya, Nairobi and Expertini discovery queries with no posting-date restriction per Kenya calendar day share the 160-request monthly ceiling with historical LinkedIn requests."
+      notes: "User requested Google Jobs discovery across publishers via the configured JSearch API on 2026-10-02 after reviewing discovery results and usage-rights limitations. This does not establish a LinkedIn partnership or a provider redistribution license. No direct LinkedIn scraping or access-control bypass. Retain only minimal metadata, explicit Kenya evidence, upstream identifiers, publisher labels and original application links; never descriptions. Exclude the retired beBee source. Up to five total requests shared across Kenya and Nairobi discovery queries with no posting-date restriction per Kenya calendar day share the 160-request monthly ceiling with historical LinkedIn requests."
 
   - id: expertini
     name: Expertini Kenya
-    enabled: false
+    enabled: true
     supports_absence_expiry: false
-    discovery_url: "https://ke.expertini.com/jobs/in/engineer/"
-    method: jsearch_publisher_discovery
-    production_method: null
-    interval_hours: 24
+    discovery_url: "https://ke.expertini.com/sitemapindex.xml"
+    method: public_job_sitemap_xml
+    production_method: public_job_sitemap_xml
+    interval_hours: 2
+    timezone: Africa/Nairobi
+    crawl:
+      max_pages: 5
+      max_requests_per_run: 6
+      request_delay_ms: 1500
+      timeout_seconds: 25
+      retry_delays_seconds: []
+      complete_when: all_advertised_listing_sitemaps_fetched
+    closed_markers: []
+    ttl_days: 30
     legal:
       robots_checked: true
       tos_checked: false
-      permission: user_requested_discovery
-      notes: "2026-10-02 public search returns a Cloudflare verification screen. No direct production scraper or bypass. Discover indexed technical Kenya listings through the documented JSearch API; attribute the actual publisher and retain original links in Other/Google/Linkedin and All Jobs. Direct source requires an accessible approved feed/API and completed M0 discovery."
+      permission: user_authorized_public_xml_discovery
+      notes: "M0 verified 200 XML access locally and on GitHub runner on 2026-10-02. Use only advertised public job_listing XML, never protected job/search pages or /api/. User explicitly requested direct Expertini discovery. Native numeric IDs, URL-label title prefixes and locality only; employer and publication date are unknown. Label URL-derived titles. lastmod is not a posting date. Sitemaps indicate discoverability, not verified vacancy status; absence expiry disabled. Terms pages remain behind verification; do not infer a redistribution licence."
 
   - id: careerjet
     name: Careerjet Kenya

@@ -18,6 +18,7 @@ from ingest.adapters.ashby import AshbyAdapter
 from ingest.adapters.brightermonday import BrighterMondayAdapter
 from ingest.adapters.corporate_staffing import CorporateStaffingAdapter
 from ingest.adapters.elevolt import ElevoltAdapter
+from ingest.adapters.expertini import ExpertiniSitemapAdapter
 from ingest.adapters.fuzu import FuzuAdapter
 from ingest.adapters.jsearch import GoogleJobsJSearchAdapter
 from ingest.adapters.myjobmag import MyJobMagAdapter
@@ -35,6 +36,7 @@ CONFIG_PATH = Path("config/sources.yaml")
 AdapterFactory = Callable[[], object]
 ADAPTERS: Mapping[str, AdapterFactory] = {
     "jsearch": GoogleJobsJSearchAdapter,
+    "expertini": ExpertiniSitemapAdapter,
     "ashby": lambda: AshbyAdapter("talentsafari"),
     "brightermonday": BrighterMondayAdapter,
     "corporate_staffing": CorporateStaffingAdapter,

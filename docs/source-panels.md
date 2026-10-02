@@ -24,7 +24,7 @@ roles found on BrighterMonday's Engineering & Technology and Software & Data pag
   Global result counts count unique jobs across matching feeds.
 - Other/Google/Linkedin is fourth (All Jobs, MyJobMag, Fuzu, Other/Google/Linkedin).
   It combines Kenya Google Jobs discoveries, previously accepted LinkedIn jobs,
-  Expertini discoveries through JSearch, and Careerjet if that provider is activated. Each job retains its true publisher
+  direct Expertini sitemap listings, and Careerjet if that provider is activated. Each job retains its true publisher
   label and original application destination. Jobs also appear in All Jobs;
   source feeds include every job attributed to that source even when cross-listed.
   Mobile keeps the same feed sequence. An empty LinkedIn feed retains its controls.
@@ -70,3 +70,9 @@ Build checks: `npm run check --prefix site && npm run build --prefix site`.
 Revert the source-panel commit and rerun the existing deployment workflow, or
 restore the previous successful deployment through Cloudflare Pages. Do not
 rewrite the persistent data branch to roll back a frontend change.
+
+
+Expertini's direct XML supplies URL-derived technical titles and no publication
+fields. Labels explicitly identify titles from listing links; dates stay unknown.
+These records appear in Latest and All Jobs, and are intentionally absent from
+bounded date periods. No separate Expertini panel is added.

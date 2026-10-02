@@ -44,3 +44,11 @@ Test valid records, nontechnical roles, duplicates, dates, malformed responses,
 verification pages and blocked/rate-limited responses. Verify Careerjet cards in
 Other/Linkedin and All Jobs locally and on the deployed site before declaring
 the feed operational.
+
+
+Update: direct v4 access was verified on 2026-10-02 after providing the required
+publisher Referer. Pagination works, but repeated requests return changing opaque
+application tokens with no native ID. An adapter cannot safely use those tokens as
+persistent IDs. Publisher XML with stable IDs is still needed for this provider.
+See [direct source investigation](expertini-discovery.md) for verified evidence and
+the activated independent Expertini XML alternative.

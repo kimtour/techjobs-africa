@@ -52,6 +52,7 @@ export const sourceName = (sourceId: string) =>
     fuzu: "Fuzu",
     linkedin: "LinkedIn",
     jsearch: "Google Jobs via JSearch",
+    expertini: "Expertini (title from listing link)",
     careerjet: "Careerjet",
     myjobmag: "MyJobMag",
     openedcareer: "OpenedCareer",

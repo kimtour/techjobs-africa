@@ -260,7 +260,7 @@ def test_queries_share_budget_and_expertini_keeps_publisher(monkeypatch):
 
     def respond(request):
         calls.append(request)
-        publisher = "Expertini" if "expertini" in request.url.params["query"] else "LinkedIn"
+        publisher = "Expertini" if "Nairobi" in request.url.params["query"] else "LinkedIn"
         return httpx.Response(
             200,
             json={
@@ -281,9 +281,9 @@ def test_queries_share_budget_and_expertini_keeps_publisher(monkeypatch):
     adapter = GoogleJobsJSearchAdapter(httpx.Client(transport=httpx.MockTransport(respond)))
     jobs = adapter.fetch()
     assert len(calls) == 5
-    assert [r.url.params["query"] for r in calls[:3]] == list(adapter.queries)
-    assert "cursor" not in calls[2].url.params
-    assert calls[3].url.params["cursor"] == "next-1"
+    assert [r.url.params["query"] for r in calls[:2]] == list(adapter.queries)
+    assert "cursor" not in calls[1].url.params
+    assert calls[2].url.params["cursor"] == "next-1"
     assert any(j.source_publisher == "Expertini" for j in jobs)
 
 
