@@ -10,6 +10,11 @@ on:
         default: all
         type: choice
         options: [all, jsearch]
+      refresh_jsearch:
+        description: Refresh changed Google queries today (still respects monthly quota)
+        required: false
+        default: false
+        type: boolean
       scheduler_slot:
         description: Cloudflare scheduler slot (leave empty for a manual fetch)
         required: false
@@ -78,11 +83,14 @@ jobs:
         env:
           JSEARCH_API_KEY: ${{ secrets.JSEARCH_API_KEY }}
           FETCH_SOURCE: ${{ inputs.source || 'all' }}
+          REFRESH_JSEARCH: ${{ inputs.refresh_jsearch || 'false' }}
         run: |
+          REFRESH_ARGS=()
+          if [ "$REFRESH_JSEARCH" = "true" ]; then REFRESH_ARGS+=(--refresh-jsearch); fi
           if [ "$FETCH_SOURCE" != "all" ]; then
-            python -u -m ingest.main --output-dir "$CANDIDATE_DIR" --source "$FETCH_SOURCE"
+            python -u -m ingest.main --output-dir "$CANDIDATE_DIR" --source "$FETCH_SOURCE" "${REFRESH_ARGS[@]}"
           else
-            python -u -m ingest.main --output-dir "$CANDIDATE_DIR"
+            python -u -m ingest.main --output-dir "$CANDIDATE_DIR" "${REFRESH_ARGS[@]}"
           fi
 
       - name: Set up Node

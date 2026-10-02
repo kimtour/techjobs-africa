@@ -194,7 +194,11 @@ class GoogleJobsJSearchAdapter:
     """Bounded Kenya discovery across publishers; no direct Google scraping."""
 
     source_id = "jsearch"
-    query = "software engineer jobs in Kenya"
+    queries = (
+        "software engineer jobs in Kenya",
+        "software engineer jobs near Nairobi",
+        "technology engineer jobs in Kenya via expertini",
+    )
 
     def __init__(self, client: httpx.Client | None = None) -> None:
         self._client = client or httpx.Client()
@@ -207,14 +211,19 @@ class GoogleJobsJSearchAdapter:
         if not key:
             raise ValueError("Missing JSearch credential")
         jobs: dict[str, RawJob] = {}
-        cursor = None
-        seen_cursors = set()
+        # Round-robin gives each location/publisher query a first page before
+        # spending the remaining shared budget on continuation pages.
+        pending = [(query, None) for query in self.queries]
+        seen_cursors: dict[str, set[str]] = {query: set() for query in self.queries}
         for _ in range(self.max_pages):
+            if not pending:
+                break
+            query, cursor = pending.pop(0)
             params = {
-                "query": self.query,
+                "query": query,
                 "country": "ke",
                 "language": "en",
-                "date_posted": "week",
+                "date_posted": "all",
                 "num_pages": 1,
                 "fields": FIELDS,
                 "exclude_job_publishers": "beBee",
@@ -297,11 +306,11 @@ class GoogleJobsJSearchAdapter:
                     ),
                 )
             cursor = data.get("cursor")
-            if not cursor:
-                break
-            if not isinstance(cursor, str) or cursor in seen_cursors:
-                raise ValueError("Invalid or repeated JSearch cursor")
-            seen_cursors.add(cursor)
+            if cursor:
+                if not isinstance(cursor, str) or cursor in seen_cursors[query]:
+                    raise ValueError("Invalid or repeated JSearch cursor")
+                seen_cursors[query].add(cursor)
+                pending.append((query, cursor))
         # Query completion is only a bounded window, never evidence of absence.
         self.crawl_complete = True
         return list(jobs.values())

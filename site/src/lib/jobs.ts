@@ -91,7 +91,7 @@ export const newestFirst = (a: Job, b: Job) => {
   return timestamp(b) - timestamp(a) || a.job_id.localeCompare(b.job_id);
 };
 
-export const feedName = (sourceId: string) => sourceId === "linkedin" ? "Google Jobs via JSearch" : sourceName(sourceId);
+export const feedName = (sourceId: string) => sourceId === "linkedin" ? "Other/Google/Linkedin" : sourceName(sourceId);
 
 export const sourceLabels = (job: Job) => job.sources.map((source) =>
   source === "jsearch" && job.source_publisher

@@ -51,11 +51,12 @@ def test_cursor_pagination_all_publishers_kenya_filter_and_no_descriptions(monke
         )
 
     adapter = GoogleJobsJSearchAdapter(httpx.Client(transport=httpx.MockTransport(respond)))
+    adapter.queries = ("software engineer jobs in Kenya",)
     jobs = build_jobs(adapter.fetch())
     assert len(calls) == 2
     assert "cursor" not in calls[0].url.params
     assert calls[1].url.params["cursor"] == "next-page"
-    assert all(r.url.params["date_posted"] == "week" for r in calls)
+    assert all(r.url.params["date_posted"] == "all" for r in calls)
     assert all(r.url.params["query"] == "software engineer jobs in Kenya" for r in calls)
     assert all(r.url.params["exclude_job_publishers"] == "beBee" for r in calls)
     assert {j.job_id for j in jobs} == {"jsearch:google-1", "jsearch:google-2"}
@@ -251,3 +252,70 @@ def test_google_linkedin_identity_uses_native_id_instead_of_changing_search_id(m
     assert len(jobs) == 1
     assert jobs[0].external_id == "linkedin-123456"
     assert str(jobs[0].apply_url) == "https://www.linkedin.com/jobs/view/123456/"
+
+
+def test_queries_share_budget_and_expertini_keeps_publisher(monkeypatch):
+    monkeypatch.setenv("JSEARCH_API_KEY", "test-secret")
+    calls = []
+
+    def respond(request):
+        calls.append(request)
+        publisher = "Expertini" if "expertini" in request.url.params["query"] else "LinkedIn"
+        return httpx.Response(
+            200,
+            json={
+                "status": "OK",
+                "data": {
+                    "jobs": [
+                        record(
+                            publisher,
+                            job_publisher=publisher,
+                            job_apply_link=f"https://ke.expertini.com/jobs/{publisher}/",
+                        )
+                    ],
+                    "cursor": f"next-{len(calls)}",
+                },
+            },
+        )
+
+    adapter = GoogleJobsJSearchAdapter(httpx.Client(transport=httpx.MockTransport(respond)))
+    jobs = adapter.fetch()
+    assert len(calls) == 5
+    assert [r.url.params["query"] for r in calls[:3]] == list(adapter.queries)
+    assert "cursor" not in calls[2].url.params
+    assert calls[3].url.params["cursor"] == "next-1"
+    assert any(j.source_publisher == "Expertini" for j in jobs)
+
+
+def test_explicit_refresh_bypasses_today_skip_but_not_quota(tmp_path):
+    class Adapter:
+        crawl_complete = True
+
+        def fetch(self):
+            return [
+                RawJob(
+                    source_id="jsearch",
+                    external_id="1",
+                    title="Software Engineer",
+                    location="Kenya",
+                    source_url="https://example.com/1",
+                    apply_url="https://example.com/1",
+                )
+            ]
+
+    run_ingestion(tmp_path, source_ids=["jsearch"], adapters={"jsearch": Adapter})
+    assert run_ingestion(tmp_path, source_ids=["jsearch"], adapters={"jsearch": Adapter}) == {}
+    assert "jsearch" in run_ingestion(
+        tmp_path, source_ids=["jsearch"], adapters={"jsearch": Adapter}, refresh_jsearch=True
+    )
+    history = tmp_path / "state/request-history"
+    history.mkdir(parents=True, exist_ok=True)
+    (history / f"{datetime.now(UTC):%Y-%m-%d}.jsonl").write_text(
+        "\n".join(json.dumps({"source_id": "jsearch"}) for _ in range(160)) + "\n"
+    )
+    assert (
+        run_ingestion(
+            tmp_path, source_ids=["jsearch"], adapters={"jsearch": Adapter}, refresh_jsearch=True
+        )
+        == {}
+    )

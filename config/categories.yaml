@@ -13,6 +13,12 @@ categories:
   - full stack developer
   - web developer
   - mobile developer
+  - mobile app developer
+  - mobile ios engineer
+  - ios engineer
+  - android engineer
+  - .net developer
+  - software engineering trainer
   - ios developer
   - android developer
   - python developer
@@ -24,6 +30,7 @@ categories:
   - ai engineer
   - machine learning engineer
   - ml engineer
+  - ml developer
   - deep learning engineer
   - computer vision engineer
   - nlp engineer
@@ -71,6 +78,7 @@ categories:
   - aws engineer
   - gcp engineer
   - infrastructure engineer
+  - cloud infrastructure developer
 - key: cybersecurity
   title: Cybersecurity
   keywords:
@@ -106,12 +114,14 @@ categories:
   - systems technician
   - database intern
   - it officer
+  - it specialist
   - application development
 - key: systems-administration
   title: Systems Administration
   keywords:
   - systems administrator
   - systems engineer
+  - system engineer
   - system administrator
   - server administrator
   - windows administrator
@@ -120,6 +130,7 @@ categories:
   title: Networking
   keywords:
   - network engineer
+  - hardware engineer (network
   - network administrator
   - network specialist
   - network architect
@@ -165,6 +176,7 @@ categories:
   keywords:
   - solutions architect
   - solution architect
+  - enterprise solution engineer
   - enterprise architect
   - technical architect
 - key: technical-support
@@ -203,6 +215,8 @@ categories:
   - cto
   - vp engineering
   - head of engineering
+  - "head: platform engineering"
+  - head of platform engineering
   - engineering manager
   - director of engineering
   - head of technology
@@ -212,6 +226,7 @@ categories:
   title: Internship / Graduate Technology
   keywords:
   - software engineering intern
+  - software engineering internship
   - technology intern
   - it intern
   - computer science

@@ -159,3 +159,31 @@ Validation: 122 Python tests, lint, six frontend behavior tests, Astro validatio
 and build passed. Local and production browser checks confirmed publisher labels,
 feed membership, independent period/pagination controls, fixed feed heights,
 fourth-feed placement, two desktop columns and mobile order without overflow.
+
+
+### Coverage correction — 2 October 2026
+
+The user's Google comparison uses "software engineer jobs near Nairobi" without
+posting-date restrictions. The first import used a Kenya-wide past-week query;
+it exhausted its cursor after two requests, so merely increasing pagination would
+not address that mismatch. Thirteen pasted examples link through retired beBee;
+those remain excluded. Some pasted jobs (GiveDirectly, Solvo and UNEP) were already
+attributed to this feed. Provider indexing can still differ from browser results.
+
+Production now queries Kenya, Nairobi, and "technology engineer jobs in Kenya via
+expertini" without a posting-date restriction. A round-robin queue gives all three
+queries one request before continuation pages, sharing five requests total per
+refresh and the existing 160-request monthly ceiling. Scheduled refreshes remain
+once per Kenya calendar day; an explicit manual refresh can bypass the daily skip,
+but never the monthly ceiling. Titles now recognize mobile iOS/app development,
+.NET, software internships/trainers, plural developers, hyphenated full-stack,
+ML development, platform leadership, cloud infrastructure and network hardware.
+Civil, mechanical and electrical engineering remain outside the technical taxonomy.
+
+The fourth feed is Other/Google/Linkedin. Expertini is included as an indexed
+publisher discovery query, not a direct scraper. Its public engineer search on
+2026-10-02 returned Cloudflare's "Just a moment" verification screen locally;
+robots.txt permits the requested search path but disallows /api/. No block bypass
+or direct production adapter is enabled. A source-provided accessible feed or API
+is required to finish direct-source discovery. Indexed listings retain the actual
+publisher and original application URL and also appear in All Jobs.

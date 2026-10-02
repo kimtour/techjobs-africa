@@ -90,6 +90,7 @@ def run_ingestion(
     *,
     source_ids: Sequence[str] | None = None,
     adapters: Mapping[str, object] = ADAPTERS,
+    refresh_jsearch: bool = False,
 ) -> dict[str, SourceHealth]:
     """Fetch each source independently and write safe static files on success."""
 
@@ -161,7 +162,8 @@ def run_ingestion(
             # Refresh on the next Kenya calendar day, rather than drifting later
             # after a manual afternoon run. Keep the shared account within quota.
             if (
-                old_attempt
+                not refresh_jsearch
+                and old_attempt
                 and datetime.fromisoformat(old_attempt)
                 .astimezone(timezone(timedelta(hours=3)))
                 .date()
@@ -473,8 +475,15 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output-dir", required=True, type=Path)
     parser.add_argument("--source", action="append", dest="sources")
+    parser.add_argument(
+        "--refresh-jsearch",
+        action="store_true",
+        help="Refresh changed Google queries today; monthly quota still applies",
+    )
     args = parser.parse_args()
-    health = run_ingestion(args.output_dir, source_ids=args.sources)
+    health = run_ingestion(
+        args.output_dir, source_ids=args.sources, refresh_jsearch=args.refresh_jsearch
+    )
     summary = ", ".join(f"{key}={value.status}" for key, value in health.items())
     print("Ingestion complete: " + summary)
     return 0

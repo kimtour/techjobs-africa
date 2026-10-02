@@ -47,3 +47,36 @@ def test_domain_function_survives_seniority_and_new_title_variants():
     }
     for title, category in examples.items():
         assert classify_technology_title(title).category == category
+
+
+def test_missing_google_technical_variants_are_included():
+    titles = [
+        "Mobile App Developer in Nairobi",
+        "Senior Mobile IOS Engineer",
+        "Software Engineering Trainer",
+        "Software Engineering Interns",
+        "Software Engineering Internship (AI)",
+        "Strong Junior .NET Developer (Business Process Automation)",
+        "Senior Full-Stack Engineer",
+        "Group Head: Platform Engineering",
+        "Software Developers Job Vacancies at The Pharmacy and Poisons Board (PPB)",
+        "ML Developer Intern, Community of Practice",
+        "Cloud Infrastructure Developer",
+        "Enterprise Solution Engineer",
+        "Hardware Engineer (Network & RF)",
+        "System Engineer",
+        "IT Specialist",
+    ]
+    for title in titles:
+        assert classify_technology_title(title).category, title
+
+
+def test_broad_engineer_search_does_not_admit_unrelated_engineering():
+    for title in [
+        "Civil Engineer",
+        "Mechanical Engineer",
+        "Electrical Engineer",
+        "Sales Officer - Software Developers",
+        "HR Officer - Platform Engineering",
+    ]:
+        assert classify_technology_title(title).category is None, title
