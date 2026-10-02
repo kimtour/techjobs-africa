@@ -143,3 +143,19 @@ verification bypass, runtime backend or additional scheduler is introduced.
 The homepage's fourth feed is labelled Google Jobs via JSearch. Original publisher
 labels appear on its cards and in All Jobs; the two-column layout, other sources,
 independent periods, pagination, mobile order and unique counts are retained.
+
+### First Google Jobs publication
+
+Successful run: https://github.com/kimtour/techjobs-africa/actions/runs/36988085641
+Started 2026-10-02 at 12:09 EAT. Cursor exhaustion ended the crawl after two
+requests. Nine valid Kenya records yielded seven classified technical listings.
+Five exact application-URL overlaps gained JSearch attribution; two new jobs
+raised the accepted total from 1,078 to 1,080. No previous job identity was lost.
+Publishers: WhatJobs, Fuzu, MyJobMag, Corporate Staffing Services, and LinkedIn.
+The fourth combined feed contains eight jobs including the retained LinkedIn
+listing outside this import. All eight appear in All Jobs. beBee links are absent.
+
+Validation: 122 Python tests, lint, six frontend behavior tests, Astro validation
+and build passed. Local and production browser checks confirmed publisher labels,
+feed membership, independent period/pagination controls, fixed feed heights,
+fourth-feed placement, two desktop columns and mobile order without overflow.
