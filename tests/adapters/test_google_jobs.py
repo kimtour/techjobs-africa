@@ -1,8 +1,10 @@
 import json
 from datetime import UTC, datetime
+from pathlib import Path
 
 import httpx
 import pytest
+import yaml
 
 from ingest.adapters.jsearch import GoogleJobsJSearchAdapter
 from ingest.main import build_jobs, run_ingestion
@@ -281,9 +283,9 @@ def test_queries_share_budget_and_expertini_keeps_publisher(monkeypatch):
     adapter = GoogleJobsJSearchAdapter(httpx.Client(transport=httpx.MockTransport(respond)))
     jobs = adapter.fetch()
     assert len(calls) == 5
-    assert [r.url.params["query"] for r in calls[:2]] == list(adapter.queries)
-    assert "cursor" not in calls[1].url.params
-    assert calls[2].url.params["cursor"] == "next-1"
+    assert [r.url.params["query"] for r in calls[: len(adapter.queries)]] == list(adapter.queries)
+    assert all("cursor" not in r.url.params for r in calls[: len(adapter.queries)])
+    assert calls[len(adapter.queries)].url.params["cursor"] == "next-1"
     assert any(j.source_publisher == "Expertini" for j in jobs)
 
 
@@ -319,3 +321,20 @@ def test_explicit_refresh_bypasses_today_skip_but_not_quota(tmp_path):
         )
         == {}
     )
+
+
+def test_production_uses_configured_role_queries_with_shared_budget(tmp_path, monkeypatch):
+    monkeypatch.setenv("JSEARCH_API_KEY", "test-secret")
+    calls = []
+
+    def respond(request):
+        calls.append(request)
+        return httpx.Response(200, json={"status": "OK", "data": {"jobs": [record()]}})
+
+    adapter = GoogleJobsJSearchAdapter(httpx.Client(transport=httpx.MockTransport(respond)))
+    adapter.queries = ("obsolete query",)
+    run_ingestion(tmp_path, source_ids=["jsearch"], adapters={"jsearch": lambda: adapter})
+    config = yaml.safe_load(Path("config/sources.yaml").read_text())
+    queries = next(s for s in config["sources"] if s["id"] == "jsearch")["crawl"]["queries"]
+    assert [request.url.params["query"] for request in calls] == queries
+    assert len(calls) <= 5

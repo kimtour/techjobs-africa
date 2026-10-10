@@ -16,13 +16,13 @@ const categories = [...new Set(visibleJobs.map((job) => job.category).filter(Boo
 const orderedSources = [
   ...sourceOrder,
   ...[...new Set(visibleJobs.flatMap((job) => job.sources))].filter(
-    (sourceId) => sourceId !== "careerjet" && sourceId !== "jsearch" && sourceId !== "expertini" && !sourceOrder.includes(sourceId),
+    (sourceId) => sourceId !== "careerjet" && sourceId !== "jsearch" && sourceId !== "expertini" && sourceId !== "m_kopa" && !sourceOrder.includes(sourceId),
   ),
 ];
 const sourceGroups = orderedSources
   .map((sourceId) => ({
     sourceId,
-    jobs: visibleJobs.filter((job) => (job.sources.includes(sourceId) || (sourceId === "linkedin" && (job.sources.includes("careerjet") || job.sources.includes("jsearch") || job.sources.includes("expertini"))))).sort(newestFirst),
+    jobs: visibleJobs.filter((job) => (job.sources.includes(sourceId) || (sourceId === "linkedin" && (job.sources.includes("careerjet") || job.sources.includes("jsearch") || job.sources.includes("expertini") || job.sources.includes("m_kopa"))))).sort(newestFirst),
   }))
   .filter((group) => group.jobs.length > 0 || group.sourceId === "linkedin");
 const sourceColumns: (typeof sourceGroups)[] = [[], []];

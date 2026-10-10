@@ -1,6 +1,7 @@
 import json
 from pathlib import Path
 
+import httpx
 import pytest
 
 from ingest.adapters.ashby import AshbyAdapter, parse_ashby_jobs
@@ -34,3 +35,32 @@ def test_parse_ignores_unlisted_or_incomplete_jobs():
 def test_adapter_rejects_an_unsafe_board_name():
     with pytest.raises(ValueError, match="board names"):
         AshbyAdapter("talentsafari/../private")
+
+
+def test_employer_board_keeps_kenya_location_and_native_identity():
+    payload = json.loads(FIXTURE.read_text())
+    job = payload["jobs"][0]
+    job.update(location="London", isRemote=True, secondaryLocations=[{"location": "Nairobi"}])
+    foreign = {**job, "id": "uk-only", "secondaryLocations": []}
+    payload["jobs"].append(foreign)
+    jobs = parse_ashby_jobs(payload, source_id="m_kopa", company="M-KOPA", country_code="KE")
+    assert len(jobs) == 1
+    assert jobs[0].source_id == "m_kopa"
+    assert jobs[0].company == "M-KOPA"
+    assert jobs[0].location == "Remote · Nairobi"
+    assert jobs[0].external_id == job["id"]
+    assert "description" not in jobs[0].model_dump()
+
+
+def test_employer_board_failure_never_completes_a_crawl():
+    adapter = AshbyAdapter(
+        "M-KOPA",
+        httpx.Client(transport=httpx.MockTransport(lambda request: httpx.Response(503))),
+        source_id="m_kopa",
+        company="M-KOPA",
+        country_code="KE",
+    )
+    assert adapter.api_url.endswith("/M-KOPA")
+    with pytest.raises(httpx.HTTPStatusError):
+        adapter.fetch()
+    assert not adapter.crawl_complete

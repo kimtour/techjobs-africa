@@ -107,3 +107,22 @@ def test_automation_titles_do_not_admit_industrial_or_uncertain_roles():
         "Senior Petroleum/Production Engineer",
     ]:
         assert classify_technology_title(title).category is None, title
+
+
+def test_linkedin_comparison_titles_and_punctuation():
+    examples = {
+        "Senior Backend Engineer - Mobility (12 month FTC)": "Software Engineering",
+        "GCP Cloud Platform Administrator": "Cloud",
+        "Software Developer Trainee": "Software Engineering",
+        "Manager,Technology": "Technology Leadership",
+        "Manager / Technology": "Technology Leadership",
+        "Head of Workplace IT": "Technology Leadership",
+    }
+    for title, category in examples.items():
+        assert classify_technology_title(title).category == category, title
+    for title in [
+        "Manager,Sales",
+        "Cloud Sales Officer",
+        "Telesales Quality Assurance & Training Analyst",
+    ]:
+        assert classify_technology_title(title).category is None, title

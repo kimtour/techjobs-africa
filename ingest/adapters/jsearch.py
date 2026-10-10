@@ -197,6 +197,8 @@ class GoogleJobsJSearchAdapter:
     queries = (
         "software engineer jobs in Kenya",
         "software engineer jobs near Nairobi",
+        "cloud platform administrator jobs in Kenya",
+        "technology manager jobs in Kenya",
     )
 
     def __init__(self, client: httpx.Client | None = None) -> None:
@@ -210,7 +212,7 @@ class GoogleJobsJSearchAdapter:
         if not key:
             raise ValueError("Missing JSearch credential")
         jobs: dict[str, RawJob] = {}
-        # Round-robin gives each location/publisher query a first page before
+        # Round-robin gives each configured role/location query a first page before
         # spending the remaining shared budget on continuation pages.
         pending = [(query, None) for query in self.queries]
         seen_cursors: dict[str, set[str]] = {query: set() for query in self.queries}

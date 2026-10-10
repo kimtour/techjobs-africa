@@ -20,16 +20,18 @@ class CategoryDecision(BaseModel):
 def _matches(title: str, keywords: list[str]) -> bool:
     normalized = title.casefold()
     normalized = re.sub(r"[-–—]", " ", normalized)
+    normalized = re.sub(r"[,/:]", " ", normalized)
     normalized = re.sub(r"\b(front|back)\s+end\b", r"\1end", normalized)
     normalized = re.sub(r"\b(engineers|developers|interns)\b", lambda m: m[0][:-1], normalized)
     normalized = re.sub(r"\s+", " ", normalized)
     # Seniority may appear between the domain and function (ICT Senior Analyst,
     # Cloud Lead Engineer). It changes rank, not the technical function.
     normalized = re.sub(r"\b(senior|junior|principal|lead|sr\.?|jr\.?)\s+", "", normalized)
-    return any(
-        re.search(rf"(?<!\w){re.escape(keyword.casefold())}(?!\w)", normalized)
-        for keyword in keywords
-    )
+    for keyword in keywords:
+        phrase = re.sub(r"\s+", " ", re.sub(r"[,/:]", " ", keyword.casefold()))
+        if re.search(rf"(?<!\w){re.escape(phrase)}(?!\w)", normalized):
+            return True
+    return False
 
 
 def has_non_technical_exclusion(value: str, config_path: Path = CONFIG_PATH) -> bool:

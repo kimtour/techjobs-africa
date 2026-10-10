@@ -2,6 +2,12 @@ name: M0 Source Discovery
 
 on:
   workflow_dispatch:
+    inputs:
+      ashby_board:
+        description: Optional employer Ashby board (sanitized public API discovery only)
+        required: false
+        default: ''
+        type: string
 
 permissions:
   contents: read
@@ -25,11 +31,13 @@ jobs:
           python-version: "3.11"
 
       - name: Install M0 dependencies
+        if: inputs.ashby_board == ''
         run: |
           python -m pip install --upgrade pip
           python -m pip install -r requirements-m0.txt
 
       - name: Run M0 discovery probe
+        if: inputs.ashby_board == ''
         env:
           CRAWLER_CONTACT_URL: ${{ vars.CRAWLER_CONTACT_URL }}
           CRAWLER_CONTACT_EMAIL: ${{ vars.CRAWLER_CONTACT_EMAIL }}
@@ -38,9 +46,28 @@ jobs:
           python ingest/m0_probe.py
 
       - name: Upload M0 results
+        if: inputs.ashby_board == ''
         uses: actions/upload-artifact@v4
         with:
           name: m0-discovery-results
           path: |
             docs/source-discovery.md
             m0-results.json
+
+      - name: Install employer-board discovery dependencies
+        if: inputs.ashby_board != ''
+        run: python -m pip install -r requirements-dev.txt
+
+      - name: Verify employer public API without saving descriptions
+        if: inputs.ashby_board != ''
+        env:
+          ASHBY_BOARD: ${{ inputs.ashby_board }}
+          M0_ENV: github-actions
+        run: python -m ingest.ashby_discovery --board "$ASHBY_BOARD" --output ashby-discovery.json
+
+      - name: Upload minimal employer discovery metadata
+        if: inputs.ashby_board != ''
+        uses: actions/upload-artifact@v4
+        with:
+          name: ashby-board-discovery
+          path: ashby-discovery.json

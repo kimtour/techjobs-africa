@@ -38,6 +38,9 @@ ADAPTERS: Mapping[str, AdapterFactory] = {
     "jsearch": GoogleJobsJSearchAdapter,
     "expertini": ExpertiniSitemapAdapter,
     "ashby": lambda: AshbyAdapter("talentsafari"),
+    "m_kopa": lambda: AshbyAdapter(
+        "M-KOPA", source_id="m_kopa", company="M-KOPA", country_code="KE"
+    ),
     "brightermonday": BrighterMondayAdapter,
     "corporate_staffing": CorporateStaffingAdapter,
     "elevolt": ElevoltAdapter,
@@ -223,6 +226,8 @@ def run_ingestion(
                 policy = source_config[source_id]["crawl"]
                 if hasattr(adapter, "max_pages"):
                     adapter.max_pages = policy["max_pages"]
+                if hasattr(adapter, "queries") and policy.get("queries"):
+                    adapter.queries = tuple(policy["queries"])
                 if hasattr(adapter, "target_jobs"):
                     adapter.target_jobs = policy.get("target_jobs", adapter.target_jobs)
                 if hasattr(adapter, "request_delay_seconds"):
