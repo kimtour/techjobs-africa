@@ -13,8 +13,8 @@ Production now shares its existing five-request window across four queries:
 
 - software engineer jobs in Kenya
 - software engineer jobs near Nairobi
-- product manager jobs in Kenya via linkedin
-- project manager jobs in Kenya via linkedin
+- product manager jobs in Kenya
+- project manager jobs in Kenya
 
 Each query receives its first page before continuations. Configuration now drives
 the executed queries, preventing the YAML and adapter from silently diverging.
@@ -47,3 +47,11 @@ use sample count variation as evidence of missing jobs. Positive validated JSear
 samples may add/refresh records; empty results, malformed responses and request
 failures retain the previous feed. Absence expiry remains disabled. Other sources'
 count-drop gates are unchanged.
+
+The refresh in run 38036233518 successfully published three new IDs, retaining
+all 1,329 prior IDs. LinkedIn-qualified management searches returned only one
+accepted project-management listing, attributed to Jobweb Kenya, and no Product
+Manager listing. Management queries now search across indexed publishers without
+the restrictive `via linkedin` qualifier, preserving actual LinkedIn links and
+publisher attribution whenever returned. This remains indexed discovery, not an
+exhaustive LinkedIn inventory.

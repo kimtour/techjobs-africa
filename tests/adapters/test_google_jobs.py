@@ -371,8 +371,8 @@ def test_linkedin_manager_queries_capture_roles_and_require_kenya_evidence(monke
     assert {job.job_id for job in jobs} == {"jsearch:linkedin-123456", "jsearch:linkedin-789012"}
     assert all(job.category == "Technical Product" for job in jobs)
     assert all(job.source_publisher == "LinkedIn" and job.country_code == "KE" for job in jobs)
-    assert "product manager jobs in Kenya via linkedin" in queries
-    assert "project manager jobs in Kenya via linkedin" in queries
+    assert "product manager jobs in Kenya" in queries
+    assert "project manager jobs in Kenya" in queries
 
 
 @pytest.mark.parametrize("empty", [False, True])

@@ -17,8 +17,8 @@ sources:
       queries:
         - software engineer jobs in Kenya
         - software engineer jobs near Nairobi
-        - product manager jobs in Kenya via linkedin
-        - project manager jobs in Kenya via linkedin
+        - product manager jobs in Kenya
+        - project manager jobs in Kenya
       request_delay_ms: 500
       timeout_seconds: 60
       retry_delays_seconds: []
@@ -29,7 +29,7 @@ sources:
       robots_checked: false
       tos_checked: true
       permission: user_authorized_via_jsearch
-      notes: "User requested Google Jobs discovery across publishers via the configured JSearch API on 2026-10-02 after reviewing discovery results and usage-rights limitations. This does not establish a LinkedIn partnership or a provider redistribution license. No direct LinkedIn scraping or access-control bypass. Retain only minimal metadata, explicit Kenya evidence, upstream identifiers, publisher labels and original application links; never descriptions. Exclude the retired beBee source. Up to five total requests shared across software engineering and LinkedIn product/project management queries with no posting-date restriction per Kenya calendar day share the 160-request monthly ceiling with historical LinkedIn requests."
+      notes: "User requested Google Jobs discovery across publishers via the configured JSearch API on 2026-10-02 after reviewing discovery results and usage-rights limitations. This does not establish a LinkedIn partnership or a provider redistribution license. No direct LinkedIn scraping or access-control bypass. Retain only minimal metadata, explicit Kenya evidence, upstream identifiers, publisher labels and original application links; never descriptions. Exclude the retired beBee source. Up to five total requests shared across software engineering and product/project management queries with no posting-date restriction per Kenya calendar day share the 160-request monthly ceiling with historical LinkedIn requests."
 
   - id: expertini
     name: Expertini Kenya
