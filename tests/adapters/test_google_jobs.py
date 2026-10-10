@@ -373,3 +373,56 @@ def test_linkedin_manager_queries_capture_roles_and_require_kenya_evidence(monke
     assert all(job.source_publisher == "LinkedIn" and job.country_code == "KE" for job in jobs)
     assert "product manager jobs in Kenya via linkedin" in queries
     assert "project manager jobs in Kenya via linkedin" in queries
+
+
+@pytest.mark.parametrize("empty", [False, True])
+def test_bounded_google_sample_preserves_accumulated_jobs_and_keeps_empty_guard(tmp_path, empty):
+    old_jobs = [
+        canonicalize_raw_job(
+            RawJob(
+                source_id="jsearch",
+                external_id=f"old-{i}",
+                title="Software Engineer",
+                location="Kenya",
+                source_url=f"https://example.com/old-{i}",
+                apply_url=f"https://example.com/old-{i}",
+            )
+        )
+        for i in range(3)
+    ]
+    (tmp_path / "canonical").mkdir()
+    (tmp_path / "canonical/jobs.json").write_text(
+        json.dumps({"jobs": [job.model_dump(mode="json") for job in old_jobs]})
+    )
+    (tmp_path / "state").mkdir()
+    (tmp_path / "state/source-baselines.json").write_text(json.dumps({"jsearch": [100] * 7}))
+    (tmp_path / "public").mkdir()
+    (tmp_path / "public/jobs.json").write_text(
+        json.dumps({"schema_version": 1, "jobs": [job.model_dump(mode="json") for job in old_jobs]})
+    )
+
+    class Adapter:
+        crawl_complete = True
+
+        def fetch(self):
+            return (
+                []
+                if empty
+                else [
+                    RawJob(
+                        source_id="jsearch",
+                        external_id="new-manager",
+                        title="Product Manager",
+                        location="Kenya",
+                        source_url="https://example.com/new-manager",
+                        apply_url="https://example.com/new-manager",
+                    )
+                ]
+            )
+
+    health = run_ingestion(tmp_path, source_ids=["jsearch"], adapters={"jsearch": Adapter})
+    assert health["jsearch"].status == ("PARTIAL" if empty else "SUCCESS")
+    assert not health["jsearch"].safe_to_process_absences
+    jobs = json.loads((tmp_path / "public/jobs.json").read_text())["jobs"]
+    assert {job.job_id for job in old_jobs} <= {job["job_id"] for job in jobs}
+    assert ("jsearch:new-manager" in {job["job_id"] for job in jobs}) == (not empty)

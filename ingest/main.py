@@ -272,6 +272,11 @@ def run_ingestion(
                 tech_drop = previous_for_source and len(source_jobs) < len(previous_for_source) * (
                     1 - gates["max_source_job_drop_percent"] / 100
                 )
+                # JSearch returns a bounded, ranked sample, while accepted jobs
+                # accumulate across queries/days. A smaller valid sample is not
+                # evidence of an incomplete inventory. Absence expiry stays off.
+                if source_id == "jsearch":
+                    raw_drop = tech_drop = False
                 if not fetched or raw_drop or tech_drop:
                     status = SourceHealthStatus.PARTIAL
                     reason = "suspicious_count_drop" if fetched else "unexpected_empty_result"

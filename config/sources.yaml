@@ -20,7 +20,7 @@ sources:
         - product manager jobs in Kenya via linkedin
         - project manager jobs in Kenya via linkedin
       request_delay_ms: 500
-      timeout_seconds: 25
+      timeout_seconds: 60
       retry_delays_seconds: []
       complete_when: all_query_cursors_exhausted_or_five_request_window_succeeded
     closed_markers: []

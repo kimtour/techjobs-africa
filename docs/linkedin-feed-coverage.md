@@ -34,3 +34,16 @@ Manager remain included. Sales and non-technical engineering exclusions remain.
 Manager records use the existing Other/Google/Linkedin and All Jobs feeds; no new
 employer source or panel is enabled. Source order, periods, pagination, scrolling
 and unique counts remain unchanged.
+
+The first refresh (run 38035913226) passed all 169 Python tests but the provider
+returned a read timeout on the third request, the new product-management query.
+The existing feed was retained. Increase this source's request timeout from 25 to
+60 seconds for uncached searches without adding retries or extra budget.
+
+Audit also showed two earlier refreshes rejected as `suspicious_count_drop`:
+accepted JSearch jobs accumulate, while each fresh five-page ranked sample can
+be much smaller. Do not compare a bounded sample to the accumulated inventory or
+use sample count variation as evidence of missing jobs. Positive validated JSearch
+samples may add/refresh records; empty results, malformed responses and request
+failures retain the previous feed. Absence expiry remains disabled. Other sources'
+count-drop gates are unchanged.

@@ -235,7 +235,7 @@ class GoogleJobsJSearchAdapter:
                 API_URL,
                 headers={"x-api-key": key, "Accept": "application/json"},
                 params=params,
-                timeout=25,
+                timeout=60,
                 follow_redirects=False,
             )
             response.raise_for_status()
