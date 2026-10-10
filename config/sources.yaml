@@ -17,8 +17,8 @@ sources:
       queries:
         - software engineer jobs in Kenya
         - software engineer jobs near Nairobi
-        - cloud platform administrator jobs in Kenya
-        - technology manager jobs in Kenya
+        - product manager jobs in Kenya via linkedin
+        - project manager jobs in Kenya via linkedin
       request_delay_ms: 500
       timeout_seconds: 25
       retry_delays_seconds: []
@@ -29,32 +29,7 @@ sources:
       robots_checked: false
       tos_checked: true
       permission: user_authorized_via_jsearch
-      notes: "User requested Google Jobs discovery across publishers via the configured JSearch API on 2026-10-02 after reviewing discovery results and usage-rights limitations. This does not establish a LinkedIn partnership or a provider redistribution license. No direct LinkedIn scraping or access-control bypass. Retain only minimal metadata, explicit Kenya evidence, upstream identifiers, publisher labels and original application links; never descriptions. Exclude the retired beBee source. Up to five total requests shared across software, cloud administration, and technology management queries with no posting-date restriction per Kenya calendar day share the 160-request monthly ceiling with historical LinkedIn requests."
-
-  - id: m_kopa
-    name: M-KOPA via Ashby
-    enabled: true
-    supports_absence_expiry: true
-    discovery_url: "https://www.m-kopa.com/careers"
-    method: official_public_api
-    production_method: null
-    api_url: "https://api.ashbyhq.com/posting-api/job-board/M-KOPA"
-    interval_hours: 2
-    timezone: null
-    crawl:
-      max_pages: 1
-      max_requests_per_run: 3
-      request_delay_ms: 500
-      timeout_seconds: 15
-      retry_delays_seconds: [5, 20]
-      complete_when: all_listed_public_postings_fetched
-    closed_markers: []
-    ttl_days: 30
-    legal:
-      robots_checked: false
-      tos_checked: true
-      permission: official_public_api
-      notes: "Employer careers page embeds the M-KOPA Ashby board, verified locally on 2026-10-10. Reuse Ashby's documented public posting API; only listed jobs with explicit Kenya locations, including secondary locations. No descriptions persisted. Production remains gated pending hosted-runner discovery."
+      notes: "User requested Google Jobs discovery across publishers via the configured JSearch API on 2026-10-02 after reviewing discovery results and usage-rights limitations. This does not establish a LinkedIn partnership or a provider redistribution license. No direct LinkedIn scraping or access-control bypass. Retain only minimal metadata, explicit Kenya evidence, upstream identifiers, publisher labels and original application links; never descriptions. Exclude the retired beBee source. Up to five total requests shared across software engineering and LinkedIn product/project management queries with no posting-date restriction per Kenya calendar day share the 160-request monthly ceiling with historical LinkedIn requests."
 
   - id: expertini
     name: Expertini Kenya

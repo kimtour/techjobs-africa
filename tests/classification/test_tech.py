@@ -114,15 +114,16 @@ def test_linkedin_comparison_titles_and_punctuation():
         "Senior Backend Engineer - Mobility (12 month FTC)": "Software Engineering",
         "GCP Cloud Platform Administrator": "Cloud",
         "Software Developer Trainee": "Software Engineering",
+        "Product Manager": "Technical Product",
+        "Project Manager": "Technical Product",
+        "Technical Project Manager": "Technical Product",
         "Manager,Technology": "Technology Leadership",
         "Manager / Technology": "Technology Leadership",
-        "Head of Workplace IT": "Technology Leadership",
     }
     for title, category in examples.items():
         assert classify_technology_title(title).category == category, title
     for title in [
         "Manager,Sales",
         "Cloud Sales Officer",
-        "Telesales Quality Assurance & Training Analyst",
     ]:
         assert classify_technology_title(title).category is None, title

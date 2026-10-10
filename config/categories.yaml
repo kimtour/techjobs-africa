@@ -229,7 +229,6 @@ categories:
   - head of technology
   - technology manager
   - manager technology
-  - head of workplace it
   - it director
 - key: graduate-intern
   title: Internship / Graduate Technology
@@ -260,7 +259,6 @@ non_tech_exclusions:
 - social media manager
 - customer care agent
 - teacher
-- telesales
 rules:
 - Reject explicit non-technical job functions before applying technical keywords.
 - Generic Product Manager roles are included under Technical Product by product decision.

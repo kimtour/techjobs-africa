@@ -197,8 +197,8 @@ class GoogleJobsJSearchAdapter:
     queries = (
         "software engineer jobs in Kenya",
         "software engineer jobs near Nairobi",
-        "cloud platform administrator jobs in Kenya",
-        "technology manager jobs in Kenya",
+        "product manager jobs in Kenya via linkedin",
+        "project manager jobs in Kenya via linkedin",
     )
 
     def __init__(self, client: httpx.Client | None = None) -> None:

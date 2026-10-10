@@ -1,38 +1,36 @@
-# Missing LinkedIn comparison roles — 10 October 2026
+# LinkedIn product/project management coverage — 10 October 2026
 
-The supplied screenshot is evidence of a coverage gap, not an instruction to
-scrape LinkedIn or assume every result is Kenya-eligible. The current accepted
-data branch has 1,329 jobs. Other M-KOPA backend roles exist, but the exact
-Mobility (12 month FTC) vacancy and the other three screenshot titles are absent.
+The user clarified that the screenshot illustrates missing kinds of jobs,
+particularly Product Manager and Project Manager vacancies posted on LinkedIn.
+M-KOPA backend jobs already appear in the accepted feed; an additional employer
+source is outside this correction.
 
-## Findings and correction
+Both Product Manager and Project Manager already classify as Technical Product.
+The actual coverage gap is discovery: production only queried software engineering
+in Kenya and Nairobi. Those queries are not an exhaustive LinkedIn tech-job feed.
 
-| Screenshot title | Finding | Correction |
-| --- | --- | --- |
-| Senior Backend Engineer - Mobility (12 month FTC) | Title already passes. Employer board was not configured. | Verified employer careers page links the `M-KOPA` Ashby board; reuse the existing documented API adapter. Native ID `121d269d-f893-4e4c-9a88-eae3f6c5c917`, Nairobi, Remote, published 9 October 2026. |
-| GCP Cloud Platform Administrator | Title was rejected; Google queries only searched software engineering. | Add the precise cloud administration phrase and a dedicated Kenya discovery query. Actual SDG vacancy and location still require provider/employer evidence. |
-| Software Developer Trainee | Title already passes. Employer/source coverage is missing. | Retain software discovery; no title-filter expansion needed. Screenshot alone does not verify Kenya eligibility. |
-| Manager,Technology | Comma and reversed role/domain order prevented a match. | Normalize title/keyword separators consistently; add `manager technology` and a Kenya technology-management discovery query. Exact BRAC vacancy is still unverified. |
+Production now shares its existing five-request window across four queries:
 
-Public employer evidence: https://www.m-kopa.com/careers embeds
-https://jobs.ashbyhq.com/M-KOPA . Local API discovery returned 34 listed jobs.
-Only explicit Kenya locations, including secondary locations, are accepted for
-this employer source. UK/European variants remain excluded. Remote metadata and
-the employer name are preserved. Non-technical telesales QA is rejected.
+- software engineer jobs in Kenya
+- software engineer jobs near Nairobi
+- product manager jobs in Kenya via linkedin
+- project manager jobs in Kenya via linkedin
 
-Local sanitized API discovery: `python -m ingest.ashby_discovery --board M-KOPA
---output /tmp/techjobs-m-kopa-discovery.json`. Robots returned HTTP 401, so no
-robots permission is inferred. This route uses Ashby's already documented public
-posting API. Response descriptions remain in memory and are never saved.
-The optional employer-board M0 workflow records the same minimal metadata from
-a hosted runner; production activation is gated until that verification succeeds.
+Each query receives its first page before continuations. Configuration now drives
+the executed queries, preventing the YAML and adapter from silently diverging.
+The once-per-Kenya-calendar-day policy, 160-request monthly ceiling, explicit Kenya
+country evidence, stable identifiers, deduplication and beBee exclusion remain.
+JSearch discovers indexed vacancies; it cannot guarantee every LinkedIn posting
+or the same results/ranking as LinkedIn's own search. No direct LinkedIn scraping
+or access-control bypass is introduced. Original application links and publisher
+labels are preserved; descriptions are never persisted.
 
-Google discovery gives each of four role/location queries a first page before
-continuations, sharing five requests per Kenya calendar day and the existing
-160-request monthly ceiling. Configured queries now drive production execution.
-Broader queries improve discovery but do not guarantee LinkedIn's result set.
-No new scheduler, direct LinkedIn scrape, fuzzy merge or invented posting date.
+Two precise screenshot title variants were also confirmed to fail classification:
+GCP Cloud Platform Administrator and Manager,Technology. Add the cloud-platform
+administration phrase and reversed management phrase, normalizing title and
+keyword punctuation consistently. Technical Project Manager and generic Project
+Manager remain included. Sales and non-technical engineering exclusions remain.
 
-M-KOPA jobs appear in All Jobs and the existing fourth Other/Google/Linkedin feed,
-with `M-KOPA via Ashby` attribution. Other source feeds retain their order,
-independent periods, scrolling and load-more behavior.
+Manager records use the existing Other/Google/Linkedin and All Jobs feeds; no new
+employer source or panel is enabled. Source order, periods, pagination, scrolling
+and unique counts remain unchanged.

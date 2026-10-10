@@ -46,7 +46,6 @@ export const sourceName = (sourceId: string) =>
   ({
     all: "All Jobs",
     ashby: "TalentSafari",
-    m_kopa: "M-KOPA via Ashby",
     brightermonday: "BrighterMonday",
     corporate_staffing: "Corporate Staffing",
     elevolt: "Elevolt",

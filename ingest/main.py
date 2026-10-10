@@ -38,9 +38,6 @@ ADAPTERS: Mapping[str, AdapterFactory] = {
     "jsearch": GoogleJobsJSearchAdapter,
     "expertini": ExpertiniSitemapAdapter,
     "ashby": lambda: AshbyAdapter("talentsafari"),
-    "m_kopa": lambda: AshbyAdapter(
-        "M-KOPA", source_id="m_kopa", company="M-KOPA", country_code="KE"
-    ),
     "brightermonday": BrighterMondayAdapter,
     "corporate_staffing": CorporateStaffingAdapter,
     "elevolt": ElevoltAdapter,

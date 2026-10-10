@@ -338,3 +338,38 @@ def test_production_uses_configured_role_queries_with_shared_budget(tmp_path, mo
     queries = next(s for s in config["sources"] if s["id"] == "jsearch")["crawl"]["queries"]
     assert [request.url.params["query"] for request in calls] == queries
     assert len(calls) <= 5
+
+
+def test_linkedin_manager_queries_capture_roles_and_require_kenya_evidence(monkeypatch):
+    monkeypatch.setenv("JSEARCH_API_KEY", "test-secret")
+    queries = []
+
+    def respond(request):
+        query = request.url.params["query"]
+        queries.append(query)
+        title = "Product Manager" if query.startswith("product") else "Project Manager"
+        manager = query.startswith(("product", "project"))
+        job_id = "123456" if title == "Product Manager" else "789012"
+        records = (
+            [
+                record(
+                    job_id,
+                    job_title=title,
+                    job_publisher="LinkedIn",
+                    job_apply_link=f"https://www.linkedin.com/jobs/view/{job_id}/",
+                ),
+                record("foreign", job_title=title, job_country="US"),
+            ]
+            if manager
+            else []
+        )
+        return httpx.Response(200, json={"status": "OK", "data": {"jobs": records}})
+
+    adapter = GoogleJobsJSearchAdapter(httpx.Client(transport=httpx.MockTransport(respond)))
+    jobs = build_jobs(adapter.fetch())
+    assert {job.title for job in jobs} == {"Product Manager", "Project Manager"}
+    assert {job.job_id for job in jobs} == {"jsearch:linkedin-123456", "jsearch:linkedin-789012"}
+    assert all(job.category == "Technical Product" for job in jobs)
+    assert all(job.source_publisher == "LinkedIn" and job.country_code == "KE" for job in jobs)
+    assert "product manager jobs in Kenya via linkedin" in queries
+    assert "project manager jobs in Kenya via linkedin" in queries
