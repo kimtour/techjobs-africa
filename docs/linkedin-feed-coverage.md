@@ -117,3 +117,14 @@ The provider rejected `job_location` in a field projection with HTTP 400; use it
 normal response in memory, retaining only minimal fields. Added aggregate window
 counts distinguish empty provider coverage from geographic filtering without logging
 queries, response bodies, descriptions or credentials.
+
+### Delivery verification
+
+- Full approved-source repair run: `38147462430`; the seven supplied links promoted.
+- Corrected JSearch runs: `38148271255` and `38149412951`, both successful, five HTTP 200 responses each.
+- Corporate Staffing location refresh: `38148496157`, successful; all four supplied roles now display Nairobi, Kenya.
+- Final accepted export: 1,383 active jobs; all 1,371 pre-change active IDs retained.
+- Verified new combined-feed example: Xperteez Technology, Senior Software Engineer, Remote, South Africa; original Hirezar link and true publisher label retained. No claim that this sample reproduces the five screenshot jobs or all LinkedIn vacancies.
+- Provider booleans were false even on explicit Remote titles. Accept explicit remote title/location evidence plus returned African geography; never infer remote or eligibility from a query alone. Regional query returned zero records in this sample.
+- 179 Python tests, six frontend behavior tests, Astro check/build, lint and formatting passed. Local/live browser checks verified the supplied links, corrected locations, remote example and independent pagination (10 to 20 without moving neighbours).
+- Expertini remains intentionally paused until authorized public feed access is restored; accepted jobs and blocked health evidence remain available. Previous failed workflow records remain historical; future scheduled runs use the repaired main branch.
