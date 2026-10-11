@@ -283,11 +283,17 @@ class GoogleJobsJSearchAdapter:
                         for k in ("job_location", "job_city", "job_state", "job_country")
                     )
                     geography = normalize_location(raw_location)
+                    remote_evidence = record.get("job_is_remote") is True or (
+                        normalize_location(
+                            " · ".join((raw_location, str(record.get("job_title") or "")))
+                        ).workplace_type
+                        == "Remote"
+                    )
                     country_names = african_country_names()
                     african_country = country in country_names or country in {
                         name.upper() for name in country_names.values()
                     }
-                    if record.get("job_is_remote") is not True or not (
+                    if not remote_evidence or not (
                         african_country
                         or (
                             country
@@ -356,6 +362,21 @@ class GoogleJobsJSearchAdapter:
                 isinstance(record, dict) and record.get("job_is_remote") is True
                 for record in records
             )
+            remote_text_count = sum(
+                isinstance(record, dict)
+                and normalize_location(
+                    " · ".join(
+                        str(record.get(key) or "")
+                        for key in ("job_location", "job_city", "job_state", "job_title")
+                    )
+                ).workplace_type
+                == "Remote"
+                for record in records
+            )
+            remote_missing_count = sum(
+                isinstance(record, dict) and record.get("job_is_remote") is None
+                for record in records
+            )
             african_count = sum(
                 isinstance(record, dict)
                 and str(record.get("job_country") or "").upper() in african_country_names()
@@ -364,6 +385,7 @@ class GoogleJobsJSearchAdapter:
             print(
                 f"JSearch window {window_index + 1}: records={len(records)}, "
                 f"remote={remote_count}, "
+                f"remote_text={remote_text_count}, remote_missing={remote_missing_count}, "
                 f"african_countries={african_count}, accepted={len(jobs) - accepted_before}",
                 flush=True,
             )

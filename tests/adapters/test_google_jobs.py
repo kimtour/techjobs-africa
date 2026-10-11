@@ -451,6 +451,12 @@ def test_remote_africa_and_worldwide_results_keep_real_geography(monkeypatch):
             job_title="Product Engineer (AI-Native)",
         ),
         record("on-site", job_country="ZA", job_is_remote=False),
+        record(
+            "remote-title",
+            job_country="ZA",
+            job_is_remote=False,
+            job_title="Software Engineer (Remote)",
+        ),
         record("us", job_country="US", job_is_remote=True),
         record(
             "unknown", job_country=None, job_city=None, job_location="Remote", job_is_remote=True
@@ -466,7 +472,13 @@ def test_remote_africa_and_worldwide_results_keep_real_geography(monkeypatch):
     adapter = GoogleJobsJSearchAdapter(httpx.Client(transport=httpx.MockTransport(respond)))
     adapter.queries = ("remote tech jobs in Sub-Saharan Africa",)
     jobs = {j.job_id: j for j in build_jobs(adapter.fetch())}
-    assert set(jobs) == {"jsearch:za", "jsearch:ug", "jsearch:ssa", "jsearch:global"}
+    assert set(jobs) == {
+        "jsearch:za",
+        "jsearch:ug",
+        "jsearch:ssa",
+        "jsearch:global",
+        "jsearch:remote-title",
+    }
     assert jobs["jsearch:za"].country == "South Africa"
     assert jobs["jsearch:ug"].country == "Uganda"
     assert jobs["jsearch:ssa"].region == "Sub-Saharan Africa"
