@@ -248,6 +248,8 @@ class GoogleJobsJSearchAdapter:
                 "fields": FIELDS,
                 "exclude_job_publishers": "beBee",
             }
+            if "remote" in query.casefold():
+                params["work_from_home"] = "true"
             if cursor:
                 params["cursor"] = cursor
             response = self._client.get(

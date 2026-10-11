@@ -474,4 +474,5 @@ def test_remote_africa_and_worldwide_results_keep_real_geography(monkeypatch):
     assert jobs["jsearch:global"].region == "Worldwide"
     assert all(j.eligibility_level == "CONFIRMED" for j in jobs.values())
     assert calls[0].url.params["country"] == "za"
+    assert calls[0].url.params["work_from_home"] == "true"
     assert "job_location" in calls[0].url.params["fields"]

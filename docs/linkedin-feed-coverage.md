@@ -86,6 +86,7 @@ cover Kenya software engineering, product management and project management,
 plus LinkedIn-focused Sub-Saharan Africa and South Africa remote tech discovery.
 The regional queries use the documented South Africa (`za`) search locale;
 Sub-Saharan Africa is not a country code. Query wording never establishes eligibility.
+Remote queries also use the provider's documented `work_from_home=true` filter.
 Other-country results require explicit remote plus African/worldwide location
 evidence. Countries retain their names/codes, and regional locations have a separate
 `region` field; generic remote and EMEA alone remain insufficient. This is a bounded
