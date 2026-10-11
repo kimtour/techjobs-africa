@@ -20,7 +20,7 @@ CONTACT_EMAIL = os.getenv("CRAWLER_CONTACT_EMAIL", "").strip()
 RUN_ENVIRONMENT = os.getenv("M0_ENV", "local").strip() or "local"
 
 contact = CONTACT_URL or CONTACT_EMAIL or "contact-not-configured"
-USER_AGENT = f"TechJobsAfricaBot/0.1 (+{contact})"
+USER_AGENT = f"TechKaziBot/0.1 (+{contact})"
 
 HEADERS = {
     "User-Agent": USER_AGENT,

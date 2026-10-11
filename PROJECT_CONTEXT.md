@@ -1,4 +1,9 @@
-# TechJobs Africa — Project Context (v0.1, Final)
+# TechKazi — Project Context (v0.1, Final)
+
+Brand chosen on 11 October 2026: **TechKazi**. Current public address:
+**https://techkazi.pages.dev/**. Future custom domain: **techkazi.com**.
+The repository remains `kimtour/techjobs-africa`; existing job and scheduler
+identifiers retain their original identity. See `docs/techkazi-branding.md`.
 
 > This is the authoritative engineering context. If M0 discovery contradicts an assumption here, document the evidence and make the smallest necessary change. Do not redesign unrelated parts.
 

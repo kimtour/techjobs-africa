@@ -87,7 +87,7 @@ class AshbyEmployerAdapter:
         board, _ = ASHBY_EMPLOYERS[source_id]
         self.source_id = source_id
         self.api_url = f"https://api.ashbyhq.com/posting-api/job-board/{quote(board, safe='')}"
-        self._client = client or httpx.Client(headers={"User-Agent": "TechJobsAfricaBot/0.1"})
+        self._client = client or httpx.Client(headers={"User-Agent": "TechKaziBot/0.1"})
         self.crawl_complete = False
 
     def fetch(self) -> list[RawJob]:
@@ -219,7 +219,7 @@ class SocialDiscoveryAdapter:
     source_id = "sdg"
 
     def __init__(self, client: httpx.Client | None = None) -> None:
-        self._client = client or httpx.Client(headers={"User-Agent": "TechJobsAfricaBot/0.1"})
+        self._client = client or httpx.Client(headers={"User-Agent": "TechKaziBot/0.1"})
         self.crawl_complete = False
 
     def fetch(self) -> list[RawJob]:

@@ -1,0 +1,115 @@
+name: Migrate TechKazi hosting
+
+on:
+  workflow_dispatch:
+    inputs:
+      stage:
+        description: Publish the new site first; redirect the old address after changing the hosting variable
+        type: choice
+        default: publish
+        options: [publish, redirect-legacy]
+
+permissions:
+  contents: write
+  deployments: write
+
+concurrency:
+  group: techjobs-pipeline
+  cancel-in-progress: false
+
+jobs:
+  migrate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: site/package-lock.json
+      - name: Read accepted jobs and build TechKazi
+        if: inputs.stage == 'publish'
+        run: |
+          git fetch origin data --depth=1
+          git show FETCH_HEAD:public/jobs.json > site/src/data/jobs.json
+          npm ci --prefix site
+          npm test --prefix site
+          npm run check --prefix site
+          npm run build --prefix site
+      - name: Prepare the exact TechKazi address
+        if: inputs.stage == 'publish'
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: node site/scripts/ensure-techkazi-project.mjs
+      - name: Publish TechKazi
+        id: deploy
+        if: inputs.stage == 'publish'
+        uses: cloudflare/wrangler-action@v4
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy site/dist --project-name=techkazi --branch=main
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+      - name: Verify live branding and every accepted job
+        if: inputs.stage == 'publish'
+        run: node site/scripts/verify-techkazi-site.mjs
+      - name: Record verified frontend publication
+        if: inputs.stage == 'publish'
+        env:
+          DEPLOY_URL: ${{ steps.deploy.outputs.deployment-url }}
+          DEPLOY_ID: ${{ steps.deploy.outputs.pages-deployment-id }}
+        run: |
+          git worktree add /tmp/techkazi-deployment-state FETCH_HEAD
+          node --input-type=module <<'JS'
+          import { writeFileSync, appendFileSync } from 'node:fs';
+          const recordedAt = new Date().toISOString();
+          const deployment = {
+            outcome: 'success', deployment_url: process.env.DEPLOY_URL,
+            deployment_id: process.env.DEPLOY_ID || null, production_url: 'https://techkazi.pages.dev/',
+            run_id: process.env.GITHUB_RUN_ID, recorded_at: recordedAt,
+            promoted: false, frontend_only: true, workflow_status_at_finalization: 'success', brand: 'TechKazi',
+          };
+          writeFileSync('/tmp/techkazi-deployment-state/state/deployment.json', JSON.stringify(deployment, null, 2) + '\n');
+          appendFileSync(`/tmp/techkazi-deployment-state/state/publication-history/${recordedAt.slice(0, 10)}.jsonl`, JSON.stringify(deployment) + '\n');
+          JS
+          git -C /tmp/techkazi-deployment-state config user.name "github-actions[bot]"
+          git -C /tmp/techkazi-deployment-state config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git -C /tmp/techkazi-deployment-state add state/deployment.json state/publication-history
+          git -C /tmp/techkazi-deployment-state commit -m "Record verified TechKazi hosting migration"
+          git -C /tmp/techkazi-deployment-state push origin HEAD:data
+      - name: Prepare the legacy redirect after switching future updates
+        if: inputs.stage == 'redirect-legacy'
+        env:
+          CF_PROJECT: ${{ vars.CLOUDFLARE_PAGES_PROJECT }}
+        run: |
+          test "$CF_PROJECT" = "techkazi"
+          curl -fsS https://techkazi.pages.dev/ -o /tmp/techkazi-live.html
+          python - <<'PY'
+          from pathlib import Path
+          assert '<p class="eyebrow">TechKazi</p>' in Path('/tmp/techkazi-live.html').read_text()
+          output = Path('/tmp/techkazi-redirect')
+          output.mkdir()
+          (output / '_redirects').write_text('/* https://techkazi.pages.dev/:splat 301\n')
+          (output / 'index.html').write_text('<!doctype html><html lang="en"><meta charset="utf-8"><title>TechKazi</title><a href="https://techkazi.pages.dev/">Continue to TechKazi</a></html>\n')
+          PY
+      - name: Redirect the old public address
+        if: inputs.stage == 'redirect-legacy'
+        uses: cloudflare/wrangler-action@v4
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy /tmp/techkazi-redirect --project-name=techjobs-africa --branch=main
+      - name: Verify the permanent redirect
+        if: inputs.stage == 'redirect-legacy'
+        run: |
+          node --input-type=module <<'JS'
+          for (let attempt = 0; ; attempt++) {
+            const response = await fetch('https://techjobs-africa.pages.dev/', { redirect: 'manual', signal: AbortSignal.timeout(15000) });
+            if (response.status === 301 && response.headers.get('location') === 'https://techkazi.pages.dev/') break;
+            if (attempt === 5) throw new Error('Legacy address does not redirect to TechKazi');
+            await new Promise(resolve => setTimeout(resolve, 10000));
+          }
+          console.log('Old public address permanently redirects to TechKazi.');
+          JS

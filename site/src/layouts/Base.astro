@@ -3,6 +3,8 @@ import "../styles/global.css";
 
 type Props = { title: string };
 const { title } = Astro.props;
+const description = "TechKazi brings together tech jobs in Kenya and remote opportunities for African candidates. Apply through the original publisher.";
+const canonical = new URL(Astro.url.pathname, Astro.site);
 ---
 
 <!doctype html>
@@ -10,7 +12,18 @@ const { title } = Astro.props;
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Technical jobs for African candidates, linked to their original source." />
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="theme-color" content="#e85d45" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="TechKazi" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
     <title>{title}</title>
   </head>
   <body>

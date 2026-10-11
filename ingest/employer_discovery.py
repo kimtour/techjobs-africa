@@ -33,7 +33,7 @@ ASHBY_FIELDS = (
 
 def probe() -> dict:
     result = {"checked_at": datetime.now(UTC).isoformat(), "sources": {}}
-    with httpx.Client(headers={"User-Agent": "TechJobsAfricaBot/0.1"}, timeout=25) as client:
+    with httpx.Client(headers={"User-Agent": "TechKaziBot/0.1"}, timeout=25) as client:
         for source, url in TARGETS.items():
             host = (
                 "https://social-discovery-ventures.breezy.hr"
@@ -51,7 +51,7 @@ def probe() -> dict:
                 "content_type": response.headers.get("content-type"),
                 "bytes": len(response.content),
                 "robots_http_status": robots.status_code,
-                "robots_allows": rules.can_fetch("TechJobsAfricaBot/0.1", url)
+                "robots_allows": rules.can_fetch("TechKaziBot/0.1", url)
                 if robots.status_code == 200
                 else None,
                 "access_method": "public_html"

@@ -68,7 +68,7 @@ class AshbyAdapter:
             )
         self.board = board
         self._client = client or httpx.Client(
-            headers={"Accept": "application/json", "User-Agent": "TechJobsAfricaBot/0.1"}
+            headers={"Accept": "application/json", "User-Agent": "TechKaziBot/0.1"}
         )
 
     @property

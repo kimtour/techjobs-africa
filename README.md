@@ -1,6 +1,10 @@
-# TechJobs Africa
+# TechKazi
 
 Static-first tech job discovery for African candidates.
+
+Live site: **https://techkazi.pages.dev/**. The chosen future custom domain is
+**techkazi.com**; it is planned and not connected as part of this update.
+See [branding and hosting](docs/techkazi-branding.md) for the migration and checks.
 
 ## Start here
 
@@ -35,10 +39,10 @@ npm run dev
 
 This project uses Cloudflare Pages Direct Upload so the GitHub workflow can build from the private `data` branch and deploy only the resulting static files.
 
-1. In Cloudflare, create a **Workers & Pages → Create application → Get started → Direct Upload** project. Use the project name `techjobs-africa` (or another unique name you choose).
+1. In Cloudflare, use the **Workers & Pages → Direct Upload** project named `techkazi`.
 2. Create a Cloudflare API token with **Account → Cloudflare Pages → Edit** permission.
 3. In GitHub repository Settings → Secrets and variables → Actions, add repository secrets `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID`.
-4. Add a repository variable named `CLOUDFLARE_PAGES_PROJECT` containing the exact Pages project name.
+4. Set the repository variable `CLOUDFLARE_PAGES_PROJECT` to `techkazi`.
 
 The scheduled `Ingest and build static site` workflow deploys only when all three values are present. Tokens must never be committed or pasted into project files.
 

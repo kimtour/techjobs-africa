@@ -66,7 +66,7 @@ class ElevoltAdapter:
         request_delay_seconds: float = 1.5,
     ) -> None:
         self._client = client or httpx.Client(
-            headers={"Accept": "application/json", "User-Agent": "TechJobsAfricaBot/0.1"}
+            headers={"Accept": "application/json", "User-Agent": "TechKaziBot/0.1"}
         )
         self.max_pages = max_pages
         self.request_delay_seconds = request_delay_seconds

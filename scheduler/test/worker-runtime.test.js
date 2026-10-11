@@ -47,7 +47,7 @@ test('Worker serves status and dashboard while protecting every dispatch route',
     const dashboard = await mf.dispatchFetch('https://scheduler.test/');
     assert.equal(dashboard.status, 200);
     assert.match(dashboard.headers.get('Content-Type'), /text\/html/);
-    assert.match(await dashboard.text(), /TechJobs Africa · Fetch status/);
+    assert.match(await dashboard.text(), /TechKazi · Fetch status/);
     assert.equal((await mf.dispatchFetch('https://scheduler.test/health')).status, 503);
     assert.equal((await mf.dispatchFetch('https://scheduler.test/test', { method: 'POST' })).status, 401);
     assert.equal((await mf.dispatchFetch('https://scheduler.test/test', {

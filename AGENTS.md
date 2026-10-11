@@ -4,7 +4,7 @@ This file provides guidance to coding agents when working with code in this repo
 
 ## Project overview
 
-TechJobs Africa — a minimalist, high-density tech job aggregator for African candidates. Static-first: no database, no runtime backend. The ingestion pipeline produces JSON that an Astro site serves statically.
+TechKazi — a minimalist, high-density tech job aggregator for African candidates. Live at https://techkazi.pages.dev/; techkazi.com is the future custom domain. Static-first: no database, no runtime backend. The ingestion pipeline produces JSON that an Astro site serves statically. The repository and scheduler resource identities retain their original names; see docs/techkazi-branding.md.
 
 ## Quick commands
 

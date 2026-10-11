@@ -254,7 +254,7 @@ class MyJobMagAdapter:
         today: date | None = None,
     ) -> None:
         self._client = client or httpx.Client(
-            headers={"Accept": "text/html", "User-Agent": "TechJobsAfricaBot/0.1"}
+            headers={"Accept": "text/html", "User-Agent": "TechKaziBot/0.1"}
         )
         self.listing_url = listing_url
         self.max_pages = max_pages

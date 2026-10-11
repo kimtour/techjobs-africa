@@ -208,7 +208,7 @@ class BrighterMondayAdapter:
         max_pages: int = 40,
     ) -> None:
         self._client = client or httpx.Client(
-            headers={"Accept": "text/html", "User-Agent": "TechJobsAfricaBot/0.1"}
+            headers={"Accept": "text/html", "User-Agent": "TechKaziBot/0.1"}
         )
         self.listing_urls = listing_urls
         self.request_delay_seconds = request_delay_seconds

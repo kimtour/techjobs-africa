@@ -1,5 +1,10 @@
 # Cloudflare fetch scheduler
 
+The dashboard is branded **TechKazi** and links to https://techkazi.pages.dev/.
+The existing Worker and Durable Object identities are retained through the
+branding migration so their scheduling history and credentials continue intact.
+See [TechKazi branding and hosting](techkazi-branding.md).
+
 Cloudflare requests the existing GitHub ingestion workflow at 01:00, 07:00,
 09:00, 11:00, 13:00, 15:00, 17:00, 19:00, and 21:00 EAT every day. It runs a
 one-minute Cron Trigger to reconcile due slots and check actual source-fetch

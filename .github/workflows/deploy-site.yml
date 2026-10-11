@@ -1,4 +1,4 @@
-name: Deploy static site
+name: Deploy TechKazi site
 
 on:
   workflow_dispatch:
