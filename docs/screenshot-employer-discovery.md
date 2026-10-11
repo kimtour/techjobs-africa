@@ -75,3 +75,35 @@ description (`Location: Remote` or `This role is fully remote`); reject negated
 remote statements. Returned African/worldwide geographic evidence is still required.
 Company-wide remote boilerplate and query wording are insufficient. Only the remote
 decision and aggregate evidence count survive; descriptions never enter output.
+
+## Delivered and verified
+
+- Employer import / Worker verification fetch:
+  https://github.com/kimtour/techjobs-africa/actions/runs/38151954102 — success.
+- End-to-end scheduler verification:
+  https://github.com/kimtour/techjobs-africa/actions/runs/38151943051 — success.
+- Normal 19:00 EAT scheduled fetch:
+  https://github.com/kimtour/techjobs-africa/actions/runs/38153627745 — success;
+  all ten attempted sources succeeded, Expertini remained an honest policy skip,
+  and JSearch skipped its already-completed daily window. Live scheduler is healthy.
+- Regional management refresh:
+  https://github.com/kimtour/techjobs-africa/actions/runs/38155481259 — success,
+  five requests, deployed at https://dd65dea2.techjobs-africa.pages.dev.
+- Final export: 1,398 active jobs, retaining all 1,383 earlier active IDs and all
+  seven user-supplied links. Added 7 SDG, 3 Camunda, 1 Blacksmith and 4 remote
+  management records. Verified Codekeeper's Remote Project Manager role in South Africa.
+- 193 Python tests and lint/format checks passed. Six frontend behavior tests,
+  Astro validation and the production build passed locally and in delivery CI.
+- Local/live browser verification confirmed the employer records in All Jobs and
+  Other/Google/Linkedin, original application URLs, worldwide/South Africa labels,
+  explicit country-verification text for EMEA, and independent pagination from
+  10 to 20 while every neighbour retained its count, position and 416px feed height.
+- Temporary local preview data was restored byte-for-byte; the preview server
+  was stopped. Screenshot proof is saved in the task's visualization directory.
+
+Remaining external limits are explicitly unresolved: Expertini's public endpoints
+are still blocked, full LinkedIn discovery is not available, Cue/remoting.work exact
+occurrences remain unverified, and Blacksmith's public AI Engineer is not claimed
+to be the LinkedIn Applied AI Engineer (Remote, Randburg) occurrence. These require
+restored publisher access or a verified authorized feed; no access-control evasion,
+guessed identities or fabricated geographic eligibility is introduced.

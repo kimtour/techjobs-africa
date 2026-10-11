@@ -287,7 +287,7 @@ sources:
       complete_when: documented_all_published_postings
     legal:
       robots_checked: true
-      tos_checked: true
+      tos_checked: false
       permission: user_authorized_official_public_api
       notes: "M0 verified locally and in runner 38151132401. Documented Ashby public posting API; API robots endpoint returns 401, posting endpoint returns 200. Use listed Remote jobs with explicit African/worldwide or EMEA location metadata, including secondary locations. EMEA remains VERIFY. Minimal metadata and original links only; never persist descriptions or infer a redistribution licence. No separate source panel."
 
@@ -309,7 +309,7 @@ sources:
       complete_when: documented_all_published_postings
     legal:
       robots_checked: true
-      tos_checked: true
+      tos_checked: false
       permission: user_authorized_official_public_api
       notes: "M0 verified locally and in runner 38151132401. Use documented public Ashby API; keep explicit remote African/worldwide locations including secondary locations. Official AI Engineer includes South Africa, but is not asserted to be the LinkedIn Randburg occurrence. Minimal metadata and original links only. Descriptions never persisted; no access-control evasion or separate panel."
 
