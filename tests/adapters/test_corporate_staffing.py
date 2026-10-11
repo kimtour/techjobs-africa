@@ -131,3 +131,24 @@ def test_igad_and_meds_technical_roles_and_in_memory_evidence():
     assert len(canonical) == 4
     assert canonical[0].category == "Data Engineering"
     assert all("PostGIS" not in j.model_dump_json() for j in canonical)
+
+
+def test_geography_in_responsibilities_does_not_replace_explicit_duty_location():
+    from ingest.adapters.corporate_staffing import _location_from_listing
+
+    assert (
+        _location_from_listing(
+            "Early Warning Expert Job IGAD",
+            "https://example.com/early-warning",
+            "Full-time role in Nairobi. Work with partners in South Sudan and Ethiopia.",
+        )
+        == "Nairobi, Kenya"
+    )
+    assert (
+        _location_from_listing(
+            "Data Engineer Job IGAD",
+            "https://example.com/data",
+            "Develop regional data models for South Sudan and Ethiopia.",
+        )
+        == "Kenya"
+    )

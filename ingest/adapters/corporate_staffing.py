@@ -62,10 +62,10 @@ def _company_from_title(title: str) -> str | None:
 
 
 def _location_from_listing(*values: object) -> str:
-    """Resolve title, URL, and in-memory body signals to a safe display location."""
+    """Prefer title/link and explicit job-location statements over body geography."""
 
     parser = _TextExtractor()
-    for value in values:
+    for value in values[:2]:
         if isinstance(value, str):
             parser.feed(value)
     text = " ".join(unescape(" ".join(parser.parts)).split())
@@ -74,6 +74,25 @@ def _location_from_listing(*values: object) -> str:
         return f"{location.city}, {location.country}"
     if location.workplace_type:
         return location.workplace_type
+    body_parser = _TextExtractor()
+    for value in values[2:]:
+        if isinstance(value, str):
+            body_parser.feed(value)
+    body = " ".join(unescape(" ".join(body_parser.parts)).split())
+    for match in re.finditer(
+        r"\b(?:location|duty station|based in|role in)\s*[:–-]?\s*([^.;]{1,100})",
+        body,
+        re.I,
+    ):
+        explicit = normalize_location(match[1])
+        if explicit.city:
+            return f"{explicit.city}, {explicit.country}"
+        if explicit.country:
+            return explicit.country
+        if explicit.workplace_type:
+            return explicit.workplace_type
+    if re.search(r"\b(?:fully remote|remote role|remote position)\b", body, re.I):
+        return "Remote"
     if location.country:
         return location.country
     return "Kenya"
