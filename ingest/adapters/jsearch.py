@@ -34,7 +34,6 @@ FIELDS = ",".join(
         "job_city",
         "job_state",
         "job_country",
-        "job_location",
         "job_is_remote",
         "job_apply_link",
         "job_google_link",
@@ -245,9 +244,11 @@ class GoogleJobsJSearchAdapter:
                 "language": "en",
                 "date_posted": "all",
                 "num_pages": 1,
-                "fields": FIELDS,
                 "exclude_job_publishers": "beBee",
             }
+            # search-v2 rejects job_location in its fields projection. Read its
+            # normal response in memory so regional locations survive; parse_record
+            # keeps only metadata and never retains descriptions or response bodies.
             if "remote" in query.casefold():
                 params["work_from_home"] = "true"
             if cursor:
