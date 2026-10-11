@@ -38,3 +38,13 @@ def test_all_configured_african_countries_and_regions_are_recognized():
     for location in ["EMEA", "Europe Middle East and Africa"]:
         assert classify_eligibility(location=location).level == EligibilityLevel.VERIFY
     assert classify_eligibility(location="Remote").level == EligibilityLevel.UNKNOWN
+
+
+def test_worldwide_does_not_override_explicit_residency_restriction():
+    assert (
+        classify_eligibility(location="Worldwide; must reside in United States").level
+        == EligibilityLevel.RESTRICTED
+    )
+    assert (
+        classify_eligibility(title="Global Engineering Manager").level == EligibilityLevel.UNKNOWN
+    )

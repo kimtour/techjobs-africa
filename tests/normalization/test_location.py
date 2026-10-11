@@ -25,3 +25,13 @@ def test_unknown_location_is_not_guessed():
     assert decision.city is None
     assert decision.country is None
     assert decision.country_code is None
+
+
+def test_african_remote_locations_preserve_city_and_separate_region():
+    decision = normalize_location("Johannesburg, South Africa (Remote)")
+    assert decision.city == "Johannesburg"
+    assert decision.country_code == "ZA"
+    decision = normalize_location("Sub-Saharan Africa (Remote)")
+    assert decision.region == "Sub-Saharan Africa"
+    assert decision.country is None
+    assert decision.workplace_type == "Remote"

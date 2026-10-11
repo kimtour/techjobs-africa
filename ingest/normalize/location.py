@@ -52,6 +52,9 @@ def normalize_location(location: str | None, config_path: Path = CONFIG_PATH) ->
 
     if matches:
         _, country, country_code, city = max(matches, key=lambda match: match[0])
+        city_matches = [match for match in matches if match[2] == country_code and match[3]]
+        if city_matches:
+            city = max(city_matches, key=lambda match: match[0])[3]
         return LocationDecision(city, country, country_code, "Remote" if remote else None, region)
     if remote:
         return LocationDecision(None, None, None, "Remote", region)

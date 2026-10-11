@@ -59,12 +59,12 @@ def approved_source_ids(config_path: Path = CONFIG_PATH) -> list[str]:
 
 
 def build_jobs(raw_jobs: Sequence[RawJob]) -> list[CanonicalJob]:
-    """Canonicalize and retain only roles with a deterministic technical match."""
+    """Retain roles with title evidence or narrowly verified technical context."""
 
     # Source category pages are discovery aids, not evidence that every listing is
     # a technology role. BrighterMonday's IT & Telecoms page, for example, can
-    # contain HR and finance vacancies. Retain a role only when its own title has
-    # a deterministic technical classification.
+    # contain HR and finance vacancies. Require evidence from the role itself;
+    # ambiguous early-warning roles also need verified development context.
     technical_jobs = []
     for raw in raw_jobs:
         # The listing URL is also a source-provided label. Reject a record if it

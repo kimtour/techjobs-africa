@@ -50,15 +50,6 @@ def classify_eligibility(
     structured_lower = structured.casefold()
 
     geography = normalize_location(structured)
-    if normalize_location(location).region == "Worldwide" or re.search(
-        r"\bworldwide\b", title or "", re.I
-    ):
-        return EligibilityDecision(
-            level=EligibilityLevel.CONFIRMED,
-            evidence="Structured location states worldwide.",
-            source="structured_location",
-        )
-
     restricted = _contains_term(structured, NON_AFRICAN_RESIDENCY)
     has_residency_requirement = re.search(
         r"\b(must reside|residency|authorized to work)\b", structured_lower
@@ -67,6 +58,15 @@ def classify_eligibility(
         return EligibilityDecision(
             level=EligibilityLevel.RESTRICTED,
             evidence=f"Structured residency requirement names {restricted}.",
+            source="structured_location",
+        )
+
+    if normalize_location(location).region == "Worldwide" or re.search(
+        r"\bworldwide\b", title or "", re.I
+    ):
+        return EligibilityDecision(
+            level=EligibilityLevel.CONFIRMED,
+            evidence="Structured location states worldwide.",
             source="structured_location",
         )
 
