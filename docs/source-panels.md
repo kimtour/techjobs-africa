@@ -18,11 +18,13 @@ roles found on BrighterMonday's Engineering & Technology and Software & Data pag
 
 ## Implementation contract
 
-- Keep two columns and add All Jobs as the first feed, followed by every existing
-  source feed. All Jobs contains each active, unrestricted job once, newest first,
+- Feed order chosen on 11 October 2026: All Jobs, MyJobMag, Corporate Staffing,
+  Other/Google/Linkedin, Fuzu, OpenedCareer, BrighterMonday, Elevolt, TalentSafari.
+  Desktop reads left to right across the two columns; mobile uses this sequence
+  in one column. All Jobs contains each active, unrestricted job once, newest first,
   and displays its source. It shares the independent period and pagination controls.
   Global result counts count unique jobs across matching feeds.
-- Other/Google/Linkedin is fourth (All Jobs, MyJobMag, Fuzu, Other/Google/Linkedin).
+- Other/Google/Linkedin is fourth, after Corporate Staffing and before Fuzu.
   It combines Kenya and Africa/worldwide remote Google Jobs discoveries, previously accepted LinkedIn jobs,
   direct Expertini sitemap listings, verified public Camunda/Blacksmith/SDG remote career postings,
   and Careerjet if that provider is activated. Each job retains its true publisher

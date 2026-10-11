@@ -34,9 +34,9 @@ export const jobs = payload.jobs
 
 export const sourceOrder = [
   "myjobmag",
-  "fuzu",
-  "linkedin",
   "corporate_staffing",
+  "linkedin",
+  "fuzu",
   "openedcareer",
   "brightermonday",
   "elevolt",
