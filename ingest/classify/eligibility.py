@@ -5,6 +5,7 @@ from __future__ import annotations
 import re
 
 from ingest.models import EligibilityDecision, EligibilityLevel
+from ingest.normalize.location import normalize_location
 
 AFRICAN_TERMS = (
     "africa",
@@ -48,7 +49,10 @@ def classify_eligibility(
     structured = " ".join(part for part in (location, title) if part).strip()
     structured_lower = structured.casefold()
 
-    if "worldwide" in structured_lower:
+    geography = normalize_location(structured)
+    if normalize_location(location).region == "Worldwide" or re.search(
+        r"\bworldwide\b", title or "", re.I
+    ):
         return EligibilityDecision(
             level=EligibilityLevel.CONFIRMED,
             evidence="Structured location states worldwide.",
@@ -66,7 +70,11 @@ def classify_eligibility(
             source="structured_location",
         )
 
-    african = _contains_term(structured, AFRICAN_TERMS)
+    african = geography.country.casefold() if geography.country else None
+    if not african and geography.region in ("Africa", "Sub-Saharan Africa"):
+        african = geography.region.casefold()
+    if not african and geography.region != "EMEA":
+        african = _contains_term(structured, AFRICAN_TERMS)
     if african:
         return EligibilityDecision(
             level=EligibilityLevel.CONFIRMED,
@@ -74,7 +82,7 @@ def classify_eligibility(
             source="structured_location",
         )
 
-    if "emea" in structured_lower:
+    if geography.region == "EMEA":
         return EligibilityDecision(
             level=EligibilityLevel.VERIFY,
             evidence="Structured location is EMEA without country eligibility.",

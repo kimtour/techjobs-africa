@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from datetime import date, datetime
 from enum import StrEnum
+from typing import Literal
 
 from pydantic import AnyHttpUrl, BaseModel, ConfigDict, Field
 
@@ -51,6 +52,9 @@ class RawJob(BaseModel):
     apply_url: AnyHttpUrl
     published_at: datetime | None = None
     published_date: date | None = None
+    technical_context: Literal["geospatial_application_development"] | None = Field(
+        default=None, exclude=True
+    )
 
 
 class SourceHealth(BaseModel):
@@ -87,6 +91,7 @@ class CanonicalJob(BaseModel):
     city: str | None = Field(default=None, max_length=120)
     country: str | None = Field(default=None, max_length=120)
     country_code: str | None = Field(default=None, max_length=2)
+    region: str | None = Field(default=None, max_length=120)
     workplace_type: str | None = Field(default=None, max_length=50)
     category: str | None = Field(default=None, max_length=80)
     secondary_categories: list[str] = Field(default_factory=list)

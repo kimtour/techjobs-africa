@@ -13,7 +13,7 @@ session, so the reference's server-side filtering/ranking is unverified.
 
 Source category pages are not a substitute for title-level technical evidence.
 They can include unrelated listings; the pipeline rejects every job that cannot
-be deterministically classified from its own title, including HR and finance
+be deterministically classified from its own title or narrowly validated technical evidence in its own listing, including HR and finance
 roles found on BrighterMonday's Engineering & Technology and Software & Data pages.
 
 ## Implementation contract
@@ -23,7 +23,7 @@ roles found on BrighterMonday's Engineering & Technology and Software & Data pag
   and displays its source. It shares the independent period and pagination controls.
   Global result counts count unique jobs across matching feeds.
 - Other/Google/Linkedin is fourth (All Jobs, MyJobMag, Fuzu, Other/Google/Linkedin).
-  It combines Kenya Google Jobs discoveries, previously accepted LinkedIn jobs,
+  It combines Kenya and Africa/worldwide remote Google Jobs discoveries, previously accepted LinkedIn jobs,
   direct Expertini sitemap listings, and Careerjet if that provider is activated. Each job retains its true publisher
   label and original application destination. Jobs also appear in All Jobs;
   source feeds include every job attributed to that source even when cross-listed.

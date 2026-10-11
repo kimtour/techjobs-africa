@@ -214,7 +214,19 @@ def test_rss_ids_are_native_and_missing_or_bad_dates_stay_unknown(native_id):
     assert job.published_at is None
 
 
-def test_refresh_keeps_other_source_attributions_while_updating_real_metadata(tmp_path):
+def test_refresh_keeps_other_source_attributions_while_updating_real_metadata(
+    tmp_path, monkeypatch
+):
+    from pathlib import Path
+
+    import yaml
+
+    config = yaml.safe_load(Path("config/sources.yaml").read_text())
+    for source in config["sources"]:
+        source.pop("fetch_paused_reason", None)
+    config_path = tmp_path / "sources.yaml"
+    config_path.write_text(yaml.safe_dump(config))
+    monkeypatch.setattr("ingest.main.CONFIG_PATH", config_path)
     old = canonicalize_raw_job(parse_listing_link(JOB))
     old.sources = ["expertini", "jsearch"]
     (tmp_path / "canonical").mkdir()

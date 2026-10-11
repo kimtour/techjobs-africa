@@ -281,6 +281,7 @@ def test_queries_share_budget_and_expertini_keeps_publisher(monkeypatch):
         )
 
     adapter = GoogleJobsJSearchAdapter(httpx.Client(transport=httpx.MockTransport(respond)))
+    adapter.queries = ("software engineer jobs in Kenya", "software engineer jobs near Nairobi")
     jobs = adapter.fetch()
     assert len(calls) == 5
     assert [r.url.params["query"] for r in calls[: len(adapter.queries)]] == list(adapter.queries)
@@ -426,3 +427,51 @@ def test_bounded_google_sample_preserves_accumulated_jobs_and_keeps_empty_guard(
     jobs = json.loads((tmp_path / "public/jobs.json").read_text())["jobs"]
     assert {job.job_id for job in old_jobs} <= {job["job_id"] for job in jobs}
     assert ("jsearch:new-manager" in {job["job_id"] for job in jobs}) == (not empty)
+
+
+def test_remote_africa_and_worldwide_results_keep_real_geography(monkeypatch):
+    monkeypatch.setenv("JSEARCH_API_KEY", "test-secret")
+    records = [
+        record("za", job_country="ZA", job_city="Johannesburg", job_is_remote=True),
+        record("ug", job_country="UG", job_city="Kampala", job_is_remote=True),
+        record(
+            "ssa",
+            job_country=None,
+            job_city=None,
+            job_location="Sub-Saharan Africa",
+            job_is_remote=True,
+            job_title="AI Developer",
+        ),
+        record(
+            "global",
+            job_country=None,
+            job_city=None,
+            job_location="Worldwide",
+            job_is_remote=True,
+            job_title="Product Engineer (AI-Native)",
+        ),
+        record("on-site", job_country="ZA", job_is_remote=False),
+        record("us", job_country="US", job_is_remote=True),
+        record(
+            "unknown", job_country=None, job_city=None, job_location="Remote", job_is_remote=True
+        ),
+        record("emea", job_country=None, job_city=None, job_location="EMEA", job_is_remote=True),
+    ]
+    calls = []
+
+    def respond(request):
+        calls.append(request)
+        return httpx.Response(200, json={"status": "OK", "data": {"jobs": records}})
+
+    adapter = GoogleJobsJSearchAdapter(httpx.Client(transport=httpx.MockTransport(respond)))
+    adapter.queries = ("remote tech jobs in Sub-Saharan Africa",)
+    jobs = {j.job_id: j for j in build_jobs(adapter.fetch())}
+    assert set(jobs) == {"jsearch:za", "jsearch:ug", "jsearch:ssa", "jsearch:global"}
+    assert jobs["jsearch:za"].country == "South Africa"
+    assert jobs["jsearch:ug"].country == "Uganda"
+    assert jobs["jsearch:ssa"].region == "Sub-Saharan Africa"
+    assert jobs["jsearch:ssa"].country is None
+    assert jobs["jsearch:global"].region == "Worldwide"
+    assert all(j.eligibility_level == "CONFIRMED" for j in jobs.values())
+    assert calls[0].url.params["country"] == "za"
+    assert "job_location" in calls[0].url.params["fields"]

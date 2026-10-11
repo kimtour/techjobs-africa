@@ -275,3 +275,41 @@ def test_retired_bebee_removed_and_other_sources_preserved(tmp_path):
     assert jobs[0]["sources"] == ["elevolt"]
     assert "bebee" not in json.loads((tmp_path / "state/health.json").read_text())["sources"]
     assert "bebee" not in json.loads((tmp_path / "state/source-baselines.json").read_text())
+
+
+def test_paused_blocked_source_retains_records_without_requests_or_recurring_alert(tmp_path):
+    from ingest.normalize.canonicalize import canonicalize_raw_job
+
+    job = canonicalize_raw_job(
+        RawJob(
+            source_id="expertini",
+            external_id="old",
+            title="Software Engineer",
+            location="Kenya",
+            source_url="https://example.com/old",
+            apply_url="https://example.com/old",
+        )
+    )
+    (tmp_path / "canonical").mkdir()
+    (tmp_path / "canonical/jobs.json").write_text(
+        json.dumps({"jobs": [job.model_dump(mode="json")]})
+    )
+
+    def forbidden():
+        raise AssertionError("Paused blocked source must not be contacted")
+
+    health = run_ingestion(
+        tmp_path,
+        source_ids=["expertini", "elevolt"],
+        adapters={"expertini": forbidden, "elevolt": _SuccessfulAdapter},
+    )
+    assert "expertini" not in health
+    run = json.loads((tmp_path / "state/last-run.json").read_text())
+    assert not run["needs_attention"]
+    assert (
+        run["sources"]["expertini"]["health"]["stop_reason"]
+        == "access_blocked_pending_authorized_feed"
+    )
+    assert run["sources"]["expertini"]["retained_jobs"] == 1
+    ids = {j["job_id"] for j in json.loads((tmp_path / "public/jobs.json").read_text())["jobs"]}
+    assert "expertini:old" in ids

@@ -55,3 +55,55 @@ Manager listing. Management queries now search across indexed publishers without
 the restrictive `via linkedin` qualifier, preserving actual LinkedIn links and
 publisher attribution whenever returned. This remains indexed discovery, not an
 exhaustive LinkedIn inventory.
+
+## Delivery verification
+
+Published implementation: commit `f106b1e`, successful production refresh
+https://github.com/kimtour/techjobs-africa/actions/runs/38036492059 . Published
+code passed 171 Python tests, lint/format checks, six frontend behavior tests,
+Astro validation and the production build.
+
+Local browser verification used the accepted 1,361-job export: Product Manager
+search showed eight matching entries in the combined feed and 67 in All Jobs.
+On 11 October, the live site had 1,371 roles after the next scheduled updates;
+Product Manager search showed 11 combined-feed entries and 70 in All Jobs.
+Live Project Manager load-more expanded the combined feed from 10 to 20 rows,
+leaving every other feed's visible count, header position and 416px body height
+unchanged. Publisher labels and original links were verified in both feeds.
+
+The optional construction-function exclusion was not published. Automatic
+approval review rejected that additional removal as outside the user's request.
+It is preserved only on local branch `codex/optional-construction-exclusion`;
+production and main retain the existing inclusion rules. No M-KOPA employer
+source or additional source panel was enabled by this work.
+
+## Sub-Saharan Africa coverage and source failure repair — 2026-10-11
+
+The screenshot includes South Africa remote, Sub-Saharan Africa remote and worldwide
+remote technology jobs. The previous JSearch adapter discarded every non-Kenya
+result and omitted the provider's `job_location` field. Five daily requests now
+cover Kenya software engineering, product management and project management,
+plus LinkedIn-focused Sub-Saharan Africa and South Africa remote tech discovery.
+The regional queries use the documented South Africa (`za`) search locale;
+Sub-Saharan Africa is not a country code. Query wording never establishes eligibility.
+Other-country results require explicit remote plus African/worldwide location
+evidence. Countries retain their names/codes, and regional locations have a separate
+`region` field; generic remote and EMEA alone remain insufficient. This is a bounded
+provider sample, not a complete export of LinkedIn's signed-in search results.
+
+All seven reported MyJobMag/Corporate Staffing listings were publicly reachable
+and already present in the approved IT discovery surfaces. Their own title variants
+were unrecognized. Add Machine Learning Expert, Geospatial Systems, Systems
+Integration Coordinator, AI Developer and AI-native Product Engineer variants.
+Early Warning Expert is ambiguous: include only when its own in-memory detail body
+contains geospatial, programming and application-development evidence. MyJobMag
+reads only its job-details container, excluding recommendations; Corporate Staffing
+uses the existing job payload. Persist only the category decision, never the body.
+
+The 14:00 UTC audit (`38145429534`) shows all other attempted sources succeeding;
+Expertini has 29 consecutive HTTP 403 failures, reproduced locally on the public RSS.
+Pause those requests pending restored authorized feed access, retain accepted jobs
+and historical blocked health, and report the policy skip in each audit. Do not
+change scheduler failure detection, bypass the block, expire those jobs or suppress
+new failures from other sources. Scheduler alert workflows deliberately fail to
+notify of a failed ingestion; the Worker itself was operating correctly.

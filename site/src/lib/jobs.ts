@@ -7,6 +7,7 @@ export type Job = {
   hiring_company: string | null;
   city: string | null;
   country: string | null;
+  region?: string | null;
   workplace_type: string | null;
   category: string | null;
   eligibility_level: "CONFIRMED" | "LIKELY" | "VERIFY" | "RESTRICTED" | "UNKNOWN";
@@ -62,7 +63,7 @@ export const primarySource = (job: Job) =>
   sourceOrder.find((sourceId) => job.sources.includes(sourceId)) ?? job.sources[0];
 
 export const locationLabel = (job: Job) =>
-  [job.workplace_type, job.city, job.country].filter(Boolean).join(" · ") || "Location not listed";
+  [job.workplace_type, job.city, job.country || job.region].filter(Boolean).join(" · ") || "Location not listed";
 
 export const companyLabel = (job: Job) => job.hiring_company || job.posting_company || "Company not listed";
 

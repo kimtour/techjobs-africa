@@ -13,12 +13,44 @@ from xml.etree import ElementTree
 
 import httpx
 
+from ingest.classify.tech import geospatial_technical_context
 from ingest.models import RawJob
 
 SOURCE_ID = "myjobmag"
 DEFAULT_FEED_URL = "https://www.myjobmag.co.ke/jobsxml_by_categories.xml"
 LISTING_URL = "https://www.myjobmag.co.ke/jobs-by-field/information-technology"
 _ALLOWED_LISTING_PATH = "/jobs-by-field/information-technology"
+
+
+class _DetailEvidenceParser(HTMLParser):
+    """Read only the job-details container, excluding recommendations and scripts."""
+
+    def __init__(self) -> None:
+        super().__init__(convert_charrefs=True)
+        self.depth = 0
+        self.parts: list[str] = []
+
+    def handle_starttag(self, tag, attrs):
+        if tag != "div":
+            return
+        if self.depth:
+            self.depth += 1
+        elif "job-details" in dict(attrs).get("class", "").split():
+            self.depth = 1
+
+    def handle_endtag(self, tag):
+        if tag == "div" and self.depth:
+            self.depth -= 1
+
+    def handle_data(self, data):
+        if self.depth:
+            self.parts.append(data)
+
+
+def detail_technical_context(title: str, html: str) -> str | None:
+    parser = _DetailEvidenceParser()
+    parser.feed(html)
+    return geospatial_technical_context(title, unescape(" ".join(parser.parts)))
 
 
 def _text(item: ElementTree.Element, name: str, *, max_length: int | None = 300) -> str | None:
@@ -261,4 +293,17 @@ class MyJobMagAdapter:
                 break
             pending.extend(sorted(parser.page_links - visited - set(pending)))
         self.crawl_complete = self.crawl_complete or not pending
+        # Only ambiguous Early Warning Expert cards need a detail request. The
+        # observer still enforces the shared request budget, delays and blocks.
+        for identity, job in list(jobs_by_id.items()):
+            if "early warning expert" not in job.title.casefold():
+                continue
+            parsed = urlparse(str(job.source_url))
+            if parsed.netloc != "www.myjobmag.co.ke" or not parsed.path.startswith("/job/"):
+                continue
+            response = self._client.get(str(job.source_url), timeout=15.0)
+            response.raise_for_status()
+            jobs_by_id[identity] = job.model_copy(
+                update={"technical_context": detail_technical_context(job.title, response.text)}
+            )
         return list(jobs_by_id.values())

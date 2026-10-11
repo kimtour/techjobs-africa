@@ -12,6 +12,7 @@ from typing import Any
 
 import httpx
 
+from ingest.classify.tech import geospatial_technical_context
 from ingest.models import RawJob
 from ingest.normalize.location import normalize_location
 
@@ -79,7 +80,7 @@ def _location_from_listing(*values: object) -> str:
 
 
 def parse_corporate_staffing_jobs(payload: Sequence[Mapping[str, Any]]) -> list[RawJob]:
-    """Parse minimum permitted fields; descriptions and excerpts are never read."""
+    """Keep minimal fields; inspect technical/location evidence only in memory."""
 
     jobs: list[RawJob] = []
     for record in payload:
@@ -90,6 +91,10 @@ def parse_corporate_staffing_jobs(payload: Sequence[Mapping[str, Any]]) -> list[
             continue
         date_gmt = record.get("date_gmt")
         content = record.get("content")
+        body = content.get("rendered", "") if isinstance(content, Mapping) else ""
+        extractor = _TextExtractor()
+        extractor.feed(body if isinstance(body, str) else "")
+        context = geospatial_technical_context(title, unescape(" ".join(extractor.parts)))
         location = _location_from_listing(
             title,
             link,
@@ -100,6 +105,7 @@ def parse_corporate_staffing_jobs(payload: Sequence[Mapping[str, Any]]) -> list[
                 source_id=SOURCE_ID,
                 external_id=str(external_id),
                 title=title,
+                technical_context=context,
                 company=_company_from_title(title),
                 location=location,
                 source_url=link,

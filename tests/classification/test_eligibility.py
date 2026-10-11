@@ -25,3 +25,16 @@ from ingest.models import EligibilityLevel
 def test_eligibility_rules(location, title, description, expected):
     decision = classify_eligibility(location=location, title=title, description=description)
     assert decision.level is expected
+
+
+def test_all_configured_african_countries_and_regions_are_recognized():
+    for location in [
+        "Remote - Uganda",
+        "Remote - Zambia",
+        "Sub-Saharan Africa (Remote)",
+        "SSA (Remote)",
+    ]:
+        assert classify_eligibility(location=location).level == EligibilityLevel.CONFIRMED
+    for location in ["EMEA", "Europe Middle East and Africa"]:
+        assert classify_eligibility(location=location).level == EligibilityLevel.VERIFY
+    assert classify_eligibility(location="Remote").level == EligibilityLevel.UNKNOWN

@@ -11,6 +11,21 @@ from pydantic import BaseModel
 CONFIG_PATH = Path("config/categories.yaml")
 
 
+def geospatial_technical_context(title: str, body: str) -> str | None:
+    """Require development evidence in this ambiguous role's own in-memory body."""
+    if not _matches(title, ["early warning expert"]):
+        return None
+    if (
+        re.search(r"\b(geospatial|geo.application)\b", body, re.I)
+        and re.search(r"\b(Python|Node\.?js|Django|PostGIS)\b", body, re.I)
+        and re.search(
+            r"\b(application development|backend development|developing REST APIs)\b", body, re.I
+        )
+    ):
+        return "geospatial_application_development"
+    return None
+
+
 class CategoryDecision(BaseModel):
     category: str | None
     secondary_categories: list[str] = []

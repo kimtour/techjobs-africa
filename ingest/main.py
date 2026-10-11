@@ -155,6 +155,9 @@ def run_ingestion(
         }
 
     for source_id in selected_ids:
+        if pause_reason := source_config[source_id].get("fetch_paused_reason"):
+            record_policy_skip(source_id, pause_reason)
+            continue
         if source_id in ("linkedin", "jsearch"):
             kenya_now = started.astimezone(timezone(timedelta(hours=3)))
             if source_id == "jsearch" and source_ids is None and kenya_now.hour < 7:

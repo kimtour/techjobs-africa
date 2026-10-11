@@ -16,9 +16,10 @@ sources:
       date_posted: all
       queries:
         - software engineer jobs in Kenya
-        - software engineer jobs near Nairobi
         - product manager jobs in Kenya
         - project manager jobs in Kenya
+        - remote tech jobs in Sub-Saharan Africa via linkedin
+        - remote software engineer jobs in South Africa via linkedin
       request_delay_ms: 500
       timeout_seconds: 60
       retry_delays_seconds: []
@@ -29,11 +30,12 @@ sources:
       robots_checked: false
       tos_checked: true
       permission: user_authorized_via_jsearch
-      notes: "User requested Google Jobs discovery across publishers via the configured JSearch API on 2026-10-02 after reviewing discovery results and usage-rights limitations. This does not establish a LinkedIn partnership or a provider redistribution license. No direct LinkedIn scraping or access-control bypass. Retain only minimal metadata, explicit Kenya evidence, upstream identifiers, publisher labels and original application links; never descriptions. Exclude the retired beBee source. Up to five total requests shared across software engineering and product/project management queries with no posting-date restriction per Kenya calendar day share the 160-request monthly ceiling with historical LinkedIn requests."
+      notes: "User requested Google Jobs discovery across publishers via the configured JSearch API on 2026-10-02 after reviewing discovery results and usage-rights limitations. This does not establish a LinkedIn partnership or a provider redistribution license. No direct LinkedIn scraping or access-control bypass. Retain only minimal metadata, explicit Kenya or remote African/worldwide location evidence, upstream identifiers, publisher labels and original application links; never descriptions. Exclude the retired beBee source. Up to five total requests shared across Kenya software/product/project management and Sub-Saharan Africa/South Africa remote tech queries with no posting-date restriction per Kenya calendar day share the 160-request monthly ceiling with historical LinkedIn requests."
 
   - id: expertini
     name: Expertini Kenya
     enabled: true
+    fetch_paused_reason: access_blocked_pending_authorized_feed
     supports_absence_expiry: false
     discovery_url: "https://ke.expertini.com/jobs/feed.xml"
     feed_url: "https://ke.expertini.com/jobs/feed.xml"
@@ -54,7 +56,7 @@ sources:
       robots_checked: true
       tos_checked: false
       permission: user_authorized_public_xml_discovery
-      notes: "M0 verified 200 XML access locally and on GitHub runner on 2026-10-02. Use the public RSS and advertised job_listing XML, never protected job/search pages or /api/. User explicitly requested direct Expertini discovery. Stable native numeric/composite/hex IDs; RSS titles and publication dates take precedence over URL labels. Employer remains unknown. Label URL-derived titles; lastmod is not a posting date. Sitemaps indicate discoverability, not verified vacancy status; absence expiry disabled. Terms pages remain behind verification; do not infer a redistribution licence."
+      notes: "M0 verified 200 XML access locally and on GitHub runner on 2026-10-02. Fetching paused on 2026-10-11 after 29 consecutive runner HTTP 403 responses, also reproduced locally. Retain all accepted listings and the blocked health evidence; resume only after authorized public feed access is restored. Use the public RSS and advertised job_listing XML, never protected job/search pages or /api/. User explicitly requested direct Expertini discovery. Stable native numeric/composite/hex IDs; RSS titles and publication dates take precedence over URL labels. Employer remains unknown. Label URL-derived titles; lastmod is not a posting date. Sitemaps indicate discoverability, not verified vacancy status; absence expiry disabled. Terms pages remain behind verification; do not infer a redistribution licence."
 
   - id: careerjet
     name: Careerjet Kenya

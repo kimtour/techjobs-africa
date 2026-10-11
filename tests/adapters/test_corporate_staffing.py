@@ -105,3 +105,29 @@ def test_fetch_follows_wordpress_page_count() -> None:
 
     assert [job.external_id for job in jobs] == ["1", "2"]
     assert [call[1]["page"] for call in client.calls] == [1, 2]
+
+
+def test_igad_and_meds_technical_roles_and_in_memory_evidence():
+    from ingest.main import build_jobs
+
+    titles = [
+        "Early Warning Expert Job IGAD",
+        "DevOps & Machine Learning Expert Job IGAD",
+        "Data Management Officer & Geospatial Systems Job IGAD",
+        "Systems Integration Coordinator NGO Job MEDS",
+    ]
+    jobs = parse_corporate_staffing_jobs(
+        [
+            {
+                "id": i,
+                "link": f"https://example.com/role-{i}",
+                "title": {"rendered": title},
+                "content": {"rendered": "Geospatial backend development using Python and PostGIS."},
+            }
+            for i, title in enumerate(titles)
+        ]
+    )
+    canonical = build_jobs(jobs)
+    assert len(canonical) == 4
+    assert canonical[0].category == "Data Engineering"
+    assert all("PostGIS" not in j.model_dump_json() for j in canonical)

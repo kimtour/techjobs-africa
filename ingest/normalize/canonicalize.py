@@ -7,7 +7,7 @@ import unicodedata
 from urllib.parse import urlparse
 
 from ingest.classify.eligibility import classify_eligibility
-from ingest.classify.tech import classify_technology_title
+from ingest.classify.tech import CategoryDecision, classify_technology_title
 from ingest.models import CanonicalJob, RawJob
 from ingest.normalize.location import normalize_location
 
@@ -66,6 +66,8 @@ def canonicalize_raw_job(
         raise ValueError("Canonicalization requires a RawJob external ID.")
 
     category = classify_technology_title(raw.title)
+    if not category.category and raw.technical_context == "geospatial_application_development":
+        category = CategoryDecision(category="Data Engineering", source="description_rule")
     # Some approved listing cards put a structured city in their title rather
     # than in the card's location field (for example, "... – Nyeri at
     # Diageo"). Use that explicit title signal only when the source field is
@@ -80,7 +82,7 @@ def canonicalize_raw_job(
         if value
     )
     location = normalize_location(location_text)
-    if not any((location.city, location.country, location.workplace_type)):
+    if not any((location.city, location.country, location.workplace_type, location.region)):
         location = normalize_location(SOURCE_COUNTRY_FALLBACKS.get(raw.source_id))
     eligibility_location = (
         " ".join(part for part in (raw.location, location.city, location.country) if part) or None
@@ -105,6 +107,7 @@ def canonicalize_raw_job(
         city=location.city,
         country=location.country,
         country_code=location.country_code,
+        region=location.region,
         workplace_type=location.workplace_type,
         category=category.category,
         secondary_categories=category.secondary_categories,

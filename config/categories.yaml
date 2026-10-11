@@ -5,6 +5,7 @@ categories:
   keywords:
   - software engineer
   - software developer
+  - product engineer (ai
   - backend engineer
   - backend developer
   - frontend engineer
@@ -30,9 +31,11 @@ categories:
   title: AI / Machine Learning
   keywords:
   - ai engineer
+  - ai developer
   - ai automation engineer
   - ai prompt engineer
   - machine learning engineer
+  - machine learning expert
   - ml engineer
   - ml developer
   - deep learning engineer
@@ -44,6 +47,7 @@ categories:
   title: Data Engineering
   keywords:
   - data engineer
+  - geospatial systems
   - analytics engineer
   - etl developer
   - data warehouse engineer
@@ -69,6 +73,7 @@ categories:
   title: DevOps / SRE
   keywords:
   - devops engineer
+  - devops expert
   - site reliability engineer
   - sre engineer
   - platform engineer
@@ -178,6 +183,7 @@ categories:
   - dynamics 365
   - oracle ebs
   - enterprise systems
+  - systems integration coordinator
 - key: solutions-architecture
   title: Solutions Architecture
   keywords:

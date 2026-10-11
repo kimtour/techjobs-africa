@@ -5,14 +5,26 @@ from __future__ import annotations
 import os
 import re
 from datetime import UTC, datetime
+from functools import lru_cache
+from pathlib import Path
 from urllib.parse import urlsplit
 
 import httpx
+import yaml
 from pydantic import ValidationError
 
 from ingest.models import RawJob
+from ingest.normalize.location import normalize_location
 
 API_URL = "https://api.openwebninja.com/jsearch/search-v2"
+
+
+@lru_cache(maxsize=1)
+def african_country_names() -> dict[str, str]:
+    countries = yaml.safe_load(Path("config/geography.yaml").read_text())["countries"]
+    return {item["code"]: item["name"] for item in countries}
+
+
 FIELDS = ",".join(
     [
         "job_id",
@@ -22,6 +34,7 @@ FIELDS = ",".join(
         "job_city",
         "job_state",
         "job_country",
+        "job_location",
         "job_is_remote",
         "job_apply_link",
         "job_google_link",
@@ -85,11 +98,15 @@ def parse_record(record: dict) -> tuple[RawJob, list[str]]:
             posted_at = None
     except ValueError:
         posted_at = None
-    location = [record.get(key) for key in ("job_city", "job_state", "job_country")]
+    location = [record.get(key) for key in ("job_location", "job_city", "job_state", "job_country")]
     if record.get("job_is_remote") is True:
         location.insert(0, "Remote")
     # Preserve explicit country evidence rather than assuming eligibility from the query.
-    location = ["Kenya" if part == "KE" else part for part in location]
+    country_names = african_country_names()
+    location = [
+        country_names.get(part.upper(), part) if isinstance(part, str) else part
+        for part in location
+    ]
     return RawJob(
         source_id="jsearch",
         external_id=external_id,
@@ -191,20 +208,22 @@ def acceptable_destination(value: object) -> bool:
 
 
 class GoogleJobsJSearchAdapter:
-    """Bounded Kenya discovery across publishers; no direct Google scraping."""
+    """Bounded Kenya and Africa-remote discovery through the documented API."""
 
     source_id = "jsearch"
     queries = (
         "software engineer jobs in Kenya",
-        "software engineer jobs near Nairobi",
         "product manager jobs in Kenya",
         "project manager jobs in Kenya",
+        "remote tech jobs in Sub-Saharan Africa via linkedin",
+        "remote software engineer jobs in South Africa via linkedin",
     )
 
     def __init__(self, client: httpx.Client | None = None) -> None:
         self._client = client or httpx.Client()
         self.crawl_complete = False
         self.max_pages = 5
+        self.query_countries = {}
 
     def fetch(self) -> list[RawJob]:
         self.crawl_complete = False
@@ -222,7 +241,7 @@ class GoogleJobsJSearchAdapter:
             query, cursor = pending.pop(0)
             params = {
                 "query": query,
-                "country": "ke",
+                "country": self.query_countries.get(query, "za" if "Africa" in query else "ke"),
                 "language": "en",
                 "date_posted": "all",
                 "num_pages": 1,
@@ -249,10 +268,33 @@ class GoogleJobsJSearchAdapter:
             ):
                 raise ValueError("Invalid JSearch response")
             for record in records:
-                if not isinstance(record, dict) or str(
-                    record.get("job_country", "")
-                ).upper() not in ("KE", "KENYA"):
+                if not isinstance(record, dict):
                     continue
+                country = str(record.get("job_country") or "").upper()
+                # Keep Kenya's local roles; other geographies require explicit
+                # remote AND African/worldwide location evidence from the result.
+                if country not in ("KE", "KENYA"):
+                    raw_location = " · ".join(
+                        str(record.get(k) or "")
+                        for k in ("job_location", "job_city", "job_state", "job_country")
+                    )
+                    geography = normalize_location(raw_location)
+                    country_names = african_country_names()
+                    african_country = country in country_names or country in {
+                        name.upper() for name in country_names.values()
+                    }
+                    if record.get("job_is_remote") is not True or not (
+                        african_country
+                        or (
+                            country
+                            in ("", "WORLDWIDE", "GLOBAL", "AFRICA", "SUB-SAHARAN AFRICA", "SSA")
+                            and (
+                                geography.country
+                                or geography.region in ("Africa", "Sub-Saharan Africa", "Worldwide")
+                            )
+                        )
+                    ):
+                        continue
                 # Remove forbidden destinations before choosing a direct option.
                 cleaned = dict(record)
                 cleaned["apply_options"] = (

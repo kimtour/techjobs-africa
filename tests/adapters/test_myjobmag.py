@@ -2,6 +2,7 @@ from datetime import date
 from pathlib import Path
 
 from ingest.adapters.myjobmag import (
+    LISTING_URL,
     MyJobMagAdapter,
     _company_from_title,
     parse_myjobmag_feed,
@@ -128,3 +129,25 @@ def test_fetch_keeps_last_thirty_days_and_stops_after_an_older_page() -> None:
 
     assert [job.external_id for job in jobs] == ["/job/recent"]
     assert client.calls == [root, page_two]
+
+
+def test_early_warning_requires_own_geospatial_development_evidence():
+    from ingest.adapters.myjobmag import detail_technical_context
+    from ingest.main import build_jobs
+
+    body = "Geospatial application development using Python and PostGIS."
+    title = "Early Warning Expert at IGAD"
+    assert detail_technical_context(title, f"<aside>{body}</aside>") is None
+    assert (
+        detail_technical_context(title, '<div class="job-details">Monitor conflicts.</div>') is None
+    )
+    context = detail_technical_context(title, f'<div class="job-details">{body}</div>')
+    jobs, _ = parse_myjobmag_listing_page(
+        _listing(title, "early-warning", "IGAD", "Nairobi"), LISTING_URL
+    )
+    job = jobs[0].model_copy(update={"technical_context": context})
+    assert "technical_context" not in job.model_dump()
+    canonical = build_jobs([job])[0]
+    assert canonical.category == "Data Engineering"
+    assert canonical.category_source == "description_rule"
+    assert body not in canonical.model_dump_json()

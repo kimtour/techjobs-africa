@@ -17,6 +17,7 @@ class LocationDecision:
     country: str | None
     country_code: str | None
     workplace_type: str | None
+    region: str | None = None
 
 
 def _contains(value: str, phrase: str) -> bool:
@@ -31,6 +32,13 @@ def normalize_location(location: str | None, config_path: Path = CONFIG_PATH) ->
     value = location.strip()
     remote = _contains(value, "remote")
     config = yaml.safe_load(config_path.read_text(encoding="utf-8"))
+    region_matches = [
+        (len(phrase), item["name"])
+        for item in config.get("regions", [])
+        for phrase in [item["name"], *item.get("aliases", [])]
+        if _contains(value, phrase)
+    ]
+    region = max(region_matches)[1] if region_matches else None
 
     matches: list[tuple[int, str, str, str | None]] = []
     for country in config["countries"]:
@@ -44,7 +52,7 @@ def normalize_location(location: str | None, config_path: Path = CONFIG_PATH) ->
 
     if matches:
         _, country, country_code, city = max(matches, key=lambda match: match[0])
-        return LocationDecision(city, country, country_code, "Remote" if remote else None)
+        return LocationDecision(city, country, country_code, "Remote" if remote else None, region)
     if remote:
-        return LocationDecision(None, None, None, "Remote")
-    return LocationDecision(None, None, None, None)
+        return LocationDecision(None, None, None, "Remote", region)
+    return LocationDecision(None, None, None, None, region)
