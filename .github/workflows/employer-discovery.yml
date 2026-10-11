@@ -1,0 +1,20 @@
+name: Screenshot employer source discovery
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install httpx==0.28.1
+      - run: python -m ingest.employer_discovery --output employer-discovery.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: screenshot-employer-discovery
+          path: employer-discovery.json
