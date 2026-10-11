@@ -1,0 +1,31 @@
+{
+  "jobs": [
+    {
+      "id": "b51b79c6-e2d8-428d-8cdc-0d1aae9792a9",
+      "title": "Senior Software Engineer, Backend - Data Layer",
+      "location": "Remote",
+      "secondaryLocations": [
+        {
+          "location": "EMEA",
+          "address": {
+            "postalAddress": {}
+          }
+        },
+        {
+          "location": "Canada",
+          "address": {
+            "postalAddress": {
+              "addressCountry": "Canada"
+            }
+          }
+        }
+      ],
+      "isRemote": null,
+      "workplaceType": null,
+      "publishedAt": "2026-09-09T16:58:09.931+00:00",
+      "isListed": true,
+      "jobUrl": "https://jobs.ashbyhq.com/camunda/b51b79c6-e2d8-428d-8cdc-0d1aae9792a9",
+      "applyUrl": "https://jobs.ashbyhq.com/camunda/b51b79c6-e2d8-428d-8cdc-0d1aae9792a9/application"
+    }
+  ]
+}

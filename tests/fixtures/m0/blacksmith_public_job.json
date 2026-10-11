@@ -1,0 +1,57 @@
+{
+  "jobs": [
+    {
+      "id": "5dfccfc8-a527-44b9-b3ec-eaee25fc3f0f",
+      "title": "AI Engineer",
+      "location": "Argentina",
+      "secondaryLocations": [
+        {
+          "location": "Brazil",
+          "address": {
+            "postalAddress": {
+              "addressCountry": "Brazil"
+            }
+          }
+        },
+        {
+          "location": "Mexico",
+          "address": {
+            "postalAddress": {
+              "addressCountry": "Mexico"
+            }
+          }
+        },
+        {
+          "location": "Chile",
+          "address": {
+            "postalAddress": {
+              "addressCountry": "Chile"
+            }
+          }
+        },
+        {
+          "location": "South Africa",
+          "address": {
+            "postalAddress": {
+              "addressCountry": "South Africa"
+            }
+          }
+        },
+        {
+          "location": "Colombia",
+          "address": {
+            "postalAddress": {
+              "addressCountry": "Colombia"
+            }
+          }
+        }
+      ],
+      "isRemote": true,
+      "workplaceType": "Remote",
+      "publishedAt": "2026-06-24T12:33:08.484+00:00",
+      "isListed": true,
+      "jobUrl": "https://jobs.ashbyhq.com/Blacksmith%20Agency/5dfccfc8-a527-44b9-b3ec-eaee25fc3f0f",
+      "applyUrl": "https://jobs.ashbyhq.com/Blacksmith%20Agency/5dfccfc8-a527-44b9-b3ec-eaee25fc3f0f/application"
+    }
+  ]
+}

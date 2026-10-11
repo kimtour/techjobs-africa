@@ -18,6 +18,7 @@ from ingest.adapters.ashby import AshbyAdapter
 from ingest.adapters.brightermonday import BrighterMondayAdapter
 from ingest.adapters.corporate_staffing import CorporateStaffingAdapter
 from ingest.adapters.elevolt import ElevoltAdapter
+from ingest.adapters.employer_boards import AshbyEmployerAdapter, SocialDiscoveryAdapter
 from ingest.adapters.expertini import ExpertiniSitemapAdapter
 from ingest.adapters.fuzu import FuzuAdapter
 from ingest.adapters.jsearch import GoogleJobsJSearchAdapter
@@ -44,6 +45,9 @@ ADAPTERS: Mapping[str, AdapterFactory] = {
     "fuzu": FuzuAdapter,
     "myjobmag": MyJobMagAdapter,
     "openedcareer": OpenedCareerAdapter,
+    "camunda": lambda: AshbyEmployerAdapter("camunda"),
+    "blacksmith": lambda: AshbyEmployerAdapter("blacksmith"),
+    "sdg": SocialDiscoveryAdapter,
 }
 
 

@@ -261,3 +261,69 @@ sources:
       tos_checked: true
       permission: official_public_api
       notes: "M0 confirmed Ashby's public Job Postings API for the talentsafari board. Fetch listed public postings only; do not persist descriptions."
+
+  - id: camunda
+    name: Camunda careers
+    enabled: true
+    supports_absence_expiry: false
+    discovery_url: "https://jobs.ashbyhq.com/camunda"
+    method: official_public_api
+    production_method: official_public_api
+    interval_hours: 2
+    timezone: null
+    crawl:
+      max_pages: 1
+      max_requests_per_run: 3
+      request_delay_ms: 1500
+      timeout_seconds: 25
+      retry_delays_seconds: [5, 20]
+      complete_when: documented_all_published_postings
+    legal:
+      robots_checked: true
+      tos_checked: true
+      permission: user_authorized_official_public_api
+      notes: "M0 verified locally and in runner 38151132401. Documented Ashby public posting API; API robots endpoint returns 401, posting endpoint returns 200. Use listed Remote jobs with explicit African/worldwide or EMEA location metadata, including secondary locations. EMEA remains VERIFY. Minimal metadata and original links only; never persist descriptions or infer a redistribution licence. No separate source panel."
+
+  - id: blacksmith
+    name: Blacksmith Agency careers
+    enabled: true
+    supports_absence_expiry: false
+    discovery_url: "https://jobs.ashbyhq.com/Blacksmith%20Agency"
+    method: official_public_api
+    production_method: official_public_api
+    interval_hours: 2
+    timezone: null
+    crawl:
+      max_pages: 1
+      max_requests_per_run: 3
+      request_delay_ms: 1500
+      timeout_seconds: 25
+      retry_delays_seconds: [5, 20]
+      complete_when: documented_all_published_postings
+    legal:
+      robots_checked: true
+      tos_checked: true
+      permission: user_authorized_official_public_api
+      notes: "M0 verified locally and in runner 38151132401. Use documented public Ashby API; keep explicit remote African/worldwide locations including secondary locations. Official AI Engineer includes South Africa, but is not asserted to be the LinkedIn Randburg occurrence. Minimal metadata and original links only. Descriptions never persisted; no access-control evasion or separate panel."
+
+  - id: sdg
+    name: Social Discovery Group careers
+    enabled: true
+    supports_absence_expiry: false
+    discovery_url: "https://social-discovery-ventures.breezy.hr/"
+    method: public_career_html_and_jobposting_jsonld
+    production_method: public_career_html_and_jobposting_jsonld
+    interval_hours: 2
+    timezone: null
+    crawl:
+      max_pages: 1
+      max_requests_per_run: 30
+      request_delay_ms: 1500
+      timeout_seconds: 25
+      retry_delays_seconds: [5, 20]
+      complete_when: all_technical_cards_inspected
+    legal:
+      robots_checked: true
+      tos_checked: false
+      permission: user_authorized_public_career_metadata
+      notes: "M0 verified locally and in runner 38151132401. Public HTML and /p/ paths allowed by robots; 40 unique cards, 10 technical titles. Read each technical posting's own JSON-LD in memory to require TELECOMMUTE and explicit worldwide/African applicant requirements. Persist only minimal metadata and original links, never descriptions. Public access does not establish redistribution licensing. No private API, disallowed assets, separate panel or absence expiry."

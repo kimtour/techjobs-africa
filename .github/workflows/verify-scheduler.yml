@@ -1,0 +1,21 @@
+name: Verify deployed fetch scheduler
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: techjobs-scheduler-verification
+  cancel-in-progress: false
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 16
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify real source fetching through deployed Worker
+        env:
+          SCHEDULER_GITHUB_TOKEN: ${{ secrets.SCHEDULER_GITHUB_TOKEN }}
+        run: node scheduler/scripts/verify-running-scheduler.js

@@ -9,6 +9,7 @@ import {
   feedName,
   sourceOrder,
   newestFirst,
+  combinedSources,
 } from "../lib/jobs";
 
 const visibleJobs = jobs.filter((job) => job.eligibility_level !== "RESTRICTED");
@@ -16,13 +17,13 @@ const categories = [...new Set(visibleJobs.map((job) => job.category).filter(Boo
 const orderedSources = [
   ...sourceOrder,
   ...[...new Set(visibleJobs.flatMap((job) => job.sources))].filter(
-    (sourceId) => sourceId !== "careerjet" && sourceId !== "jsearch" && sourceId !== "expertini" && !sourceOrder.includes(sourceId),
+    (sourceId) => !combinedSources.includes(sourceId) && !sourceOrder.includes(sourceId),
   ),
 ];
 const sourceGroups = orderedSources
   .map((sourceId) => ({
     sourceId,
-    jobs: visibleJobs.filter((job) => (job.sources.includes(sourceId) || (sourceId === "linkedin" && (job.sources.includes("careerjet") || job.sources.includes("jsearch") || job.sources.includes("expertini"))))).sort(newestFirst),
+    jobs: visibleJobs.filter((job) => (job.sources.includes(sourceId) || (sourceId === "linkedin" && job.sources.some((source) => combinedSources.includes(source))))).sort(newestFirst),
   }))
   .filter((group) => group.jobs.length > 0 || group.sourceId === "linkedin");
 const sourceColumns: (typeof sourceGroups)[] = [[], []];
@@ -108,6 +109,7 @@ feedGroups.forEach((group, index) => sourceColumns[index % sourceColumns.length]
                         </h4>
                         <p class="company">{companyLabel(job)}</p>
                         <p class="meta">{locationLabel(job)}</p>
+                        {job.eligibility_level === "VERIFY" && <p class="meta">Confirm eligible countries with employer</p>}
                         <p class="posted">
                           Posted: {(job.published_at || job.published_date) ? <time datetime={job.published_at || job.published_date}>{postedLabel(job)}</time> : postedLabel(job)}
                         </p>

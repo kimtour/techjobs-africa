@@ -43,6 +43,8 @@ export const sourceOrder = [
   "ashby",
 ];
 
+export const combinedSources = ["careerjet", "jsearch", "expertini", "camunda", "blacksmith", "sdg"];
+
 export const sourceName = (sourceId: string) =>
   ({
     all: "All Jobs",
@@ -57,6 +59,9 @@ export const sourceName = (sourceId: string) =>
     careerjet: "Careerjet",
     myjobmag: "MyJobMag",
     openedcareer: "OpenedCareer",
+    camunda: "Camunda careers",
+    blacksmith: "Blacksmith Agency careers",
+    sdg: "Social Discovery Group careers",
   })[sourceId] ?? sourceId;
 
 export const primarySource = (job: Job) =>
@@ -98,7 +103,7 @@ export const feedName = (sourceId: string) => sourceId === "linkedin" ? "Other/G
 export const sourceLabels = (job: Job) => job.sources.map((source) =>
   source === "expertini"
     ? (job.source_publisher === "Expertini RSS" ? "Expertini RSS" : "Expertini (title from listing link)")
-    : source === "jsearch" && job.source_publisher
-    ? `${job.source_publisher} via Google Jobs / JSearch`
+    : ["jsearch", "camunda", "blacksmith", "sdg"].includes(source) && job.source_publisher
+    ? (source === "jsearch" ? `${job.source_publisher} via Google Jobs / JSearch` : job.source_publisher)
     : sourceName(source)
 ).join(", ");

@@ -24,7 +24,8 @@ roles found on BrighterMonday's Engineering & Technology and Software & Data pag
   Global result counts count unique jobs across matching feeds.
 - Other/Google/Linkedin is fourth (All Jobs, MyJobMag, Fuzu, Other/Google/Linkedin).
   It combines Kenya and Africa/worldwide remote Google Jobs discoveries, previously accepted LinkedIn jobs,
-  direct Expertini sitemap listings, and Careerjet if that provider is activated. Each job retains its true publisher
+  direct Expertini sitemap listings, verified public Camunda/Blacksmith/SDG remote career postings,
+  and Careerjet if that provider is activated. Each job retains its true publisher
   label and original application destination. Jobs also appear in All Jobs;
   source feeds include every job attributed to that source even when cross-listed.
   Mobile keeps the same feed sequence. An empty LinkedIn feed retains its controls.

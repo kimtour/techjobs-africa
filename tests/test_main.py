@@ -37,6 +37,9 @@ def test_approved_sources_exclude_discovery_and_disabled_sources():
         "openedcareer",
         "elevolt",
         "ashby",
+        "camunda",
+        "blacksmith",
+        "sdg",
     ]
 
 
