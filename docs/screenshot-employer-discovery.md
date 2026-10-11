@@ -58,3 +58,20 @@ These employer feeds belong in All Jobs and the existing Other/Google/Linkedin
 feed, retaining employer attribution and original URLs. Do not add panels or move
 neighbours. Google discovery remains within its five-request daily/160 monthly
 budget. Complete LinkedIn coverage still requires an authorized comprehensive feed.
+
+## Regional management search correction
+
+Three daily Kenya queries remain fixed (software, product management, project
+management). Two remote requests rotate over an eight-query pool every four Kenya
+calendar days: product/project management in South Africa, software engineering
+in South Africa, DevOps/data engineering in Sub-Saharan Africa, AI engineering in
+South Africa, and product/project management in Sub-Saharan Africa. The first
+rotation on 11 October selects the two South Africa management queries. The
+five-request daily window and shared 160-request monthly ceiling are unchanged.
+
+Provider remote booleans can be false on remote listings. In addition to explicit
+title/location metadata, accept a narrow statement in the job's own in-memory
+description (`Location: Remote` or `This role is fully remote`); reject negated
+remote statements. Returned African/worldwide geographic evidence is still required.
+Company-wide remote boilerplate and query wording are insufficient. Only the remote
+decision and aggregate evidence count survive; descriptions never enter output.

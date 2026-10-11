@@ -1,12 +1,12 @@
 import json
-from datetime import UTC, datetime
+from datetime import UTC, date, datetime, timedelta
 from pathlib import Path
 
 import httpx
 import pytest
 import yaml
 
-from ingest.adapters.jsearch import GoogleJobsJSearchAdapter
+from ingest.adapters.jsearch import GoogleJobsJSearchAdapter, queries_for_day
 from ingest.main import build_jobs, run_ingestion
 from ingest.models import RawJob
 from ingest.normalize.canonicalize import canonicalize_raw_job
@@ -336,9 +336,58 @@ def test_production_uses_configured_role_queries_with_shared_budget(tmp_path, mo
     adapter.queries = ("obsolete query",)
     run_ingestion(tmp_path, source_ids=["jsearch"], adapters={"jsearch": lambda: adapter})
     config = yaml.safe_load(Path("config/sources.yaml").read_text())
-    queries = next(s for s in config["sources"] if s["id"] == "jsearch")["crawl"]["queries"]
-    assert [request.url.params["query"] for request in calls] == queries
+    policy = next(s for s in config["sources"] if s["id"] == "jsearch")["crawl"]
+    queries = queries_for_day(policy, (datetime.now(UTC) + timedelta(hours=3)).date())
+    assert [request.url.params["query"] for request in calls] == list(queries)
     assert len(calls) <= 5
+
+
+def test_remote_rotation_covers_managers_engineers_and_data_without_extra_requests():
+    config = yaml.safe_load(Path("config/sources.yaml").read_text())
+    policy = next(s for s in config["sources"] if s["id"] == "jsearch")["crawl"]
+    windows = [queries_for_day(policy, date(2026, 10, 11) + timedelta(days=i)) for i in range(4)]
+    assert all(len(window) == 5 and window[:3] == tuple(policy["queries"]) for window in windows)
+    assert {query for window in windows for query in window[3:]} == set(
+        policy["rotating_remote_queries"]
+    )
+    assert "remote product manager jobs in South Africa" in windows[0]
+    assert "remote project manager jobs in South Africa" in windows[0]
+
+
+@pytest.mark.parametrize(
+    "description,accepted",
+    [
+        ("Location: Remote (South Africa)", True),
+        ("This role is fully remote.", True),
+        ("Our company has employees all over the world.", False),
+        ("This role is not remote. Location: Remote", False),
+    ],
+)
+def test_own_remote_declaration_recovers_false_boolean_without_query_inference(
+    monkeypatch, description, accepted
+):
+    monkeypatch.setenv("JSEARCH_API_KEY", "test-secret")
+    item = record(
+        "remote-manager",
+        job_title="Product Manager",
+        job_country="ZA",
+        job_city=None,
+        job_is_remote=False,
+        job_description=description,
+    )
+    adapter = GoogleJobsJSearchAdapter(
+        httpx.Client(
+            transport=httpx.MockTransport(
+                lambda request: httpx.Response(200, json={"status": "OK", "data": {"jobs": [item]}})
+            )
+        )
+    )
+    adapter.queries = ("remote product manager jobs in South Africa",)
+    jobs = build_jobs(adapter.fetch())
+    assert bool(jobs) is accepted
+    if accepted:
+        assert jobs[0].country == "South Africa" and jobs[0].workplace_type == "Remote"
+        assert "job_description" not in jobs[0].model_dump_json()
 
 
 def test_linkedin_manager_queries_capture_roles_and_require_kenya_evidence(monkeypatch):

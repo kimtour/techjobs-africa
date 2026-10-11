@@ -18,8 +18,15 @@ sources:
         - software engineer jobs in Kenya
         - product manager jobs in Kenya
         - project manager jobs in Kenya
-        - remote tech jobs in Sub-Saharan Africa
+      rotating_remote_queries:
+        - remote product manager jobs in South Africa
+        - remote project manager jobs in South Africa
         - remote software engineer jobs in South Africa
+        - remote DevOps jobs in Sub-Saharan Africa
+        - remote data engineer jobs in Sub-Saharan Africa
+        - remote AI engineer jobs in South Africa
+        - remote product manager jobs in Sub-Saharan Africa
+        - remote project manager jobs in Sub-Saharan Africa
       request_delay_ms: 500
       timeout_seconds: 60
       retry_delays_seconds: []

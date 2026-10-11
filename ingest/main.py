@@ -21,7 +21,7 @@ from ingest.adapters.elevolt import ElevoltAdapter
 from ingest.adapters.employer_boards import AshbyEmployerAdapter, SocialDiscoveryAdapter
 from ingest.adapters.expertini import ExpertiniSitemapAdapter
 from ingest.adapters.fuzu import FuzuAdapter
-from ingest.adapters.jsearch import GoogleJobsJSearchAdapter
+from ingest.adapters.jsearch import GoogleJobsJSearchAdapter, queries_for_day
 from ingest.adapters.myjobmag import MyJobMagAdapter
 from ingest.adapters.openedcareer import OpenedCareerAdapter
 from ingest.audit import public_hash, read_json, record_run, run_identity
@@ -231,7 +231,9 @@ def run_ingestion(
                 if hasattr(adapter, "max_pages"):
                     adapter.max_pages = policy["max_pages"]
                 if hasattr(adapter, "queries") and policy.get("queries"):
-                    adapter.queries = tuple(policy["queries"])
+                    adapter.queries = queries_for_day(
+                        policy, started.astimezone(timezone(timedelta(hours=3))).date()
+                    )
                 if hasattr(adapter, "target_jobs"):
                     adapter.target_jobs = policy.get("target_jobs", adapter.target_jobs)
                 if hasattr(adapter, "request_delay_seconds"):

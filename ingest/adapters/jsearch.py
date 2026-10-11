@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import os
 import re
-from datetime import UTC, datetime
+from datetime import UTC, date, datetime
 from functools import lru_cache
 from pathlib import Path
 from urllib.parse import urlsplit
@@ -17,6 +17,39 @@ from ingest.models import RawJob
 from ingest.normalize.location import normalize_location
 
 API_URL = "https://api.openwebninja.com/jsearch/search-v2"
+
+
+def queries_for_day(policy: dict, day: date) -> tuple[str, ...]:
+    """Rotate remote role families without increasing the shared request window."""
+    base = tuple(policy["queries"])
+    pool = tuple(policy.get("rotating_remote_queries", ()))
+    if not pool:
+        return base
+    slots = 2
+    if len(base) != 3 or len(pool) < slots:
+        raise ValueError(
+            "Remote rotation requires three base queries and at least two remote queries"
+        )
+    start = ((day - date(2026, 10, 11)).days * slots) % len(pool)
+    return base + tuple(pool[(start + offset) % len(pool)] for offset in range(slots))
+
+
+def description_states_remote(record: dict) -> bool:
+    """Require an explicit role/location statement, not employer boilerplate."""
+    value = record.get("job_description")
+    if not isinstance(value, str):
+        return False
+    text = re.sub(r"<[^>]+>", " ", value)
+    if re.search(r"\b(?:not|no|isn't|is not)\b[^.\n]{0,25}\bremote\b", text, re.I):
+        return False
+    return bool(
+        re.search(
+            r"\b(?:work location|location|workplace)\s*[:\-]\s*(?:fully\s+)?remote\b"
+            r"|\b(?:this|the)\s+(?:position|role|job)\s+is\s+(?:a\s+)?(?:fully\s+|100%\s+)?remote\b",
+            text,
+            re.I,
+        )
+    )
 
 
 @lru_cache(maxsize=1)
@@ -98,7 +131,7 @@ def parse_record(record: dict) -> tuple[RawJob, list[str]]:
     except ValueError:
         posted_at = None
     location = [record.get(key) for key in ("job_location", "job_city", "job_state", "job_country")]
-    if record.get("job_is_remote") is True:
+    if record.get("job_is_remote") is True or description_states_remote(record):
         location.insert(0, "Remote")
     # Preserve explicit country evidence rather than assuming eligibility from the query.
     country_names = african_country_names()
@@ -283,11 +316,15 @@ class GoogleJobsJSearchAdapter:
                         for k in ("job_location", "job_city", "job_state", "job_country")
                     )
                     geography = normalize_location(raw_location)
-                    remote_evidence = record.get("job_is_remote") is True or (
-                        normalize_location(
-                            " · ".join((raw_location, str(record.get("job_title") or "")))
-                        ).workplace_type
-                        == "Remote"
+                    remote_evidence = (
+                        description_states_remote(record)
+                        or record.get("job_is_remote") is True
+                        or (
+                            normalize_location(
+                                " · ".join((raw_location, str(record.get("job_title") or "")))
+                            ).workplace_type
+                            == "Remote"
+                        )
                     )
                     country_names = african_country_names()
                     african_country = country in country_names or country in {
@@ -373,6 +410,9 @@ class GoogleJobsJSearchAdapter:
                 == "Remote"
                 for record in records
             )
+            remote_description_count = sum(
+                isinstance(record, dict) and description_states_remote(record) for record in records
+            )
             remote_missing_count = sum(
                 isinstance(record, dict) and record.get("job_is_remote") is None
                 for record in records
@@ -385,7 +425,8 @@ class GoogleJobsJSearchAdapter:
             print(
                 f"JSearch window {window_index + 1}: records={len(records)}, "
                 f"remote={remote_count}, "
-                f"remote_text={remote_text_count}, remote_missing={remote_missing_count}, "
+                f"remote_text={remote_text_count}, remote_description={remote_description_count}, "
+                f"remote_missing={remote_missing_count}, "
                 f"african_countries={african_count}, accepted={len(jobs) - accepted_before}",
                 flush=True,
             )
