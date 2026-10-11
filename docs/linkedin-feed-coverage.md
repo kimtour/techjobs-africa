@@ -83,7 +83,8 @@ The screenshot includes South Africa remote, Sub-Saharan Africa remote and world
 remote technology jobs. The previous JSearch adapter discarded every non-Kenya
 result and omitted the provider's `job_location` field. Five daily requests now
 cover Kenya software engineering, product management and project management,
-plus LinkedIn-focused Sub-Saharan Africa and South Africa remote tech discovery.
+plus Sub-Saharan Africa and South Africa remote tech discovery across publishers,
+including LinkedIn when supplied by the provider.
 The regional queries use the documented South Africa (`za`) search locale;
 Sub-Saharan Africa is not a country code. Query wording never establishes eligibility.
 Remote queries also use the provider's documented `work_from_home=true` filter.
@@ -108,3 +109,11 @@ and historical blocked health, and report the policy skip in each audit. Do not
 change scheduler failure detection, bypass the block, expire those jobs or suppress
 new failures from other sources. Scheduler alert workflows deliberately fail to
 notify of a failed ingestion; the Worker itself was operating correctly.
+
+Remote discovery remains across publishers: LinkedIn-only regional queries returned
+no eligible remote records in the verified sample. Keep original LinkedIn links and
+labels whenever returned, and do not imply the provider reproduces LinkedIn search.
+The provider rejected `job_location` in a field projection with HTTP 400; use its
+normal response in memory, retaining only minimal fields. Added aggregate window
+counts distinguish empty provider coverage from geographic filtering without logging
+queries, response bodies, descriptions or credentials.

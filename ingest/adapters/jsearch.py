@@ -214,8 +214,8 @@ class GoogleJobsJSearchAdapter:
         "software engineer jobs in Kenya",
         "product manager jobs in Kenya",
         "project manager jobs in Kenya",
-        "remote tech jobs in Sub-Saharan Africa via linkedin",
-        "remote software engineer jobs in South Africa via linkedin",
+        "remote tech jobs in Sub-Saharan Africa",
+        "remote software engineer jobs in South Africa",
     )
 
     def __init__(self, client: httpx.Client | None = None) -> None:
@@ -234,7 +234,7 @@ class GoogleJobsJSearchAdapter:
         # spending the remaining shared budget on continuation pages.
         pending = [(query, None) for query in self.queries]
         seen_cursors: dict[str, set[str]] = {query: set() for query in self.queries}
-        for _ in range(self.max_pages):
+        for window_index in range(self.max_pages):
             if not pending:
                 break
             query, cursor = pending.pop(0)
@@ -270,6 +270,7 @@ class GoogleJobsJSearchAdapter:
                 or not isinstance(records, list)
             ):
                 raise ValueError("Invalid JSearch response")
+            accepted_before = len(jobs)
             for record in records:
                 if not isinstance(record, dict):
                     continue
@@ -351,6 +352,21 @@ class GoogleJobsJSearchAdapter:
                         }
                     ),
                 )
+            remote_count = sum(
+                isinstance(record, dict) and record.get("job_is_remote") is True
+                for record in records
+            )
+            african_count = sum(
+                isinstance(record, dict)
+                and str(record.get("job_country") or "").upper() in african_country_names()
+                for record in records
+            )
+            print(
+                f"JSearch window {window_index + 1}: records={len(records)}, "
+                f"remote={remote_count}, "
+                f"african_countries={african_count}, accepted={len(jobs) - accepted_before}",
+                flush=True,
+            )
             cursor = data.get("cursor")
             if cursor:
                 if not isinstance(cursor, str) or cursor in seen_cursors[query]:

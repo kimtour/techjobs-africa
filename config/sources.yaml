@@ -18,8 +18,8 @@ sources:
         - software engineer jobs in Kenya
         - product manager jobs in Kenya
         - project manager jobs in Kenya
-        - remote tech jobs in Sub-Saharan Africa via linkedin
-        - remote software engineer jobs in South Africa via linkedin
+        - remote tech jobs in Sub-Saharan Africa
+        - remote software engineer jobs in South Africa
       request_delay_ms: 500
       timeout_seconds: 60
       retry_delays_seconds: []
