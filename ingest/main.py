@@ -5,6 +5,7 @@ from __future__ import annotations
 import argparse
 import json
 import time
+from collections import Counter
 from collections.abc import Callable, Mapping, Sequence
 from datetime import UTC, datetime, timedelta, timezone
 from pathlib import Path
@@ -25,13 +26,13 @@ from ingest.adapters.jsearch import GoogleJobsJSearchAdapter, queries_for_day
 from ingest.adapters.myjobmag import MyJobMagAdapter
 from ingest.adapters.openedcareer import OpenedCareerAdapter
 from ingest.audit import public_hash, read_json, record_run, run_identity
-from ingest.classify.tech import has_non_technical_exclusion
+from ingest.classify.tech import has_non_technical_exclusion, mixed_technology_roles
 from ingest.dedupe.exact import canonicalize_apply_url, deduplicate_exact
 from ingest.expiry.absence import JobOccurrence, reconcile_occurrences
 from ingest.export.static import build_public_files
 from ingest.fetch import ObservedClient
 from ingest.models import CanonicalJob, JobStatus, RawJob, SourceHealth, SourceHealthStatus
-from ingest.normalize.canonicalize import canonicalize_raw_job
+from ingest.normalize.canonicalize import canonicalize_raw_job, normalize_text
 
 CONFIG_PATH = Path("config/sources.yaml")
 AdapterFactory = Callable[[], object]
@@ -62,7 +63,9 @@ def approved_source_ids(config_path: Path = CONFIG_PATH) -> list[str]:
     ]
 
 
-def build_jobs(raw_jobs: Sequence[RawJob]) -> list[CanonicalJob]:
+def build_jobs(
+    raw_jobs: Sequence[RawJob], *, rejections: list[dict] | None = None
+) -> list[CanonicalJob]:
     """Retain roles with title evidence or narrowly verified technical context."""
 
     # Source category pages are discovery aids, not evidence that every listing is
@@ -70,16 +73,36 @@ def build_jobs(raw_jobs: Sequence[RawJob]) -> list[CanonicalJob]:
     # contain HR and finance vacancies. Require evidence from the role itself;
     # ambiguous early-warning roles also need verified development context.
     technical_jobs = []
+
+    def reject(raw: RawJob, reason: str) -> None:
+        if rejections is not None:
+            rejections.append(
+                {"external_id": raw.external_id, "title": raw.title, "reason": reason}
+            )
+
     for raw in raw_jobs:
         # The listing URL is also a source-provided label. Reject a record if it
         # names an excluded role, preventing malformed cards from pairing a
         # technical title with a non-technical application URL.
         url_label = urlparse(str(raw.source_url)).path.replace("-", " ").replace("/", " ")
-        if has_non_technical_exclusion(raw.title) or has_non_technical_exclusion(url_label):
+        # A source advert can explicitly bundle IT Trainer with receptionist and
+        # other vacancies. Permit it only when the same bundle is in the URL;
+        # unrelated title/URL pairings still fail the malformed-card guard.
+        mixed_listing = (
+            raw.source_id == "myjobmag"
+            and mixed_technology_roles(raw.title)
+            and normalize_text(raw.title.rsplit(" at ", 1)[0]) in normalize_text(url_label)
+        )
+        if not mixed_listing and (
+            has_non_technical_exclusion(raw.title) or has_non_technical_exclusion(url_label)
+        ):
+            reject(raw, "non_technical_function")
             continue
         job = canonicalize_raw_job(raw)
         if job.category:
             technical_jobs.append(job)
+        else:
+            reject(raw, "unclassified_title_or_unverified_context")
     return deduplicate_exact(technical_jobs)
 
 
@@ -215,6 +238,7 @@ def run_ingestion(
         observer = None
         fetched = []
         source_jobs = []
+        rejected_jobs: list[dict] = []
         complete = False
         error_type = None
         status = SourceHealthStatus.FAILED
@@ -269,7 +293,16 @@ def run_ingestion(
                 fetched = adapter.fetch()
                 if any(raw.source_id != source_id for raw in fetched):
                     raise ValueError("adapter returned a foreign source")
-                source_jobs = build_jobs(fetched)
+                source_jobs = build_jobs(fetched, rejections=rejected_jobs)
+                _write_json(
+                    output_dir / "state/classification" / f"{source_id}.json",
+                    {
+                        "schema_version": 1,
+                        "run_id": run_id,
+                        "source_id": source_id,
+                        "filtered_jobs": rejected_jobs,
+                    },
+                )
                 complete = getattr(adapter, "crawl_complete", False)
                 status = SourceHealthStatus.SUCCESS if complete else SourceHealthStatus.PARTIAL
                 reason = None if complete else "pagination_incomplete"
@@ -395,6 +428,8 @@ def run_ingestion(
         rows[source_id] = {
             "health": health[source_id].model_dump(mode="json"),
             "technical_jobs": len(source_jobs),
+            "filtered_jobs": len(rejected_jobs),
+            "filter_reasons": dict(Counter(item["reason"] for item in rejected_jobs)),
             "new_jobs": len(current.keys() - previous_for_source.keys()),
             "updated_jobs": sum(
                 current[key] != previous_for_source[key]

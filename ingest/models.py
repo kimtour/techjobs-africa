@@ -52,9 +52,18 @@ class RawJob(BaseModel):
     apply_url: AnyHttpUrl
     published_at: datetime | None = None
     published_date: date | None = None
-    technical_context: Literal["geospatial_application_development"] | None = Field(
-        default=None, exclude=True
-    )
+    technical_context: (
+        Literal[
+            "geospatial_application_development",
+            "network_service_delivery",
+            "digital_product_support",
+            "payments_platform_product",
+            "digital_health_systems",
+            "software_application_development",
+            "enterprise_systems_support",
+        ]
+        | None
+    ) = Field(default=None, exclude=True)
 
 
 class SourceHealth(BaseModel):

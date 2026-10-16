@@ -316,3 +316,68 @@ def test_paused_blocked_source_retains_records_without_requests_or_recurring_ale
     assert run["sources"]["expertini"]["retained_jobs"] == 1
     ids = {j["job_id"] for j in json.loads((tmp_path / "public/jobs.json").read_text())["jobs"]}
     assert "expertini:old" in ids
+
+
+def test_myjobmag_shared_advert_keeps_explicit_it_vacancy_and_checks_url():
+    raw = RawJob(
+        source_id="myjobmag",
+        external_id="shared-advert",
+        title=(
+            "Transport Manager, Accounts Clerk, Receptionist, "
+            "IT Trainer and Cosmetology Trainer at Petanns Kenya"
+        ),
+        source_url="https://www.myjobmag.co.ke/job/transport-manager-accounts-clerk-receptionist-it-trainer-and-cosmetology-trainer-petanns-kenya",
+        apply_url="https://www.myjobmag.co.ke/job/transport-manager-accounts-clerk-receptionist-it-trainer-and-cosmetology-trainer-petanns-kenya",
+    )
+    jobs = build_jobs([raw])
+    assert len(jobs) == 1
+    assert jobs[0].job_id == "myjobmag:shared-advert"
+    assert jobs[0].category == "IT Operations"
+    assert jobs[0].category_source == "mixed_title_rule"
+    assert str(jobs[0].preferred_apply_url) == str(raw.apply_url)
+    assert (
+        build_jobs(
+            [
+                raw.model_copy(
+                    update={
+                        "source_url": "https://www.myjobmag.co.ke/job/receptionist-other-company"
+                    }
+                )
+            ]
+        )
+        == []
+    )
+
+
+def test_fetch_audit_records_minimal_filter_reasons(tmp_path):
+    class MixedAdapter(_SuccessfulAdapter):
+        def fetch(self):
+            technical = super().fetch()[0]
+            return [
+                technical,
+                technical.model_copy(
+                    update={"external_id": "unknown", "title": "Role without technical evidence"}
+                ),
+                technical.model_copy(
+                    update={"external_id": "accounts", "title": "Accounts Assistant"}
+                ),
+            ]
+
+    run_ingestion(tmp_path, source_ids=["elevolt"], adapters={"elevolt": MixedAdapter})
+    run = json.loads((tmp_path / "state/last-run.json").read_text())
+    assert run["sources"]["elevolt"]["filtered_jobs"] == 2
+    rejected = json.loads((tmp_path / "state/classification/elevolt.json").read_text())[
+        "filtered_jobs"
+    ]
+    assert rejected == [
+        {
+            "external_id": "unknown",
+            "title": "Role without technical evidence",
+            "reason": "unclassified_title_or_unverified_context",
+        },
+        {
+            "external_id": "accounts",
+            "title": "Accounts Assistant",
+            "reason": "non_technical_function",
+        },
+    ]

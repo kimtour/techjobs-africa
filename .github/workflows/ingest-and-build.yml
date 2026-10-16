@@ -9,7 +9,7 @@ on:
         required: false
         default: all
         type: choice
-        options: [all, jsearch, expertini, corporate_staffing, camunda, blacksmith, sdg]
+        options: [all, myjobmag, jsearch, expertini, corporate_staffing, camunda, blacksmith, sdg]
       refresh_jsearch:
         description: Refresh changed Google queries today (still respects monthly quota)
         required: false
@@ -172,6 +172,7 @@ jobs:
             /tmp/techjobs-africa-candidate/state/fetch-progress.json
             /tmp/techjobs-africa-candidate/state/publication-history/
             /tmp/techjobs-africa-candidate/state/request-history/
+            /tmp/techjobs-africa-candidate/state/classification/
           retention-days: 90
           if-no-files-found: warn
 

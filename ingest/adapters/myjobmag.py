@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import re
 from collections.abc import Sequence
 from datetime import date, datetime, timedelta
 from email.utils import parsedate_to_datetime
@@ -13,7 +14,7 @@ from xml.etree import ElementTree
 
 import httpx
 
-from ingest.classify.tech import geospatial_technical_context
+from ingest.classify.tech import listing_technical_context, needs_detail_technical_context
 from ingest.models import RawJob
 
 SOURCE_ID = "myjobmag"
@@ -28,9 +29,12 @@ class _DetailEvidenceParser(HTMLParser):
     def __init__(self) -> None:
         super().__init__(convert_charrefs=True)
         self.depth = 0
+        self.ignored_depth = 0
         self.parts: list[str] = []
 
     def handle_starttag(self, tag, attrs):
+        if tag in ("script", "style", "aside"):
+            self.ignored_depth += 1
         if tag != "div":
             return
         if self.depth:
@@ -39,18 +43,20 @@ class _DetailEvidenceParser(HTMLParser):
             self.depth = 1
 
     def handle_endtag(self, tag):
+        if tag in ("script", "style", "aside"):
+            self.ignored_depth = max(0, self.ignored_depth - 1)
         if tag == "div" and self.depth:
             self.depth -= 1
 
     def handle_data(self, data):
-        if self.depth:
+        if self.depth and not self.ignored_depth:
             self.parts.append(data)
 
 
 def detail_technical_context(title: str, html: str) -> str | None:
     parser = _DetailEvidenceParser()
     parser.feed(html)
-    return geospatial_technical_context(title, unescape(" ".join(parser.parts)))
+    return listing_technical_context(title, unescape(" ".join(parser.parts)))
 
 
 def _text(item: ElementTree.Element, name: str, *, max_length: int | None = 300) -> str | None:
@@ -223,6 +229,12 @@ def _listing_day(value: str | None, today: date | None = None) -> date | None:
         return None
     reference_day = today or date.today()
     normalized = " ".join(value.split())
+    # Multi-location cards append "and N other locations" within #job-date.
+    # Extract only the leading day/month instead of losing the entire date.
+    match = re.match(r"^(\d{1,2}\s+[A-Za-z]+)\b", normalized)
+    if not match:
+        return None
+    normalized = match[1]
     for fmt in ("%d %B", "%d %b"):
         try:
             parsed = datetime.strptime(f"{normalized} {reference_day.year}", f"{fmt} %Y").date()
@@ -293,10 +305,10 @@ class MyJobMagAdapter:
                 break
             pending.extend(sorted(parser.page_links - visited - set(pending)))
         self.crawl_complete = self.crawl_complete or not pending
-        # Only ambiguous Early Warning Expert cards need a detail request. The
+        # Only scoped ambiguous titles need their own detail evidence. The
         # observer still enforces the shared request budget, delays and blocks.
         for identity, job in list(jobs_by_id.items()):
-            if "early warning expert" not in job.title.casefold():
+            if not needs_detail_technical_context(job.title):
                 continue
             parsed = urlparse(str(job.source_url))
             if parsed.netloc != "www.myjobmag.co.ke" or not parsed.path.startswith("/job/"):

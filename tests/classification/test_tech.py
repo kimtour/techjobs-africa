@@ -127,3 +127,95 @@ def test_linkedin_comparison_titles_and_punctuation():
         "Cloud Sales Officer",
     ]:
         assert classify_technology_title(title).category is None, title
+
+
+def test_missing_myjobmag_functions_are_classified_without_trusting_the_source_category():
+    examples = {
+        "Structured Cabling Installers and Fiber Specialists": "Networking",
+        "User Manager/Access Management Specialist": "Cybersecurity",
+        "Senior Manager IT Applications & Asset Management": "Application Support",
+        "Software Architect": "Solutions Architecture",
+        "Associate II: Systems Support Analyst": "Application Support",
+        "Head of Artificial Intelligence": "AI / Machine Learning",
+        "ICT Security Manager": "Cybersecurity",
+        "Lead Analyst - Data Operations": "Data Science",
+        "Internal IT Auditor": "Cybersecurity",
+        "Systems Librarian": "IT Operations",
+        "SSA KE - IT Support Specialist": "Technical Support",
+        "Intern - ICT": "IT Operations",
+        "Information Communication Technology Officer III": "IT Operations",
+        "ICT & Systems Manager": "IT Operations",
+        "Manager IT Risk": "Cybersecurity",
+        "Programmer": "Software Engineering",
+        "Senior Developer": "Software Engineering",
+        "Officer – Network Administration": "Networking",
+        "Technical Program Manager": "Technical Product",
+        "Digital Workplace & Microsoft 365 Technical Expert": "IT Operations",
+        "Information Systems Audit Intern": "Cybersecurity",
+        "Salesforce Administrator": "ERP / Enterprise Systems",
+        "ICT Trainer": "IT Operations",
+        "Data Engineering Advisor": "Data Engineering",
+        "Cyber Security Administrator (Operations)": "Cybersecurity",
+        "End User Support Consultant": "Application Support",
+        "Platform Architect – Security": "Solutions Architecture",
+    }
+    for title, category in examples.items():
+        assert classify_technology_title(title + " at Example Company").category == category, title
+
+
+def test_employer_name_is_not_technical_or_non_technical_role_evidence():
+    assert (
+        classify_technology_title("Office Clerk at Artificial Intelligence Labs").category is None
+    )
+    assert classify_technology_title("Software Architect at Human Resources Partners").category
+
+
+def test_ambiguous_and_unrelated_myjobmag_titles_still_need_evidence():
+    for title in [
+        "Accounts Assistant",
+        "Post Graduate Program Coordinator - Information Communication Technology",
+        "Programme Officer (Monitoring and Evaluation)",
+        "Senior Product Analyst, DELTA",
+        "Head of Payments and Platform",
+        "Digital Health Systems Strengthening Officers",
+        "Engineer Service Delivery",
+        "Data Entry Clerk",
+        "Network Development Associate-Africa",
+        "CNC Programmer",
+        "Property Developer",
+    ]:
+        assert classify_technology_title(title).category is None, title
+
+
+def test_access_management_is_technical_but_generic_user_manager_is_not():
+    assert classify_technology_title("User Manager/Access Management Specialist").category
+    assert classify_technology_title("User Manager").category is None
+
+
+def test_more_technical_families_found_in_the_thirty_day_audit():
+    for title in [
+        "Genesys Cloud CX Developer",
+        "M-Pesa Africa: Senior Data Architect",
+        "Trainer-ICT",
+        "TVET Trainers - Information and Communication Technology (ICT)",
+        "Subject Matter Expert - Networking & Infrastructure",
+        "I.T Specialist",
+        "I.T Services & Infrastructure Officer",
+        "Tech Lead, Payments & Financial Infrastructure",
+        "ERPNext / Frappe Developer",
+        "Sacco ICT Assistant",
+        "Data Labelers- AV/ADAS",
+        "Associate Data Custodian/Steward",
+        "IT Clerks",
+        "Team Leader, SRE",
+        "Senior Data & Information Governance Specialist",
+        "IT Executive (Odoo ERP & IT Infrastructure)",
+        "Senior EDI Applications Engineer",
+        "AI Domain Architect",
+        "Server & Systems Security Administrator",
+        "AI Specialist",
+        "Software QA",
+        "SD-WAN L2 Engineer",
+        "Director, Information, Communication & Technology (ICT)",
+    ]:
+        assert classify_technology_title(title).category, title

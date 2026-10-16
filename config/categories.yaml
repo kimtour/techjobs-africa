@@ -27,6 +27,11 @@ categories:
   - python developer
   - java developer
   - golang developer
+  - software engineering
+  - website developer
+  - genesys cloud cx developer
+  title_patterns:
+  - '^(?:(?:senior|junior|lead|principal)\s+)?(?:developer|programmer)(?:\s|$)'
 - key: ai-machine-learning
   title: AI / Machine Learning
   keywords:
@@ -43,6 +48,12 @@ categories:
   - nlp engineer
   - llm engineer
   - applied ai
+  - artificial intelligence
+  - head of ai
+  - ai specialist
+  - ai domain architect
+  - data annotator
+  - data labeler
 - key: data-engineering
   title: Data Engineering
   keywords:
@@ -53,6 +64,11 @@ categories:
   - data warehouse engineer
   - big data engineer
   - data and automation systems builder
+  - data engineering
+  - data architect
+  - data custodian
+  - data steward
+  - data & information governance
 - key: data-science
   title: Data Science
   keywords:
@@ -69,6 +85,7 @@ categories:
   - data analytics
   - business intelligence
   - business intelligence analyst
+  - data operations
 - key: devops-sre
   title: DevOps / SRE
   keywords:
@@ -78,6 +95,7 @@ categories:
   - sre engineer
   - platform engineer
   - release engineer
+  - sre
 - key: cloud
   title: Cloud
   keywords:
@@ -100,6 +118,19 @@ categories:
   - penetration tester
   - security analyst
   - application security
+  - cyber security
+  - ict security
+  - it auditor
+  - ict risk
+  - it risk
+  - information systems audit
+  - systems auditor
+  - systems internal auditor
+  - internal auditor (ict)
+  - cyber secure by design
+  - access management specialist
+  - identity and access management
+  - systems security administrator
 - key: application-support
   title: Application Support
   keywords:
@@ -109,6 +140,13 @@ categories:
   - application analyst
   - support engineer
   - erp support
+  - systems support analyst
+  - systems software analyst
+  - endpoint support
+  - end user support
+  - it applications
+  - core systems
+  - infrastructure and applications specialist
 - key: it-operations
   title: IT Operations
   keywords:
@@ -127,6 +165,29 @@ categories:
   - it officer
   - it specialist
   - application development
+  - information communication technology
+  - information and communication technologies
+  - it analyst
+  - it trainee
+  - it trainer
+  - ict trainer
+  - intern ict
+  - systems librarian
+  - computer management assistant
+  - microsoft 365
+  - digital workplace
+  - ict assistant
+  - it executive
+  - it services
+  - information management technology
+  - information and communication technology
+  - information communication & technology
+  title_patterns:
+  - '\b(?:trainer|trainers)\b.*\bICT\b'
+  - '\bIT clerks\b'
+  - '\b(?:IT|ICT)\s*(?:&\s*systems\s+)?(?:manager|lead|director|head|services)\b'
+  - '\b(?:manager|director|head|chief)\s*(?:of\s+)?[,/:–—-]?\s*(?:IT|ICT)\b'
+  - '\b(?:lecturer|trainer)\s*[–—-]\s*IT\b'
 - key: systems-administration
   title: Systems Administration
   keywords:
@@ -147,6 +208,14 @@ categories:
   - network architect
   - networking specialist
   - networking sme
+  - network administration
+  - network designer
+  - computer networks
+  - structured cabling
+  - fiber specialist
+  - network and service operations
+  - networking & infrastructure
+  - sd-wan
   - infrastructure & networking
   - infrastructure and networking
   - noc engineer
@@ -166,6 +235,8 @@ categories:
   - test engineer
   - software tester
   - sdet
+  - software qa
+  - data qa
 - key: database
   title: Database
   keywords:
@@ -184,6 +255,14 @@ categories:
   - oracle ebs
   - enterprise systems
   - systems integration coordinator
+  - salesforce administrator
+  - salesforce developer
+  - wso2 implementation engineer
+  - erpnext
+  - frappe developer
+  - edi analyst
+  - edi applications engineer
+  - crm systems and data specialist
 - key: solutions-architecture
   title: Solutions Architecture
   keywords:
@@ -192,6 +271,9 @@ categories:
   - enterprise solution engineer
   - enterprise architect
   - technical architect
+  - software architect
+  - platform architect
+  - solutions and business architecture
 - key: technical-support
   title: Technical Support
   keywords:
@@ -200,6 +282,11 @@ categories:
   - it support engineer
   - service desk engineer
   - helpdesk engineer
+  - it support specialist
+  - it support technician
+  - it support officer
+  - it support analyst
+  - ict support
 - key: ui-ux
   title: UI / UX
   keywords:
@@ -221,6 +308,8 @@ categories:
   - product manager
   - project manager
   - fintech
+  - technical program manager
+  - scrum master
 - key: technology-leadership
   title: Technology Leadership
   keywords:
@@ -236,6 +325,8 @@ categories:
   - technology manager
   - manager technology
   - it director
+  - head of legacy engineering
+  - tech lead
 - key: graduate-intern
   title: Internship / Graduate Technology
   keywords:
@@ -265,8 +356,55 @@ non_tech_exclusions:
 - social media manager
 - customer care agent
 - teacher
+- accounts assistant
+- programme coordinator
+- program coordinator
 rules:
 - Reject explicit non-technical job functions before applying technical keywords.
 - Generic Product Manager roles are included under Technical Product by product decision.
 - QA and test automation roles are included under QA / Testing.
 - One role may have secondary categories.
+context_rules:
+- key: geospatial_application_development
+  category: Data Engineering
+  title_pattern: '\bearly warning expert\b'
+  required_evidence:
+  - '\b(geospatial|geo.application)\b'
+  - '\b(Python|Node\.?js|Django|PostGIS)\b'
+  - '\b(application development|backend development|developing REST APIs)\b'
+- key: network_service_delivery
+  category: Networking
+  title_pattern: '\b(?:engineer service delivery|service delivery engineer)\b'
+  required_evidence:
+  - '\b(routing and switching|SDWAN|FTTB|FTTG)\b'
+  - '\b(network|telecommunications|fiber)\b'
+- key: digital_product_support
+  category: Application Support
+  title_pattern: '\bproduct analyst\b'
+  required_evidence:
+  - '\b(platform testing|platform health|bug triage|resolving bugs)\b'
+  - '\b(digital product|live systems|software|engineering QA)\b'
+- key: payments_platform_product
+  category: Technical Product
+  title_pattern: '\bhead of payments and platform\b'
+  required_evidence:
+  - '\bAPI\b'
+  - '\bproduct specifications\b'
+- key: digital_health_systems
+  category: Technical Support
+  title_pattern: '\bdigital health systems\b'
+  required_evidence:
+  - '\b(updates, configurations, and patches|systems and applications)\b'
+  - '\b(troubleshooting|incident management|technical support)\b'
+- key: software_application_development
+  category: Software Engineering
+  title_pattern: '\b(?:technical manager|associate principal engineer|lead automation engineer|senior quality engineer)\b'
+  required_evidence:
+  - '\b(software|SaaS|Python|JavaScript|TypeScript)\b'
+  - '\b(develop(?:ment|ing)|debug(?:ging)?|deploy(?:ment|ing)|automated test(?:s|ing))\b'
+- key: enterprise_systems_support
+  category: Application Support
+  title_pattern: '\b(?:group systems manager|information management assistant|PRIME system advisor|technical field support)\b'
+  required_evidence:
+  - '\b(ERP|Microsoft 365|IT infrastructure|software applications|business applications)\b'
+  - '\b(troubleshoot(?:ing)?|configuration|technical support|system maintenance)\b'

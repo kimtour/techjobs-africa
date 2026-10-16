@@ -151,3 +151,74 @@ def test_early_warning_requires_own_geospatial_development_evidence():
     assert canonical.category == "Data Engineering"
     assert canonical.category_source == "description_rule"
     assert body not in canonical.model_dump_json()
+
+
+def test_multi_location_text_does_not_destroy_the_publication_date():
+    from ingest.adapters.myjobmag import _ListingPageParser
+
+    html = _listing("Network Engineer", "network", "Example", "Nairobi", "16 October")
+    html = html.replace("Nairobi</a>", "Nairobi</a> and 1 other locations")
+    parser = _ListingPageParser(LISTING_URL, today=date(2026, 10, 16))
+    parser.feed(html)
+    assert parser.jobs[0].published_date == date(2026, 10, 16)
+
+
+def test_ambiguous_roles_require_technical_duties_in_their_own_detail_container():
+    from ingest.adapters.myjobmag import detail_technical_context
+    from ingest.main import build_jobs
+
+    examples = [
+        ("Engineer Service Delivery", "Routing and switching on a fiber network.", "Networking"),
+        (
+            "Senior Product Analyst, DELTA",
+            "Live systems need platform testing.",
+            "Application Support",
+        ),
+        (
+            "Head of Payments and Platform",
+            "Write product specifications for our API.",
+            "Technical Product",
+        ),
+        (
+            "Digital Health Systems Strengthening Officers",
+            "Technical support for systems and applications.",
+            "Technical Support",
+        ),
+    ]
+    for title, evidence, category in examples:
+        assert detail_technical_context(title, f"<aside>{evidence}</aside>") is None
+        assert (
+            detail_technical_context(title, '<div class="job-details">Office work.</div>') is None
+        )
+        for tag in ("script", "style", "aside"):
+            assert (
+                detail_technical_context(
+                    title, f'<div class="job-details"><{tag}>{evidence}</{tag}></div>'
+                )
+                is None
+            )
+        context = detail_technical_context(title, f'<div class="job-details">{evidence}</div>')
+        raw = parse_myjobmag_listing_page(
+            _listing(title, "test-job", "Example", "Nairobi"), LISTING_URL
+        )[0][0].model_copy(update={"technical_context": context})
+        canonical = build_jobs([raw])[0]
+        assert canonical.category == category
+        assert canonical.category_source == "description_rule"
+        assert "technical_context" not in raw.model_dump()
+        assert evidence not in canonical.model_dump_json()
+
+
+def test_fetch_collects_scoped_detail_evidence_without_fetching_every_job():
+    title = "Engineer Service Delivery"
+    detail_url = "https://www.myjobmag.co.ke/job/service-delivery"
+    client = _PaginatedClient(
+        {
+            LISTING_URL: _listing(title, "service-delivery", "Example", "Nairobi")
+            + _listing("Accounts Assistant", "accounts", "Example", "Nairobi"),
+            detail_url: '<div class="job-details">Routing and switching on a fiber network.</div>',
+        }
+    )
+    jobs = MyJobMagAdapter(client=client, request_delay_seconds=0).fetch()
+    assert client.calls == [LISTING_URL, detail_url]
+    assert jobs[0].technical_context == "network_service_delivery"
+    assert jobs[1].technical_context is None
