@@ -309,6 +309,10 @@ def test_domain_and_function_patterns_cover_the_cross_board_audit():
         "Senior Business Analyst, Core Banking",
         "Head Data Applications & Integration",
         "Java Backend Engineering Team Lead",
+        "Systems & App Developer",
+        "Lead Systems Integrator & Developer",
+        "Specialist, BI Developer",
+        "API & Developer Market Place Lead",
     ]:
         assert classify_technology_title(title).category, title
     for title in [

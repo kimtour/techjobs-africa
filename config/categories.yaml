@@ -44,6 +44,7 @@ categories:
   - system developer
   - rpa developer
   - native developer
+  - app developer
   - software automation
   - .net engineer
   - springboot engineer
@@ -103,6 +104,7 @@ categories:
   - data platforms
   - spatial data management
   - enterprise data management
+  - bi developer
   title_patterns:
   - '\bdata\b.{0,35}\b(?:platforms?|pipeline|migration|integration|architecture|engineering|warehouse|governance)\b'
 - key: data-science
@@ -383,6 +385,7 @@ categories:
   - business central
   - esb system expert
   - business systems
+  - systems integrator
   - enterprise applications
   - openmrs
   title_patterns:
@@ -449,6 +452,7 @@ categories:
   - scrum master
   - product owner
   - head of product
+  - api & developer market place lead
 - key: technology-leadership
   title: Technology Leadership
   keywords:
