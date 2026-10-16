@@ -401,10 +401,16 @@ context_rules:
   title_pattern: '\b(?:technical manager|associate principal engineer|lead automation engineer|senior quality engineer)\b'
   required_evidence:
   - '\b(software|SaaS|Python|JavaScript|TypeScript)\b'
-  - '\b(develop(?:ment|ing)|debug(?:ging)?|deploy(?:ment|ing)|automated test(?:s|ing))\b'
+  - '\b(develop(?:ment|ing)?|debug(?:ging)?|deploy(?:ment|ing)?|automated test(?:s|ing)|test automation|Playwright|Selenium|Cypress)\b'
 - key: enterprise_systems_support
   category: Application Support
   title_pattern: '\b(?:group systems manager|information management assistant|PRIME system advisor|technical field support)\b'
   required_evidence:
-  - '\b(ERP|Microsoft 365|IT infrastructure|software applications|business applications)\b'
-  - '\b(troubleshoot(?:ing)?|configuration|technical support|system maintenance)\b'
+  - '\b(ERP|Microsoft 365|IT infrastructure|software|business applications|hardware)\b'
+  - '\b(troubleshoot(?:ing)?|configuration|technical support|system maintenance|systems support|IT support|deployment)\b'
+- key: technical_engineering_management
+  category: Technology Leadership
+  title_pattern: '\btechnical manager\b'
+  required_evidence:
+  - '\bSQL Server\b'
+  - '\bAPI\b'

@@ -61,6 +61,7 @@ class RawJob(BaseModel):
             "digital_health_systems",
             "software_application_development",
             "enterprise_systems_support",
+            "technical_engineering_management",
         ]
         | None
     ) = Field(default=None, exclude=True)

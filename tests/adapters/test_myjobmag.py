@@ -184,6 +184,15 @@ def test_ambiguous_roles_require_technical_duties_in_their_own_detail_container(
             "Technical support for systems and applications.",
             "Technical Support",
         ),
+        ("PRIME System Advisor", "Technical support for software.", "Application Support"),
+        ("Technical Field Support", "Hardware configuration.", "Application Support"),
+        ("Information Management Assistant", "IT support for hardware.", "Application Support"),
+        (
+            "Lead Automation Engineer",
+            "TypeScript test automation in Playwright.",
+            "Software Engineering",
+        ),
+        ("Technical Manager", "SQL Server and API design.", "Technology Leadership"),
     ]
     for title, evidence, category in examples:
         assert detail_technical_context(title, f"<aside>{evidence}</aside>") is None
