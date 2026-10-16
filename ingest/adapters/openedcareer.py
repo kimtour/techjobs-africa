@@ -11,6 +11,7 @@ from typing import Any
 
 import httpx
 
+from ingest.classify.evidence import description_technical_context
 from ingest.models import RawJob
 
 SOURCE_ID = "openedcareer"
@@ -55,7 +56,7 @@ def _plain_text(value: object) -> str | None:
 
 
 def parse_openedcareer_jobs(payload: Sequence[Mapping[str, Any]]) -> list[RawJob]:
-    """Parse only permitted listing metadata; never read description fields."""
+    """Keep metadata and scoped technical evidence, never description text."""
 
     jobs: list[RawJob] = []
     for record in payload:
@@ -68,11 +69,15 @@ def parse_openedcareer_jobs(payload: Sequence[Mapping[str, Any]]) -> list[RawJob
         if not isinstance(external_id, int) or not isinstance(link, str) or not title:
             continue
         date_gmt = record.get("date_gmt")
+        content = record.get("content")
         jobs.append(
             RawJob(
                 source_id=SOURCE_ID,
                 external_id=str(external_id),
                 title=title,
+                technical_context=description_technical_context(
+                    title, content.get("rendered") if isinstance(content, Mapping) else None
+                ),
                 source_url=link,
                 apply_url=link,
                 company=_company_from_title(title),

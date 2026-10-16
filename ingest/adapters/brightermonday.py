@@ -12,6 +12,7 @@ from urllib.parse import urljoin, urlparse
 
 import httpx
 
+from ingest.classify.evidence import enrich_listing_jobs
 from ingest.models import RawJob
 
 SOURCE_ID = "brightermonday"
@@ -240,4 +241,6 @@ class BrighterMondayAdapter:
                     return list(jobs_by_id.values())
                 page_url = next_page
         self.crawl_complete = True
-        return list(jobs_by_id.values())
+        return enrich_listing_jobs(
+            list(jobs_by_id.values()), self._client, allowed_hosts={"www.brightermonday.co.ke"}
+        )

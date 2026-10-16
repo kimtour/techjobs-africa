@@ -13,6 +13,7 @@ import httpx
 import yaml
 from pydantic import ValidationError
 
+from ingest.classify.evidence import description_technical_context
 from ingest.models import RawJob
 from ingest.normalize.location import normalize_location
 
@@ -143,6 +144,9 @@ def parse_record(record: dict) -> tuple[RawJob, list[str]]:
         source_id="jsearch",
         external_id=external_id,
         title=record.get("job_title"),
+        technical_context=description_technical_context(
+            record.get("job_title") or "", record.get("job_description")
+        ),
         company=record.get("employer_name"),
         location=" · ".join(part for part in location if isinstance(part, str) and part),
         source_url=safe_url(record.get("job_google_link")) or apply_url,

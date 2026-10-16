@@ -62,6 +62,12 @@ class RawJob(BaseModel):
             "software_application_development",
             "enterprise_systems_support",
             "technical_engineering_management",
+            "technical_data_analysis",
+            "business_systems_analysis",
+            "digital_experience_design",
+            "intelligent_workflow_automation",
+            "technical_documentation",
+            "technology_training",
         ]
         | None
     ) = Field(default=None, exclude=True)

@@ -55,3 +55,43 @@ def test_timeout_is_not_reported_as_a_complete_crawl():
     with pytest.raises(requests.exceptions.ReadTimeout):
         adapter.fetch()
     assert adapter.crawl_complete is False
+
+
+def test_detail_uses_only_matching_job_record_and_excludes_recommendations_and_expired_jobs():
+    import json
+
+    from ingest.adapters.fuzu import detail_technical_context
+
+    url = "https://www.fuzu.com/kenya/jobs/group-systems-manager"
+    record = {
+        "title": "Group Systems Manager",
+        "path": "/kenya/jobs/group-systems-manager",
+        "description": "ERP configuration and technical support.",
+        "expired": False,
+    }
+
+    def body(own):
+        return (
+            '<script type="application/json">'
+            + json.dumps(
+                {
+                    "context": {
+                        "job_details": own,
+                        "similar_jobs": [record],
+                    }
+                }
+            )
+            + "</script>"
+        )
+
+    assert (
+        detail_technical_context(record["title"], body(record), url) == "enterprise_systems_support"
+    )
+    for change in [
+        {"title": "Other vacancy"},
+        {"path": "/kenya/jobs/other"},
+        {"expired": True},
+        {"description": "Office administration."},
+    ]:
+        assert detail_technical_context(record["title"], body({**record, **change}), url) is None
+    assert detail_technical_context(record["title"], body({}), url) is None

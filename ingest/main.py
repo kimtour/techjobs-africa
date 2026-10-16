@@ -11,7 +11,7 @@ from datetime import UTC, datetime, timedelta, timezone
 from pathlib import Path
 from statistics import median
 from tempfile import NamedTemporaryFile
-from urllib.parse import urlparse
+from urllib.parse import unquote, urlparse
 
 import yaml
 
@@ -26,7 +26,11 @@ from ingest.adapters.jsearch import GoogleJobsJSearchAdapter, queries_for_day
 from ingest.adapters.myjobmag import MyJobMagAdapter
 from ingest.adapters.openedcareer import OpenedCareerAdapter
 from ingest.audit import public_hash, read_json, record_run, run_identity
-from ingest.classify.tech import has_non_technical_exclusion, mixed_technology_roles
+from ingest.classify.tech import (
+    classification_title,
+    has_non_technical_exclusion,
+    mixed_technology_roles,
+)
 from ingest.dedupe.exact import canonicalize_apply_url, deduplicate_exact
 from ingest.expiry.absence import JobOccurrence, reconcile_occurrences
 from ingest.export.static import build_public_files
@@ -84,17 +88,22 @@ def build_jobs(
         # The listing URL is also a source-provided label. Reject a record if it
         # names an excluded role, preventing malformed cards from pairing a
         # technical title with a non-technical application URL.
-        url_label = urlparse(str(raw.source_url)).path.replace("-", " ").replace("/", " ")
+        url_label = unquote(urlparse(str(raw.source_url)).path).replace("-", " ").replace("/", " ")
+        # Employer names in URL slugs are attribution, just as they are in titles.
+        # Strip only an explicit matching suffix; retain the role's URL guard.
+        normalized_url = normalize_text(url_label)
+        company_suffix = normalize_text(raw.company or "")
+        if company_suffix and normalized_url.endswith(" " + company_suffix):
+            url_label = normalized_url[: -(len(company_suffix) + 1)]
         # A source advert can explicitly bundle IT Trainer with receptionist and
         # other vacancies. Permit it only when the same bundle is in the URL;
         # unrelated title/URL pairings still fail the malformed-card guard.
-        mixed_listing = (
-            raw.source_id == "myjobmag"
-            and mixed_technology_roles(raw.title)
-            and normalize_text(raw.title.rsplit(" at ", 1)[0]) in normalize_text(url_label)
-        )
+        mixed_listing = mixed_technology_roles(raw.title) and normalize_text(
+            raw.title.rsplit(" at ", 1)[0]
+        ) in normalize_text(url_label)
         if not mixed_listing and (
-            has_non_technical_exclusion(raw.title) or has_non_technical_exclusion(url_label)
+            has_non_technical_exclusion(classification_title(raw.title, raw.company))
+            or has_non_technical_exclusion(url_label)
         ):
             reject(raw, "non_technical_function")
             continue

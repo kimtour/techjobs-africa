@@ -34,6 +34,11 @@ from urllib.parse import urljoin, urlparse
 
 import requests
 
+from ingest.classify.evidence import (
+    description_technical_context,
+    enrich_listing_jobs,
+    structured_technical_context,
+)
 from ingest.models import RawJob
 
 logger = logging.getLogger(__name__)
@@ -166,6 +171,30 @@ def parse_fuzu_listing_page(html: str, page_url: str) -> tuple[list[RawJob], str
     return jobs, next_page
 
 
+def detail_technical_context(title: str, html: str, url: str) -> str | None:
+    """Use only this job's structured description or matching public page record."""
+    if context := structured_technical_context(title, html, url):
+        return context
+    for block in _REACT_JSON_RE.finditer(html):
+        try:
+            record = json.loads(block.group(1))["context"]["job_details"]
+        except (KeyError, TypeError, json.JSONDecodeError):
+            continue
+        if not isinstance(record, dict) or record.get("expired") is True:
+            continue
+        own_title = record.get("title")
+        path = record.get("path")
+        if (
+            not isinstance(own_title, str)
+            or " ".join(own_title.casefold().split()) != " ".join(title.casefold().split())
+            or not isinstance(path, str)
+            or urljoin("https://www.fuzu.com", path).rstrip("/") != url.rstrip("/")
+        ):
+            continue
+        return description_technical_context(own_title, record.get("description"))
+    return None
+
+
 class FuzuAdapter:
     """Fetch IT/Software job listings from Fuzu Kenya.
 
@@ -234,4 +263,9 @@ class FuzuAdapter:
             pages_fetched,
         )
         self.crawl_complete = page_url is None
-        return list(jobs_by_id.values())
+        return enrich_listing_jobs(
+            list(jobs_by_id.values()),
+            self._session,
+            allowed_hosts={"www.fuzu.com", "fuzu.com"},
+            detail_parser=detail_technical_context,
+        )

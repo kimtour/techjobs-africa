@@ -25,6 +25,15 @@ def _role_title(title: str) -> str:
     return re.sub(r"\bI\.T\.?(?=\W|$)", "IT", role, flags=re.I)
 
 
+def classification_title(title: str, company: str | None = None) -> str:
+    """Remove an explicit employer suffix without altering the stored source title."""
+    role = _role_title(title)
+    if company and role.casefold().endswith(" " + company.casefold()):
+        role = role[: -(len(company) + 1)].rstrip(" -–—")
+        role = re.sub(r"\s+(?:NGO\s+)?Job$", "", role, flags=re.I)
+    return role
+
+
 def mixed_technology_roles(title: str, config_path: Path = CONFIG_PATH) -> list[str]:
     """Find explicit technical vacancies in a comma-separated multi-role advert."""
     role = _role_title(title)
@@ -81,7 +90,7 @@ def _keyword_pattern(keywords: tuple[str, ...]) -> re.Pattern | None:
     if not keywords:
         return None
     phrases = [
-        re.escape(re.sub(r"\s+", " ", re.sub(r"[-–—,/:]", " ", keyword.casefold())))
+        re.escape(re.sub(r"\s+", " ", re.sub(r"[-–—,/:()]", " ", keyword.casefold())).strip())
         for keyword in keywords
     ]
     return re.compile(r"(?<!\w)(?:" + "|".join(phrases) + r")(?!\w)")
@@ -93,7 +102,8 @@ def _matches(title: str, keywords: list[str]) -> bool:
         return False
     normalized = title.casefold()
     normalized = re.sub(r"[-–—]", " ", normalized)
-    normalized = re.sub(r"[,/:]", " ", normalized)
+    normalized = re.sub(r"[,/:()]", " ", normalized)
+    normalized = re.sub(r"\bsuport\b", "support", normalized)
     normalized = re.sub(r"\b(front|back)\s+end\b", r"\1end", normalized)
     normalized = re.sub(
         r"\b(engineers|developers|interns|labelers)\b", lambda m: m[0][:-1], normalized
@@ -138,6 +148,7 @@ def classify_technology_title(title: str, config_path: Path = CONFIG_PATH) -> Ca
         return CategoryDecision(category=None, source=None)
 
     matches: list[str] = []
+    fallbacks: list[str] = []
     for category in categories:
         strong = category.get("strong_keywords", [])
         keywords = category.get("keywords", [])
@@ -149,6 +160,14 @@ def classify_technology_title(title: str, config_path: Path = CONFIG_PATH) -> Ca
             )
         ):
             matches.append(category["title"])
+        elif any(
+            re.search(pattern, title, re.I)
+            for pattern in category.get("fallback_title_patterns", [])
+        ):
+            fallbacks.append(category["title"])
+
+    if not matches:
+        matches = fallbacks
 
     if not matches:
         return CategoryDecision(category=None, source=None)

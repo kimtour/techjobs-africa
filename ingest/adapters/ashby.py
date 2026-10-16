@@ -9,6 +9,7 @@ from typing import Any
 
 import httpx
 
+from ingest.classify.evidence import description_technical_context
 from ingest.models import RawJob
 
 SOURCE_ID = "ashby"
@@ -23,7 +24,7 @@ def _as_optional_text(value: object) -> str | None:
 def parse_ashby_jobs(payload: Mapping[str, Any]) -> list[RawJob]:
     """Convert listed public Ashby postings into minimal RawJob records.
 
-    Description fields in the public API response are intentionally ignored.
+    Description fields supply scoped technical evidence in memory only.
     """
 
     jobs = payload.get("jobs")
@@ -48,6 +49,9 @@ def parse_ashby_jobs(payload: Mapping[str, Any]) -> list[RawJob]:
                 source_id=SOURCE_ID,
                 external_id=external_id,
                 title=title,
+                technical_context=description_technical_context(
+                    title, job.get("descriptionHtml") or job.get("descriptionPlain")
+                ),
                 company=None,
                 location=_as_optional_text(job.get("location")),
                 source_url=source_url,

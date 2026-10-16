@@ -30,8 +30,28 @@ categories:
   - software engineering
   - website developer
   - genesys cloud cx developer
+  - analyst programmer
+  - application developer
+  - applications developer
+  - integration developer
+  - software consultant
+  - software development
+  - software testing
+  - backend engineering
+  - frontend engineering
+  - web engineer
+  - systems developer
+  - system developer
+  - rpa developer
+  - native developer
+  - software automation
+  - .net engineer
+  - springboot engineer
   title_patterns:
-  - '^(?:(?:senior|junior|lead|principal)\s+)?(?:developer|programmer)(?:\s|$)'
+  - '^(?:(?:senior|junior|lead|principal|staff|mid[- ]level|mid)\s+)?(?:developer|programmer)(?:\s|$)'
+  - '\b(?:fullstack|application|integrations?|python|java|javascript|typescript|PHP|React|Angular|Vue|Django|Flutter|Ruby|Rails|Golang|Rust|blockchain|Unity|Fineract|Base24|ServiceNow|CRM)\b.{0,35}\bdevelopers?\b'
+  - '\bWordPress\b.{0,30}\b(?:developer|engineer|expert|administrator)\b'
+  - '\b(?:Python|Java|TypeScript|JavaScript|Ruby|Golang|Rust)\b.{0,25}\bengineer\b'
 - key: ai-machine-learning
   title: AI / Machine Learning
   keywords:
@@ -41,6 +61,7 @@ categories:
   - ai prompt engineer
   - machine learning engineer
   - machine learning expert
+  - machine learning specialist
   - ml engineer
   - ml developer
   - deep learning engineer
@@ -54,6 +75,11 @@ categories:
   - ai domain architect
   - data annotator
   - data labeler
+  - ai & data transformations
+  - data annotation
+  title_patterns:
+  - '\b(?:AI|ML|machine learning)\b.{0,60}\b(?:engineer(?:ing)?|developer|specialist|consultant|lead|manager|director|trainer|lecturer|coach|guide|mentor|architect|operations|orchestration|evaluation|strategist|transformation)\b'
+  - '\b(?:head|director|lead|manager|engineer|trainer|consultant|intern(?:ship)?)\b.{0,35}\b(?:AI|ML|machine learning)\b'
 - key: data-engineering
   title: Data Engineering
   keywords:
@@ -69,6 +95,16 @@ categories:
   - data custodian
   - data steward
   - data & information governance
+  - geographic information system
+  - geographic information systems
+  - data migration
+  - data governance
+  - data applications & integration
+  - data platforms
+  - spatial data management
+  - enterprise data management
+  title_patterns:
+  - '\bdata\b.{0,35}\b(?:platforms?|pipeline|migration|integration|architecture|engineering|warehouse|governance)\b'
 - key: data-science
   title: Data Science
   keywords:
@@ -86,6 +122,11 @@ categories:
   - business intelligence
   - business intelligence analyst
   - data operations
+  - data quality analyst
+  - data & reporting analyst
+  - data & analytics
+  title_patterns:
+  - '\bdata\b.{0,30}\b(?:analysts?|scientists?|analytics|analysis|intelligence)\b'
 - key: devops-sre
   title: DevOps / SRE
   keywords:
@@ -96,6 +137,8 @@ categories:
   - platform engineer
   - release engineer
   - sre
+  - devsecops
+  - llmops
 - key: cloud
   title: Cloud
   keywords:
@@ -108,6 +151,12 @@ categories:
   - gcp engineer
   - infrastructure engineer
   - cloud infrastructure developer
+  - cloud developer
+  - cloud support
+  - cloud finops
+  title_patterns:
+  - '\bcloud\b.{0,45}\b(?:developers?|engineers?|architects?|administrators?)\b'
+  - '\b(?:manager|head|lead)\b.{0,30}\bcloud infrastructure\b'
 - key: cybersecurity
   title: Cybersecurity
   keywords:
@@ -131,10 +180,25 @@ categories:
   - access management specialist
   - identity and access management
   - systems security administrator
+  - systems security
+  - system security
+  - it security
+  - cyber risk
+  - cyber transformation
+  - security operation center
+  - ict auditor
+  - information system auditor
+  - system auditor
+  - it internal audit
+  - it audits
 - key: application-support
   title: Application Support
   keywords:
   - application support
+  - applications support
+  - system analyst
+  - systems analyst
+  - business systems analyst
   - system support analyst
   - production support
   - application analyst
@@ -147,6 +211,10 @@ categories:
   - it applications
   - core systems
   - infrastructure and applications specialist
+  - business systems support
+  - business application specialist
+  - system support intern
+  - applications & software officer
 - key: it-operations
   title: IT Operations
   keywords:
@@ -182,12 +250,27 @@ categories:
   - information management technology
   - information and communication technology
   - information communication & technology
+  - it internship
+  - ict internship
+  - it and digital systems
+  - software training
+  - it consultant
+  - ict consultant
+  - internship it
+  - internship ict
   title_patterns:
   - '\b(?:trainer|trainers)\b.*\bICT\b'
   - '\bIT clerks\b'
   - '\b(?:IT|ICT)\s*(?:&\s*systems\s+)?(?:manager|lead|director|head|services)\b'
   - '\b(?:manager|director|head|chief)\s*(?:of\s+)?[,/:–—-]?\s*(?:IT|ICT)\b'
   - '\b(?:lecturer|trainer)\s*[–—-]\s*IT\b'
+  - '\b(?:teachers?|lecturers?|trainers?|tutors?|tutorial fellow|faculty)\b.*\b(?:computer science|ICT|computing|informatics)\b'
+  - '\b(?:faculty|dean|lecturer|professor)\b.*\b(?:information systems|database systems|web development|computer engineering)\b'
+  fallback_title_patterns:
+  - '\b(?:IT|ICT)\b.{0,65}\b(?:officers?|engineers?|analysts?|intern(?:ship)?|trainees?|managers?|directors?|administrators?|assistants?|lead(?:er)?s?|technicians?|specialists?|associates?|supervisors?|experts?|consultants?|teachers?|tutors?|lecturers?|coordinator|co-ordinator|business partner|technologist|attachee)\b'
+  - '\b(?:officers?|head|managers?|analysts?|engineers?|lead|support|associates?|intern(?:ship)?|trainees?|technicians?|specialists?|lecturers?|trainers?|teachers?|faculty|dean|tutors?|experts?|technologist|attachee)\b.{0,40}\b(?:IT|ICT)\b'
+  - '\b(?:computer|information systems?)\b.{0,35}\b(?:technologist|technician|engineer|officer|assistant|specialist|faculty)\b'
+  - '^(?:IT|ICT)$'
 - key: systems-administration
   title: Systems Administration
   keywords:
@@ -198,12 +281,24 @@ categories:
   - server administrator
   - windows administrator
   - linux administrator
+  - systems admin
+  - system admin
+  - system administration
+  - systems & infrastructure
+  - system & infrastructure
+  - system and infrastructure
+  - systems and infrastructure
+  - linux engineer
+  - storage engineer
+  - system librarian
 - key: networking
   title: Networking
   keywords:
   - network engineer
+  - networking engineer
   - hardware engineer (network
   - network administrator
+  - network admin
   - network specialist
   - network architect
   - networking specialist
@@ -213,6 +308,10 @@ categories:
   - computer networks
   - structured cabling
   - fiber specialist
+  - fiber optic technician
+  - fibre optic technician
+  - network & infrastructure
+  - network and infrastructure
   - network and service operations
   - networking & infrastructure
   - sd-wan
@@ -221,6 +320,9 @@ categories:
   - noc engineer
   - ccna
   - ccnp
+  title_patterns:
+  - '\b(?:network|networking|telecom|telecommunications|NOC|SD[ -]?WAN)\b.{0,60}\b(?:engineer|technician|administrator|operations|designer|specialist|architect|planner)\b'
+  - '\b(?:engineer|technician|administrator|planner|architect|specialist)\b.{0,40}\b(?:network|networking|telecom|telecommunications|LAN|WAN|fibre|fiber)\b'
 - key: qa-testing
   title: QA / Testing
   keywords:
@@ -237,6 +339,12 @@ categories:
   - sdet
   - software qa
   - data qa
+  - integration tester
+  - rpa tester
+  - qa tester
+  - erp quality tester
+  title_patterns:
+  - '\bquality\s+associate\b.*\bICT\b'
 - key: database
   title: Database
   keywords:
@@ -244,6 +352,7 @@ categories:
   - database engineer
   - dba
   - sql developer
+  - database administration
 - key: erp-enterprise
   title: ERP / Enterprise Systems
   keywords:
@@ -263,6 +372,21 @@ categories:
   - edi analyst
   - edi applications engineer
   - crm systems and data specialist
+  - zendesk implementation consultant
+  - system integration
+  - core banking
+  - sap s/4hana abap
+  - systems integration
+  - software implementation
+  - software implementations
+  - netsuite engineer
+  - business central
+  - esb system expert
+  - business systems
+  - enterprise applications
+  - openmrs
+  title_patterns:
+  - '\b(?:SAP|ERP|Odoo|Salesforce|Microsoft Dynamics|Zendesk)\b.{0,60}\b(?:developer|consultant|administrator|engineer|architect|implementation|support|analyst)\b'
 - key: solutions-architecture
   title: Solutions Architecture
   keywords:
@@ -274,6 +398,8 @@ categories:
   - software architect
   - platform architect
   - solutions and business architecture
+  - enterprise architecture
+  - solution architecture
 - key: technical-support
   title: Technical Support
   keywords:
@@ -287,6 +413,8 @@ categories:
   - it support officer
   - it support analyst
   - ict support
+  - it support
+  - technology support
 - key: ui-ux
   title: UI / UX
   keywords:
@@ -295,6 +423,15 @@ categories:
   - ui/ux designer
   - product designer
   - ux researcher
+  - user interface
+  - user experience
+  - ux engineer
+  - ui/ux engineer
+  - networking ux
+  - usability engineer
+  - web designer
+  - product design
+  - ux design
 - key: technical-product
   title: Technical Product
   strong_keywords:
@@ -310,6 +447,8 @@ categories:
   - fintech
   - technical program manager
   - scrum master
+  - product owner
+  - head of product
 - key: technology-leadership
   title: Technology Leadership
   keywords:
@@ -327,6 +466,12 @@ categories:
   - it director
   - head of legacy engineering
   - tech lead
+  - head of digital engineering
+  - director of technology
+  - technology strategy
+  - chief information officer
+  - head of information systems
+  - director of information systems
 - key: graduate-intern
   title: Internship / Graduate Technology
   keywords:
@@ -355,13 +500,24 @@ non_tech_exclusions:
 - digital marketer
 - social media manager
 - customer care agent
-- teacher
 - accounts assistant
 - programme coordinator
 - program coordinator
+- driver
+- data entry
+- data clerk
+- sales executive
+- sales manager
+- sales rep
+- business development executive
+- business development manager
+- property developer
+- real estate developer
 rules:
 - Reject explicit non-technical job functions before applying technical keywords.
 - Generic Product Manager roles are included under Technical Product by product decision.
+- Product ownership and product leadership roles use the same Technical Product policy.
+- Teaching roles require an explicit technology subject; generic teaching remains unclassified.
 - QA and test automation roles are included under QA / Testing.
 - One role may have secondary categories.
 context_rules:
@@ -374,10 +530,10 @@ context_rules:
   - '\b(application development|backend development|developing REST APIs)\b'
 - key: network_service_delivery
   category: Networking
-  title_pattern: '\b(?:engineer service delivery|service delivery engineer)\b'
+  title_pattern: '\b(?:engineer service delivery|service delivery engineer|NPO engineer|NI intern engineer|area manager maintenance|change control coordinator|digital VAS)\b'
   required_evidence:
-  - '\b(routing and switching|SDWAN|FTTB|FTTG)\b'
-  - '\b(network|telecommunications|fiber)\b'
+  - '\b(routing and switching|SDWAN|FTTB|FTTG|network planning|radio network|fiber|fibre|MPLS|RAN|5G)\b'
+  - '\b(network|telecommunications|fiber|fibre|radio|RAN|5G)\b'
 - key: digital_product_support
   category: Application Support
   title_pattern: '\bproduct analyst\b'
@@ -398,19 +554,55 @@ context_rules:
   - '\b(troubleshooting|incident management|technical support)\b'
 - key: software_application_development
   category: Software Engineering
-  title_pattern: '\b(?:technical manager|associate principal engineer|lead automation engineer|senior quality engineer)\b'
+  title_pattern: '\b(?:technical manager|associate principal engineer|automation engineer|senior quality engineer|technical lead|technical team lead|engineer manager|application engineer|integrations? engineer|IOH platform team engineer|web manager|web & digital experience manager|systems automation intern)\b'
   required_evidence:
-  - '\b(software|SaaS|Python|JavaScript|TypeScript)\b'
+  - '\b(software|SaaS|Python|JavaScript|TypeScript|WordPress|HTML|CSS)\b'
   - '\b(develop(?:ment|ing)?|debug(?:ging)?|deploy(?:ment|ing)?|automated test(?:s|ing)|test automation|Playwright|Selenium|Cypress)\b'
 - key: enterprise_systems_support
   category: Application Support
-  title_pattern: '\b(?:group systems manager|information management assistant|PRIME system advisor|technical field support)\b'
+  title_pattern: '\b(?:group systems manager|systems lead|systems officer|information management assistant|PRIME system advisor|technical field support|infrastructure manager|DMS super user|monitoring center analyst|tech hub manager|technical (?:customer )?support|technical service specialist|technical assurance specialist|e-commerce solution support|digital support)\b'
   required_evidence:
   - '\b(ERP|Microsoft 365|IT infrastructure|software|business applications|hardware)\b'
-  - '\b(troubleshoot(?:ing)?|configuration|technical support|system maintenance|systems support|IT support|deployment)\b'
+  - '\b(troubleshoot(?:ing)?|configuration|technical support|system maintenance|systems support|IT support|deployment|software testing|system testing)\b'
 - key: technical_engineering_management
   category: Technology Leadership
   title_pattern: '\btechnical manager\b'
   required_evidence:
   - '\bSQL Server\b'
   - '\bAPI\b'
+- key: technical_data_analysis
+  category: Data Science
+  title_pattern: '\b(?:data (?:officer|manager|specialist|assistant|associate|coordinator|supervisor|management|quality manager|systems)|clinical data|business analyst|analyst master data)\b'
+  required_evidence:
+  - '\b(SQL|Python|Power\s?BI|Tableau|R programming|GIS)\b'
+  - '\b(database|pipeline|dashboard|analytics|data analysis|data quality)\b'
+- key: business_systems_analysis
+  category: ERP / Enterprise Systems
+  title_pattern: '\b(?:digital solutions analyst|business analyst|agile team coach|digital channels|digital development|service operations|devices and innovation|technical sales consultant|technical solutions & presales consultant)\b'
+  required_evidence:
+  - '\b(API|SQL|ERP|software|SDLC|system integration)\b'
+  - '\b(requirements|configuration|integration|software development|process automation)\b'
+- key: digital_experience_design
+  category: UI / UX
+  title_pattern: '\b(?:service designer|design operations lead|design specialist|content designer|instructional designer|learning experience designer|multimedia specialist)\b'
+  required_evidence:
+  - '\b(UX|UI|user experience|user interface|Figma|design systems?)\b'
+  - '\b(digital product|software|web|mobile|prototype|interaction|user research)\b'
+- key: intelligent_workflow_automation
+  category: AI / Machine Learning
+  title_pattern: '\bintelligence and automation lead\b'
+  required_evidence:
+  - '\b(Python|RPA|machine learning|AI|Power Automate)\b'
+  - '\b(automation|workflow|engineering)\b'
+- key: technical_documentation
+  category: Technical Support
+  title_pattern: '\btechnical (?:author|writer)\b'
+  required_evidence:
+  - '\b(Linux|Kubernetes|API|software documentation|cloud)\b'
+  - '\b(documentation|technical writing|technical author)\b'
+- key: technology_training
+  category: IT Operations
+  title_pattern: '\b(?:digital (?:skills )?(?:senior )?trainer|technology training|technical trainer|bootcamp guide)\b'
+  required_evidence:
+  - '\b(Python|JavaScript|Linux|cloud|cybersecurity|programming|software development|computer applications)\b'
+  - '\b(teach(?:ing)?|train(?:ing)?|curriculum|curricula|instructor|facilitator)\b'

@@ -7,7 +7,11 @@ import unicodedata
 from urllib.parse import urlparse
 
 from ingest.classify.eligibility import classify_eligibility
-from ingest.classify.tech import category_from_technical_context, classify_technology_title
+from ingest.classify.tech import (
+    category_from_technical_context,
+    classification_title,
+    classify_technology_title,
+)
 from ingest.models import CanonicalJob, RawJob
 from ingest.normalize.location import normalize_location
 
@@ -65,7 +69,7 @@ def canonicalize_raw_job(
     if not raw.external_id:
         raise ValueError("Canonicalization requires a RawJob external ID.")
 
-    category = classify_technology_title(raw.title)
+    category = classify_technology_title(classification_title(raw.title, raw.company))
     if not category.category:
         category = category_from_technical_context(raw.technical_context)
     # Some approved listing cards put a structured city in their title rather

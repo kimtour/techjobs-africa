@@ -381,3 +381,39 @@ def test_fetch_audit_records_minimal_filter_reasons(tmp_path):
             "reason": "non_technical_function",
         },
     ]
+
+
+def test_url_exclusions_do_not_mistake_the_explicit_employer_for_the_job_function():
+    raw = RawJob(
+        source_id="openedcareer",
+        external_id="agency-1",
+        title="Software Architect at Human Resources Partners",
+        company="Human Resources Partners",
+        source_url="https://example.com/software-architect-human-resources-partners",
+        apply_url="https://example.com/software-architect-human-resources-partners",
+    )
+    assert len(build_jobs([raw])) == 1
+    assert (
+        build_jobs(
+            [
+                raw.model_copy(
+                    update={
+                        "source_url": "https://example.com/field-sales-representative-human-resources-partners"
+                    }
+                )
+            ]
+        )
+        == []
+    )
+
+
+def test_shared_technical_adverts_are_not_limited_to_one_publisher():
+    for source in ("corporate_staffing", "openedcareer", "brightermonday", "fuzu", "elevolt"):
+        raw = RawJob(
+            source_id=source,
+            external_id="bundle",
+            title="Receptionist, IT Trainer and Driver",
+            source_url="https://example.com/receptionist-it-trainer-and-driver",
+            apply_url="https://example.com/receptionist-it-trainer-and-driver",
+        )
+        assert build_jobs([raw])[0].category == "IT Operations"

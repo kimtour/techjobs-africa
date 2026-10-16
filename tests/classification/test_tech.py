@@ -219,3 +219,108 @@ def test_more_technical_families_found_in_the_thirty_day_audit():
         "Director, Information, Communication & Technology (ICT)",
     ]:
         assert classify_technology_title(title).category, title
+
+
+def test_shared_title_rules_cover_variants_found_on_other_boards():
+    for title in [
+        "IT and Digital Systems Lead",
+        "Machine Learning Specialist",
+        "Product Owner",
+        "Agile Product Owner - Cigna Healthcare",
+        "Zendesk Implementation Consultant",
+        "Networking Engineer",
+        "Manager, Database Administration",
+        "User Interface and User Experience (UI/UX) Designer",
+        "Officer Enterprise Applications Support",
+        "System Integration Officer",
+        "IT Internship Opportunity",
+        "Senior System Analyst",
+        "AI & Data Transformations Lead",
+        "QA / Integration Tester",
+        "Onsite Technology Support Associate",
+        "Teacher of Computer Science and ICT/Physics",
+        "Head of Product, Merchant Solutions",
+        "Analyst Programmer",
+        "Network Infrastructure Technician",
+        "SAP Basis Consultant",
+        "Quality Associate - ICT",
+    ]:
+        assert classify_technology_title(title).category, title
+    for title in [
+        "Teacher of Mathematics",
+        "Programme Coordinator ICT",
+        "Data Entry Clerk",
+        "Civil Engineering Lecturer",
+        "Finance Manager at Software Engineering Ltd",
+    ]:
+        assert classify_technology_title(title).category is None, title
+
+
+def test_domain_and_function_patterns_cover_the_cross_board_audit():
+    for title in [
+        "IT, Data & Systems Officer",
+        "Ceph Storage Engineer",
+        "ICT Teachers",
+        "Attachee -ICT",
+        "Senior Officer – IT, AIM",
+        "Local Information Systems Officer",
+        "IT Service Delivery Manager",
+        "ICT & Data Officer",
+        "Head Data Applications & Integration",
+        "Computer Technologist",
+        "RPA Developer",
+        "Information Systems Assistant, G5",
+        "IT Specialists",
+        "IT Administrator",
+        "Mid-Level Developer",
+        "Fullstack Developer",
+        "Fineract Developer",
+        "Data Annotation Specialist",
+        "IT Infrastructure Lead",
+        "IT Operations Specialist",
+        "Systems Admin Associate",
+        "AI Orchestration Engineer",
+        "Data & Analytics Manager",
+        "Springboot Engineer",
+        "Cloud Solutions Developer – Integrations & Platforms",
+        "UI/UX Engineer",
+        "Engineer – IT Assets Management & Compliance",
+        "React Developer",
+        "DevSecOps Engineer",
+        "Cloud Support Associate Intern",
+        "Integrations Developer",
+        "Network & Infrastructure Officer",
+        "IT Project Associate",
+        "Senior Associate -ICT Governance",
+        "IP Network Planner",
+        "Senior Internal Auditor – IT Audits & Analytics",
+        "Systems & Infrastructure Officer",
+        "Network Operations Lead (Fibre / FTTH)",
+        "Fiber Optic Technician",
+        "IT Techno Functional Manager - SAP S/4HANA ABAP development",
+        "ICT & Graphic Design Officer",
+        "Applications & Software Officer",
+        "Information Systems Security Manager",
+        "IT Suport Specialist",
+        "Senior Web Engineer",
+        "Usability Engineer - User Science",
+        "Internship- IT",
+        "RPA Tester",
+        "Senior Business Analyst, Core Banking",
+        "Head Data Applications & Integration",
+        "Java Backend Engineering Team Lead",
+    ]:
+        assert classify_technology_title(title).category, title
+    for title in [
+        "Driver – Digital IT",
+        "IT Sales Manager",
+        "ICT Sales Executive",
+        "Sales Executive – Web Design & Web Services",
+        "Property Developer",
+        "Mechanical Maintenance Technician",
+        "Junior School Music Teacher",
+        "Electrical Technician – Power Generation Systems",
+        "Data Entry Clerks",
+        "Graduate Intern – MEL (Business Engagement Market Systems)",
+    ]:
+        assert classify_technology_title(title).category is None, title

@@ -12,7 +12,7 @@ from typing import Any
 
 import httpx
 
-from ingest.classify.tech import geospatial_technical_context
+from ingest.classify.evidence import description_technical_context
 from ingest.models import RawJob
 from ingest.normalize.location import normalize_location
 
@@ -111,9 +111,7 @@ def parse_corporate_staffing_jobs(payload: Sequence[Mapping[str, Any]]) -> list[
         date_gmt = record.get("date_gmt")
         content = record.get("content")
         body = content.get("rendered", "") if isinstance(content, Mapping) else ""
-        extractor = _TextExtractor()
-        extractor.feed(body if isinstance(body, str) else "")
-        context = geospatial_technical_context(title, unescape(" ".join(extractor.parts)))
+        context = description_technical_context(title, body)
         location = _location_from_listing(
             title,
             link,

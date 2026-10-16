@@ -12,7 +12,8 @@ from urllib.parse import quote, urljoin, urlsplit
 import httpx
 
 from ingest.adapters.ashby import parse_ashby_jobs
-from ingest.classify.tech import classify_technology_title
+from ingest.classify.evidence import description_technical_context
+from ingest.classify.tech import classify_technology_title, needs_detail_technical_context
 from ingest.models import RawJob
 from ingest.normalize.location import normalize_location
 
@@ -168,13 +169,18 @@ class _JobPosting(HTMLParser):
                     # Whitelist immediately: the description never leaves memory.
                     self.jobs.append(
                         {
-                            key: item.get(key)
-                            for key in (
-                                "title",
-                                "datePosted",
-                                "jobLocationType",
-                                "applicantLocationRequirements",
-                            )
+                            "technical_context": description_technical_context(
+                                item.get("title") or "", item.get("description")
+                            ),
+                            **{
+                                key: item.get(key)
+                                for key in (
+                                    "title",
+                                    "datePosted",
+                                    "jobLocationType",
+                                    "applicantLocationRequirements",
+                                )
+                            },
                         }
                     )
 
@@ -207,6 +213,7 @@ def parse_sdg_job(body: str, url: str) -> RawJob | None:
         source_publisher="Social Discovery Group careers / Breezy",
         external_id=match[1],
         title=item["title"],
+        technical_context=item["technical_context"],
         company="Social Discovery Group",
         location=location,
         source_url=url,
@@ -232,7 +239,9 @@ class SocialDiscoveryAdapter:
             raise ValueError("Public career board has no job cards")
         jobs = []
         for url, title in parser.cards.items():
-            if not classify_technology_title(title).category:
+            if not classify_technology_title(title).category and not needs_detail_technical_context(
+                title
+            ):
                 continue
             if urlsplit(url).hostname != urlsplit(SDG_URL).hostname:
                 continue

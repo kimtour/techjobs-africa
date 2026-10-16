@@ -32,3 +32,30 @@ Keep scheduled polling unless the source provides an official webhook or event
 API. A webhook can trigger ingestion sooner, but it cannot repair classification
 or pagination gaps. The existing Cloudflare scheduler already dispatches the
 GitHub workflow; another trigger is unnecessary for this defect.
+
+## All-board coverage
+
+The follow-up audit runs the shared taxonomy across Corporate Staffing,
+BrighterMonday, Fuzu, OpenedCareer, Elevolt, TalentSafari, the verified employer
+boards, and Google Jobs. Domain/function patterns cover IT/ICT roles, software
+stacks, architecture, networking, data, technical education and enterprise
+applications. Broad IT patterns are fallbacks so specific support, security,
+product and software categories retain priority. Explicit employer suffixes in
+both titles and URL slugs do not supply job-function evidence.
+
+Corporate Staffing, OpenedCareer, Elevolt, Ashby (including employer boards),
+Google Jobs and Breezy inspect only the current record's own description in
+memory. BrighterMonday and Fuzu can enrich scoped ambiguous titles from a
+matching JobPosting record on the discovered same-source detail URL. They never
+use unrelated page text or recommendations; unknown or unavailable evidence
+remains visible in the classification audit. Shared adverts are accepted only
+when the source title and URL agree, regardless of publisher.
+Fuzu can also use its public `context.job_details` record when the title and path
+match; expired records and `similar_jobs` never supply evidence.
+
+Use the workflow's `all` option when deploying a shared coverage change. A
+source-specific refresh leaves other boards' backlogs untouched. Google's daily
+and monthly quotas still apply; a manual refresh must remain within the saved
+monthly request ceiling. Expertini remains paused until authorized feed access
+is restored; Careerjet and unconfigured Greenhouse boards cannot supply jobs
+without verified access/board configuration.

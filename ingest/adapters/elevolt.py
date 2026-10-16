@@ -9,6 +9,7 @@ from typing import Any
 
 import httpx
 
+from ingest.classify.evidence import description_technical_context
 from ingest.models import RawJob
 
 SOURCE_ID = "elevolt"
@@ -23,7 +24,7 @@ def _date(value: object) -> datetime | None:
 
 
 def parse_elevolt_jobs(payload: Mapping[str, Any]) -> list[RawJob]:
-    """Parse only listing metadata; descriptions and excerpts are never read."""
+    """Keep metadata and scoped technical evidence, never descriptions or excerpts."""
 
     records = payload.get("data")
     if not isinstance(records, Sequence) or isinstance(records, (str, bytes)):
@@ -46,6 +47,7 @@ def parse_elevolt_jobs(payload: Mapping[str, Any]) -> list[RawJob]:
                 source_id=SOURCE_ID,
                 external_id=external_id,
                 title=title[:300],
+                technical_context=description_technical_context(title, record.get("description")),
                 company=company[:300] if isinstance(company, str) else None,
                 location=location[:300] if isinstance(location, str) else None,
                 source_url=JOB_URL_TEMPLATE.format(slug=slug),
