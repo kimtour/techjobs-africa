@@ -37,7 +37,7 @@ h1 { font-size: clamp(2rem, 4vw, 3rem); letter-spacing: -.04em; line-height: 1.0
 .job-card + .job-card { border-top: 1px solid #eee; }
 .job-card h4 { font-size: 1rem; font-weight: 400; line-height: 1.25; margin-bottom: .25rem; }
 .job-title { color: #1264a3; text-decoration: none; }
-.job-title:visited { color: #6c3b82; }
+.job-title:visited, .job-title.is-opened { color: #6c3b82; }
 .job-title:hover { text-decoration: underline; }
 .company, .meta, .posted, .source, .category { font-size: .86rem; margin-bottom: .22rem; }
 .category { color: #555; font-weight: 700; text-transform: uppercase; }

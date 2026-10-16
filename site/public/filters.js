@@ -5,6 +5,42 @@ const matchingIds = new Map();
 const count = document.querySelector("#job-count");
 const noResults = document.querySelector("#no-results");
 
+// Track stable job IDs so both feed copies update as soon as a job opens.
+const openedJobsKey = "techkazi.openedJobs";
+const jobLinks = new Map();
+for (const link of document.querySelectorAll("a.job-title")) {
+  const id = link.closest("[data-job-id]")?.dataset.jobId;
+  if (!id) continue;
+  if (!jobLinks.has(id)) jobLinks.set(id, []);
+  jobLinks.get(id).push(link);
+}
+let openedJobs = new Set();
+try {
+  const saved = JSON.parse(localStorage.getItem(openedJobsKey) ?? "[]");
+  if (Array.isArray(saved)) {
+    openedJobs = new Set(saved.filter(id => typeof id === "string" && jobLinks.has(id)));
+  }
+} catch {
+  // Opening jobs still updates this page when storage is unavailable.
+}
+for (const [id, links] of jobLinks) {
+  for (const link of links) {
+    link.classList.toggle("is-opened", openedJobs.has(id));
+    const markOpened = (event) => {
+      if (event.button !== 0 && event.button !== 1) return;
+      openedJobs.add(id);
+      for (const copy of links) copy.classList.add("is-opened");
+      try {
+        localStorage.setItem(openedJobsKey, JSON.stringify([...openedJobs]));
+      } catch {
+        // Do not interfere with navigation if browser storage is full or blocked.
+      }
+    };
+    link.addEventListener("click", markOpened);
+    link.addEventListener("auxclick", markOpened);
+  }
+}
+
 function matchesPeriod(card, period) {
   if (period === "latest") return true;
   const published = card.dataset.published;

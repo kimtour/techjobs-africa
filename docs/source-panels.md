@@ -53,6 +53,9 @@ roles found on BrighterMonday's Engineering & Technology and Software & Data pag
   recovery message.
 - Scroll regions support keyboard focus, visible focus, and contained overscroll.
   Buttons expose selection using aria-pressed; counts use a polite status region.
+- Opened job titles turn purple immediately in both All Jobs and their source
+  feed. Stable job IDs are remembered in browser storage across reloads; when
+  storage is unavailable, the colour still updates for the current page.
 
 ## Delivery plan and acceptance
 
