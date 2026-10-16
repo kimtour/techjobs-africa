@@ -56,6 +56,9 @@ roles found on BrighterMonday's Engineering & Technology and Software & Data pag
 - Opened job titles turn purple immediately in both All Jobs and their source
   feed. Stable job IDs are remembered in browser storage across reloads; when
   storage is unavailable, the colour still updates for the current page.
+  Open tabs sync opened jobs on storage updates, focus, and history restoration.
+  The interaction script uses a build-generated versioned URL to refresh with
+  each release; the original script URL remains available for older pages.
 
 ## Delivery plan and acceptance
 

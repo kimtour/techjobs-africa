@@ -15,19 +15,32 @@ for (const link of document.querySelectorAll("a.job-title")) {
   jobLinks.get(id).push(link);
 }
 let openedJobs = new Set();
-try {
-  const saved = JSON.parse(localStorage.getItem(openedJobsKey) ?? "[]");
-  if (Array.isArray(saved)) {
-    openedJobs = new Set(saved.filter(id => typeof id === "string" && jobLinks.has(id)));
+function syncOpenedJobs() {
+  try {
+    const saved = JSON.parse(localStorage.getItem(openedJobsKey) ?? "[]");
+    if (Array.isArray(saved)) {
+      for (const id of saved) {
+        if (typeof id === "string" && jobLinks.has(id)) openedJobs.add(id);
+      }
+    }
+  } catch {
+    // Opening jobs still updates this page when storage is unavailable.
   }
-} catch {
-  // Opening jobs still updates this page when storage is unavailable.
+  for (const id of openedJobs) {
+    for (const link of jobLinks.get(id) ?? []) link.classList.add("is-opened");
+  }
 }
+syncOpenedJobs();
+window.addEventListener("storage", (event) => {
+  if (event.key === openedJobsKey) syncOpenedJobs();
+});
+window.addEventListener("pageshow", syncOpenedJobs);
+window.addEventListener("focus", syncOpenedJobs);
 for (const [id, links] of jobLinks) {
   for (const link of links) {
-    link.classList.toggle("is-opened", openedJobs.has(id));
-    const markOpened = (event) => {
-      if (event.button !== 0 && event.button !== 1) return;
+    const markOpened = () => {
+      // Merge other tabs' history before saving this click.
+      syncOpenedJobs();
       openedJobs.add(id);
       for (const copy of links) copy.classList.add("is-opened");
       try {
@@ -37,7 +50,9 @@ for (const [id, links] of jobLinks) {
       }
     };
     link.addEventListener("click", markOpened);
-    link.addEventListener("auxclick", markOpened);
+    link.addEventListener("auxclick", (event) => {
+      if (event.button === 1) markOpened();
+    });
   }
 }
 

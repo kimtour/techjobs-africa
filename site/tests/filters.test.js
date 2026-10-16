@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { JSDOM } from 'jsdom';
 
-const script = readFileSync(new URL('../public/filters.js', import.meta.url), 'utf8');
+const script = readFileSync(new URL('../src/scripts/filters.js', import.meta.url), 'utf8');
 const now = Date.parse('2026-09-30T12:00:00Z');
 const day = 86400000;
 function setup({ allJobs = false } = {}) {

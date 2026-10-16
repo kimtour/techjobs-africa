@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { JSDOM } from 'jsdom';
 
-const script = readFileSync(new URL('../public/filters.js', import.meta.url), 'utf8');
+const script = readFileSync(new URL('../src/scripts/filters.js', import.meta.url), 'utf8');
 const key = 'techkazi.openedJobs';
 function setup(saved, blocked = false) {
   const card = id => `<article data-job-id="${id}"><a class="job-title" href="https://example.com/${id}" target="_blank"><span>${id}</span></a></article>`;
@@ -47,5 +47,48 @@ test('blocked or malformed storage does not prevent marking opened jobs', () => 
     links[0].dispatchEvent(new dom.window.MouseEvent('click'));
     assert.equal(links[2].classList.contains('is-opened'), true);
     if (!blocked) assert.deepEqual(JSON.parse(dom.window.localStorage.getItem(key)), ['a']);
+  }
+});
+
+test('other tabs and restored pages sync opened jobs without losing earlier clicks', () => {
+  for (const eventType of ['storage', 'focus', 'pageshow']) {
+    const { dom, links } = setup();
+    links[0].click();
+    dom.window.localStorage.setItem(key, '["b"]');
+    const event = eventType === 'storage'
+      ? new dom.window.StorageEvent('storage', { key })
+      : new dom.window.Event(eventType);
+    dom.window.dispatchEvent(event);
+    assert(links.every(link => link.classList.contains('is-opened')), eventType);
+    links[0].click();
+    assert.deepEqual(JSON.parse(dom.window.localStorage.getItem(key)).sort(), ['a', 'b']);
+  }
+});
+
+test('all nine feeds mark their job and every All Jobs copy, including loaded rows', () => {
+  const sources = ['all', 'myjobmag', 'corporate_staffing', 'linkedin', 'fuzu', 'openedcareer', 'brightermonday', 'elevolt', 'ashby'];
+  const card = id => `<li data-source-card data-job-id="${id}"><a class="job-title" href="https://example.com/${id}" target="_blank">${id}</a></li>`;
+  const group = source => `<section data-source-group data-source="${source}" data-limit="10"><div data-source-feed><ul>${Array.from({ length: 12 }, (_, i) => card(`${source === 'all' ? 'myjobmag' : source}-${i}`)).join('')}${source === 'all' ? sources.slice(2).map(s => card(`${s}-0`)).join('') : ''}</ul><button data-more>More</button></div><button data-period="month">Month</button><button data-period="latest">Latest</button></section>`;
+  const dom = new JSDOM(sources.map(group).join(''), { url: 'https://techkazi.pages.dev/', runScripts: 'outside-only' });
+  dom.window.HTMLElement.prototype.scrollTo = function() {};
+  dom.window.eval(script);
+  const doc = dom.window.document;
+  for (const source of sources) {
+    const feed = doc.querySelector(`[data-source="${source}"]`);
+    feed.querySelector('[data-more]').click();
+    const link = feed.querySelectorAll('.job-title')[source === 'all' ? 0 : 11];
+    assert.equal(link.closest('[data-source-card]').hidden, false);
+    link.click();
+    const id = link.closest('[data-job-id]').dataset.jobId;
+    const copies = [...doc.querySelectorAll('[data-job-id]')].filter(c => c.dataset.jobId === id);
+    assert(copies.every(c => c.querySelector('.job-title').classList.contains('is-opened')), source);
+    feed.querySelector('[data-period="month"]').click();
+    feed.querySelector('[data-period="latest"]').click();
+    assert(link.classList.contains('is-opened'), source);
+    feed.querySelector('.job-title').click();
+  }
+  for (const source of sources.slice(1)) {
+    const allCopy = doc.querySelector(`[data-source="all"] [data-job-id="${source}-0"] .job-title`);
+    assert(allCopy.classList.contains('is-opened'), source);
   }
 });
