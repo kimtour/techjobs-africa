@@ -32,7 +32,7 @@ jobs:
           python3 - <<'PY'
           import os
           messages = {
-              "fetch_not_started": "Source fetching did not start within ten minutes of its scheduled slot.",
+              "fetch_not_started": "The ingestion workflow has not started within ten minutes of its scheduled slot. It is queued or missing.",
               "completion_overdue": "The fetch workflow has not completed within forty minutes of its scheduled slot.",
               "workflow_failed": "The fetch workflow failed or was cancelled. Inspect its fetch audit before retrying.",
           }
@@ -42,3 +42,4 @@ jobs:
           print(f"::error::{message}")
           raise SystemExit(1)
           PY
+

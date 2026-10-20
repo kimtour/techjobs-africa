@@ -7,8 +7,8 @@ See [TechKazi branding and hosting](techkazi-branding.md).
 
 Cloudflare requests the existing GitHub ingestion workflow at 01:00, 07:00,
 09:00, 11:00, 13:00, 15:00, 17:00, 19:00, and 21:00 EAT every day. It runs a
-one-minute Cron Trigger to reconcile due slots and check actual source-fetch
-starts. This also catches a trigger that arrives late instead of depending on
+one-minute Cron Trigger to reconcile due slots, check workflow execution, and
+record actual source-fetch starts. This also catches a trigger that arrives late instead of depending on
 one delivery at the exact scheduled minute. The site remains static; the Worker
 only coordinates ingestion and exposes scheduler status.
 
@@ -89,8 +89,11 @@ run when a retry is warranted.
   are rejected. This is at-most-once source fetching per external slot, not a
   guarantee that every slot succeeds. A workflow that crashes after claiming a
   slot requires review and an unscheduled manual retry.
-- The monitor reads the actual **Ingest approved sources** step start. A run
-  that is merely accepted, queued, or doing setup does not count as fetching.
+- The monitor tracks workflow execution separately from the actual **Ingest
+  approved sources** step start. A running or completed workflow satisfies the
+  workflow-start check even if GitHub has not exposed its step telemetry yet.
+  Setup does not populate the source-fetch timestamp; accepted or queued runs
+  do not satisfy the workflow-start check.
 
 ## Status and alerts
 
@@ -108,10 +111,19 @@ The deployed Worker provides:
 Alerts are recorded durably, emitted to Cloudflare Worker logs, and dispatched
 as deliberately failing **Fetch scheduler alert** GitHub workflows:
 
-- `fetch_not_started`: no actual source fetch within ten minutes of the slot.
+- `fetch_not_started`: the ingestion workflow is still queued or missing ten
+  minutes after the slot, with no previously observed execution. The existing
+  category is retained for compatibility. This checks workflow start, not the
+  source-fetch step; setup stalls remain subject to the completion deadline.
 - `completion_overdue`: workflow has not completed within forty minutes.
 - `workflow_failed`: fetch workflow failed or was cancelled, including existing
   ingestion source-health and quality-gate failures.
+
+A failed status observation suppresses classification for that tick and leaves
+a redacted error visible through `/health`; the next tick retries observation.
+Queued runs can expose `run_started_at`, so that field is accepted only with
+`in_progress` or `completed` status. Actual source-fetch timestamps remain
+separate and skipped steps never count as source fetching.
 
 Each alert kind is sent once per slot. Failed alert dispatches retry every five
 minutes. GitHub email/mobile delivery depends on the account's Actions
@@ -138,3 +150,4 @@ ruff check ingest tests
 The runtime test opens a local-only port and exercises the compiled Worker,
 SQLite Durable Object, public status page, and protected dispatch routes without
 using live tokens or fetching any job source.
+

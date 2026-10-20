@@ -1,8 +1,9 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
 import { Engine } from '../src/engine.js';
 import { GitHub } from '../src/github.js';
-import { latestSlot, nextSlot, shouldDispatch, runTitle, MINUTE } from '../src/policy.js';
+import { latestSlot, nextSlot, shouldDispatch, runTitle, alertKinds, MINUTE } from '../src/policy.js';
 
 const DUE = Date.parse('2026-10-01T14:00:00.000Z');
 const SLOT = new Date(DUE).toISOString();
@@ -134,7 +135,7 @@ test('failed fetch produces a distinct workflow failure alert', async () => {
   assert.deepEqual(f.calls.filter(([type]) => type === 'alert'), [['alert', SLOT, 'workflow_failed']]);
 });
 
-test('skipped duplicate ingestion step cannot be mistaken for a fetch', async () => {
+test('skipped duplicate ingestion step is not a source fetch but workflow execution is recognized', async () => {
   const f = fixture();
   await f.engine.tick();
   f.github.listedRuns = [run('completed', 'success')];
@@ -145,7 +146,7 @@ test('skipped duplicate ingestion step cannot be mistaken for a fetch', async ()
   f.advance(10);
   await f.engine.tick();
   assert.equal(f.state().records[0].fetch_started_at, undefined);
-  assert.equal(f.calls.at(-1)[2], 'fetch_not_started');
+  assert.equal(f.calls.filter(([type]) => type === 'alert').length, 0);
 });
 
 test('long-running workflow alerts at forty minutes', async () => {
@@ -229,4 +230,113 @@ test('duplicate dispatches follow the actual claim owner instead of a cancelled 
   assert.equal(f.state().records[0].run_id, 456);
   assert.equal(f.state().records[0].fetch_started_at, DUE + 4 * MINUTE);
   assert.equal(f.calls.filter(([type]) => type === 'alert').length, 0);
+});
+
+
+const incident = JSON.parse(readFileSync(new URL('./fixtures/october-19.json', import.meta.url)));
+
+test('October 19: delayed step telemetry cannot classify the running workflow as not started', async () => {
+  const due = Date.parse(incident.slot);
+  const detected = Date.parse(incident.detected_at);
+  const f = fixture(due);
+  await f.engine.tick();
+  f.github.listedRuns = [{ ...incident.run, status: 'in_progress', conclusion: null }];
+  // The historical polling response was not retained. Model missing step
+  // details explicitly, rather than presenting a reconstructed response as fact.
+  f.github.listedJobs = [{ ...incident.job, status: 'in_progress', conclusion: null,
+    completed_at: null, steps: [] }];
+  f.advance((detected - due) / MINUTE);
+  await f.engine.tick();
+  assert.deepEqual(f.calls.filter(([type]) => type === 'alert'), []);
+  assert.equal(f.state().records[0].status, 'in_progress');
+  assert.equal(f.state().records[0].workflow_started_at, Date.parse(incident.run.run_started_at));
+  assert.equal(f.state().records[0].fetch_started_at, undefined);
+  assert.deepEqual(f.calls.filter(([type]) => type === 'alert'), []);
+  assert.equal(f.calls.filter(([type]) => type === 'dispatch').length, 1);
+  // Later reconciliation supplies the recorded source-fetch timestamp and
+  // successful completion without having created a false alert in the interim.
+  f.advance(23);
+  f.github.listedRuns = [incident.run];
+  f.github.listedJobs = [incident.job];
+  await f.engine.tick();
+  const record = f.state().records[0];
+  assert.equal(record.fetch_started_at, Date.parse('2026-10-19T16:01:02Z'));
+  assert.equal(record.conclusion, 'success');
+  assert.deepEqual(record.alerts, {});
+});
+
+for (const [status, conclusion, expected] of [
+  ['queued', null, ['fetch_not_started']],
+  ['waiting', null, ['fetch_not_started']],
+  ['pending', null, ['fetch_not_started']],
+  ['in_progress', null, []],
+  ['completed', 'success', []],
+  ['completed', 'failure', ['workflow_failed']],
+  ['completed', 'cancelled', ['workflow_failed']],
+  ['completed', 'timed_out', ['workflow_failed']],
+]) {
+  test(`${status}/${conclusion}: workflow status is classified independently of missing source steps`, async () => {
+    const f = fixture();
+    await f.engine.tick();
+    // GitHub can populate run_started_at even while a workflow is queued.
+    f.github.listedRuns = [{ ...run(status, conclusion), run_started_at: new Date(DUE + MINUTE).toISOString() }];
+    f.advance(10);
+    await f.engine.tick();
+    assert.deepEqual(f.calls.filter(([type]) => type === 'alert').map(call => call[2]), expected);
+    assert.equal(f.state().records[0].fetch_started_at, undefined);
+    assert.equal(f.calls.filter(([type]) => type === 'dispatch').length, 1);
+  });
+}
+
+test('genuinely missing workflow raises one start alert and respects dispatch retry cap', async () => {
+  const f = fixture();
+  for (let i = 0; i < 12; i++) { await f.engine.tick(); f.advance(1); }
+  assert.equal(f.calls.filter(([type]) => type === 'dispatch').length, 3);
+  assert.deepEqual(f.calls.filter(([type]) => type === 'alert'), [['alert', SLOT, 'fetch_not_started']]);
+});
+
+test('job API outage at the start deadline remains an observation error until recovery', async () => {
+  const f = fixture();
+  await f.engine.tick();
+  f.github.listedRuns = [run('queued')];
+  f.github.jobs = async () => { throw new Error('private response'); };
+  f.advance(10);
+  await f.engine.tick();
+  assert.equal(f.state().records[0].error, 'github_request_failed');
+  assert.equal((await f.engine.status()).healthy, false);
+  assert.equal(f.calls.filter(([type]) => type === 'alert').length, 0);
+  assert.equal(JSON.stringify(f.state()).includes('private response'), false);
+  f.github.jobs = async () => ({ jobs: [] });
+  f.advance(1);
+  await f.engine.tick();
+  assert.equal(f.state().records[0].error, null);
+  assert.deepEqual(f.calls.filter(([type]) => type === 'alert'), [['alert', SLOT, 'fetch_not_started']]);
+});
+
+test('workflow start evidence survives eviction and a stale queued response', async () => {
+  const f = fixture();
+  await f.engine.tick();
+  f.github.listedRuns = [{ ...run(), run_started_at: new Date(DUE + MINUTE).toISOString() }];
+  f.advance(2);
+  await f.engine.tick();
+  f.github.listedRuns = [run('queued')];
+  const restarted = new Engine(f.storage, f.github, () => DUE + 10 * MINUTE);
+  await restarted.tick();
+  assert.equal(f.calls.filter(([type]) => type === 'alert').length, 0);
+});
+
+test('running workflow with unavailable source steps still has a completion deadline', async () => {
+  const f = fixture();
+  await f.engine.tick();
+  f.github.listedRuns = [run()];
+  f.advance(40);
+  await f.engine.tick();
+  assert.deepEqual(f.calls.filter(([type]) => type === 'alert'), [['alert', SLOT, 'completion_overdue']]);
+});
+
+test('positive workflow status suppresses the start alert for legacy ledger records', () => {
+  for (const status of ['in_progress', 'completed']) {
+    assert.deepEqual(alertKinds({ due_at: DUE, status, completed_at: DUE + MINUTE,
+      conclusion: 'success' }, DUE + 10 * MINUTE), []);
+  }
 });

@@ -1,0 +1,32 @@
+{
+  "slot": "2026-10-19T16:00:00.000Z",
+  "detected_at": "2026-10-19T16:10:20.083Z",
+  "alert_created_at": "2026-10-19T16:10:24Z",
+  "run": {
+    "id": 39282130307,
+    "display_title": "Job fetch · 2026-10-19T16:00:00.000Z",
+    "html_url": "https://github.com/kimtour/techjobs-africa/actions/runs/39282130307",
+    "created_at": "2026-10-19T16:00:23Z",
+    "run_started_at": "2026-10-19T16:00:23Z",
+    "updated_at": "2026-10-19T16:32:39Z",
+    "status": "completed",
+    "conclusion": "success"
+  },
+  "job": {
+    "name": "ingest-and-build",
+    "started_at": "2026-10-19T16:00:27Z",
+    "completed_at": "2026-10-19T16:11:04Z",
+    "status": "completed",
+    "conclusion": "success",
+    "steps": [
+      {
+        "name": "Ingest approved sources",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 9,
+        "started_at": "2026-10-19T16:01:02Z",
+        "completed_at": "2026-10-19T16:10:05Z"
+      }
+    ]
+  }
+}

@@ -76,16 +76,26 @@ export class Engine {
             delete record.completed_at;
             delete record.conclusion;
             delete record.fetch_started_at;
+            delete record.workflow_started_at;
           }
           record.run_id = run.id;
           record.run_url = run.html_url;
           record.run_created_at = Date.parse(run.created_at);
           record.status = run.status;
+          // run_started_at is also populated for queued runs, so gate it on
+          // execution status. Preserve this evidence across delayed API reads.
+          if (['in_progress', 'completed'].includes(run.status)) {
+            const startedAt = Date.parse(run.run_started_at);
+            if (Number.isFinite(startedAt) && startedAt <= now) {
+              record.workflow_started_at ||= startedAt;
+            }
+          }
           if (!record.fetch_started_at) {
             const jobs = (await this.github.jobs(run.id)).jobs;
             const fetchStep = jobs.flatMap(job => job.steps || [])
               .find(step => step.name === 'Ingest approved sources' && step.started_at &&
-                step.status !== 'queued' && step.conclusion !== 'skipped');
+                ['in_progress', 'completed'].includes(step.status) && step.conclusion !== 'skipped' &&
+                Number.isFinite(Date.parse(step.started_at)) && Date.parse(step.started_at) <= now);
             if (fetchStep) record.fetch_started_at = Date.parse(fetchStep.started_at);
           }
           if (run.status === 'completed') {
@@ -109,6 +119,10 @@ export class Engine {
       } catch (error) {
         record.error = safeError(error);
         record.status ||= 'dispatch_failed';
+        // An unavailable observation is not evidence of a missing workflow.
+        // Keep the error visible in /health and retry on the next watchdog tick.
+        await this.save(state);
+        continue;
       }
       // Don't indefinitely poll old runs/alerts. All abandoned slots remain in
       // the public ledger; failures and deadlines are still recorded below.
@@ -162,3 +176,4 @@ export class Engine {
     };
   }
 }
+

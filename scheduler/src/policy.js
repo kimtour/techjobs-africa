@@ -42,7 +42,12 @@ export function shouldDispatch(record, now) {
 
 export function alertKinds(record, now) {
   const kinds = [];
-  if (!record.fetch_started_at && now - record.due_at >= START_DEADLINE) {
+  // Workflow activity and source-fetch telemetry are different signals. GitHub
+  // can expose a running run before its job/step details become visible. A
+  // missing step timestamp must never override positive workflow-start evidence.
+  const workflowStarted = record.workflow_started_at || record.fetch_started_at ||
+    ['in_progress', 'completed'].includes(record.status);
+  if (!workflowStarted && now - record.due_at >= START_DEADLINE) {
     kinds.push('fetch_not_started');
   }
   if (!record.completed_at && now - record.due_at >= COMPLETION_DEADLINE) {
@@ -53,3 +58,4 @@ export function alertKinds(record, now) {
   }
   return kinds;
 }
+
