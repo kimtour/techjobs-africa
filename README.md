@@ -1,10 +1,30 @@
 # TechKazi
 
-Static-first tech job discovery for African candidates.
+## Project overview
 
-Live site: **https://techkazi.pages.dev/**. The chosen future custom domain is
-**techkazi.com**; it is planned and not connected as part of this update.
-See [branding and hosting](docs/techkazi-branding.md) for the migration and checks.
+TechKazi helps people discover technology jobs in Kenya and remote roles that may be open to African applicants. It collects listings from configured public sources, filters and organizes them, and publishes a static site that links applicants to the original publisher.
+
+### Purpose and users
+
+The practical need is to reduce the effort of checking multiple job boards while making location and eligibility uncertainty visible. Intended users are job seekers browsing the site and the operator maintaining sources and data quality. A remote label alone is not treated as proof that a role accepts applicants from Kenya or elsewhere in Africa.
+
+### Inputs and outputs
+
+Inputs are approved job-source pages/APIs, employer listings, source configuration, geography/category rules and the previous ingestion state. Outputs are normalized job records, eligibility/category labels, a search index, source-health/fetch audits and the public static site. A private `data` branch retains state; the application branch holds code. Visitors follow original listing links to apply.
+
+### Logic and workflow
+
+Scheduled request → claim the fetch slot → fetch approved sources → normalize and classify → deduplicate → apply health-aware expiry/quality gates → export static JSON → build/deploy the site. Failed or blocked sources do not automatically close jobs. Descriptions are processed in memory rather than persisted, and uncertain fuzzy matches are flagged instead of automatically merged. Last-known-good output is retained where quality gates prevent safe publication.
+
+### Integrations
+
+Python ingestion feeds an Astro frontend with client-side filtering/search. A Cloudflare Worker coordinates GitHub Actions, which builds and uploads the site to Cloudflare Pages. Source adapters and configured APIs supply listings; optional Telegram alerts and Cloudflare Web Analytics support operation. The live address is https://techkazi.pages.dev/; `techkazi.com` remains a planned domain in the repository documentation.
+
+### Running, maintenance and boundaries
+
+The deployed fetch schedule is daily at **06:00, 09:00, 12:00, 15:00 and 19:00 Africa/Nairobi (EAT, UTC+3)**. Manual workflow runs remain available. Maintain adapters, access/request limits, classification rules, source health, scheduler credentials and fetch audits. Private-repository Actions minutes and any configured API usage consume account quotas; Cloudflare and other service costs depend on their accounts. Reducing fetch frequency controls resource use without implying a guaranteed zero monthly bill.
+
+This is a job-discovery site, not an application-tracking system, job employer or guarantee of listing availability/eligibility. It has no user accounts, resume submission flow or runtime job database. Implemented behavior and source-specific limitations are documented in the repository; planned features are not presented as live.
 
 ## Start here
 
