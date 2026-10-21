@@ -1,4 +1,6 @@
-export const UTC_HOURS = [4, 6, 8, 10, 12, 14, 16, 18, 22];
+// 06:00, 09:00, 12:00, 15:00 and 19:00 Africa/Nairobi (UTC+3).
+export const UTC_HOURS = [3, 6, 9, 12, 16];
+export const EAT_TIMES = UTC_HOURS.map(hour => `${String((hour + 3) % 24).padStart(2, '0')}:00`);
 export const MINUTE = 60_000;
 export const START_DEADLINE = 10 * MINUTE;
 export const RETRY_INTERVAL = 3 * MINUTE;

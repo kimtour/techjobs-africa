@@ -4,7 +4,7 @@ import { Engine } from '../src/engine.js';
 import { GitHub } from '../src/github.js';
 import { latestSlot, nextSlot, shouldDispatch, runTitle, MINUTE } from '../src/policy.js';
 
-const DUE = Date.parse('2026-10-01T14:00:00.000Z');
+const DUE = Date.parse('2026-10-01T12:00:00.000Z');
 const SLOT = new Date(DUE).toISOString();
 
 function fixture(start = DUE) {
@@ -42,17 +42,17 @@ function run(status = 'in_progress', conclusion = null) {
   };
 }
 
-test('all nine exact-hour EAT slots and midnight rollover are preserved', () => {
+test('all five requested EAT slots and overnight rollover are preserved', () => {
   const slots = [];
   let now = Date.parse('2026-10-01T00:00:00+03:00');
-  for (let i = 0; i < 9; i++) {
+  for (let i = 0; i < 5; i++) {
     now = nextSlot(now);
     const eat = new Date(now + 3 * 3_600_000);
     slots.push([eat.getUTCHours(), eat.getUTCMinutes()]);
     assert.equal(latestSlot(now), now);
   }
-  assert.deepEqual(slots, [1, 7, 9, 11, 13, 15, 17, 19, 21].map(hour => [hour, 0]));
-  assert.equal(new Date(nextSlot(now)).toISOString(), '2026-10-01T22:00:00.000Z');
+  assert.deepEqual(slots, [6, 9, 12, 15, 19].map(hour => [hour, 0]));
+  assert.equal(new Date(nextSlot(now)).toISOString(), '2026-10-02T03:00:00.000Z');
 });
 
 test('late cron tick catches up without dispatching the same slot every minute', async () => {
@@ -168,7 +168,7 @@ test('scheduler outage records missed slots without replaying old fetches', asyn
   await f.engine.tick();
   const missed = f.state().records.filter(record => record.status === 'missed');
   assert.ok(missed.some(record => record.slot === '2026-10-01T16:00:00.000Z'));
-  assert.ok(missed.some(record => record.slot === '2026-10-01T18:00:00.000Z'));
+  assert.deepEqual(missed.map(record => record.slot), [SLOT, '2026-10-01T16:00:00.000Z']);
   assert.equal(f.calls.filter(([type]) => type === 'dispatch').length, 1);
 });
 
@@ -178,7 +178,7 @@ test('startup does not replay an old slot; authenticated tests can fetch between
   assert.equal(f.calls.length, 0);
   await f.engine.tick({ test: true });
   assert.equal(f.calls.length, 1);
-  assert.equal(f.calls[0][1], 'test-2026-10-01T14:45:00.000Z');
+  assert.equal(f.calls[0][1], 'test-2026-10-01T12:45:00.000Z');
 });
 
 test('health reports stale watchdog and next slot', async () => {
@@ -186,6 +186,7 @@ test('health reports stale watchdog and next slot', async () => {
   assert.equal((await f.engine.status()).healthy, false);
   await f.engine.tick();
   assert.equal((await f.engine.status()).healthy, true);
+  assert.deepEqual((await f.engine.status()).scheduled_times_eat, ['06:00', '09:00', '12:00', '15:00', '19:00']);
   f.advance(6);
   assert.equal((await f.engine.status()).healthy, false);
   assert.equal((await f.engine.status()).next_fetch_at, '2026-10-01T16:00:00.000Z');

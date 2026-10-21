@@ -1,3 +1,5 @@
+import { EAT_TIMES } from './policy.js';
+
 export const dashboard = `<!doctype html>
 <html lang="en">
 <head>
@@ -16,7 +18,7 @@ export const dashboard = `<!doctype html>
 <div class="card"><div class="label">Next scheduled fetch · EAT</div><div id="next" class="value">—</div></div>
 <div class="card"><div class="label">Last scheduler check · EAT</div><div id="checked" class="value">—</div></div>
 </div>
-<p>Daily schedule: 01:00, 07:00, 09:00, 11:00, 13:00, 15:00, 17:00, 19:00, 21:00.</p>
+<p>Daily schedule: ${EAT_TIMES.join(', ')}.</p>
 <div class="table"><table><thead><tr><th>Scheduled · EAT</th><th>Fetch started · EAT</th><th>Result</th><th>Attempts</th><th>Alerts</th><th>Workflow</th></tr></thead><tbody id="records"></tbody></table></div>
 <p class="note">Cloudflare checks every minute and catches up for up to 30 minutes. GitHub can still queue a workflow. A fetch that hasn’t started within ten minutes raises an alert. Showing the latest 90 slots.</p>
 <footer><a href="https://techkazi.pages.dev/">TechKazi jobs</a> · <a href="https://github.com/kimtour/techjobs-africa/actions">All workflow runs</a> · <a href="/status">Status JSON</a> · <a href="/health">Health check</a> · Refreshes every 30 seconds</footer>

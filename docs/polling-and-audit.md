@@ -34,16 +34,15 @@ and rollback checks are documented in
 [Cloudflare fetch scheduler](cloudflare-scheduler.md). GitHub's native cron is
 disabled to avoid requesting duplicate fetches.
 
-Use nine runs per day, every day, in Africa/Nairobi (EAT, UTC+3):
+Use five runs per day, every day, in Africa/Nairobi (EAT, UTC+3):
 
-| Period | Scheduled times EAT |
-|---|---|
-| Day/evening, every two hours | 07:00, 09:00, 11:00, 13:00, 15:00, 17:00, 19:00, 21:00 |
-| Overnight | 01:00 |
+| Morning | Midday | Afternoon | Evening |
+|---|---|---|---|
+| 06:00, 09:00 | 12:00 | 15:00 | 19:00 |
 
-The overnight gaps are four hours (21:00–01:00) and six hours (01:00–07:00).
-The old uniform three-hour schedule requested eight runs daily; this setup
-requests nine, shifting effort toward working hours. At the user's request, all
+The overnight gap is eleven hours (19:00–06:00). The daytime gaps are three
+hours, with four hours between 15:00 and 19:00. This replaces the nine-slot
+schedule to reduce Actions minute consumption. At the user's request, all
 triggers are scheduled at the top of the hour.
 This is an evidence-informed starting policy, not a measured optimum. There is
 not yet a reliable source-specific arrival-rate history to justify hourly full

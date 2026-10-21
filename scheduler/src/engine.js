@@ -1,6 +1,6 @@
 import {
   latestSlot, nextSlot, slotName, runTitle, alertTitle, shouldDispatch, alertKinds,
-  CATCHUP_WINDOW, MINUTE,
+  CATCHUP_WINDOW, MINUTE, EAT_TIMES,
 } from './policy.js';
 
 const HISTORY_LIMIT = 90;
@@ -155,7 +155,7 @@ export class Engine {
     return {
       healthy,
       timezone: 'Africa/Nairobi',
-      scheduled_times_eat: ['01:00', '07:00', '09:00', '11:00', '13:00', '15:00', '17:00', '19:00', '21:00'],
+      scheduled_times_eat: EAT_TIMES,
       next_fetch_at: new Date(nextSlot(now)).toISOString(),
       checked_at: new Date(now).toISOString(),
       ...(state || { records: [] }),

@@ -11,7 +11,7 @@ from datetime import UTC, datetime, timedelta
 from pathlib import Path
 
 SLOT_RE = re.compile(r"(?:test-)?\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z")
-UTC_HOURS = {4, 6, 8, 10, 12, 14, 16, 18, 22}
+UTC_HOURS = {3, 6, 9, 12, 16}
 
 
 def claim_slot(data_dir: Path, slot: str, run_id: str, *, now: datetime | None = None) -> bool:

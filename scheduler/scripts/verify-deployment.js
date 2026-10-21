@@ -1,4 +1,5 @@
 import { appendFileSync } from 'node:fs';
+import { EAT_TIMES } from '../src/policy.js';
 
 const headers = {
   Authorization: `Bearer ${process.env.CLOUDFLARE_API_TOKEN}`,
@@ -16,14 +17,21 @@ let status;
 for (let attempt = 0; attempt < 6; attempt++) {
   try {
     const response = await fetch(`${url}/status`, { signal: AbortSignal.timeout(10000) });
-    if (response.ok) { status = await response.json(); break; }
+    if (response.ok) {
+      const candidate = await response.json();
+      if (JSON.stringify(candidate.scheduled_times_eat) === JSON.stringify(EAT_TIMES)) {
+        status = candidate;
+        break;
+      }
+    }
   } catch { /* Allow a brief deployment propagation delay. */ }
   await new Promise(resolve => setTimeout(resolve, 5000));
 }
-if (!status || status.timezone !== 'Africa/Nairobi') throw new Error('Scheduler status endpoint did not respond');
+if (!status || status.timezone !== 'Africa/Nairobi') throw new Error('Scheduler status endpoint did not confirm the deployed schedule');
 appendFileSync(process.env.GITHUB_STEP_SUMMARY,
   `## Cloudflare fetch scheduler\n\n[Live status](${url}) · [Status JSON](${url}/status) · [Health check](${url}/health)\n\n`);
 console.log(`Scheduler URL: ${url}`);
+console.log(`Verified daily schedule (EAT): ${status.scheduled_times_eat.join(', ')}`);
 if (process.env.TEST_FETCH === 'true') {
   const response = await fetch(`${url}/test`, {
     method: 'POST',

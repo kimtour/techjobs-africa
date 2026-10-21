@@ -5,8 +5,8 @@ The existing Worker and Durable Object identities are retained through the
 branding migration so their scheduling history and credentials continue intact.
 See [TechKazi branding and hosting](techkazi-branding.md).
 
-Cloudflare requests the existing GitHub ingestion workflow at 01:00, 07:00,
-09:00, 11:00, 13:00, 15:00, 17:00, 19:00, and 21:00 EAT every day. It runs a
+Cloudflare requests the existing GitHub ingestion workflow at 06:00, 09:00,
+12:00, 15:00, and 19:00 EAT every day (03:00, 06:00, 09:00, 12:00, and 16:00 UTC). It runs a
 one-minute Cron Trigger to reconcile due slots and check actual source-fetch
 starts. This also catches a trigger that arrives late instead of depending on
 one delivery at the exact scheduled minute. The site remains static; the Worker
@@ -98,7 +98,7 @@ The deployed Worker provides:
 
 - `/`: readable status page with EAT times, actual fetch starts, results,
   attempts, alerts, and links to GitHub runs; refreshes every 30 seconds.
-- `/status`: public JSON ledger for the most recent 90 slots (about ten days).
+- `/status`: public JSON ledger for the most recent 90 slots (about eighteen days).
 - `/health`: the same payload with HTTP 503 when the latest slot has an error
   or alert, GitHub checks fail, or no scheduler tick has arrived for five minutes.
 - `/test`: authenticated POST used by deployment to exercise a real fetch
