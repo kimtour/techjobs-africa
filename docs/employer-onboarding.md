@@ -4,7 +4,7 @@
 
 Implemented for the 25 October 2026 workbook. At the user's explicit request,
 exclude `Ministries and departments`; counties are already absent. The imported
-snapshot contains 796 directory rows, 758 employer records and 633 recruitment
+snapshot contains 796 workbook rows, 758 employer records and 633 recruitment
 URL strings after conservative normalization. These are not current vacancies,
 unique legal-employer counts, or verified collection sources. Read the recorded
 workbook SHA-256 in `config/employers.yaml` when comparing another workbook.
@@ -15,7 +15,7 @@ python -m ingest.employer_registry --workbook '/path/to/Kenya tech Jobs.xlsx' \
 ```
 
 The importer reads XLSX values without executing formulas, macros or instructions.
-It retains sheet/row provenance and caveats in the private configuration. Stable
+It retains sheet/row provenance and caveats in the reviewed configuration. Stable
 import keys retain reviewed IDs, names, aliases and source verification on reruns.
 Exact name plus official website host groups repeated records; it does not infer
 that different names on the same board identify the same legal employer.
@@ -25,7 +25,7 @@ Removed rows are not automatically retired: review their existing records first.
 - `config/employer-sources.yaml`: shared collection sources, platform suggestions,
   lifecycle, source-specific budgets and verification evidence. This extends the
   legacy `config/sources.yaml`; it does not replace the existing sources.
-- `site/src/data/employers.json`: minimal public directory, generated from config;
+- `site/src/data/employers.json`: build-time employer metadata for actual job labels, generated from config;
   internal notes and verification records are not exported.
 
 Review aliases and multiple URL variants before grouping a discovered underlying
@@ -117,13 +117,21 @@ fuzzy company/title similarity is not an automatic merge criterion.
 
 ## Website and delivery
 
-`/employers/` is a static searchable directory with sector filtering and incremental
-display. Careers links are explicitly distinguished from collected vacancies;
-unverified links are labelled and directory records never enter job counts.
-The home page adds direct-employer filtering; employer/sector controls appear only
-when actual job metadata supplies them. Posting, closing and last-check times are
-displayed separately when supplied. Directory links to collected jobs only appear
-when the accepted export contains jobs assigned to that employer.
+The website publishes vacancies only. The employer registry is an internal
+collection inventory, not a careers-link directory. The removed `/employers/`
+route redirects to the jobs page. The home page adds direct-employer filtering;
+employer/sector controls appear only when actual job metadata supplies them.
+Posting, closing and last-check times are displayed separately when supplied.
+
+The target is a daily check of every employer through its shared recruitment
+source. This is a coverage target, not the current implementation's verified
+coverage: pending and unsupported sites still require onboarding. Use provider
+APIs first, then permitted feeds/structured pages and individually reviewed
+custom HTML/PDF adapters. Count employers covered separately from portals fetched;
+a shared portal must retain separate employer attribution. Spread due sources
+across the five existing daily slots, maintaining one state writer. A healthy
+complete crawl with no new jobs, a failed crawl and an unsupported source are
+separate outcomes. Never infer coverage from a successful workflow alone.
 
 New registry jobs appear in All Jobs only, without creating employer panels or
 changing existing panel order. No runtime backend/database or new recurring

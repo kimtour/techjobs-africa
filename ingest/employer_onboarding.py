@@ -397,7 +397,8 @@ def main():
             [
                 s
                 for s in registry.values()
-                if s.get("pilot_rank") or (args.mode == "discover" and s.get("discovery_enabled"))
+                if (args.mode == "trial" and s["status"] in {"verified", "trial"})
+                or (args.mode == "discover" and (s.get("pilot_rank") or s.get("discovery_enabled")))
             ],
             key=lambda s: (s.get("pilot_rank", 1000), s["id"]),
         )

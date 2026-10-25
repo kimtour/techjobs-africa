@@ -33,7 +33,7 @@ jobs:
         with:
           python-version: '3.11'
           cache: pip
-      - name: Build current employer directory export
+      - name: Build employer job-label metadata
         run: |
           pip install -r requirements-dev.txt
           python -m ingest.employer_registry

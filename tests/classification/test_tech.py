@@ -328,3 +328,14 @@ def test_domain_and_function_patterns_cover_the_cross_board_audit():
         "Graduate Intern – MEL (Business Engagement Market Systems)",
     ]:
         assert classify_technology_title(title).category is None, title
+
+
+def test_physical_and_logistics_network_jobs_are_not_computer_networking():
+    for title in (
+        "Network Facilities Electrical Engineer",
+        "Logistics Network & Operations Manager",
+        "Electrical Network Engineer",
+    ):
+        assert classify_technology_title(title).category is None, title
+    assert classify_technology_title("Network Engineer").category == "Networking"
+    assert classify_technology_title("IT Manager - Logistics Network").category

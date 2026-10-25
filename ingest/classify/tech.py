@@ -125,7 +125,10 @@ def has_non_technical_exclusion(value: str, config_path: Path = CONFIG_PATH) -> 
     """Return whether a title or URL label names an excluded job function."""
 
     config = _load_config(config_path)
-    return _matches(_role_title(value), config.get("non_tech_exclusions", []))
+    role = _role_title(value)
+    return _matches(role, config.get("non_tech_exclusions", [])) or any(
+        re.search(pattern, role, re.I) for pattern in config.get("non_tech_title_patterns", [])
+    )
 
 
 def classify_technology_title(title: str, config_path: Path = CONFIG_PATH) -> CategoryDecision:
@@ -134,13 +137,12 @@ def classify_technology_title(title: str, config_path: Path = CONFIG_PATH) -> Ca
     config = _load_config(config_path)
     title = _role_title(title)
     categories = config["categories"]
-    exclusions = config.get("non_tech_exclusions", [])
 
     # Broad technical terms can occur in non-technical commercial and support
     # roles (for example, "Sales Officer – ICT Solutions"). A job function
     # explicitly excluded by the taxonomy is never made technical by a generic
     # technology keyword elsewhere in its title.
-    if _matches(title, exclusions):
+    if has_non_technical_exclusion(title, config_path):
         roles = mixed_technology_roles(title, config_path)
         if roles:
             decision = classify_technology_title(roles[0], config_path)

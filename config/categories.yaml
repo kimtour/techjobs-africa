@@ -1,4 +1,9 @@
 schema_version: 1
+non_tech_title_patterns:
+  - '^(?:(?:senior|junior|lead|principal)\s+)?(?:logistics|distribution|supply\s+chain|transport|dealer|retail)\s+network\b'
+  - '^(?:(?:senior|junior|lead|principal)\s+)?network\s+(?:facilities\s+)?(?:electrical|power|charging)\b'
+  - '^(?:(?:senior|junior|lead|principal)\s+)?(?:electrical|power|charging)\s+(?:distribution\s+)?network\b'
+
 categories:
 - key: software-engineering
   title: Software Engineering

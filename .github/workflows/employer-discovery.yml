@@ -8,7 +8,7 @@ on:
         options: [discover, trial]
         default: discover
       source:
-        description: Optional single registry source ID; empty selects the pilot shortlist
+        description: Optional single registry source ID; empty selects discovery shortlist or verified trial sources
         type: string
         default: ''
 permissions:
