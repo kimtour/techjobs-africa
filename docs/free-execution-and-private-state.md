@@ -66,6 +66,11 @@ Public workflow logs contain counts and sanitized error classes, not response
 bodies, descriptions, credentials or recruiter contacts. Full operational audits
 remain on the private data branch. Future public fetch artifacts contain only the
 readable summary for seven days; deployable public-site artifacts last one day.
+If private-state persistence fails, an encrypted full audit is uploaded for seven
+days using the dedicated data deploy key's public half. Recover it inside a trusted
+maintainer workflow using `age --decrypt` and the `DATA_REPO_SSH_KEY` identity;
+write the plaintext recovery archive only into the private repository, never a
+public artifact or log. Recover outstanding archives before rotating that key.
 
 ## Cutover and recovery
 

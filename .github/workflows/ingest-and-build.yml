@@ -156,6 +156,7 @@ jobs:
         run: python -m ingest.finalize --data-dir "$DATA_DIR" --candidate-dir "$CANDIDATE_DIR"
 
       - name: Commit fetch audit and finalized data
+        id: persist
         if: always() && steps.fetch.outcome != 'skipped'
         run: |
           if [ ! -d "$DATA_DIR/state" ]; then exit 0; fi
@@ -167,7 +168,24 @@ jobs:
             git -C "$DATA_DIR" push origin HEAD:data
           fi
 
-      - name: Upload fetch audit even on failure
+      - name: Encrypt full audit if private persistence fails
+        if: always() && steps.persist.outcome == 'failure'
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq age
+          tar -czf /tmp/private-fetch-audit.tar.gz -C "$CANDIDATE_DIR" state
+          age --recipients-file config/audit-recipient.pub --output /tmp/private-fetch-audit.tar.gz.age /tmp/private-fetch-audit.tar.gz
+
+      - name: Preserve encrypted recovery audit
+        if: always() && steps.persist.outcome == 'failure'
+        uses: actions/upload-artifact@v4
+        with:
+          name: encrypted-fetch-audit-${{ github.run_id }}-${{ github.run_attempt }}
+          path: /tmp/private-fetch-audit.tar.gz.age
+          retention-days: 7
+          if-no-files-found: warn
+
+      - name: Upload readable summary even on failure
         if: always()
         uses: actions/upload-artifact@v4
         with:
