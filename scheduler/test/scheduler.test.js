@@ -216,15 +216,16 @@ test('GitHub request restricts repository and ref, encodes inputs, and redacts H
 });
 
 
-test('duplicate dispatches follow the actual claim owner instead of a cancelled run', async () => {
+test('duplicate dispatches follow actual fetch steps without reading private claims', async () => {
   const f = fixture();
   await f.engine.tick();
   f.github.listedRuns = [run('completed', 'cancelled'), { ...run(), id: 456 }];
-  f.github.claim = async () => ({ run_id: '456' });
+  f.github.claim = async () => { throw new Error('Private claims must not be requested'); };
   f.github.listedJobs = [{ steps: [{
     name: 'Ingest approved sources', status: 'in_progress',
     started_at: new Date(DUE + 4 * MINUTE).toISOString(),
   }] }];
+  f.github.jobs = async id => ({ jobs: id === 456 ? f.github.listedJobs : [] });
   f.advance(5);
   await f.engine.tick();
   assert.equal(f.state().records[0].run_id, 456);

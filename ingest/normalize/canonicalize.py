@@ -121,6 +121,12 @@ def canonicalize_raw_job(
         eligibility_source=eligibility.source,
         published_at=raw.published_at,
         published_date=raw.published_date,
+        deadline_at=raw.deadline_at,
+        employment_type=raw.employment_type,
+        employer_id=raw.employer_id,
+        employer_sectors=raw.employer_sectors,
+        direct_employer=raw.direct_employer,
+        opportunity_type=raw.opportunity_type,
         preferred_apply_url=raw.apply_url,
         sources=[raw.source_id],
     )

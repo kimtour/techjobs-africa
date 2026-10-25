@@ -1,5 +1,11 @@
 # Polling and fetch audit
 
+Current storage: `data:...` below refers to branch `data` in the private
+`kimtour/techkazi-data` repository. The public code repository runs all writers
+under its existing shared concurrency group. Full audit records stay private;
+public fetch artifacts contain only the readable summary, retained for seven
+days. See [execution and private state](free-execution-and-private-state.md).
+
 ## Assessment and observed failures
 
 The previous setup was serviceable for a first version, but not sufficiently

@@ -7,6 +7,15 @@ identifiers retain their original identity. See `docs/techkazi-branding.md`.
 
 > This is the authoritative engineering context. If M0 discovery contradicts an assumption here, document the evidence and make the smallest necessary change. Do not redesign unrelated parts.
 
+Operational update, 25 October 2026: the user approved public code execution after
+the private Actions quota was exhausted. Accepted state now belongs in the private
+`kimtour/techkazi-data` repository on branch `data`; code retains
+`kimtour/techjobs-africa`. Follow `docs/free-execution-and-private-state.md` for the
+scoped data checkout, public-workflow boundary and fallback execution policy.
+The current scheduler uses five daily EAT slots, as documented in
+`docs/cloudflare-scheduler.md`; the original stack/phase descriptions below are
+historical where later operational documentation explicitly supersedes them.
+
 ## 1. Product goal
 
 Build a minimalist, high-density technology jobs aggregator for African candidates, modeled on TechURLs/DevURLs.

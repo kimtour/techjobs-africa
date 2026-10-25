@@ -29,16 +29,17 @@ jobs:
             echo "::error::Add the OpenWeb Ninja JSEARCH_API_KEY repository secret."
             exit 1
           fi
-      - name: Read accepted production jobs for comparison
-        run: |
-          git fetch origin data --depth=1
-          git show FETCH_HEAD:public/jobs.json > "$RUNNER_TEMP/jsearch-baseline.json"
+      - name: Check out accepted production jobs for comparison
+        uses: ./.github/actions/checkout-data
+        with:
+          ssh-key: ${{ secrets.DATA_REPO_SSH_KEY }}
+          repository: ${{ vars.DATA_REPOSITORY || 'kimtour/techkazi-data' }}
       - name: Evaluate two Kenya searches without publishing
         env:
           JSEARCH_API_KEY: ${{ secrets.JSEARCH_API_KEY }}
         run: |
           python -m ingest.jsearch_evaluation \
-            --baseline "$RUNNER_TEMP/jsearch-baseline.json" \
+            --baseline .private-data/public/jobs.json \
             --output-dir "$RUNNER_TEMP/jsearch-evaluation"
       - name: Show evaluation summary
         if: always()

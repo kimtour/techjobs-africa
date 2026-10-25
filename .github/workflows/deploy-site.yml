@@ -18,15 +18,25 @@ jobs:
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
+      - uses: ./.github/actions/checkout-data
+        with:
+          ssh-key: ${{ secrets.DATA_REPO_SSH_KEY }}
+          repository: ${{ vars.DATA_REPOSITORY || 'kimtour/techkazi-data' }}
       - name: Read the accepted job export
-        run: |
-          git fetch origin data --depth=1
-          git show FETCH_HEAD:public/jobs.json > site/src/data/jobs.json
+        run: cp .private-data/public/jobs.json site/src/data/jobs.json
       - uses: actions/setup-node@v4
         with:
           node-version: "22"
           cache: npm
           cache-dependency-path: site/package-lock.json
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+      - name: Build current employer directory export
+        run: |
+          pip install -r requirements-dev.txt
+          python -m ingest.employer_registry
       - name: Validate and build
         run: |
           npm ci --prefix site

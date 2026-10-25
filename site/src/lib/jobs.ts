@@ -1,4 +1,5 @@
 import jobsPayload from "../data/jobs.json";
+import { sourceEmployers } from "./employers";
 
 export type Job = {
   job_id: string;
@@ -17,6 +18,13 @@ export type Job = {
   sources: string[];
   source_publisher?: string | null;
   status: "ACTIVE" | "STALE" | "CLOSED" | "EXPIRED";
+  employer_id?: string | null;
+  employer_sectors?: string[];
+  direct_employer?: boolean;
+  employment_type?: string | null;
+  opportunity_type?: string | null;
+  deadline_at?: string | null;
+  last_checked_at?: string | null;
 };
 
 type JobsPayload = {
@@ -62,7 +70,10 @@ export const sourceName = (sourceId: string) =>
     camunda: "Camunda careers",
     blacksmith: "Blacksmith Agency careers",
     sdg: "Social Discovery Group careers",
-  })[sourceId] ?? sourceId;
+  })[sourceId] ?? (sourceEmployers.has(sourceId)
+    ? sourceEmployers.get(sourceId)?.length === 1
+      ? `${sourceEmployers.get(sourceId)![0].name} careers` : "Shared employer board"
+    : sourceId);
 
 export const primarySource = (job: Job) =>
   sourceOrder.find((sourceId) => job.sources.includes(sourceId)) ?? job.sources[0];
@@ -107,3 +118,10 @@ export const sourceLabels = (job: Job) => job.sources.map((source) =>
     ? (source === "jsearch" ? `${job.source_publisher} via Google Jobs / JSearch` : job.source_publisher)
     : sourceName(source)
 ).join(", ");
+
+export const isDirectJob = (job: Job) => job.direct_employer === true
+  || job.sources.some(s => ["camunda", "blacksmith", "sdg"].includes(s));
+
+export const checkedDateLabel = (value: string) => new Intl.DateTimeFormat("en-KE", {
+  dateStyle: "medium", timeStyle: "short", timeZone: "Africa/Nairobi",
+}).format(new Date(value)) + " EAT";

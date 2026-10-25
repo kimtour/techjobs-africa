@@ -37,6 +37,7 @@ from ingest.export.static import build_public_files
 from ingest.fetch import ObservedClient
 from ingest.models import CanonicalJob, JobStatus, RawJob, SourceHealth, SourceHealthStatus
 from ingest.normalize.canonicalize import canonicalize_raw_job, normalize_text
+from ingest.registry_sources import active_factories, source_due
 
 CONFIG_PATH = Path("config/sources.yaml")
 AdapterFactory = Callable[[], object]
@@ -60,11 +61,13 @@ def approved_source_ids(config_path: Path = CONFIG_PATH) -> list[str]:
     """Return enabled sources that have an implemented production method."""
 
     config = yaml.safe_load(config_path.read_text(encoding="utf-8"))
-    return [
+    legacy = [
         source["id"]
         for source in config["sources"]
         if source.get("enabled") and source.get("production_method") and source["id"] in ADAPTERS
     ]
+    _, registry_config = active_factories(config_path.parent)
+    return legacy + list(registry_config)
 
 
 def build_jobs(
@@ -138,6 +141,11 @@ def run_ingestion(
     source_config = {
         item["id"]: item for item in yaml.safe_load(CONFIG_PATH.read_text())["sources"]
     }
+    registry_adapters, registry_config = active_factories(CONFIG_PATH.parent)
+    adapters = {**adapters, **registry_adapters}
+    source_config.update(registry_config)
+    if any(sid.startswith("employer_") and sid not in registry_config for sid in selected_ids):
+        raise ValueError("Employer sources require active status and full verification")
     gates = yaml.safe_load(Path("config/quality_gates.yaml").read_text())["quality_gates"]
     previous_jobs = [
         CanonicalJob.model_validate(job)
@@ -191,6 +199,11 @@ def run_ingestion(
         }
 
     for source_id in selected_ids:
+        if source_id in registry_config and not source_due(
+            registry_config[source_id], previous_health.get(source_id, {}), started
+        ):
+            record_policy_skip(source_id, "employer_source_not_due")
+            continue
         if pause_reason := source_config[source_id].get("fetch_paused_reason"):
             record_policy_skip(source_id, pause_reason)
             continue
@@ -303,6 +316,12 @@ def run_ingestion(
                 if any(raw.source_id != source_id for raw in fetched):
                     raise ValueError("adapter returned a foreign source")
                 source_jobs = build_jobs(fetched, rejections=rejected_jobs)
+                if source_id in registry_config:
+                    source_jobs = [
+                        job.model_copy(update={"last_checked_at": attempt_at})
+                        for job in source_jobs
+                        if job.eligibility_level in {"CONFIRMED", "LIKELY"}
+                    ]
                 _write_json(
                     output_dir / "state/classification" / f"{source_id}.json",
                     {
@@ -328,7 +347,13 @@ def run_ingestion(
                 # evidence of an incomplete inventory. Absence expiry stays off.
                 if source_id == "jsearch":
                     raw_drop = tech_drop = False
-                if not fetched or raw_drop or tech_drop:
+                verified_empty = (
+                    source_config[source_id].get("allow_verified_empty", False)
+                    and complete
+                    and not fetched
+                    and not reference
+                )
+                if (not fetched and not verified_empty) or raw_drop or tech_drop:
                     status = SourceHealthStatus.PARTIAL
                     reason = "suspicious_count_drop" if fetched else "unexpected_empty_result"
         except Exception as exc:  # Never log exception text: it may contain bodies or secrets.
@@ -472,8 +497,17 @@ def run_ingestion(
             },
         )
     jobs = list(jobs_by_id.values())
-    active_jobs = [job for job in jobs if job.status == JobStatus.ACTIVE]
-    previous_active = [job for job in previous_jobs if job.status == JobStatus.ACTIVE]
+    jobs = [
+        job.model_copy(update={"status": JobStatus.EXPIRED})
+        if job.direct_employer and job.deadline_at and job.deadline_at <= started
+        else job
+        for job in jobs
+    ]
+    # Preserve canonical occurrences; display exact cross-source duplicates once.
+    active_jobs = deduplicate_exact(job for job in jobs if job.status == JobStatus.ACTIVE)
+    previous_active = deduplicate_exact(
+        job for job in previous_jobs if job.status == JobStatus.ACTIVE
+    )
     publishable = any(item.status == SourceHealthStatus.SUCCESS for item in health.values())
     if previous_active and len(active_jobs) < len(previous_active) * (
         1 - gates["max_total_job_drop_percent"] / 100

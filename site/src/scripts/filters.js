@@ -1,5 +1,8 @@
 const search = document.querySelector("#job-search");
 const category = document.querySelector("#category-filter");
+const direct = document.querySelector("#direct-filter");
+const employer = document.querySelector("#employer-filter");
+const sector = document.querySelector("#sector-filter");
 const groups = [...document.querySelectorAll("[data-source-group]")];
 const matchingIds = new Map();
 const count = document.querySelector("#job-count");
@@ -87,7 +90,11 @@ function applyFilters(targetGroup) {
     for (const [index, card] of cards.entries()) {
       const matchesSearch = (card.dataset.search ?? "").toLocaleLowerCase().includes(searchTerm);
       const matchesCategory = !selectedCategory || card.dataset.category === selectedCategory;
-      const matches = matchesSearch && matchesCategory && matchesPeriod(card, period);
+      const matchesDirect = direct?.value !== "direct" || card.dataset.direct === "true";
+      const matchesEmployer = !employer?.value || card.dataset.employer === employer.value;
+      const matchesSector = !sector?.value || JSON.parse(card.dataset.sectors || "[]").includes(sector.value);
+      const matches = matchesSearch && matchesCategory && matchesDirect && matchesEmployer
+        && matchesSector && matchesPeriod(card, period);
       if (matches) {
         matching += 1;
         ids.push(card.dataset.jobId ?? `${group.dataset.source}:${index}`);
@@ -154,4 +161,9 @@ function resetLimitsAndApplyFilters() {
 document.querySelector("#job-filters")?.addEventListener("submit", (event) => event.preventDefault());
 search?.addEventListener("input", resetLimitsAndApplyFilters);
 category?.addEventListener("change", resetLimitsAndApplyFilters);
+for (const control of [direct, employer, sector]) control?.addEventListener("change", resetLimitsAndApplyFilters);
+const requestedEmployer = new URLSearchParams(window.location.search).get("employer");
+if (employer && requestedEmployer && [...employer.options].some(o => o.value === requestedEmployer)) {
+  employer.value = requestedEmployer;
+}
 applyFilters();

@@ -24,7 +24,7 @@ on:
   # remain available above. Do not enable native cron alongside the Worker.
 
 permissions:
-  contents: write
+  contents: read
   deployments: write
 
 # All future workflows that write the data branch must share this group.
@@ -37,7 +37,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 25
     env:
-      DATA_DIR: /tmp/techjobs-africa-data
+      DATA_DIR: ${{ github.workspace }}/.private-data
       CANDIDATE_DIR: /tmp/techjobs-africa-candidate
     steps:
       - name: Check out application branch
@@ -61,9 +61,10 @@ jobs:
           ruff check ingest tests
 
       - name: Prepare isolated candidate from saved data
-        run: |
-          git fetch origin data
-          git worktree add "$DATA_DIR" origin/data
+        uses: ./.github/actions/checkout-data
+        with:
+          ssh-key: ${{ secrets.DATA_REPO_SSH_KEY }}
+          repository: ${{ vars.DATA_REPOSITORY || 'kimtour/techkazi-data' }}
 
       - name: Claim scheduled fetch slot before contacting sources
         id: claim
@@ -93,6 +94,10 @@ jobs:
             python -u -m ingest.main --output-dir "$CANDIDATE_DIR" "${REFRESH_ARGS[@]}"
           fi
 
+      - name: Discover due shortlisted employer sources
+        if: steps.claim.outputs.proceed == 'true'
+        run: python -u -m ingest.employer_onboarding discover --due --output-dir "$CANDIDATE_DIR/state/employer-discovery"
+
       - name: Set up Node
         if: steps.fetch.outputs.publishable == 'true' && steps.fetch.outputs.public_changed == 'true'
         uses: actions/setup-node@v4
@@ -105,6 +110,7 @@ jobs:
         if: steps.fetch.outputs.publishable == 'true' && steps.fetch.outputs.public_changed == 'true'
         run: |
           cp "$CANDIDATE_DIR/public/jobs.json" site/src/data/jobs.json
+          python -m ingest.employer_registry
           npm ci --prefix site
           npm test --prefix site
           npm run check --prefix site
@@ -116,6 +122,7 @@ jobs:
         with:
           name: techkazi-static-site
           path: site/dist
+          retention-days: 1
           if-no-files-found: error
 
       - name: Check deployment configuration
@@ -149,6 +156,7 @@ jobs:
         run: python -m ingest.finalize --data-dir "$DATA_DIR" --candidate-dir "$CANDIDATE_DIR"
 
       - name: Commit fetch audit and finalized data
+        id: persist
         if: always() && steps.fetch.outcome != 'skipped'
         run: |
           if [ ! -d "$DATA_DIR/state" ]; then exit 0; fi
@@ -160,20 +168,31 @@ jobs:
             git -C "$DATA_DIR" push origin HEAD:data
           fi
 
-      - name: Upload fetch audit even on failure
+      - name: Encrypt full audit if private persistence fails
+        if: always() && steps.persist.outcome == 'failure'
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq age
+          tar -czf /tmp/private-fetch-audit.tar.gz -C "$CANDIDATE_DIR" state
+          age --recipients-file config/audit-recipient.pub --output /tmp/private-fetch-audit.tar.gz.age /tmp/private-fetch-audit.tar.gz
+
+      - name: Preserve encrypted recovery audit
+        if: always() && steps.persist.outcome == 'failure'
+        uses: actions/upload-artifact@v4
+        with:
+          name: encrypted-fetch-audit-${{ github.run_id }}-${{ github.run_attempt }}
+          path: /tmp/private-fetch-audit.tar.gz.age
+          retention-days: 7
+          if-no-files-found: warn
+
+      - name: Upload readable summary even on failure
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: fetch-audit-${{ github.run_id }}-${{ github.run_attempt }}
           path: |
-            /tmp/techjobs-africa-candidate/state/last-run.json
-            /tmp/techjobs-africa-candidate/state/health.json
             /tmp/techjobs-africa-candidate/state/fetch-summary.md
-            /tmp/techjobs-africa-candidate/state/fetch-progress.json
-            /tmp/techjobs-africa-candidate/state/publication-history/
-            /tmp/techjobs-africa-candidate/state/request-history/
-            /tmp/techjobs-africa-candidate/state/classification/
-          retention-days: 90
+          retention-days: 7
           if-no-files-found: warn
 
       - name: Fail visibly when no safe fetch could be published

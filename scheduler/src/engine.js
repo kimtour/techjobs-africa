@@ -65,10 +65,21 @@ export class Engine {
     for (const record of outstanding) {
       try {
         const matches = runs.filter(run => run.display_title === runTitle(record.slot));
-        // With duplicate accepted dispatches, the data-branch claim identifies
-        // the actual fetch owner; an earlier cancelled/skipped run isn't it.
-        const claim = matches.length > 1 ? await this.github.claim(record.slot) : null;
-        const run = matches.find(run => String(run.id) === claim?.run_id) ||
+        // The immutable claim stays private. Public step evidence identifies
+        // the actual fetch owner without giving this Worker private-data access.
+        let fetchOwner;
+        if (matches.length > 1) {
+          for (const candidate of matches) {
+            const candidateJobs = (await this.github.jobs(candidate.id)).jobs;
+            if (candidateJobs.flatMap(job => job.steps || []).some(step =>
+              step.name === 'Ingest approved sources' && step.started_at &&
+              step.status !== 'queued' && step.conclusion !== 'skipped')) {
+              fetchOwner = candidate;
+              break;
+            }
+          }
+        }
+        const run = fetchOwner ||
           matches.find(run => run.status !== 'completed') ||
           matches.sort((a, b) => Date.parse(a.created_at) - Date.parse(b.created_at))[0];
         if (run) {

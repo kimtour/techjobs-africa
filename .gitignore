@@ -48,6 +48,8 @@ credentials.json
 service-account*.json
 
 data_branch/
+.private-data/
+.wrangler/
 
 # Personal Claude Code proxy configuration
 .claude/settings.local.json
