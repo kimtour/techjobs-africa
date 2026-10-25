@@ -8,6 +8,7 @@ import json
 import re
 import socket
 from datetime import UTC, datetime, timedelta
+from html import unescape
 from html.parser import HTMLParser
 from io import BytesIO
 from urllib.parse import urljoin, urlsplit
@@ -150,6 +151,12 @@ class StructuredEmployerAdapter:
             identifier = identifier.get("value")
         if identifier:
             return str(identifier)
+        pattern = self.settings.get("identifier_url_pattern")
+        if pattern:
+            match = re.search(pattern, urlsplit(url).path)
+            if not match:
+                raise ValueError("Vacancy URL lacks the reviewed immutable posting ID")
+            return match.group(1)
         identities = self.candidate_state.setdefault("url_identities", {})
         return identities.setdefault(canonicalize_apply_url(url), str(uuid4()))
 
@@ -217,13 +224,13 @@ class StructuredEmployerAdapter:
             else:
                 parser = Page()
                 parser.feed(response.text)
+                fields = {}
+                for name, pattern in self.settings.get("fields", {}).items():
+                    match = re.search(pattern, response.text, re.I | re.S)
+                    if match:
+                        fields[name] = unescape(re.sub(r"<[^>]+>", " ", match.group(1))).strip()
                 jobs = [self.json_job(item, str(response.url)) for item in parser.postings]
                 if not parser.postings and self.settings.get("fields"):
-                    fields = {}
-                    for name, pattern in self.settings["fields"].items():
-                        match = re.search(pattern, response.text, re.I | re.S)
-                        if match:
-                            fields[name] = re.sub(r"<[^>]+>", " ", match.group(1)).strip()
                     jobs = [
                         self._job(
                             self.identity(url, fields.get("identifier")),
@@ -232,8 +239,15 @@ class StructuredEmployerAdapter:
                             url,
                             description=fields.get("description"),
                             deadline=fields.get("deadline"),
+                            employment_type=fields.get("employment_type"),
                         )
                     ]
+                jobs = [
+                    job.model_copy(update={"location": fields["location"]})
+                    if job and not job.location and fields.get("location")
+                    else job
+                    for job in jobs
+                ]
                 jobs = [job for job in jobs if job]
                 if not jobs:
                     raise ValueError("No individual vacancy data")

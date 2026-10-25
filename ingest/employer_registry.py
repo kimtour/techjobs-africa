@@ -68,6 +68,7 @@ def platform_for(url: str) -> str:
         ("workable.com", "workable"),
         ("careers-page.com", "manatal"),
         ("applytojob.com", "jazzhr"),
+        ("jazz.co", "jazzhr"),
         ("linkedin.com", "social"),
         ("facebook.com", "social"),
     ):
@@ -307,6 +308,16 @@ def board_identity(url: str):
         token = (parsed.hostname or "").removesuffix(".breezy.hr")
         if token in {"app", "assets-cdn", "www"}:
             token = None
+    elif provider == "jazzhr":
+        host = parsed.hostname or ""
+        if host.endswith(".applytojob.com"):
+            token = host.removesuffix(".applytojob.com")
+        elif (
+            host == "app.jazz.co"
+            and parts[:3] == ["widgets", "basic", "create"]
+            and len(parts) == 4
+        ):
+            token = parts[3]
     if token and re.fullmatch(r"[A-Za-z0-9_-]+", token):
         return provider, token
     return None

@@ -2000,25 +2000,35 @@ sources:
   import_urls:
   - https://livinggoods.applytojob.com/
   platform: jazzhr
-  status: pending
+  status: manual
   employer_ids:
   - emp_0a758b00f87dc872
-  access_method: null
+  access_method: jsonld
   country_filters: []
   refresh_hours: 24
   discovery_refresh_hours: 168
   supports_absence_expiry: false
   crawl:
     max_pages: 5
-    max_requests_per_run: 12
+    max_requests_per_run: 120
     request_delay_ms: 1500
     timeout_seconds: 20
     retry_delays_seconds:
     - 5
     - 20
-  verification: {}
+  verification:
+    collection_review: false
   suggestions:
     platform: jazzhr
+  official_careers_url: https://livinggoods.org/careers/
+  posting_company: Living Goods
+  collection:
+    listing_url: https://livinggoods.applytojob.com/
+    detail_url_pattern: /apply/[A-Za-z0-9]+/[^/#?]+
+    identifier_url_pattern: /apply/([A-Za-z0-9]+)/
+    complete_listing_verified: true
+  review_reason: 'Living Goods website terms section 2.2 explicitly prohibit automated
+    extraction and republication without permission: https://livinggoods.org/terms-and-conditions/'
 - id: employer_1ec56ba36ff0e2f0
   url: https://www.octaviacarbon.com/careers
   import_urls:
@@ -3241,24 +3251,55 @@ sources:
   status: pending
   employer_ids:
   - emp_b62851db272a19a3
-  access_method: null
+  access_method: jsonld
   country_filters: []
   refresh_hours: 24
   discovery_refresh_hours: 168
   supports_absence_expiry: false
   crawl:
     max_pages: 5
-    max_requests_per_run: 12
+    max_requests_per_run: 120
     request_delay_ms: 1500
     timeout_seconds: 20
     retry_delays_seconds:
     - 5
     - 20
-  verification: {}
+  verification:
+    application_links: true
+    complete: true
+    dates_reviewed: true
+    locations: true
+    official_link: true
+    stable_ids: true
+    local_access: true
+    runner_access: false
+    collection_review: true
+    evidence_paths:
+    - docs/employer-discovery/jazzhr-local/employer_330116662c9692d6.json
+    collection_basis: Reviewed official employer linkage to the public JazzHR career
+      board; per-path robots permit collection. Collect only factual vacancy title,
+      employer, location, dates and original application URL; never descriptions,
+      logos or applicant data. No automated-access restriction was identified for
+      these public ATS pages. No claim of an explicit redistribution licence.
+    collection_review_url: https://watu.com/legal/terms-of-use/
   suggestions:
     platform: jazzhr
     needs_location_filter: true
     shared_portal: true
+  official_careers_url: https://watu.com/corporate/careers/
+  posting_company: Watu
+  collection:
+    listing_url: https://watu.applytojob.com/apply
+    detail_url_pattern: /apply/[A-Za-z0-9]+/[^/#?]+
+    identifier_url_pattern: /apply/([A-Za-z0-9]+)/
+    complete_listing_verified: true
+    fields:
+      title: <div[^>]*class=[\"\x27]job-header[\"\x27][^>]*>.*?<h2[^>]*>(.*?)</h2>
+      location: <div[^>]*title=[\"\x27]Location[\"\x27][^>]*>(.*?)</div>
+      employment_type: <div[^>]*id=[\"\x27]resumator-job-employment[\"\x27][^>]*>(.*?)</div>
+  review_reason: Local complete vacancy crawl verified; awaiting hosted access and
+    isolated trial.
+  board: watu
 - id: employer_33d6a4b726a4ec85
   url: https://ke.linkedin.com/company/ushahidi
   import_urls:
@@ -4941,23 +4982,55 @@ sources:
   status: pending
   employer_ids:
   - emp_eb492e9b9dfdaa1c
-  access_method: null
+  access_method: jsonld
   country_filters: []
   refresh_hours: 24
   discovery_refresh_hours: 168
   supports_absence_expiry: false
   crawl:
     max_pages: 5
-    max_requests_per_run: 12
+    max_requests_per_run: 120
     request_delay_ms: 1500
     timeout_seconds: 20
     retry_delays_seconds:
     - 5
     - 20
-  verification: {}
+  verification:
+    application_links: true
+    complete: true
+    dates_reviewed: true
+    locations: true
+    official_link: true
+    stable_ids: true
+    local_access: true
+    runner_access: false
+    collection_review: true
+    evidence_paths:
+    - docs/employer-discovery/jazzhr-local/employer_4b5f0d16f35b56cb.json
+    collection_basis: Reviewed official employer linkage to the public JazzHR career
+      board; per-path robots permit collection. Collect only factual vacancy title,
+      employer, location, dates and original application URL; never descriptions,
+      logos or applicant data. No automated-access restriction was identified for
+      these public ATS pages. No claim of an explicit redistribution licence.
+    collection_review_url: https://crossboundary.com/privacy-policy/
   suggestions:
     platform: jazzhr
     shared_portal: true
+  official_careers_url: https://crossboundary.com/our-vacancies/
+  posting_company: CrossBoundary
+  group_portal: true
+  collection:
+    listing_url: https://crossboundary.applytojob.com/apply
+    detail_url_pattern: /apply/[A-Za-z0-9]+/[^/#?]+
+    identifier_url_pattern: /apply/([A-Za-z0-9]+)/
+    complete_listing_verified: true
+    fields:
+      title: <div[^>]*class=[\"\x27]job-header[\"\x27][^>]*>.*?<h2[^>]*>(.*?)</h2>
+      location: <div[^>]*title=[\"\x27]Location[\"\x27][^>]*>(.*?)</div>
+      employment_type: <div[^>]*id=[\"\x27]resumator-job-employment[\"\x27][^>]*>(.*?)</div>
+  review_reason: Local complete vacancy crawl verified; awaiting hosted access and
+    isolated trial.
+  board: crossboundary
 - id: employer_4b667497eb06186f
   url: https://jobs.ksa.go.ke/
   import_urls:
@@ -12086,24 +12159,56 @@ sources:
   employer_ids:
   - emp_b7eefb3774e189ef
   - emp_679d70135293eb8c
-  access_method: null
+  access_method: jsonld
   country_filters: []
   refresh_hours: 24
   discovery_refresh_hours: 168
   supports_absence_expiry: false
   crawl:
     max_pages: 5
-    max_requests_per_run: 12
+    max_requests_per_run: 120
     request_delay_ms: 1500
     timeout_seconds: 20
     retry_delays_seconds:
     - 5
     - 20
-  verification: {}
+  verification:
+    application_links: true
+    complete: true
+    dates_reviewed: true
+    locations: true
+    official_link: true
+    stable_ids: true
+    local_access: true
+    runner_access: false
+    collection_review: true
+    evidence_paths:
+    - docs/employer-discovery/jazzhr-local/employer_c193c4698b6e5e81.json
+    collection_basis: Reviewed official employer linkage to the public JazzHR career
+      board; per-path robots permit collection. Collect only factual vacancy title,
+      employer, location, dates and original application URL; never descriptions,
+      logos or applicant data. No automated-access restriction was identified for
+      these public ATS pages. No claim of an explicit redistribution licence.
+    collection_review_url: https://www.branch.co/legal/terms-of-use
   suggestions:
     platform: jazzhr
     needs_location_filter: true
     shared_portal: true
+  official_careers_url: https://www.branch.co/careers/openings
+  posting_company: Branch International
+  group_portal: true
+  collection:
+    listing_url: https://branchinternational.applytojob.com/apply
+    detail_url_pattern: /apply/[A-Za-z0-9]+/[^/#?]+
+    identifier_url_pattern: /apply/([A-Za-z0-9]+)/
+    complete_listing_verified: true
+    fields:
+      title: <div[^>]*class=[\"\x27]job-header[\"\x27][^>]*>.*?<h2[^>]*>(.*?)</h2>
+      location: <div[^>]*title=[\"\x27]Location[\"\x27][^>]*>(.*?)</div>
+      employment_type: <div[^>]*id=[\"\x27]resumator-job-employment[\"\x27][^>]*>(.*?)</div>
+  review_reason: Local complete vacancy crawl verified; awaiting hosted access and
+    isolated trial.
+  board: branchinternational
 - id: employer_c1bab15763b88e41
   url: https://musonisystem.com/careers/
   import_urls:

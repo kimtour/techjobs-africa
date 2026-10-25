@@ -426,3 +426,49 @@ def test_daily_work_is_spread_over_existing_slots_with_late_catchup():
     assert not watch_due(config, {}, before)
     assert watch_due(config, {}, due)
     assert source_due(config, previous, due + timedelta(hours=2))
+
+
+def test_reviewed_posting_token_survives_changed_jazzhr_title_slug():
+    collector = adapter(
+        source(identifier_url_pattern=r"/apply/([A-Za-z0-9]+)/"), lambda r: httpx.Response(200)
+    )
+    assert collector.identity("https://example.test/apply/AbC123/Old-Title") == "AbC123"
+    assert collector.identity("https://example.test/apply/AbC123/New-Title") == "AbC123"
+    with pytest.raises(ValueError):
+        collector.identity("https://example.test/careers")
+
+
+def test_reviewed_header_fields_supply_missing_job_schema_without_inventing_dates():
+    config = source(
+        identifier_url_pattern=r"/apply/([A-Za-z0-9]+)/",
+        fields={
+            "title": r"<h2>(.*?)</h2>",
+            "location": r'<div title="Location">(.*?)</div>',
+        },
+    )
+    html = '<h2>QA Automation Engineer</h2><div title="Location"><i></i>Nairobi, Kenya</div>'
+
+    def respond(request):
+        return httpx.Response(
+            200, text="User-agent: *\nAllow: /" if request.url.path == "/robots.txt" else html
+        )
+
+    collector = adapter(config, respond)
+    jobs = collector.detail("https://example.test/apply/Token123/QA-Automation-Engineer")
+    assert len(jobs) == 1
+    assert jobs[0].external_id == "Token123"
+    assert jobs[0].location == "Nairobi, Kenya"
+    assert jobs[0].published_at is None
+
+
+def test_official_jazzhr_widget_and_direct_vacancy_identify_same_board():
+    from ingest.employer_registry import board_identity
+
+    assert board_identity("https://app.jazz.co/widgets/basic/create/branchinternational") == (
+        "jazzhr",
+        "branchinternational",
+    )
+    assert board_identity(
+        "https://branchinternational.applytojob.com/apply/Token/Changed-Title"
+    ) == ("jazzhr", "branchinternational")
+    assert board_identity("https://app.jazz.co/unknown/branchinternational") is None

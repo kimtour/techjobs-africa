@@ -5,6 +5,7 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import re
 from datetime import UTC, datetime, timedelta
 from html.parser import HTMLParser
 from pathlib import Path
@@ -110,6 +111,10 @@ def discover(source: dict, employers: dict, client=None, *, request_budget=8) ->
         links = Links()
         links.feed(response.text)
         urls = [urljoin(str(response.url), link) for link in links.links]
+        # Some official careers pages embed job links in their page data.
+        urls += re.findall(
+            r'https?://[A-Za-z0-9-]+\.applytojob\.com/apply/[^\s<>"\x27]+', response.text
+        )
         if not any(platform_for(url) in SUPPORTED for url in urls if safe_url(url)):
             # Follow one observed employer careers link, never guessed URL variants.
             careers = [
@@ -152,7 +157,7 @@ def discover(source: dict, employers: dict, client=None, *, request_budget=8) ->
         result["detected_boards"] = detected[:15]
         candidate = source.get("board_url") or source["url"]
         board = urlsplit(candidate)
-        if source["platform"] in SUPPORTED and source.get("board"):
+        if source["platform"] in SUPPORTED | {"jazzhr"} and source.get("board"):
             result["checks"]["official_link"] = any(
                 board_identity(url) == (source["platform"], source["board"]) for url in urls
             )
