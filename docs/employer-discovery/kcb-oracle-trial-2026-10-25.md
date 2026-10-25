@@ -38,4 +38,5 @@ publisher attribution are retained.
 Both jobs are distinct from accepted vacancies, have no synthetic posting
 dates, and meet the existing technical and African-eligibility rules. The
 isolated trial and publication review passed. The source is activated with
-absence-based expiry disabled.
+`reviewed_bootstrap: true` so these two individually reviewed current vacancies
+can publish on the next due crawl. Absence-based expiry remains disabled.

@@ -11058,6 +11058,7 @@ sources:
     job_url_template: https://eoin.fa.em3.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_3001/job/{id}
   posting_company: KCB Group
   group_portal: true
+  reviewed_bootstrap: true
   official_careers_url: https://ke.kcbgroup.com/
   review_reason: Hosted isolated trial produced two new CONFIRMED African technical jobs with stable IDs and original application URLs; candidate review passed.
 - id: employer_a8bcbf91d53aa45f
