@@ -97,3 +97,15 @@ participate in date periods and carry Expertini RSS labels. Sitemap-only records
 have labelled URL-derived technical titles and unknown dates, so they appear in
 Latest and All Jobs and are absent from bounded periods. No separate Expertini
 panel is added. Same-ID source refreshes preserve cross-source attribution.
+
+## Company Career Page delivery — 25 October 2026
+
+Revision `9f79691` deployed successfully through run
+[40200704093](https://github.com/kimtour/techjobs-africa/actions/runs/40200704093).
+Local and live browser checks confirmed second-feed placement on desktop and
+390px mobile, fixed-height bodies with external headers, load-more scroll/layout
+isolation, empty-period recovery and direct filtering. HTML verification matched
+all 14 company vacancies and all 2,760 accepted All Jobs identities. Shared cards
+do not inflate global counts. New registry sources remain gated and inactive.
+The final code passed 255 Python tests, 14 frontend tests and hosted scheduler
+checks in validation run 40198930006.
