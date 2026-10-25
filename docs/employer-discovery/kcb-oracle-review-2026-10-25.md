@@ -1,8 +1,8 @@
-# KCB Oracle board review — 25 October 2026
+# KCB Group Oracle board review — 25 October 2026
 
 ## Scope
 
-Verify the official KCB Bank Kenya Oracle Candidate Experience board for
+Verify the official KCB Group Oracle Candidate Experience board for
 collection of factual vacancy metadata only. This review does not assert a
 redistribution licence.
 
@@ -37,6 +37,10 @@ roles:
 |---|---|---|---|---|
 | 6700 | Senior Manager IT Applications & Asset Management | Kenya | CONFIRMED | <https://eoin.fa.em3.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_3001/job/6700> |
 | 6688 | Risk Department, Uganda.IT Risk Analyst | Uganda | CONFIRMED | <https://eoin.fa.em3.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_3001/job/6688> |
+
+The board's listings span multiple countries, but no per-vacancy legal employer
+was supplied in the observed records. They are therefore labeled at the
+KCB Group level and are not assigned the registry's KCB Bank Kenya employer ID.
 
 ## Terms and handling
 

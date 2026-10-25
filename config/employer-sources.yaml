@@ -11052,7 +11052,7 @@ sources:
     listing_url: https://eoin.fa.em3.oraclecloud.com/hcmRestApi/resources/latest/recruitingCEJobRequisitions
     site: CX_3001
     job_url_template: https://eoin.fa.em3.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_3001/job/{id}
-  posting_company: KCB Bank Kenya
+  posting_company: KCB Group
   group_portal: true
   official_careers_url: https://ke.kcbgroup.com/
   review_reason: Local and hosted complete crawls and narrow factual-metadata policy review passed; isolated trial and publication review remain required.
