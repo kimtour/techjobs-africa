@@ -11003,7 +11003,7 @@ sources:
   import_urls:
   - https://eoin.fa.em3.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_3001/jobs
   platform: oracle
-  status: verified
+  status: active
   employer_ids:
   - emp_055af5f2568edd19
   access_method: oracle
@@ -11031,6 +11031,7 @@ sources:
     complete: true
     evidence_paths:
     - docs/employer-discovery/kcb-oracle-review-2026-10-25.md
+    - docs/employer-discovery/kcb-oracle-trial-2026-10-25.md
     collection_basis: >-
       The official KCB careers page links to the public Oracle Candidate
       Experience board. Local and hosted crawls were complete with stable
@@ -11042,6 +11043,9 @@ sources:
       not stored. No redistribution licence is claimed.
     collection_review_url: https://ke.kcbgroup.com/terms-and-conditions
     privacy_policy_url: https://ke.kcbgroup.com/data-privacy-policy
+    trial_review: true
+    publication_review: true
+    reviewed_at: '2026-10-25T17:00:10Z'
   suggestions:
     platform: oracle
     needs_location_filter: true
@@ -11055,7 +11059,7 @@ sources:
   posting_company: KCB Group
   group_portal: true
   official_careers_url: https://ke.kcbgroup.com/
-  review_reason: Local and hosted complete crawls and narrow factual-metadata policy review passed; isolated trial and publication review remain required.
+  review_reason: Hosted isolated trial produced two new CONFIRMED African technical jobs with stable IDs and original application URLs; candidate review passed.
 - id: employer_a8bcbf91d53aa45f
   url: https://www.airtelkenya.com/ke/about/Careers
   import_urls:
