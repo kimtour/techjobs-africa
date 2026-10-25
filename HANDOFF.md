@@ -122,3 +122,13 @@ individual extraction/permission review; reachability is insufficient. Expand
 only through recorded M0 local/hosted checks, isolated trial, then publication
 review. No proxies, evasion, robots overrides or unreviewed automatic activation.
 Preserve unrelated `.vscode/` and `_build/` files.
+
+### Vacancy-first expansion batch — 25 October 2026, 22:25 EAT
+
+- The 758-employer goal remains unfinished. Broad read-only vacancy assessment checked 34 supported portals representing 37 employer leads: initially 23 complete, six partial and five failed. Old Mutual subsequently completed the larger bounded crawl. The report is `docs/vacancy-priority-2026-10-25.md`.
+- Activated three reviewed daily collectors: Absa Group (7 eligible jobs), Old Mutual Group (2), NRC (1). Group labels are used; employer records remain separate. These ten openings are in South Africa and Uganda. No new-source absence expiry enabled.
+- Hosted M0 `40224885754` passed Absa/NRC; Old Mutual corporate site returned 403. Independent public ATS check `40225142022` passed after locally evidenced official linkage and collection review. No blocked corporate request was retried or bypassed. Hosted trial `40225342690` produced ten additional application URLs absent from accepted state.
+- Production `40225632030` on `9003f35` succeeded; private state `cf2f7dd`. Company Career Page: 33 (previously 23); All Jobs: 2,781. Local-build/live automated acceptance checked all job IDs, second-feed placement, original links and site metadata/assets. No interactive browser check is claimed.
+- 289 Python tests and lint passed. Discovery and independent access checks now include eligible-job counts and metadata without another network fetch or production promotion.
+- Preserve original checkout `/Users/kim/Documents/techjobs-africa` expansion WIP; do not overwrite its pending-source configuration with the remote state. The current clean code/config is in this managed worktree and remote main. The three earlier agents stopped with workspace-credit errors; their unfinished changes remain in the original checkout.
+- Next priorities from actual openings: Safaricom/M-PESA (2 candidates, official-site hosted verification blocked), Pesapal (1, completeness/linkage unresolved), Unilever (1, verification unresolved); Ecobank (1) remains behind permission review. Do not count these as published or activate them from probe evidence alone.

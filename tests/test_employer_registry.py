@@ -391,3 +391,34 @@ def test_independent_board_check_requires_official_evidence_and_never_visits_emp
     assert report["prior_official_evidence"] == source["verification"]["evidence_paths"]
     assert "official_link" not in report["checks"]
     assert source["status"] == "trial"
+
+
+def test_discovery_candidate_summary_ranks_real_roles_without_publication():
+    from ingest.employer_onboarding import candidate_summary
+    from ingest.models import RawJob
+
+    records = [
+        RawJob(
+            source_id="example",
+            external_id=str(i),
+            title=title,
+            location=location,
+            source_url=f"https://example.com/jobs/{i}",
+            apply_url=f"https://example.com/jobs/{i}",
+        )
+        for i, (title, location) in enumerate(
+            [
+                ("Software Engineer", "Nairobi, Kenya"),
+                ("Software Engineer", "Seattle, United States"),
+                ("Clinical Nurse", "Nairobi, Kenya"),
+            ]
+        )
+    ]
+    summary = candidate_summary(records)
+    assert summary["technical_jobs"] == 2
+    assert summary["eligible_jobs"] == 1
+    assert summary["candidate_metadata"][0]["job_id"] == "example:0"
+    assert summary["candidate_metadata"][0]["country"] == "Kenya"
+    assert not summary["publication_approved"]
+    assert candidate_summary([])["eligible_jobs"] == 0
+    assert "description" not in json.dumps(summary)

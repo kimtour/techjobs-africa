@@ -45,9 +45,9 @@ The original classifier admitted unrelated NGO project managers and a regulatory
 
 ## Priority and remaining gates
 
-- Absa Group: seven candidates; official group careers page links its Workday board. Local checks complete. Group-wide postings must carry the group label, not “Absa Bank Kenya”.
-- NRC: one eligible ICT role after rejecting three unrelated programme roles. Official careers-to-Oracle link and complete local collection verified.
-- Old Mutual: the initial scan hit its page budget; a larger bounded crawl is being reviewed. Its official corporate careers URL redirects directly to its Workday board. No count is inferred from the partial scan.
+- Absa Group: seven reviewed jobs; official linkage, local and hosted checks, and isolated trial passed. Daily collection activated with the group label.
+- NRC: one reviewed ICT role after rejecting three unrelated programme roles. Official linkage, complete local/hosted crawls and isolated trial passed. Daily collection activated.
+- Old Mutual: the initial page-budget limit was resolved with a larger bounded crawl and selective detail fetching. Official linkage was verified locally; the public ATS passed hosted access checks. The trial approved two jobs. Daily collection activated; the corporate website’s GitHub 403 remains recorded.
 - Safaricom / M-PESA: two Kenya architecture roles; official employer-site verification was previously blocked from GitHub. Keep pending; an accessible Oracle endpoint alone does not pass that gate.
 - Pesapal: one Uganda IT support candidate; completeness and official linkage still need verification.
 - Unilever: one Egypt data engineer; source-specific verification remains pending.
@@ -81,4 +81,8 @@ Hosted trial https://github.com/kimtour/techjobs-africa/actions/runs/40225342690
 | Old Mutual Group | 2 | South Africa |
 | Norwegian Refugee Council | 1 | Uganda |
 
-The group-wide boards retain group labels; employer records are not merged. All three are approved for daily collection with reviewed first-snapshot publication and absence expiry disabled. Full candidate metadata and checks are in [the trial review](employer-discovery/vacancy-priority/trial-review.json). Production deployment must still succeed before these are counted as live jobs.
+The group-wide boards retain group labels; employer records are not merged. All three are approved for daily collection with reviewed first-snapshot publication and absence expiry disabled. Full candidate metadata and checks are in [the trial review](employer-discovery/vacancy-priority/trial-review.json). Production run [40225632030](https://github.com/kimtour/techjobs-africa/actions/runs/40225632030) succeeded on activation commit `9003f35`, including Cloudflare deployment and private-state persistence (`cf2f7dd`). Local-build and live HTML checks verified all 33 Company Career Page entries, all 2,781 All Jobs entries, second-feed placement and original application links. The feed grew from 23 to 33 listings.
+
+## Next-batch efficiency
+
+Both discovery and independent board-access checks now report technical-job counts, eligible-job counts and factual candidate metadata from records already fetched. These figures never approve publication or change source status. No additional HTTP requests are required for ranking. Failed fetches have no candidate summary; a healthy zero-result board reports zero explicitly. The scan and the activation of this batch do not complete collection across all 758 employer records.

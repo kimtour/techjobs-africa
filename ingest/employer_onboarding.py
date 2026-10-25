@@ -78,6 +78,32 @@ def write_json(path: Path, value):
     path.write_text(json.dumps(value, ensure_ascii=False, indent=2, sort_keys=True) + "\n")
 
 
+def candidate_summary(records) -> dict:
+    """Rank existing fetched records; never fetch more pages or approve publication."""
+    parsed = build_jobs(records)
+    eligible = [
+        job
+        for job in parsed
+        if job.eligibility_level in {"CONFIRMED", "LIKELY"}
+        and (job.deadline_at is None or job.deadline_at > datetime.now(UTC))
+    ]
+    return {
+        "technical_jobs": len(parsed),
+        "eligible_jobs": len(eligible),
+        "publication_approved": False,
+        "candidate_metadata": [
+            {
+                "job_id": job.job_id,
+                "title": job.title,
+                "employer": job.posting_company,
+                "country": job.country,
+                "application_url": str(job.preferred_apply_url),
+            }
+            for job in eligible
+        ],
+    }
+
+
 def discover(source: dict, employers: dict, client=None, *, request_budget=8) -> dict:
     """Collect metadata only. Discoverability never changes lifecycle or permission."""
     result = {
@@ -206,6 +232,7 @@ def discover(source: dict, employers: dict, client=None, *, request_budget=8) ->
             adapter._client = observed
             records = adapter.fetch()
             result["records_found"] = len(records)
+            result.update(candidate_summary(records))
             result["checks"].update(
                 {
                     "stable_ids": all(r.external_id for r in records),
@@ -272,6 +299,7 @@ def verify_board_access(source: dict, employers: dict) -> dict:
     try:
         raw = adapter.fetch()  # Adapter enforces board-specific robots and access restrictions.
         report["records_found"] = len(raw)
+        report.update(candidate_summary(raw))
         report["checks"] = {
             "stable_ids": all(job.external_id for job in raw),
             "application_links": all(safe_url(str(job.apply_url)) for job in raw),
