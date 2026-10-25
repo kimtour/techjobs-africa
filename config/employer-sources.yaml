@@ -11003,7 +11003,7 @@ sources:
   import_urls:
   - https://eoin.fa.em3.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_3001/jobs
   platform: oracle
-  status: pending
+  status: verified
   employer_ids:
   - emp_055af5f2568edd19
   access_method: oracle
@@ -11019,7 +11019,29 @@ sources:
     retry_delays_seconds:
     - 5
     - 20
-  verification: {}
+  verification:
+    official_link: true
+    collection_review: true
+    local_access: true
+    runner_access: true
+    stable_ids: true
+    application_links: true
+    locations: true
+    dates_reviewed: true
+    complete: true
+    evidence_paths:
+    - docs/employer-discovery/kcb-oracle-review-2026-10-25.md
+    collection_basis: >-
+      The official KCB careers page links to the public Oracle Candidate
+      Experience board. Local and hosted crawls were complete with stable
+      requisition IDs, locations, dates, and individual application links.
+      Careers-linked product terms and the data privacy policy were reviewed;
+      no automated-collection prohibition was identified in the accessible
+      material. Collection is limited to factual vacancy metadata and original
+      application URLs; descriptions, applicant data, and recruiter contacts are
+      not stored. No redistribution licence is claimed.
+    collection_review_url: https://ke.kcbgroup.com/terms-and-conditions
+    privacy_policy_url: https://ke.kcbgroup.com/data-privacy-policy
   suggestions:
     platform: oracle
     needs_location_filter: true
@@ -11033,8 +11055,7 @@ sources:
   posting_company: KCB Bank Kenya
   group_portal: true
   official_careers_url: https://ke.kcbgroup.com/
-  review_reason: Provider-level public interface investigated; source-specific official
-    linkage, terms and complete local/hosted crawls remain required.
+  review_reason: Local and hosted complete crawls and narrow factual-metadata policy review passed; isolated trial and publication review remain required.
 - id: employer_a8bcbf91d53aa45f
   url: https://www.airtelkenya.com/ke/about/Careers
   import_urls:
