@@ -1,0 +1,459 @@
+{
+  "board_robots": {
+    "allowed": true,
+    "status": 200,
+    "url": "https://watu.applytojob.com/robots.txt"
+  },
+  "checked_at": "2026-10-25T15:19:51.101423+00:00",
+  "checks": {
+    "application_links": true,
+    "complete": true,
+    "dates_reviewed": true,
+    "locations": true,
+    "official_link": true,
+    "stable_ids": true
+  },
+  "detected_boards": [],
+  "endpoint": "https://watu.applytojob.com/apply",
+  "environment": "github",
+  "feed_urls": [
+    "https://watu.com/feed/",
+    "https://watu.com/comments/feed/"
+  ],
+  "official_robots": {
+    "allowed": true,
+    "status": 200,
+    "url": "https://watu.com/robots.txt"
+  },
+  "official_url": "https://watu.com/corporate/careers/",
+  "records_found": 38,
+  "requests": [
+    {
+      "attempt": 1,
+      "duration_seconds": 0.47,
+      "error_type": null,
+      "host": "watu.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T15:19:51.118952+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.041,
+      "error_type": null,
+      "host": "watu.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T15:19:53.089496+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.073,
+      "error_type": null,
+      "host": "watu.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T15:19:54.630589+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.016,
+      "error_type": null,
+      "host": "watu.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T15:19:56.203993+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.063,
+      "error_type": null,
+      "host": "watu.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T15:19:57.719969+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.518,
+      "error_type": null,
+      "host": "watu.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T15:19:59.282690+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.491,
+      "error_type": null,
+      "host": "watu.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T15:20:01.300813+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.503,
+      "error_type": null,
+      "host": "watu.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T15:20:03.292003+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.505,
+      "error_type": null,
+      "host": "watu.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T15:20:05.295302+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.504,
+      "error_type": null,
+      "host": "watu.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T15:20:07.300061+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.496,
+      "error_type": null,
+      "host": "watu.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T15:20:09.303824+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.498,
+      "error_type": null,
+      "host": "watu.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T15:20:11.299689+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.505,
+      "error_type": null,
+      "host": "watu.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T15:20:13.297786+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.5,
+      "error_type": null,
+      "host": "watu.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T15:20:15.302670+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.5,
+      "error_type": null,
+      "host": "watu.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T15:20:17.302961+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.498,
+      "error_type": null,
+      "host": "watu.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T15:20:19.302773+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.507,
+      "error_type": null,
+      "host": "watu.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T15:20:21.300626+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.498,
+      "error_type": null,
+      "host": "watu.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T15:20:23.308199+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.501,
+      "error_type": null,
+      "host": "watu.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T15:20:25.306144+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.501,
+      "error_type": null,
+      "host": "watu.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T15:20:27.307587+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.502,
+      "error_type": null,
+      "host": "watu.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T15:20:29.308414+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.5,
+      "error_type": null,
+      "host": "watu.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T15:20:31.310198+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.497,
+      "error_type": null,
+      "host": "watu.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T15:20:33.309962+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.505,
+      "error_type": null,
+      "host": "watu.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T15:20:35.307529+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.496,
+      "error_type": null,
+      "host": "watu.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T15:20:37.312505+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.503,
+      "error_type": null,
+      "host": "watu.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T15:20:39.308814+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.549,
+      "error_type": null,
+      "host": "watu.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T15:20:41.311772+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.449,
+      "error_type": null,
+      "host": "watu.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T15:20:43.360755+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.511,
+      "error_type": null,
+      "host": "watu.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T15:20:45.309947+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.495,
+      "error_type": null,
+      "host": "watu.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T15:20:47.320654+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.495,
+      "error_type": null,
+      "host": "watu.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T15:20:49.315916+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.499,
+      "error_type": null,
+      "host": "watu.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T15:20:51.310900+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.5,
+      "error_type": null,
+      "host": "watu.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T15:20:53.310237+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.498,
+      "error_type": null,
+      "host": "watu.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T15:20:55.310233+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.503,
+      "error_type": null,
+      "host": "watu.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T15:20:57.308333+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.499,
+      "error_type": null,
+      "host": "watu.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T15:20:59.311329+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.506,
+      "error_type": null,
+      "host": "watu.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T15:21:01.309973+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.499,
+      "error_type": null,
+      "host": "watu.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T15:21:03.315884+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.092,
+      "error_type": null,
+      "host": "watu.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T15:21:05.314688+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.078,
+      "error_type": null,
+      "host": "watu.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T15:21:06.907312+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.066,
+      "error_type": null,
+      "host": "watu.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T15:21:08.485094+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.499,
+      "error_type": null,
+      "host": "watu.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T15:21:10.050763+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.501,
+      "error_type": null,
+      "host": "watu.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T15:21:12.050405+00:00"
+    }
+  ],
+  "sample": [
+    {
+      "application_url": "https://watu.applytojob.com/apply/1d8nowbcNe/Junior-Field-Marketing-Officer--EV",
+      "id": "1d8nowbcNe",
+      "location": "Mukono · Central, Eastern & Western Uganda",
+      "published_at": "2026-10-21T00:00:00+00:00",
+      "title": "Junior Field Marketing Officer  - EV"
+    },
+    {
+      "application_url": "https://watu.applytojob.com/apply/6WwbkEzC1V/Call-Centre-Officer",
+      "id": "6WwbkEzC1V",
+      "location": "Freetown, Sierra Leone, Sierra Leone",
+      "published_at": null,
+      "title": "Call Centre Officer"
+    },
+    {
+      "application_url": "https://watu.applytojob.com/apply/7VbW0qoWIe/HRIS-Specialist",
+      "id": "7VbW0qoWIe",
+      "location": "Kyiv, Kyiv, Ukraine",
+      "published_at": null,
+      "title": "HRIS Specialist"
+    },
+    {
+      "application_url": "https://watu.applytojob.com/apply/7rboQk8G4C/Back-Office-Analyst",
+      "id": "7rboQk8G4C",
+      "location": "São Paulo, São Paulo - SP, Brazil",
+      "published_at": null,
+      "title": "Back Office Analyst"
+    },
+    {
+      "application_url": "https://watu.applytojob.com/apply/835z2xd83n/Regional-Sales-Manager-NONE",
+      "id": "835z2xd83n",
+      "location": "Remote · BR",
+      "published_at": "2026-08-26T00:00:00+00:00",
+      "title": "Regional Sales Manager NO/NE"
+    }
+  ],
+  "source_id": "employer_330116662c9692d6",
+  "status": "SUCCESS",
+  "structured_job_count": 0
+}

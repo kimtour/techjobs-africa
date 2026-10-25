@@ -1,0 +1,232 @@
+{
+  "board_robots": {
+    "allowed": true,
+    "status": 200,
+    "url": "https://branchinternational.applytojob.com/robots.txt"
+  },
+  "careers_page": "https://www.branch.co/careers",
+  "checked_at": "2026-10-25T15:19:18.142854+00:00",
+  "checks": {
+    "application_links": true,
+    "complete": true,
+    "dates_reviewed": true,
+    "locations": true,
+    "official_link": true,
+    "stable_ids": true
+  },
+  "detected_boards": [],
+  "endpoint": "https://branchinternational.applytojob.com/apply",
+  "environment": "github",
+  "feed_urls": [],
+  "official_robots": {
+    "allowed": true,
+    "status": 200,
+    "url": "https://www.branch.co/robots.txt"
+  },
+  "official_url": "https://www.branch.co/careers/openings",
+  "records_found": 11,
+  "requests": [
+    {
+      "attempt": 1,
+      "duration_seconds": 0.668,
+      "error_type": null,
+      "host": "www.branch.co",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T15:19:18.179257+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.427,
+      "error_type": null,
+      "host": "www.branch.co",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T15:19:20.347070+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.223,
+      "error_type": null,
+      "host": "www.branch.co",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T15:19:22.274675+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.424,
+      "error_type": null,
+      "host": "www.branch.co",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T15:19:23.997733+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.076,
+      "error_type": null,
+      "host": "branchinternational.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T15:19:25.922170+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.019,
+      "error_type": null,
+      "host": "branchinternational.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T15:19:27.497930+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.066,
+      "error_type": null,
+      "host": "branchinternational.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T15:19:29.016642+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.522,
+      "error_type": null,
+      "host": "branchinternational.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T15:19:30.582640+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.492,
+      "error_type": null,
+      "host": "branchinternational.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T15:19:32.604496+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.508,
+      "error_type": null,
+      "host": "branchinternational.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T15:19:34.596312+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.485,
+      "error_type": null,
+      "host": "branchinternational.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T15:19:36.604178+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.496,
+      "error_type": null,
+      "host": "branchinternational.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T15:19:38.589326+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.502,
+      "error_type": null,
+      "host": "branchinternational.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T15:19:40.585245+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.51,
+      "error_type": null,
+      "host": "branchinternational.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T15:19:42.587793+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.502,
+      "error_type": null,
+      "host": "branchinternational.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T15:19:44.598274+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.488,
+      "error_type": null,
+      "host": "branchinternational.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T15:19:46.600019+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.5,
+      "error_type": null,
+      "host": "branchinternational.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T15:19:48.588363+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.504,
+      "error_type": null,
+      "host": "branchinternational.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T15:19:50.588086+00:00"
+    }
+  ],
+  "sample": [
+    {
+      "application_url": "https://branchinternational.applytojob.com/apply/5Yh7vkggwj/Head-Of-Data-Reporting-Analytics",
+      "id": "5Yh7vkggwj",
+      "location": "India",
+      "published_at": "2026-10-16T00:00:00+00:00",
+      "title": "Head of Data Reporting & Analytics"
+    },
+    {
+      "application_url": "https://branchinternational.applytojob.com/apply/8rfTggdrz3/Legal-Associate",
+      "id": "8rfTggdrz3",
+      "location": "Mumbai",
+      "published_at": "2026-10-13T00:00:00+00:00",
+      "title": "Legal Associate"
+    },
+    {
+      "application_url": "https://branchinternational.applytojob.com/apply/L8Rc01URhr/Product-Builder",
+      "id": "L8Rc01URhr",
+      "location": "Remote · IN",
+      "published_at": "2026-10-21T00:00:00+00:00",
+      "title": "Product Builder"
+    },
+    {
+      "application_url": "https://branchinternational.applytojob.com/apply/PhMQiukn6N/Associate-Finance",
+      "id": "PhMQiukn6N",
+      "location": "Mumbai, India",
+      "published_at": "2026-10-19T00:00:00+00:00",
+      "title": "Associate - Finance"
+    },
+    {
+      "application_url": "https://branchinternational.applytojob.com/apply/UPs1tGklS2/Senior-Associate-Fraud-Risk",
+      "id": "UPs1tGklS2",
+      "location": "Mumbai, India",
+      "published_at": "2026-10-23T00:00:00+00:00",
+      "title": "Senior Associate – Fraud Risk"
+    }
+  ],
+  "source_id": "employer_c193c4698b6e5e81",
+  "status": "SUCCESS",
+  "structured_job_count": 0
+}

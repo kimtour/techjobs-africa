@@ -1,0 +1,278 @@
+{
+  "board_robots": {
+    "allowed": true,
+    "status": 200,
+    "url": "https://crossboundary.applytojob.com/robots.txt"
+  },
+  "checked_at": "2026-10-25T15:21:12.559917+00:00",
+  "checks": {
+    "application_links": true,
+    "complete": true,
+    "dates_reviewed": true,
+    "locations": true,
+    "official_link": true,
+    "stable_ids": true
+  },
+  "detected_boards": [],
+  "endpoint": "https://crossboundary.applytojob.com/apply",
+  "environment": "github",
+  "feed_urls": [
+    "https://crossboundary.com/feed/"
+  ],
+  "official_robots": {
+    "allowed": true,
+    "status": 200,
+    "url": "https://crossboundary.com/robots.txt"
+  },
+  "official_url": "https://crossboundary.com/our-vacancies/",
+  "records_found": 18,
+  "requests": [
+    {
+      "attempt": 1,
+      "duration_seconds": 0.088,
+      "error_type": null,
+      "host": "crossboundary.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T15:21:12.577512+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.068,
+      "error_type": null,
+      "host": "crossboundary.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T15:21:14.165126+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.084,
+      "error_type": null,
+      "host": "crossboundary.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T15:21:15.733266+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.02,
+      "error_type": null,
+      "host": "crossboundary.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T15:21:17.317078+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.073,
+      "error_type": null,
+      "host": "crossboundary.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T15:21:18.837188+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.517,
+      "error_type": null,
+      "host": "crossboundary.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T15:21:20.410449+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.492,
+      "error_type": null,
+      "host": "crossboundary.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T15:21:22.427675+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.506,
+      "error_type": null,
+      "host": "crossboundary.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T15:21:24.419330+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.496,
+      "error_type": null,
+      "host": "crossboundary.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T15:21:26.425212+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.498,
+      "error_type": null,
+      "host": "crossboundary.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T15:21:28.421131+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.503,
+      "error_type": null,
+      "host": "crossboundary.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T15:21:30.419514+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.498,
+      "error_type": null,
+      "host": "crossboundary.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T15:21:32.422631+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.503,
+      "error_type": null,
+      "host": "crossboundary.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T15:21:34.420451+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.505,
+      "error_type": null,
+      "host": "crossboundary.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T15:21:36.423533+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.505,
+      "error_type": null,
+      "host": "crossboundary.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T15:21:38.429146+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.495,
+      "error_type": null,
+      "host": "crossboundary.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T15:21:40.434151+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.502,
+      "error_type": null,
+      "host": "crossboundary.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T15:21:42.429422+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.495,
+      "error_type": null,
+      "host": "crossboundary.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T15:21:44.431858+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.502,
+      "error_type": null,
+      "host": "crossboundary.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T15:21:46.426592+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.501,
+      "error_type": null,
+      "host": "crossboundary.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T15:21:48.429129+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.494,
+      "error_type": null,
+      "host": "crossboundary.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T15:21:50.430010+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.507,
+      "error_type": null,
+      "host": "crossboundary.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T15:21:52.424011+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.513,
+      "error_type": null,
+      "host": "crossboundary.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T15:21:54.431534+00:00"
+    }
+  ],
+  "sample": [
+    {
+      "application_url": "https://crossboundary.applytojob.com/apply/0m0o8TAvr0/Plant-Supervisor",
+      "id": "0m0o8TAvr0",
+      "location": "Gwanda",
+      "published_at": "2026-08-31T00:00:00+00:00",
+      "title": "Plant Supervisor"
+    },
+    {
+      "application_url": "https://crossboundary.applytojob.com/apply/4Hj6hko3lg/Financial-Advisory-Intern-Bogota",
+      "id": "4Hj6hko3lg",
+      "location": "Bogota",
+      "published_at": "2026-09-07T00:00:00+00:00",
+      "title": "Financial Advisory Intern - Bogota"
+    },
+    {
+      "application_url": "https://crossboundary.applytojob.com/apply/H5AR9vjMfA/Analyst-Senegal",
+      "id": "H5AR9vjMfA",
+      "location": "Senegal",
+      "published_at": "2026-10-01T00:00:00+00:00",
+      "title": "Analyst - Senegal"
+    },
+    {
+      "application_url": "https://crossboundary.applytojob.com/apply/Ha2mIKdhAN/Associate-Principal-Senegal",
+      "id": "Ha2mIKdhAN",
+      "location": "Dakar",
+      "published_at": "2026-10-01T00:00:00+00:00",
+      "title": "Associate Principal - Senegal"
+    },
+    {
+      "application_url": "https://crossboundary.applytojob.com/apply/K2r7WGkQmC/Systems-And-Security-Engineer",
+      "id": "K2r7WGkQmC",
+      "location": "Mumbai",
+      "published_at": "2026-08-04T00:00:00+00:00",
+      "title": "Systems and Security Engineer"
+    }
+  ],
+  "source_id": "employer_4b5f0d16f35b56cb",
+  "status": "SUCCESS",
+  "structured_job_count": 0
+}

@@ -3248,7 +3248,7 @@ sources:
   import_urls:
   - https://watu.applytojob.com/apply
   platform: jazzhr
-  status: pending
+  status: verified
   employer_ids:
   - emp_b62851db272a19a3
   access_method: jsonld
@@ -3272,10 +3272,11 @@ sources:
     official_link: true
     stable_ids: true
     local_access: true
-    runner_access: false
+    runner_access: true
     collection_review: true
     evidence_paths:
     - docs/employer-discovery/jazzhr-local/employer_330116662c9692d6.json
+    - docs/employer-discovery/jazzhr-github/employer_330116662c9692d6.json
     collection_basis: Reviewed official employer linkage to the public JazzHR career
       board; per-path robots permit collection. Collect only factual vacancy title,
       employer, location, dates and original application URL; never descriptions,
@@ -4979,7 +4980,7 @@ sources:
   import_urls:
   - https://crossboundary.applytojob.com/apply
   platform: jazzhr
-  status: pending
+  status: verified
   employer_ids:
   - emp_eb492e9b9dfdaa1c
   access_method: jsonld
@@ -5003,10 +5004,11 @@ sources:
     official_link: true
     stable_ids: true
     local_access: true
-    runner_access: false
+    runner_access: true
     collection_review: true
     evidence_paths:
     - docs/employer-discovery/jazzhr-local/employer_4b5f0d16f35b56cb.json
+    - docs/employer-discovery/jazzhr-github/employer_4b5f0d16f35b56cb.json
     collection_basis: Reviewed official employer linkage to the public JazzHR career
       board; per-path robots permit collection. Collect only factual vacancy title,
       employer, location, dates and original application URL; never descriptions,
@@ -12155,7 +12157,7 @@ sources:
   import_urls:
   - https://branchinternational.applytojob.com/apply
   platform: jazzhr
-  status: pending
+  status: verified
   employer_ids:
   - emp_b7eefb3774e189ef
   - emp_679d70135293eb8c
@@ -12180,10 +12182,11 @@ sources:
     official_link: true
     stable_ids: true
     local_access: true
-    runner_access: false
+    runner_access: true
     collection_review: true
     evidence_paths:
     - docs/employer-discovery/jazzhr-local/employer_c193c4698b6e5e81.json
+    - docs/employer-discovery/jazzhr-github/employer_c193c4698b6e5e81.json
     collection_basis: Reviewed official employer linkage to the public JazzHR career
       board; per-path robots permit collection. Collect only factual vacancy title,
       employer, location, dates and original application URL; never descriptions,
