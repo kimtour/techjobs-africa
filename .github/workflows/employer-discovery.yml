@@ -1,20 +1,50 @@
-name: Screenshot employer source discovery
+name: Verify employer recruitment sources
 on:
   workflow_dispatch:
+    inputs:
+      mode:
+        description: Discovery or isolated trial (never publishes or writes accepted state)
+        type: choice
+        options: [discover, trial]
+        default: discover
+      source:
+        description: Optional single registry source ID; empty selects the pilot shortlist
+        type: string
+        default: ''
 permissions:
   contents: read
+concurrency:
+  group: employer-onboarding
+  cancel-in-progress: false
 jobs:
-  probe:
+  verify:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      - run: pip install httpx==0.28.1
-      - run: python -m ingest.employer_discovery --output employer-discovery.json
-      - uses: actions/upload-artifact@v4
+      - run: pip install -r requirements-dev.txt
+      - name: Read accepted export for trial comparison
+        if: inputs.mode == 'trial'
+        run: |
+          git fetch origin data --depth=1
+          git show FETCH_HEAD:public/jobs.json > /tmp/accepted-jobs.json
+      - name: Run bounded source checks
+        env:
+          ONBOARDING_MODE: ${{ inputs.mode }}
+          ONBOARDING_SOURCE: ${{ inputs.source }}
+        run: |
+          ARGS=()
+          if [ -n "$ONBOARDING_SOURCE" ]; then ARGS+=(--source "$ONBOARDING_SOURCE"); fi
+          if [ "$ONBOARDING_MODE" = trial ]; then ARGS+=(--accepted /tmp/accepted-jobs.json); fi
+          python -u -m ingest.employer_onboarding "$ONBOARDING_MODE" --output-dir /tmp/employer-onboarding "${ARGS[@]}"
+      - name: Upload metadata and isolated candidates
+        if: always()
+        uses: actions/upload-artifact@v4
         with:
-          name: screenshot-employer-discovery
-          path: employer-discovery.json
+          name: employer-${{ inputs.mode }}-${{ github.run_id }}
+          path: /tmp/employer-onboarding/
+          retention-days: 90
+          if-no-files-found: error

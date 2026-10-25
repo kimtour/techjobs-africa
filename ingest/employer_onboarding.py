@@ -1,0 +1,360 @@
+"""Bounded discovery and isolated employer trials; never promotes production state."""
+
+from __future__ import annotations
+
+import argparse
+import json
+import os
+from datetime import UTC, datetime, timedelta
+from html.parser import HTMLParser
+from pathlib import Path
+from urllib.parse import urljoin, urlsplit
+from urllib.robotparser import RobotFileParser
+
+import httpx
+
+from ingest.adapters.registry_boards import SUPPORTED, RegistryBoardAdapter, board_endpoint
+from ingest.audit import read_json
+from ingest.dedupe.exact import canonicalize_apply_url, deduplicate_exact
+from ingest.employer_registry import ROOT, platform_for, safe_url
+from ingest.export.static import build_public_files
+from ingest.fetch import ObservedClient
+from ingest.main import build_jobs
+from ingest.models import CanonicalJob
+from ingest.registry_sources import load_sources, verification_gaps
+
+
+class Links(HTMLParser):
+    def __init__(self):
+        super().__init__()
+        self.links = []
+
+    def handle_starttag(self, tag, attrs):
+        attrs = dict(attrs)
+        for key in ("href", "src"):
+            if key in attrs and tag in ("a", "iframe", "script"):
+                self.links.append(attrs[key])
+
+
+def write_json(path: Path, value):
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(value, ensure_ascii=False, indent=2, sort_keys=True) + "\n")
+
+
+def robots_allowed(client, url: str) -> dict:
+    parsed = urlsplit(url)
+    origin = f"{parsed.scheme}://{parsed.netloc}"
+    robots_url = origin + "/robots.txt"
+    for _ in range(4):
+        try:
+            response = client.get(robots_url)
+        except httpx.HTTPStatusError as exc:
+            response = exc.response
+            if response.status_code not in (301, 302, 303, 307, 308, 404):
+                raise
+        if response.status_code not in (301, 302, 303, 307, 308):
+            break
+        robots_url = urljoin(robots_url, response.headers.get("Location", ""))
+        if not safe_url(robots_url):
+            raise ValueError("Unsafe robots redirect")
+    else:
+        raise ValueError("Too many robots redirects")
+    # A genuine missing robots file has no disallow rules; transport/403/429 do.
+    if response.status_code == 404:
+        return {"status": 404, "allowed": True, "url": origin + "/robots.txt"}
+    response.raise_for_status()
+    parser = RobotFileParser()
+    parser.parse(response.text.splitlines())
+    return {
+        "status": response.status_code,
+        "allowed": parser.can_fetch("TechKaziBot/0.1", url),
+        "url": origin + "/robots.txt",
+    }
+
+
+def checked_get(client, url):
+    """Follow redirects after checking the destination's robots rules."""
+    for _ in range(4):
+        try:
+            return client.get(url)
+        except httpx.HTTPStatusError as exc:
+            response = exc.response
+            if response.status_code not in (301, 302, 303, 307, 308):
+                raise
+            url = urljoin(url, response.headers.get("Location", ""))
+            if not safe_url(url) or not robots_allowed(client, url)["allowed"]:
+                raise ValueError("Redirect destination disallows collection") from None
+    raise ValueError("Too many public redirects")
+
+
+def discover(source: dict, employers: dict, client=None, *, request_budget=8) -> dict:
+    """Collect metadata only. Discoverability never changes lifecycle or permission."""
+    result = {
+        "source_id": source["id"],
+        "checked_at": datetime.now(UTC).isoformat(),
+        "environment": "github" if os.environ.get("GITHUB_ACTIONS") else "local",
+        "status": "FAILED",
+        "checks": {},
+        "requests": [],
+    }
+    raw_client = client or httpx.Client(headers={"User-Agent": "TechKaziBot/0.1"})
+    policy = {**source["crawl"], "max_requests_per_run": request_budget, "retry_delays_seconds": []}
+    observed = ObservedClient(raw_client, policy)
+    try:
+        if source["platform"] == "social" or source["status"] in {"blocked", "retired", "manual"}:
+            result["status"] = "SKIPPED"
+            return result
+        official = source.get("official_careers_url")
+        if not official:
+            owner = employers[source["employer_ids"][0]]
+            official = owner.get("website")
+        if not safe_url(official):
+            raise ValueError("Missing official employer website")
+        result["official_url"] = official
+        rule = robots_allowed(observed, official)
+        result["official_robots"] = rule
+        if not rule["allowed"]:
+            result["status"] = "BLOCKED"
+            return result
+        response = checked_get(observed, official)
+        response.raise_for_status()
+        links = Links()
+        links.feed(response.text)
+        urls = [urljoin(str(response.url), link) for link in links.links]
+        detected = sorted(
+            {
+                url
+                for url in urls
+                if safe_url(url)
+                and platform_for(url) in SUPPORTED | {"smartrecruiters", "workable"}
+            }
+        )
+        # Keep only board discovery links, never page bodies, descriptions or forms.
+        result["detected_boards"] = detected[:15]
+        candidate = source.get("board_url") or source["url"]
+        board = urlsplit(candidate)
+        result["checks"]["official_link"] = any(
+            urlsplit(url).hostname == board.hostname
+            and urlsplit(url).path.rstrip("/").startswith(board.path.rstrip("/"))
+            for url in urls
+        )
+        if source["platform"] in SUPPORTED and source.get("board"):
+            endpoint = board_endpoint(source)
+            result["endpoint"] = endpoint
+            try:
+                result["board_robots"] = robots_allowed(observed, endpoint)
+            except httpx.HTTPStatusError as exc:
+                # Ashby's /robots.txt is an authenticated, non-posting route. An
+                # explicitly reviewed public API may still be checked once; a
+                # block on the posting endpoint itself is never bypassed/retried.
+                if (
+                    source["platform"] == "ashby"
+                    and exc.response.status_code == 401
+                    and source.get("robots_unavailable_basis")
+                    == "https://developers.ashbyhq.com/docs/public-job-posting-api"
+                ):
+                    result["board_robots"] = {
+                        "status": 401,
+                        "allowed": None,
+                        "basis": source["robots_unavailable_basis"],
+                    }
+                else:
+                    raise
+            if result["board_robots"]["allowed"] is False:
+                result["status"] = "BLOCKED"
+                return result
+            adapter = RegistryBoardAdapter(source, employers, observed)
+            records = adapter.fetch()
+            result["records_found"] = len(records)
+            result["checks"].update(
+                {
+                    "stable_ids": all(r.external_id for r in records),
+                    "application_links": all(safe_url(str(r.apply_url)) for r in records),
+                    "locations": any(r.location for r in records),
+                    "dates_reviewed": True,
+                    "complete": adapter.crawl_complete,
+                }
+            )
+            result["sample"] = [
+                {
+                    "id": r.external_id,
+                    "title": r.title,
+                    "location": r.location,
+                    "application_url": str(r.apply_url),
+                    "published_at": r.published_at.isoformat() if r.published_at else None,
+                }
+                for r in records[:5]
+            ]
+            result["status"] = "SUCCESS" if adapter.crawl_complete else "PARTIAL"
+        else:
+            result["status"] = "DISCOVERED"
+    except Exception as exc:
+        result["error_type"] = type(exc).__name__
+        code = getattr(getattr(exc, "response", None), "status_code", None)
+        if code in (401, 403, 429):
+            result["status"] = "BLOCKED"
+        result["http_status"] = code
+    finally:
+        result["requests"] = observed.events
+        if client is None:
+            raw_client.close()
+    return result
+
+
+def trial(
+    sources: list[dict],
+    employers: dict,
+    output_dir: Path,
+    *,
+    accepted: Path | None = None,
+    factory=RegistryBoardAdapter,
+) -> dict:
+    """Always start an empty candidate; accepted input is read only for comparisons."""
+    if output_dir.exists() and any(output_dir.iterdir()):
+        raise ValueError("Trial output must be new or empty")
+    baseline = (
+        [CanonicalJob.model_validate(j) for j in read_json(accepted, {"jobs": []})["jobs"]]
+        if accepted
+        else []
+    )
+    baseline_urls = {canonicalize_apply_url(str(j.preferred_apply_url)) for j in baseline}
+    report = {
+        "schema_version": 1,
+        "mode": "trial",
+        "production_promoted": False,
+        "checked_at": datetime.now(UTC).isoformat(),
+        "baseline_supplied": accepted is not None,
+        "sources": [],
+    }
+    jobs = []
+    for source in sources:
+        gaps = verification_gaps(source)
+        row = {"source_id": source["id"], "verification_gaps": gaps}
+        if gaps or source["status"] not in {"verified", "trial"}:
+            row["status"] = "NOT_VERIFIED"
+            report["sources"].append(row)
+            continue
+        adapter = factory(source, employers)
+        observer = ObservedClient(adapter._client, source["crawl"])
+        adapter._client = observer
+        try:
+            raw = adapter.fetch()
+            rejected = []
+            parsed = build_jobs(raw, rejections=rejected)
+            accepted_jobs = [j for j in parsed if j.eligibility_level in {"CONFIRMED", "LIKELY"}]
+            row.update(
+                {
+                    "status": "SUCCESS" if adapter.crawl_complete else "PARTIAL",
+                    "raw_jobs": len(raw),
+                    "technical_jobs": len(parsed),
+                    "eligible_jobs": len(accepted_jobs),
+                    "filtered_jobs": rejected,
+                    "eligibility_review": [
+                        {"job_id": j.job_id, "level": j.eligibility_level}
+                        for j in parsed
+                        if j not in accepted_jobs
+                    ],
+                    "complete": adapter.crawl_complete,
+                    "duplicates_in_accepted": sum(
+                        canonicalize_apply_url(str(j.preferred_apply_url)) in baseline_urls
+                        for j in accepted_jobs
+                    ),
+                }
+            )
+            if adapter.crawl_complete:
+                jobs.extend(
+                    j.model_copy(update={"last_checked_at": datetime.now(UTC)})
+                    for j in accepted_jobs
+                )
+        except Exception as exc:
+            row.update({"status": "FAILED", "error_type": type(exc).__name__})
+        finally:
+            row["requests"] = observer.events
+            observer.client.close()
+        report["sources"].append(row)
+    jobs = deduplicate_exact(jobs)
+    report["candidate_jobs"] = len(jobs)
+    report["additional_unique_jobs"] = (
+        sum(canonicalize_apply_url(str(j.preferred_apply_url)) not in baseline_urls for j in jobs)
+        if accepted
+        else None
+    )
+    for name, payload in build_public_files(jobs).items():
+        write_json(output_dir / "candidate" / name, payload)
+    write_json(output_dir / "audit.json", report)
+    lines = [
+        "# Employer trial",
+        "",
+        "Production state was not modified.",
+        "",
+        "| Source | Status | Raw | Technical | Eligible |",
+        "|---|---|---|---|---|",
+    ]
+    for row in report["sources"]:
+        lines.append(
+            f"| {row['source_id']} | {row['status']} | {row.get('raw_jobs', '—')} | "
+            f"{row.get('technical_jobs', '—')} | {row.get('eligible_jobs', '—')} |"
+        )
+    lines += [
+        "",
+        f"Candidate jobs: {len(jobs)}.",
+        f"Additional unique jobs: {report['additional_unique_jobs']} (null = no baseline).",
+    ]
+    (output_dir / "report.md").write_text("\n".join(lines) + "\n")
+    return report
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("mode", choices=["discover", "trial"])
+    parser.add_argument("--config-dir", type=Path, default=ROOT / "config")
+    parser.add_argument("--output-dir", type=Path, required=True)
+    parser.add_argument("--source", action="append", default=[])
+    parser.add_argument("--accepted", type=Path)
+    parser.add_argument("--due", action="store_true")
+    args = parser.parse_args()
+    employers, registry = load_sources(args.config_dir)
+    sources = (
+        [registry[sid] for sid in args.source]
+        if args.source
+        else sorted(
+            [s for s in registry.values() if s.get("pilot_rank")], key=lambda s: s["pilot_rank"]
+        )
+    )
+    if args.mode == "trial":
+        report = trial(sources, employers, args.output_dir, accepted=args.accepted)
+        print(
+            json.dumps(
+                {
+                    "candidate_jobs": report["candidate_jobs"],
+                    "statuses": {r["source_id"]: r["status"] for r in report["sources"]},
+                }
+            )
+        )
+    else:
+        count = 0
+        for source in sources:
+            path = args.output_dir / f"{source['id']}.json"
+            old = read_json(path, {})
+            if args.due:
+                if old.get("status") == "BLOCKED":
+                    continue  # A deliberate block needs review, not weekly retries.
+                last = old.get("checked_at")
+                if last and datetime.now(UTC) < datetime.fromisoformat(last) + timedelta(
+                    hours=source.get("discovery_refresh_hours", 168)
+                ):
+                    continue
+                if count >= 2:
+                    break  # At most 16 discovery HTTP requests per pipeline slot.
+            result = discover(
+                source,
+                employers,
+                request_budget=8 if args.due else source["crawl"]["max_requests_per_run"],
+            )
+            write_json(path, result)
+            print(json.dumps({"source_id": source["id"], "status": result["status"]}))
+            count += 1
+
+
+if __name__ == "__main__":
+    main()

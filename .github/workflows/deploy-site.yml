@@ -27,6 +27,13 @@ jobs:
           node-version: "22"
           cache: npm
           cache-dependency-path: site/package-lock.json
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Build current employer directory export
+        run: |
+          pip install -r requirements-dev.txt
+          python -m ingest.employer_registry
       - name: Validate and build
         run: |
           npm ci --prefix site

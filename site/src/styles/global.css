@@ -8,6 +8,13 @@ h1, h2, h3, h4, p { margin-top: 0; }
 h1 { font-size: clamp(2rem, 4vw, 3rem); letter-spacing: -.04em; line-height: 1.05; margin-bottom: .7rem; }
 .lede, .results-heading p, .company, .meta, .posted, .source, .empty, .source-heading p { color: #666; }
 .lede { font-size: 1rem; margin-bottom: 0; }
+.page-links { margin-top: 1rem; font-size: .9rem; }
+.page-links a, .directory-links a { color: #1264a3; text-underline-offset: 3px; }
+.directory-list { list-style: none; padding: 0; }
+.directory-card { padding: 1.1rem 0; border-bottom: 1px solid #ddd; overflow-wrap: anywhere; }
+.directory-card h2 { font-size: 1.05rem; margin-bottom: .35rem; }
+.directory-links { display: grid; gap: .4rem; font-size: .9rem; }
+@media (max-width: 760px) { .filters label, .filters input, .filters select { min-width: 0; max-width: 100%; } .filters label { flex: 1 1 200px; } }
 .results { padding-top: 1.5rem; }
 .results-heading { align-items: baseline; display: flex; gap: 1rem; justify-content: space-between; }
 .results-heading h2 { font-size: 1.4rem; margin-bottom: 0; }

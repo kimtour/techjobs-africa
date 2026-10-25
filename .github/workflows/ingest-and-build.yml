@@ -93,6 +93,10 @@ jobs:
             python -u -m ingest.main --output-dir "$CANDIDATE_DIR" "${REFRESH_ARGS[@]}"
           fi
 
+      - name: Discover due shortlisted employer sources
+        if: steps.claim.outputs.proceed == 'true'
+        run: python -u -m ingest.employer_onboarding discover --due --output-dir "$CANDIDATE_DIR/state/employer-discovery"
+
       - name: Set up Node
         if: steps.fetch.outputs.publishable == 'true' && steps.fetch.outputs.public_changed == 'true'
         uses: actions/setup-node@v4
@@ -105,6 +109,7 @@ jobs:
         if: steps.fetch.outputs.publishable == 'true' && steps.fetch.outputs.public_changed == 'true'
         run: |
           cp "$CANDIDATE_DIR/public/jobs.json" site/src/data/jobs.json
+          python -m ingest.employer_registry
           npm ci --prefix site
           npm test --prefix site
           npm run check --prefix site
@@ -173,6 +178,7 @@ jobs:
             /tmp/techjobs-africa-candidate/state/publication-history/
             /tmp/techjobs-africa-candidate/state/request-history/
             /tmp/techjobs-africa-candidate/state/classification/
+            /tmp/techjobs-africa-candidate/state/employer-discovery/
           retention-days: 90
           if-no-files-found: warn
 

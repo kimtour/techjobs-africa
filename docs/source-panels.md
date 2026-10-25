@@ -18,6 +18,13 @@ roles found on BrighterMonday's Engineering & Technology and Software & Data pag
 
 ## Implementation contract
 
+- Employer onboarding adds `/employers/` as a separate careers-link directory.
+  Registry-backed jobs enter All Jobs without creating additional source panels.
+  Direct-employer, employer and sector controls are global filters: like search
+  and category, they reset pagination/scroll while retaining each panel's period.
+  Employer and sector controls appear only when accepted job metadata supplies
+  them. Directory entries never count as jobs. Existing source order is retained.
+
 - Feed order chosen on 11 October 2026: All Jobs, MyJobMag, Corporate Staffing,
   Other/Google/Linkedin, Fuzu, OpenedCareer, BrighterMonday, Elevolt, TalentSafari.
   Desktop reads left to right across the two columns; mobile uses this sequence

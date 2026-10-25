@@ -10,14 +10,19 @@ import {
   sourceOrder,
   newestFirst,
   combinedSources,
+  isDirectJob,
+  checkedDateLabel,
 } from "../lib/jobs";
+import { employers, employerSources } from "../lib/employers";
 
 const visibleJobs = jobs.filter((job) => job.eligibility_level !== "RESTRICTED");
 const categories = [...new Set(visibleJobs.map((job) => job.category).filter(Boolean))].sort();
+const listedEmployers = employers.filter(e => visibleJobs.some(j => j.employer_id === e.id));
+const sectors = [...new Set(visibleJobs.flatMap(j => j.employer_sectors ?? []))].sort();
 const orderedSources = [
   ...sourceOrder,
   ...[...new Set(visibleJobs.flatMap((job) => job.sources))].filter(
-    (sourceId) => !combinedSources.includes(sourceId) && !sourceOrder.includes(sourceId),
+    (sourceId) => !employerSources.has(sourceId) && !combinedSources.includes(sourceId) && !sourceOrder.includes(sourceId),
   ),
 ];
 const sourceGroups = orderedSources
@@ -36,6 +41,7 @@ feedGroups.forEach((group, index) => sourceColumns[index % sourceColumns.length]
     <p class="eyebrow">TechKazi</p>
     <h1>Technical jobs for African candidates.</h1>
     <p class="lede">Tech jobs in Kenya and remote opportunities across Africa. Apply on the original site.</p>
+    <nav class="page-links" aria-label="Browse"><a href="/employers/">Browse employer careers websites →</a></nav>
   </section>
 
   <section class="results" aria-labelledby="jobs-heading">
@@ -51,6 +57,27 @@ feedGroups.forEach((group, index) => sourceColumns[index % sourceColumns.length]
               <span>Search</span>
               <input id="job-search" name="search" placeholder="QA, Product, Python…" type="search" />
             </label>
+            <label>
+              <span>Listings</span>
+              <select id="direct-filter" name="direct">
+                <option value="">All listings</option>
+                <option value="direct">Direct employers</option>
+              </select>
+            </label>
+            {listedEmployers.length > 0 && <label>
+              <span>Employer</span>
+              <select id="employer-filter" name="employer">
+                <option value="">All employers</option>
+                {listedEmployers.map(e => <option value={e.id}>{e.name}</option>)}
+              </select>
+            </label>}
+            {sectors.length > 0 && <label>
+              <span>Sector</span>
+              <select id="sector-filter" name="sector">
+                <option value="">All sectors</option>
+                {sectors.map(s => <option value={s}>{s}</option>)}
+              </select>
+            </label>}
             <label>
               <span>Category</span>
               <select id="category-filter" name="category">
@@ -94,6 +121,9 @@ feedGroups.forEach((group, index) => sourceColumns[index % sourceColumns.length]
                       data-job-id={job.job_id}
                       data-index={index}
                       data-category={job.category ?? ""}
+                      data-direct={String(isDirectJob(job))}
+                      data-employer={job.employer_id ?? ""}
+                      data-sectors={JSON.stringify(job.employer_sectors ?? [])}
                       data-published={job.published_at || job.published_date || ""}
                       data-search={[job.title, companyLabel(job), locationLabel(job), job.category]
                         .filter(Boolean)
@@ -109,10 +139,13 @@ feedGroups.forEach((group, index) => sourceColumns[index % sourceColumns.length]
                         </h4>
                         <p class="company">{companyLabel(job)}</p>
                         <p class="meta">{locationLabel(job)}</p>
+                        {(job.employment_type || job.opportunity_type) && <p class="meta">{[job.opportunity_type, job.employment_type].filter(Boolean).join(" · ")}</p>}
                         {job.eligibility_level === "VERIFY" && <p class="meta">Confirm eligible countries with employer</p>}
                         <p class="posted">
                           Posted: {(job.published_at || job.published_date) ? <time datetime={job.published_at || job.published_date}>{postedLabel(job)}</time> : postedLabel(job)}
                         </p>
+                        {job.deadline_at && <p class="posted">Closes: <time datetime={job.deadline_at}>{checkedDateLabel(job.deadline_at)}</time></p>}
+                        {job.last_checked_at && <p class="posted">Last checked: <time datetime={job.last_checked_at}>{checkedDateLabel(job.last_checked_at)}</time></p>}
                         {(group.sourceId === "all" || group.sourceId === "linkedin" || job.sources.length > 1) && <p class="source">{(group.sourceId === "all" || group.sourceId === "linkedin") ? "Source: " : "Also listed by: "}{sourceLabels(job)}</p>}
                       </div>
                     </li>
