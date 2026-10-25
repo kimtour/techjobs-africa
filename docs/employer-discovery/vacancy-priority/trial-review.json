@@ -1,0 +1,135 @@
+{
+  "additional_unique_jobs": 10,
+  "baseline_supplied": true,
+  "candidate_jobs": 10,
+  "checked_at": "2026-10-25T19:17:57.001001+00:00",
+  "mode": "trial",
+  "outcome": "SUCCESS",
+  "production_promoted": false,
+  "schema_version": 1,
+  "sources": [
+    {
+      "complete": true,
+      "duplicates_in_accepted": 0,
+      "eligible_jobs": 7,
+      "raw_jobs": 33,
+      "source_id": "employer_1a36185bfa8761a4",
+      "status": "SUCCESS",
+      "technical_jobs": 7,
+      "verification_gaps": []
+    },
+    {
+      "complete": true,
+      "duplicates_in_accepted": 0,
+      "eligible_jobs": 1,
+      "raw_jobs": 62,
+      "source_id": "employer_1958e161d051541c",
+      "status": "SUCCESS",
+      "technical_jobs": 2,
+      "verification_gaps": []
+    },
+    {
+      "complete": true,
+      "duplicates_in_accepted": 0,
+      "eligible_jobs": 2,
+      "raw_jobs": 452,
+      "source_id": "employer_a76af863ab305a57",
+      "status": "SUCCESS",
+      "technical_jobs": 2,
+      "verification_gaps": []
+    }
+  ],
+  "reviewed_jobs": [
+    {
+      "job_id": "employer_1a36185bfa8761a4:R-15992192",
+      "title": "Head Salesforce Solution & Org Architect",
+      "posting_company": "Absa Group",
+      "country": "South Africa",
+      "preferred_apply_url": "https://absa.wd3.myworkdayjobs.com/ABSAcareersite/job/Sandton/Head-Salesforce-Solution---Org-Architect_R-15992192",
+      "published_at": "2026-10-23T00:00:00Z",
+      "deadline_at": "2026-10-28T00:00:00Z"
+    },
+    {
+      "job_id": "employer_a76af863ab305a57:JR-83347",
+      "title": "Junior Data Engineer",
+      "posting_company": "Old Mutual Group",
+      "country": "South Africa",
+      "preferred_apply_url": "https://oldmutual.wd3.myworkdayjobs.com/Old_Mutual_Careers/job/Pinelands/Junior-Data-Engineer_JR-83347",
+      "published_at": "2026-10-22T00:00:00Z",
+      "deadline_at": "2026-10-30T00:00:00Z"
+    },
+    {
+      "job_id": "employer_1a36185bfa8761a4:R-15985004",
+      "title": "Senior Specialist: Data Insights and Intelligence MI/BI",
+      "posting_company": "Absa Group",
+      "country": "South Africa",
+      "preferred_apply_url": "https://absa.wd3.myworkdayjobs.com/ABSAcareersite/job/Johannesburg/Analyst-Information-SBUs_R-15985004-2",
+      "published_at": "2026-10-21T00:00:00Z",
+      "deadline_at": "2026-10-30T00:00:00Z"
+    },
+    {
+      "job_id": "employer_1a36185bfa8761a4:R-15992111",
+      "title": "Product Manager - Assets",
+      "posting_company": "Absa Group",
+      "country": "Uganda",
+      "preferred_apply_url": "https://absa.wd3.myworkdayjobs.com/ABSAcareersite/job/Kampala/Product-Manager---Assets_R-15992111",
+      "published_at": "2026-10-20T00:00:00Z",
+      "deadline_at": "2026-10-26T00:00:00Z"
+    },
+    {
+      "job_id": "employer_1a36185bfa8761a4:R-15992128",
+      "title": "Senior Product Manager",
+      "posting_company": "Absa Group",
+      "country": "South Africa",
+      "preferred_apply_url": "https://absa.wd3.myworkdayjobs.com/ABSAcareersite/job/Johannesburg/Senior-Product-Manager_R-15992128-1",
+      "published_at": "2026-10-19T00:00:00Z",
+      "deadline_at": "2026-10-26T00:00:00Z"
+    },
+    {
+      "job_id": "employer_1a36185bfa8761a4:R-15992127",
+      "title": "Senior Product Manager",
+      "posting_company": "Absa Group",
+      "country": "South Africa",
+      "preferred_apply_url": "https://absa.wd3.myworkdayjobs.com/ABSAcareersite/job/Johannesburg/Senior-Product-Manager_R-15992127",
+      "published_at": "2026-10-19T00:00:00Z",
+      "deadline_at": "2026-10-26T00:00:00Z"
+    },
+    {
+      "job_id": "employer_1a36185bfa8761a4:R-15991900",
+      "title": "Lead Solutions Architect",
+      "posting_company": "Absa Group",
+      "country": "South Africa",
+      "preferred_apply_url": "https://absa.wd3.myworkdayjobs.com/ABSAcareersite/job/Absa-270-Republic-Road/Lead-Solutions-Architect_R-15991900-1",
+      "published_at": "2026-10-19T00:00:00Z",
+      "deadline_at": "2026-10-26T00:00:00Z"
+    },
+    {
+      "job_id": "employer_1a36185bfa8761a4:R-15991794",
+      "title": "Digital Design Specialist",
+      "posting_company": "Absa Group",
+      "country": "South Africa",
+      "preferred_apply_url": "https://absa.wd3.myworkdayjobs.com/ABSAcareersite/job/Sandton/Digital-Design-Specialist_R-15991794-1",
+      "published_at": "2026-10-19T00:00:00Z",
+      "deadline_at": "2026-10-26T00:00:00Z"
+    },
+    {
+      "job_id": "employer_a76af863ab305a57:JR-84487",
+      "title": "Credit Data Governance Lead",
+      "posting_company": "Old Mutual Group",
+      "country": "South Africa",
+      "preferred_apply_url": "https://oldmutual.wd3.myworkdayjobs.com/Old_Mutual_Careers/job/Pinelands/Credit-Data-Governance-Lead_JR-84487",
+      "published_at": "2026-10-13T00:00:00Z",
+      "deadline_at": "2026-10-27T00:00:00Z"
+    },
+    {
+      "job_id": "employer_1958e161d051541c:20449",
+      "title": "ICT Technical Assistant Uganda Isingiro",
+      "posting_company": "Norwegian Refugee Council (NRC)",
+      "country": "Uganda",
+      "preferred_apply_url": "https://ekum.fa.em2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_2019/job/20449",
+      "published_at": "2026-03-17T00:00:00Z",
+      "deadline_at": null
+    }
+  ],
+  "run_url": "https://github.com/kimtour/techjobs-africa/actions/runs/40225342690"
+}

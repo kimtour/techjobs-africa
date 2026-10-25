@@ -1,8 +1,8 @@
 # Vacancy-first expansion — 25 October 2026
 
-This is a prioritisation scan, not activation or publication approval. No production state, health history or expiry counters were changed by the scan. Descriptions were processed in memory only.
+The initial scan is prioritisation evidence. The three boards recorded below subsequently passed verification and isolated trial review. No production state, health history or expiry counters were changed by the scan. Descriptions were processed in memory only.
 
-The earlier assessment visited 451 recruitment pages; it did not establish daily vacancy collection. This follow-up fetched actual vacancy inventories from 34 configured portals, representing 37 linked employer records. Shared Absa portals were checked once; known permission-restricted NALA and IMPACT pages were excluded. KCB was excluded because it was already published. Large or incomplete boards remain partial.
+The earlier assessment visited 451 recruitment pages; it did not establish daily vacancy collection. This follow-up fetched actual vacancy inventories from 34 configured portals, representing 37 linked employer records. Shared Absa portals were checked once; known permission-restricted NALA and IMPACT pages were excluded. KCB was excluded because it was already published. Large or incomplete boards remain partial unless a later full crawl is recorded below. The initial scan completed 23 boards, with six partial and five failed; Old Mutual subsequently completed a larger crawl.
 
 The original classifier admitted unrelated NGO project managers and a regulatory role merely mentioning fintech. Those false positives are excluded below; the established generic product-manager policy is retained.
 
@@ -70,3 +70,15 @@ The original classifier admitted unrelated NGO project managers and a regulatory
 | Norwegian Refugee Council (NRC) | ICT Technical Assistant Uganda Isingiro | Uganda | [Apply](https://ekum.fa.em2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_2019/job/20449) |
 | Pesapal | IT Support Officer | Uganda | [Apply](https://pesapal.careers-page.com/jobs/e6dbecb7-649a-4639-8234-efa3844f3f34) |
 | Unilever Kenya | Global Data Engineer | Egypt | [Apply](https://unilever.wd3.myworkdayjobs.com/Unilever_Experienced_Professionals/job/6th-of-October-Egypt/Global-Data-Engineer_R-1189944) |
+
+## First publishing batch
+
+Hosted trial https://github.com/kimtour/techjobs-africa/actions/runs/40225342690 completed successfully against the private accepted baseline. All three boards passed; ten eligible jobs have distinct application URLs absent from that baseline. This does not imply semantic deduplication against aggregator adverts with unrelated URLs.
+
+| Board | Eligible jobs approved | Locations |
+|---|---:|---|
+| Absa Group | 7 | South Africa, Uganda |
+| Old Mutual Group | 2 | South Africa |
+| Norwegian Refugee Council | 1 | Uganda |
+
+The group-wide boards retain group labels; employer records are not merged. All three are approved for daily collection with reviewed first-snapshot publication and absence expiry disabled. Full candidate metadata and checks are in [the trial review](employer-discovery/vacancy-priority/trial-review.json). Production deployment must still succeed before these are counted as live jobs.

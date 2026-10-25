@@ -1613,7 +1613,7 @@ sources:
   import_urls:
   - https://www.nrc.no/careers
   platform: oracle
-  status: verified
+  status: active
   employer_ids:
   - emp_1b78eb6a44295461
   access_method: oracle
@@ -1643,6 +1643,7 @@ sources:
     - docs/employer-discovery/vacancy-priority/local/employer_1958e161d051541c.json
     - docs/employer-discovery/vacancy-priority/review.md
     - docs/employer-discovery/vacancy-priority/hosted/employer_1958e161d051541c.json
+    - docs/employer-discovery/vacancy-priority/trial-review.json
     collection_basis: The official employer careers page links its public recruitment
       board. Accessible careers-linked policies were reviewed; no automated-access
       prohibition on the public vacancy interface was identified. Collection is limited
@@ -1650,6 +1651,8 @@ sources:
       link, with attribution. Descriptions, logos and applicant data are not retained.
       This is not a claim of a redistribution licence.
     collection_review_url: https://www.nrc.no/privacy-policy
+    trial_review: true
+    publication_review: true
   suggestions:
     platform: custom
     needs_location_filter: true
@@ -1662,8 +1665,10 @@ sources:
   posting_company: Norwegian Refugee Council (NRC)
   group_portal: true
   official_careers_url: https://www.nrc.no/careers
-  review_reason: Local and hosted M0 checks passed. Isolated trial and publication
-    review required before activation.
+  review_reason: 'Hosted isolated trial passed: 1 reviewed eligible jobs, no accepted
+    application-URL duplicates. Daily collection approved; reviewed first snapshot
+    may publish. Absence expiry remains disabled.'
+  reviewed_bootstrap: true
 - id: employer_1a047fd979fcdf88
   url: https://ampersand-energy.breezy.hr/
   import_urls:
@@ -1721,7 +1726,7 @@ sources:
   import_urls:
   - https://absa.wd3.myworkdayjobs.com/ABSAcareersite?locationCountry=9e684fd7be1e469d9ee955a4c3b754be
   platform: workday
-  status: verified
+  status: active
   employer_ids:
   - emp_5444066ed894ac2c
   access_method: workday
@@ -1751,6 +1756,7 @@ sources:
     - docs/employer-discovery/vacancy-priority/local/employer_1a36185bfa8761a4.json
     - docs/employer-discovery/vacancy-priority/review.md
     - docs/employer-discovery/vacancy-priority/hosted/employer_1a36185bfa8761a4.json
+    - docs/employer-discovery/vacancy-priority/trial-review.json
     collection_basis: The official employer careers page links its public recruitment
       board. Accessible careers-linked policies were reviewed; no automated-access
       prohibition on the public vacancy interface was identified. Collection is limited
@@ -1758,6 +1764,8 @@ sources:
       link, with attribution. Descriptions, logos and applicant data are not retained.
       This is not a claim of a redistribution licence.
     collection_review_url: https://www.absa.africa/legal/terms-of-use
+    trial_review: true
+    publication_review: true
   suggestions:
     platform: workday
     needs_location_filter: true
@@ -1770,8 +1778,10 @@ sources:
   posting_company: Absa Group
   group_portal: true
   official_careers_url: https://www.absa.africa/careers/
-  review_reason: Local and hosted M0 checks passed. Isolated trial and publication
-    review required before activation.
+  review_reason: 'Hosted isolated trial passed: 7 reviewed eligible jobs, no accepted
+    application-URL duplicates. Daily collection approved; reviewed first snapshot
+    may publish. Absence expiry remains disabled.'
+  reviewed_bootstrap: true
 - id: employer_1a46b912119f5c69
   url: https://jobs.citi.com/search-jobs/Kenya/287/2/192950/1/38/50/2
   import_urls:
@@ -10933,7 +10943,7 @@ sources:
   import_urls:
   - https://oldmutual.wd3.myworkdayjobs.com/Old_Mutual_Careers
   platform: workday
-  status: verified
+  status: active
   employer_ids:
   - emp_e3fa7e720c40fe4b
   - emp_8bd8c4545172bfad
@@ -10964,6 +10974,7 @@ sources:
     - docs/employer-discovery/vacancy-priority/local/employer_a76af863ab305a57.json
     - docs/employer-discovery/vacancy-priority/review.md
     - docs/employer-discovery/vacancy-priority/hosted/employer_a76af863ab305a57.json
+    - docs/employer-discovery/vacancy-priority/trial-review.json
     collection_basis: The official Old Mutual corporate careers URL redirects to this
       exact public Workday board. The public careers site and linked privacy notice
       were reviewed; no automated-access prohibition for public vacancy metadata was
@@ -10972,6 +10983,8 @@ sources:
       candidate data or account access. No redistribution licence is claimed. Full
       search pagination and relevant vacancy details completed locally.
     collection_review_url: https://www.oldmutual.co.za/privacy-notice/
+    trial_review: true
+    publication_review: true
   suggestions:
     platform: workday
     needs_location_filter: true
@@ -10984,9 +10997,10 @@ sources:
   posting_company: Old Mutual Group
   group_portal: true
   official_careers_url: https://www.oldmutual.com/careers/
-  review_reason: Official employer-to-board linkage verified locally; independent
-    hosted ATS access and complete crawl passed. Isolated trial and publication review
-    required.
+  review_reason: 'Hosted isolated trial passed: 2 reviewed eligible jobs, no accepted
+    application-URL duplicates. Daily collection approved; reviewed first snapshot
+    may publish. Absence expiry remains disabled.'
+  reviewed_bootstrap: true
 - id: employer_a76dd8e486c6387f
   url: https://www.odpc.go.ke/careers/
   import_urls:
