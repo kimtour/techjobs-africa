@@ -23,7 +23,10 @@ from ingest.registry_sources import load_sources, verification_gaps
 
 
 class AccessBlocked(RuntimeError):
-    pass
+    def __init__(self, reason, status=None):
+        super().__init__(reason)
+        self.reason = reason
+        self.status = status
 
 
 class ProbeLimit(RuntimeError):
@@ -33,11 +36,11 @@ class ProbeLimit(RuntimeError):
 def public_target(url: str) -> None:
     """Do not follow workbook links or redirects into local/private services."""
     if not safe_url(url) or platform_for(url) == "social":
-        raise AccessBlocked("Unsupported target")
+        raise AccessBlocked("unsupported_or_social_target")
     host = urlsplit(url).hostname
     addresses = socket.getaddrinfo(host, urlsplit(url).port or 443, type=socket.SOCK_STREAM)
     if not addresses or any(not ipaddress.ip_address(a[4][0]).is_global for a in addresses):
-        raise AccessBlocked("Non-public target")
+        raise AccessBlocked("non_public_target")
 
 
 class ProbeHTTP:
@@ -78,7 +81,7 @@ class ProbeHTTP:
         host = urlsplit(url).hostname
         with self._lock(self.host_locks, host):
             if host in self.blocked_hosts:
-                raise AccessBlocked("Host blocked earlier in this probe")
+                raise AccessBlocked("host_blocked_earlier")
             delay = self.host_delays.get(host, self.interval)
             wait = delay - (time.monotonic() - self.last_request.get(host, 0))
             if wait > 0:
@@ -96,7 +99,7 @@ class ProbeHTTP:
                 }
                 if response.status_code in (401, 403, 429):
                     self.blocked_hosts.add(host)
-                    raise AccessBlocked("Access limit")
+                    raise AccessBlocked("http_access_limit", response.status_code)
                 if "application/pdf" in response.headers.get("content-type", "").lower():
                     return httpx.Response(
                         response.status_code,
@@ -132,11 +135,11 @@ class ProbeHTTP:
                 self.robots[origin] = parser
             parser = self.robots[origin]
         if not parser.can_fetch("TechKaziBot/0.1", url):
-            raise AccessBlocked("Robots disallow")
+            raise AccessBlocked("robots_disallow")
         # Honour a published Crawl-delay where it exceeds the default host gap.
         delay = parser.crawl_delay("TechKaziBot/0.1") or parser.crawl_delay("*")
         if delay and delay > 60:
-            raise AccessBlocked("Published crawl delay exceeds this probe's budget")
+            raise AccessBlocked("crawl_delay_exceeds_probe_budget")
         host = parsed.hostname
         with self.guard:
             self.host_delays[host] = max(self.host_delays.get(host, self.interval), delay or 0)
@@ -225,7 +228,11 @@ def probe_source(source, http) -> dict:
         "collection_verified": False,
     }
     if source["status"] in {"manual", "blocked", "retired"} or source["platform"] == "social":
-        result.update(status="SKIPPED", method_suggestion="manual_or_blocked")
+        result.update(
+            status="SKIPPED",
+            method_suggestion="manual_or_blocked",
+            access_limit=source["status"] if source["platform"] != "social" else "social",
+        )
         return result
     try:
         response = http.fetch(source["url"])
@@ -245,8 +252,13 @@ def probe_source(source, http) -> dict:
                 detail.raise_for_status()
                 result.update(inspect_page(detail))
         result["status"] = "DISCOVERED"
-    except AccessBlocked:
-        result.update(status="BLOCKED", method_suggestion="manual_or_blocked")
+    except AccessBlocked as exc:
+        result.update(
+            status="BLOCKED",
+            method_suggestion="manual_or_blocked",
+            access_limit=exc.reason,
+            http_status=exc.status,
+        )
     except ProbeLimit as exc:
         result.update(status="PARTIAL", error_type=type(exc).__name__)
     except Exception as exc:
@@ -287,7 +299,8 @@ def coverage(employers, sources, results):
         "production_promoted": False,
         "employers": len(rows),
         "recruitment_sources": len(sources),
-        "sources_probed": len(results),
+        "sources_assessed": len(results),
+        "sources_probed": sum(r["status"] != "SKIPPED" for r in results.values()),
         "daily_collection_configured": sum(r["daily_collection_configured"] for r in rows),
         "source_outcomes": dict(Counter(r["status"] for r in results.values())),
         "method_suggestions": dict(Counter(r["method_suggestion"] for r in results.values())),
@@ -353,7 +366,8 @@ def main():
             + "".join(f"| {k} | {v} |\n" for k, v in sorted(report["source_outcomes"].items()))
             + "\n| Suggested method | Sources |\n|---|---:|\n"
             + "".join(f"| {k} | {v} |\n" for k, v in sorted(report["method_suggestions"].items()))
-            + f"\nRequests: {http.requests}. Elapsed: {report['duration_seconds']} seconds.\n\n"
+            + f"\nRequests this invocation: {http.requests}. "
+            f"Elapsed this invocation: {report['duration_seconds']} seconds.\n\n"
             "A reachable page is not a complete vacancy check. Unsupported, blocked and failed\n"
             "sources never count as having no new jobs. See coverage.json for all employers.\n"
         )
