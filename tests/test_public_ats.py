@@ -202,3 +202,83 @@ def test_workday_continuation_total_zero_is_not_a_new_empty_board():
     found = collector.fetch()
     assert collector.crawl_complete
     assert {job.external_id for job in found} == {"R0", "R1"}
+
+
+def test_oracle_legal_employer_does_not_inherit_another_group_entity():
+    def respond(request):
+        if request.url.path == "/robots.txt":
+            return httpx.Response(200, text="User-agent: *\nAllow: /")
+        return httpx.Response(
+            200,
+            json={
+                "items": [
+                    {
+                        "TotalJobsCount": 1,
+                        "requisitionList": [
+                            {
+                                "Id": "UG1",
+                                "Title": "IT Risk Analyst",
+                                "PrimaryLocation": "Kampala",
+                                "LegalEmployer": "KCB Bank Uganda Limited",
+                            }
+                        ],
+                    }
+                ]
+            },
+        )
+
+    collector = make("oracle", respond)
+    found = collector.fetch()
+    assert found[0].company == "KCB Bank Uganda Limited"
+    assert found[0].employer_id is None
+    assert found[0].employer_sectors == []
+
+
+def test_workday_checks_all_cards_but_skips_irrelevant_details():
+    paths = []
+
+    def respond(request):
+        paths.append((request.method, request.url.path))
+        if request.url.path == "/robots.txt":
+            return httpx.Response(200, text="User-agent: *\nAllow: /")
+        if request.method == "POST":
+            return httpx.Response(
+                200,
+                json={
+                    "total": 2,
+                    "jobPostings": [
+                        {
+                            "title": "Financial Adviser",
+                            "externalPath": "/job/Kampala/Changed-Title_R001",
+                            "bulletFields": ["R001"],
+                            "locationsText": "Kampala",
+                        },
+                        {
+                            "title": "Software Engineer",
+                            "externalPath": "/job/Nairobi/Engineer_R002",
+                            "bulletFields": ["R002"],
+                            "locationsText": "Nairobi",
+                        },
+                    ],
+                },
+            )
+        assert request.url.path.endswith("Engineer_R002")
+        return httpx.Response(
+            200,
+            json={
+                "jobPostingInfo": {
+                    "jobReqId": "R002",
+                    "title": "Software Engineer",
+                    "location": "Nairobi",
+                    "country": {"descriptor": "Kenya"},
+                }
+            },
+        )
+
+    collector = make("workday", respond)
+    found = collector.fetch()
+    assert collector.crawl_complete
+    assert {job.external_id for job in found} == {"R001", "R002"}
+    assert ("GET", "/job/Kampala/Changed-Title_R001") not in paths
+    assert ("GET", "/job/Nairobi/Engineer_R002") in paths
+    assert found[0].published_at is None

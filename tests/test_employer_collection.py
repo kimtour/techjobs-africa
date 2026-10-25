@@ -472,3 +472,69 @@ def test_official_jazzhr_widget_and_direct_vacancy_identify_same_board():
         "https://branchinternational.applytojob.com/apply/Token/Changed-Title"
     ) == ("jazzhr", "branchinternational")
     assert board_identity("https://app.jazz.co/unknown/branchinternational") is None
+
+
+def test_reviewed_load_more_pagination_checks_declared_total_including_filtered_posts():
+    config = source(
+        pagination_url_pattern=r"/jobs/show_more\?page=\d+$",
+        declared_count_pattern=r"(\d+) jobs",
+    )
+
+    def respond(request):
+        if request.url.path == "/robots.txt":
+            return httpx.Response(200, text="User-agent: *\nAllow: /")
+        if request.url.path == "/careers":
+            return httpx.Response(
+                200,
+                text='2 jobs<a href="/job/one">One</a><a href="/jobs/show_more?page=2">More</a>',
+            )
+        if request.url.path == "/jobs/show_more":
+            return httpx.Response(200, text='<a href="/job/two">Two</a>')
+        title = (
+            "Software Engineer"
+            if request.url.path.endswith("one")
+            else "Engineer - Internal Applicants"
+        )
+        return httpx.Response(200, text=posting(title))
+
+    collector = adapter(config, respond)
+    jobs = collector.fetch()
+    assert collector.crawl_complete
+    assert len(jobs) == 1
+    assert collector.detail_failures == 0
+    config["crawl"]["max_pages"] = 1
+    collector = adapter(config, respond)
+    collector.fetch()
+    assert not collector.crawl_complete
+
+
+def test_declared_vacancy_count_mismatch_is_incomplete_even_without_next_link():
+    config = source(declared_count_pattern=r"(\d+) jobs")
+
+    def respond(request):
+        if request.url.path == "/robots.txt":
+            return httpx.Response(200, text="User-agent: *\nAllow: /")
+        if request.url.path == "/careers":
+            return httpx.Response(200, text='2 jobs<a href="/job/one">One</a>')
+        return httpx.Response(200, text=posting())
+
+    collector = adapter(config, respond)
+    assert len(collector.fetch()) == 1
+    assert not collector.crawl_complete
+
+
+def test_reviewed_embedded_posting_urls_are_read_without_executing_scripts():
+    config = source(embedded_detail_url_pattern=r"https://example\.test/job/[a-z]+")
+
+    def respond(request):
+        if request.url.path == "/robots.txt":
+            return httpx.Response(200, text="User-agent: *\nAllow: /")
+        if request.url.path == "/careers":
+            return httpx.Response(
+                200, text='<script>var job="https://example.test/job/one";</script>'
+            )
+        return httpx.Response(200, text=posting())
+
+    collector = adapter(config, respond)
+    assert len(collector.fetch()) == 1
+    assert collector.crawl_complete

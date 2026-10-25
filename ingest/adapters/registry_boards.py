@@ -126,7 +126,8 @@ class RegistryBoardAdapter:
         # Do not turn prospect pools, training or volunteer signups into employment.
         if re.search(
             r"\b(talent (pool|community|network)|expression of interest|"
-            r"general application|volunteer|training enrolment)\b",
+            r"general application|volunteer|training enrolment|internal applicants|"
+            r"internal (?:candidates|employees) only)\b",
             title,
             re.I,
         ):

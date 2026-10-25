@@ -127,7 +127,7 @@ def discover(source: dict, employers: dict, client=None, *, request_budget=8) ->
                 and urlsplit(url).path != urlsplit(str(response.url)).path
                 and any(
                     term in urlsplit(url).path.casefold()
-                    for term in ("/career", "/jobs", "/join-our-team")
+                    for term in ("/career", "/jobs", "/join-our-team", "/vacanc", "/work-with-us")
                 )
             ]
             if careers:
@@ -158,7 +158,7 @@ def discover(source: dict, employers: dict, client=None, *, request_budget=8) ->
         result["detected_boards"] = detected[:15]
         candidate = source.get("board_url") or source["url"]
         board = urlsplit(candidate)
-        if source["platform"] in SUPPORTED | {"jazzhr"} | API_METHODS and source.get("board"):
+        if source.get("board") and board_identity(candidate):
             result["checks"]["official_link"] = any(
                 board_identity(url) == (source["platform"], source["board"]) for url in urls
             )

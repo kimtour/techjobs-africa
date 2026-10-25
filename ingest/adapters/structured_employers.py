@@ -229,7 +229,13 @@ class StructuredEmployerAdapter:
                     match = re.search(pattern, response.text, re.I | re.S)
                     if match:
                         fields[name] = unescape(re.sub(r"<[^>]+>", " ", match.group(1))).strip()
-                jobs = [self.json_job(item, str(response.url)) for item in parser.postings]
+                jobs = [
+                    self.json_job(
+                        {**item, "identifier": item.get("identifier") or fields.get("identifier")},
+                        str(response.url),
+                    )
+                    for item in parser.postings
+                ]
                 if not parser.postings and self.settings.get("fields"):
                     jobs = [
                         self._job(
@@ -249,6 +255,9 @@ class StructuredEmployerAdapter:
                     for job in jobs
                 ]
                 jobs = [job for job in jobs if job]
+                if not jobs and parser.postings:
+                    row.update(processing_status="filtered", attempts=0, next_attempt_at=None)
+                    return []  # Recognized talent pools/internal posts are deliberate exclusions.
                 if not jobs:
                     raise ValueError("No individual vacancy data")
             row.update(
@@ -331,6 +340,7 @@ class StructuredEmployerAdapter:
         self.crawl_complete = False
         self.detail_failures = 0
         jobs, seen_pages, seen_links = [], set(), set()
+        expected_links = None
         url = self.endpoint
         for _ in range(self.max_pages):
             if url in seen_pages:
@@ -371,6 +381,15 @@ class StructuredEmployerAdapter:
             else:
                 parser = Page()
                 parser.feed(response.text)
+                if len(seen_pages) == 1 and self.settings.get("declared_count_pattern"):
+                    text = unescape(re.sub(r"<[^>]+>", " ", response.text))
+                    matches = re.findall(self.settings["declared_count_pattern"], text, re.I)
+                    if not matches:
+                        raise ValueError("Listing no longer supplies its reviewed vacancy total")
+                    counts = [int(value) for value in matches]
+                    expected_links = (
+                        sum(counts) if self.settings.get("sum_declared_counts") else counts[0]
+                    )
                 page_postings = parser.postings
                 pattern = self.settings.get("detail_url_pattern")
                 links = [
@@ -378,7 +397,25 @@ class StructuredEmployerAdapter:
                     for link in parser.links
                     if pattern and re.search(pattern, urljoin(str(response.url), link))
                 ]
+                embedded = self.settings.get("embedded_detail_url_pattern")
+                if embedded:
+                    links.extend(
+                        unescape(match.group(0)) for match in re.finditer(embedded, response.text)
+                    )
                 next_url = urljoin(str(response.url), parser.next_url) if parser.next_url else None
+                pagination = self.settings.get("pagination_url_pattern")
+                if pagination and not next_url:
+                    candidates = {
+                        urljoin(str(response.url), link)
+                        for link in parser.links
+                        if re.search(pagination, urljoin(str(response.url), link))
+                    }
+                    unseen = candidates - seen_pages
+                    if len(unseen) > 1:
+                        raise ValueError("Ambiguous listing pagination")
+                    if candidates and not unseen:
+                        raise ValueError("Listing pagination cycle")
+                    next_url = next(iter(unseen), None)
                 if (
                     not page_postings
                     and not links
@@ -409,5 +446,7 @@ class StructuredEmployerAdapter:
             ):
                 jobs.extend(self.detail(link))
         if self.detail_failures:
+            self.crawl_complete = False
+        if expected_links is not None and len(seen_links) != expected_links:
             self.crawl_complete = False
         return jobs

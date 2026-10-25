@@ -2,9 +2,11 @@
 
 from __future__ import annotations
 
+import re
 from urllib.parse import urlencode, urljoin, urlsplit
 
 from ingest.adapters.structured_employers import StructuredEmployerAdapter
+from ingest.classify.tech import classify_technology_title, needs_detail_technical_context
 from ingest.http_policy import CollectionBlocked, read_robots
 
 API_METHODS = {"oracle", "workable", "workday"}
@@ -17,6 +19,20 @@ def label(value):
 
 
 class PublicATSAdapter(StructuredEmployerAdapter):
+    @staticmethod
+    def _card_identity(card):
+        """Read the immutable requisition suffix; never use a title slug as ID."""
+        path = urlsplit(card["externalPath"]).path.rstrip("/")
+        for value in card.get("bulletFields") or []:
+            if (
+                isinstance(value, str)
+                and re.fullmatch(r"[A-Za-z]{1,12}[-_]?\d+", value)
+                and path.endswith("_" + value)
+            ):
+                return value
+        match = re.search(r"_([A-Za-z]{1,12}[-_]?\d+)$", path)
+        return match.group(1) if match else None
+
     def fetch(self):
         self.crawl_complete = False
         return getattr(self, "_" + self.platform)()
@@ -122,6 +138,32 @@ class PublicATSAdapter(StructuredEmployerAdapter):
                     description=description,
                 )
                 if job:
+                    # A shared group board can advertise another legal entity.
+                    # Keep its public employer label instead of the registry's
+                    # country-specific lead (for example KCB Kenya vs Uganda).
+                    employer = label(item.get("LegalEmployer"))
+                    if employer:
+                        identity = " ".join(employer.split()).casefold()
+                        matches = [
+                            self.employers[eid]
+                            for eid in self.source["employer_ids"]
+                            if identity
+                            in {
+                                " ".join(name.split()).casefold()
+                                for name in [
+                                    self.employers[eid]["name"],
+                                    *self.employers[eid].get("aliases", []),
+                                ]
+                            }
+                        ]
+                        matched = matches[0] if len(matches) == 1 else None
+                        job = job.model_copy(
+                            update={
+                                "company": employer,
+                                "employer_id": matched["id"] if matched else None,
+                                "employer_sectors": matched["sectors"] if matched else [],
+                            }
+                        )
                     jobs.append(job)
             offset += len(records)
             if offset == total:
@@ -188,11 +230,36 @@ class PublicATSAdapter(StructuredEmployerAdapter):
         jobs, ids = [], set()
         for card in cards:
             path = card["externalPath"]
+            title = card.get("title")
+            card_id = self._card_identity(card)
+            # The same deterministic title/context rules run in the pipeline.
+            # Fetch details only where they can affect technical classification;
+            # this preserves full board coverage on large finance/clinical boards.
+            if (
+                title
+                and card_id
+                and not classify_technology_title(title).category
+                and not needs_detail_technical_context(title)
+            ):
+                if card_id in ids:
+                    raise ValueError("Repeated Workday requisition")
+                ids.add(card_id)
+                job = self._job(
+                    card_id,
+                    title,
+                    card.get("locationsText"),
+                    self.settings["public_board_url"].rstrip("/") + path,
+                )
+                if job:
+                    jobs.append(job)
+                continue
             payload = self.get(self.endpoint.removesuffix("/jobs") + path).json()
             item = payload.get("jobPostingInfo")
             if not isinstance(item, dict) or not item.get("jobReqId"):
                 raise ValueError("Missing Workday individual requisition")
             key = str(item["jobReqId"])
+            if card_id is not None and card_id != key:
+                raise ValueError("Workday card and detail requisition IDs disagree")
             if key in ids:
                 raise ValueError("Repeated Workday requisition")
             ids.add(key)

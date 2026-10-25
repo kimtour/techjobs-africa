@@ -8,14 +8,14 @@ sources:
   status: pending
   employer_ids:
   - emp_094a6b9e8eeaac4c
-  access_method: null
+  access_method: jsonld
   country_filters: []
   refresh_hours: 24
   discovery_refresh_hours: 168
   supports_absence_expiry: false
   crawl:
-    max_pages: 5
-    max_requests_per_run: 12
+    max_pages: 15
+    max_requests_per_run: 200
     request_delay_ms: 1500
     timeout_seconds: 20
     retry_delays_seconds:
@@ -27,6 +27,16 @@ sources:
   board: PowerGenRenewableEnergy
   official_careers_url: https://www.powergen-renewable-energy.com/
   pilot_rank: 10
+  board_url: https://careers.smartrecruiters.com/PowerGenRenewableEnergy
+  collection:
+    listing_url: https://careers.smartrecruiters.com/PowerGenRenewableEnergy
+    complete_listing_verified: false
+    detail_url_pattern: https://jobs\.smartrecruiters\.com/[^/]+/[0-9]+-[^/#?]+
+    identifier_url_pattern: /[^/]+/([0-9]+)-
+    allowed_hosts:
+    - jobs.smartrecruiters.com
+  review_reason: Structured vacancy records observed. Complete listing/pagination
+    and source policy review required before activation.
 - id: employer_006b1b9e8fd455b9
   url: https://www.craftsilicon.com/career
   import_urls:
@@ -589,18 +599,18 @@ sources:
   url: https://jobs.jobvite.com/heifer/jobs
   import_urls:
   - https://jobs.jobvite.com/heifer/jobs
-  platform: custom
+  platform: jobvite
   status: pending
   employer_ids:
   - emp_b6885d06307ac70c
-  access_method: null
+  access_method: jsonld
   country_filters: []
   refresh_hours: 24
   discovery_refresh_hours: 168
   supports_absence_expiry: false
   crawl:
-    max_pages: 5
-    max_requests_per_run: 12
+    max_pages: 15
+    max_requests_per_run: 200
     request_delay_ms: 1500
     timeout_seconds: 20
     retry_delays_seconds:
@@ -610,6 +620,16 @@ sources:
   suggestions:
     platform: custom
     needs_location_filter: true
+  board: heifer
+  board_url: https://jobs.jobvite.com/heifer/jobs
+  collection:
+    listing_url: https://jobs.jobvite.com/heifer/jobs
+    complete_listing_verified: false
+    detail_url_pattern: /heifer/job/[A-Za-z0-9]+/?$
+    identifier_url_pattern: /job/([A-Za-z0-9]+)/?$
+  official_careers_url: https://www.heifer.org/
+  review_reason: Structured vacancy records observed. Complete listing/pagination
+    and source policy review required before activation.
 - id: employer_07a5e16a1a8b3c83
   url: https://www.kbc.co.ke/careers/
   import_urls:
@@ -1041,14 +1061,14 @@ sources:
   status: pending
   employer_ids:
   - emp_987105690850cf49
-  access_method: null
+  access_method: jsonld
   country_filters: []
   refresh_hours: 24
   discovery_refresh_hours: 168
   supports_absence_expiry: false
   crawl:
-    max_pages: 5
-    max_requests_per_run: 12
+    max_pages: 15
+    max_requests_per_run: 200
     request_delay_ms: 1500
     timeout_seconds: 20
     retry_delays_seconds:
@@ -1058,6 +1078,20 @@ sources:
   suggestions:
     platform: jazzhr
     mixed_opportunities: true
+  board: redcross
+  board_url: https://redcross.applytojob.com/
+  collection:
+    listing_url: https://redcross.applytojob.com/
+    complete_listing_verified: false
+    detail_url_pattern: /apply/[A-Za-z0-9]+/[^/#?]+
+    identifier_url_pattern: /apply/([A-Za-z0-9]+)/
+    fields: &id001
+      title: <div[^>]*class=[\"\x27]job-header[\"\x27][^>]*>.*?<h2[^>]*>(.*?)</h2>
+      location: <div[^>]*title=[\"\x27]Location[\"\x27][^>]*>(.*?)</div>
+      employment_type: <div[^>]*id=[\"\x27]resumator-job-employment[\"\x27][^>]*>(.*?)</div>
+  official_careers_url: https://redcross.or.ke/
+  review_reason: Structured vacancy records observed. Complete listing/pagination
+    and source policy review required before activation.
 - id: employer_0f625148e61cf723
   url: https://ke.linkedin.com/company/speedaf-kenya
   import_urls:
@@ -2559,14 +2593,14 @@ sources:
   status: pending
   employer_ids:
   - emp_9e222913b5eb37cf
-  access_method: null
+  access_method: jsonld
   country_filters: []
   refresh_hours: 24
   discovery_refresh_hours: 168
   supports_absence_expiry: false
   crawl:
-    max_pages: 5
-    max_requests_per_run: 12
+    max_pages: 15
+    max_requests_per_run: 200
     request_delay_ms: 1500
     timeout_seconds: 20
     retry_delays_seconds:
@@ -2577,6 +2611,16 @@ sources:
     platform: manatal
     needs_location_filter: true
     shared_portal: true
+  board: pesapal
+  board_url: https://pesapal.careers-page.com/
+  collection:
+    listing_url: https://pesapal.careers-page.com/
+    complete_listing_verified: false
+    detail_url_pattern: /jobs/[a-f0-9-]+/?$
+    identifier_url_pattern: /jobs/([a-f0-9-]+)/?$
+  official_careers_url: https://www.pesapal.com/
+  review_reason: Structured vacancy records observed. Complete listing/pagination
+    and source policy review required before activation.
 - id: employer_2778fd00ca87c9c9
   url: https://ira.go.ke/careers/
   import_urls:
@@ -3372,10 +3416,7 @@ sources:
     detail_url_pattern: /apply/[A-Za-z0-9]+/[^/#?]+
     identifier_url_pattern: /apply/([A-Za-z0-9]+)/
     complete_listing_verified: true
-    fields:
-      title: <div[^>]*class=[\"\x27]job-header[\"\x27][^>]*>.*?<h2[^>]*>(.*?)</h2>
-      location: <div[^>]*title=[\"\x27]Location[\"\x27][^>]*>(.*?)</div>
-      employment_type: <div[^>]*id=[\"\x27]resumator-job-employment[\"\x27][^>]*>(.*?)</div>
+    fields: *id001
   review_reason: Local and hosted complete crawls and isolated trial reviewed. Five
     Watu roles explicitly list Nairobi, Kenya. Branch/CrossBoundary overseas roles
     remain excluded.
@@ -4533,14 +4574,14 @@ sources:
   status: pending
   employer_ids:
   - emp_5d743a707e7dfd2e
-  access_method: null
+  access_method: jsonld
   country_filters: []
   refresh_hours: 24
   discovery_refresh_hours: 168
   supports_absence_expiry: false
   crawl:
-    max_pages: 5
-    max_requests_per_run: 12
+    max_pages: 15
+    max_requests_per_run: 200
     request_delay_ms: 1500
     timeout_seconds: 20
     retry_delays_seconds:
@@ -4549,6 +4590,17 @@ sources:
   verification: {}
   suggestions:
     platform: jazzhr
+  board: pendahealth
+  board_url: https://pendahealth.applytojob.com/
+  collection:
+    listing_url: https://pendahealth.applytojob.com/
+    complete_listing_verified: false
+    detail_url_pattern: /apply/[A-Za-z0-9]+/[^/#?]+
+    identifier_url_pattern: /apply/([A-Za-z0-9]+)/
+    fields: *id001
+  official_careers_url: https://www.pendahealth.com/
+  review_reason: Structured vacancy records observed. Complete listing/pagination
+    and source policy review required before activation.
 - id: employer_4189689afb9d89bc
   url: https://recruitment.tenwekhosp.org/
   import_urls:
@@ -5430,14 +5482,14 @@ sources:
   status: pending
   employer_ids:
   - emp_aedf0b6ecff82884
-  access_method: null
+  access_method: jsonld
   country_filters: []
   refresh_hours: 24
   discovery_refresh_hours: 168
   supports_absence_expiry: false
   crawl:
-    max_pages: 5
-    max_requests_per_run: 12
+    max_pages: 15
+    max_requests_per_run: 200
     request_delay_ms: 1500
     timeout_seconds: 20
     retry_delays_seconds:
@@ -5446,6 +5498,17 @@ sources:
   verification: {}
   suggestions:
     platform: jazzhr
+  board: opencapitaladvisors
+  board_url: https://opencapitaladvisors.applytojob.com/apply/
+  collection:
+    listing_url: https://opencapitaladvisors.applytojob.com/apply/
+    complete_listing_verified: false
+    detail_url_pattern: /apply/[A-Za-z0-9]+/[^/#?]+
+    identifier_url_pattern: /apply/([A-Za-z0-9]+)/
+    fields: *id001
+  official_careers_url: https://www.opencapital.com/
+  review_reason: Structured vacancy records observed. Complete listing/pagination
+    and source policy review required before activation.
 - id: employer_51dc0ba405b59884
   url: https://devkigroupke.com/job-openings/
   import_urls:
@@ -14673,14 +14736,14 @@ sources:
   status: pending
   employer_ids:
   - emp_eca376e549a80bdc
-  access_method: null
+  access_method: jsonld
   country_filters: []
   refresh_hours: 24
   discovery_refresh_hours: 168
   supports_absence_expiry: false
   crawl:
-    max_pages: 5
-    max_requests_per_run: 12
+    max_pages: 15
+    max_requests_per_run: 200
     request_delay_ms: 1500
     timeout_seconds: 20
     retry_delays_seconds:
@@ -14690,8 +14753,18 @@ sources:
   suggestions:
     platform: smartrecruiters
   board: DigitalDivideData
-  official_careers_url: https://www.digitaldividedata.com/careers
+  official_careers_url: https://www.digitaldividedata.com/
   pilot_rank: 9
+  board_url: https://careers.smartrecruiters.com/DigitalDivideData
+  collection:
+    listing_url: https://careers.smartrecruiters.com/DigitalDivideData
+    complete_listing_verified: false
+    detail_url_pattern: https://jobs\.smartrecruiters\.com/[^/]+/[0-9]+-[^/#?]+
+    identifier_url_pattern: /[^/]+/([0-9]+)-
+    allowed_hosts:
+    - jobs.smartrecruiters.com
+  review_reason: Structured vacancy records observed. Complete listing/pagination
+    and source policy review required before activation.
 - id: employer_e44b05e23a1fc8f5
   url: https://ww.chandaria.com/index.php?Itemid=108&id=42&option=com_content&view=article
   import_urls:
@@ -15093,14 +15166,14 @@ sources:
   status: pending
   employer_ids:
   - emp_4ca677fb74ae68fc
-  access_method: null
+  access_method: jsonld
   country_filters: []
   refresh_hours: 24
   discovery_refresh_hours: 168
   supports_absence_expiry: false
   crawl:
-    max_pages: 5
-    max_requests_per_run: 12
+    max_pages: 15
+    max_requests_per_run: 200
     request_delay_ms: 1500
     timeout_seconds: 20
     retry_delays_seconds:
@@ -15110,6 +15183,17 @@ sources:
   suggestions:
     platform: jazzhr
     needs_location_filter: true
+  board: novapioneer
+  board_url: https://novapioneer.applytojob.com/
+  collection:
+    listing_url: https://novapioneer.applytojob.com/
+    complete_listing_verified: false
+    detail_url_pattern: /apply/[A-Za-z0-9]+/[^/#?]+
+    identifier_url_pattern: /apply/([A-Za-z0-9]+)/
+    fields: *id001
+  official_careers_url: https://www.novapioneer.com/kenya/
+  review_reason: Structured vacancy records observed. Complete listing/pagination
+    and source policy review required before activation.
 - id: employer_ec01759479fb7548
   url: https://fincra.com/careers/
   import_urls:
@@ -15470,14 +15554,14 @@ sources:
   status: pending
   employer_ids:
   - emp_f47777684b0cde19
-  access_method: null
+  access_method: jsonld
   country_filters: []
   refresh_hours: 24
   discovery_refresh_hours: 168
   supports_absence_expiry: false
   crawl:
-    max_pages: 5
-    max_requests_per_run: 12
+    max_pages: 15
+    max_requests_per_run: 200
     request_delay_ms: 1500
     timeout_seconds: 20
     retry_delays_seconds:
@@ -15488,8 +15572,18 @@ sources:
     platform: smartrecruiters
     access_gap: true
   board: CAREInternationalInKenya
-  official_careers_url: https://www.care.or.ke/careers/
+  official_careers_url: https://www.care.or.ke/
   pilot_rank: 12
+  board_url: https://careers.smartrecruiters.com/CAREInternationalInKenya
+  collection:
+    listing_url: https://careers.smartrecruiters.com/CAREInternationalInKenya
+    complete_listing_verified: false
+    detail_url_pattern: https://jobs\.smartrecruiters\.com/[^/]+/[0-9]+-[^/#?]+
+    identifier_url_pattern: /[^/]+/([0-9]+)-
+    allowed_hosts:
+    - jobs.smartrecruiters.com
+  review_reason: Structured vacancy records observed. Complete listing/pagination
+    and source policy review required before activation.
 - id: employer_f363a66b799d08a1
   url: https://kenya.unfpa.org/en/vacancies
   import_urls:
@@ -15941,18 +16035,18 @@ sources:
   url: https://impactinitiatives.teamtailor.com/jobs
   import_urls:
   - https://impactinitiatives.teamtailor.com/jobs
-  platform: custom
+  platform: teamtailor
   status: pending
   employer_ids:
   - emp_6bb957576b3399d7
-  access_method: null
+  access_method: jsonld
   country_filters: []
   refresh_hours: 24
   discovery_refresh_hours: 168
   supports_absence_expiry: false
   crawl:
-    max_pages: 5
-    max_requests_per_run: 12
+    max_pages: 15
+    max_requests_per_run: 200
     request_delay_ms: 1500
     timeout_seconds: 20
     retry_delays_seconds:
@@ -15962,6 +16056,16 @@ sources:
   suggestions:
     platform: custom
     needs_location_filter: true
+  board: impactinitiatives
+  board_url: https://impactinitiatives.teamtailor.com/jobs
+  collection:
+    listing_url: https://impactinitiatives.teamtailor.com/jobs
+    complete_listing_verified: false
+    detail_url_pattern: /jobs/[0-9]+-[^/#?]+
+    identifier_url_pattern: /jobs/([0-9]+)-
+  official_careers_url: https://www.impact-initiatives.org/
+  review_reason: Structured vacancy records observed. Complete listing/pagination
+    and source policy review required before activation.
 - id: employer_fa747250db2228f3
   url: https://careers.wipro.com/
   import_urls:
