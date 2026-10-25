@@ -30,8 +30,8 @@ regression tests now reject them without rejecting computer-network engineers.
 
 Hosted verification run 40196220794 and a legacy-source production smoke run
 40196217782 succeeded on public standard hosted runners. The corrected trial
-selection and taxonomy must also pass on the hosted runner before any publication
-review. Activation still requires all verification checks, trial review and
+selection and taxonomy also passed on hosted run 40196857729, with the same two
+candidates and five complete successful crawls. Activation still requires all verification checks, trial review and
 publication review. Absence expiry remains disabled for new registry sources.
 
 See [onboarding](employer-onboarding.md) for expanding verified coverage and

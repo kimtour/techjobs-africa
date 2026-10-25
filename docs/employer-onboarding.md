@@ -142,3 +142,6 @@ browser-check accepted data and the deployed URL. Deploy using the existing
 **Deploy TechKazi site** workflow. Roll back the code/frontend deployment without
 rewriting job state or deleting scheduler claims. Retire sources explicitly and
 preserve their historical attribution rather than deleting accepted jobs.
+
+For the full-list probe and subsequent daily collector milestones, see
+[daily employer collection](daily-employer-collection.md).

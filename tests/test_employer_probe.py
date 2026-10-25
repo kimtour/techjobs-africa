@@ -1,0 +1,190 @@
+import socket
+from types import SimpleNamespace
+
+import httpx
+import pytest
+
+from ingest.employer_probe import (
+    AccessBlocked,
+    ProbeHTTP,
+    coverage,
+    inspect_page,
+    probe_source,
+    public_target,
+)
+
+
+def test_public_target_rejects_private_dns_and_social_redirects(monkeypatch):
+    monkeypatch.setattr(socket, "getaddrinfo", lambda *a, **k: [(2, 1, 6, "", ("127.0.0.1", 443))])
+    with pytest.raises(AccessBlocked):
+        public_target("https://careers.example/")
+    with pytest.raises(AccessBlocked):
+        public_target("https://www.linkedin.com/jobs/")
+
+
+def test_robots_disallow_and_shared_host_block_are_never_retried():
+    seen = []
+
+    def request(req):
+        seen.append(str(req.url))
+        return httpx.Response(200, text="User-agent: *\nDisallow: /careers")
+
+    http = ProbeHTTP(transport=httpx.MockTransport(request), validate=lambda url: None, interval=0)
+    source = {
+        "id": "s",
+        "platform": "custom",
+        "status": "pending",
+        "url": "https://a.example/careers",
+    }
+    try:
+        assert probe_source(source, http)["status"] == "BLOCKED"
+        assert seen == ["https://a.example/robots.txt"]
+    finally:
+        http.close()
+
+    seen.clear()
+
+    def limited(req):
+        seen.append(str(req.url))
+        return httpx.Response(429)
+
+    http = ProbeHTTP(transport=httpx.MockTransport(limited), validate=lambda url: None, interval=0)
+    try:
+        assert probe_source(source, http)["status"] == "BLOCKED"
+        assert (
+            probe_source({**source, "url": "https://a.example/jobs"}, http)["status"] == "BLOCKED"
+        )
+        assert len(seen) == 1
+    finally:
+        http.close()
+
+
+def test_probe_discovers_careers_feed_without_storing_descriptions_or_promoting():
+    def request(req):
+        if req.url.path == "/robots.txt":
+            return httpx.Response(404)
+        if req.url.path == "/":
+            return httpx.Response(200, text='<a href="/careers">Jobs</a>')
+        return httpx.Response(
+            200, text='<link type="application/rss+xml" href="/openings.rss">SECRET BODY'
+        )
+
+    http = ProbeHTTP(transport=httpx.MockTransport(request), validate=lambda url: None, interval=0)
+    source = {"id": "s", "platform": "custom", "status": "pending", "url": "https://a.example/"}
+    try:
+        result = probe_source(source, http)
+        assert result["status"] == "DISCOVERED"
+        assert result["method_suggestion"] == "feed"
+        assert result["feed_urls"] == ["https://a.example/openings.rss"]
+        assert "SECRET BODY" not in str(result)
+        assert source["status"] == "pending"
+        assert result["production_promoted"] is False
+        assert http.requests == 3
+    finally:
+        http.close()
+
+
+def test_methods_and_coverage_do_not_equate_reachability_with_vacancy_coverage():
+    response = httpx.Response(
+        200,
+        text='<iframe src="https://jobs.lever.co/group"></iframe>',
+        request=httpx.Request("GET", "https://a.example/careers"),
+    )
+    assert inspect_page(response)["platform_suggestions"] == ["lever"]
+    pdf = httpx.Response(
+        200,
+        headers={"content-type": "application/pdf"},
+        request=httpx.Request("GET", "https://a.example/advert.pdf"),
+    )
+    assert inspect_page(pdf)["method_suggestion"] == "pdf"
+    employers = {e: {"id": e, "name": e} for e in ("a", "b", "c")}
+    sources = {"shared": {"id": "shared", "employer_ids": ["a", "b"], "status": "trial"}}
+    result = coverage(
+        employers, sources, {"shared": {"status": "DISCOVERED", "method_suggestion": "ats_api"}}
+    )
+    assert len(result["companies"]) == 3
+    assert result["sources_probed"] == 1
+    assert result["daily_collection_configured"] == 0
+    assert result["companies"][2]["probe_outcomes"] == ["NOT_CHECKED"]
+    assert "no new jobs" not in str(result)
+
+
+def test_manual_sites_are_not_requested():
+    result = probe_source(
+        {"id": "s", "status": "manual", "platform": "social"},
+        SimpleNamespace(local=SimpleNamespace()),
+    )
+    assert result["status"] == "SKIPPED"
+
+
+def test_redirect_checks_destination_robots_and_large_pages_are_partial():
+    visited = []
+
+    def redirected(req):
+        visited.append(str(req.url))
+        if req.url.host == "b.example":
+            return httpx.Response(200, text="User-agent: *\nDisallow: /")
+        if req.url.path == "/robots.txt":
+            return httpx.Response(404)
+        return httpx.Response(302, headers={"location": "https://b.example/jobs"})
+
+    source = {"id": "s", "platform": "custom", "status": "pending", "url": "https://a.example/"}
+    http = ProbeHTTP(
+        transport=httpx.MockTransport(redirected), validate=lambda url: None, interval=0
+    )
+    try:
+        assert probe_source(source, http)["status"] == "BLOCKED"
+        assert visited == [
+            "https://a.example/robots.txt",
+            "https://a.example/",
+            "https://b.example/robots.txt",
+        ]
+    finally:
+        http.close()
+
+    def oversized(req):
+        return (
+            httpx.Response(404)
+            if req.url.path == "/robots.txt"
+            else httpx.Response(200, content=b"x" * 2_000_001)
+        )
+
+    http = ProbeHTTP(
+        transport=httpx.MockTransport(oversized), validate=lambda url: None, interval=0
+    )
+    try:
+        result = probe_source(source, http)
+        assert result["status"] == "PARTIAL"
+        assert result["error_type"] == "ProbeLimit"
+    finally:
+        http.close()
+
+
+def test_compressed_responses_are_decoded_once():
+    import gzip
+
+    def compressed(req):
+        text = (
+            "User-agent: *\nAllow: /"
+            if req.url.path == "/robots.txt"
+            else '<a href="https://jobs.lever.co/board">Openings</a>'
+        )
+        return httpx.Response(
+            200, headers={"content-encoding": "gzip"}, content=gzip.compress(text.encode())
+        )
+
+    http = ProbeHTTP(
+        transport=httpx.MockTransport(compressed), validate=lambda url: None, interval=0
+    )
+    source = {
+        "id": "s",
+        "platform": "custom",
+        "status": "pending",
+        "url": "https://a.example/careers",
+    }
+    try:
+        result = probe_source(source, http)
+        assert result["status"] == "DISCOVERED"
+        assert result["platform_suggestions"] == ["lever"]
+    finally:
+        http.close()

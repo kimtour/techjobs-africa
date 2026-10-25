@@ -3,9 +3,9 @@ on:
   workflow_dispatch:
     inputs:
       mode:
-        description: Discovery or isolated trial (never publishes or writes accepted state)
+        description: Full-list probe, shortlisted discovery or isolated trial (never publishes)
         type: choice
-        options: [discover, trial]
+        options: [probe, discover, trial]
         default: discover
       source:
         description: Optional single registry source ID; empty selects discovery shortlist or verified trial sources
@@ -19,7 +19,7 @@ concurrency:
 jobs:
   verify:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -38,6 +38,10 @@ jobs:
           ONBOARDING_MODE: ${{ inputs.mode }}
           ONBOARDING_SOURCE: ${{ inputs.source }}
         run: |
+          if [ "$ONBOARDING_MODE" = probe ]; then
+            python -u -m ingest.employer_probe --output-dir /tmp/employer-onboarding
+            exit 0
+          fi
           ARGS=()
           if [ -n "$ONBOARDING_SOURCE" ]; then ARGS+=(--source "$ONBOARDING_SOURCE"); fi
           if [ "$ONBOARDING_MODE" = trial ]; then ARGS+=(--accepted .private-data/public/jobs.json); fi
@@ -48,5 +52,5 @@ jobs:
         with:
           name: employer-${{ inputs.mode }}-${{ github.run_id }}
           path: /tmp/employer-onboarding/
-          retention-days: 90
+          retention-days: 7
           if-no-files-found: error
