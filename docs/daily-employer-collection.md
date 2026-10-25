@@ -89,7 +89,42 @@ from vacancies accepted/published. Do not count a skipped/backed-off/unsupported
 employer as successfully checked that day. Measure actual configured coverage
 and successful daily coverage separately. A successful workflow is insufficient.
 
-The current probe is the first milestone, not a universal collector. Five sources
-have completed isolated local and hosted trials; new sources remain inactive.
+The implemented collector framework supports reviewed Ashby, Greenhouse, Lever,
+Breezy, JSON-LD, RSS/Atom, custom field mappings and multi-role PDFs. Five sources
+have completed isolated local and hosted trials and are approved for daily
+collection: M-KOPA, Jumia, Turaco, Ampersand and Tala. Other sources remain gated.
+This is not complete vacancy collection across all 758 employers.
 See [pilot results](employer-pilot-results.md) and
 [onboarding gates](employer-onboarding.md).
+
+
+## Implemented daily operation
+
+The existing five scheduler slots retain one private-state writer. Active boards
+are due once per EAT calendar day, with exponential failure backoff and server
+cooldowns. `python -m ingest.main --employers-only --output-dir ...` refreshes
+only approved employer collectors. Ordinary all-source runs include them too.
+`python -m ingest.employer_watch --data-dir ...` monitors due unresolved pages,
+checks shared registry URLs once, skips manual/retired/blocked sources, respects
+robots and backs off failures. It never promotes discovery clues to jobs. The
+tracked metadata seed avoids replaying the completed full probe on deployment.
+
+Private state contains `employer-candidates.json`, `employer-watch.json`,
+`employer-collection-metrics.json` and `employer-coverage.json`, plus dated coverage
+reports. Failed extraction stays retryable even after a link disappears from a
+bounded feed. Validation failures keep compact retry metadata. Only accepted
+promotion marks candidates published; failed deployments retain operational
+evidence without promoting canonical jobs. No descriptions are retained.
+
+Structured collectors require reviewed pagination, permitted public hosts and
+individual vacancy destinations. IDs use requisitions or persisted URL-to-UUID
+mappings, never mutable titles. Conditional responses require separately reviewed
+endpoint behaviour and cached vacancy metadata. PDF roles require durable IDs;
+shared PDF links do not collapse different requisitions. Unsupported encrypted,
+scanned, overlarge or ambiguous PDFs fail closed. No SmartRecruiters API collector
+is enabled because the tested API robots policy disallows it.
+
+Undated accepted jobs show a labelled First found date, used as a period-filter
+fallback. Employer posting dates remain primary when supplied. Operational check
+timestamps alone do not trigger builds. Source absence expiry remains disabled.
+See the dated activation review for permissions and field-verification limits.

@@ -32,6 +32,7 @@ from ingest.classify.tech import (
     mixed_technology_roles,
 )
 from ingest.dedupe.exact import canonicalize_apply_url, deduplicate_exact
+from ingest.employer_state import EmployerLedger, daily_coverage
 from ingest.expiry.absence import JobOccurrence, reconcile_occurrences
 from ingest.export.static import build_public_files
 from ingest.fetch import ObservedClient
@@ -137,7 +138,7 @@ def run_ingestion(
 
     started = datetime.now(UTC)
     run_id, workflow_url = run_identity()
-    selected_ids = list(source_ids or approved_source_ids())
+    selected_ids = list(source_ids if source_ids is not None else approved_source_ids())
     source_config = {
         item["id"]: item for item in yaml.safe_load(CONFIG_PATH.read_text())["sources"]
     }
@@ -173,6 +174,10 @@ def run_ingestion(
     health: dict[str, SourceHealth] = {}
     rows: dict[str, dict] = {}
     warnings: list[str] = []
+    employer_ledger = EmployerLedger(output_dir / "state/employer-candidates.json")
+    employer_metrics = read_json(
+        output_dir / "state/employer-collection-metrics.json", {"schema_version": 1, "sources": {}}
+    )
 
     def record_policy_skip(source_id, reason):
         old = previous_health.get(source_id, {})
@@ -260,6 +265,12 @@ def run_ingestion(
         observer = None
         fetched = []
         source_jobs = []
+        validation_failed = set()
+        known_before = (
+            set(employer_ledger.source(source_id)["items"])
+            if source_id in registry_config
+            else set()
+        )
         rejected_jobs: list[dict] = []
         complete = False
         error_type = None
@@ -273,6 +284,8 @@ def run_ingestion(
             else:
                 next_allowed = None
                 adapter = factory()
+                if source_id in registry_config:
+                    adapter.candidate_state = employer_ledger.source(source_id)
                 policy = source_config[source_id]["crawl"]
                 if hasattr(adapter, "max_pages"):
                     adapter.max_pages = policy["max_pages"]
@@ -315,7 +328,14 @@ def run_ingestion(
                 fetched = adapter.fetch()
                 if any(raw.source_id != source_id for raw in fetched):
                     raise ValueError("adapter returned a foreign source")
-                source_jobs = build_jobs(fetched, rejections=rejected_jobs)
+                if source_id in registry_config:
+                    for raw in fetched:
+                        try:
+                            source_jobs.extend(build_jobs([raw], rejections=rejected_jobs))
+                        except Exception:
+                            validation_failed.add(str(raw.external_id))
+                else:
+                    source_jobs = build_jobs(fetched, rejections=rejected_jobs)
                 if source_id in registry_config:
                     source_jobs = [
                         job.model_copy(update={"last_checked_at": attempt_at})
@@ -331,7 +351,7 @@ def run_ingestion(
                         "filtered_jobs": rejected_jobs,
                     },
                 )
-                complete = getattr(adapter, "crawl_complete", False)
+                complete = getattr(adapter, "crawl_complete", False) and not validation_failed
                 status = SourceHealthStatus.SUCCESS if complete else SourceHealthStatus.PARTIAL
                 reason = None if complete else "pagination_incomplete"
                 counts = baselines.get(source_id, [])
@@ -360,6 +380,9 @@ def run_ingestion(
             error_type = type(exc).__name__
             if error_type == "FetchBudgetExceeded":
                 reason = "request_budget_exhausted"
+            if error_type == "CollectionBlocked":
+                status = SourceHealthStatus.BLOCKED
+                reason = "robots_policy"
             response = getattr(exc, "response", None)
             code = getattr(response, "status_code", None)
             if code in (401, 403, 429):
@@ -371,6 +394,30 @@ def run_ingestion(
                 closer = getattr(observer.client, "close", None)
                 if closer:
                     closer()
+        if source_id in registry_config:
+            source_jobs = employer_ledger.observe(
+                source_id,
+                fetched,
+                source_jobs,
+                attempt_at,
+                complete=status == SourceHealthStatus.SUCCESS and complete,
+                publish_existing=source_config[source_id].get("reviewed_bootstrap", False),
+                known_before=known_before,
+                validation_failed=validation_failed,
+            )
+            employer_ledger.save(_write_json)
+            if status == SourceHealthStatus.SUCCESS and complete:
+                employer_metrics["sources"][source_id] = {
+                    "day_eat": attempt_at.astimezone(timezone(timedelta(hours=3)))
+                    .date()
+                    .isoformat(),
+                    "new_jobs": employer_ledger.source(source_id).get("new_eligible_ids", 0),
+                    "new_vacancies_seen": employer_ledger.source(source_id).get("new_ids", 0),
+                    "eligible_jobs": len(source_jobs),
+                    "raw_jobs": len(fetched),
+                    "filtered_jobs": len(rejected_jobs),
+                }
+                _write_json(output_dir / "state/employer-collection-metrics.json", employer_metrics)
         current = {job.job_id: job for job in source_jobs}
         # Observed records can refresh; missing records need separate absence evidence.
         if status == SourceHealthStatus.SUCCESS:
@@ -560,6 +607,7 @@ def run_ingestion(
         },
         _write_json,
     )
+    _write_json(output_dir / "state/employer-coverage.json", daily_coverage(output_dir, started))
     _write_json(
         output_dir / "state/fetch-progress.json",
         {
@@ -575,12 +623,15 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output-dir", required=True, type=Path)
     parser.add_argument("--source", action="append", dest="sources")
+    parser.add_argument("--employers-only", action="store_true")
     parser.add_argument(
         "--refresh-jsearch",
         action="store_true",
         help="Refresh changed Google queries today; monthly quota still applies",
     )
     args = parser.parse_args()
+    if args.employers_only:
+        args.sources = list(active_factories()[1])
     health = run_ingestion(
         args.output_dir, source_ids=args.sources, refresh_jsearch=args.refresh_jsearch
     )

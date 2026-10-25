@@ -1,0 +1,3803 @@
+{
+  "schema_version": 1,
+  "sources": {
+    "employer_0010171b12c9d1a7": {
+      "checked_at": "2026-10-25T13:24:15.437809+00:00",
+      "method_suggestion": "ats_api",
+      "source_id": "employer_0010171b12c9d1a7",
+      "status": "DISCOVERED"
+    },
+    "employer_006b1b9e8fd455b9": {
+      "checked_at": "2026-10-25T13:24:15.438580+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_006b1b9e8fd455b9",
+      "status": "DISCOVERED"
+    },
+    "employer_008805c021fb34da": {
+      "checked_at": "2026-10-25T13:20:44.839662+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_008805c021fb34da",
+      "status": "FAILED"
+    },
+    "employer_00eae56e31f4498f": {
+      "checked_at": "2026-10-25T13:20:44.839747+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_00eae56e31f4498f",
+      "status": "DISCOVERED"
+    },
+    "employer_015b227a7fec51d8": {
+      "checked_at": "2026-10-25T13:24:15.438698+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_015b227a7fec51d8",
+      "status": "DISCOVERED"
+    },
+    "employer_01e8e0f5962dff05": {
+      "checked_at": "2026-10-25T13:24:15.438786+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_01e8e0f5962dff05",
+      "status": "DISCOVERED"
+    },
+    "employer_02069f5367240087": {
+      "checked_at": "2026-10-25T13:20:44.840044+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_02069f5367240087",
+      "status": "DISCOVERED"
+    },
+    "employer_025282b112b1b637": {
+      "checked_at": "2026-10-25T13:24:15.438904+00:00",
+      "method_suggestion": "pdf",
+      "source_id": "employer_025282b112b1b637",
+      "status": "DISCOVERED"
+    },
+    "employer_0253a7600d2cdd4c": {
+      "checked_at": "2026-10-25T13:24:15.439037+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_0253a7600d2cdd4c",
+      "status": "DISCOVERED"
+    },
+    "employer_02c4f65705ce6dd2": {
+      "checked_at": "2026-10-25T13:20:45.928689+00:00",
+      "method_suggestion": "manual_or_blocked",
+      "source_id": "employer_02c4f65705ce6dd2",
+      "status": "SKIPPED"
+    },
+    "employer_0387194ad4b7c6c0": {
+      "checked_at": "2026-10-25T13:24:15.439157+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_0387194ad4b7c6c0",
+      "status": "DISCOVERED"
+    },
+    "employer_039645b59c58cc42": {
+      "checked_at": "2026-10-25T13:20:46.533108+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_039645b59c58cc42",
+      "status": "DISCOVERED"
+    },
+    "employer_039b4e93f9f0b3dd": {
+      "checked_at": "2026-10-25T13:20:46.601524+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_039b4e93f9f0b3dd",
+      "status": "FAILED"
+    },
+    "employer_03bc1b5527ac1b94": {
+      "checked_at": "2026-10-25T13:24:15.439255+00:00",
+      "method_suggestion": "ats_api",
+      "source_id": "employer_03bc1b5527ac1b94",
+      "status": "DISCOVERED"
+    },
+    "employer_044b6d087b1aac02": {
+      "checked_at": "2026-10-25T13:24:16.583567+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_044b6d087b1aac02",
+      "status": "DISCOVERED"
+    },
+    "employer_0467044f546eff97": {
+      "checked_at": "2026-10-25T13:24:17.011661+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_0467044f546eff97",
+      "status": "DISCOVERED"
+    },
+    "employer_04c2cdfab5c9ac9b": {
+      "checked_at": "2026-10-25T13:24:17.264787+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_04c2cdfab5c9ac9b",
+      "status": "DISCOVERED"
+    },
+    "employer_04e48d1b85ebfce2": {
+      "checked_at": "2026-10-25T13:24:17.290396+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_04e48d1b85ebfce2",
+      "status": "DISCOVERED"
+    },
+    "employer_05df659606c5831e": {
+      "checked_at": "2026-10-25T13:20:48.994835+00:00",
+      "method_suggestion": "manual_or_blocked",
+      "source_id": "employer_05df659606c5831e",
+      "status": "SKIPPED"
+    },
+    "employer_0655257d19640833": {
+      "checked_at": "2026-10-25T13:20:48.994948+00:00",
+      "method_suggestion": "pdf",
+      "source_id": "employer_0655257d19640833",
+      "status": "DISCOVERED"
+    },
+    "employer_0664940cd25480fc": {
+      "checked_at": "2026-10-25T13:20:49.251146+00:00",
+      "method_suggestion": "ats_api",
+      "source_id": "employer_0664940cd25480fc",
+      "status": "DISCOVERED"
+    },
+    "employer_066cfdcf27a32a63": {
+      "checked_at": "2026-10-25T13:20:49.392518+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_066cfdcf27a32a63",
+      "status": "DISCOVERED"
+    },
+    "employer_070be593cbe1a818": {
+      "checked_at": "2026-10-25T13:24:17.624661+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_070be593cbe1a818",
+      "status": "DISCOVERED"
+    },
+    "employer_071bf1c4edf5e2e2": {
+      "checked_at": "2026-10-25T13:24:17.661052+00:00",
+      "method_suggestion": "link_diff",
+      "source_id": "employer_071bf1c4edf5e2e2",
+      "status": "DISCOVERED"
+    },
+    "employer_07a5e16a1a8b3c83": {
+      "checked_at": "2026-10-25T13:20:51.217135+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_07a5e16a1a8b3c83",
+      "status": "FAILED"
+    },
+    "employer_0825ff7a49f48772": {
+      "checked_at": "2026-10-25T13:24:18.282008+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_0825ff7a49f48772",
+      "status": "DISCOVERED"
+    },
+    "employer_087f1f3470e75997": {
+      "checked_at": "2026-10-25T13:20:52.753070+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_087f1f3470e75997",
+      "status": "DISCOVERED"
+    },
+    "employer_0884e87c2bf8c7fd": {
+      "checked_at": "2026-10-25T13:20:53.049046+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_0884e87c2bf8c7fd",
+      "status": "FAILED"
+    },
+    "employer_088cea5fe09aabab": {
+      "checked_at": "2026-10-25T13:20:53.845769+00:00",
+      "method_suggestion": "manual_or_blocked",
+      "source_id": "employer_088cea5fe09aabab",
+      "status": "SKIPPED"
+    },
+    "employer_08ac15274b7d4e28": {
+      "checked_at": "2026-10-25T13:24:18.575450+00:00",
+      "method_suggestion": "manual_or_blocked",
+      "source_id": "employer_08ac15274b7d4e28",
+      "status": "BLOCKED"
+    },
+    "employer_08c20e1580e38d36": {
+      "checked_at": "2026-10-25T13:24:19.644063+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_08c20e1580e38d36",
+      "status": "DISCOVERED"
+    },
+    "employer_08c5fc462d39c602": {
+      "checked_at": "2026-10-25T13:24:19.791161+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_08c5fc462d39c602",
+      "status": "DISCOVERED"
+    },
+    "employer_0901c78d670ec285": {
+      "checked_at": "2026-10-25T13:24:19.903907+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_0901c78d670ec285",
+      "status": "DISCOVERED"
+    },
+    "employer_09879474efc0caf4": {
+      "checked_at": "2026-10-25T13:24:20.242134+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_09879474efc0caf4",
+      "status": "DISCOVERED"
+    },
+    "employer_09e125fc6bb69621": {
+      "checked_at": "2026-10-25T13:20:54.934033+00:00",
+      "method_suggestion": "manual_or_blocked",
+      "source_id": "employer_09e125fc6bb69621",
+      "status": "BLOCKED"
+    },
+    "employer_0af64d08a1b8e7f6": {
+      "checked_at": "2026-10-25T13:24:20.247828+00:00",
+      "method_suggestion": "pdf",
+      "source_id": "employer_0af64d08a1b8e7f6",
+      "status": "DISCOVERED"
+    },
+    "employer_0c897e2189dffb31": {
+      "checked_at": "2026-10-25T13:24:20.263321+00:00",
+      "method_suggestion": "ats_api",
+      "source_id": "employer_0c897e2189dffb31",
+      "status": "DISCOVERED"
+    },
+    "employer_0cb5afeca41362f1": {
+      "checked_at": "2026-10-25T13:24:20.265299+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_0cb5afeca41362f1",
+      "status": "DISCOVERED"
+    },
+    "employer_0cd5cb6026f02443": {
+      "checked_at": "2026-10-25T13:20:55.725757+00:00",
+      "method_suggestion": "manual_or_blocked",
+      "source_id": "employer_0cd5cb6026f02443",
+      "status": "SKIPPED"
+    },
+    "employer_0d02d90bc7f89621": {
+      "checked_at": "2026-10-25T13:20:55.725796+00:00",
+      "method_suggestion": "manual_or_blocked",
+      "source_id": "employer_0d02d90bc7f89621",
+      "status": "BLOCKED"
+    },
+    "employer_0d0365a1dc1e3a3d": {
+      "checked_at": "2026-10-25T13:24:20.904103+00:00",
+      "method_suggestion": "link_diff",
+      "source_id": "employer_0d0365a1dc1e3a3d",
+      "status": "DISCOVERED"
+    },
+    "employer_0d53c0361b5e43cc": {
+      "checked_at": "2026-10-25T13:24:21.500794+00:00",
+      "method_suggestion": "ats_api",
+      "source_id": "employer_0d53c0361b5e43cc",
+      "status": "DISCOVERED"
+    },
+    "employer_0f625148e61cf723": {
+      "checked_at": "2026-10-25T13:20:57.243016+00:00",
+      "method_suggestion": "manual_or_blocked",
+      "source_id": "employer_0f625148e61cf723",
+      "status": "SKIPPED"
+    },
+    "employer_0fc144814302e3aa": {
+      "checked_at": "2026-10-25T13:20:57.243065+00:00",
+      "method_suggestion": "link_diff",
+      "source_id": "employer_0fc144814302e3aa",
+      "status": "DISCOVERED"
+    },
+    "employer_0ff638e50e0c60a3": {
+      "checked_at": "2026-10-25T13:24:21.838399+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_0ff638e50e0c60a3",
+      "status": "DISCOVERED"
+    },
+    "employer_10b91c6cf05f99cf": {
+      "checked_at": "2026-10-25T13:24:21.958772+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_10b91c6cf05f99cf",
+      "status": "DISCOVERED"
+    },
+    "employer_111760bdba37dfbd": {
+      "checked_at": "2026-10-25T13:20:57.991640+00:00",
+      "method_suggestion": "manual_or_blocked",
+      "source_id": "employer_111760bdba37dfbd",
+      "status": "BLOCKED"
+    },
+    "employer_11a54a38f848120e": {
+      "checked_at": "2026-10-25T13:24:22.007326+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_11a54a38f848120e",
+      "status": "DISCOVERED"
+    },
+    "employer_11d2a7fde54542c0": {
+      "checked_at": "2026-10-25T13:24:22.013797+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_11d2a7fde54542c0",
+      "status": "DISCOVERED"
+    },
+    "employer_120a31ed557eb073": {
+      "checked_at": "2026-10-25T13:20:58.289322+00:00",
+      "method_suggestion": "manual_or_blocked",
+      "source_id": "employer_120a31ed557eb073",
+      "status": "SKIPPED"
+    },
+    "employer_12325f9fe6e0537f": {
+      "checked_at": "2026-10-25T13:24:22.068356+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_12325f9fe6e0537f",
+      "status": "DISCOVERED"
+    },
+    "employer_130639812ae22976": {
+      "checked_at": "2026-10-25T13:20:58.610487+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_130639812ae22976",
+      "status": "FAILED"
+    },
+    "employer_13bfcd0b0ac602ef": {
+      "checked_at": "2026-10-25T13:24:22.315447+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_13bfcd0b0ac602ef",
+      "status": "DISCOVERED"
+    },
+    "employer_13ed9cf23c97dbe9": {
+      "checked_at": "2026-10-25T13:24:23.026078+00:00",
+      "method_suggestion": "link_diff",
+      "source_id": "employer_13ed9cf23c97dbe9",
+      "status": "DISCOVERED"
+    },
+    "employer_14204b2711eb6203": {
+      "checked_at": "2026-10-25T13:24:23.446638+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_14204b2711eb6203",
+      "status": "DISCOVERED"
+    },
+    "employer_142417a688451a73": {
+      "checked_at": "2026-10-25T13:24:23.528943+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_142417a688451a73",
+      "status": "DISCOVERED"
+    },
+    "employer_15875b6a4de97821": {
+      "checked_at": "2026-10-25T13:24:24.198946+00:00",
+      "method_suggestion": "ats_api",
+      "source_id": "employer_15875b6a4de97821",
+      "status": "DISCOVERED"
+    },
+    "employer_15a3cc217ccbf471": {
+      "checked_at": "2026-10-25T13:24:24.394226+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_15a3cc217ccbf471",
+      "status": "DISCOVERED"
+    },
+    "employer_171316a1725f2b1d": {
+      "checked_at": "2026-10-25T13:20:59.866284+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_171316a1725f2b1d",
+      "status": "DISCOVERED"
+    },
+    "employer_178fc2da3ea2f0ac": {
+      "checked_at": "2026-10-25T13:24:24.518633+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_178fc2da3ea2f0ac",
+      "status": "DISCOVERED"
+    },
+    "employer_17c15126bc540c55": {
+      "checked_at": "2026-10-25T13:21:00.468446+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_17c15126bc540c55",
+      "status": "FAILED"
+    },
+    "employer_184b3957bbf0977b": {
+      "checked_at": "2026-10-25T13:24:25.411619+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_184b3957bbf0977b",
+      "status": "DISCOVERED"
+    },
+    "employer_1868f1ce04fdbb40": {
+      "checked_at": "2026-10-25T13:24:25.419807+00:00",
+      "method_suggestion": "manual_or_blocked",
+      "source_id": "employer_1868f1ce04fdbb40",
+      "status": "BLOCKED"
+    },
+    "employer_18dbf2fbac6caddf": {
+      "checked_at": "2026-10-25T13:24:25.973744+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_18dbf2fbac6caddf",
+      "status": "DISCOVERED"
+    },
+    "employer_1958e161d051541c": {
+      "checked_at": "2026-10-25T13:24:26.572243+00:00",
+      "method_suggestion": "ats_api",
+      "source_id": "employer_1958e161d051541c",
+      "status": "DISCOVERED"
+    },
+    "employer_1a047fd979fcdf88": {
+      "checked_at": "2026-10-25T13:24:26.773840+00:00",
+      "method_suggestion": "ats_api",
+      "source_id": "employer_1a047fd979fcdf88",
+      "status": "DISCOVERED"
+    },
+    "employer_1a36185bfa8761a4": {
+      "checked_at": "2026-10-25T13:24:27.664181+00:00",
+      "method_suggestion": "ats_api",
+      "source_id": "employer_1a36185bfa8761a4",
+      "status": "DISCOVERED"
+    },
+    "employer_1a46b912119f5c69": {
+      "checked_at": "2026-10-25T13:24:27.708027+00:00",
+      "method_suggestion": "manual_or_blocked",
+      "source_id": "employer_1a46b912119f5c69",
+      "status": "BLOCKED"
+    },
+    "employer_1aece88d790f6479": {
+      "checked_at": "2026-10-25T13:24:28.011083+00:00",
+      "method_suggestion": "link_diff",
+      "source_id": "employer_1aece88d790f6479",
+      "status": "DISCOVERED"
+    },
+    "employer_1b05177b4f6a69f8": {
+      "checked_at": "2026-10-25T13:24:28.266767+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_1b05177b4f6a69f8",
+      "status": "DISCOVERED"
+    },
+    "employer_1b7ea0ba74ea943d": {
+      "checked_at": "2026-10-25T13:24:28.369900+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_1b7ea0ba74ea943d",
+      "status": "DISCOVERED"
+    },
+    "employer_1b90da4692b350be": {
+      "checked_at": "2026-10-25T13:24:28.651548+00:00",
+      "method_suggestion": "ats_api",
+      "source_id": "employer_1b90da4692b350be",
+      "status": "DISCOVERED"
+    },
+    "employer_1bc72c098bfe9f56": {
+      "checked_at": "2026-10-25T13:24:29.210405+00:00",
+      "method_suggestion": "ats_api",
+      "source_id": "employer_1bc72c098bfe9f56",
+      "status": "DISCOVERED"
+    },
+    "employer_1bdfedad0c2c6fe5": {
+      "checked_at": "2026-10-25T13:24:29.477675+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_1bdfedad0c2c6fe5",
+      "status": "DISCOVERED"
+    },
+    "employer_1c5ea7eb95daf0b1": {
+      "checked_at": "2026-10-25T13:24:29.588061+00:00",
+      "method_suggestion": "link_diff",
+      "source_id": "employer_1c5ea7eb95daf0b1",
+      "status": "DISCOVERED"
+    },
+    "employer_1c6f7663efedc92f": {
+      "checked_at": "2026-10-25T13:21:04.203087+00:00",
+      "method_suggestion": "manual_or_blocked",
+      "source_id": "employer_1c6f7663efedc92f",
+      "status": "BLOCKED"
+    },
+    "employer_1cb47e9f80955927": {
+      "checked_at": "2026-10-25T13:21:04.223288+00:00",
+      "method_suggestion": "manual_or_blocked",
+      "source_id": "employer_1cb47e9f80955927",
+      "status": "SKIPPED"
+    },
+    "employer_1cd76a4f1c40a7f3": {
+      "checked_at": "2026-10-25T13:24:30.128686+00:00",
+      "method_suggestion": "link_diff",
+      "source_id": "employer_1cd76a4f1c40a7f3",
+      "status": "DISCOVERED"
+    },
+    "employer_1e69145f43ff1d76": {
+      "checked_at": "2026-10-25T13:24:31.201593+00:00",
+      "method_suggestion": "ats_api",
+      "source_id": "employer_1e69145f43ff1d76",
+      "status": "DISCOVERED"
+    },
+    "employer_1e9ab19444f69e86": {
+      "checked_at": "2026-10-25T13:24:31.285467+00:00",
+      "method_suggestion": "ats_api",
+      "source_id": "employer_1e9ab19444f69e86",
+      "status": "DISCOVERED"
+    },
+    "employer_1ec56ba36ff0e2f0": {
+      "checked_at": "2026-10-25T13:24:31.559997+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_1ec56ba36ff0e2f0",
+      "status": "DISCOVERED"
+    },
+    "employer_1eda154b25d15955": {
+      "checked_at": "2026-10-25T13:24:31.859351+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_1eda154b25d15955",
+      "status": "DISCOVERED"
+    },
+    "employer_1f16a3b769d9e9dd": {
+      "checked_at": "2026-10-25T13:21:05.325351+00:00",
+      "method_suggestion": "manual_or_blocked",
+      "source_id": "employer_1f16a3b769d9e9dd",
+      "status": "BLOCKED"
+    },
+    "employer_1ff8fb3f851f9da6": {
+      "checked_at": "2026-10-25T13:24:31.869068+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_1ff8fb3f851f9da6",
+      "status": "DISCOVERED"
+    },
+    "employer_1ffd56c1ef932428": {
+      "checked_at": "2026-10-25T13:24:32.777685+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_1ffd56c1ef932428",
+      "status": "DISCOVERED"
+    },
+    "employer_2134cfeef9c91b2c": {
+      "checked_at": "2026-10-25T13:21:06.007735+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_2134cfeef9c91b2c",
+      "status": "FAILED"
+    },
+    "employer_214d98f124b0070f": {
+      "checked_at": "2026-10-25T13:24:33.261043+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_214d98f124b0070f",
+      "status": "DISCOVERED"
+    },
+    "employer_21b733c9d70a6b80": {
+      "checked_at": "2026-10-25T13:24:33.779190+00:00",
+      "method_suggestion": "manual_or_blocked",
+      "source_id": "employer_21b733c9d70a6b80",
+      "status": "BLOCKED"
+    },
+    "employer_21bb4e761d9fac6a": {
+      "checked_at": "2026-10-25T13:24:34.211321+00:00",
+      "method_suggestion": "pdf",
+      "source_id": "employer_21bb4e761d9fac6a",
+      "status": "DISCOVERED"
+    },
+    "employer_21d50d6f6c2a6198": {
+      "checked_at": "2026-10-25T13:21:06.683636+00:00",
+      "method_suggestion": "manual_or_blocked",
+      "source_id": "employer_21d50d6f6c2a6198",
+      "status": "SKIPPED"
+    },
+    "employer_2248104c95cc3a17": {
+      "checked_at": "2026-10-25T13:24:34.477935+00:00",
+      "method_suggestion": "link_diff",
+      "source_id": "employer_2248104c95cc3a17",
+      "status": "DISCOVERED"
+    },
+    "employer_23f5994f8afeb1e4": {
+      "checked_at": "2026-10-25T13:24:34.931175+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_23f5994f8afeb1e4",
+      "status": "DISCOVERED"
+    },
+    "employer_2428a255338d27ca": {
+      "checked_at": "2026-10-25T13:24:35.165916+00:00",
+      "method_suggestion": "pdf",
+      "source_id": "employer_2428a255338d27ca",
+      "status": "DISCOVERED"
+    },
+    "employer_248a270f6bc882b1": {
+      "checked_at": "2026-10-25T13:24:35.598808+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_248a270f6bc882b1",
+      "status": "DISCOVERED"
+    },
+    "employer_25813bd41d081f60": {
+      "checked_at": "2026-10-25T13:24:35.634643+00:00",
+      "method_suggestion": "manual_or_blocked",
+      "source_id": "employer_25813bd41d081f60",
+      "status": "BLOCKED"
+    },
+    "employer_25ed83ff1fe32873": {
+      "checked_at": "2026-10-25T13:24:35.637681+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_25ed83ff1fe32873",
+      "status": "DISCOVERED"
+    },
+    "employer_25f26ad33da774ea": {
+      "checked_at": "2026-10-25T13:24:36.554138+00:00",
+      "method_suggestion": "pdf",
+      "source_id": "employer_25f26ad33da774ea",
+      "status": "DISCOVERED"
+    },
+    "employer_26012b0a974b1a06": {
+      "checked_at": "2026-10-25T13:24:36.712022+00:00",
+      "method_suggestion": "manual_or_blocked",
+      "source_id": "employer_26012b0a974b1a06",
+      "status": "BLOCKED"
+    },
+    "employer_265523f2b58299b7": {
+      "checked_at": "2026-10-25T13:24:36.715574+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_265523f2b58299b7",
+      "status": "DISCOVERED"
+    },
+    "employer_266a7cd3f5424b47": {
+      "checked_at": "2026-10-25T13:24:36.742535+00:00",
+      "method_suggestion": "ats_api",
+      "source_id": "employer_266a7cd3f5424b47",
+      "status": "DISCOVERED"
+    },
+    "employer_2778fd00ca87c9c9": {
+      "checked_at": "2026-10-25T13:21:07.733949+00:00",
+      "method_suggestion": "manual_or_blocked",
+      "source_id": "employer_2778fd00ca87c9c9",
+      "status": "BLOCKED"
+    },
+    "employer_27a22612c7bbbb97": {
+      "checked_at": "2026-10-25T13:21:08.604381+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_27a22612c7bbbb97",
+      "status": "DISCOVERED"
+    },
+    "employer_27ada10ac0d95180": {
+      "checked_at": "2026-10-25T13:21:08.776699+00:00",
+      "method_suggestion": "manual_or_blocked",
+      "source_id": "employer_27ada10ac0d95180",
+      "status": "SKIPPED"
+    },
+    "employer_2814651a32af7291": {
+      "checked_at": "2026-10-25T13:24:36.937852+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_2814651a32af7291",
+      "status": "DISCOVERED"
+    },
+    "employer_2836a94887f9c743": {
+      "checked_at": "2026-10-25T13:24:36.969305+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_2836a94887f9c743",
+      "status": "DISCOVERED"
+    },
+    "employer_2907c2b16d21cf67": {
+      "checked_at": "2026-10-25T13:24:37.724507+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_2907c2b16d21cf67",
+      "status": "DISCOVERED"
+    },
+    "employer_296a2011d43f4166": {
+      "checked_at": "2026-10-25T13:24:37.848760+00:00",
+      "method_suggestion": "ats_api",
+      "source_id": "employer_296a2011d43f4166",
+      "status": "DISCOVERED"
+    },
+    "employer_2971334237ad7c0a": {
+      "checked_at": "2026-10-25T13:24:37.990161+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_2971334237ad7c0a",
+      "status": "DISCOVERED"
+    },
+    "employer_299ba270a2be269e": {
+      "checked_at": "2026-10-25T13:21:09.301934+00:00",
+      "method_suggestion": "manual_or_blocked",
+      "source_id": "employer_299ba270a2be269e",
+      "status": "SKIPPED"
+    },
+    "employer_29a8e9407d488fb6": {
+      "checked_at": "2026-10-25T13:21:09.301968+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_29a8e9407d488fb6",
+      "status": "DISCOVERED"
+    },
+    "employer_2a360d44533fdebd": {
+      "checked_at": "2026-10-25T13:24:38.342182+00:00",
+      "method_suggestion": "pdf",
+      "source_id": "employer_2a360d44533fdebd",
+      "status": "DISCOVERED"
+    },
+    "employer_2b071eefa21b59b3": {
+      "checked_at": "2026-10-25T13:21:10.069293+00:00",
+      "method_suggestion": "pdf",
+      "source_id": "employer_2b071eefa21b59b3",
+      "status": "DISCOVERED"
+    },
+    "employer_2b443ec347e95a93": {
+      "checked_at": "2026-10-25T13:24:38.519141+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_2b443ec347e95a93",
+      "status": "DISCOVERED"
+    },
+    "employer_2b896dd4f5be5709": {
+      "checked_at": "2026-10-25T13:24:38.754611+00:00",
+      "method_suggestion": "manual_or_blocked",
+      "source_id": "employer_2b896dd4f5be5709",
+      "status": "BLOCKED"
+    },
+    "employer_2c1ec0927ded7686": {
+      "checked_at": "2026-10-25T13:21:11.082024+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_2c1ec0927ded7686",
+      "status": "DISCOVERED"
+    },
+    "employer_2cd6fa1b9f317ce4": {
+      "checked_at": "2026-10-25T13:24:39.343841+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_2cd6fa1b9f317ce4",
+      "status": "DISCOVERED"
+    },
+    "employer_2d151071a6e335a0": {
+      "checked_at": "2026-10-25T13:24:39.552274+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_2d151071a6e335a0",
+      "status": "DISCOVERED"
+    },
+    "employer_2dca384909c56744": {
+      "checked_at": "2026-10-25T13:24:39.600745+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_2dca384909c56744",
+      "status": "DISCOVERED"
+    },
+    "employer_2e436693d9c0ba59": {
+      "checked_at": "2026-10-25T13:24:39.837534+00:00",
+      "method_suggestion": "ats_api",
+      "source_id": "employer_2e436693d9c0ba59",
+      "status": "DISCOVERED"
+    },
+    "employer_2e748fa1969076f6": {
+      "checked_at": "2026-10-25T13:24:39.869181+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_2e748fa1969076f6",
+      "status": "DISCOVERED"
+    },
+    "employer_2ea1d3f3a074bddb": {
+      "checked_at": "2026-10-25T13:24:40.098539+00:00",
+      "method_suggestion": "link_diff",
+      "source_id": "employer_2ea1d3f3a074bddb",
+      "status": "DISCOVERED"
+    },
+    "employer_2ec925cc5ca70317": {
+      "checked_at": "2026-10-25T13:21:13.696540+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_2ec925cc5ca70317",
+      "status": "FAILED"
+    },
+    "employer_2f06c8d48f355ae2": {
+      "checked_at": "2026-10-25T13:24:41.354629+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_2f06c8d48f355ae2",
+      "status": "DISCOVERED"
+    },
+    "employer_2f1f9a93b9db4a43": {
+      "checked_at": "2026-10-25T13:24:41.559516+00:00",
+      "method_suggestion": "manual_or_blocked",
+      "source_id": "employer_2f1f9a93b9db4a43",
+      "status": "BLOCKED"
+    },
+    "employer_30694ba13e504d2e": {
+      "checked_at": "2026-10-25T13:24:41.562744+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_30694ba13e504d2e",
+      "status": "DISCOVERED"
+    },
+    "employer_308b5a3d61dea0dc": {
+      "checked_at": "2026-10-25T13:21:14.555332+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_308b5a3d61dea0dc",
+      "status": "DISCOVERED"
+    },
+    "employer_31235760ceb4a08c": {
+      "checked_at": "2026-10-25T13:24:41.821232+00:00",
+      "method_suggestion": "manual_or_blocked",
+      "source_id": "employer_31235760ceb4a08c",
+      "status": "BLOCKED"
+    },
+    "employer_3194852fcec2743c": {
+      "checked_at": "2026-10-25T13:24:42.058156+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_3194852fcec2743c",
+      "status": "DISCOVERED"
+    },
+    "employer_31e357649cedc4f9": {
+      "checked_at": "2026-10-25T13:24:42.331228+00:00",
+      "method_suggestion": "ats_api",
+      "source_id": "employer_31e357649cedc4f9",
+      "status": "DISCOVERED"
+    },
+    "employer_330116662c9692d6": {
+      "checked_at": "2026-10-25T13:24:42.649166+00:00",
+      "method_suggestion": "ats_api",
+      "source_id": "employer_330116662c9692d6",
+      "status": "DISCOVERED"
+    },
+    "employer_33d6a4b726a4ec85": {
+      "checked_at": "2026-10-25T13:21:15.416246+00:00",
+      "method_suggestion": "manual_or_blocked",
+      "source_id": "employer_33d6a4b726a4ec85",
+      "status": "SKIPPED"
+    },
+    "employer_33fb0e9094c39669": {
+      "checked_at": "2026-10-25T13:21:15.416285+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_33fb0e9094c39669",
+      "status": "FAILED"
+    },
+    "employer_345255d68b5daca6": {
+      "checked_at": "2026-10-25T13:24:43.772290+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_345255d68b5daca6",
+      "status": "DISCOVERED"
+    },
+    "employer_34c4c6420b9d89b2": {
+      "checked_at": "2026-10-25T13:24:44.062238+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_34c4c6420b9d89b2",
+      "status": "DISCOVERED"
+    },
+    "employer_350d4f73cd1c2f60": {
+      "checked_at": "2026-10-25T13:24:44.115129+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_350d4f73cd1c2f60",
+      "status": "DISCOVERED"
+    },
+    "employer_357f5afab98e077e": {
+      "checked_at": "2026-10-25T13:24:44.429228+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_357f5afab98e077e",
+      "status": "DISCOVERED"
+    },
+    "employer_35b77f6fc8aa8fac": {
+      "checked_at": "2026-10-25T13:24:44.660760+00:00",
+      "method_suggestion": "manual_or_blocked",
+      "source_id": "employer_35b77f6fc8aa8fac",
+      "status": "BLOCKED"
+    },
+    "employer_35cbad73bee5c547": {
+      "checked_at": "2026-10-25T13:24:45.838599+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_35cbad73bee5c547",
+      "status": "DISCOVERED"
+    },
+    "employer_35f00cb9d5783ab4": {
+      "checked_at": "2026-10-25T13:24:45.976762+00:00",
+      "method_suggestion": "link_diff",
+      "source_id": "employer_35f00cb9d5783ab4",
+      "status": "DISCOVERED"
+    },
+    "employer_36198abe3fc57643": {
+      "checked_at": "2026-10-25T13:24:46.043418+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_36198abe3fc57643",
+      "status": "DISCOVERED"
+    },
+    "employer_362136d63fad8de4": {
+      "checked_at": "2026-10-25T13:21:17.889610+00:00",
+      "method_suggestion": "pdf",
+      "source_id": "employer_362136d63fad8de4",
+      "status": "DISCOVERED"
+    },
+    "employer_36fa25d9bf181f28": {
+      "checked_at": "2026-10-25T13:24:46.491581+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_36fa25d9bf181f28",
+      "status": "DISCOVERED"
+    },
+    "employer_3719837320e6357b": {
+      "checked_at": "2026-10-25T13:24:47.005179+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_3719837320e6357b",
+      "status": "DISCOVERED"
+    },
+    "employer_3720141913473ebd": {
+      "checked_at": "2026-10-25T13:24:47.482297+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_3720141913473ebd",
+      "status": "DISCOVERED"
+    },
+    "employer_37357a2c55da34ec": {
+      "checked_at": "2026-10-25T13:24:47.742842+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_37357a2c55da34ec",
+      "status": "DISCOVERED"
+    },
+    "employer_3756567f2cfb6834": {
+      "checked_at": "2026-10-25T13:24:48.244712+00:00",
+      "method_suggestion": "pdf",
+      "source_id": "employer_3756567f2cfb6834",
+      "status": "DISCOVERED"
+    },
+    "employer_37dc5893b9ae133a": {
+      "checked_at": "2026-10-25T13:24:48.469181+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_37dc5893b9ae133a",
+      "status": "DISCOVERED"
+    },
+    "employer_37fef884c05fef2e": {
+      "checked_at": "2026-10-25T13:24:48.718758+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_37fef884c05fef2e",
+      "status": "DISCOVERED"
+    },
+    "employer_382b9dab122d7d60": {
+      "checked_at": "2026-10-25T13:21:19.143517+00:00",
+      "method_suggestion": "manual_or_blocked",
+      "source_id": "employer_382b9dab122d7d60",
+      "status": "SKIPPED"
+    },
+    "employer_384e1ec5d6cb64c5": {
+      "checked_at": "2026-10-25T13:24:48.770748+00:00",
+      "method_suggestion": "manual_or_blocked",
+      "source_id": "employer_384e1ec5d6cb64c5",
+      "status": "BLOCKED"
+    },
+    "employer_386909ce1790f789": {
+      "checked_at": "2026-10-25T13:24:49.153602+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_386909ce1790f789",
+      "status": "DISCOVERED"
+    },
+    "employer_396f371eef69e62d": {
+      "checked_at": "2026-10-25T13:24:49.699717+00:00",
+      "method_suggestion": "ats_api",
+      "source_id": "employer_396f371eef69e62d",
+      "status": "DISCOVERED"
+    },
+    "employer_398ede9dbf408d0a": {
+      "checked_at": "2026-10-25T13:24:49.837873+00:00",
+      "method_suggestion": "pdf",
+      "source_id": "employer_398ede9dbf408d0a",
+      "status": "DISCOVERED"
+    },
+    "employer_39b1bd88f7cc667a": {
+      "checked_at": "2026-10-25T13:24:49.847788+00:00",
+      "method_suggestion": "link_diff",
+      "source_id": "employer_39b1bd88f7cc667a",
+      "status": "DISCOVERED"
+    },
+    "employer_3aa3c773aa23b131": {
+      "checked_at": "2026-10-25T13:24:50.035919+00:00",
+      "method_suggestion": "manual_or_blocked",
+      "source_id": "employer_3aa3c773aa23b131",
+      "status": "BLOCKED"
+    },
+    "employer_3abd028fde6e91f0": {
+      "checked_at": "2026-10-25T13:24:50.290484+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_3abd028fde6e91f0",
+      "status": "DISCOVERED"
+    },
+    "employer_3b2660667a293242": {
+      "checked_at": "2026-10-25T13:24:50.580765+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_3b2660667a293242",
+      "status": "DISCOVERED"
+    },
+    "employer_3b3b9f823d884038": {
+      "checked_at": "2026-10-25T13:24:50.694553+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_3b3b9f823d884038",
+      "status": "DISCOVERED"
+    },
+    "employer_3b6c5ffc9d37d73e": {
+      "checked_at": "2026-10-25T13:24:50.972445+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_3b6c5ffc9d37d73e",
+      "status": "DISCOVERED"
+    },
+    "employer_3be05c0cdbcee6d2": {
+      "checked_at": "2026-10-25T13:24:51.267538+00:00",
+      "method_suggestion": "ats_api",
+      "source_id": "employer_3be05c0cdbcee6d2",
+      "status": "DISCOVERED"
+    },
+    "employer_3bf4c7f32738cf5a": {
+      "checked_at": "2026-10-25T13:24:51.372405+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_3bf4c7f32738cf5a",
+      "status": "DISCOVERED"
+    },
+    "employer_3cb77f32d7fb39d7": {
+      "checked_at": "2026-10-25T13:21:20.925573+00:00",
+      "method_suggestion": "ats_api",
+      "source_id": "employer_3cb77f32d7fb39d7",
+      "status": "DISCOVERED"
+    },
+    "employer_3d01c912e05505da": {
+      "checked_at": "2026-10-25T13:21:21.886447+00:00",
+      "method_suggestion": "manual_or_blocked",
+      "source_id": "employer_3d01c912e05505da",
+      "status": "BLOCKED"
+    },
+    "employer_3d177724feacdda1": {
+      "checked_at": "2026-10-25T13:21:22.096963+00:00",
+      "method_suggestion": "manual_or_blocked",
+      "source_id": "employer_3d177724feacdda1",
+      "status": "SKIPPED"
+    },
+    "employer_3d2a408f9d01331a": {
+      "checked_at": "2026-10-25T13:24:51.927096+00:00",
+      "method_suggestion": "ats_api",
+      "source_id": "employer_3d2a408f9d01331a",
+      "status": "DISCOVERED"
+    },
+    "employer_3dda30bac825666c": {
+      "checked_at": "2026-10-25T13:24:52.465096+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_3dda30bac825666c",
+      "status": "DISCOVERED"
+    },
+    "employer_3e6f47e99f98b4d9": {
+      "checked_at": "2026-10-25T13:24:52.501080+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_3e6f47e99f98b4d9",
+      "status": "DISCOVERED"
+    },
+    "employer_3ee9f83387bb4ec4": {
+      "checked_at": "2026-10-25T13:24:52.710297+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_3ee9f83387bb4ec4",
+      "status": "DISCOVERED"
+    },
+    "employer_3eee1bc1fab1f1aa": {
+      "checked_at": "2026-10-25T13:21:23.523024+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_3eee1bc1fab1f1aa",
+      "status": "FAILED"
+    },
+    "employer_3f0fddd1e51b228b": {
+      "checked_at": "2026-10-25T13:21:23.524644+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_3f0fddd1e51b228b",
+      "status": "DISCOVERED"
+    },
+    "employer_3f1e429bf52e7c05": {
+      "checked_at": "2026-10-25T13:24:52.969130+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_3f1e429bf52e7c05",
+      "status": "FAILED"
+    },
+    "employer_3fdec1a91cb3796b": {
+      "checked_at": "2026-10-25T13:21:23.986905+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_3fdec1a91cb3796b",
+      "status": "DISCOVERED"
+    },
+    "employer_4069a794a50b39a5": {
+      "checked_at": "2026-10-25T13:24:53.038719+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_4069a794a50b39a5",
+      "status": "DISCOVERED"
+    },
+    "employer_411497b5cc3d8a3e": {
+      "checked_at": "2026-10-25T13:24:53.474681+00:00",
+      "method_suggestion": "manual_or_blocked",
+      "source_id": "employer_411497b5cc3d8a3e",
+      "status": "BLOCKED"
+    },
+    "employer_416ee9b26a529f41": {
+      "checked_at": "2026-10-25T13:24:53.756717+00:00",
+      "method_suggestion": "ats_api",
+      "source_id": "employer_416ee9b26a529f41",
+      "status": "DISCOVERED"
+    },
+    "employer_4189689afb9d89bc": {
+      "checked_at": "2026-10-25T13:24:53.984655+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_4189689afb9d89bc",
+      "status": "DISCOVERED"
+    },
+    "employer_426d8200b032f4cb": {
+      "checked_at": "2026-10-25T13:24:54.014956+00:00",
+      "method_suggestion": "link_diff",
+      "source_id": "employer_426d8200b032f4cb",
+      "status": "DISCOVERED"
+    },
+    "employer_427dbda967cd2174": {
+      "checked_at": "2026-10-25T13:24:54.225401+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_427dbda967cd2174",
+      "status": "DISCOVERED"
+    },
+    "employer_42a5e7ca66275440": {
+      "checked_at": "2026-10-25T13:24:54.470943+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_42a5e7ca66275440",
+      "status": "DISCOVERED"
+    },
+    "employer_43020187074a1de4": {
+      "checked_at": "2026-10-25T13:24:55.287408+00:00",
+      "method_suggestion": "manual_or_blocked",
+      "source_id": "employer_43020187074a1de4",
+      "status": "BLOCKED"
+    },
+    "employer_433765f329966b3a": {
+      "checked_at": "2026-10-25T13:24:55.292384+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_433765f329966b3a",
+      "status": "FAILED"
+    },
+    "employer_437f8aa04dfac73f": {
+      "checked_at": "2026-10-25T13:24:55.372938+00:00",
+      "method_suggestion": "ats_api",
+      "source_id": "employer_437f8aa04dfac73f",
+      "status": "DISCOVERED"
+    },
+    "employer_43cdbfb4a567343f": {
+      "checked_at": "2026-10-25T13:24:55.448738+00:00",
+      "method_suggestion": "ats_api",
+      "source_id": "employer_43cdbfb4a567343f",
+      "status": "DISCOVERED"
+    },
+    "employer_4494d34d4e846387": {
+      "checked_at": "2026-10-25T13:21:26.264943+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_4494d34d4e846387",
+      "status": "DISCOVERED"
+    },
+    "employer_45709b8607d991ae": {
+      "checked_at": "2026-10-25T13:24:56.020319+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_45709b8607d991ae",
+      "status": "DISCOVERED"
+    },
+    "employer_45addf99e0695e4b": {
+      "checked_at": "2026-10-25T13:21:26.605508+00:00",
+      "method_suggestion": "manual_or_blocked",
+      "source_id": "employer_45addf99e0695e4b",
+      "status": "SKIPPED"
+    },
+    "employer_45ae0292ae67a594": {
+      "checked_at": "2026-10-25T13:21:26.605542+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_45ae0292ae67a594",
+      "status": "DISCOVERED"
+    },
+    "employer_45e68ca3f430fa41": {
+      "checked_at": "2026-10-25T13:24:56.150100+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_45e68ca3f430fa41",
+      "status": "DISCOVERED"
+    },
+    "employer_4633f30d84b5e282": {
+      "checked_at": "2026-10-25T13:24:56.227204+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_4633f30d84b5e282",
+      "status": "DISCOVERED"
+    },
+    "employer_468ecdf4e369a864": {
+      "checked_at": "2026-10-25T13:24:56.391460+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_468ecdf4e369a864",
+      "status": "DISCOVERED"
+    },
+    "employer_478d74a59b24b82c": {
+      "checked_at": "2026-10-25T13:24:57.015821+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_478d74a59b24b82c",
+      "status": "DISCOVERED"
+    },
+    "employer_47a49d0471be3a0a": {
+      "checked_at": "2026-10-25T13:24:57.214541+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_47a49d0471be3a0a",
+      "status": "DISCOVERED"
+    },
+    "employer_497065b1094f173a": {
+      "checked_at": "2026-10-25T13:24:57.379553+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_497065b1094f173a",
+      "status": "DISCOVERED"
+    },
+    "employer_49a89cec9b5230e0": {
+      "checked_at": "2026-10-25T13:24:57.546483+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_49a89cec9b5230e0",
+      "status": "DISCOVERED"
+    },
+    "employer_4a1cd770d07cfc4b": {
+      "checked_at": "2026-10-25T13:21:29.086131+00:00",
+      "method_suggestion": "manual_or_blocked",
+      "source_id": "employer_4a1cd770d07cfc4b",
+      "status": "SKIPPED"
+    },
+    "employer_4a60f6711f9db71d": {
+      "checked_at": "2026-10-25T13:24:57.609895+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_4a60f6711f9db71d",
+      "status": "DISCOVERED"
+    },
+    "employer_4b481deb538469a6": {
+      "checked_at": "2026-10-25T13:24:57.912709+00:00",
+      "method_suggestion": "pdf",
+      "source_id": "employer_4b481deb538469a6",
+      "status": "DISCOVERED"
+    },
+    "employer_4b5f0d16f35b56cb": {
+      "checked_at": "2026-10-25T13:24:58.540928+00:00",
+      "method_suggestion": "ats_api",
+      "source_id": "employer_4b5f0d16f35b56cb",
+      "status": "DISCOVERED"
+    },
+    "employer_4b667497eb06186f": {
+      "checked_at": "2026-10-25T13:24:58.655029+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_4b667497eb06186f",
+      "status": "DISCOVERED"
+    },
+    "employer_4c387c8de1de5d36": {
+      "checked_at": "2026-10-25T13:24:58.953354+00:00",
+      "method_suggestion": "pdf",
+      "source_id": "employer_4c387c8de1de5d36",
+      "status": "DISCOVERED"
+    },
+    "employer_4dfec0204a026392": {
+      "checked_at": "2026-10-25T13:21:30.178057+00:00",
+      "method_suggestion": "pdf",
+      "source_id": "employer_4dfec0204a026392",
+      "status": "DISCOVERED"
+    },
+    "employer_4fe3fe1de8025991": {
+      "checked_at": "2026-10-25T13:21:30.189422+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_4fe3fe1de8025991",
+      "status": "DISCOVERED"
+    },
+    "employer_4ffb7c7df688ad40": {
+      "checked_at": "2026-10-25T13:24:59.353293+00:00",
+      "method_suggestion": "link_diff",
+      "source_id": "employer_4ffb7c7df688ad40",
+      "status": "DISCOVERED"
+    },
+    "employer_50c901659155c729": {
+      "checked_at": "2026-10-25T13:24:59.502925+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_50c901659155c729",
+      "status": "DISCOVERED"
+    },
+    "employer_5103150de01553df": {
+      "checked_at": "2026-10-25T13:24:59.722053+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_5103150de01553df",
+      "status": "DISCOVERED"
+    },
+    "employer_511d7fcc7340002a": {
+      "checked_at": "2026-10-25T13:24:59.909587+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_511d7fcc7340002a",
+      "status": "DISCOVERED"
+    },
+    "employer_51905d9546df64b7": {
+      "checked_at": "2026-10-25T13:25:00.241809+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_51905d9546df64b7",
+      "status": "FAILED"
+    },
+    "employer_519c24293fb42d04": {
+      "checked_at": "2026-10-25T13:25:01.047196+00:00",
+      "method_suggestion": "pdf",
+      "source_id": "employer_519c24293fb42d04",
+      "status": "DISCOVERED"
+    },
+    "employer_51d3d3a6082ea2c7": {
+      "checked_at": "2026-10-25T13:25:01.072406+00:00",
+      "method_suggestion": "ats_api",
+      "source_id": "employer_51d3d3a6082ea2c7",
+      "status": "DISCOVERED"
+    },
+    "employer_51dc0ba405b59884": {
+      "checked_at": "2026-10-25T13:25:01.408158+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_51dc0ba405b59884",
+      "status": "DISCOVERED"
+    },
+    "employer_51eb8f87ebd88f9d": {
+      "checked_at": "2026-10-25T13:25:01.784429+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_51eb8f87ebd88f9d",
+      "status": "DISCOVERED"
+    },
+    "employer_5295c6b401448bec": {
+      "checked_at": "2026-10-25T13:21:32.613656+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_5295c6b401448bec",
+      "status": "FAILED"
+    },
+    "employer_5297434b63f39350": {
+      "checked_at": "2026-10-25T13:21:32.745924+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_5297434b63f39350",
+      "status": "FAILED"
+    },
+    "employer_529fad2c89725025": {
+      "checked_at": "2026-10-25T13:25:02.334005+00:00",
+      "method_suggestion": "ats_api",
+      "source_id": "employer_529fad2c89725025",
+      "status": "DISCOVERED"
+    },
+    "employer_52aad316c64536de": {
+      "checked_at": "2026-10-25T13:25:02.366392+00:00",
+      "method_suggestion": "pdf",
+      "source_id": "employer_52aad316c64536de",
+      "status": "DISCOVERED"
+    },
+    "employer_5317224f01df1cac": {
+      "checked_at": "2026-10-25T13:25:02.751269+00:00",
+      "method_suggestion": "pdf",
+      "source_id": "employer_5317224f01df1cac",
+      "status": "DISCOVERED"
+    },
+    "employer_531bc9f4306a12d5": {
+      "checked_at": "2026-10-25T13:25:03.825072+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_531bc9f4306a12d5",
+      "status": "DISCOVERED"
+    },
+    "employer_5342ac7e01317e93": {
+      "checked_at": "2026-10-25T13:25:03.905584+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_5342ac7e01317e93",
+      "status": "DISCOVERED"
+    },
+    "employer_5372d0d430ab5f76": {
+      "checked_at": "2026-10-25T13:25:03.921188+00:00",
+      "method_suggestion": "pdf",
+      "source_id": "employer_5372d0d430ab5f76",
+      "status": "DISCOVERED"
+    },
+    "employer_54275a5fcaeeb79b": {
+      "checked_at": "2026-10-25T13:25:04.505498+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_54275a5fcaeeb79b",
+      "status": "DISCOVERED"
+    },
+    "employer_5541380ad2257ceb": {
+      "checked_at": "2026-10-25T13:25:05.278855+00:00",
+      "method_suggestion": "pdf",
+      "source_id": "employer_5541380ad2257ceb",
+      "status": "DISCOVERED"
+    },
+    "employer_55451a3b52002c96": {
+      "checked_at": "2026-10-25T13:25:05.300495+00:00",
+      "method_suggestion": "manual_or_blocked",
+      "source_id": "employer_55451a3b52002c96",
+      "status": "BLOCKED"
+    },
+    "employer_562cc24f8379bd99": {
+      "checked_at": "2026-10-25T13:21:34.996602+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_562cc24f8379bd99",
+      "status": "DISCOVERED"
+    },
+    "employer_566d91a76263224f": {
+      "checked_at": "2026-10-25T13:25:05.497631+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_566d91a76263224f",
+      "status": "DISCOVERED"
+    },
+    "employer_5700587e9b812cbb": {
+      "checked_at": "2026-10-25T13:21:35.521846+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_5700587e9b812cbb",
+      "status": "DISCOVERED"
+    },
+    "employer_5725f6f69a55e4b7": {
+      "checked_at": "2026-10-25T13:25:05.645187+00:00",
+      "method_suggestion": "manual_or_blocked",
+      "source_id": "employer_5725f6f69a55e4b7",
+      "status": "BLOCKED"
+    },
+    "employer_5731c001a5ef1334": {
+      "checked_at": "2026-10-25T13:25:05.778366+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_5731c001a5ef1334",
+      "status": "DISCOVERED"
+    },
+    "employer_574baf4fe5aae0a5": {
+      "checked_at": "2026-10-25T13:25:06.308960+00:00",
+      "method_suggestion": "pdf",
+      "source_id": "employer_574baf4fe5aae0a5",
+      "status": "DISCOVERED"
+    },
+    "employer_58195274d26354c6": {
+      "checked_at": "2026-10-25T13:25:06.350957+00:00",
+      "method_suggestion": "manual_or_blocked",
+      "source_id": "employer_58195274d26354c6",
+      "status": "BLOCKED"
+    },
+    "employer_586dd6ce81f26a52": {
+      "checked_at": "2026-10-25T13:25:06.355564+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_586dd6ce81f26a52",
+      "status": "DISCOVERED"
+    },
+    "employer_58b8d22cf280a524": {
+      "checked_at": "2026-10-25T13:25:06.513220+00:00",
+      "method_suggestion": "ats_api",
+      "source_id": "employer_58b8d22cf280a524",
+      "status": "DISCOVERED"
+    },
+    "employer_58c9e63aea84d1df": {
+      "checked_at": "2026-10-25T13:25:06.596648+00:00",
+      "method_suggestion": "ats_api",
+      "source_id": "employer_58c9e63aea84d1df",
+      "status": "DISCOVERED"
+    },
+    "employer_5904ae90e271210e": {
+      "checked_at": "2026-10-25T13:25:07.207675+00:00",
+      "method_suggestion": "ats_api",
+      "source_id": "employer_5904ae90e271210e",
+      "status": "DISCOVERED"
+    },
+    "employer_593e360e0e9302f8": {
+      "checked_at": "2026-10-25T13:21:37.091327+00:00",
+      "method_suggestion": "manual_or_blocked",
+      "source_id": "employer_593e360e0e9302f8",
+      "status": "SKIPPED"
+    },
+    "employer_59a13d685a486cb5": {
+      "checked_at": "2026-10-25T13:25:07.884948+00:00",
+      "method_suggestion": "pdf",
+      "source_id": "employer_59a13d685a486cb5",
+      "status": "DISCOVERED"
+    },
+    "employer_59a1cc3648822afc": {
+      "checked_at": "2026-10-25T13:25:07.942002+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_59a1cc3648822afc",
+      "status": "DISCOVERED"
+    },
+    "employer_59ae3c30dba1617f": {
+      "checked_at": "2026-10-25T13:25:08.121167+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_59ae3c30dba1617f",
+      "status": "DISCOVERED"
+    },
+    "employer_5b204d51a3998700": {
+      "checked_at": "2026-10-25T13:25:08.634062+00:00",
+      "method_suggestion": "link_diff",
+      "source_id": "employer_5b204d51a3998700",
+      "status": "DISCOVERED"
+    },
+    "employer_5b2af8e58b3fa5a2": {
+      "checked_at": "2026-10-25T13:25:09.009298+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_5b2af8e58b3fa5a2",
+      "status": "DISCOVERED"
+    },
+    "employer_5b94c09870fa5a46": {
+      "checked_at": "2026-10-25T13:25:09.011158+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_5b94c09870fa5a46",
+      "status": "DISCOVERED"
+    },
+    "employer_5c9e93e28fdd4001": {
+      "checked_at": "2026-10-25T13:25:09.028310+00:00",
+      "method_suggestion": "manual_or_blocked",
+      "source_id": "employer_5c9e93e28fdd4001",
+      "status": "BLOCKED"
+    },
+    "employer_5c9ee187e3a82002": {
+      "checked_at": "2026-10-25T13:25:09.437726+00:00",
+      "method_suggestion": "pdf",
+      "source_id": "employer_5c9ee187e3a82002",
+      "status": "DISCOVERED"
+    },
+    "employer_5cbf3562b76b50e4": {
+      "checked_at": "2026-10-25T13:21:38.670330+00:00",
+      "method_suggestion": "manual_or_blocked",
+      "source_id": "employer_5cbf3562b76b50e4",
+      "status": "BLOCKED"
+    },
+    "employer_5ccf79bd0e7e2062": {
+      "checked_at": "2026-10-25T13:25:10.249076+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_5ccf79bd0e7e2062",
+      "status": "DISCOVERED"
+    },
+    "employer_5df5a7795dfb57c3": {
+      "checked_at": "2026-10-25T13:25:10.272825+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_5df5a7795dfb57c3",
+      "status": "DISCOVERED"
+    },
+    "employer_5df98bab785a8970": {
+      "checked_at": "2026-10-25T13:25:10.345069+00:00",
+      "method_suggestion": "ats_api",
+      "source_id": "employer_5df98bab785a8970",
+      "status": "DISCOVERED"
+    },
+    "employer_5dfebd61c233ce69": {
+      "checked_at": "2026-10-25T13:25:11.056402+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_5dfebd61c233ce69",
+      "status": "FAILED"
+    },
+    "employer_5ead512adf721ab2": {
+      "checked_at": "2026-10-25T13:21:39.567308+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_5ead512adf721ab2",
+      "status": "FAILED"
+    },
+    "employer_5ec063daa6a62d78": {
+      "checked_at": "2026-10-25T13:21:39.829540+00:00",
+      "method_suggestion": "manual_or_blocked",
+      "source_id": "employer_5ec063daa6a62d78",
+      "status": "SKIPPED"
+    },
+    "employer_5ef71ac86e3ac66b": {
+      "checked_at": "2026-10-25T13:25:11.442674+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_5ef71ac86e3ac66b",
+      "status": "DISCOVERED"
+    },
+    "employer_5f25229e4d7a53f2": {
+      "checked_at": "2026-10-25T13:21:39.909173+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_5f25229e4d7a53f2",
+      "status": "FAILED"
+    },
+    "employer_6030634c28e320f7": {
+      "checked_at": "2026-10-25T13:21:40.111715+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_6030634c28e320f7",
+      "status": "FAILED"
+    },
+    "employer_60582b69fd7c5e29": {
+      "checked_at": "2026-10-25T13:21:40.238986+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_60582b69fd7c5e29",
+      "status": "DISCOVERED"
+    },
+    "employer_606f0cbc62287cd5": {
+      "checked_at": "2026-10-25T13:21:40.239814+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_606f0cbc62287cd5",
+      "status": "DISCOVERED"
+    },
+    "employer_60a83346fee337de": {
+      "checked_at": "2026-10-25T13:25:11.548004+00:00",
+      "method_suggestion": "ats_api",
+      "source_id": "employer_60a83346fee337de",
+      "status": "DISCOVERED"
+    },
+    "employer_6123edf0db94e3a1": {
+      "checked_at": "2026-10-25T13:25:11.685310+00:00",
+      "method_suggestion": "ats_api",
+      "source_id": "employer_6123edf0db94e3a1",
+      "status": "DISCOVERED"
+    },
+    "employer_61a315e00d704735": {
+      "checked_at": "2026-10-25T13:21:41.121525+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_61a315e00d704735",
+      "status": "DISCOVERED"
+    },
+    "employer_624a1991a85d2896": {
+      "checked_at": "2026-10-25T13:21:41.288396+00:00",
+      "method_suggestion": "manual_or_blocked",
+      "source_id": "employer_624a1991a85d2896",
+      "status": "BLOCKED"
+    },
+    "employer_629c3e68d111e509": {
+      "checked_at": "2026-10-25T13:25:11.764569+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_629c3e68d111e509",
+      "status": "DISCOVERED"
+    },
+    "employer_633b57e1501c8297": {
+      "checked_at": "2026-10-25T13:25:12.217768+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_633b57e1501c8297",
+      "status": "DISCOVERED"
+    },
+    "employer_647c0377ef1a142a": {
+      "checked_at": "2026-10-25T13:25:13.116331+00:00",
+      "method_suggestion": "link_diff",
+      "source_id": "employer_647c0377ef1a142a",
+      "status": "DISCOVERED"
+    },
+    "employer_64bd9dc893061dd3": {
+      "checked_at": "2026-10-25T13:25:13.415167+00:00",
+      "method_suggestion": "link_diff",
+      "source_id": "employer_64bd9dc893061dd3",
+      "status": "DISCOVERED"
+    },
+    "employer_6556cace63864de2": {
+      "checked_at": "2026-10-25T13:25:13.424795+00:00",
+      "method_suggestion": "pdf",
+      "source_id": "employer_6556cace63864de2",
+      "status": "DISCOVERED"
+    },
+    "employer_656ae6c5aa64a88c": {
+      "checked_at": "2026-10-25T13:21:43.238431+00:00",
+      "method_suggestion": "manual_or_blocked",
+      "source_id": "employer_656ae6c5aa64a88c",
+      "status": "SKIPPED"
+    },
+    "employer_6633b89615b8c365": {
+      "checked_at": "2026-10-25T13:25:14.235927+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_6633b89615b8c365",
+      "status": "DISCOVERED"
+    },
+    "employer_667f00a385b43b1c": {
+      "checked_at": "2026-10-25T13:25:14.419049+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_667f00a385b43b1c",
+      "status": "DISCOVERED"
+    },
+    "employer_66ab73b07cca269c": {
+      "checked_at": "2026-10-25T13:25:14.474772+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_66ab73b07cca269c",
+      "status": "DISCOVERED"
+    },
+    "employer_66f2d892b68fdad5": {
+      "checked_at": "2026-10-25T13:21:43.686969+00:00",
+      "method_suggestion": "manual_or_blocked",
+      "source_id": "employer_66f2d892b68fdad5",
+      "status": "SKIPPED"
+    },
+    "employer_67392a0d734d52b4": {
+      "checked_at": "2026-10-25T13:25:14.555521+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_67392a0d734d52b4",
+      "status": "DISCOVERED"
+    },
+    "employer_6753a30dcad853c0": {
+      "checked_at": "2026-10-25T13:25:15.415332+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_6753a30dcad853c0",
+      "status": "DISCOVERED"
+    },
+    "employer_676d8857ec056959": {
+      "checked_at": "2026-10-25T13:21:44.516472+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_676d8857ec056959",
+      "status": "DISCOVERED"
+    },
+    "employer_6822d8449da6a91d": {
+      "checked_at": "2026-10-25T13:25:15.618163+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_6822d8449da6a91d",
+      "status": "DISCOVERED"
+    },
+    "employer_686c2d81dac3f885": {
+      "checked_at": "2026-10-25T13:25:15.774992+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_686c2d81dac3f885",
+      "status": "DISCOVERED"
+    },
+    "employer_692d32ad7b8587ad": {
+      "checked_at": "2026-10-25T13:25:16.262560+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_692d32ad7b8587ad",
+      "status": "DISCOVERED"
+    },
+    "employer_6933f0a62aff2f81": {
+      "checked_at": "2026-10-25T13:25:16.902206+00:00",
+      "method_suggestion": "link_diff",
+      "source_id": "employer_6933f0a62aff2f81",
+      "status": "DISCOVERED"
+    },
+    "employer_694a97c24e36ab67": {
+      "checked_at": "2026-10-25T13:25:17.467401+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_694a97c24e36ab67",
+      "status": "DISCOVERED"
+    },
+    "employer_6aa39c363d7f80f3": {
+      "checked_at": "2026-10-25T13:25:17.472915+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_6aa39c363d7f80f3",
+      "status": "DISCOVERED"
+    },
+    "employer_6b51bbd1c91d6a8b": {
+      "checked_at": "2026-10-25T13:25:18.163282+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_6b51bbd1c91d6a8b",
+      "status": "DISCOVERED"
+    },
+    "employer_6b6988b3d728e727": {
+      "checked_at": "2026-10-25T13:25:18.348591+00:00",
+      "method_suggestion": "ats_api",
+      "source_id": "employer_6b6988b3d728e727",
+      "status": "DISCOVERED"
+    },
+    "employer_6ba658590102c49d": {
+      "checked_at": "2026-10-25T13:25:18.567910+00:00",
+      "method_suggestion": "link_diff",
+      "source_id": "employer_6ba658590102c49d",
+      "status": "DISCOVERED"
+    },
+    "employer_6be648f586aed4e0": {
+      "checked_at": "2026-10-25T13:25:19.004746+00:00",
+      "method_suggestion": "ats_api",
+      "source_id": "employer_6be648f586aed4e0",
+      "status": "DISCOVERED"
+    },
+    "employer_6c25bbded105d26c": {
+      "checked_at": "2026-10-25T13:21:47.671718+00:00",
+      "method_suggestion": "manual_or_blocked",
+      "source_id": "employer_6c25bbded105d26c",
+      "status": "BLOCKED"
+    },
+    "employer_6c6787b3f834a6db": {
+      "checked_at": "2026-10-25T13:25:19.200599+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_6c6787b3f834a6db",
+      "status": "DISCOVERED"
+    },
+    "employer_6d023e4c96e037b6": {
+      "checked_at": "2026-10-25T13:25:19.394700+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_6d023e4c96e037b6",
+      "status": "DISCOVERED"
+    },
+    "employer_6dcc9eb96b0e7be2": {
+      "checked_at": "2026-10-25T13:21:48.285498+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_6dcc9eb96b0e7be2",
+      "status": "FAILED"
+    },
+    "employer_6deb273bf27a2cf0": {
+      "checked_at": "2026-10-25T13:25:19.568186+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_6deb273bf27a2cf0",
+      "status": "DISCOVERED"
+    },
+    "employer_6e55c7f98627a01d": {
+      "checked_at": "2026-10-25T13:25:19.940932+00:00",
+      "method_suggestion": "pdf",
+      "source_id": "employer_6e55c7f98627a01d",
+      "status": "DISCOVERED"
+    },
+    "employer_6e9a12d322353c7a": {
+      "checked_at": "2026-10-25T13:25:20.015863+00:00",
+      "method_suggestion": "pdf",
+      "source_id": "employer_6e9a12d322353c7a",
+      "status": "DISCOVERED"
+    },
+    "employer_6ec62130e2356cab": {
+      "checked_at": "2026-10-25T13:21:49.029044+00:00",
+      "method_suggestion": "link_diff",
+      "source_id": "employer_6ec62130e2356cab",
+      "status": "DISCOVERED"
+    },
+    "employer_6f85e3d984463466": {
+      "checked_at": "2026-10-25T13:21:49.227269+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_6f85e3d984463466",
+      "status": "DISCOVERED"
+    },
+    "employer_6fb57c026fb3215e": {
+      "checked_at": "2026-10-25T13:25:20.168439+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_6fb57c026fb3215e",
+      "status": "DISCOVERED"
+    },
+    "employer_708616d50b2166d1": {
+      "checked_at": "2026-10-25T13:25:20.615577+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_708616d50b2166d1",
+      "status": "DISCOVERED"
+    },
+    "employer_70a47d4106130b85": {
+      "checked_at": "2026-10-25T13:25:21.329110+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_70a47d4106130b85",
+      "status": "DISCOVERED"
+    },
+    "employer_719bcce71b910ca2": {
+      "checked_at": "2026-10-25T13:25:21.502880+00:00",
+      "method_suggestion": "manual_or_blocked",
+      "source_id": "employer_719bcce71b910ca2",
+      "status": "BLOCKED"
+    },
+    "employer_72103b3006598ae6": {
+      "checked_at": "2026-10-25T13:21:50.396301+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_72103b3006598ae6",
+      "status": "DISCOVERED"
+    },
+    "employer_72aa808b769e2aae": {
+      "checked_at": "2026-10-25T13:25:21.515149+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_72aa808b769e2aae",
+      "status": "DISCOVERED"
+    },
+    "employer_72d5c2d6cf32bb10": {
+      "checked_at": "2026-10-25T13:25:21.835293+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_72d5c2d6cf32bb10",
+      "status": "DISCOVERED"
+    },
+    "employer_73240a58b9ba5a69": {
+      "checked_at": "2026-10-25T13:25:22.267805+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_73240a58b9ba5a69",
+      "status": "DISCOVERED"
+    },
+    "employer_7412a9591990f506": {
+      "checked_at": "2026-10-25T13:25:22.439991+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_7412a9591990f506",
+      "status": "DISCOVERED"
+    },
+    "employer_743361774a708edb": {
+      "checked_at": "2026-10-25T13:25:22.908536+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_743361774a708edb",
+      "status": "DISCOVERED"
+    },
+    "employer_748a5ef5cb043b4d": {
+      "checked_at": "2026-10-25T13:25:23.593429+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_748a5ef5cb043b4d",
+      "status": "DISCOVERED"
+    },
+    "employer_74a516ec5133faee": {
+      "checked_at": "2026-10-25T13:25:23.732501+00:00",
+      "method_suggestion": "link_diff",
+      "source_id": "employer_74a516ec5133faee",
+      "status": "DISCOVERED"
+    },
+    "employer_74c9aaa9e00922d7": {
+      "checked_at": "2026-10-25T13:25:23.782305+00:00",
+      "method_suggestion": "pdf",
+      "source_id": "employer_74c9aaa9e00922d7",
+      "status": "DISCOVERED"
+    },
+    "employer_74f19cfad0462937": {
+      "checked_at": "2026-10-25T13:21:52.492890+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_74f19cfad0462937",
+      "status": "FAILED"
+    },
+    "employer_750e1dc437d41925": {
+      "checked_at": "2026-10-25T13:25:23.815585+00:00",
+      "method_suggestion": "manual_or_blocked",
+      "source_id": "employer_750e1dc437d41925",
+      "status": "BLOCKED"
+    },
+    "employer_751c5271cbdcf89b": {
+      "checked_at": "2026-10-25T13:25:23.945438+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_751c5271cbdcf89b",
+      "status": "DISCOVERED"
+    },
+    "employer_7573dda74a6bff26": {
+      "checked_at": "2026-10-25T13:21:52.820782+00:00",
+      "method_suggestion": "manual_or_blocked",
+      "source_id": "employer_7573dda74a6bff26",
+      "status": "SKIPPED"
+    },
+    "employer_76bc75394cf6c80b": {
+      "checked_at": "2026-10-25T13:21:52.820811+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_76bc75394cf6c80b",
+      "status": "FAILED"
+    },
+    "employer_773b938f9acf33aa": {
+      "checked_at": "2026-10-25T13:25:24.940624+00:00",
+      "method_suggestion": "ats_api",
+      "source_id": "employer_773b938f9acf33aa",
+      "status": "DISCOVERED"
+    },
+    "employer_773eaf65ba4e8bc4": {
+      "checked_at": "2026-10-25T13:25:25.090564+00:00",
+      "method_suggestion": "ats_api",
+      "source_id": "employer_773eaf65ba4e8bc4",
+      "status": "DISCOVERED"
+    },
+    "employer_775723d0a3791346": {
+      "checked_at": "2026-10-25T13:25:25.186710+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_775723d0a3791346",
+      "status": "DISCOVERED"
+    },
+    "employer_786f3e71f4367546": {
+      "checked_at": "2026-10-25T13:25:25.239681+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_786f3e71f4367546",
+      "status": "FAILED"
+    },
+    "employer_79157c716073efc6": {
+      "checked_at": "2026-10-25T13:21:53.462103+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_79157c716073efc6",
+      "status": "FAILED"
+    },
+    "employer_7938bf0086aae0fd": {
+      "checked_at": "2026-10-25T13:25:25.690268+00:00",
+      "method_suggestion": "pdf",
+      "source_id": "employer_7938bf0086aae0fd",
+      "status": "DISCOVERED"
+    },
+    "employer_79c8ecad53252304": {
+      "checked_at": "2026-10-25T13:25:26.112252+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_79c8ecad53252304",
+      "status": "DISCOVERED"
+    },
+    "employer_7a2abc27d43ddbf7": {
+      "checked_at": "2026-10-25T13:25:26.310669+00:00",
+      "method_suggestion": "pdf",
+      "source_id": "employer_7a2abc27d43ddbf7",
+      "status": "DISCOVERED"
+    },
+    "employer_7a3e660dd62c44fe": {
+      "checked_at": "2026-10-25T13:25:26.315182+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_7a3e660dd62c44fe",
+      "status": "DISCOVERED"
+    },
+    "employer_7a60d752d93bea48": {
+      "checked_at": "2026-10-25T13:25:26.334415+00:00",
+      "method_suggestion": "link_diff",
+      "source_id": "employer_7a60d752d93bea48",
+      "status": "DISCOVERED"
+    },
+    "employer_7afce37a85c69486": {
+      "checked_at": "2026-10-25T13:25:27.167537+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_7afce37a85c69486",
+      "status": "DISCOVERED"
+    },
+    "employer_7b50956a2def76a2": {
+      "checked_at": "2026-10-25T13:21:55.283353+00:00",
+      "method_suggestion": "ats_api",
+      "source_id": "employer_7b50956a2def76a2",
+      "status": "DISCOVERED"
+    },
+    "employer_7b97ed0a9dd65e38": {
+      "checked_at": "2026-10-25T13:25:27.280561+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_7b97ed0a9dd65e38",
+      "status": "DISCOVERED"
+    },
+    "employer_7cb2e928fe3b436a": {
+      "checked_at": "2026-10-25T13:25:27.394031+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_7cb2e928fe3b436a",
+      "status": "DISCOVERED"
+    },
+    "employer_7cf453b2ea1601e5": {
+      "checked_at": "2026-10-25T13:25:27.484524+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_7cf453b2ea1601e5",
+      "status": "DISCOVERED"
+    },
+    "employer_7d264bab1abe1ef2": {
+      "checked_at": "2026-10-25T13:25:27.805378+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_7d264bab1abe1ef2",
+      "status": "DISCOVERED"
+    },
+    "employer_7e1bd62a988f4569": {
+      "checked_at": "2026-10-25T13:25:28.994420+00:00",
+      "method_suggestion": "manual_or_blocked",
+      "source_id": "employer_7e1bd62a988f4569",
+      "status": "BLOCKED"
+    },
+    "employer_7e1d7e2921b31162": {
+      "checked_at": "2026-10-25T13:25:29.266848+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_7e1d7e2921b31162",
+      "status": "DISCOVERED"
+    },
+    "employer_7e52f264517888fc": {
+      "checked_at": "2026-10-25T13:25:29.528632+00:00",
+      "method_suggestion": "pdf",
+      "source_id": "employer_7e52f264517888fc",
+      "status": "DISCOVERED"
+    },
+    "employer_7e5e240f62837760": {
+      "checked_at": "2026-10-25T13:21:57.303562+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_7e5e240f62837760",
+      "status": "DISCOVERED"
+    },
+    "employer_7e5f294840d70b76": {
+      "checked_at": "2026-10-25T13:25:29.695644+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_7e5f294840d70b76",
+      "status": "DISCOVERED"
+    },
+    "employer_7e8ccb7963e7a81f": {
+      "checked_at": "2026-10-25T13:21:57.977583+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_7e8ccb7963e7a81f",
+      "status": "FAILED"
+    },
+    "employer_7ea4fc570034088f": {
+      "checked_at": "2026-10-25T13:25:29.961933+00:00",
+      "method_suggestion": "manual_or_blocked",
+      "source_id": "employer_7ea4fc570034088f",
+      "status": "BLOCKED"
+    },
+    "employer_7eca95b8dc877a19": {
+      "checked_at": "2026-10-25T13:25:30.109977+00:00",
+      "method_suggestion": "link_diff",
+      "source_id": "employer_7eca95b8dc877a19",
+      "status": "DISCOVERED"
+    },
+    "employer_7ed1f98278c363f5": {
+      "checked_at": "2026-10-25T13:25:30.167869+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_7ed1f98278c363f5",
+      "status": "DISCOVERED"
+    },
+    "employer_7fde2afaa9d3ac32": {
+      "checked_at": "2026-10-25T13:25:30.409806+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_7fde2afaa9d3ac32",
+      "status": "DISCOVERED"
+    },
+    "employer_80368f5e7cdc1599": {
+      "checked_at": "2026-10-25T13:25:30.596054+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_80368f5e7cdc1599",
+      "status": "DISCOVERED"
+    },
+    "employer_808821e10fda9cd5": {
+      "checked_at": "2026-10-25T13:25:31.042678+00:00",
+      "method_suggestion": "link_diff",
+      "source_id": "employer_808821e10fda9cd5",
+      "status": "DISCOVERED"
+    },
+    "employer_80a591e8e9551f28": {
+      "checked_at": "2026-10-25T13:25:31.080316+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_80a591e8e9551f28",
+      "status": "DISCOVERED"
+    },
+    "employer_81c0dfacf05e7110": {
+      "checked_at": "2026-10-25T13:25:31.466843+00:00",
+      "method_suggestion": "ats_api",
+      "source_id": "employer_81c0dfacf05e7110",
+      "status": "DISCOVERED"
+    },
+    "employer_81c44427ea94fdd0": {
+      "checked_at": "2026-10-25T13:25:31.585350+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_81c44427ea94fdd0",
+      "status": "DISCOVERED"
+    },
+    "employer_83876f0605116a36": {
+      "checked_at": "2026-10-25T13:25:32.803299+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_83876f0605116a36",
+      "status": "DISCOVERED"
+    },
+    "employer_83e2717d4844dd13": {
+      "checked_at": "2026-10-25T13:25:32.892946+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_83e2717d4844dd13",
+      "status": "DISCOVERED"
+    },
+    "employer_840bfbf78f36d3eb": {
+      "checked_at": "2026-10-25T13:25:33.432353+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_840bfbf78f36d3eb",
+      "status": "DISCOVERED"
+    },
+    "employer_8453f40413236cbe": {
+      "checked_at": "2026-10-25T13:22:01.058985+00:00",
+      "method_suggestion": "manual_or_blocked",
+      "source_id": "employer_8453f40413236cbe",
+      "status": "BLOCKED"
+    },
+    "employer_84a6b98ada3f9450": {
+      "checked_at": "2026-10-25T13:25:33.737076+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_84a6b98ada3f9450",
+      "status": "DISCOVERED"
+    },
+    "employer_84ea6e4cc173cbbb": {
+      "checked_at": "2026-10-25T13:22:01.572883+00:00",
+      "method_suggestion": "manual_or_blocked",
+      "source_id": "employer_84ea6e4cc173cbbb",
+      "status": "SKIPPED"
+    },
+    "employer_84f35103b71afdb4": {
+      "checked_at": "2026-10-25T13:22:01.572958+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_84f35103b71afdb4",
+      "status": "FAILED"
+    },
+    "employer_853c6d9a5f04a1f4": {
+      "checked_at": "2026-10-25T13:25:33.973971+00:00",
+      "method_suggestion": "pdf",
+      "source_id": "employer_853c6d9a5f04a1f4",
+      "status": "DISCOVERED"
+    },
+    "employer_855f4706059d8551": {
+      "checked_at": "2026-10-25T13:22:01.862904+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_855f4706059d8551",
+      "status": "DISCOVERED"
+    },
+    "employer_859b25bed23f6334": {
+      "checked_at": "2026-10-25T13:25:34.379576+00:00",
+      "method_suggestion": "pdf",
+      "source_id": "employer_859b25bed23f6334",
+      "status": "DISCOVERED"
+    },
+    "employer_86c4dc08878bcefe": {
+      "checked_at": "2026-10-25T13:25:35.291536+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_86c4dc08878bcefe",
+      "status": "DISCOVERED"
+    },
+    "employer_877a50e41b0351b6": {
+      "checked_at": "2026-10-25T13:25:35.391254+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_877a50e41b0351b6",
+      "status": "DISCOVERED"
+    },
+    "employer_878367d4766f97fc": {
+      "checked_at": "2026-10-25T13:22:03.486488+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_878367d4766f97fc",
+      "status": "FAILED"
+    },
+    "employer_87b3cde08aeaf609": {
+      "checked_at": "2026-10-25T13:25:35.435338+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_87b3cde08aeaf609",
+      "status": "DISCOVERED"
+    },
+    "employer_88513f5c6f3582b1": {
+      "checked_at": "2026-10-25T13:25:35.544001+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_88513f5c6f3582b1",
+      "status": "DISCOVERED"
+    },
+    "employer_88afcfaa21a58108": {
+      "checked_at": "2026-10-25T13:25:35.767237+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_88afcfaa21a58108",
+      "status": "DISCOVERED"
+    },
+    "employer_895704aec86bbe8a": {
+      "checked_at": "2026-10-25T13:25:36.806386+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_895704aec86bbe8a",
+      "status": "DISCOVERED"
+    },
+    "employer_8a607e5d541ea6c4": {
+      "checked_at": "2026-10-25T13:22:04.786165+00:00",
+      "method_suggestion": "pdf",
+      "source_id": "employer_8a607e5d541ea6c4",
+      "status": "DISCOVERED"
+    },
+    "employer_8a9fc834e16a1f88": {
+      "checked_at": "2026-10-25T13:25:37.006990+00:00",
+      "method_suggestion": "manual_or_blocked",
+      "source_id": "employer_8a9fc834e16a1f88",
+      "status": "BLOCKED"
+    },
+    "employer_8aa05ad779651797": {
+      "checked_at": "2026-10-25T13:25:37.429995+00:00",
+      "method_suggestion": "link_diff",
+      "source_id": "employer_8aa05ad779651797",
+      "status": "DISCOVERED"
+    },
+    "employer_8ac13aaeb67b51ef": {
+      "checked_at": "2026-10-25T13:25:38.383260+00:00",
+      "method_suggestion": "link_diff",
+      "source_id": "employer_8ac13aaeb67b51ef",
+      "status": "DISCOVERED"
+    },
+    "employer_8babcf3ef194b502": {
+      "checked_at": "2026-10-25T13:25:38.387890+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_8babcf3ef194b502",
+      "status": "DISCOVERED"
+    },
+    "employer_8c5e8dccb56d90e6": {
+      "checked_at": "2026-10-25T13:22:05.752449+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_8c5e8dccb56d90e6",
+      "status": "FAILED"
+    },
+    "employer_8c7762b8aec82124": {
+      "checked_at": "2026-10-25T13:22:06.131848+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_8c7762b8aec82124",
+      "status": "FAILED"
+    },
+    "employer_8c8492de74d84b51": {
+      "checked_at": "2026-10-25T13:25:39.125227+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_8c8492de74d84b51",
+      "status": "DISCOVERED"
+    },
+    "employer_8ddb21ae7e6f68a0": {
+      "checked_at": "2026-10-25T13:22:06.749333+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_8ddb21ae7e6f68a0",
+      "status": "FAILED"
+    },
+    "employer_8e61f41f59dfe756": {
+      "checked_at": "2026-10-25T13:22:06.860915+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_8e61f41f59dfe756",
+      "status": "FAILED"
+    },
+    "employer_8ebc3623165d410a": {
+      "checked_at": "2026-10-25T13:22:07.058601+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_8ebc3623165d410a",
+      "status": "DISCOVERED"
+    },
+    "employer_8ee367bb5b82781b": {
+      "checked_at": "2026-10-25T13:25:39.416620+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_8ee367bb5b82781b",
+      "status": "DISCOVERED"
+    },
+    "employer_8ff2467335edf2c0": {
+      "checked_at": "2026-10-25T13:25:39.520400+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_8ff2467335edf2c0",
+      "status": "DISCOVERED"
+    },
+    "employer_902e37ed34ab50a5": {
+      "checked_at": "2026-10-25T13:25:40.240844+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_902e37ed34ab50a5",
+      "status": "DISCOVERED"
+    },
+    "employer_90392bf65863d788": {
+      "checked_at": "2026-10-25T13:25:40.368225+00:00",
+      "method_suggestion": "link_diff",
+      "source_id": "employer_90392bf65863d788",
+      "status": "DISCOVERED"
+    },
+    "employer_9073ac10a3cb2286": {
+      "checked_at": "2026-10-25T13:25:40.452187+00:00",
+      "method_suggestion": "pdf",
+      "source_id": "employer_9073ac10a3cb2286",
+      "status": "DISCOVERED"
+    },
+    "employer_90ca54a7a28adcfc": {
+      "checked_at": "2026-10-25T13:22:09.599971+00:00",
+      "method_suggestion": "manual_or_blocked",
+      "source_id": "employer_90ca54a7a28adcfc",
+      "status": "SKIPPED"
+    },
+    "employer_90cb202c4dc33edf": {
+      "checked_at": "2026-10-25T13:25:41.586472+00:00",
+      "method_suggestion": "ats_api",
+      "source_id": "employer_90cb202c4dc33edf",
+      "status": "DISCOVERED"
+    },
+    "employer_90e76007afd3802a": {
+      "checked_at": "2026-10-25T13:25:42.106982+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_90e76007afd3802a",
+      "status": "DISCOVERED"
+    },
+    "employer_9154cc54cf9ddc00": {
+      "checked_at": "2026-10-25T13:25:42.179660+00:00",
+      "method_suggestion": "pdf",
+      "source_id": "employer_9154cc54cf9ddc00",
+      "status": "DISCOVERED"
+    },
+    "employer_917152f92cff9f41": {
+      "checked_at": "2026-10-25T13:25:42.190327+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_917152f92cff9f41",
+      "status": "DISCOVERED"
+    },
+    "employer_91a25bc493192184": {
+      "checked_at": "2026-10-25T13:22:10.823550+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_91a25bc493192184",
+      "status": "DISCOVERED"
+    },
+    "employer_9333b167d3cdae4d": {
+      "checked_at": "2026-10-25T13:25:42.482739+00:00",
+      "method_suggestion": "pdf",
+      "source_id": "employer_9333b167d3cdae4d",
+      "status": "DISCOVERED"
+    },
+    "employer_93ea135ea34db100": {
+      "checked_at": "2026-10-25T13:25:43.565285+00:00",
+      "method_suggestion": "link_diff",
+      "source_id": "employer_93ea135ea34db100",
+      "status": "DISCOVERED"
+    },
+    "employer_93ef40e44d5c48b5": {
+      "checked_at": "2026-10-25T13:25:43.788442+00:00",
+      "method_suggestion": "link_diff",
+      "source_id": "employer_93ef40e44d5c48b5",
+      "status": "DISCOVERED"
+    },
+    "employer_948b69ddecf5c9cf": {
+      "checked_at": "2026-10-25T13:25:44.625986+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_948b69ddecf5c9cf",
+      "status": "DISCOVERED"
+    },
+    "employer_94d033535ae0e9f1": {
+      "checked_at": "2026-10-25T13:25:44.678824+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_94d033535ae0e9f1",
+      "status": "DISCOVERED"
+    },
+    "employer_95e5e7e6ec2cecf8": {
+      "checked_at": "2026-10-25T13:25:45.619504+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_95e5e7e6ec2cecf8",
+      "status": "DISCOVERED"
+    },
+    "employer_9610a3ca98f09ca1": {
+      "checked_at": "2026-10-25T13:25:46.250916+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_9610a3ca98f09ca1",
+      "status": "DISCOVERED"
+    },
+    "employer_96d99b750f1081a4": {
+      "checked_at": "2026-10-25T13:25:46.378476+00:00",
+      "method_suggestion": "pdf",
+      "source_id": "employer_96d99b750f1081a4",
+      "status": "DISCOVERED"
+    },
+    "employer_9864c4de35a3f77a": {
+      "checked_at": "2026-10-25T13:25:47.336860+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_9864c4de35a3f77a",
+      "status": "DISCOVERED"
+    },
+    "employer_98ef3d76257035da": {
+      "checked_at": "2026-10-25T13:22:13.269141+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_98ef3d76257035da",
+      "status": "FAILED"
+    },
+    "employer_9923a1f7f7f747b9": {
+      "checked_at": "2026-10-25T13:22:13.603749+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_9923a1f7f7f747b9",
+      "status": "FAILED"
+    },
+    "employer_999a9d278f3b4857": {
+      "checked_at": "2026-10-25T13:25:47.493385+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_999a9d278f3b4857",
+      "status": "DISCOVERED"
+    },
+    "employer_9a08400f8d8ef9c5": {
+      "checked_at": "2026-10-25T13:25:47.564622+00:00",
+      "method_suggestion": "link_diff",
+      "source_id": "employer_9a08400f8d8ef9c5",
+      "status": "DISCOVERED"
+    },
+    "employer_9a776b698489f689": {
+      "checked_at": "2026-10-25T13:25:47.978210+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_9a776b698489f689",
+      "status": "DISCOVERED"
+    },
+    "employer_9a827c4054e9a72d": {
+      "checked_at": "2026-10-25T13:22:14.841945+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_9a827c4054e9a72d",
+      "status": "DISCOVERED"
+    },
+    "employer_9bc76c29e05a555e": {
+      "checked_at": "2026-10-25T13:25:48.098452+00:00",
+      "method_suggestion": "manual_or_blocked",
+      "source_id": "employer_9bc76c29e05a555e",
+      "status": "BLOCKED"
+    },
+    "employer_9bf041948c492428": {
+      "checked_at": "2026-10-25T13:22:15.064573+00:00",
+      "method_suggestion": "manual_or_blocked",
+      "source_id": "employer_9bf041948c492428",
+      "status": "SKIPPED"
+    },
+    "employer_9c72170a09ff6ba5": {
+      "checked_at": "2026-10-25T13:25:49.170535+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_9c72170a09ff6ba5",
+      "status": "DISCOVERED"
+    },
+    "employer_9d54698814c8571c": {
+      "checked_at": "2026-10-25T13:22:15.367470+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_9d54698814c8571c",
+      "status": "FAILED"
+    },
+    "employer_9d6008f9814cf8e4": {
+      "checked_at": "2026-10-25T13:25:49.710473+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_9d6008f9814cf8e4",
+      "status": "DISCOVERED"
+    },
+    "employer_9d93044f4f58c54c": {
+      "checked_at": "2026-10-25T13:25:49.730108+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_9d93044f4f58c54c",
+      "status": "DISCOVERED"
+    },
+    "employer_9def9a2994c514e5": {
+      "checked_at": "2026-10-25T13:22:15.892189+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_9def9a2994c514e5",
+      "status": "DISCOVERED"
+    },
+    "employer_9e1960f0be135be5": {
+      "checked_at": "2026-10-25T13:25:50.004383+00:00",
+      "method_suggestion": "ats_api",
+      "source_id": "employer_9e1960f0be135be5",
+      "status": "DISCOVERED"
+    },
+    "employer_9f20b17731d553bb": {
+      "checked_at": "2026-10-25T13:25:50.519496+00:00",
+      "method_suggestion": "manual_or_blocked",
+      "source_id": "employer_9f20b17731d553bb",
+      "status": "BLOCKED"
+    },
+    "employer_9f58fc3f4269931b": {
+      "checked_at": "2026-10-25T13:25:50.755827+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_9f58fc3f4269931b",
+      "status": "DISCOVERED"
+    },
+    "employer_9fe8753747dd2c9f": {
+      "checked_at": "2026-10-25T13:22:16.287909+00:00",
+      "method_suggestion": "pdf",
+      "source_id": "employer_9fe8753747dd2c9f",
+      "status": "DISCOVERED"
+    },
+    "employer_a0166ff6865b0164": {
+      "checked_at": "2026-10-25T13:25:51.237581+00:00",
+      "method_suggestion": "link_diff",
+      "source_id": "employer_a0166ff6865b0164",
+      "status": "DISCOVERED"
+    },
+    "employer_a0c03f043fd4288e": {
+      "checked_at": "2026-10-25T13:25:51.586234+00:00",
+      "method_suggestion": "ats_api",
+      "source_id": "employer_a0c03f043fd4288e",
+      "status": "DISCOVERED"
+    },
+    "employer_a0cebbeda33c03ce": {
+      "checked_at": "2026-10-25T13:22:17.120622+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_a0cebbeda33c03ce",
+      "status": "FAILED"
+    },
+    "employer_a131160b5168a1d8": {
+      "checked_at": "2026-10-25T13:22:17.129292+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_a131160b5168a1d8",
+      "status": "FAILED"
+    },
+    "employer_a16402b9c3caceef": {
+      "checked_at": "2026-10-25T13:25:51.766753+00:00",
+      "method_suggestion": "ats_api",
+      "source_id": "employer_a16402b9c3caceef",
+      "status": "DISCOVERED"
+    },
+    "employer_a1dbcb35510e643c": {
+      "checked_at": "2026-10-25T13:22:17.551840+00:00",
+      "method_suggestion": "manual_or_blocked",
+      "source_id": "employer_a1dbcb35510e643c",
+      "status": "SKIPPED"
+    },
+    "employer_a1eee5682bc106ff": {
+      "checked_at": "2026-10-25T13:25:51.909853+00:00",
+      "method_suggestion": "ats_api",
+      "source_id": "employer_a1eee5682bc106ff",
+      "status": "DISCOVERED"
+    },
+    "employer_a1f036af19fd4d86": {
+      "checked_at": "2026-10-25T13:25:52.457309+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_a1f036af19fd4d86",
+      "status": "DISCOVERED"
+    },
+    "employer_a23dc08d1454b366": {
+      "checked_at": "2026-10-25T13:22:18.114764+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_a23dc08d1454b366",
+      "status": "FAILED"
+    },
+    "employer_a26bada2d153455f": {
+      "checked_at": "2026-10-25T13:22:18.352027+00:00",
+      "method_suggestion": "manual_or_blocked",
+      "source_id": "employer_a26bada2d153455f",
+      "status": "BLOCKED"
+    },
+    "employer_a2ae23e0008baf2b": {
+      "checked_at": "2026-10-25T13:25:52.793593+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_a2ae23e0008baf2b",
+      "status": "DISCOVERED"
+    },
+    "employer_a2ebf0ec536879ec": {
+      "checked_at": "2026-10-25T13:22:19.083277+00:00",
+      "method_suggestion": "ats_api",
+      "source_id": "employer_a2ebf0ec536879ec",
+      "status": "DISCOVERED"
+    },
+    "employer_a38d40ab90955d53": {
+      "checked_at": "2026-10-25T13:22:20.323046+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_a38d40ab90955d53",
+      "status": "FAILED"
+    },
+    "employer_a445b80bf6952615": {
+      "checked_at": "2026-10-25T13:22:20.347429+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_a445b80bf6952615",
+      "status": "FAILED"
+    },
+    "employer_a49a1b84d8397889": {
+      "checked_at": "2026-10-25T13:25:52.808291+00:00",
+      "method_suggestion": "pdf",
+      "source_id": "employer_a49a1b84d8397889",
+      "status": "DISCOVERED"
+    },
+    "employer_a5df927fdd6941a3": {
+      "checked_at": "2026-10-25T13:25:53.109609+00:00",
+      "method_suggestion": "pdf",
+      "source_id": "employer_a5df927fdd6941a3",
+      "status": "DISCOVERED"
+    },
+    "employer_a661e4a628ae489b": {
+      "checked_at": "2026-10-25T13:25:53.249234+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_a661e4a628ae489b",
+      "status": "DISCOVERED"
+    },
+    "employer_a6be5460037db169": {
+      "checked_at": "2026-10-25T13:22:22.183758+00:00",
+      "method_suggestion": "manual_or_blocked",
+      "source_id": "employer_a6be5460037db169",
+      "status": "SKIPPED"
+    },
+    "employer_a76af863ab305a57": {
+      "checked_at": "2026-10-25T13:25:54.834475+00:00",
+      "method_suggestion": "ats_api",
+      "source_id": "employer_a76af863ab305a57",
+      "status": "DISCOVERED"
+    },
+    "employer_a76dd8e486c6387f": {
+      "checked_at": "2026-10-25T13:22:22.209766+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_a76dd8e486c6387f",
+      "status": "DISCOVERED"
+    },
+    "employer_a7822bb492ff02c7": {
+      "checked_at": "2026-10-25T13:25:55.271480+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_a7822bb492ff02c7",
+      "status": "FAILED"
+    },
+    "employer_a84a3f49bcef4eb1": {
+      "checked_at": "2026-10-25T13:25:55.307326+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_a84a3f49bcef4eb1",
+      "status": "DISCOVERED"
+    },
+    "employer_a89e7ddc7350f19e": {
+      "checked_at": "2026-10-25T13:25:56.622712+00:00",
+      "method_suggestion": "ats_api",
+      "source_id": "employer_a89e7ddc7350f19e",
+      "status": "DISCOVERED"
+    },
+    "employer_a8bcbf91d53aa45f": {
+      "checked_at": "2026-10-25T13:25:56.676847+00:00",
+      "method_suggestion": "pdf",
+      "source_id": "employer_a8bcbf91d53aa45f",
+      "status": "DISCOVERED"
+    },
+    "employer_a8bd78f08818dd5b": {
+      "checked_at": "2026-10-25T13:25:57.000390+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_a8bd78f08818dd5b",
+      "status": "DISCOVERED"
+    },
+    "employer_a8d7ef7a819ca97a": {
+      "checked_at": "2026-10-25T13:25:58.023777+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_a8d7ef7a819ca97a",
+      "status": "DISCOVERED"
+    },
+    "employer_a92cfd90914acf32": {
+      "checked_at": "2026-10-25T13:25:58.451930+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_a92cfd90914acf32",
+      "status": "DISCOVERED"
+    },
+    "employer_a949831e6a2f7176": {
+      "checked_at": "2026-10-25T13:22:24.519346+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_a949831e6a2f7176",
+      "status": "FAILED"
+    },
+    "employer_a9643387bbed40d4": {
+      "checked_at": "2026-10-25T13:25:58.804845+00:00",
+      "method_suggestion": "pdf",
+      "source_id": "employer_a9643387bbed40d4",
+      "status": "DISCOVERED"
+    },
+    "employer_aa7c87dc5d249cfa": {
+      "checked_at": "2026-10-25T13:25:59.455806+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_aa7c87dc5d249cfa",
+      "status": "DISCOVERED"
+    },
+    "employer_abcbe452806cf1a6": {
+      "checked_at": "2026-10-25T13:22:25.519144+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_abcbe452806cf1a6",
+      "status": "FAILED"
+    },
+    "employer_abd2bea2cdc64556": {
+      "checked_at": "2026-10-25T13:25:59.907274+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_abd2bea2cdc64556",
+      "status": "DISCOVERED"
+    },
+    "employer_abe6bcca7001f547": {
+      "checked_at": "2026-10-25T13:22:26.206568+00:00",
+      "method_suggestion": "manual_or_blocked",
+      "source_id": "employer_abe6bcca7001f547",
+      "status": "BLOCKED"
+    },
+    "employer_ac25a7c35ce85b44": {
+      "checked_at": "2026-10-25T13:26:00.594107+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_ac25a7c35ce85b44",
+      "status": "DISCOVERED"
+    },
+    "employer_ac47f6b7616f46fc": {
+      "checked_at": "2026-10-25T13:22:26.664109+00:00",
+      "method_suggestion": "manual_or_blocked",
+      "source_id": "employer_ac47f6b7616f46fc",
+      "status": "SKIPPED"
+    },
+    "employer_ac48ef5327b1194f": {
+      "checked_at": "2026-10-25T13:26:01.127835+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_ac48ef5327b1194f",
+      "status": "DISCOVERED"
+    },
+    "employer_accbe4642eebc880": {
+      "checked_at": "2026-10-25T13:22:26.756871+00:00",
+      "method_suggestion": "pdf",
+      "source_id": "employer_accbe4642eebc880",
+      "status": "DISCOVERED"
+    },
+    "employer_acd775f00b45872d": {
+      "checked_at": "2026-10-25T13:26:01.193096+00:00",
+      "method_suggestion": "link_diff",
+      "source_id": "employer_acd775f00b45872d",
+      "status": "DISCOVERED"
+    },
+    "employer_acf9e29198115f41": {
+      "checked_at": "2026-10-25T13:26:01.562272+00:00",
+      "method_suggestion": "manual_or_blocked",
+      "source_id": "employer_acf9e29198115f41",
+      "status": "BLOCKED"
+    },
+    "employer_ad333f5cbeec665e": {
+      "checked_at": "2026-10-25T13:22:28.255755+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_ad333f5cbeec665e",
+      "status": "FAILED"
+    },
+    "employer_ae00d6f246ff5c2d": {
+      "checked_at": "2026-10-25T13:22:28.739063+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_ae00d6f246ff5c2d",
+      "status": "FAILED"
+    },
+    "employer_ae09b169b4a0b38c": {
+      "checked_at": "2026-10-25T13:26:02.600220+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_ae09b169b4a0b38c",
+      "status": "DISCOVERED"
+    },
+    "employer_af008563bd993216": {
+      "checked_at": "2026-10-25T13:22:29.224489+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_af008563bd993216",
+      "status": "DISCOVERED"
+    },
+    "employer_af122b0a603a71a4": {
+      "checked_at": "2026-10-25T13:26:02.650545+00:00",
+      "method_suggestion": "link_diff",
+      "source_id": "employer_af122b0a603a71a4",
+      "status": "DISCOVERED"
+    },
+    "employer_af938c36473bf635": {
+      "checked_at": "2026-10-25T13:26:02.818474+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_af938c36473bf635",
+      "status": "DISCOVERED"
+    },
+    "employer_affd700b6aa06dd2": {
+      "checked_at": "2026-10-25T13:26:04.307043+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_affd700b6aa06dd2",
+      "status": "DISCOVERED"
+    },
+    "employer_affed8ce294f04b2": {
+      "checked_at": "2026-10-25T13:26:04.489602+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_affed8ce294f04b2",
+      "status": "DISCOVERED"
+    },
+    "employer_b1ad1e93431ea9d2": {
+      "checked_at": "2026-10-25T13:26:04.854185+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_b1ad1e93431ea9d2",
+      "status": "DISCOVERED"
+    },
+    "employer_b1ddaa1622f8f417": {
+      "checked_at": "2026-10-25T13:22:30.571454+00:00",
+      "method_suggestion": "manual_or_blocked",
+      "source_id": "employer_b1ddaa1622f8f417",
+      "status": "SKIPPED"
+    },
+    "employer_b2d6aa5662b5c526": {
+      "checked_at": "2026-10-25T13:22:30.571512+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_b2d6aa5662b5c526",
+      "status": "FAILED"
+    },
+    "employer_b2e2ecc189a1df66": {
+      "checked_at": "2026-10-25T13:26:05.739383+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_b2e2ecc189a1df66",
+      "status": "DISCOVERED"
+    },
+    "employer_b440d08555c49b01": {
+      "checked_at": "2026-10-25T13:26:05.834940+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_b440d08555c49b01",
+      "status": "DISCOVERED"
+    },
+    "employer_b4d3017368570ae1": {
+      "checked_at": "2026-10-25T13:26:07.259495+00:00",
+      "method_suggestion": "ats_api",
+      "source_id": "employer_b4d3017368570ae1",
+      "status": "DISCOVERED"
+    },
+    "employer_b5cb835c65d8759a": {
+      "checked_at": "2026-10-25T13:26:07.330528+00:00",
+      "method_suggestion": "ats_api",
+      "source_id": "employer_b5cb835c65d8759a",
+      "status": "DISCOVERED"
+    },
+    "employer_b6972e2057a6ccc6": {
+      "checked_at": "2026-10-25T13:26:07.410623+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_b6972e2057a6ccc6",
+      "status": "DISCOVERED"
+    },
+    "employer_b6c932e54a0bee5e": {
+      "checked_at": "2026-10-25T13:26:07.438140+00:00",
+      "method_suggestion": "link_diff",
+      "source_id": "employer_b6c932e54a0bee5e",
+      "status": "DISCOVERED"
+    },
+    "employer_b6e4cc4364078f16": {
+      "checked_at": "2026-10-25T13:26:08.212151+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_b6e4cc4364078f16",
+      "status": "DISCOVERED"
+    },
+    "employer_b7073471c462578d": {
+      "checked_at": "2026-10-25T13:26:08.396353+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_b7073471c462578d",
+      "status": "DISCOVERED"
+    },
+    "employer_b731c56678609b3b": {
+      "checked_at": "2026-10-25T13:26:09.116836+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_b731c56678609b3b",
+      "status": "DISCOVERED"
+    },
+    "employer_b8ff1c560f4c089b": {
+      "checked_at": "2026-10-25T13:26:09.730526+00:00",
+      "method_suggestion": "manual_or_blocked",
+      "source_id": "employer_b8ff1c560f4c089b",
+      "status": "BLOCKED"
+    },
+    "employer_b9934da168986538": {
+      "checked_at": "2026-10-25T13:26:10.258472+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_b9934da168986538",
+      "status": "DISCOVERED"
+    },
+    "employer_ba2627bac8c98c9d": {
+      "checked_at": "2026-10-25T13:26:10.804805+00:00",
+      "method_suggestion": "link_diff",
+      "source_id": "employer_ba2627bac8c98c9d",
+      "status": "DISCOVERED"
+    },
+    "employer_bba580d21d965c6c": {
+      "checked_at": "2026-10-25T13:26:10.873629+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_bba580d21d965c6c",
+      "status": "DISCOVERED"
+    },
+    "employer_bca1775fc492a3f7": {
+      "checked_at": "2026-10-25T13:22:34.440356+00:00",
+      "method_suggestion": "pdf",
+      "source_id": "employer_bca1775fc492a3f7",
+      "status": "DISCOVERED"
+    },
+    "employer_bdee4912ef2d4465": {
+      "checked_at": "2026-10-25T13:22:34.579054+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_bdee4912ef2d4465",
+      "status": "DISCOVERED"
+    },
+    "employer_be12160549779fd4": {
+      "checked_at": "2026-10-25T13:22:34.679629+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_be12160549779fd4",
+      "status": "FAILED"
+    },
+    "employer_be14902184df4e30": {
+      "checked_at": "2026-10-25T13:22:35.123194+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_be14902184df4e30",
+      "status": "FAILED"
+    },
+    "employer_be2b734e165d779f": {
+      "checked_at": "2026-10-25T13:26:11.433800+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_be2b734e165d779f",
+      "status": "DISCOVERED"
+    },
+    "employer_be9927267c4a1ebc": {
+      "checked_at": "2026-10-25T13:22:35.327506+00:00",
+      "method_suggestion": "manual_or_blocked",
+      "source_id": "employer_be9927267c4a1ebc",
+      "status": "BLOCKED"
+    },
+    "employer_bebbac36d4247d71": {
+      "checked_at": "2026-10-25T13:22:35.430205+00:00",
+      "method_suggestion": "manual_or_blocked",
+      "source_id": "employer_bebbac36d4247d71",
+      "status": "SKIPPED"
+    },
+    "employer_bf74b51cf17f66c0": {
+      "checked_at": "2026-10-25T13:26:11.532193+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_bf74b51cf17f66c0",
+      "status": "DISCOVERED"
+    },
+    "employer_bf758a01c1c1e34a": {
+      "checked_at": "2026-10-25T13:26:12.051318+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_bf758a01c1c1e34a",
+      "status": "DISCOVERED"
+    },
+    "employer_bf95a08a27e9e826": {
+      "checked_at": "2026-10-25T13:26:12.410928+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_bf95a08a27e9e826",
+      "status": "DISCOVERED"
+    },
+    "employer_bfb9fe986d7f4006": {
+      "checked_at": "2026-10-25T13:26:12.450954+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_bfb9fe986d7f4006",
+      "status": "DISCOVERED"
+    },
+    "employer_c0fd20b0f5286cff": {
+      "checked_at": "2026-10-25T13:22:36.522269+00:00",
+      "method_suggestion": "manual_or_blocked",
+      "source_id": "employer_c0fd20b0f5286cff",
+      "status": "SKIPPED"
+    },
+    "employer_c12684a59d2c0342": {
+      "checked_at": "2026-10-25T13:26:13.100968+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_c12684a59d2c0342",
+      "status": "DISCOVERED"
+    },
+    "employer_c193c4698b6e5e81": {
+      "checked_at": "2026-10-25T13:26:13.430984+00:00",
+      "method_suggestion": "ats_api",
+      "source_id": "employer_c193c4698b6e5e81",
+      "status": "DISCOVERED"
+    },
+    "employer_c1bab15763b88e41": {
+      "checked_at": "2026-10-25T13:26:14.105039+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_c1bab15763b88e41",
+      "status": "DISCOVERED"
+    },
+    "employer_c246f699824d2e52": {
+      "checked_at": "2026-10-25T13:26:14.168520+00:00",
+      "method_suggestion": "ats_api",
+      "source_id": "employer_c246f699824d2e52",
+      "status": "DISCOVERED"
+    },
+    "employer_c28b86fe97545256": {
+      "checked_at": "2026-10-25T13:26:15.005057+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_c28b86fe97545256",
+      "status": "DISCOVERED"
+    },
+    "employer_c2a208133d878860": {
+      "checked_at": "2026-10-25T13:26:15.097802+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_c2a208133d878860",
+      "status": "DISCOVERED"
+    },
+    "employer_c2fb6085d7e38437": {
+      "checked_at": "2026-10-25T13:26:15.149258+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_c2fb6085d7e38437",
+      "status": "DISCOVERED"
+    },
+    "employer_c34dd98d2f5ea9e3": {
+      "checked_at": "2026-10-25T13:26:15.214030+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_c34dd98d2f5ea9e3",
+      "status": "PARTIAL"
+    },
+    "employer_c37ec65b2697cd70": {
+      "checked_at": "2026-10-25T13:26:15.502937+00:00",
+      "method_suggestion": "link_diff",
+      "source_id": "employer_c37ec65b2697cd70",
+      "status": "DISCOVERED"
+    },
+    "employer_c39700d8c08ec1bf": {
+      "checked_at": "2026-10-25T13:26:16.234120+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_c39700d8c08ec1bf",
+      "status": "DISCOVERED"
+    },
+    "employer_c39b12390e23fb1b": {
+      "checked_at": "2026-10-25T13:22:37.915623+00:00",
+      "method_suggestion": "manual_or_blocked",
+      "source_id": "employer_c39b12390e23fb1b",
+      "status": "BLOCKED"
+    },
+    "employer_c4baf1b55d43b7fe": {
+      "checked_at": "2026-10-25T13:26:16.398399+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_c4baf1b55d43b7fe",
+      "status": "DISCOVERED"
+    },
+    "employer_c5b47e05243d92e8": {
+      "checked_at": "2026-10-25T13:26:16.909350+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_c5b47e05243d92e8",
+      "status": "DISCOVERED"
+    },
+    "employer_c632f4ebe2f28eb7": {
+      "checked_at": "2026-10-25T13:26:17.606204+00:00",
+      "method_suggestion": "ats_api",
+      "source_id": "employer_c632f4ebe2f28eb7",
+      "status": "DISCOVERED"
+    },
+    "employer_c637ac832ed9e5ee": {
+      "checked_at": "2026-10-25T13:26:17.721266+00:00",
+      "method_suggestion": "link_diff",
+      "source_id": "employer_c637ac832ed9e5ee",
+      "status": "DISCOVERED"
+    },
+    "employer_c6428928e37eb10a": {
+      "checked_at": "2026-10-25T13:26:17.835799+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_c6428928e37eb10a",
+      "status": "DISCOVERED"
+    },
+    "employer_c68cc4380865a4de": {
+      "checked_at": "2026-10-25T13:26:18.655866+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_c68cc4380865a4de",
+      "status": "DISCOVERED"
+    },
+    "employer_c79c3d7c31935d10": {
+      "checked_at": "2026-10-25T13:26:18.719181+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_c79c3d7c31935d10",
+      "status": "DISCOVERED"
+    },
+    "employer_c7b63f1cfeba3351": {
+      "checked_at": "2026-10-25T13:22:39.658152+00:00",
+      "method_suggestion": "manual_or_blocked",
+      "source_id": "employer_c7b63f1cfeba3351",
+      "status": "SKIPPED"
+    },
+    "employer_c820ebafc81f08cd": {
+      "checked_at": "2026-10-25T13:26:18.745809+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_c820ebafc81f08cd",
+      "status": "DISCOVERED"
+    },
+    "employer_c88674a80d4bf3b7": {
+      "checked_at": "2026-10-25T13:22:39.756593+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_c88674a80d4bf3b7",
+      "status": "DISCOVERED"
+    },
+    "employer_c8dbe15d9f49697b": {
+      "checked_at": "2026-10-25T13:26:19.058380+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_c8dbe15d9f49697b",
+      "status": "DISCOVERED"
+    },
+    "employer_c96329128ebf5236": {
+      "checked_at": "2026-10-25T13:26:19.192977+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_c96329128ebf5236",
+      "status": "DISCOVERED"
+    },
+    "employer_c96e1d5e893d3e0d": {
+      "checked_at": "2026-10-25T13:26:19.784273+00:00",
+      "method_suggestion": "pdf",
+      "source_id": "employer_c96e1d5e893d3e0d",
+      "status": "DISCOVERED"
+    },
+    "employer_c9c1afd7b373d342": {
+      "checked_at": "2026-10-25T13:26:19.983008+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_c9c1afd7b373d342",
+      "status": "DISCOVERED"
+    },
+    "employer_c9e9979b45050715": {
+      "checked_at": "2026-10-25T13:26:19.999886+00:00",
+      "method_suggestion": "ats_api",
+      "source_id": "employer_c9e9979b45050715",
+      "status": "DISCOVERED"
+    },
+    "employer_caa4f929e22cfd1a": {
+      "checked_at": "2026-10-25T13:26:21.307644+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_caa4f929e22cfd1a",
+      "status": "FAILED"
+    },
+    "employer_cab0e762e7624028": {
+      "checked_at": "2026-10-25T13:26:21.413110+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_cab0e762e7624028",
+      "status": "DISCOVERED"
+    },
+    "employer_cbb08cdfcca01ebb": {
+      "checked_at": "2026-10-25T13:26:21.440231+00:00",
+      "method_suggestion": "manual_or_blocked",
+      "source_id": "employer_cbb08cdfcca01ebb",
+      "status": "BLOCKED"
+    },
+    "employer_cbd973f81141f572": {
+      "checked_at": "2026-10-25T13:26:21.450690+00:00",
+      "method_suggestion": "pdf",
+      "source_id": "employer_cbd973f81141f572",
+      "status": "DISCOVERED"
+    },
+    "employer_cc3b47e87a6cbdf3": {
+      "checked_at": "2026-10-25T13:26:22.318515+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_cc3b47e87a6cbdf3",
+      "status": "DISCOVERED"
+    },
+    "employer_cc3cd125fe52d8bb": {
+      "checked_at": "2026-10-25T13:26:22.559956+00:00",
+      "method_suggestion": "manual_or_blocked",
+      "source_id": "employer_cc3cd125fe52d8bb",
+      "status": "BLOCKED"
+    },
+    "employer_cc7d2f129ea6b207": {
+      "checked_at": "2026-10-25T13:22:43.237713+00:00",
+      "method_suggestion": "pdf",
+      "source_id": "employer_cc7d2f129ea6b207",
+      "status": "DISCOVERED"
+    },
+    "employer_cd08707789d240b6": {
+      "checked_at": "2026-10-25T13:26:22.694186+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_cd08707789d240b6",
+      "status": "DISCOVERED"
+    },
+    "employer_cd30de5efc9b3692": {
+      "checked_at": "2026-10-25T13:26:22.718873+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_cd30de5efc9b3692",
+      "status": "DISCOVERED"
+    },
+    "employer_cd7445fba7b7ca05": {
+      "checked_at": "2026-10-25T13:22:44.201532+00:00",
+      "method_suggestion": "manual_or_blocked",
+      "source_id": "employer_cd7445fba7b7ca05",
+      "status": "BLOCKED"
+    },
+    "employer_ce3a058f886145f5": {
+      "checked_at": "2026-10-25T13:22:44.475026+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_ce3a058f886145f5",
+      "status": "FAILED"
+    },
+    "employer_cfa685c3f177b78b": {
+      "checked_at": "2026-10-25T13:26:22.968113+00:00",
+      "method_suggestion": "pdf",
+      "source_id": "employer_cfa685c3f177b78b",
+      "status": "DISCOVERED"
+    },
+    "employer_cfba292f61883d2e": {
+      "checked_at": "2026-10-25T13:26:23.115096+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_cfba292f61883d2e",
+      "status": "DISCOVERED"
+    },
+    "employer_d081c2873d1c1ca6": {
+      "checked_at": "2026-10-25T13:26:23.668348+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_d081c2873d1c1ca6",
+      "status": "DISCOVERED"
+    },
+    "employer_d1938d224250d001": {
+      "checked_at": "2026-10-25T13:26:23.827036+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_d1938d224250d001",
+      "status": "DISCOVERED"
+    },
+    "employer_d2fd1c5e1e54a203": {
+      "checked_at": "2026-10-25T13:26:24.041357+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_d2fd1c5e1e54a203",
+      "status": "DISCOVERED"
+    },
+    "employer_d33c87094290aadd": {
+      "checked_at": "2026-10-25T13:26:24.460590+00:00",
+      "method_suggestion": "manual_or_blocked",
+      "source_id": "employer_d33c87094290aadd",
+      "status": "BLOCKED"
+    },
+    "employer_d35d24f455aceee7": {
+      "checked_at": "2026-10-25T13:26:25.519513+00:00",
+      "method_suggestion": "ats_api",
+      "source_id": "employer_d35d24f455aceee7",
+      "status": "DISCOVERED"
+    },
+    "employer_d3b0a269555dcb8b": {
+      "checked_at": "2026-10-25T13:22:46.593449+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_d3b0a269555dcb8b",
+      "status": "DISCOVERED"
+    },
+    "employer_d3f06c5d3f6727fd": {
+      "checked_at": "2026-10-25T13:22:46.705817+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_d3f06c5d3f6727fd",
+      "status": "FAILED"
+    },
+    "employer_d3f256579f21953e": {
+      "checked_at": "2026-10-25T13:26:25.550821+00:00",
+      "method_suggestion": "manual_or_blocked",
+      "source_id": "employer_d3f256579f21953e",
+      "status": "BLOCKED"
+    },
+    "employer_d4f359778704408d": {
+      "checked_at": "2026-10-25T13:26:26.102252+00:00",
+      "method_suggestion": "manual_or_blocked",
+      "source_id": "employer_d4f359778704408d",
+      "status": "BLOCKED"
+    },
+    "employer_d5765c76e9008f2e": {
+      "checked_at": "2026-10-25T13:26:26.172189+00:00",
+      "method_suggestion": "ats_api",
+      "source_id": "employer_d5765c76e9008f2e",
+      "status": "DISCOVERED"
+    },
+    "employer_d5f5be8670b7b42d": {
+      "checked_at": "2026-10-25T13:22:47.959498+00:00",
+      "method_suggestion": "pdf",
+      "source_id": "employer_d5f5be8670b7b42d",
+      "status": "DISCOVERED"
+    },
+    "employer_d614ce5e6ae10327": {
+      "checked_at": "2026-10-25T13:26:26.186966+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_d614ce5e6ae10327",
+      "status": "DISCOVERED"
+    },
+    "employer_d62c77fc6848fd57": {
+      "checked_at": "2026-10-25T13:26:26.222422+00:00",
+      "method_suggestion": "pdf",
+      "source_id": "employer_d62c77fc6848fd57",
+      "status": "DISCOVERED"
+    },
+    "employer_d69bf974efd8fa6e": {
+      "checked_at": "2026-10-25T13:26:26.664508+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_d69bf974efd8fa6e",
+      "status": "DISCOVERED"
+    },
+    "employer_d6b1faf0a800ceae": {
+      "checked_at": "2026-10-25T13:26:27.567546+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_d6b1faf0a800ceae",
+      "status": "DISCOVERED"
+    },
+    "employer_d6ea5a0357d7076f": {
+      "checked_at": "2026-10-25T13:22:49.036277+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_d6ea5a0357d7076f",
+      "status": "FAILED"
+    },
+    "employer_d6ec9f27e25c77ac": {
+      "checked_at": "2026-10-25T13:26:28.268595+00:00",
+      "method_suggestion": "manual_or_blocked",
+      "source_id": "employer_d6ec9f27e25c77ac",
+      "status": "BLOCKED"
+    },
+    "employer_d6f8a939218c1134": {
+      "checked_at": "2026-10-25T13:22:49.444333+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_d6f8a939218c1134",
+      "status": "DISCOVERED"
+    },
+    "employer_d73273e310befe11": {
+      "checked_at": "2026-10-25T13:26:28.271509+00:00",
+      "method_suggestion": "link_diff",
+      "source_id": "employer_d73273e310befe11",
+      "status": "DISCOVERED"
+    },
+    "employer_d7461447b9e3e601": {
+      "checked_at": "2026-10-25T13:26:28.624078+00:00",
+      "method_suggestion": "ats_api",
+      "source_id": "employer_d7461447b9e3e601",
+      "status": "DISCOVERED"
+    },
+    "employer_d80d42fbd69678d8": {
+      "checked_at": "2026-10-25T13:26:29.827686+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_d80d42fbd69678d8",
+      "status": "DISCOVERED"
+    },
+    "employer_d81efc85f9afa5fa": {
+      "checked_at": "2026-10-25T13:22:51.070533+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_d81efc85f9afa5fa",
+      "status": "FAILED"
+    },
+    "employer_d87a2c7478b79470": {
+      "checked_at": "2026-10-25T13:22:51.541977+00:00",
+      "method_suggestion": "manual_or_blocked",
+      "source_id": "employer_d87a2c7478b79470",
+      "status": "SKIPPED"
+    },
+    "employer_d8adeb4018b13f95": {
+      "checked_at": "2026-10-25T13:22:51.542021+00:00",
+      "method_suggestion": "ats_api",
+      "source_id": "employer_d8adeb4018b13f95",
+      "status": "DISCOVERED"
+    },
+    "employer_d917a07a0a496243": {
+      "checked_at": "2026-10-25T13:26:29.878582+00:00",
+      "method_suggestion": "manual_or_blocked",
+      "source_id": "employer_d917a07a0a496243",
+      "status": "BLOCKED"
+    },
+    "employer_d980ed8403fc37ed": {
+      "checked_at": "2026-10-25T13:22:52.230384+00:00",
+      "method_suggestion": "manual_or_blocked",
+      "source_id": "employer_d980ed8403fc37ed",
+      "status": "SKIPPED"
+    },
+    "employer_d98dd697ac64aeaf": {
+      "checked_at": "2026-10-25T13:22:52.230434+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_d98dd697ac64aeaf",
+      "status": "FAILED"
+    },
+    "employer_da04cd4bf27fb8dd": {
+      "checked_at": "2026-10-25T13:26:30.074633+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_da04cd4bf27fb8dd",
+      "status": "DISCOVERED"
+    },
+    "employer_da63b5f7d60032e1": {
+      "checked_at": "2026-10-25T13:26:31.227154+00:00",
+      "method_suggestion": "manual_or_blocked",
+      "source_id": "employer_da63b5f7d60032e1",
+      "status": "BLOCKED"
+    },
+    "employer_da6cb811058c92ba": {
+      "checked_at": "2026-10-25T13:26:31.774628+00:00",
+      "method_suggestion": "pdf",
+      "source_id": "employer_da6cb811058c92ba",
+      "status": "DISCOVERED"
+    },
+    "employer_da6d1c32a49147a0": {
+      "checked_at": "2026-10-25T13:26:31.946275+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_da6d1c32a49147a0",
+      "status": "DISCOVERED"
+    },
+    "employer_da7074f7c27b7f70": {
+      "checked_at": "2026-10-25T13:22:53.909937+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_da7074f7c27b7f70",
+      "status": "DISCOVERED"
+    },
+    "employer_dab4713bb2e3e41a": {
+      "checked_at": "2026-10-25T13:26:32.306590+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_dab4713bb2e3e41a",
+      "status": "DISCOVERED"
+    },
+    "employer_db75e93fb8706b04": {
+      "checked_at": "2026-10-25T13:26:32.363764+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_db75e93fb8706b04",
+      "status": "DISCOVERED"
+    },
+    "employer_dba205de43c8a795": {
+      "checked_at": "2026-10-25T13:26:32.837249+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_dba205de43c8a795",
+      "status": "DISCOVERED"
+    },
+    "employer_dc0e6454cf304903": {
+      "checked_at": "2026-10-25T13:26:33.187067+00:00",
+      "method_suggestion": "link_diff",
+      "source_id": "employer_dc0e6454cf304903",
+      "status": "DISCOVERED"
+    },
+    "employer_dc7365fe60890396": {
+      "checked_at": "2026-10-25T13:26:33.982264+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_dc7365fe60890396",
+      "status": "DISCOVERED"
+    },
+    "employer_dcc623be91ba7a80": {
+      "checked_at": "2026-10-25T13:26:34.054409+00:00",
+      "method_suggestion": "pdf",
+      "source_id": "employer_dcc623be91ba7a80",
+      "status": "DISCOVERED"
+    },
+    "employer_dd5f9c2b4c646a24": {
+      "checked_at": "2026-10-25T13:26:34.157438+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_dd5f9c2b4c646a24",
+      "status": "DISCOVERED"
+    },
+    "employer_de3081f67088ad82": {
+      "checked_at": "2026-10-25T13:26:34.178642+00:00",
+      "method_suggestion": "ats_api",
+      "source_id": "employer_de3081f67088ad82",
+      "status": "DISCOVERED"
+    },
+    "employer_de3f8390559db033": {
+      "checked_at": "2026-10-25T13:26:34.217542+00:00",
+      "method_suggestion": "structured_data",
+      "source_id": "employer_de3f8390559db033",
+      "status": "DISCOVERED"
+    },
+    "employer_e0ebc1d82f030961": {
+      "checked_at": "2026-10-25T13:22:56.258270+00:00",
+      "method_suggestion": "pdf",
+      "source_id": "employer_e0ebc1d82f030961",
+      "status": "DISCOVERED"
+    },
+    "employer_e136b2b4af3d7554": {
+      "checked_at": "2026-10-25T13:22:56.272551+00:00",
+      "method_suggestion": "manual_or_blocked",
+      "source_id": "employer_e136b2b4af3d7554",
+      "status": "SKIPPED"
+    },
+    "employer_e156b3e6ae919617": {
+      "checked_at": "2026-10-25T13:26:34.448618+00:00",
+      "method_suggestion": "manual_or_blocked",
+      "source_id": "employer_e156b3e6ae919617",
+      "status": "BLOCKED"
+    },
+    "employer_e1fa4e9ade840818": {
+      "checked_at": "2026-10-25T13:26:35.419012+00:00",
+      "method_suggestion": "ats_api",
+      "source_id": "employer_e1fa4e9ade840818",
+      "status": "DISCOVERED"
+    },
+    "employer_e2adfc186b5ce9a7": {
+      "checked_at": "2026-10-25T13:26:35.436997+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_e2adfc186b5ce9a7",
+      "status": "DISCOVERED"
+    },
+    "employer_e341a8605377dff2": {
+      "checked_at": "2026-10-25T13:26:35.552005+00:00",
+      "method_suggestion": "pdf",
+      "source_id": "employer_e341a8605377dff2",
+      "status": "DISCOVERED"
+    },
+    "employer_e389054d334a040b": {
+      "checked_at": "2026-10-25T13:26:35.584662+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_e389054d334a040b",
+      "status": "DISCOVERED"
+    },
+    "employer_e3dde127efa63865": {
+      "checked_at": "2026-10-25T13:26:36.259718+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_e3dde127efa63865",
+      "status": "DISCOVERED"
+    },
+    "employer_e3e582edee5e2285": {
+      "checked_at": "2026-10-25T13:26:36.465006+00:00",
+      "method_suggestion": "pdf",
+      "source_id": "employer_e3e582edee5e2285",
+      "status": "DISCOVERED"
+    },
+    "employer_e4431156a34a3eac": {
+      "checked_at": "2026-10-25T13:26:36.788151+00:00",
+      "method_suggestion": "ats_api",
+      "source_id": "employer_e4431156a34a3eac",
+      "status": "DISCOVERED"
+    },
+    "employer_e44b05e23a1fc8f5": {
+      "checked_at": "2026-10-25T13:26:36.860037+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_e44b05e23a1fc8f5",
+      "status": "DISCOVERED"
+    },
+    "employer_e48cf933d7200ac1": {
+      "checked_at": "2026-10-25T13:26:36.881013+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_e48cf933d7200ac1",
+      "status": "DISCOVERED"
+    },
+    "employer_e4a50210da5f2d21": {
+      "checked_at": "2026-10-25T13:22:59.106003+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_e4a50210da5f2d21",
+      "status": "FAILED"
+    },
+    "employer_e55e57b017ef6e83": {
+      "checked_at": "2026-10-25T13:26:37.077370+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_e55e57b017ef6e83",
+      "status": "DISCOVERED"
+    },
+    "employer_e5c422e508be069c": {
+      "checked_at": "2026-10-25T13:22:59.745383+00:00",
+      "method_suggestion": "manual_or_blocked",
+      "source_id": "employer_e5c422e508be069c",
+      "status": "SKIPPED"
+    },
+    "employer_e5e857c9f5e8f758": {
+      "checked_at": "2026-10-25T13:26:37.519009+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_e5e857c9f5e8f758",
+      "status": "DISCOVERED"
+    },
+    "employer_e61974548aafef78": {
+      "checked_at": "2026-10-25T13:26:37.717583+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_e61974548aafef78",
+      "status": "DISCOVERED"
+    },
+    "employer_e7d57bbc0b2fdf65": {
+      "checked_at": "2026-10-25T13:26:38.059845+00:00",
+      "method_suggestion": "manual_or_blocked",
+      "source_id": "employer_e7d57bbc0b2fdf65",
+      "status": "BLOCKED"
+    },
+    "employer_e83e18e541ea141f": {
+      "checked_at": "2026-10-25T13:26:38.560470+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_e83e18e541ea141f",
+      "status": "DISCOVERED"
+    },
+    "employer_e8677a240db679c0": {
+      "checked_at": "2026-10-25T13:23:00.786105+00:00",
+      "method_suggestion": "manual_or_blocked",
+      "source_id": "employer_e8677a240db679c0",
+      "status": "BLOCKED"
+    },
+    "employer_e87a0d40e0a0040d": {
+      "checked_at": "2026-10-25T13:23:00.811360+00:00",
+      "method_suggestion": "manual_or_blocked",
+      "source_id": "employer_e87a0d40e0a0040d",
+      "status": "SKIPPED"
+    },
+    "employer_e886227d9b261d10": {
+      "checked_at": "2026-10-25T13:26:39.129804+00:00",
+      "method_suggestion": "ats_api",
+      "source_id": "employer_e886227d9b261d10",
+      "status": "DISCOVERED"
+    },
+    "employer_e8be4c03681e396d": {
+      "checked_at": "2026-10-25T13:26:39.681699+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_e8be4c03681e396d",
+      "status": "DISCOVERED"
+    },
+    "employer_ea14fd551b263bc2": {
+      "checked_at": "2026-10-25T13:23:01.169723+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_ea14fd551b263bc2",
+      "status": "FAILED"
+    },
+    "employer_ea642faedf3aecc9": {
+      "checked_at": "2026-10-25T13:26:40.526361+00:00",
+      "method_suggestion": "link_diff",
+      "source_id": "employer_ea642faedf3aecc9",
+      "status": "DISCOVERED"
+    },
+    "employer_eb72beac0108463b": {
+      "checked_at": "2026-10-25T13:23:01.914803+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_eb72beac0108463b",
+      "status": "DISCOVERED"
+    },
+    "employer_eb9fb4e50ccf9e88": {
+      "checked_at": "2026-10-25T13:26:40.734052+00:00",
+      "method_suggestion": "ats_api",
+      "source_id": "employer_eb9fb4e50ccf9e88",
+      "status": "DISCOVERED"
+    },
+    "employer_ec01759479fb7548": {
+      "checked_at": "2026-10-25T13:26:40.956523+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_ec01759479fb7548",
+      "status": "DISCOVERED"
+    },
+    "employer_ec17ec33bed79971": {
+      "checked_at": "2026-10-25T13:23:03.076456+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_ec17ec33bed79971",
+      "status": "FAILED"
+    },
+    "employer_ec2b4fbbec913793": {
+      "checked_at": "2026-10-25T13:23:03.156085+00:00",
+      "method_suggestion": "manual_or_blocked",
+      "source_id": "employer_ec2b4fbbec913793",
+      "status": "SKIPPED"
+    },
+    "employer_ecbfad7d512d0249": {
+      "checked_at": "2026-10-25T13:26:40.996501+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_ecbfad7d512d0249",
+      "status": "DISCOVERED"
+    },
+    "employer_ecc362937eae5f67": {
+      "checked_at": "2026-10-25T13:26:41.052506+00:00",
+      "method_suggestion": "ats_api",
+      "source_id": "employer_ecc362937eae5f67",
+      "status": "DISCOVERED"
+    },
+    "employer_ecee009f40fe23d8": {
+      "checked_at": "2026-10-25T13:26:41.513742+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_ecee009f40fe23d8",
+      "status": "DISCOVERED"
+    },
+    "employer_ed817e53552bf17a": {
+      "checked_at": "2026-10-25T13:26:41.877565+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_ed817e53552bf17a",
+      "status": "DISCOVERED"
+    },
+    "employer_ef3c4e54d510ad9f": {
+      "checked_at": "2026-10-25T13:23:03.899490+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_ef3c4e54d510ad9f",
+      "status": "DISCOVERED"
+    },
+    "employer_ef6b89e75630aca8": {
+      "checked_at": "2026-10-25T13:26:42.000842+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_ef6b89e75630aca8",
+      "status": "DISCOVERED"
+    },
+    "employer_f106f07edf03624f": {
+      "checked_at": "2026-10-25T13:26:42.319154+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_f106f07edf03624f",
+      "status": "DISCOVERED"
+    },
+    "employer_f1b4a9fcda38b21d": {
+      "checked_at": "2026-10-25T13:23:04.891580+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_f1b4a9fcda38b21d",
+      "status": "DISCOVERED"
+    },
+    "employer_f288af832e81bdd0": {
+      "checked_at": "2026-10-25T13:23:05.312935+00:00",
+      "method_suggestion": "manual_or_blocked",
+      "source_id": "employer_f288af832e81bdd0",
+      "status": "SKIPPED"
+    },
+    "employer_f299546d3b01e619": {
+      "checked_at": "2026-10-25T13:26:42.783628+00:00",
+      "method_suggestion": "manual_or_blocked",
+      "source_id": "employer_f299546d3b01e619",
+      "status": "BLOCKED"
+    },
+    "employer_f2cb0d4a354498a3": {
+      "checked_at": "2026-10-25T13:26:42.804379+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_f2cb0d4a354498a3",
+      "status": "DISCOVERED"
+    },
+    "employer_f31ef7eee133737b": {
+      "checked_at": "2026-10-25T13:26:43.399838+00:00",
+      "method_suggestion": "ats_api",
+      "source_id": "employer_f31ef7eee133737b",
+      "status": "DISCOVERED"
+    },
+    "employer_f363a66b799d08a1": {
+      "checked_at": "2026-10-25T13:23:06.254936+00:00",
+      "method_suggestion": "manual_or_blocked",
+      "source_id": "employer_f363a66b799d08a1",
+      "status": "BLOCKED"
+    },
+    "employer_f37e99423c02aeb4": {
+      "checked_at": "2026-10-25T13:26:43.648970+00:00",
+      "method_suggestion": "pdf",
+      "source_id": "employer_f37e99423c02aeb4",
+      "status": "DISCOVERED"
+    },
+    "employer_f3954f0b2f362cd0": {
+      "checked_at": "2026-10-25T13:23:06.938005+00:00",
+      "method_suggestion": "pdf",
+      "source_id": "employer_f3954f0b2f362cd0",
+      "status": "DISCOVERED"
+    },
+    "employer_f4467e41cd87105a": {
+      "checked_at": "2026-10-25T13:26:43.831119+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_f4467e41cd87105a",
+      "status": "DISCOVERED"
+    },
+    "employer_f46d8bcc2e05d87b": {
+      "checked_at": "2026-10-25T13:26:44.342162+00:00",
+      "method_suggestion": "link_diff",
+      "source_id": "employer_f46d8bcc2e05d87b",
+      "status": "DISCOVERED"
+    },
+    "employer_f48c874cbcade4bf": {
+      "checked_at": "2026-10-25T13:23:07.795569+00:00",
+      "method_suggestion": "manual_or_blocked",
+      "source_id": "employer_f48c874cbcade4bf",
+      "status": "SKIPPED"
+    },
+    "employer_f558042a5d772ae3": {
+      "checked_at": "2026-10-25T13:26:44.437591+00:00",
+      "method_suggestion": "pdf",
+      "source_id": "employer_f558042a5d772ae3",
+      "status": "DISCOVERED"
+    },
+    "employer_f5b65f53b3274bc0": {
+      "checked_at": "2026-10-25T13:26:44.690342+00:00",
+      "method_suggestion": "pdf",
+      "source_id": "employer_f5b65f53b3274bc0",
+      "status": "DISCOVERED"
+    },
+    "employer_f5bd18f5eedb1edb": {
+      "checked_at": "2026-10-25T13:26:45.219976+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_f5bd18f5eedb1edb",
+      "status": "DISCOVERED"
+    },
+    "employer_f6e87e2d8b58e060": {
+      "checked_at": "2026-10-25T13:26:45.399247+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_f6e87e2d8b58e060",
+      "status": "DISCOVERED"
+    },
+    "employer_f6eb6a981f41de2f": {
+      "checked_at": "2026-10-25T13:26:45.716182+00:00",
+      "method_suggestion": "link_diff",
+      "source_id": "employer_f6eb6a981f41de2f",
+      "status": "DISCOVERED"
+    },
+    "employer_f73059431f2c58f5": {
+      "checked_at": "2026-10-25T13:23:09.615831+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_f73059431f2c58f5",
+      "status": "DISCOVERED"
+    },
+    "employer_f806f6b3b4febe19": {
+      "checked_at": "2026-10-25T13:23:09.683854+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_f806f6b3b4febe19",
+      "status": "FAILED"
+    },
+    "employer_f820c50a114c60f9": {
+      "checked_at": "2026-10-25T13:26:46.001699+00:00",
+      "method_suggestion": "pdf",
+      "source_id": "employer_f820c50a114c60f9",
+      "status": "DISCOVERED"
+    },
+    "employer_f8f3f935327894da": {
+      "checked_at": "2026-10-25T13:23:10.943522+00:00",
+      "method_suggestion": "manual_or_blocked",
+      "source_id": "employer_f8f3f935327894da",
+      "status": "SKIPPED"
+    },
+    "employer_f9975b80ea15f738": {
+      "checked_at": "2026-10-25T13:26:46.289310+00:00",
+      "method_suggestion": "link_diff",
+      "source_id": "employer_f9975b80ea15f738",
+      "status": "DISCOVERED"
+    },
+    "employer_fa323962f3075273": {
+      "checked_at": "2026-10-25T13:26:46.304742+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_fa323962f3075273",
+      "status": "DISCOVERED"
+    },
+    "employer_fa3b61fac751e5ea": {
+      "checked_at": "2026-10-25T13:23:11.468275+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_fa3b61fac751e5ea",
+      "status": "FAILED"
+    },
+    "employer_fa5247342bb1ece6": {
+      "checked_at": "2026-10-25T13:26:46.457615+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_fa5247342bb1ece6",
+      "status": "DISCOVERED"
+    },
+    "employer_fa747250db2228f3": {
+      "checked_at": "2026-10-25T13:26:46.957264+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_fa747250db2228f3",
+      "status": "DISCOVERED"
+    },
+    "employer_fa8ae4994ac03d11": {
+      "checked_at": "2026-10-25T13:26:47.596008+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_fa8ae4994ac03d11",
+      "status": "DISCOVERED"
+    },
+    "employer_fb50d2ec69ee50b6": {
+      "checked_at": "2026-10-25T13:26:47.783201+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_fb50d2ec69ee50b6",
+      "status": "DISCOVERED"
+    },
+    "employer_fcece2c9ee53d3d0": {
+      "checked_at": "2026-10-25T13:26:48.394633+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_fcece2c9ee53d3d0",
+      "status": "DISCOVERED"
+    },
+    "employer_fd1d36c4795459c2": {
+      "checked_at": "2026-10-25T13:23:13.236019+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_fd1d36c4795459c2",
+      "status": "DISCOVERED"
+    },
+    "employer_fd214b32ed5048cc": {
+      "checked_at": "2026-10-25T13:23:13.458813+00:00",
+      "method_suggestion": "manual_or_blocked",
+      "source_id": "employer_fd214b32ed5048cc",
+      "status": "SKIPPED"
+    },
+    "employer_fd3ce3857d2b61f1": {
+      "checked_at": "2026-10-25T13:23:13.458832+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_fd3ce3857d2b61f1",
+      "status": "FAILED"
+    },
+    "employer_fe11d690dc63588b": {
+      "checked_at": "2026-10-25T13:26:48.716024+00:00",
+      "method_suggestion": "manual_or_blocked",
+      "source_id": "employer_fe11d690dc63588b",
+      "status": "BLOCKED"
+    },
+    "employer_fe32c509c8e7ef56": {
+      "checked_at": "2026-10-25T13:23:13.879179+00:00",
+      "method_suggestion": "pdf",
+      "source_id": "employer_fe32c509c8e7ef56",
+      "status": "DISCOVERED"
+    },
+    "employer_fe8dee5d339e7dfc": {
+      "checked_at": "2026-10-25T13:26:48.838851+00:00",
+      "method_suggestion": "pdf",
+      "source_id": "employer_fe8dee5d339e7dfc",
+      "status": "DISCOVERED"
+    },
+    "employer_fec0ad2408906011": {
+      "checked_at": "2026-10-25T13:26:49.384022+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_fec0ad2408906011",
+      "status": "DISCOVERED"
+    },
+    "employer_fee3bfdec04d8d28": {
+      "checked_at": "2026-10-25T13:26:49.602719+00:00",
+      "method_suggestion": "needs_review",
+      "source_id": "employer_fee3bfdec04d8d28",
+      "status": "DISCOVERED"
+    },
+    "employer_ff3ad80b30f6ef9b": {
+      "checked_at": "2026-10-25T13:26:49.776378+00:00",
+      "method_suggestion": "feed",
+      "source_id": "employer_ff3ad80b30f6ef9b",
+      "status": "DISCOVERED"
+    }
+  }
+}

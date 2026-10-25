@@ -10,6 +10,7 @@ from datetime import UTC, datetime
 from pathlib import Path
 
 from ingest.audit import read_json
+from ingest.employer_state import daily_coverage, mark_published
 
 
 def finalize(data_dir: Path, candidate_dir: Path, *, promote: bool, deployment: dict) -> None:
@@ -57,6 +58,14 @@ def finalize(data_dir: Path, candidate_dir: Path, *, promote: bool, deployment: 
         )
         if deployment["outcome"] == "success":
             (data_dir / "state/deployment.json").write_text(json.dumps(deployment, indent=2) + "\n")
+        mark_published(data_dir)
+    coverage = daily_coverage(data_dir)
+    (data_dir / "state/employer-coverage.json").write_text(
+        json.dumps(coverage, indent=2, sort_keys=True) + "\n"
+    )
+    dated = data_dir / f"state/employer-coverage/{coverage['day_eat']}.json"
+    dated.parent.mkdir(parents=True, exist_ok=True)
+    dated.write_text(json.dumps(coverage, indent=2, sort_keys=True) + "\n")
     day = datetime.now(UTC).date().isoformat()
     for root in (candidate_dir, data_dir):
         path = root / "state/publication-history" / f"{day}.jsonl"

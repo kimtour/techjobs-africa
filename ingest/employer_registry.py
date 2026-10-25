@@ -285,3 +285,28 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+def board_identity(url: str):
+    """Read provider board identity, including embedded board query parameters."""
+    from urllib.parse import parse_qs
+
+    parsed = urlsplit(url)
+    provider = platform_for(url)
+    parts = [part for part in parsed.path.split("/") if part]
+    query = parse_qs(parsed.query)
+    token = None
+    if provider in {"ashby", "lever"} and parts:
+        token = parts[0]
+    elif provider == "greenhouse":
+        if "for" in query:
+            token = query["for"][0]
+        elif parts and parts[0] != "embed":
+            token = parts[0]
+    elif provider == "breezy":
+        token = (parsed.hostname or "").removesuffix(".breezy.hr")
+        if token in {"app", "assets-cdn", "www"}:
+            token = None
+    if token and re.fullmatch(r"[A-Za-z0-9_-]+", token):
+        return provider, token
+    return None

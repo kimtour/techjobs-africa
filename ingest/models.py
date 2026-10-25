@@ -57,6 +57,8 @@ class RawJob(BaseModel):
     employer_id: str | None = None
     employer_sectors: list[str] = Field(default_factory=list)
     direct_employer: bool = False
+    shared_apply_url: bool = False
+    applicant_africa: bool = Field(default=False, exclude=True)
     opportunity_type: Literal["employment", "consultancy", "internship", "fellowship"] | None = None
     technical_context: (
         Literal[
@@ -124,11 +126,13 @@ class CanonicalJob(BaseModel):
     published_at: datetime | None = None
     published_date: date | None = None
     deadline_at: datetime | None = None
+    first_seen_at: datetime | None = None
     last_checked_at: datetime | None = None
     employment_type: str | None = Field(default=None, max_length=100)
     employer_id: str | None = None
     employer_sectors: list[str] = Field(default_factory=list)
     direct_employer: bool = False
+    shared_apply_url: bool = False
     opportunity_type: Literal["employment", "consultancy", "internship", "fellowship"] | None = None
     status: JobStatus = JobStatus.ACTIVE
     preferred_apply_url: AnyHttpUrl

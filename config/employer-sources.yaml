@@ -1616,7 +1616,7 @@ sources:
   import_urls:
   - https://ampersand-energy.breezy.hr/
   platform: breezy
-  status: trial
+  status: active
   employer_ids:
   - emp_580a587ccfe2a3ca
   access_method: null
@@ -1642,24 +1642,27 @@ sources:
     local_access: true
     runner_access: true
     collection_review: true
-    trial_review: false
-    publication_review: false
+    trial_review: true
+    publication_review: true
     checked_at: '2026-10-25T13:00:18.145790+00:00'
     evidence_paths:
     - docs/employer-discovery/local/employer_1a047fd979fcdf88.json
     - docs/employer-discovery/github/employer_1a047fd979fcdf88.json
     - https://github.com/kimtour/techjobs-africa/actions/runs/40195538250
+    - docs/employer-activation-review-2026-10-25.md
     collection_basis: Reviewed official employer-to-board links, local and hosted
       robots/access evidence, documented public ATS posting interfaces or public Breezy
       listing pages and provider customer terms. Isolated trial of minimal vacancy
       metadata and original application links only; no description/contact retention,
       no authenticated/internal endpoints, no assertion of a redistribution licence.
+    reviewed_at: '2026-10-25T14:26:47.505484+00:00'
   suggestions:
     platform: breezy
     needs_location_filter: true
   board: ampersand-energy
   official_careers_url: https://www.ampersand.energy/
   pilot_rank: 8
+  reviewed_bootstrap: true
 - id: employer_1a36185bfa8761a4
   url: https://absa.wd3.myworkdayjobs.com/ABSAcareersite?locationCountry=9e684fd7be1e469d9ee955a4c3b754be
   import_urls:
@@ -1793,7 +1796,7 @@ sources:
   url: https://wasoko.com/careers/
   import_urls:
   - https://wasoko.com/careers/
-  platform: custom
+  platform: breezy
   status: pending
   employer_ids:
   - emp_52285f5d7961316d
@@ -1803,8 +1806,8 @@ sources:
   discovery_refresh_hours: 168
   supports_absence_expiry: false
   crawl:
-    max_pages: 5
-    max_requests_per_run: 12
+    max_pages: 10
+    max_requests_per_run: 60
     request_delay_ms: 1500
     timeout_seconds: 20
     retry_delays_seconds:
@@ -1814,6 +1817,10 @@ sources:
   suggestions:
     platform: custom
     historical: true
+  board: wasoko
+  board_url: https://wasoko.breezy.hr/
+  official_careers_url: https://wasoko.com/careers/
+  pilot_rank: 20
 - id: employer_1bc72c098bfe9f56
   url: https://www.conservation.org/conservation-international-jobs
   import_urls:
@@ -4094,7 +4101,7 @@ sources:
   import_urls:
   - https://turaco.breezy.hr/
   platform: breezy
-  status: trial
+  status: active
   employer_ids:
   - emp_33c4082222aae66f
   access_method: null
@@ -4120,18 +4127,20 @@ sources:
     local_access: true
     runner_access: true
     collection_review: true
-    trial_review: false
-    publication_review: false
+    trial_review: true
+    publication_review: true
     checked_at: '2026-10-25T12:59:55.309857+00:00'
     evidence_paths:
     - docs/employer-discovery/local/employer_3d2a408f9d01331a.json
     - docs/employer-discovery/github/employer_3d2a408f9d01331a.json
     - https://github.com/kimtour/techjobs-africa/actions/runs/40195538250
+    - docs/employer-activation-review-2026-10-25.md
     collection_basis: Reviewed official employer-to-board links, local and hosted
       robots/access evidence, documented public ATS posting interfaces or public Breezy
       listing pages and provider customer terms. Isolated trial of minimal vacancy
       metadata and original application links only; no description/contact retention,
       no authenticated/internal endpoints, no assertion of a redistribution licence.
+    reviewed_at: '2026-10-25T14:26:47.505484+00:00'
   suggestions:
     platform: breezy
     needs_location_filter: true
@@ -4139,6 +4148,7 @@ sources:
   board: turaco
   official_careers_url: https://turaco.insure/
   pilot_rank: 7
+  reviewed_bootstrap: true
 - id: employer_3dda30bac825666c
   url: https://www.technobraingroup.com/job-list/
   import_urls:
@@ -5752,7 +5762,7 @@ sources:
   import_urls:
   - https://www.m-kopa.com/careers
   platform: ashby
-  status: trial
+  status: active
   employer_ids:
   - emp_8d29fd81b7a68542
   access_method: null
@@ -5778,18 +5788,20 @@ sources:
     local_access: true
     runner_access: true
     collection_review: true
-    trial_review: false
-    publication_review: false
+    trial_review: true
+    publication_review: true
     checked_at: '2026-10-25T12:59:20.767795+00:00'
     evidence_paths:
     - docs/employer-discovery/local/employer_58b8d22cf280a524.json
     - docs/employer-discovery/github/employer_58b8d22cf280a524.json
     - https://github.com/kimtour/techjobs-africa/actions/runs/40195538250
+    - docs/employer-activation-review-2026-10-25.md
     collection_basis: Reviewed official employer-to-board links, local and hosted
       robots/access evidence, documented public ATS posting interfaces or public Breezy
       listing pages and provider customer terms. Isolated trial of minimal vacancy
       metadata and original application links only; no description/contact retention,
       no authenticated/internal endpoints, no assertion of a redistribution licence.
+    reviewed_at: '2026-10-25T14:26:47.505484+00:00'
   suggestions:
     platform: custom
   board: M-KOPA
@@ -5797,12 +5809,13 @@ sources:
   pilot_rank: 1
   board_url: https://jobs.ashbyhq.com/M-KOPA
   robots_unavailable_basis: https://developers.ashbyhq.com/docs/public-job-posting-api
+  reviewed_bootstrap: true
 - id: employer_58c9e63aea84d1df
   url: https://www.givedirectly.org/careers
   import_urls:
   - https://www.givedirectly.org/careers
-  platform: custom
-  status: pending
+  platform: greenhouse
+  status: manual
   employer_ids:
   - emp_921a0be78bec1ca3
   access_method: null
@@ -5811,16 +5824,24 @@ sources:
   discovery_refresh_hours: 168
   supports_absence_expiry: false
   crawl:
-    max_pages: 5
-    max_requests_per_run: 12
+    max_pages: 10
+    max_requests_per_run: 60
     request_delay_ms: 1500
     timeout_seconds: 20
     retry_delays_seconds:
     - 5
     - 20
-  verification: {}
+  verification:
+    collection_review: false
+    collection_review_url: https://www.givedirectly.org/terms-of-use
   suggestions:
     platform: custom
+  board: givedirectly
+  board_url: https://job-boards.greenhouse.io/givedirectly
+  official_careers_url: https://www.givedirectly.org/careers
+  pilot_rank: 21
+  review_reason: Website terms restrict automated use and republication; collection
+    permission required.
 - id: employer_5904ae90e271210e
   url: https://job-boards.eu.greenhouse.io/sumac
   import_urls:
@@ -6395,7 +6416,7 @@ sources:
   import_urls:
   - https://job-boards.greenhouse.io/jumia
   platform: greenhouse
-  status: trial
+  status: active
   employer_ids:
   - emp_958c0f998e01b89c
   access_method: null
@@ -6421,18 +6442,20 @@ sources:
     local_access: true
     runner_access: true
     collection_review: true
-    trial_review: false
-    publication_review: false
+    trial_review: true
+    publication_review: true
     checked_at: '2026-10-25T12:59:25.872413+00:00'
     evidence_paths:
     - docs/employer-discovery/local/employer_6123edf0db94e3a1.json
     - docs/employer-discovery/github/employer_6123edf0db94e3a1.json
     - https://github.com/kimtour/techjobs-africa/actions/runs/40195538250
+    - docs/employer-activation-review-2026-10-25.md
     collection_basis: Reviewed official employer-to-board links, local and hosted
       robots/access evidence, documented public ATS posting interfaces or public Breezy
       listing pages and provider customer terms. Isolated trial of minimal vacancy
       metadata and original application links only; no description/contact retention,
       no authenticated/internal endpoints, no assertion of a redistribution licence.
+    reviewed_at: '2026-10-25T14:26:47.505484+00:00'
   suggestions:
     platform: greenhouse
     needs_location_filter: true
@@ -6443,6 +6466,7 @@ sources:
   board_url: https://job-boards.eu.greenhouse.io/jumia
   group_portal: true
   posting_company: Jumia
+  reviewed_bootstrap: true
 - id: employer_61a315e00d704735
   url: https://digital.kisiiuniversity.ac.ke/job_portal/open_adverts
   import_urls:
@@ -7050,7 +7074,7 @@ sources:
   import_urls:
   - https://job-boards.eu.greenhouse.io/moniepoint
   platform: greenhouse
-  status: pending
+  status: blocked
   employer_ids:
   - emp_4358c41e7506dc6d
   access_method: null
@@ -7066,7 +7090,9 @@ sources:
     retry_delays_seconds:
     - 5
     - 20
-  verification: {}
+  verification:
+    review_note: Prior local/hosted API access block. No further automated checks
+      without review.
   suggestions:
     platform: greenhouse
   board: moniepoint
@@ -7743,8 +7769,8 @@ sources:
   url: https://www.andela.com/for-talent
   import_urls:
   - https://www.andela.com/for-talent
-  platform: custom
-  status: pending
+  platform: ashby
+  status: manual
   employer_ids:
   - emp_dec380798641e1b6
   access_method: null
@@ -7753,16 +7779,25 @@ sources:
   discovery_refresh_hours: 168
   supports_absence_expiry: false
   crawl:
-    max_pages: 5
-    max_requests_per_run: 12
+    max_pages: 10
+    max_requests_per_run: 60
     request_delay_ms: 1500
     timeout_seconds: 20
     retry_delays_seconds:
     - 5
     - 20
-  verification: {}
+  verification:
+    collection_review: false
+    collection_review_url: https://www.andela.com/terms-of-use
   suggestions:
     platform: custom
+  board: andela
+  board_url: https://jobs.ashbyhq.com/andela
+  official_careers_url: https://www.andela.com/for-talent
+  pilot_rank: 22
+  robots_unavailable_basis: https://developers.ashbyhq.com/docs/public-job-posting-api
+  review_reason: Terms restrict programmatic extraction and republication; collection
+    permission required.
 - id: employer_773eaf65ba4e8bc4
   url: https://britam.taleo.net/careersection/ke/jobsearch.ftl
   import_urls:
@@ -8453,8 +8488,8 @@ sources:
   url: https://www.pawapay.io/careers
   import_urls:
   - https://www.pawapay.io/careers
-  platform: custom
-  status: pending
+  platform: greenhouse
+  status: manual
   employer_ids:
   - emp_2b9f25452f3ed793
   access_method: null
@@ -8463,18 +8498,26 @@ sources:
   discovery_refresh_hours: 168
   supports_absence_expiry: false
   crawl:
-    max_pages: 5
-    max_requests_per_run: 12
+    max_pages: 10
+    max_requests_per_run: 60
     request_delay_ms: 1500
     timeout_seconds: 20
     retry_delays_seconds:
     - 5
     - 20
-  verification: {}
+  verification:
+    collection_review: false
+    collection_review_url: https://www.pawapay.io/terms-of-use
   suggestions:
     platform: custom
     needs_location_filter: true
     shared_portal: true
+  board: pawapay
+  board_url: https://boards.eu.greenhouse.io/embed/job_board?for=pawapay
+  official_careers_url: https://www.pawapay.io/careers
+  pilot_rank: 23
+  review_reason: Terms restrict reposting on other websites; collection permission
+    required.
 - id: employer_81c44427ea94fdd0
   url: https://boakenya.com/job-listing/
   import_urls:
@@ -10015,7 +10058,7 @@ sources:
   import_urls:
   - https://tala.co.ke/careers/
   platform: lever
-  status: trial
+  status: active
   employer_ids:
   - emp_352f2f0814ad2d6c
   access_method: null
@@ -10041,24 +10084,27 @@ sources:
     local_access: true
     runner_access: true
     collection_review: true
-    trial_review: false
-    publication_review: false
+    trial_review: true
+    publication_review: true
     checked_at: '2026-10-25T13:01:22.590415+00:00'
     evidence_paths:
     - docs/employer-discovery/local/employer_9e1960f0be135be5.json
     - docs/employer-discovery/github/employer_9e1960f0be135be5.json
     - https://github.com/kimtour/techjobs-africa/actions/runs/40195538250
+    - docs/employer-activation-review-2026-10-25.md
     collection_basis: Reviewed official employer-to-board links, local and hosted
       robots/access evidence, documented public ATS posting interfaces or public Breezy
       listing pages and provider customer terms. Isolated trial of minimal vacancy
       metadata and original application links only; no description/contact retention,
       no authenticated/internal endpoints, no assertion of a redistribution licence.
+    reviewed_at: '2026-10-25T14:26:47.505484+00:00'
   suggestions:
     platform: custom
   pilot_rank: 14
   official_careers_url: https://tala.co.ke/careers/
   board: tala
   board_url: https://jobs.lever.co/tala
+  reviewed_bootstrap: true
 - id: employer_9f20b17731d553bb
   url: https://www.fhi360.org/join-our-team/
   import_urls:
@@ -10289,7 +10335,7 @@ sources:
   import_urls:
   - https://jobs.lever.co/BusaraCenter
   platform: lever
-  status: pending
+  status: blocked
   employer_ids:
   - emp_b3f58e17fda56c73
   access_method: null
@@ -10305,7 +10351,9 @@ sources:
     retry_delays_seconds:
     - 5
     - 20
-  verification: {}
+  verification:
+    review_note: Prior local/hosted API access block. No further automated checks
+      without review.
   suggestions:
     platform: lever
     needs_location_filter: true
@@ -11434,7 +11482,7 @@ sources:
   url: https://www.sama.com/careers
   import_urls:
   - https://www.sama.com/careers
-  platform: custom
+  platform: greenhouse
   status: pending
   employer_ids:
   - emp_fd919d872acd8d48
@@ -11444,8 +11492,8 @@ sources:
   discovery_refresh_hours: 168
   supports_absence_expiry: false
   crawl:
-    max_pages: 5
-    max_requests_per_run: 12
+    max_pages: 10
+    max_requests_per_run: 60
     request_delay_ms: 1500
     timeout_seconds: 20
     retry_delays_seconds:
@@ -11454,6 +11502,10 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+  board: samainc
+  board_url: https://boards.greenhouse.io/samainc
+  official_careers_url: https://www.sama.com/careers
+  pilot_rank: 24
 - id: employer_b5cb835c65d8759a
   url: https://hdsn.fa.us6.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/jobs
   import_urls:
@@ -12080,8 +12132,8 @@ sources:
   url: https://www.unlimit.com/careers/
   import_urls:
   - https://www.unlimit.com/careers/
-  platform: custom
-  status: pending
+  platform: lever
+  status: manual
   employer_ids:
   - emp_6f7cee08af2d77a6
   access_method: null
@@ -12090,17 +12142,25 @@ sources:
   discovery_refresh_hours: 168
   supports_absence_expiry: false
   crawl:
-    max_pages: 5
-    max_requests_per_run: 12
+    max_pages: 10
+    max_requests_per_run: 60
     request_delay_ms: 1500
     timeout_seconds: 20
     retry_delays_seconds:
     - 5
     - 20
-  verification: {}
+  verification:
+    collection_review: false
+    collection_review_url: https://www.in.unlimit.com/website-terms-of-use/
   suggestions:
     platform: custom
     needs_location_filter: true
+  board: unlimit
+  board_url: https://jobs.lever.co/unlimit
+  official_careers_url: https://www.unlimit.com/careers/
+  pilot_rank: 25
+  review_reason: Terms restrict systematic collection and automated use; collection
+    permission required.
 - id: employer_c28b86fe97545256
   url: https://careers.intellisoftkenya.com/jobs
   import_urls:
@@ -13438,8 +13498,8 @@ sources:
   url: https://www.lemfi.com/en-us/careers
   import_urls:
   - https://www.lemfi.com/en-us/careers
-  platform: custom
-  status: pending
+  platform: ashby
+  status: manual
   employer_ids:
   - emp_1c531d9937382a13
   access_method: null
@@ -13448,16 +13508,25 @@ sources:
   discovery_refresh_hours: 168
   supports_absence_expiry: false
   crawl:
-    max_pages: 5
-    max_requests_per_run: 12
+    max_pages: 10
+    max_requests_per_run: 60
     request_delay_ms: 1500
     timeout_seconds: 20
     retry_delays_seconds:
     - 5
     - 20
-  verification: {}
+  verification:
+    collection_review: false
+    collection_review_url: https://www.lemfi.com/en-us/legal/terms
   suggestions:
     platform: custom
+  board: lemfi
+  board_url: https://jobs.ashbyhq.com/lemfi
+  official_careers_url: https://www.lemfi.com/en-us/careers
+  pilot_rank: 26
+  robots_unavailable_basis: https://developers.ashbyhq.com/docs/public-job-posting-api
+  review_reason: Terms page returned 403; collection basis remains unverified. Do
+    not bypass access controls.
 - id: employer_d80d42fbd69678d8
   url: https://thenairobihosp.org/blogs
   import_urls:

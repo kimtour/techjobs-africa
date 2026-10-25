@@ -92,6 +92,14 @@ def canonicalize_raw_job(
         " ".join(part for part in (raw.location, location.city, location.country) if part) or None
     )
     eligibility = classify_eligibility(location=eligibility_location, title=raw.title)
+    if raw.applicant_africa and eligibility.level == "UNKNOWN":
+        eligibility = eligibility.model_copy(
+            update={
+                "level": "LIKELY",
+                "evidence": "Description directly addresses candidates in Africa.",
+                "source": "description",
+            }
+        )
     resolved_posting_company = posting_company or raw.company
     resolved_hiring_company = hiring_company or (raw.company if is_agency_posting else None)
 
@@ -126,6 +134,7 @@ def canonicalize_raw_job(
         employer_id=raw.employer_id,
         employer_sectors=raw.employer_sectors,
         direct_employer=raw.direct_employer,
+        shared_apply_url=raw.shared_apply_url,
         opportunity_type=raw.opportunity_type,
         preferred_apply_url=raw.apply_url,
         sources=[raw.source_id],

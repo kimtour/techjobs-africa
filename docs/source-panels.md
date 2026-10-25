@@ -51,9 +51,10 @@ roles found on BrighterMonday's Engineering & Technology and Software & Data pag
   is required.
 - Loading more retains the feed's scroll position and leaves all other sources'
   period, pagination, scroll position, and layout unchanged.
-- Latest sorts dated active jobs newest first, then undated jobs, with stable ID
+- Latest sorts by employer posting date, falling back to labelled First found
+  dates where available, then undated jobs, with stable ID
   tie-breaking. Restricted jobs remain excluded.
-- Day, 3 Days, Week, 2 Weeks, and Month select publication dates from the past
+- Day, 3 Days, Week, 2 Weeks, and Month select employer posting dates (or labelled First found fallback) from the past
   24 hours, 3 days, 7 days, 14 days, and 30 days, inclusive. Date-only values
   use UTC midnight, consistent with their display. Undated, invalid, and future
   dates do not match a bounded period.

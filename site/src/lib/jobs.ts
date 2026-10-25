@@ -26,6 +26,7 @@ export type Job = {
   opportunity_type?: string | null;
   deadline_at?: string | null;
   last_checked_at?: string | null;
+  first_seen_at?: string | null;
 };
 
 type JobsPayload = {
@@ -102,10 +103,12 @@ export const postedLabel = (job: Job) => {
   }).format(postedAt)} EAT`;
 };
 
+export const listingDate = (job: Job) => job.published_at || job.published_date || job.first_seen_at || "";
+
 // Missing/invalid dates stay last; use identity for deterministic ties.
 export const newestFirst = (a: Job, b: Job) => {
   const timestamp = (job: Job) => {
-    const value = Date.parse(job.published_at || job.published_date || "");
+    const value = Date.parse(listingDate(job));
     return Number.isFinite(value) ? value : 0;
   };
   return timestamp(b) - timestamp(a) || a.job_id.localeCompare(b.job_id);

@@ -27,6 +27,9 @@ class _FailingAdapter:
 
 
 def test_approved_sources_exclude_discovery_and_disabled_sources():
+    from ingest.registry_sources import active_factories
+
+    registered, _ = active_factories()
     assert approved_source_ids() == [
         "jsearch",
         "expertini",
@@ -40,7 +43,7 @@ def test_approved_sources_exclude_discovery_and_disabled_sources():
         "camunda",
         "blacksmith",
         "sdg",
-    ]
+    ] + list(registered)
 
 
 def test_run_isolates_a_failed_source_and_writes_static_output(tmp_path):

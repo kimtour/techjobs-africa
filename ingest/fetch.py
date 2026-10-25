@@ -61,7 +61,8 @@ class ObservedClient:
                 response = getattr(self.client, method)(url, **kwargs)
                 code = response.status_code
                 self.status_codes[str(code)] += 1
-                response.raise_for_status()
+                if code != 304:
+                    response.raise_for_status()
             except (httpx.HTTPError, requests.exceptions.RequestException) as exc:
                 error = exc
             finally:

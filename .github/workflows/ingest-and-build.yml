@@ -5,7 +5,7 @@ on:
   workflow_dispatch:
     inputs:
       source:
-        description: all, or one approved active source ID
+        description: all, employers, or one approved active source ID
         required: false
         default: all
         type: string
@@ -87,15 +87,17 @@ jobs:
         run: |
           REFRESH_ARGS=()
           if [ "$REFRESH_JSEARCH" = "true" ]; then REFRESH_ARGS+=(--refresh-jsearch); fi
-          if [ "$FETCH_SOURCE" != "all" ]; then
+          if [ "$FETCH_SOURCE" = "employers" ]; then
+            python -u -m ingest.main --output-dir "$CANDIDATE_DIR" --employers-only
+          elif [ "$FETCH_SOURCE" != "all" ]; then
             python -u -m ingest.main --output-dir "$CANDIDATE_DIR" --source "$FETCH_SOURCE" "${REFRESH_ARGS[@]}"
           else
             python -u -m ingest.main --output-dir "$CANDIDATE_DIR" "${REFRESH_ARGS[@]}"
           fi
 
-      - name: Discover due shortlisted employer sources
+      - name: Monitor due employer pages and report all-company coverage
         if: steps.claim.outputs.proceed == 'true'
-        run: python -u -m ingest.employer_onboarding discover --due --output-dir "$CANDIDATE_DIR/state/employer-discovery"
+        run: python -u -m ingest.employer_watch --data-dir "$CANDIDATE_DIR"
 
       - name: Set up Node
         if: steps.fetch.outputs.publishable == 'true' && steps.fetch.outputs.public_changed == 'true'

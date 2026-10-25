@@ -5,8 +5,10 @@ from __future__ import annotations
 from datetime import UTC, datetime, timedelta
 from functools import partial
 from pathlib import Path
+from zoneinfo import ZoneInfo
 
 from ingest.adapters.registry_boards import SUPPORTED, RegistryBoardAdapter
+from ingest.adapters.structured_employers import METHODS, StructuredEmployerAdapter
 from ingest.employer_registry import ROOT, STATES, read_registry
 
 CHECKS = (
@@ -49,9 +51,22 @@ def verification_gaps(source: dict) -> list[str]:
         gaps.append("evidence_paths")
     if not evidence.get("collection_basis"):
         gaps.append("collection_basis")
-    if source["platform"] not in SUPPORTED or not source.get("board"):
+    if not collector_supported(source):
         gaps.append("supported_board")
     return gaps
+
+
+def collector_supported(source):
+    return (source["platform"] in SUPPORTED and bool(source.get("board"))) or (
+        source.get("access_method") in METHODS
+        and bool(source.get("collection", {}).get("listing_url"))
+    )
+
+
+def make_adapter(source, employers):
+    if source.get("access_method") in METHODS:
+        return StructuredEmployerAdapter(source, employers)
+    return RegistryBoardAdapter(source, employers)
 
 
 def active_factories(config_dir: Path = ROOT / "config") -> tuple[dict, dict]:
@@ -68,11 +83,15 @@ def active_factories(config_dir: Path = ROOT / "config") -> tuple[dict, dict]:
             for check in ("trial_review", "publication_review")
         ):
             raise ValueError(f"Active employer source requires trial and publication review: {sid}")
-        key = (source["platform"], source["board"], source.get("region"))
+        key = (
+            source.get("access_method") or source["platform"],
+            source.get("board") or source["collection"]["listing_url"],
+            source.get("region"),
+        )
         if key in boards:
             raise ValueError("Shared recruitment board must have one active collection source")
         boards.add(key)
-        factories[sid] = partial(RegistryBoardAdapter, source, employers)
+        factories[sid] = partial(make_adapter, source, employers)
         config[sid] = {
             **source,
             "enabled": True,
@@ -90,6 +109,12 @@ def source_due(source: dict, health: dict, now: datetime) -> bool:
     failures = min(health.get("consecutive_failures", 0), 4)
     hours = min(source["refresh_hours"] * 2**failures, 168)
     cooldown = health.get("next_allowed_at")
-    return now >= last + timedelta(hours=hours) and (
-        not cooldown or now >= datetime.fromisoformat(cooldown).astimezone(UTC)
-    )
+    # A healthy daily board is due on the next EAT calendar day, avoiding drift.
+    if not failures and source["refresh_hours"] == 24:
+        due = (
+            now.astimezone(ZoneInfo("Africa/Nairobi")).date()
+            > last.astimezone(ZoneInfo("Africa/Nairobi")).date()
+        )
+    else:
+        due = now >= last + timedelta(hours=hours)
+    return due and (not cooldown or now >= datetime.fromisoformat(cooldown).astimezone(UTC))

@@ -8,7 +8,7 @@ on:
         options: [probe, discover, trial]
         default: discover
       source:
-        description: Optional single registry source ID; empty selects discovery shortlist or verified trial sources
+        description: Optional comma-separated source IDs; empty uses reviewed defaults
         type: string
         default: ''
 permissions:
@@ -43,7 +43,10 @@ jobs:
             exit 0
           fi
           ARGS=()
-          if [ -n "$ONBOARDING_SOURCE" ]; then ARGS+=(--source "$ONBOARDING_SOURCE"); fi
+          if [ -n "$ONBOARDING_SOURCE" ]; then
+            IFS=',' read -ra SOURCE_IDS <<< "$ONBOARDING_SOURCE"
+            for SOURCE_ID in "${SOURCE_IDS[@]}"; do ARGS+=(--source "$SOURCE_ID"); done
+          fi
           if [ "$ONBOARDING_MODE" = trial ]; then ARGS+=(--accepted .private-data/public/jobs.json); fi
           python -u -m ingest.employer_onboarding "$ONBOARDING_MODE" --output-dir /tmp/employer-onboarding "${ARGS[@]}"
       - name: Upload metadata and isolated candidates

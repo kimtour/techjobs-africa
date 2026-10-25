@@ -25,7 +25,7 @@ def canonicalize_apply_url(url: str) -> str:
 
 
 def _merge(primary: CanonicalJob, duplicate: CanonicalJob) -> CanonicalJob:
-    direct = duplicate if duplicate.direct_employer else primary
+    direct = primary if primary.direct_employer else duplicate
     return primary.model_copy(
         update={
             "sources": sorted(set(primary.sources).union(duplicate.sources)),
@@ -36,10 +36,15 @@ def _merge(primary: CanonicalJob, duplicate: CanonicalJob) -> CanonicalJob:
             if direct.direct_employer
             else primary.preferred_apply_url,
             "direct_employer": primary.direct_employer or duplicate.direct_employer,
+            "shared_apply_url": primary.shared_apply_url or duplicate.shared_apply_url,
             "employer_id": primary.employer_id or duplicate.employer_id,
             "employer_sectors": sorted(set(primary.employer_sectors + duplicate.employer_sectors)),
             "last_checked_at": max(
                 (v for v in (primary.last_checked_at, duplicate.last_checked_at) if v is not None),
+                default=None,
+            ),
+            "first_seen_at": min(
+                (v for v in (primary.first_seen_at, duplicate.first_seen_at) if v is not None),
                 default=None,
             ),
             "deadline_at": primary.deadline_at or duplicate.deadline_at,
@@ -71,7 +76,10 @@ def deduplicate_exact(jobs: Iterable[CanonicalJob]) -> list[CanonicalJob]:
         canonical_url = canonicalize_apply_url(str(job.preferred_apply_url))
         matches = {
             root(index)
-            for index in (by_job_id.get(job.job_id), by_apply_url.get(canonical_url))
+            for index in (
+                by_job_id.get(job.job_id),
+                by_apply_url.get(canonical_url) if not job.shared_apply_url else None,
+            )
             if index is not None
         }
         if not matches:
@@ -85,6 +93,7 @@ def deduplicate_exact(jobs: Iterable[CanonicalJob]) -> list[CanonicalJob]:
                 parents[other] = existing_index
             results[existing_index] = _merge(results[existing_index], job)
         by_job_id[job.job_id] = existing_index
-        by_apply_url[canonical_url] = existing_index
+        if not job.shared_apply_url:
+            by_apply_url[canonical_url] = existing_index
 
     return [job for index, job in enumerate(results) if root(index) == index]

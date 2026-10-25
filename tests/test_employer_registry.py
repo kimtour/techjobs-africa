@@ -243,11 +243,18 @@ def test_discovery_does_not_fetch_disallowed_page_or_change_lifecycle():
     assert source["status"] == "trial"
 
 
-def test_repository_registry_excludes_ministries_and_is_not_active():
+def test_repository_registry_excludes_ministries_and_activates_only_reviewed_sources():
     employers = yaml.safe_load(Path("config/employers.yaml").read_text())
     assert employers["import"]["directory_entries"] == 796
     assert employers["import"]["excluded_sheets"] == ["Ministries and departments"]
-    assert not active_factories()[0]
+    factories, sources = active_factories()
+    assert factories
+    assert all(
+        not verification_gaps(s)
+        and s["verification"]["trial_review"]
+        and s["verification"]["publication_review"]
+        for s in sources.values()
+    )
 
 
 def test_exact_duplicate_bridge_keeps_identity_attribution_and_direct_metadata():

@@ -9,19 +9,24 @@ from datetime import UTC, datetime, timedelta
 from html.parser import HTMLParser
 from pathlib import Path
 from urllib.parse import urljoin, urlsplit
-from urllib.robotparser import RobotFileParser
 
 import httpx
 
-from ingest.adapters.registry_boards import SUPPORTED, RegistryBoardAdapter, board_endpoint
+from ingest.adapters.registry_boards import SUPPORTED, board_endpoint
 from ingest.audit import read_json
 from ingest.dedupe.exact import canonicalize_apply_url, deduplicate_exact
-from ingest.employer_registry import ROOT, platform_for, safe_url
+from ingest.employer_registry import ROOT, board_identity, platform_for, safe_url
 from ingest.export.static import build_public_files
 from ingest.fetch import ObservedClient
+from ingest.http_policy import checked_get, robots_allowed
 from ingest.main import build_jobs
 from ingest.models import CanonicalJob
-from ingest.registry_sources import load_sources, verification_gaps
+from ingest.registry_sources import (
+    collector_supported,
+    load_sources,
+    make_adapter,
+    verification_gaps,
+)
 
 
 class Links(HTMLParser):
@@ -69,52 +74,6 @@ class Links(HTMLParser):
 def write_json(path: Path, value):
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(value, ensure_ascii=False, indent=2, sort_keys=True) + "\n")
-
-
-def robots_allowed(client, url: str) -> dict:
-    parsed = urlsplit(url)
-    origin = f"{parsed.scheme}://{parsed.netloc}"
-    robots_url = origin + "/robots.txt"
-    for _ in range(4):
-        try:
-            response = client.get(robots_url)
-        except httpx.HTTPStatusError as exc:
-            response = exc.response
-            if response.status_code not in (301, 302, 303, 307, 308, 404):
-                raise
-        if response.status_code not in (301, 302, 303, 307, 308):
-            break
-        robots_url = urljoin(robots_url, response.headers.get("Location", ""))
-        if not safe_url(robots_url):
-            raise ValueError("Unsafe robots redirect")
-    else:
-        raise ValueError("Too many robots redirects")
-    # A genuine missing robots file has no disallow rules; transport/403/429 do.
-    if response.status_code == 404:
-        return {"status": 404, "allowed": True, "url": origin + "/robots.txt"}
-    response.raise_for_status()
-    parser = RobotFileParser()
-    parser.parse(response.text.splitlines())
-    return {
-        "status": response.status_code,
-        "allowed": parser.can_fetch("TechKaziBot/0.1", url),
-        "url": origin + "/robots.txt",
-    }
-
-
-def checked_get(client, url):
-    """Follow redirects after checking the destination's robots rules."""
-    for _ in range(4):
-        try:
-            return client.get(url)
-        except httpx.HTTPStatusError as exc:
-            response = exc.response
-            if response.status_code not in (301, 302, 303, 307, 308):
-                raise
-            url = urljoin(url, response.headers.get("Location", ""))
-            if not safe_url(url) or not robots_allowed(client, url)["allowed"]:
-                raise ValueError("Redirect destination disallows collection") from None
-    raise ValueError("Too many public redirects")
 
 
 def discover(source: dict, employers: dict, client=None, *, request_budget=8) -> dict:
@@ -193,13 +152,22 @@ def discover(source: dict, employers: dict, client=None, *, request_budget=8) ->
         result["detected_boards"] = detected[:15]
         candidate = source.get("board_url") or source["url"]
         board = urlsplit(candidate)
-        result["checks"]["official_link"] = any(
-            urlsplit(url).hostname == board.hostname
-            and urlsplit(url).path.rstrip("/").startswith(board.path.rstrip("/"))
-            for url in urls
-        )
         if source["platform"] in SUPPORTED and source.get("board"):
-            endpoint = board_endpoint(source)
+            result["checks"]["official_link"] = any(
+                board_identity(url) == (source["platform"], source["board"]) for url in urls
+            )
+        else:
+            result["checks"]["official_link"] = any(
+                urlsplit(url).hostname == board.hostname
+                and urlsplit(url).path.rstrip("/") == board.path.rstrip("/")
+                for url in urls
+            )
+        if collector_supported(source):
+            endpoint = (
+                source["collection"]["listing_url"]
+                if source.get("access_method") in {"jsonld", "rss", "html", "pdf"}
+                else board_endpoint(source)
+            )
             result["endpoint"] = endpoint
             try:
                 result["board_robots"] = robots_allowed(observed, endpoint)
@@ -223,7 +191,9 @@ def discover(source: dict, employers: dict, client=None, *, request_budget=8) ->
             if result["board_robots"]["allowed"] is False:
                 result["status"] = "BLOCKED"
                 return result
-            adapter = RegistryBoardAdapter(source, employers, observed)
+            adapter = make_adapter(source, employers)
+            adapter._client.close()
+            adapter._client = observed
             records = adapter.fetch()
             result["records_found"] = len(records)
             result["checks"].update(
@@ -271,7 +241,7 @@ def trial(
     output_dir: Path,
     *,
     accepted: Path | None = None,
-    factory=RegistryBoardAdapter,
+    factory=make_adapter,
 ) -> dict:
     """Always start an empty candidate; accepted input is read only for comparisons."""
     if output_dir.exists() and any(output_dir.iterdir()):
@@ -296,7 +266,7 @@ def trial(
     for source in sources:
         gaps = verification_gaps(source)
         row = {"source_id": source["id"], "verification_gaps": gaps}
-        if gaps or source["status"] not in {"verified", "trial"}:
+        if gaps or source["status"] not in {"verified", "trial", "active"}:
             row["status"] = "NOT_VERIFIED"
             report["sources"].append(row)
             continue
@@ -397,7 +367,7 @@ def main():
             [
                 s
                 for s in registry.values()
-                if (args.mode == "trial" and s["status"] in {"verified", "trial"})
+                if (args.mode == "trial" and s["status"] in {"verified", "trial", "active"})
                 or (args.mode == "discover" and (s.get("pilot_rank") or s.get("discovery_enabled")))
             ],
             key=lambda s: (s.get("pilot_rank", 1000), s["id"]),

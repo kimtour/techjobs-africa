@@ -20,7 +20,22 @@ def read_json(path: Path, default):
 
 
 def public_hash(public_files: dict) -> str:
-    payload = json.dumps(public_files, sort_keys=True, separators=(",", ":"))
+    # Operational check times must not force a new site build every daily crawl.
+    normalized = {
+        name: (
+            {
+                **content,
+                "jobs": [
+                    {k: v for k, v in job.items() if k not in {"last_checked_at", "last_seen_at"}}
+                    for job in content["jobs"]
+                ],
+            }
+            if name == "jobs.json" and isinstance(content, dict) and "jobs" in content
+            else content
+        )
+        for name, content in public_files.items()
+    }
+    payload = json.dumps(normalized, sort_keys=True, separators=(",", ":"))
     return hashlib.sha256(payload.encode()).hexdigest()
 
 

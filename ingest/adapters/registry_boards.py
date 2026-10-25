@@ -10,6 +10,7 @@ from urllib.robotparser import RobotFileParser
 
 import httpx
 
+from ingest.classify.eligibility import APPLICANT_AFRICA_PATTERN
 from ingest.classify.evidence import description_technical_context
 from ingest.classify.tech import has_non_technical_exclusion
 from ingest.employer_registry import safe_url
@@ -163,6 +164,9 @@ class RegistryBoardAdapter:
             employer_id=employer["id"] if employer else None,
             employer_sectors=employer["sectors"] if employer else [],
             direct_employer=True,
+            applicant_africa=bool(
+                APPLICANT_AFRICA_PATTERN.search(re.sub(r"<[^>]+>", " ", description or ""))
+            ),
             opportunity_type=opportunity,
             technical_context=description_technical_context(title, description),
         )

@@ -5,6 +5,7 @@ import {
   jobs,
   locationLabel,
   postedLabel,
+  listingDate,
   sourceLabels,
   feedName,
   sourceOrder,
@@ -101,7 +102,7 @@ feedGroups.forEach((group, index) => sourceColumns[index % sourceColumns.length]
                     <h3 id={`source-${group.sourceId}`}>{feedName(group.sourceId)}</h3>
                     {group.sourceId === "company_careers" && <p class="source-provider">Employer vacancies · Original application links</p>}
                     {group.sourceId === "linkedin" && <p class="source-provider">Kenya + Africa remote · Original publisher links</p>}
-                    <div class="source-periods" aria-label={`${feedName(group.sourceId)} posting period`}>
+                    <div class="source-periods" aria-label={`${feedName(group.sourceId)} posting or first-found period`}>
                       <button aria-pressed="true" data-period="latest" type="button">Latest</button>
                       <span aria-hidden="true">•</span>
                       <button aria-pressed="false" data-period="day" type="button">Day</button>
@@ -129,7 +130,7 @@ feedGroups.forEach((group, index) => sourceColumns[index % sourceColumns.length]
                       data-direct={String(isDirectJob(job))}
                       data-employer={job.employer_id ?? ""}
                       data-sectors={JSON.stringify(job.employer_sectors ?? [])}
-                      data-published={job.published_at || job.published_date || ""}
+                      data-published={listingDate(job)}
                       data-search={[job.title, companyLabel(job), locationLabel(job), job.category]
                         .filter(Boolean)
                         .join(" ")}
@@ -147,7 +148,7 @@ feedGroups.forEach((group, index) => sourceColumns[index % sourceColumns.length]
                         {(job.employment_type || job.opportunity_type) && <p class="meta">{[job.opportunity_type, job.employment_type].filter(Boolean).join(" · ")}</p>}
                         {job.eligibility_level === "VERIFY" && <p class="meta">Confirm eligible countries with employer</p>}
                         <p class="posted">
-                          Posted: {(job.published_at || job.published_date) ? <time datetime={job.published_at || job.published_date}>{postedLabel(job)}</time> : postedLabel(job)}
+                          {(job.published_at || job.published_date) ? <>Posted: <time datetime={job.published_at || job.published_date}>{postedLabel(job)}</time></> : job.first_seen_at ? <>First found: <time datetime={job.first_seen_at}>{checkedDateLabel(job.first_seen_at)}</time></> : postedLabel(job)}
                         </p>
                         {job.deadline_at && <p class="posted">Closes: <time datetime={job.deadline_at}>{checkedDateLabel(job.deadline_at)}</time></p>}
                         {job.last_checked_at && <p class="posted">Last checked: <time datetime={job.last_checked_at}>{checkedDateLabel(job.last_checked_at)}</time></p>}
