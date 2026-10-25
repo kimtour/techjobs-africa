@@ -245,6 +245,53 @@ def discover(source: dict, employers: dict, client=None, *, request_budget=8) ->
     return result
 
 
+def verify_board_access(source: dict, employers: dict) -> dict:
+    """Check the public board independently after an evidenced official-link review."""
+    prior = source.get("verification", {})
+    if (
+        source["status"] in {"manual", "blocked", "retired"}
+        or not all(
+            prior.get(key) is True for key in ("official_link", "collection_review", "local_access")
+        )
+        or not prior.get("evidence_paths")
+        or not prior.get("collection_basis")
+    ):
+        raise ValueError("Board access check requires reviewed official linkage and local evidence")
+    report = {
+        "source_id": source["id"],
+        "checked_at": datetime.now(UTC).isoformat(),
+        "environment": "github" if os.environ.get("GITHUB_ACTIONS") else "local",
+        "official_link_checked_this_run": False,
+        "prior_official_evidence": prior["evidence_paths"],
+        "status": "FAILED",
+        "checks": {},
+    }
+    adapter = make_adapter(source, employers)
+    observed = ObservedClient(adapter._client, source["crawl"])
+    adapter._client = observed
+    try:
+        raw = adapter.fetch()  # Adapter enforces board-specific robots and access restrictions.
+        report["records_found"] = len(raw)
+        report["checks"] = {
+            "stable_ids": all(job.external_id for job in raw),
+            "application_links": all(safe_url(str(job.apply_url)) for job in raw),
+            "locations": any(job.location for job in raw),
+            "dates_reviewed": True,
+            "complete": adapter.crawl_complete,
+        }
+        report["status"] = "SUCCESS" if adapter.crawl_complete else "PARTIAL"
+    except Exception as exc:
+        report["error_type"] = type(exc).__name__
+        code = getattr(getattr(exc, "response", None), "status_code", None)
+        report["http_status"] = code
+        if code in (401, 403, 429) or type(exc).__name__ == "CollectionBlocked":
+            report["status"] = "BLOCKED"
+    finally:
+        report["requests"] = observed.events
+        observed.client.close()
+    return report
+
+
 def trial(
     sources: list[dict],
     employers: dict,
@@ -362,13 +409,15 @@ def trial(
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("mode", choices=["discover", "trial"])
+    parser.add_argument("mode", choices=["discover", "access", "trial"])
     parser.add_argument("--config-dir", type=Path, default=ROOT / "config")
     parser.add_argument("--output-dir", type=Path, required=True)
     parser.add_argument("--source", action="append", default=[])
     parser.add_argument("--accepted", type=Path)
     parser.add_argument("--due", action="store_true")
     args = parser.parse_args()
+    if args.mode == "access" and not args.source:
+        parser.error("Board access checks require explicit --source selection")
     employers, registry = load_sources(args.config_dir)
     sources = (
         [registry[sid] for sid in args.source]
@@ -408,10 +457,14 @@ def main():
                     continue
                 if count >= 2:
                     break  # At most 16 discovery HTTP requests per pipeline slot.
-            result = discover(
-                source,
-                employers,
-                request_budget=8 if args.due else source["crawl"]["max_requests_per_run"],
+            result = (
+                verify_board_access(source, employers)
+                if args.mode == "access"
+                else discover(
+                    source,
+                    employers,
+                    request_budget=8 if args.due else source["crawl"]["max_requests_per_run"],
+                )
             )
             write_json(path, result)
             print(json.dumps({"source_id": source["id"], "status": result["status"]}))

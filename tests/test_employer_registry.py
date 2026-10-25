@@ -358,3 +358,36 @@ def test_official_redirect_proves_link_but_board_itself_does_not(monkeypatch, re
     assert report["status"] == "SUCCESS"
     assert report["checks"]["official_link"] is redirects
     assert source["status"] == "trial"
+
+
+def test_independent_board_check_requires_official_evidence_and_never_visits_employer(monkeypatch):
+    from ingest.employer_onboarding import verify_board_access
+
+    source = board()
+    source["verification"]["local_access"] = False
+    with pytest.raises(ValueError, match="reviewed official linkage"):
+        verify_board_access(source, EMPLOYERS)
+    source["verification"]["local_access"] = True
+
+    class Adapter:
+        crawl_complete = True
+
+        def __init__(self):
+            self._client = httpx.Client(transport=httpx.MockTransport(handler))
+
+        def fetch(self):
+            response = self._client.get("https://jobs.ashbyhq.com/Example-Board")
+            response.raise_for_status()
+            return []
+
+    def handler(request):
+        assert request.url.host == "jobs.ashbyhq.com"
+        return httpx.Response(200)
+
+    monkeypatch.setattr("ingest.employer_onboarding.make_adapter", lambda *args: Adapter())
+    report = verify_board_access(source, EMPLOYERS)
+    assert report["status"] == "SUCCESS"
+    assert not report["official_link_checked_this_run"]
+    assert report["prior_official_evidence"] == source["verification"]["evidence_paths"]
+    assert "official_link" not in report["checks"]
+    assert source["status"] == "trial"

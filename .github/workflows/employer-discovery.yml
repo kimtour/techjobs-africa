@@ -5,7 +5,7 @@ on:
       mode:
         description: Full-list probe, shortlisted discovery or isolated trial (never publishes)
         type: choice
-        options: [probe, discover, trial]
+        options: [probe, discover, access, trial]
         default: discover
       source:
         description: Optional comma-separated source IDs; empty uses reviewed defaults

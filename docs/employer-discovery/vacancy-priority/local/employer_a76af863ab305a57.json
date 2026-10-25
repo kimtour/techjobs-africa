@@ -1,0 +1,403 @@
+{
+  "board_robots": {
+    "allowed": true,
+    "status": 200,
+    "url": "https://oldmutual.wd3.myworkdayjobs.com/robots.txt"
+  },
+  "checked_at": "2026-10-25T19:10:56.556461+00:00",
+  "checks": {
+    "application_links": true,
+    "complete": true,
+    "dates_reviewed": true,
+    "locations": true,
+    "official_link": true,
+    "stable_ids": true
+  },
+  "detected_boards": [],
+  "endpoint": "https://oldmutual.wd3.myworkdayjobs.com/wday/cxs/oldmutual/Old_Mutual_Careers/jobs",
+  "environment": "local",
+  "feed_urls": [],
+  "official_redirect": "https://oldmutual.wd3.myworkdayjobs.com/Old_Mutual_Careers",
+  "official_robots": {
+    "allowed": true,
+    "status": 200,
+    "url": "https://www.oldmutual.com/robots.txt"
+  },
+  "official_url": "https://www.oldmutual.com/careers/",
+  "records_found": 452,
+  "requests": [
+    {
+      "attempt": 1,
+      "duration_seconds": 1.679,
+      "error_type": null,
+      "host": "www.oldmutual.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T19:10:56.598642+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.732,
+      "error_type": "HTTPStatusError",
+      "host": "www.oldmutual.com",
+      "http_status": 308,
+      "method": "GET",
+      "started_at": "2026-10-25T19:10:59.782478+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 1.009,
+      "error_type": null,
+      "host": "www.oldmutual.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T19:11:02.019130+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.775,
+      "error_type": "HTTPStatusError",
+      "host": "www.oldmutual.com",
+      "http_status": 307,
+      "method": "GET",
+      "started_at": "2026-10-25T19:11:04.532694+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.9,
+      "error_type": null,
+      "host": "oldmutual.wd3.myworkdayjobs.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T19:11:06.812720+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.506,
+      "error_type": null,
+      "host": "oldmutual.wd3.myworkdayjobs.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T19:11:09.217791+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.312,
+      "error_type": null,
+      "host": "oldmutual.wd3.myworkdayjobs.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T19:11:11.229169+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.351,
+      "error_type": null,
+      "host": "oldmutual.wd3.myworkdayjobs.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T19:11:13.045711+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.819,
+      "error_type": null,
+      "host": "oldmutual.wd3.myworkdayjobs.com",
+      "http_status": 200,
+      "method": "POST",
+      "started_at": "2026-10-25T19:11:14.901711+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 1.303,
+      "error_type": null,
+      "host": "oldmutual.wd3.myworkdayjobs.com",
+      "http_status": 200,
+      "method": "POST",
+      "started_at": "2026-10-25T19:11:17.225596+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.641,
+      "error_type": null,
+      "host": "oldmutual.wd3.myworkdayjobs.com",
+      "http_status": 200,
+      "method": "POST",
+      "started_at": "2026-10-25T19:11:20.029617+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.67,
+      "error_type": null,
+      "host": "oldmutual.wd3.myworkdayjobs.com",
+      "http_status": 200,
+      "method": "POST",
+      "started_at": "2026-10-25T19:11:22.172924+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.646,
+      "error_type": null,
+      "host": "oldmutual.wd3.myworkdayjobs.com",
+      "http_status": 200,
+      "method": "POST",
+      "started_at": "2026-10-25T19:11:24.346661+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.642,
+      "error_type": null,
+      "host": "oldmutual.wd3.myworkdayjobs.com",
+      "http_status": 200,
+      "method": "POST",
+      "started_at": "2026-10-25T19:11:26.496286+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.709,
+      "error_type": null,
+      "host": "oldmutual.wd3.myworkdayjobs.com",
+      "http_status": 200,
+      "method": "POST",
+      "started_at": "2026-10-25T19:11:28.643710+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.781,
+      "error_type": null,
+      "host": "oldmutual.wd3.myworkdayjobs.com",
+      "http_status": 200,
+      "method": "POST",
+      "started_at": "2026-10-25T19:11:30.857404+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.632,
+      "error_type": null,
+      "host": "oldmutual.wd3.myworkdayjobs.com",
+      "http_status": 200,
+      "method": "POST",
+      "started_at": "2026-10-25T19:11:33.143289+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.651,
+      "error_type": null,
+      "host": "oldmutual.wd3.myworkdayjobs.com",
+      "http_status": 200,
+      "method": "POST",
+      "started_at": "2026-10-25T19:11:35.279680+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.659,
+      "error_type": null,
+      "host": "oldmutual.wd3.myworkdayjobs.com",
+      "http_status": 200,
+      "method": "POST",
+      "started_at": "2026-10-25T19:11:37.435480+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.665,
+      "error_type": null,
+      "host": "oldmutual.wd3.myworkdayjobs.com",
+      "http_status": 200,
+      "method": "POST",
+      "started_at": "2026-10-25T19:11:39.596791+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.701,
+      "error_type": null,
+      "host": "oldmutual.wd3.myworkdayjobs.com",
+      "http_status": 200,
+      "method": "POST",
+      "started_at": "2026-10-25T19:11:41.764221+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.796,
+      "error_type": null,
+      "host": "oldmutual.wd3.myworkdayjobs.com",
+      "http_status": 200,
+      "method": "POST",
+      "started_at": "2026-10-25T19:11:43.966604+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.991,
+      "error_type": null,
+      "host": "oldmutual.wd3.myworkdayjobs.com",
+      "http_status": 200,
+      "method": "POST",
+      "started_at": "2026-10-25T19:11:46.267798+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.674,
+      "error_type": null,
+      "host": "oldmutual.wd3.myworkdayjobs.com",
+      "http_status": 200,
+      "method": "POST",
+      "started_at": "2026-10-25T19:11:48.761709+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.656,
+      "error_type": null,
+      "host": "oldmutual.wd3.myworkdayjobs.com",
+      "http_status": 200,
+      "method": "POST",
+      "started_at": "2026-10-25T19:11:50.940738+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.671,
+      "error_type": null,
+      "host": "oldmutual.wd3.myworkdayjobs.com",
+      "http_status": 200,
+      "method": "POST",
+      "started_at": "2026-10-25T19:11:53.102723+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.666,
+      "error_type": null,
+      "host": "oldmutual.wd3.myworkdayjobs.com",
+      "http_status": 200,
+      "method": "POST",
+      "started_at": "2026-10-25T19:11:55.278851+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.866,
+      "error_type": null,
+      "host": "oldmutual.wd3.myworkdayjobs.com",
+      "http_status": 200,
+      "method": "POST",
+      "started_at": "2026-10-25T19:11:57.446348+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.682,
+      "error_type": null,
+      "host": "oldmutual.wd3.myworkdayjobs.com",
+      "http_status": 200,
+      "method": "POST",
+      "started_at": "2026-10-25T19:11:59.813416+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.759,
+      "error_type": null,
+      "host": "oldmutual.wd3.myworkdayjobs.com",
+      "http_status": 200,
+      "method": "POST",
+      "started_at": "2026-10-25T19:12:01.998793+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.747,
+      "error_type": null,
+      "host": "oldmutual.wd3.myworkdayjobs.com",
+      "http_status": 200,
+      "method": "POST",
+      "started_at": "2026-10-25T19:12:04.260683+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.705,
+      "error_type": null,
+      "host": "oldmutual.wd3.myworkdayjobs.com",
+      "http_status": 200,
+      "method": "POST",
+      "started_at": "2026-10-25T19:12:06.513022+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.652,
+      "error_type": null,
+      "host": "oldmutual.wd3.myworkdayjobs.com",
+      "http_status": 200,
+      "method": "POST",
+      "started_at": "2026-10-25T19:12:08.718569+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.65,
+      "error_type": null,
+      "host": "oldmutual.wd3.myworkdayjobs.com",
+      "http_status": 200,
+      "method": "POST",
+      "started_at": "2026-10-25T19:12:10.871895+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.678,
+      "error_type": null,
+      "host": "oldmutual.wd3.myworkdayjobs.com",
+      "http_status": 200,
+      "method": "POST",
+      "started_at": "2026-10-25T19:12:13.025074+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.493,
+      "error_type": null,
+      "host": "oldmutual.wd3.myworkdayjobs.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T19:12:15.208180+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.768,
+      "error_type": null,
+      "host": "oldmutual.wd3.myworkdayjobs.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T19:12:17.206127+00:00"
+    }
+  ],
+  "sample": [
+    {
+      "application_url": "https://oldmutual.wd3.myworkdayjobs.com/Old_Mutual_Careers/job/Pinelands/Business-Manager--Mossel-Bay--Western-Cape_JR-83687",
+      "id": "JR-83687",
+      "location": "Pinelands",
+      "published_at": null,
+      "title": "Business Manager- Mossel Bay, Western Cape"
+    },
+    {
+      "application_url": "https://oldmutual.wd3.myworkdayjobs.com/Old_Mutual_Careers/job/Pinelands/Multiskilled-Servicing-Consultant--Fixed-Term-Contract--Cape-Town-_JR-84635",
+      "id": "JR-84635",
+      "location": "Pinelands",
+      "published_at": null,
+      "title": "Multiskilled Servicing Consultant- Fixed Term Contract (Cape Town)"
+    },
+    {
+      "application_url": "https://oldmutual.wd3.myworkdayjobs.com/Old_Mutual_Careers/job/Nairobi/Faulu-MFB---Senior-Relationship-Officer-SME_JR-77088",
+      "id": "JR-77088",
+      "location": "Nairobi",
+      "published_at": null,
+      "title": "Faulu MFB - Senior Relationship Officer SME"
+    },
+    {
+      "application_url": "https://oldmutual.wd3.myworkdayjobs.com/Old_Mutual_Careers/job/Kokstad/OMF-Financial-Consultant--OMF-Kokstad-_JR-84704",
+      "id": "JR-84704",
+      "location": "Kokstad",
+      "published_at": null,
+      "title": "OMF Financial Consultant (OMF Kokstad)"
+    },
+    {
+      "application_url": "https://oldmutual.wd3.myworkdayjobs.com/Old_Mutual_Careers/job/Nairobi/FINANCIAL-CONTOLLER_JR-84747",
+      "id": "JR-84747",
+      "location": "Nairobi",
+      "published_at": null,
+      "title": "Financial Controller - Old Mutual Holdings"
+    }
+  ],
+  "source_id": "employer_a76af863ab305a57",
+  "status": "SUCCESS",
+  "structured_job_count": 0
+}
