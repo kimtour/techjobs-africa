@@ -219,7 +219,7 @@ def test_activation_requires_evidence_and_due_policy_respects_backoff(tmp_path):
     with pytest.raises(ValueError):
         active_factories(tmp_path)
     assert verification_gaps(source)
-    now = datetime(2026, 10, 25, tzinfo=UTC)
+    now = datetime(2026, 10, 25, 16, tzinfo=UTC)
     assert source_due(source, {}, now)
     health = {"last_attempt_at": (now - timedelta(hours=25)).isoformat(), "consecutive_failures": 1}
     assert not source_due(source, health, now)

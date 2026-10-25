@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from datetime import UTC, datetime, timedelta
 from functools import partial
+from hashlib import sha256
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
@@ -101,6 +102,13 @@ def active_factories(config_dir: Path = ROOT / "config") -> tuple[dict, dict]:
     return factories, config
 
 
+def daily_slot(source: dict) -> int:
+    """Spread collection across the five existing EAT slots, with late catch-up."""
+    slots = (6, 9, 12, 15, 19)
+    identity = source.get("id")
+    return slots[int(sha256(identity.encode()).hexdigest()[:8], 16) % len(slots)] if identity else 6
+
+
 def source_due(source: dict, health: dict, now: datetime) -> bool:
     last = health.get("last_attempt_at")
     if not last:
@@ -114,7 +122,7 @@ def source_due(source: dict, health: dict, now: datetime) -> bool:
         due = (
             now.astimezone(ZoneInfo("Africa/Nairobi")).date()
             > last.astimezone(ZoneInfo("Africa/Nairobi")).date()
-        )
+        ) and now.astimezone(ZoneInfo("Africa/Nairobi")).hour >= daily_slot(source)
     else:
         due = now >= last + timedelta(hours=hours)
     return due and (not cooldown or now >= datetime.fromisoformat(cooldown).astimezone(UTC))

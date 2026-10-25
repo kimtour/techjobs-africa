@@ -408,3 +408,21 @@ def test_coverage_does_not_treat_reachable_pages_as_vacancy_checks(tmp_path):
     assert result["successfully_checked_employers"] == 0
     assert result["sources"][sid]["outcome"] in {"unsupported", "awaiting_verification"}
     assert result["sources"][sid]["verification_gaps"]
+
+
+def test_daily_work_is_spread_over_existing_slots_with_late_catchup():
+    from ingest.employer_watch import watch_due
+    from ingest.registry_sources import daily_slot, source_due
+
+    slots = {daily_slot({"id": f"employer_{i}"}) for i in range(100)}
+    assert slots == {6, 9, 12, 15, 19}
+    config = {"id": "employer_test", "status": "pending", "refresh_hours": 24}
+    slot = daily_slot(config)
+    before = datetime(2026, 10, 26, slot - 4, tzinfo=UTC)
+    due = before + timedelta(hours=1)
+    previous = {"last_attempt_at": (before - timedelta(days=1)).isoformat()}
+    assert not source_due(config, previous, before)
+    assert source_due(config, previous, due)
+    assert not watch_due(config, {}, before)
+    assert watch_due(config, {}, due)
+    assert source_due(config, previous, due + timedelta(hours=2))

@@ -12,7 +12,9 @@ from ingest.audit import read_json
 from ingest.employer_onboarding import write_json
 from ingest.employer_probe import ProbeHTTP, probe_source
 from ingest.employer_state import EAT, daily_coverage
-from ingest.registry_sources import load_sources
+from ingest.registry_sources import daily_slot, load_sources
+
+MAX_SOURCES_PER_RUN = 150  # At most 1,800 discovery requests, separate from ingestion.
 
 
 def watch_due(source, previous, now):
@@ -20,6 +22,8 @@ def watch_due(source, previous, now):
         return False
     if previous.get("status") == "BLOCKED":
         return False  # A deliberate block requires review, not automatic daily retries.
+    if now.astimezone(EAT).hour < daily_slot(source):
+        return False
     checked = previous.get("checked_at")
     if not checked:
         return True
@@ -43,11 +47,15 @@ def run_watch(data_dir, *, now=None, workers=8, client=None):
     attempted = 0
     try:
         with ThreadPoolExecutor(max_workers=workers) as pool:
-            pending = {
-                pool.submit(probe_source, source, http): sid
-                for sid, source in sources.items()
-                if watch_due(source, saved["sources"].get(sid, {}), now)
-            }
+            due = sorted(
+                (
+                    source
+                    for source in sources.values()
+                    if watch_due(source, saved["sources"].get(source["id"], {}), now)
+                ),
+                key=lambda source: saved["sources"].get(source["id"], {}).get("checked_at", ""),
+            )[:MAX_SOURCES_PER_RUN]
+            pending = {pool.submit(probe_source, source, http): source["id"] for source in due}
             for future in as_completed(pending):
                 sid = pending[future]
                 old = saved["sources"].get(sid, {})

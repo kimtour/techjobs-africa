@@ -128,3 +128,10 @@ Undated accepted jobs show a labelled First found date, used as a period-filter
 fallback. Employer posting dates remain primary when supplied. Operational check
 timestamps alone do not trigger builds. Source absence expiry remains disabled.
 See the dated activation review for permissions and field-verification limits.
+
+A stable source-ID hash assigns daily work to 06:00, 09:00, 12:00, 15:00 or
+19:00 EAT. Later slots catch up missed work; completed checks do not repeat.
+Discovery has a separate ceiling of 150 sources per invocation (12 requests per
+source, at most 1,800), oldest checks first. Deferred pages remain due rather
+than being reported successful. Newly activated collectors may establish their
+first reviewed baseline immediately; subsequent runs use the assigned slot.
