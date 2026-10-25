@@ -452,7 +452,6 @@ categories:
   keywords:
   - product manager
   - project manager
-  - fintech
   - technical program manager
   - scrum master
   - product owner
@@ -504,6 +503,7 @@ non_tech_exclusions:
 - legal counsel
 - accountant
 - finance manager
+- finance analyst
 - office administrator
 - receptionist
 - digital marketer
@@ -520,6 +520,10 @@ non_tech_exclusions:
 - sales rep
 - business development executive
 - business development manager
+- shelter & wash
+- ICLA project manager
+- cash and markets project manager
+- regulatory & licensing officer
 - property developer
 - real estate developer
 rules:

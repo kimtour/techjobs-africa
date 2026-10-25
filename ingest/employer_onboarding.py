@@ -112,6 +112,10 @@ def discover(source: dict, employers: dict, client=None, *, request_budget=8) ->
         links = Links()
         links.feed(response.text)
         urls = [urljoin(str(response.url), link) for link in links.links]
+        if urlsplit(str(response.url)).hostname != urlsplit(official).hostname:
+            # An official employer careers redirect is itself a board link.
+            result["official_redirect"] = str(response.url)
+            urls.append(str(response.url))
         # Some official careers pages embed job links in their page data.
         urls += re.findall(
             r'https?://[A-Za-z0-9-]+\.applytojob\.com/apply/[^\s<>"\x27]+', response.text

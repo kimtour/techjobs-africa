@@ -1,0 +1,151 @@
+{
+  "board_robots": {
+    "allowed": true,
+    "status": 404,
+    "url": "https://ekum.fa.em2.oraclecloud.com/robots.txt"
+  },
+  "careers_page": "https://www.nrc.no/career/norcap",
+  "checked_at": "2026-10-25T19:07:29.046131+00:00",
+  "checks": {
+    "application_links": true,
+    "complete": true,
+    "dates_reviewed": true,
+    "locations": true,
+    "official_link": true,
+    "stable_ids": true
+  },
+  "detected_boards": [],
+  "endpoint": "https://ekum.fa.em2.oraclecloud.com/hcmRestApi/resources/latest/recruitingCEJobRequisitions",
+  "environment": "local",
+  "feed_urls": [],
+  "official_robots": {
+    "allowed": true,
+    "status": 200,
+    "url": "https://www.nrc.no/robots.txt"
+  },
+  "official_url": "https://www.nrc.no/careers",
+  "records_found": 62,
+  "requests": [
+    {
+      "attempt": 1,
+      "duration_seconds": 0.38,
+      "error_type": null,
+      "host": "www.nrc.no",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T19:07:29.075866+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.36,
+      "error_type": null,
+      "host": "www.nrc.no",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T19:07:30.961079+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.169,
+      "error_type": null,
+      "host": "www.nrc.no",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T19:07:32.825836+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.352,
+      "error_type": null,
+      "host": "www.nrc.no",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T19:07:34.497471+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.945,
+      "error_type": "HTTPStatusError",
+      "host": "ekum.fa.em2.oraclecloud.com",
+      "http_status": 404,
+      "method": "GET",
+      "started_at": "2026-10-25T19:07:36.354967+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.047,
+      "error_type": "HTTPStatusError",
+      "host": "ekum.fa.em2.oraclecloud.com",
+      "http_status": 404,
+      "method": "GET",
+      "started_at": "2026-10-25T19:07:38.804003+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.696,
+      "error_type": null,
+      "host": "ekum.fa.em2.oraclecloud.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T19:07:40.355633+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 1.086,
+      "error_type": null,
+      "host": "ekum.fa.em2.oraclecloud.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T19:07:42.556948+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.856,
+      "error_type": null,
+      "host": "ekum.fa.em2.oraclecloud.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T19:07:45.144445+00:00"
+    }
+  ],
+  "sample": [
+    {
+      "application_url": "https://ekum.fa.em2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_2019/job/21937",
+      "id": "21937",
+      "location": "Damascus, Syrian Arab Republic · SY",
+      "published_at": "2026-10-22T00:00:00+00:00",
+      "title": "Finance Manager Syria"
+    },
+    {
+      "application_url": "https://ekum.fa.em2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_2019/job/21954",
+      "id": "21954",
+      "location": "Bangui, Central African Republic · CF",
+      "published_at": "2026-10-23T00:00:00+00:00",
+      "title": "Driver CAR Bangui"
+    },
+    {
+      "application_url": "https://ekum.fa.em2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_2019/job/21968",
+      "id": "21968",
+      "location": "Oslo, Norway · NO",
+      "published_at": "2026-10-23T00:00:00+00:00",
+      "title": "ICT Support Coordinator - Internal Applicants Only"
+    },
+    {
+      "application_url": "https://ekum.fa.em2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_2019/job/21970",
+      "id": "21970",
+      "location": "Iriba, Chad · TD",
+      "published_at": "2026-10-23T00:00:00+00:00",
+      "title": "Shelter & Wash Project Manager Chad Iriba (national only)"
+    },
+    {
+      "application_url": "https://ekum.fa.em2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_2019/job/21971",
+      "id": "21971",
+      "location": "Lilongwe, Malawi · MW",
+      "published_at": "2026-10-23T00:00:00+00:00",
+      "title": "Agrometeorologist Malawi Department of Agricultural Extension Services Lilongwe NORCAP"
+    }
+  ],
+  "source_id": "employer_1958e161d051541c",
+  "status": "SUCCESS",
+  "structured_job_count": 0
+}

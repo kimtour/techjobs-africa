@@ -339,3 +339,16 @@ def test_physical_and_logistics_network_jobs_are_not_computer_networking():
         assert classify_technology_title(title).category is None, title
     assert classify_technology_title("Network Engineer").category == "Networking"
     assert classify_technology_title("IT Manager - Logistics Network").category
+
+
+def test_project_delivery_and_fintech_sector_do_not_prove_technical_function():
+    for title in (
+        "Finance Analyst: Data Governance & Accounting",
+        "Shelter & Wash Project Manager Chad Iriba (national only)",
+        "ICLA Project Manager CAR Bouar",
+        "Cash and Markets Project Manager Sudan Khartoum",
+        "Regulatory & Licensing Officer – Middle East and North Africa (Payments/ Fintech)",
+    ):
+        assert classify_technology_title(title).category is None, title
+    for title in ("IT Project Manager", "Software Project Manager", "Technical Project Manager"):
+        assert classify_technology_title(title).category == "Technical Product", title

@@ -1,0 +1,433 @@
+{
+  "board_robots": {
+    "allowed": true,
+    "status": 200,
+    "url": "https://absa.wd3.myworkdayjobs.com/robots.txt"
+  },
+  "careers_page": "https://www.absa.africa/careers/",
+  "checked_at": "2026-10-25T19:06:05.835681+00:00",
+  "checks": {
+    "application_links": true,
+    "complete": true,
+    "dates_reviewed": true,
+    "locations": true,
+    "official_link": true,
+    "stable_ids": true
+  },
+  "detected_boards": [],
+  "endpoint": "https://absa.wd3.myworkdayjobs.com/wday/cxs/absa/ABSAcareersite/jobs",
+  "environment": "local",
+  "feed_urls": [
+    "https://www.absa.africa/feed/",
+    "https://www.absa.africa/comments/feed/"
+  ],
+  "official_robots": {
+    "allowed": true,
+    "status": 404,
+    "url": "https://www.absa.africa/robots.txt"
+  },
+  "official_url": "https://www.absa.africa/careers/",
+  "records_found": 55,
+  "requests": [
+    {
+      "attempt": 1,
+      "duration_seconds": 0.321,
+      "error_type": "HTTPStatusError",
+      "host": "www.absa.africa",
+      "http_status": 404,
+      "method": "GET",
+      "started_at": "2026-10-25T19:06:05.887833+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.239,
+      "error_type": null,
+      "host": "www.absa.africa",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T19:06:07.713535+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.16,
+      "error_type": "HTTPStatusError",
+      "host": "www.absa.africa",
+      "http_status": 404,
+      "method": "GET",
+      "started_at": "2026-10-25T19:06:09.457411+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.1,
+      "error_type": "HTTPStatusError",
+      "host": "www.absa.africa",
+      "http_status": 301,
+      "method": "GET",
+      "started_at": "2026-10-25T19:06:11.120444+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.102,
+      "error_type": "HTTPStatusError",
+      "host": "www.absa.africa",
+      "http_status": 404,
+      "method": "GET",
+      "started_at": "2026-10-25T19:06:12.725657+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.111,
+      "error_type": null,
+      "host": "www.absa.africa",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T19:06:14.329347+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.928,
+      "error_type": null,
+      "host": "absa.wd3.myworkdayjobs.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T19:06:15.945085+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.422,
+      "error_type": null,
+      "host": "absa.wd3.myworkdayjobs.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T19:06:18.377714+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.937,
+      "error_type": null,
+      "host": "absa.wd3.myworkdayjobs.com",
+      "http_status": 200,
+      "method": "POST",
+      "started_at": "2026-10-25T19:06:20.305058+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.941,
+      "error_type": null,
+      "host": "absa.wd3.myworkdayjobs.com",
+      "http_status": 200,
+      "method": "POST",
+      "started_at": "2026-10-25T19:06:22.742640+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.918,
+      "error_type": null,
+      "host": "absa.wd3.myworkdayjobs.com",
+      "http_status": 200,
+      "method": "POST",
+      "started_at": "2026-10-25T19:06:25.189578+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.644,
+      "error_type": null,
+      "host": "absa.wd3.myworkdayjobs.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T19:06:27.612479+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.55,
+      "error_type": null,
+      "host": "absa.wd3.myworkdayjobs.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T19:06:29.761800+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.574,
+      "error_type": null,
+      "host": "absa.wd3.myworkdayjobs.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T19:06:31.817053+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.793,
+      "error_type": null,
+      "host": "absa.wd3.myworkdayjobs.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T19:06:33.896550+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.643,
+      "error_type": null,
+      "host": "absa.wd3.myworkdayjobs.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T19:06:36.202549+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.626,
+      "error_type": null,
+      "host": "absa.wd3.myworkdayjobs.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T19:06:38.351307+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.639,
+      "error_type": null,
+      "host": "absa.wd3.myworkdayjobs.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T19:06:40.482632+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.697,
+      "error_type": null,
+      "host": "absa.wd3.myworkdayjobs.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T19:06:42.627289+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.681,
+      "error_type": null,
+      "host": "absa.wd3.myworkdayjobs.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T19:06:44.827232+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.658,
+      "error_type": null,
+      "host": "absa.wd3.myworkdayjobs.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T19:06:47.009828+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.579,
+      "error_type": null,
+      "host": "absa.wd3.myworkdayjobs.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T19:06:49.172619+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 1.168,
+      "error_type": null,
+      "host": "absa.wd3.myworkdayjobs.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T19:06:51.255388+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.587,
+      "error_type": null,
+      "host": "absa.wd3.myworkdayjobs.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T19:06:53.928335+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.705,
+      "error_type": null,
+      "host": "absa.wd3.myworkdayjobs.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T19:06:56.017054+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.796,
+      "error_type": null,
+      "host": "absa.wd3.myworkdayjobs.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T19:06:58.229350+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.68,
+      "error_type": null,
+      "host": "absa.wd3.myworkdayjobs.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T19:07:00.532427+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.638,
+      "error_type": null,
+      "host": "absa.wd3.myworkdayjobs.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T19:07:02.717694+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.568,
+      "error_type": null,
+      "host": "absa.wd3.myworkdayjobs.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T19:07:04.860489+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.683,
+      "error_type": null,
+      "host": "absa.wd3.myworkdayjobs.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T19:07:06.935396+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.737,
+      "error_type": null,
+      "host": "absa.wd3.myworkdayjobs.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T19:07:09.123432+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.625,
+      "error_type": null,
+      "host": "absa.wd3.myworkdayjobs.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T19:07:11.364575+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.678,
+      "error_type": null,
+      "host": "absa.wd3.myworkdayjobs.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T19:07:13.496185+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.531,
+      "error_type": null,
+      "host": "absa.wd3.myworkdayjobs.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T19:07:15.674369+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.726,
+      "error_type": null,
+      "host": "absa.wd3.myworkdayjobs.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T19:07:17.708533+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.624,
+      "error_type": null,
+      "host": "absa.wd3.myworkdayjobs.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T19:07:19.939804+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.715,
+      "error_type": null,
+      "host": "absa.wd3.myworkdayjobs.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T19:07:22.064206+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.57,
+      "error_type": null,
+      "host": "absa.wd3.myworkdayjobs.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T19:07:24.283741+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.618,
+      "error_type": null,
+      "host": "absa.wd3.myworkdayjobs.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T19:07:26.358886+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.553,
+      "error_type": null,
+      "host": "absa.wd3.myworkdayjobs.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T19:07:28.481876+00:00"
+    }
+  ],
+  "sample": [
+    {
+      "application_url": "https://absa.wd3.myworkdayjobs.com/ABSAcareersite/job/Bloemfontein/Bloemfontein-Experienced-Financial-Adviser--Commission-Based----FAIS-Fit---Proper_R-15991622",
+      "id": "R-15991622",
+      "location": "Bloemfontein",
+      "published_at": null,
+      "title": "Bloemfontein Experienced Financial Adviser (Commission-Based) – FAIS Fit & Proper"
+    },
+    {
+      "application_url": "https://absa.wd3.myworkdayjobs.com/ABSAcareersite/job/Durban/KZN-Experienced-Financial-Adviser--Commission-Based----FAIS-Fit---Proper_R-15991624",
+      "id": "R-15991624",
+      "location": "Durban",
+      "published_at": null,
+      "title": "KZN Experienced Financial Adviser (Commission-Based) – FAIS Fit & Proper"
+    },
+    {
+      "application_url": "https://absa.wd3.myworkdayjobs.com/ABSAcareersite/job/Kampala/Apprentice_R-15992239",
+      "id": "R-15992239",
+      "location": "Kampala",
+      "published_at": null,
+      "title": "Apprentice - Infrastructure Support Specialist(6 Months Contract)"
+    },
+    {
+      "application_url": "https://absa.wd3.myworkdayjobs.com/ABSAcareersite/job/Port-Elizabeth/Eastern-Cape-Experienced-Financial-Adviser--Commission-Based----FAIS-Fit---Proper_R-15991626",
+      "id": "R-15991626",
+      "location": "Port Elizabeth",
+      "published_at": null,
+      "title": "Eastern Cape Experienced Financial Adviser (Commission-Based) – FAIS Fit & Proper"
+    },
+    {
+      "application_url": "https://absa.wd3.myworkdayjobs.com/ABSAcareersite/job/Johannesburg/Gauteng-Experienced-Financial-Adviser--Commission-Based----FAIS-Fit---Proper--Open-_R-15992256-1",
+      "id": "R-15992256",
+      "location": "Johannesburg / South Africa",
+      "published_at": "2026-10-23T00:00:00+00:00",
+      "title": "Gauteng Experienced Financial Adviser (Commission-Based) – FAIS Fit & Proper (Open)"
+    }
+  ],
+  "source_id": "employer_1a36185bfa8761a4",
+  "status": "SUCCESS",
+  "structured_job_count": 0
+}

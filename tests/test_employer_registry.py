@@ -329,3 +329,32 @@ def test_breezy_repeated_apply_link_keeps_title_and_skips_nontechnical_detail():
     assert "/p/sales-sales-executive" not in requested
     assert len(build_jobs(raw)) == 1
     assert "SECRET_DESCRIPTION" not in "".join(r.model_dump_json() for r in raw)
+
+
+@pytest.mark.parametrize("redirects", [True, False])
+def test_official_redirect_proves_link_but_board_itself_does_not(monkeypatch, redirects):
+    source = board()
+    if not redirects:
+        source["official_careers_url"] = source["url"]
+
+    def handler(request):
+        if request.url.path == "/robots.txt":
+            return httpx.Response(200, text="User-agent: *\nAllow: /\n")
+        if request.url.host == "example.com":
+            return httpx.Response(302, headers={"Location": source["url"]})
+        return httpx.Response(200, text="<html>Public careers board</html>")
+
+    class EmptyAdapter:
+        crawl_complete = True
+
+        def __init__(self):
+            self._client = httpx.Client()
+
+        def fetch(self):
+            return []
+
+    monkeypatch.setattr("ingest.employer_onboarding.make_adapter", lambda *args: EmptyAdapter())
+    report = discover(source, EMPLOYERS, httpx.Client(transport=httpx.MockTransport(handler)))
+    assert report["status"] == "SUCCESS"
+    assert report["checks"]["official_link"] is redirects
+    assert source["status"] == "trial"

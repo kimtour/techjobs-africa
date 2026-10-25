@@ -1629,7 +1629,26 @@ sources:
     retry_delays_seconds:
     - 5
     - 20
-  verification: {}
+  verification:
+    application_links: true
+    complete: true
+    dates_reviewed: true
+    locations: true
+    official_link: true
+    stable_ids: true
+    local_access: true
+    runner_access: false
+    collection_review: true
+    evidence_paths:
+    - docs/employer-discovery/vacancy-priority/local/employer_1958e161d051541c.json
+    - docs/employer-discovery/vacancy-priority/review.md
+    collection_basis: The official employer careers page links its public recruitment
+      board. Accessible careers-linked policies were reviewed; no automated-access
+      prohibition on the public vacancy interface was identified. Collection is limited
+      to factual title, employer, location, dates, requisition ID and original application
+      link, with attribution. Descriptions, logos and applicant data are not retained.
+      This is not a claim of a redistribution licence.
+    collection_review_url: https://www.nrc.no/privacy-policy
   suggestions:
     platform: custom
     needs_location_filter: true
@@ -1641,9 +1660,9 @@ sources:
     job_url_template: https://ekum.fa.em2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_2019/job/{id}
   posting_company: Norwegian Refugee Council (NRC)
   group_portal: true
-  official_careers_url: https://www.nrc.no/
-  review_reason: Provider-level public interface investigated; source-specific official
-    linkage, terms and complete local/hosted crawls remain required.
+  official_careers_url: https://www.nrc.no/careers
+  review_reason: Vacancy-first scan found eligible roles; local M0 passed. Hosted
+    M0, isolated trial and publication review still required.
 - id: employer_1a047fd979fcdf88
   url: https://ampersand-energy.breezy.hr/
   import_urls:
@@ -1717,7 +1736,26 @@ sources:
     retry_delays_seconds:
     - 5
     - 20
-  verification: {}
+  verification:
+    application_links: true
+    complete: true
+    dates_reviewed: true
+    locations: true
+    official_link: true
+    stable_ids: true
+    local_access: true
+    runner_access: false
+    collection_review: true
+    evidence_paths:
+    - docs/employer-discovery/vacancy-priority/local/employer_1a36185bfa8761a4.json
+    - docs/employer-discovery/vacancy-priority/review.md
+    collection_basis: The official employer careers page links its public recruitment
+      board. Accessible careers-linked policies were reviewed; no automated-access
+      prohibition on the public vacancy interface was identified. Collection is limited
+      to factual title, employer, location, dates, requisition ID and original application
+      link, with attribution. Descriptions, logos and applicant data are not retained.
+      This is not a claim of a redistribution licence.
+    collection_review_url: https://www.absa.africa/legal/terms-of-use
   suggestions:
     platform: workday
     needs_location_filter: true
@@ -1727,11 +1765,11 @@ sources:
   collection:
     listing_url: https://absa.wd3.myworkdayjobs.com/wday/cxs/absa/ABSAcareersite/jobs
     public_board_url: https://absa.wd3.myworkdayjobs.com/ABSAcareersite
-  posting_company: Absa Bank Kenya
+  posting_company: Absa Group
   group_portal: true
-  official_careers_url: https://www.absabank.co.ke/
-  review_reason: Provider-level public interface investigated; source-specific official
-    linkage, terms and complete local/hosted crawls remain required.
+  official_careers_url: https://www.absa.africa/careers/
+  review_reason: Vacancy-first scan found eligible roles; local M0 passed. Hosted
+    M0, isolated trial and publication review still required.
 - id: employer_1a46b912119f5c69
   url: https://jobs.citi.com/search-jobs/Kenya/287/2/192950/1/38/50/2
   import_urls:
@@ -10903,7 +10941,7 @@ sources:
   discovery_refresh_hours: 168
   supports_absence_expiry: false
   crawl:
-    max_pages: 20
+    max_pages: 100
     max_requests_per_run: 250
     request_delay_ms: 1500
     timeout_seconds: 20
@@ -10920,9 +10958,9 @@ sources:
   collection:
     listing_url: https://oldmutual.wd3.myworkdayjobs.com/wday/cxs/oldmutual/Old_Mutual_Careers/jobs
     public_board_url: https://oldmutual.wd3.myworkdayjobs.com/Old_Mutual_Careers
-  posting_company: Faulu Microfinance Bank
+  posting_company: Old Mutual Group
   group_portal: true
-  official_careers_url: https://www.faulukenya.com/
+  official_careers_url: https://www.oldmutual.com/careers/
   review_reason: Provider-level public interface investigated; source-specific official
     linkage, terms and complete local/hosted crawls remain required.
 - id: employer_a76dd8e486c6387f
@@ -11032,15 +11070,13 @@ sources:
     evidence_paths:
     - docs/employer-discovery/kcb-oracle-review-2026-10-25.md
     - docs/employer-discovery/kcb-oracle-trial-2026-10-25.md
-    collection_basis: >-
-      The official KCB careers page links to the public Oracle Candidate
-      Experience board. Local and hosted crawls were complete with stable
-      requisition IDs, locations, dates, and individual application links.
-      Careers-linked product terms and the data privacy policy were reviewed;
-      no automated-collection prohibition was identified in the accessible
-      material. Collection is limited to factual vacancy metadata and original
-      application URLs; descriptions, applicant data, and recruiter contacts are
-      not stored. No redistribution licence is claimed.
+    collection_basis: The official KCB careers page links to the public Oracle Candidate
+      Experience board. Local and hosted crawls were complete with stable requisition
+      IDs, locations, dates, and individual application links. Careers-linked product
+      terms and the data privacy policy were reviewed; no automated-collection prohibition
+      was identified in the accessible material. Collection is limited to factual
+      vacancy metadata and original application URLs; descriptions, applicant data,
+      and recruiter contacts are not stored. No redistribution licence is claimed.
     collection_review_url: https://ke.kcbgroup.com/terms-and-conditions
     privacy_policy_url: https://ke.kcbgroup.com/data-privacy-policy
     trial_review: true
@@ -11060,7 +11096,8 @@ sources:
   group_portal: true
   reviewed_bootstrap: true
   official_careers_url: https://ke.kcbgroup.com/
-  review_reason: Hosted isolated trial produced two new CONFIRMED African technical jobs with stable IDs and original application URLs; candidate review passed.
+  review_reason: Hosted isolated trial produced two new CONFIRMED African technical
+    jobs with stable IDs and original application URLs; candidate review passed.
 - id: employer_a8bcbf91d53aa45f
   url: https://www.airtelkenya.com/ke/about/Careers
   import_urls:
