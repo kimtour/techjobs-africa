@@ -110,3 +110,14 @@ all 14 company vacancies and all 2,760 accepted All Jobs identities. Shared card
 do not inflate global counts. New registry sources remain gated and inactive.
 The final code passed 255 Python tests, 14 frontend tests and hosted scheduler
 checks in validation run 40198930006.
+
+## Daily employer pipeline delivery — 25 October 2026
+
+Revision `fcc8ca0` deployed in run 40204044721. Company Career Page now has 16
+accepted jobs and All Jobs 2,762. Local/live desktop and 390px mobile checks passed:
+second placement, independent periods, empty recovery, 10-to-16 loading with
+1,178px body scroll retained, and other feeds' document positions/state unchanged.
+Employer/direct filters preserve unique global counts. Full accepted identity and
+publisher/application-link checks passed. Final hosted validation: 269 Python,
+14 frontend and 17 scheduler tests. See the daily delivery report for the five
+active registry sources and remaining 758-employer coverage limitations.
