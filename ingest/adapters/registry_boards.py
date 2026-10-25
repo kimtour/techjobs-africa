@@ -6,10 +6,12 @@ import re
 from datetime import UTC, datetime
 from html.parser import HTMLParser
 from urllib.parse import quote, urljoin, urlsplit
+from urllib.robotparser import RobotFileParser
 
 import httpx
 
 from ingest.classify.evidence import description_technical_context
+from ingest.classify.tech import has_non_technical_exclusion
 from ingest.employer_registry import safe_url
 from ingest.models import RawJob
 
@@ -53,20 +55,33 @@ class _BreezyPage(HTMLParser):
         self.jsonld = []
         self.capture = False
         self.parts = []
+        self.titles = {}
+        self.active_link = None
+        self.heading = False
 
     def handle_starttag(self, tag, attrs):
         attrs = dict(attrs)
         if tag == "a" and re.match(r"^/p/[^/?#]+", attrs.get("href", "")):
             self.links.add(attrs["href"])
+            self.active_link = attrs["href"]
+            self.titles[self.active_link] = ""
+        if tag == "h2" and self.active_link:
+            self.heading = True
         if tag == "script" and attrs.get("type") == "application/ld+json":
             self.capture = True
             self.parts = []
 
     def handle_data(self, data):
+        if self.heading and self.active_link:
+            self.titles[self.active_link] += data
         if self.capture:
             self.parts.append(data)
 
     def handle_endtag(self, tag):
+        if tag == "h2":
+            self.heading = False
+        if tag == "a":
+            self.active_link = None
         if tag == "script" and self.capture:
             import json
 
@@ -230,6 +245,16 @@ class RegistryBoardAdapter:
         )
 
     def _breezy(self):
+        try:
+            robots = self._client.get(self.endpoint + "robots.txt", timeout=20)
+        except httpx.HTTPStatusError as exc:
+            if exc.response.status_code != 404:
+                raise
+            robots = exc.response
+        rules = RobotFileParser()
+        rules.parse(robots.text.splitlines() if robots.status_code == 200 else [])
+        if not rules.can_fetch("TechKaziBot/0.1", self.endpoint):
+            raise ValueError("Public board disallows collection")
         response = self._client.get(self.endpoint, timeout=20)
         response.raise_for_status()
         page = _BreezyPage()
@@ -245,6 +270,18 @@ class RegistryBoardAdapter:
         jobs = []
         for path in sorted(page.links):
             url = urljoin(self.endpoint, path)
+            # Explicit nontechnical cards can be rejected from their own title;
+            # do not fetch unrelated descriptions merely to reject a sales role.
+            card_title = page.titles.get(path, "").strip()
+            if card_title and has_non_technical_exclusion(card_title):
+                job = self._job(
+                    urlsplit(path).path.split("/")[2].split("-")[0], card_title, None, url
+                )
+                if job:
+                    jobs.append(job)
+                continue
+            if not rules.can_fetch("TechKaziBot/0.1", url):
+                raise ValueError("Public posting disallows collection")
             detail = self._client.get(url, timeout=20)
             detail.raise_for_status()
             parser = _BreezyPage()
