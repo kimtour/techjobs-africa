@@ -1616,7 +1616,7 @@ sources:
   import_urls:
   - https://ampersand-energy.breezy.hr/
   platform: breezy
-  status: pending
+  status: trial
   employer_ids:
   - emp_580a587ccfe2a3ca
   access_method: null
@@ -1632,7 +1632,28 @@ sources:
     retry_delays_seconds:
     - 5
     - 20
-  verification: {}
+  verification:
+    official_link: true
+    stable_ids: true
+    application_links: true
+    locations: true
+    dates_reviewed: true
+    complete: true
+    local_access: true
+    runner_access: true
+    collection_review: true
+    trial_review: false
+    publication_review: false
+    checked_at: '2026-10-25T13:00:18.145790+00:00'
+    evidence_paths:
+    - docs/employer-discovery/local/employer_1a047fd979fcdf88.json
+    - docs/employer-discovery/github/employer_1a047fd979fcdf88.json
+    - https://github.com/kimtour/techjobs-africa/actions/runs/40195538250
+    collection_basis: Reviewed official employer-to-board links, local and hosted
+      robots/access evidence, documented public ATS posting interfaces or public Breezy
+      listing pages and provider customer terms. Isolated trial of minimal vacancy
+      metadata and original application links only; no description/contact retention,
+      no authenticated/internal endpoints, no assertion of a redistribution licence.
   suggestions:
     platform: breezy
     needs_location_filter: true
@@ -4073,7 +4094,7 @@ sources:
   import_urls:
   - https://turaco.breezy.hr/
   platform: breezy
-  status: pending
+  status: trial
   employer_ids:
   - emp_33c4082222aae66f
   access_method: null
@@ -4089,7 +4110,28 @@ sources:
     retry_delays_seconds:
     - 5
     - 20
-  verification: {}
+  verification:
+    official_link: true
+    stable_ids: true
+    application_links: true
+    locations: true
+    dates_reviewed: true
+    complete: true
+    local_access: true
+    runner_access: true
+    collection_review: true
+    trial_review: false
+    publication_review: false
+    checked_at: '2026-10-25T12:59:55.309857+00:00'
+    evidence_paths:
+    - docs/employer-discovery/local/employer_3d2a408f9d01331a.json
+    - docs/employer-discovery/github/employer_3d2a408f9d01331a.json
+    - https://github.com/kimtour/techjobs-africa/actions/runs/40195538250
+    collection_basis: Reviewed official employer-to-board links, local and hosted
+      robots/access evidence, documented public ATS posting interfaces or public Breezy
+      listing pages and provider customer terms. Isolated trial of minimal vacancy
+      metadata and original application links only; no description/contact retention,
+      no authenticated/internal endpoints, no assertion of a redistribution licence.
   suggestions:
     platform: breezy
     needs_location_filter: true
@@ -5710,7 +5752,7 @@ sources:
   import_urls:
   - https://www.m-kopa.com/careers
   platform: ashby
-  status: pending
+  status: trial
   employer_ids:
   - emp_8d29fd81b7a68542
   access_method: null
@@ -5726,7 +5768,28 @@ sources:
     retry_delays_seconds:
     - 5
     - 20
-  verification: {}
+  verification:
+    official_link: true
+    stable_ids: true
+    application_links: true
+    locations: true
+    dates_reviewed: true
+    complete: true
+    local_access: true
+    runner_access: true
+    collection_review: true
+    trial_review: false
+    publication_review: false
+    checked_at: '2026-10-25T12:59:20.767795+00:00'
+    evidence_paths:
+    - docs/employer-discovery/local/employer_58b8d22cf280a524.json
+    - docs/employer-discovery/github/employer_58b8d22cf280a524.json
+    - https://github.com/kimtour/techjobs-africa/actions/runs/40195538250
+    collection_basis: Reviewed official employer-to-board links, local and hosted
+      robots/access evidence, documented public ATS posting interfaces or public Breezy
+      listing pages and provider customer terms. Isolated trial of minimal vacancy
+      metadata and original application links only; no description/contact retention,
+      no authenticated/internal endpoints, no assertion of a redistribution licence.
   suggestions:
     platform: custom
   board: M-KOPA
@@ -6332,7 +6395,7 @@ sources:
   import_urls:
   - https://job-boards.greenhouse.io/jumia
   platform: greenhouse
-  status: pending
+  status: trial
   employer_ids:
   - emp_958c0f998e01b89c
   access_method: null
@@ -6348,7 +6411,28 @@ sources:
     retry_delays_seconds:
     - 5
     - 20
-  verification: {}
+  verification:
+    official_link: true
+    stable_ids: true
+    application_links: true
+    locations: true
+    dates_reviewed: true
+    complete: true
+    local_access: true
+    runner_access: true
+    collection_review: true
+    trial_review: false
+    publication_review: false
+    checked_at: '2026-10-25T12:59:25.872413+00:00'
+    evidence_paths:
+    - docs/employer-discovery/local/employer_6123edf0db94e3a1.json
+    - docs/employer-discovery/github/employer_6123edf0db94e3a1.json
+    - https://github.com/kimtour/techjobs-africa/actions/runs/40195538250
+    collection_basis: Reviewed official employer-to-board links, local and hosted
+      robots/access evidence, documented public ATS posting interfaces or public Breezy
+      listing pages and provider customer terms. Isolated trial of minimal vacancy
+      metadata and original application links only; no description/contact retention,
+      no authenticated/internal endpoints, no assertion of a redistribution licence.
   suggestions:
     platform: greenhouse
     needs_location_filter: true
@@ -9931,7 +10015,7 @@ sources:
   import_urls:
   - https://tala.co.ke/careers/
   platform: lever
-  status: pending
+  status: trial
   employer_ids:
   - emp_352f2f0814ad2d6c
   access_method: null
@@ -9947,7 +10031,28 @@ sources:
     retry_delays_seconds:
     - 5
     - 20
-  verification: {}
+  verification:
+    official_link: true
+    stable_ids: true
+    application_links: true
+    locations: true
+    dates_reviewed: true
+    complete: true
+    local_access: true
+    runner_access: true
+    collection_review: true
+    trial_review: false
+    publication_review: false
+    checked_at: '2026-10-25T13:01:22.590415+00:00'
+    evidence_paths:
+    - docs/employer-discovery/local/employer_9e1960f0be135be5.json
+    - docs/employer-discovery/github/employer_9e1960f0be135be5.json
+    - https://github.com/kimtour/techjobs-africa/actions/runs/40195538250
+    collection_basis: Reviewed official employer-to-board links, local and hosted
+      robots/access evidence, documented public ATS posting interfaces or public Breezy
+      listing pages and provider customer terms. Isolated trial of minimal vacancy
+      metadata and original application links only; no description/contact retention,
+      no authenticated/internal endpoints, no assertion of a redistribution licence.
   suggestions:
     platform: custom
   pilot_rank: 14

@@ -1,0 +1,100 @@
+{
+  "careers_page": "https://careers.smartrecruiters.com/Deloitte6?icid=top_?icid=top_https://careers.smartrecruiters.com/Deloitte6?icid=top_&icid=top_job-search",
+  "checked_at": "2026-10-25T13:00:48.617475+00:00",
+  "checks": {
+    "official_link": true
+  },
+  "detected_boards": [
+    "https://careers.smartrecruiters.com/Deloitte6",
+    "https://careers.smartrecruiters.com/Deloitte6/east-africa",
+    "https://careers.smartrecruiters.com/Deloitte6/southern-africa",
+    "https://careers.smartrecruiters.com/Deloitte6/west-africa",
+    "https://careers.smartrecruiters.com/Deloitte6?icid=top_?icid=top_https://careers.smartrecruiters.com/Deloitte6?icid=top_&icid=top_job-search#st-careerSite",
+    "https://careers.smartrecruiters.com/Deloitte6?icid=top_?icid=top_https://careers.smartrecruiters.com/Deloitte6?icid=top_&icid=top_job-search#st-footer",
+    "https://careers.smartrecruiters.com/Deloitte6?icid=top_?icid=top_https://careers.smartrecruiters.com/Deloitte6?icid=top_&icid=top_job-search#st-main",
+    "https://careers.smartrecruiters.com/Deloitte6?icid=top_?icid=top_https://careers.smartrecruiters.com/Deloitte6?icid=top_&icid=top_job-search#st-openings",
+    "https://careers.smartrecruiters.com/Deloitte6?icid=top_?icid=top_https://careers.smartrecruiters.com/Deloitte6?icid=top_&icid=top_job-search#st-siteContainer",
+    "https://careers.smartrecruiters.com/Deloitte6?oga=true",
+    "https://careers.smartrecruiters.com/Deloitte6?search=&page=0",
+    "https://careers.smartrecruiters.com/Deloitte6?search=&page=1",
+    "https://jobs.smartrecruiters.com/Deloitte6/744000121205397-director-custom-union-and-taxation-ecowas-commission",
+    "https://jobs.smartrecruiters.com/Deloitte6/744000122258433-directeur-industrie-et-secteur-prive-commission-de-la-cedeao",
+    "https://jobs.smartrecruiters.com/Deloitte6/744000122260462-diretor-de-industria-e-setor-privado-comissao-da-cedeao"
+  ],
+  "environment": "github",
+  "feed_urls": [],
+  "official_robots": {
+    "allowed": true,
+    "status": 200,
+    "url": "https://www.deloitte.com/robots.txt"
+  },
+  "official_url": "https://www.deloitte.com/ke/en/careers.html",
+  "requests": [
+    {
+      "attempt": 1,
+      "duration_seconds": 0.162,
+      "error_type": null,
+      "host": "www.deloitte.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T13:00:48.634554+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.646,
+      "error_type": null,
+      "host": "www.deloitte.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T13:00:50.296779+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.028,
+      "error_type": null,
+      "host": "www.deloitte.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T13:00:52.443290+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.04,
+      "error_type": "HTTPStatusError",
+      "host": "www.deloitte.com",
+      "http_status": 302,
+      "method": "GET",
+      "started_at": "2026-10-25T13:00:53.971134+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.174,
+      "error_type": "HTTPStatusError",
+      "host": "careers.smartrecruiters.com",
+      "http_status": 302,
+      "method": "GET",
+      "started_at": "2026-10-25T13:00:55.510884+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.497,
+      "error_type": null,
+      "host": "jobs.smartrecruiters.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T13:00:57.184907+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.492,
+      "error_type": null,
+      "host": "careers.smartrecruiters.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T13:00:59.182360+00:00"
+    }
+  ],
+  "source_id": "employer_d35d24f455aceee7",
+  "status": "DISCOVERED",
+  "structured_job_count": 0
+}

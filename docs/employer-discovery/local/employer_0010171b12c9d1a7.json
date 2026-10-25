@@ -1,0 +1,68 @@
+{
+  "checked_at": "2026-10-25T12:47:16.951539+00:00",
+  "checks": {
+    "official_link": false
+  },
+  "detected_boards": [],
+  "environment": "local",
+  "feed_urls": [
+    "https://powergen-renewable-energy.com/feed/",
+    "https://powergen-renewable-energy.com/comments/feed/"
+  ],
+  "official_robots": {
+    "allowed": true,
+    "status": 200,
+    "url": "https://www.powergen-renewable-energy.com/robots.txt"
+  },
+  "official_url": "https://www.powergen-renewable-energy.com/",
+  "requests": [
+    {
+      "attempt": 1,
+      "duration_seconds": 2.259,
+      "error_type": "HTTPStatusError",
+      "host": "www.powergen-renewable-energy.com",
+      "http_status": 301,
+      "method": "GET",
+      "started_at": "2026-10-25T12:47:16.976032+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 1.102,
+      "error_type": null,
+      "host": "powergen-renewable-energy.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T12:47:20.739121+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.482,
+      "error_type": "HTTPStatusError",
+      "host": "www.powergen-renewable-energy.com",
+      "http_status": 301,
+      "method": "GET",
+      "started_at": "2026-10-25T12:47:23.341588+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.503,
+      "error_type": null,
+      "host": "powergen-renewable-energy.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T12:47:25.324070+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.795,
+      "error_type": null,
+      "host": "powergen-renewable-energy.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T12:47:27.330662+00:00"
+    }
+  ],
+  "source_id": "employer_0010171b12c9d1a7",
+  "status": "DISCOVERED",
+  "structured_job_count": 0
+}

@@ -1,0 +1,204 @@
+{
+  "board_robots": {
+    "allowed": true,
+    "status": 200,
+    "url": "https://turaco.breezy.hr/robots.txt"
+  },
+  "checked_at": "2026-10-25T10:17:14.137412+00:00",
+  "checks": {
+    "application_links": true,
+    "complete": true,
+    "dates_reviewed": true,
+    "locations": true,
+    "official_link": true,
+    "stable_ids": true
+  },
+  "detected_boards": [
+    "https://turaco.breezy.hr/"
+  ],
+  "endpoint": "https://turaco.breezy.hr/",
+  "environment": "local",
+  "official_robots": {
+    "allowed": true,
+    "status": 200,
+    "url": "https://turaco.insure/robots.txt"
+  },
+  "official_url": "https://turaco.insure/",
+  "records_found": 10,
+  "requests": [
+    {
+      "attempt": 1,
+      "duration_seconds": 0.524,
+      "error_type": null,
+      "host": "turaco.insure",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T10:17:14.187179+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.072,
+      "error_type": null,
+      "host": "turaco.insure",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T10:17:16.221171+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.528,
+      "error_type": null,
+      "host": "turaco.breezy.hr",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T10:17:17.803048+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.275,
+      "error_type": null,
+      "host": "turaco.breezy.hr",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T10:17:19.840488+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.575,
+      "error_type": null,
+      "host": "turaco.breezy.hr",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T10:17:21.617522+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.605,
+      "error_type": null,
+      "host": "turaco.breezy.hr",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T10:17:23.702980+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.599,
+      "error_type": null,
+      "host": "turaco.breezy.hr",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T10:17:25.808626+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.57,
+      "error_type": null,
+      "host": "turaco.breezy.hr",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T10:17:27.908723+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.632,
+      "error_type": null,
+      "host": "turaco.breezy.hr",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T10:17:29.979322+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.583,
+      "error_type": null,
+      "host": "turaco.breezy.hr",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T10:17:32.111762+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.579,
+      "error_type": null,
+      "host": "turaco.breezy.hr",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T10:17:34.205167+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.592,
+      "error_type": null,
+      "host": "turaco.breezy.hr",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T10:17:36.294077+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.654,
+      "error_type": null,
+      "host": "turaco.breezy.hr",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T10:17:38.395860+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.583,
+      "error_type": null,
+      "host": "turaco.breezy.hr",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T10:17:40.560309+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.568,
+      "error_type": null,
+      "host": "turaco.breezy.hr",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T10:17:42.644651+00:00"
+    }
+  ],
+  "sample": [
+    {
+      "application_url": "https://turaco.breezy.hr/p/07777437a4fa-customer-operations-associate-tanzania",
+      "id": "07777437a4fa",
+      "location": "Nairobi · KE",
+      "published_at": "2026-08-10T00:00:00+00:00",
+      "title": "Customer Operations Associate - Tanzania"
+    },
+    {
+      "application_url": "https://turaco.breezy.hr/p/186e22af1d20-business-development-manager-bancassurance-alternative-channels",
+      "id": "186e22af1d20",
+      "location": "Kampala · UG",
+      "published_at": "2026-10-09T00:00:00+00:00",
+      "title": "Business Development Manager – Bancassurance & Alternative Channels"
+    },
+    {
+      "application_url": "https://turaco.breezy.hr/p/217433a6fb6d-customer-operations-associate-nigeria",
+      "id": "217433a6fb6d",
+      "location": "Lagos · NG",
+      "published_at": "2022-05-09T00:00:00+00:00",
+      "title": "Customer Operations Associate - Nigeria"
+    },
+    {
+      "application_url": "https://turaco.breezy.hr/p/5a71397744c6-actuarial-associate",
+      "id": "5a71397744c6",
+      "location": "Nairobi · KE",
+      "published_at": "2026-10-09T00:00:00+00:00",
+      "title": "Actuarial Associate"
+    },
+    {
+      "application_url": "https://turaco.breezy.hr/p/7a2736eaa62f-customer-operations-associate-philippines",
+      "id": "7a2736eaa62f",
+      "location": "Manila · PH",
+      "published_at": "2026-09-04T00:00:00+00:00",
+      "title": "Customer Operations Associate - Philippines"
+    }
+  ],
+  "source_id": "employer_3d2a408f9d01331a",
+  "status": "SUCCESS"
+}

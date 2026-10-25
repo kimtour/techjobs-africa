@@ -1,0 +1,38 @@
+{
+  "checked_at": "2026-10-25T10:07:05.909716+00:00",
+  "checks": {
+    "official_link": true
+  },
+  "detected_boards": [
+    "https://careers.smartrecruiters.com/Deloitte6/east-africa"
+  ],
+  "environment": "local",
+  "official_robots": {
+    "allowed": true,
+    "status": 200,
+    "url": "https://www.deloitte.com/robots.txt"
+  },
+  "official_url": "https://www.deloitte.com/ke/en/careers.html",
+  "requests": [
+    {
+      "attempt": 1,
+      "duration_seconds": 1.393,
+      "error_type": null,
+      "host": "www.deloitte.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T10:07:05.930547+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.647,
+      "error_type": null,
+      "host": "www.deloitte.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T10:07:08.827513+00:00"
+    }
+  ],
+  "source_id": "employer_d35d24f455aceee7",
+  "status": "DISCOVERED"
+}

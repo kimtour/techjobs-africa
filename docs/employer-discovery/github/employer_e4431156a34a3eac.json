@@ -1,0 +1,59 @@
+{
+  "checked_at": "2026-10-25T13:00:34.757914+00:00",
+  "checks": {
+    "official_link": false
+  },
+  "detected_boards": [],
+  "environment": "github",
+  "feed_urls": [
+    "https://www.digitaldividedata.com/feed",
+    "https://www.digitaldividedata.com/comments/feed"
+  ],
+  "official_robots": {
+    "allowed": true,
+    "status": 200,
+    "url": "https://www.digitaldividedata.com/robots.txt"
+  },
+  "official_url": "https://www.digitaldividedata.com/careers",
+  "requests": [
+    {
+      "attempt": 1,
+      "duration_seconds": 0.574,
+      "error_type": null,
+      "host": "www.digitaldividedata.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T13:00:34.774655+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.324,
+      "error_type": "HTTPStatusError",
+      "host": "www.digitaldividedata.com",
+      "http_status": 301,
+      "method": "GET",
+      "started_at": "2026-10-25T13:00:36.848758+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.352,
+      "error_type": null,
+      "host": "www.digitaldividedata.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T13:00:38.673153+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.195,
+      "error_type": null,
+      "host": "www.digitaldividedata.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T13:00:40.525388+00:00"
+    }
+  ],
+  "source_id": "employer_e4431156a34a3eac",
+  "status": "DISCOVERED",
+  "structured_job_count": 0
+}

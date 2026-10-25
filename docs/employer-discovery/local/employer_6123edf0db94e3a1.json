@@ -1,0 +1,119 @@
+{
+  "board_robots": {
+    "allowed": true,
+    "status": 200,
+    "url": "https://boards-api.greenhouse.io/robots.txt"
+  },
+  "checked_at": "2026-10-25T10:10:10.087068+00:00",
+  "checks": {
+    "application_links": true,
+    "complete": true,
+    "dates_reviewed": true,
+    "locations": true,
+    "official_link": true,
+    "stable_ids": true
+  },
+  "detected_boards": [
+    "https://job-boards.eu.greenhouse.io/jumia/jobs/4906703101",
+    "https://job-boards.eu.greenhouse.io/jumia/jobs/4921105101",
+    "https://job-boards.eu.greenhouse.io/jumia/jobs/4937277101",
+    "https://job-boards.eu.greenhouse.io/jumia/jobs/4945238101",
+    "https://job-boards.eu.greenhouse.io/jumia/jobs/4945663101",
+    "https://job-boards.eu.greenhouse.io/jumia/jobs/4966810101",
+    "https://job-boards.eu.greenhouse.io/jumia/jobs/4969220101",
+    "https://job-boards.eu.greenhouse.io/jumia/jobs/4970753101",
+    "https://job-boards.eu.greenhouse.io/jumia/jobs/4970823101",
+    "https://job-boards.eu.greenhouse.io/jumia/jobs/4970829101",
+    "https://job-boards.eu.greenhouse.io/jumia/jobs/4974610101",
+    "https://job-boards.eu.greenhouse.io/jumia/jobs/4975134101",
+    "https://job-boards.eu.greenhouse.io/jumia/jobs/4975687101",
+    "https://job-boards.eu.greenhouse.io/jumia/jobs/4976709101",
+    "https://job-boards.eu.greenhouse.io/jumia/jobs/4976710101"
+  ],
+  "endpoint": "https://boards-api.greenhouse.io/v1/boards/jumia/jobs?content=true",
+  "environment": "local",
+  "official_robots": {
+    "allowed": true,
+    "status": 200,
+    "url": "https://group.jumia.com/robots.txt"
+  },
+  "official_url": "https://group.jumia.com/careers/",
+  "records_found": 29,
+  "requests": [
+    {
+      "attempt": 1,
+      "duration_seconds": 0.369,
+      "error_type": null,
+      "host": "group.jumia.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T10:10:10.136017+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.429,
+      "error_type": null,
+      "host": "group.jumia.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T10:10:12.009972+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.53,
+      "error_type": null,
+      "host": "boards-api.greenhouse.io",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T10:10:13.943774+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.309,
+      "error_type": null,
+      "host": "boards-api.greenhouse.io",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T10:10:15.978359+00:00"
+    }
+  ],
+  "sample": [
+    {
+      "application_url": "https://job-boards.eu.greenhouse.io/jumia/jobs/4980196101",
+      "id": "4980196101",
+      "location": "Nigeria",
+      "published_at": null,
+      "title": "Defective Team Leader - Jumia (Full Time)"
+    },
+    {
+      "application_url": "https://job-boards.eu.greenhouse.io/jumia/jobs/5010674101",
+      "id": "5010674101",
+      "location": "Africa",
+      "published_at": null,
+      "title": "E&S and OHS Manager - Group - Jumia ( Fulltime)"
+    },
+    {
+      "application_url": "https://job-boards.eu.greenhouse.io/jumia/jobs/4974610101",
+      "id": "4974610101",
+      "location": "Nigeria",
+      "published_at": null,
+      "title": "First Mile & Last Mile Manager - Jumia (Full Time)"
+    },
+    {
+      "application_url": "https://job-boards.eu.greenhouse.io/jumia/jobs/5009507101",
+      "id": "5009507101",
+      "location": "Ghana",
+      "published_at": null,
+      "title": "Graduate Management Trainee - Jumia (Full Time)"
+    },
+    {
+      "application_url": "https://job-boards.eu.greenhouse.io/jumia/jobs/4921105101",
+      "id": "4921105101",
+      "location": "Senegal",
+      "published_at": null,
+      "title": "Head of CXP Country - Jumia (Full Time)"
+    }
+  ],
+  "source_id": "employer_6123edf0db94e3a1",
+  "status": "SUCCESS"
+}

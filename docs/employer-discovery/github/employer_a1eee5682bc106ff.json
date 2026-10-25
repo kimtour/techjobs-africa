@@ -1,0 +1,35 @@
+{
+  "checked_at": "2026-10-25T12:59:53.337213+00:00",
+  "checks": {},
+  "environment": "github",
+  "error_type": "HTTPStatusError",
+  "http_status": 403,
+  "official_robots": {
+    "allowed": true,
+    "status": 200,
+    "url": "https://busara.global/robots.txt"
+  },
+  "official_url": "https://busara.global/careers/",
+  "requests": [
+    {
+      "attempt": 1,
+      "duration_seconds": 0.426,
+      "error_type": null,
+      "host": "busara.global",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T12:59:53.354047+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.029,
+      "error_type": "HTTPStatusError",
+      "host": "busara.global",
+      "http_status": 403,
+      "method": "GET",
+      "started_at": "2026-10-25T12:59:55.280208+00:00"
+    }
+  ],
+  "source_id": "employer_a1eee5682bc106ff",
+  "status": "BLOCKED"
+}

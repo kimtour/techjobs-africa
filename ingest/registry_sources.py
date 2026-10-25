@@ -63,6 +63,11 @@ def active_factories(config_dir: Path = ROOT / "config") -> tuple[dict, dict]:
             continue
         if verification_gaps(source):
             raise ValueError(f"Active employer source lacks verification: {sid}")
+        if not all(
+            source["verification"].get(check) is True
+            for check in ("trial_review", "publication_review")
+        ):
+            raise ValueError(f"Active employer source requires trial and publication review: {sid}")
         key = (source["platform"], source["board"], source.get("region"))
         if key in boards:
             raise ValueError("Shared recruitment board must have one active collection source")

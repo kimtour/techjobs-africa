@@ -1,0 +1,38 @@
+{
+  "checked_at": "2026-10-25T12:49:45.618343+00:00",
+  "checks": {
+    "official_link": true
+  },
+  "detected_boards": [],
+  "environment": "local",
+  "feed_urls": [],
+  "official_robots": {
+    "allowed": true,
+    "status": 200,
+    "url": "https://www.pula-advisors.com/robots.txt"
+  },
+  "official_url": "https://www.pula-advisors.com/career",
+  "requests": [
+    {
+      "attempt": 1,
+      "duration_seconds": 0.774,
+      "error_type": null,
+      "host": "www.pula-advisors.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T12:49:45.760496+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.221,
+      "error_type": null,
+      "host": "www.pula-advisors.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T12:49:48.036053+00:00"
+    }
+  ],
+  "source_id": "employer_affed8ce294f04b2",
+  "status": "DISCOVERED",
+  "structured_job_count": 0
+}

@@ -18,3 +18,10 @@ runs:
         ssh-key: ${{ inputs.ssh-key }}
         persist-credentials: true
         fetch-depth: 1
+        sparse-checkout: |
+          /canonical/
+          /public/
+          /state/
+          /sources/
+          /schema_version.json
+        sparse-checkout-cone-mode: false

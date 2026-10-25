@@ -1,0 +1,21 @@
+{
+  "checked_at": "2026-10-25T13:00:59.684687+00:00",
+  "checks": {},
+  "environment": "github",
+  "error_type": "ConnectTimeout",
+  "http_status": null,
+  "official_url": "https://www.care.or.ke/careers/",
+  "requests": [
+    {
+      "attempt": 1,
+      "duration_seconds": 20.823,
+      "error_type": "ConnectTimeout",
+      "host": "www.care.or.ke",
+      "http_status": null,
+      "method": "GET",
+      "started_at": "2026-10-25T13:00:59.701902+00:00"
+    }
+  ],
+  "source_id": "employer_f31ef7eee133737b",
+  "status": "FAILED"
+}

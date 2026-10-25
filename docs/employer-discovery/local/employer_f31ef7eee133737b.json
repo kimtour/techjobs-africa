@@ -1,0 +1,21 @@
+{
+  "checked_at": "2026-10-25T10:07:09.511680+00:00",
+  "checks": {},
+  "environment": "local",
+  "error_type": "ConnectError",
+  "http_status": null,
+  "official_url": "https://www.care.or.ke/careers/",
+  "requests": [
+    {
+      "attempt": 1,
+      "duration_seconds": 1.109,
+      "error_type": "ConnectError",
+      "host": "www.care.or.ke",
+      "http_status": null,
+      "method": "GET",
+      "started_at": "2026-10-25T10:07:09.541342+00:00"
+    }
+  ],
+  "source_id": "employer_f31ef7eee133737b",
+  "status": "FAILED"
+}

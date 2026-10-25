@@ -1,0 +1,21 @@
+{
+  "checked_at": "2026-10-25T12:59:42.710277+00:00",
+  "checks": {},
+  "environment": "github",
+  "error_type": "HTTPStatusError",
+  "http_status": 403,
+  "official_url": "https://moniepoint.com/careers",
+  "requests": [
+    {
+      "attempt": 1,
+      "duration_seconds": 0.138,
+      "error_type": "HTTPStatusError",
+      "host": "moniepoint.com",
+      "http_status": 403,
+      "method": "GET",
+      "started_at": "2026-10-25T12:59:42.727108+00:00"
+    }
+  ],
+  "source_id": "employer_6be648f586aed4e0",
+  "status": "BLOCKED"
+}

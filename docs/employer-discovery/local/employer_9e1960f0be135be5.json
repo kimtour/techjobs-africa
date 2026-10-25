@@ -1,0 +1,117 @@
+{
+  "board_robots": {
+    "allowed": true,
+    "status": 200,
+    "url": "https://api.lever.co/robots.txt"
+  },
+  "checked_at": "2026-10-25T12:51:33.418507+00:00",
+  "checks": {
+    "application_links": true,
+    "complete": true,
+    "dates_reviewed": true,
+    "locations": true,
+    "official_link": true,
+    "stable_ids": true
+  },
+  "detected_boards": [
+    "https://jobs.lever.co/tala/1499b2f6-9bf1-4840-aef6-99a4bf8e3710",
+    "https://jobs.lever.co/tala/414d3726-20bc-4a89-9f82-66620943febb",
+    "https://jobs.lever.co/tala/55173848-5c20-4cea-a320-7248d51796bc",
+    "https://jobs.lever.co/tala/552f9a3d-af36-44ab-b48d-8a35dba8c52c",
+    "https://jobs.lever.co/tala/83a306f8-674f-4818-b181-2b880d07f23b",
+    "https://jobs.lever.co/tala/848e6f75-9b40-45d2-b5b8-82de6670b0ed",
+    "https://jobs.lever.co/tala/9784a4c7-745e-4b9f-ba17-ffa9d8023bdf",
+    "https://jobs.lever.co/tala/a391ff08-acf0-456b-84a1-46f3dd98afdb",
+    "https://jobs.lever.co/tala/e7b55498-33ed-48fa-ae8c-261082f66906"
+  ],
+  "endpoint": "https://api.lever.co/v0/postings/tala?mode=json",
+  "environment": "local",
+  "feed_urls": [
+    "https://tala.co.ke/feed/"
+  ],
+  "official_robots": {
+    "allowed": true,
+    "status": 200,
+    "url": "https://tala.co.ke/robots.txt"
+  },
+  "official_url": "https://tala.co.ke/careers/",
+  "records_found": 9,
+  "requests": [
+    {
+      "attempt": 1,
+      "duration_seconds": 0.296,
+      "error_type": null,
+      "host": "tala.co.ke",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T12:51:33.481936+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.182,
+      "error_type": null,
+      "host": "tala.co.ke",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T12:51:35.278456+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 2.726,
+      "error_type": null,
+      "host": "api.lever.co",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T12:51:36.961688+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 4.359,
+      "error_type": null,
+      "host": "api.lever.co",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T12:51:41.192069+00:00"
+    }
+  ],
+  "sample": [
+    {
+      "application_url": "https://jobs.lever.co/tala/848e6f75-9b40-45d2-b5b8-82de6670b0ed/apply",
+      "id": "848e6f75-9b40-45d2-b5b8-82de6670b0ed",
+      "location": "Remote · US",
+      "published_at": null,
+      "title": "Analytics Platforms Architect"
+    },
+    {
+      "application_url": "https://jobs.lever.co/tala/414d3726-20bc-4a89-9f82-66620943febb/apply",
+      "id": "414d3726-20bc-4a89-9f82-66620943febb",
+      "location": "Remote · US",
+      "published_at": null,
+      "title": "Manager, Machine Learning Engineering"
+    },
+    {
+      "application_url": "https://jobs.lever.co/tala/e7b55498-33ed-48fa-ae8c-261082f66906/apply",
+      "id": "e7b55498-33ed-48fa-ae8c-261082f66906",
+      "location": "Remote · IN",
+      "published_at": null,
+      "title": "Senior Backend Engineer"
+    },
+    {
+      "application_url": "https://jobs.lever.co/tala/83a306f8-674f-4818-b181-2b880d07f23b/apply",
+      "id": "83a306f8-674f-4818-b181-2b880d07f23b",
+      "location": "PH",
+      "published_at": null,
+      "title": "Senior Credit Risk Manager"
+    },
+    {
+      "application_url": "https://jobs.lever.co/tala/a391ff08-acf0-456b-84a1-46f3dd98afdb/apply",
+      "id": "a391ff08-acf0-456b-84a1-46f3dd98afdb",
+      "location": "Remote · IN",
+      "published_at": null,
+      "title": "Senior Manager Expansion Risk"
+    }
+  ],
+  "source_id": "employer_9e1960f0be135be5",
+  "status": "SUCCESS",
+  "structured_job_count": 0
+}

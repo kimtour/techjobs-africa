@@ -5,11 +5,10 @@ on:
   workflow_dispatch:
     inputs:
       source:
-        description: Sources to fetch
+        description: all, or one approved active source ID
         required: false
         default: all
-        type: choice
-        options: [all, myjobmag, jsearch, expertini, corporate_staffing, camunda, blacksmith, sdg]
+        type: string
       refresh_jsearch:
         description: Refresh changed Google queries today (still respects monthly quota)
         required: false
