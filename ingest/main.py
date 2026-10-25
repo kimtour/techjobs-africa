@@ -133,6 +133,7 @@ def run_ingestion(
     source_ids: Sequence[str] | None = None,
     adapters: Mapping[str, object] = ADAPTERS,
     refresh_jsearch: bool = False,
+    refresh_employer: bool = False,
 ) -> dict[str, SourceHealth]:
     """Fetch each source independently and write safe static files on success."""
 
@@ -145,6 +146,8 @@ def run_ingestion(
     registry_adapters, registry_config = active_factories(CONFIG_PATH.parent)
     adapters = {**adapters, **registry_adapters}
     source_config.update(registry_config)
+    if refresh_employer and (len(selected_ids) != 1 or selected_ids[0] not in registry_config):
+        raise ValueError("Employer refresh requires one explicitly selected active employer source")
     if any(sid.startswith("employer_") and sid not in registry_config for sid in selected_ids):
         raise ValueError("Employer sources require active status and full verification")
     gates = yaml.safe_load(Path("config/quality_gates.yaml").read_text())["quality_gates"]
@@ -205,7 +208,10 @@ def run_ingestion(
 
     for source_id in selected_ids:
         if source_id in registry_config and not source_due(
-            registry_config[source_id], previous_health.get(source_id, {}), started
+            registry_config[source_id],
+            previous_health.get(source_id, {}),
+            started,
+            **({"refresh": True} if refresh_employer else {}),
         ):
             record_policy_skip(source_id, "employer_source_not_due")
             continue
@@ -625,6 +631,11 @@ def main() -> int:
     parser.add_argument("--source", action="append", dest="sources")
     parser.add_argument("--employers-only", action="store_true")
     parser.add_argument(
+        "--refresh-employer",
+        action="store_true",
+        help="Refresh one selected active employer now; cooldowns and failure backoff still apply",
+    )
+    parser.add_argument(
         "--refresh-jsearch",
         action="store_true",
         help="Refresh changed Google queries today; monthly quota still applies",
@@ -633,7 +644,10 @@ def main() -> int:
     if args.employers_only:
         args.sources = list(active_factories()[1])
     health = run_ingestion(
-        args.output_dir, source_ids=args.sources, refresh_jsearch=args.refresh_jsearch
+        args.output_dir,
+        source_ids=args.sources,
+        refresh_jsearch=args.refresh_jsearch,
+        refresh_employer=args.refresh_employer,
     )
     summary = ", ".join(f"{key}={value.status}" for key, value in health.items())
     print("Ingestion complete: " + summary)

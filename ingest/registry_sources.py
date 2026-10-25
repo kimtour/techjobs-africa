@@ -112,14 +112,18 @@ def daily_slot(source: dict) -> int:
     return slots[int(sha256(identity.encode()).hexdigest()[:8], 16) % len(slots)] if identity else 6
 
 
-def source_due(source: dict, health: dict, now: datetime) -> bool:
+def source_due(source: dict, health: dict, now: datetime, *, refresh: bool = False) -> bool:
+    cooldown = health.get("next_allowed_at")
+    if cooldown and now < datetime.fromisoformat(cooldown).astimezone(UTC):
+        return False
     last = health.get("last_attempt_at")
     if not last:
         return True
     last = datetime.fromisoformat(last).astimezone(UTC)
     failures = min(health.get("consecutive_failures", 0), 4)
+    if refresh and not failures:
+        return True  # An explicit single-source refresh may bypass the healthy daily interval.
     hours = min(source["refresh_hours"] * 2**failures, 168)
-    cooldown = health.get("next_allowed_at")
     # A healthy daily board is due on the next EAT calendar day, avoiding drift.
     if not failures and source["refresh_hours"] == 24:
         due = (

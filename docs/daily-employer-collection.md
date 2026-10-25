@@ -135,3 +135,14 @@ Discovery has a separate ceiling of 150 sources per invocation (12 requests per
 source, at most 1,800), oldest checks first. Deferred pages remain due rather
 than being reported successful. Newly activated collectors may establish their
 first reviewed baseline immediately; subsequent runs use the assigned slot.
+
+## Immediate targeted refresh
+
+A manual ingestion run can set `source` to one approved active employer ID and
+`refresh_employer=true` to bypass its healthy daily interval. The equivalent CLI
+is `python -m ingest.main --output-dir ... --source employer_ID --refresh-employer`.
+This requires exactly one active employer, retains failure backoff and server
+cooldowns, and uses the same serialized production writer and publication gates.
+It does not reset health history, change baselines, delete scheduler claims, or
+activate unverified sources. Use it when reviewed baseline publication is approved
+after that day's collection already ran.

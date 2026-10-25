@@ -472,3 +472,76 @@ def test_official_jazzhr_widget_and_direct_vacancy_identify_same_board():
         "https://branchinternational.applytojob.com/apply/Token/Changed-Title"
     ) == ("jazzhr", "branchinternational")
     assert board_identity("https://app.jazz.co/unknown/branchinternational") is None
+
+
+def test_targeted_refresh_keeps_cooldowns_and_failure_backoff():
+    from ingest.registry_sources import source_due
+
+    now = datetime(2026, 10, 25, 18, tzinfo=UTC)
+    config = {"id": "employer_test", "refresh_hours": 24}
+    health = {"last_attempt_at": (now - timedelta(hours=1)).isoformat()}
+    assert not source_due(config, health, now)
+    assert source_due(config, health, now, refresh=True)
+    assert not source_due(
+        config,
+        {**health, "next_allowed_at": (now + timedelta(minutes=5)).isoformat()},
+        now,
+        refresh=True,
+    )
+    assert not source_due(config, {**health, "consecutive_failures": 1}, now, refresh=True)
+
+
+def test_refresh_is_restricted_to_one_active_employer(tmp_path):
+    from ingest.main import run_ingestion
+
+    for selected in ([], ["myjobmag"], ["employer_not_active"], None):
+        with pytest.raises(ValueError, match="one explicitly selected active employer"):
+            run_ingestion(tmp_path, source_ids=selected, refresh_employer=True)
+
+
+def test_explicit_refresh_publishes_reviewed_baseline_without_changing_health_history(
+    tmp_path, monkeypatch
+):
+    import ingest.main as pipeline
+
+    now = datetime.now(UTC)
+    config = {
+        "id": "employer_test",
+        "status": "active",
+        "refresh_hours": 24,
+        "reviewed_bootstrap": True,
+        "crawl": {"max_pages": 1},
+    }
+
+    class Collector:
+        crawl_complete = True
+
+        def fetch(self):
+            return [raw()]
+
+    monkeypatch.setattr(
+        pipeline,
+        "active_factories",
+        lambda *a: ({"employer_test": Collector}, {"employer_test": config}),
+    )
+    old_attempt = (now - timedelta(minutes=30)).isoformat()
+    _write_json(
+        tmp_path / "state/health.json",
+        {"sources": {"employer_test": {"last_attempt_at": old_attempt, "consecutive_failures": 0}}},
+    )
+    ledger = EmployerLedger(tmp_path / "state/employer-candidates.json")
+    ledger.observe(
+        "employer_test",
+        [raw()],
+        [canonicalize_raw_job(raw())],
+        now - timedelta(minutes=30),
+        complete=True,
+    )
+    ledger.save(_write_json)
+    assert pipeline.run_ingestion(tmp_path, source_ids=["employer_test"]) == {}
+    unchanged = json.loads((tmp_path / "state/health.json").read_text())
+    assert unchanged["sources"]["employer_test"]["last_attempt_at"] == old_attempt
+    result = pipeline.run_ingestion(tmp_path, source_ids=["employer_test"], refresh_employer=True)
+    assert result["employer_test"].status == "SUCCESS"
+    public = json.loads((tmp_path / "public/jobs.json").read_text())
+    assert [job["job_id"] for job in public["jobs"]] == ["employer_test:one"]
