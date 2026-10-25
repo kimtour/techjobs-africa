@@ -20,19 +20,22 @@ roles found on BrighterMonday's Engineering & Technology and Software & Data pag
 
 - Employer onboarding keeps the employer registry as an internal collection
   inventory. Only actual vacancies enter All Jobs; careers websites are not job
-  cards and no additional source panels are created.
+  cards. The Company Career Page feed shows accepted direct-employer vacancies
+  immediately after All Jobs, including future registry vacancies only after
+  production activation and validation. Trials and discovery links never populate
+  it. It retains its header and controls when empty.
   Direct-employer, employer and sector controls are global filters: like search
   and category, they reset pagination/scroll while retaining each panel's period.
   Employer and sector controls appear only when accepted job metadata supplies
   them. Registry entries never count as jobs. Existing source order is retained.
 
-- Feed order chosen on 11 October 2026: All Jobs, MyJobMag, Corporate Staffing,
-  Other/Google/Linkedin, Fuzu, OpenedCareer, BrighterMonday, Elevolt, TalentSafari.
+- Feed order updated on 25 October 2026: All Jobs, Company Career Page, MyJobMag,
+  Corporate Staffing, Other/Google/Linkedin, Fuzu, OpenedCareer, BrighterMonday, Elevolt, TalentSafari.
   Desktop reads left to right across the two columns; mobile uses this sequence
   in one column. All Jobs contains each active, unrestricted job once, newest first,
   and displays its source. It shares the independent period and pagination controls.
   Global result counts count unique jobs across matching feeds.
-- Other/Google/Linkedin is fourth, after Corporate Staffing and before Fuzu.
+- Other/Google/Linkedin is fifth, after Corporate Staffing and before Fuzu.
   It combines Kenya and Africa/worldwide remote Google Jobs discoveries, previously accepted LinkedIn jobs,
   direct Expertini sitemap listings, verified public Camunda/Blacksmith/SDG remote career postings,
   and Careerjet if that provider is activated. Each job retains its true publisher

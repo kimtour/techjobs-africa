@@ -11,6 +11,7 @@ import {
   newestFirst,
   combinedSources,
   isDirectJob,
+  companyCareerJobs,
   checkedDateLabel,
 } from "../lib/jobs";
 import { employers, employerSources } from "../lib/employers";
@@ -32,7 +33,11 @@ const sourceGroups = orderedSources
   }))
   .filter((group) => group.jobs.length > 0 || group.sourceId === "linkedin");
 const sourceColumns: (typeof sourceGroups)[] = [[], []];
-const feedGroups = [{ sourceId: "all", jobs: [...visibleJobs].sort(newestFirst) }, ...sourceGroups];
+const feedGroups = [
+  { sourceId: "all", jobs: [...visibleJobs].sort(newestFirst) },
+  { sourceId: "company_careers", jobs: companyCareerJobs(visibleJobs).sort(newestFirst) },
+  ...sourceGroups,
+];
 feedGroups.forEach((group, index) => sourceColumns[index % sourceColumns.length].push(group));
 ---
 
@@ -94,6 +99,7 @@ feedGroups.forEach((group, index) => sourceColumns[index % sourceColumns.length]
                 <div class="source-heading">
                   <div>
                     <h3 id={`source-${group.sourceId}`}>{feedName(group.sourceId)}</h3>
+                    {group.sourceId === "company_careers" && <p class="source-provider">Employer vacancies · Original application links</p>}
                     {group.sourceId === "linkedin" && <p class="source-provider">Kenya + Africa remote · Original publisher links</p>}
                     <div class="source-periods" aria-label={`${feedName(group.sourceId)} posting period`}>
                       <button aria-pressed="true" data-period="latest" type="button">Latest</button>
@@ -145,7 +151,7 @@ feedGroups.forEach((group, index) => sourceColumns[index % sourceColumns.length]
                         </p>
                         {job.deadline_at && <p class="posted">Closes: <time datetime={job.deadline_at}>{checkedDateLabel(job.deadline_at)}</time></p>}
                         {job.last_checked_at && <p class="posted">Last checked: <time datetime={job.last_checked_at}>{checkedDateLabel(job.last_checked_at)}</time></p>}
-                        {(group.sourceId === "all" || group.sourceId === "linkedin" || job.sources.length > 1) && <p class="source">{(group.sourceId === "all" || group.sourceId === "linkedin") ? "Source: " : "Also listed by: "}{sourceLabels(job)}</p>}
+                        {(["all", "company_careers", "linkedin"].includes(group.sourceId) || job.sources.length > 1) && <p class="source">{(["all", "company_careers", "linkedin"].includes(group.sourceId)) ? "Source: " : "Also listed by: "}{sourceLabels(job)}</p>}
                       </div>
                     </li>
                   ))}

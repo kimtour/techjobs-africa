@@ -24,6 +24,7 @@ h1 { font-size: clamp(2rem, 4vw, 3rem); letter-spacing: -.04em; line-height: 1.0
 .source-periods { flex-wrap: wrap; align-items: center; display: flex; font-size: .78rem; gap: .3rem; margin-top: .18rem; }
 .source-periods button { background: transparent; border: 0; color: inherit; cursor: pointer; font: inherit; opacity: .72; padding: 0; text-decoration: underline; text-underline-offset: 2px; }
 .source-periods button[aria-pressed="true"] { font-weight: 700; opacity: 1; text-decoration: none; }
+.source-group[data-source="company_careers"] { --source-color: #2b6b55; }
 .source-group[data-source="myjobmag"] { --source-color: #d35139; }
 .source-group[data-source="brightermonday"] { --source-color: #2463a6; }
 .source-group[data-source="corporate_staffing"] { --source-color: #5f4b8b; }

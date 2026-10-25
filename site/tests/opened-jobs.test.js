@@ -65,8 +65,8 @@ test('other tabs and restored pages sync opened jobs without losing earlier clic
   }
 });
 
-test('all nine feeds mark their job and every All Jobs copy, including loaded rows', () => {
-  const sources = ['all', 'myjobmag', 'corporate_staffing', 'linkedin', 'fuzu', 'openedcareer', 'brightermonday', 'elevolt', 'ashby'];
+test('all ten feeds mark their job and every All Jobs copy, including loaded rows', () => {
+  const sources = ['all', 'myjobmag', 'corporate_staffing', 'linkedin', 'fuzu', 'openedcareer', 'brightermonday', 'elevolt', 'ashby', 'company_careers'];
   const card = id => `<li data-source-card data-job-id="${id}"><a class="job-title" href="https://example.com/${id}" target="_blank">${id}</a></li>`;
   const group = source => `<section data-source-group data-source="${source}" data-limit="10"><div data-source-feed><ul>${Array.from({ length: 12 }, (_, i) => card(`${source === 'all' ? 'myjobmag' : source}-${i}`)).join('')}${source === 'all' ? sources.slice(2).map(s => card(`${s}-0`)).join('') : ''}</ul><button data-more>More</button></div><button data-period="month">Month</button><button data-period="latest">Latest</button></section>`;
   const dom = new JSDOM(sources.map(group).join(''), { url: 'https://techkazi.pages.dev/', runScripts: 'outside-only' });

@@ -133,9 +133,11 @@ across the five existing daily slots, maintaining one state writer. A healthy
 complete crawl with no new jobs, a failed crawl and an unsupported source are
 separate outcomes. Never infer coverage from a successful workflow alone.
 
-New registry jobs appear in All Jobs only, without creating employer panels or
-changing existing panel order. No runtime backend/database or new recurring
-scheduler is introduced. Read `docs/source-panels.md` for local/live acceptance.
+Accepted direct-employer vacancies appear in All Jobs and Company Career Page.
+The latter is immediately after All Jobs and uses the same independent period,
+pagination and scrolling controls. It always shows the original publisher label.
+It reads accepted vacancies only, never discovery links or trial candidates.
+No runtime backend/database or new recurring scheduler is introduced. Read `docs/source-panels.md` for local/live acceptance.
 
 Validate with Python tests/lint, frontend behavior tests, Astro check/build, then
 browser-check accepted data and the deployed URL. Deploy using the existing

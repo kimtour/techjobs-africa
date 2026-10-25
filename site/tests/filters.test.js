@@ -6,13 +6,13 @@ import { JSDOM } from 'jsdom';
 const script = readFileSync(new URL('../src/scripts/filters.js', import.meta.url), 'utf8');
 const now = Date.parse('2026-09-30T12:00:00Z');
 const day = 86400000;
-function setup({ allJobs = false } = {}) {
+function setup({ allJobs = false, companyCareers = false } = {}) {
   const source = (id) => `<section data-source-group data-source="${id}" data-limit="10">
     <h3>${id}</h3><div>${['latest', 'day', 'three-days', 'week', 'two-weeks', 'month'].map(p => `<button data-period="${p}" aria-pressed="${p === 'latest'}">${p}</button>`).join('')}</div>
     <p data-source-count></p><div data-source-feed tabindex="0">
-    ${Array.from({length: 25}, (_, i) => `<article data-source-card data-job-id="${id === 'all' ? (i < 13 ? 'a' : 'b') : id}-${id === 'all' ? (i < 13 ? i : i - 13) : i}" data-search="Engineer ${i}" data-category="${i % 2 ? 'QA' : 'Software'}" data-published="${i === 24 ? '' : new Date(now - i * day).toISOString()}"></article>`).join('')}
+    ${Array.from({length: 25}, (_, i) => `<article data-source-card data-job-id="${['all', 'company_careers'].includes(id) ? (i < 13 ? 'a' : 'b') : id}-${['all', 'company_careers'].includes(id) ? (i < 13 ? i : i - 13) : i}" data-search="Engineer ${i}" data-category="${i % 2 ? 'QA' : 'Software'}" data-published="${i === 24 ? '' : new Date(now - i * day).toISOString()}"></article>`).join('')}
     <p data-source-empty hidden></p><button data-more>Load more jobs</button></div><p data-source-status></p></section>`;
-  const dom = new JSDOM(`<form id="job-filters"><input id="job-search"><select id="category-filter"><option value=""></option><option>QA</option></select></form><p id="job-count"></p><p id="no-results" hidden></p>${allJobs ? source('all') : ''}${source('a')}${source('b')}`, {runScripts: 'outside-only'});
+  const dom = new JSDOM(`<form id="job-filters"><input id="job-search"><select id="category-filter"><option value=""></option><option>QA</option></select></form><p id="job-count"></p><p id="no-results" hidden></p>${allJobs ? source('all') : ''}${companyCareers ? source('company_careers') : ''}${source('a')}${source('b')}`, {runScripts: 'outside-only'});
   dom.window.Date.now = () => now;
   dom.window.HTMLElement.prototype.scrollTo = function () { this.scrollTop = 0; };
   dom.window.eval(script);
@@ -119,4 +119,29 @@ test('All Jobs keeps independent controls and counts shared job identities once'
   assert.equal(doc.querySelector('#job-count').textContent, '0 active roles');
   assert.equal(doc.querySelector('#no-results').hidden,false);
   assert.equal(shown(b),0);
+});
+
+
+test('Company Career Page retains independent periods, scroll and unique counts', () => {
+  const {doc, groups:[all,company,a,b]} = setup({allJobs:true, companyCareers:true});
+  assert.equal(doc.querySelector('#job-count').textContent, '50 active roles');
+  all.querySelector('[data-source-feed]').scrollTop = 60;
+  a.querySelector('[data-source-feed]').scrollTop = 80;
+  company.querySelector('[data-source-feed]').scrollTop = 100;
+  company.querySelector('[data-more]').click();
+  assert.equal(shown(company),20);
+  assert.equal(company.querySelector('[data-source-feed]').scrollTop,100);
+  assert.equal(shown(all),10);
+  assert.equal(all.querySelector('[data-source-feed]').scrollTop,60);
+  assert.equal(a.querySelector('[data-source-feed]').scrollTop,80);
+  company.querySelector('[data-period="day"]').click();
+  assert.equal(shown(company),2);
+  assert.equal(company.querySelector('[data-source-feed]').scrollTop,0);
+  assert.equal(all.querySelector('[data-source-feed]').scrollTop,60);
+  assert.equal(shown(b),10);
+  assert.equal(doc.querySelector('#job-count').textContent, '50 active roles');
+  company.querySelectorAll('[data-source-card]').forEach(card => card.remove());
+  company.querySelector('[data-period="latest"]').click();
+  assert.equal(company.hidden,false);
+  assert.equal(company.querySelector('[data-source-empty]').hidden,false);
 });

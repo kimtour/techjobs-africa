@@ -1,5 +1,6 @@
 import jobsPayload from "../data/jobs.json";
 import { sourceEmployers } from "./employers";
+export { isDirectJob, companyCareerJobs } from "./company-careers.js";
 
 export type Job = {
   job_id: string;
@@ -56,6 +57,7 @@ export const combinedSources = ["careerjet", "jsearch", "expertini", "camunda", 
 export const sourceName = (sourceId: string) =>
   ({
     all: "All Jobs",
+    company_careers: "Company Career Page",
     ashby: "TalentSafari",
     brightermonday: "BrighterMonday",
     corporate_staffing: "Corporate Staffing",
@@ -116,11 +118,10 @@ export const sourceLabels = (job: Job) => job.sources.map((source) =>
     ? (job.source_publisher === "Expertini RSS" ? "Expertini RSS" : "Expertini (title from listing link)")
     : ["jsearch", "camunda", "blacksmith", "sdg"].includes(source) && job.source_publisher
     ? (source === "jsearch" ? `${job.source_publisher} via Google Jobs / JSearch` : job.source_publisher)
+    : sourceEmployers.has(source) && job.source_publisher
+    ? job.source_publisher
     : sourceName(source)
 ).join(", ");
-
-export const isDirectJob = (job: Job) => job.direct_employer === true
-  || job.sources.some(s => ["camunda", "blacksmith", "sdg"].includes(s));
 
 export const checkedDateLabel = (value: string) => new Intl.DateTimeFormat("en-KE", {
   dateStyle: "medium", timeStyle: "short", timeZone: "Africa/Nairobi",

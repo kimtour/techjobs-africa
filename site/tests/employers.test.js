@@ -19,3 +19,21 @@ test('direct employer, employer and sector filters intersect and reset scrolling
   assert.equal(shown(), 1);
   assert.equal(doc.querySelector('[data-source-group]').dataset.limit, '10');
 });
+
+test('company career feed includes accepted employer vacancies without counting other job boards', async () => {
+  const { companyCareerJobs, isDirectJob } = await import('../src/lib/company-careers.js');
+  const job = (id, source, extra = {}) => ({job_id: id, sources: [source], status: 'ACTIVE', eligibility_level: 'CONFIRMED', ...extra});
+  const accepted = [
+    job('aggregator', 'myjobmag'),
+    job('employer', 'employer_verified_board', {direct_employer: true}),
+    job('legacy', 'camunda'),
+    job('cross-listed', 'myjobmag', {sources: ['myjobmag', 'sdg']}),
+    job('closed', 'employer_verified_board', {direct_employer: true, status: 'CLOSED'}),
+    job('restricted', 'blacksmith', {eligibility_level: 'RESTRICTED'}),
+    job('agency-board', 'ashby'),
+  ];
+  assert.deepEqual(companyCareerJobs(accepted).map(j => j.job_id), ['employer', 'legacy', 'cross-listed']);
+  assert.equal(isDirectJob(accepted[0]), false);
+  assert.equal(companyCareerJobs([]).length, 0);
+  assert.equal(accepted.length, 7);
+});
