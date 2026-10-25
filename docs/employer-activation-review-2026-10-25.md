@@ -64,3 +64,30 @@ Sama remains pending collection review and hosted evidence. Wasoko's empty board
 remains pending field verification. Kijabe's structured listing contains three
 nontechnical roles but lacks per-role stable identifiers/application destinations;
 no homepage is published as a job. No source-owner messages were sent.
+
+## JazzHR expansion
+
+Branch International, Watu and CrossBoundary completed local and hosted M0
+(discovery run 40206356702) and isolated hosted trial 40206809932. Their complete
+inventories contain 11, 38 and 18 records respectively. The trial yields five
+additional eligible Watu roles explicitly located in Nairobi, Kenya: Data Engineer,
+Tech Lead - Android Experience Engineering, QA Chapter Lead, Senior QA Automation
+Engineer and QA Automation Engineer. Four omit source posting dates; preserve
+that absence and display labelled First found after actual discovery. Branch's
+three technical roles and CrossBoundary's technical role are overseas and excluded.
+
+The official Branch page embeds its JazzHR widget; CrossBoundary embeds direct
+posting URLs in page data. Identity matching verifies the actual board, rather
+than accepting an arbitrary provider-host link. JazzHR's immutable posting token
+survives changed title slugs. Watu uses both JobPosting JSON-LD and visible header
+metadata; the latter supplies missing location fields and does not fabricate dates.
+
+Collection review is limited to factual title/employer/location/date/link metadata
+from public ATS pages with permitted robots paths. No descriptions, logos or
+applicant information are republished. Watu's website terms explicitly distinguish
+external sites; reviewed Branch terms concern banking/app services. CrossBoundary's
+linked policy concerns website privacy. This review does not claim an explicit
+redistribution licence. Known explicit automation restrictions are retained:
+Living Goods and Umba require permission and remain manual. A subsequent broad
+metadata assessment inadvertently included Umba before its manual flag was saved;
+that flag is now saved and no production collector is enabled for it.

@@ -148,6 +148,12 @@ class RegistryBoardAdapter:
             opportunity = "consultancy"
         elif re.search(r"\b(fellow|fellowship)\b", title, re.I):
             opportunity = "fellowship"
+        publisher = (
+            employer["name"] if employer else self.source.get("posting_company") or "Employer board"
+        )
+        provider = (
+            "JazzHR" if self.source["platform"] == "jazzhr" else self.source["platform"].title()
+        )
         return RawJob(
             source_id=self.source_id,
             external_id=str(external_id),
@@ -156,8 +162,7 @@ class RegistryBoardAdapter:
             location=location,
             source_url=url,
             apply_url=apply_url or url,
-            source_publisher=f"{employer['name'] if employer else 'Employer board'} careers / "
-            f"{self.platform.title()}",
+            source_publisher=f"{publisher} careers / {provider}",
             published_at=timestamp(published),
             deadline_at=timestamp(deadline),
             employment_type=employment_type,

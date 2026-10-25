@@ -332,14 +332,14 @@ sources:
   status: pending
   employer_ids:
   - emp_f029ec5a65d8b1b6
-  access_method: null
+  access_method: oracle
   country_filters: []
   refresh_hours: 24
   discovery_refresh_hours: 168
   supports_absence_expiry: false
   crawl:
-    max_pages: 5
-    max_requests_per_run: 12
+    max_pages: 20
+    max_requests_per_run: 250
     request_delay_ms: 1500
     timeout_seconds: 20
     retry_delays_seconds:
@@ -351,6 +351,17 @@ sources:
     needs_location_filter: true
     shared_portal: true
     access_gap: true
+  board: estm.fa.em2.oraclecloud.com/CX_1001
+  board_url: https://estm.fa.em2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1001/
+  collection:
+    listing_url: https://estm.fa.em2.oraclecloud.com/hcmRestApi/resources/latest/recruitingCEJobRequisitions
+    site: CX_1001
+    job_url_template: https://estm.fa.em2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1001/job/{id}
+  posting_company: UN Women
+  group_portal: true
+  official_careers_url: https://www.unwomen.org/
+  review_reason: Provider-level public interface investigated; source-specific official
+    linkage, terms and complete local/hosted crawls remain required.
 - id: employer_044b6d087b1aac02
   url: https://www.ccbagroup.com/careers/
   import_urls:
@@ -1398,14 +1409,14 @@ sources:
   status: pending
   employer_ids:
   - emp_86c90977f313b9e4
-  access_method: null
+  access_method: oracle
   country_filters: []
   refresh_hours: 24
   discovery_refresh_hours: 168
   supports_absence_expiry: false
   crawl:
-    max_pages: 5
-    max_requests_per_run: 12
+    max_pages: 20
+    max_requests_per_run: 250
     request_delay_ms: 1500
     timeout_seconds: 20
     retry_delays_seconds:
@@ -1416,6 +1427,17 @@ sources:
     platform: oracle
     needs_location_filter: true
     access_gap: true
+  board: fa-evlj-saasfaprod1.fa.ocs.oraclecloud.com/CX_1001
+  board_url: https://fa-evlj-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1001/jobs
+  collection:
+    listing_url: https://fa-evlj-saasfaprod1.fa.ocs.oraclecloud.com/hcmRestApi/resources/latest/recruitingCEJobRequisitions
+    site: CX_1001
+    job_url_template: https://fa-evlj-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1001/job/{id}
+  posting_company: International Organization for Migration (IOM)
+  group_portal: true
+  official_careers_url: https://kenya.iom.int/
+  review_reason: Provider-level public interface investigated; source-specific official
+    linkage, terms and complete local/hosted crawls remain required.
 - id: employer_15a3cc217ccbf471
   url: https://www.meds.or.ke/careers/
   import_urls:
@@ -1590,18 +1612,18 @@ sources:
   url: https://www.nrc.no/careers
   import_urls:
   - https://www.nrc.no/careers
-  platform: custom
+  platform: oracle
   status: pending
   employer_ids:
   - emp_1b78eb6a44295461
-  access_method: null
+  access_method: oracle
   country_filters: []
   refresh_hours: 24
   discovery_refresh_hours: 168
   supports_absence_expiry: false
   crawl:
-    max_pages: 5
-    max_requests_per_run: 12
+    max_pages: 20
+    max_requests_per_run: 250
     request_delay_ms: 1500
     timeout_seconds: 20
     retry_delays_seconds:
@@ -1611,6 +1633,17 @@ sources:
   suggestions:
     platform: custom
     needs_location_filter: true
+  board: ekum.fa.em2.oraclecloud.com/CX_2019
+  board_url: https://ekum.fa.em2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_2019
+  collection:
+    listing_url: https://ekum.fa.em2.oraclecloud.com/hcmRestApi/resources/latest/recruitingCEJobRequisitions
+    site: CX_2019
+    job_url_template: https://ekum.fa.em2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_2019/job/{id}
+  posting_company: Norwegian Refugee Council (NRC)
+  group_portal: true
+  official_careers_url: https://www.nrc.no/
+  review_reason: Provider-level public interface investigated; source-specific official
+    linkage, terms and complete local/hosted crawls remain required.
 - id: employer_1a047fd979fcdf88
   url: https://ampersand-energy.breezy.hr/
   import_urls:
@@ -1671,14 +1704,14 @@ sources:
   status: pending
   employer_ids:
   - emp_5444066ed894ac2c
-  access_method: null
+  access_method: workday
   country_filters: []
   refresh_hours: 24
   discovery_refresh_hours: 168
   supports_absence_expiry: false
   crawl:
-    max_pages: 5
-    max_requests_per_run: 12
+    max_pages: 20
+    max_requests_per_run: 250
     request_delay_ms: 1500
     timeout_seconds: 20
     retry_delays_seconds:
@@ -1689,6 +1722,16 @@ sources:
     platform: workday
     needs_location_filter: true
     shared_portal: true
+  board: absa.wd3.myworkdayjobs.com/ABSAcareersite
+  board_url: https://absa.wd3.myworkdayjobs.com/ABSAcareersite?locationCountry=9e684fd7be1e469d9ee955a4c3b754be
+  collection:
+    listing_url: https://absa.wd3.myworkdayjobs.com/wday/cxs/absa/ABSAcareersite/jobs
+    public_board_url: https://absa.wd3.myworkdayjobs.com/ABSAcareersite
+  posting_company: Absa Bank Kenya
+  group_portal: true
+  official_careers_url: https://www.absabank.co.ke/
+  review_reason: Provider-level public interface investigated; source-specific official
+    linkage, terms and complete local/hosted crawls remain required.
 - id: employer_1a46b912119f5c69
   url: https://jobs.citi.com/search-jobs/Kenya/287/2/192950/1/38/50/2
   import_urls:
@@ -1975,18 +2018,18 @@ sources:
   url: https://careers.unilever.com/en/kenya
   import_urls:
   - https://careers.unilever.com/en/kenya
-  platform: custom
+  platform: workday
   status: pending
   employer_ids:
   - emp_c380442e5fa893b3
-  access_method: null
+  access_method: workday
   country_filters: []
   refresh_hours: 24
   discovery_refresh_hours: 168
   supports_absence_expiry: false
   crawl:
-    max_pages: 5
-    max_requests_per_run: 12
+    max_pages: 20
+    max_requests_per_run: 250
     request_delay_ms: 1500
     timeout_seconds: 20
     retry_delays_seconds:
@@ -1995,6 +2038,16 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+  board: unilever.wd3.myworkdayjobs.com/Unilever_Experienced_Professionals
+  board_url: https://unilever.wd3.myworkdayjobs.com/Unilever_Experienced_Professionals/userHome
+  collection:
+    listing_url: https://unilever.wd3.myworkdayjobs.com/wday/cxs/unilever/Unilever_Experienced_Professionals/jobs
+    public_board_url: https://unilever.wd3.myworkdayjobs.com/Unilever_Experienced_Professionals
+  posting_company: Unilever Kenya
+  group_portal: true
+  official_careers_url: https://www.unilever.co.ke/
+  review_reason: Provider-level public interface investigated; source-specific official
+    linkage, terms and complete local/hosted crawls remain required.
 - id: employer_1e9ab19444f69e86
   url: https://livinggoods.applytojob.com/
   import_urls:
@@ -2976,14 +3029,14 @@ sources:
   employer_ids:
   - emp_87517eaef4fc3d13
   - emp_04ec4e6c186e0573
-  access_method: null
+  access_method: oracle
   country_filters: []
   refresh_hours: 24
   discovery_refresh_hours: 168
   supports_absence_expiry: false
   crawl:
-    max_pages: 5
-    max_requests_per_run: 12
+    max_pages: 20
+    max_requests_per_run: 250
     request_delay_ms: 1500
     timeout_seconds: 20
     retry_delays_seconds:
@@ -2992,6 +3045,17 @@ sources:
   verification: {}
   suggestions:
     platform: oracle
+  board: egjd.fa.us6.oraclecloud.com/CX
+  board_url: https://egjd.fa.us6.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX/jobs
+  collection:
+    listing_url: https://egjd.fa.us6.oraclecloud.com/hcmRestApi/resources/latest/recruitingCEJobRequisitions
+    site: CX
+    job_url_template: https://egjd.fa.us6.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX/job/{id}
+  posting_company: Safaricom / M-PESA
+  group_portal: true
+  official_careers_url: https://www.safaricom.co.ke/
+  review_reason: Provider-level public interface investigated; source-specific official
+    linkage, terms and complete local/hosted crawls remain required.
 - id: employer_2e748fa1969076f6
   url: https://imbank.myadrenalin.com/CANDMICROSITE/#/
   import_urls:
@@ -3221,19 +3285,19 @@ sources:
   url: https://careers.nttdata.com/global/en
   import_urls:
   - https://careers.nttdata.com/global/en
-  platform: custom
+  platform: workday
   status: pending
   employer_ids:
   - emp_41099081913c2c05
   - emp_f2100767bc901dd2
-  access_method: null
+  access_method: workday
   country_filters: []
   refresh_hours: 24
   discovery_refresh_hours: 168
   supports_absence_expiry: false
   crawl:
-    max_pages: 5
-    max_requests_per_run: 12
+    max_pages: 20
+    max_requests_per_run: 250
     request_delay_ms: 1500
     timeout_seconds: 20
     retry_delays_seconds:
@@ -3243,12 +3307,22 @@ sources:
   suggestions:
     platform: custom
     shared_portal: true
+  board: nttglobaldatacenters.wd501.myworkdayjobs.com/External
+  board_url: https://nttglobaldatacenters.wd501.myworkdayjobs.com/External
+  collection:
+    listing_url: https://nttglobaldatacenters.wd501.myworkdayjobs.com/wday/cxs/nttglobaldatacenters/External/jobs
+    public_board_url: https://nttglobaldatacenters.wd501.myworkdayjobs.com/External
+  posting_company: NTT DATA Kenya / former Dimension Data and Internet Solutions
+  group_portal: true
+  official_careers_url: https://www.nttdata.com/
+  review_reason: Provider-level public interface investigated; source-specific official
+    linkage, terms and complete local/hosted crawls remain required.
 - id: employer_330116662c9692d6
   url: https://watu.applytojob.com/apply
   import_urls:
   - https://watu.applytojob.com/apply
   platform: jazzhr
-  status: verified
+  status: active
   employer_ids:
   - emp_b62851db272a19a3
   access_method: jsonld
@@ -3277,12 +3351,16 @@ sources:
     evidence_paths:
     - docs/employer-discovery/jazzhr-local/employer_330116662c9692d6.json
     - docs/employer-discovery/jazzhr-github/employer_330116662c9692d6.json
+    - docs/employer-discovery/jazzhr-trial/audit.json
     collection_basis: Reviewed official employer linkage to the public JazzHR career
       board; per-path robots permit collection. Collect only factual vacancy title,
       employer, location, dates and original application URL; never descriptions,
       logos or applicant data. No automated-access restriction was identified for
       these public ATS pages. No claim of an explicit redistribution licence.
     collection_review_url: https://watu.com/legal/terms-of-use/
+    trial_review: true
+    publication_review: true
+    reviewed_at: '2026-10-25T15:25:04.910327+00:00'
   suggestions:
     platform: jazzhr
     needs_location_filter: true
@@ -3298,9 +3376,11 @@ sources:
       title: <div[^>]*class=[\"\x27]job-header[\"\x27][^>]*>.*?<h2[^>]*>(.*?)</h2>
       location: <div[^>]*title=[\"\x27]Location[\"\x27][^>]*>(.*?)</div>
       employment_type: <div[^>]*id=[\"\x27]resumator-job-employment[\"\x27][^>]*>(.*?)</div>
-  review_reason: Local complete vacancy crawl verified; awaiting hosted access and
-    isolated trial.
+  review_reason: Local and hosted complete crawls and isolated trial reviewed. Five
+    Watu roles explicitly list Nairobi, Kenya. Branch/CrossBoundary overseas roles
+    remain excluded.
   board: watu
+  reviewed_bootstrap: true
 - id: employer_33d6a4b726a4ec85
   url: https://ke.linkedin.com/company/ushahidi
   import_urls:
@@ -3826,18 +3906,18 @@ sources:
   url: https://www.nala.com/careers1
   import_urls:
   - https://www.nala.com/careers1
-  platform: custom
+  platform: workable
   status: pending
   employer_ids:
   - emp_984566006e343721
-  access_method: null
+  access_method: workable
   country_filters: []
   refresh_hours: 24
   discovery_refresh_hours: 168
   supports_absence_expiry: false
   crawl:
-    max_pages: 5
-    max_requests_per_run: 12
+    max_pages: 20
+    max_requests_per_run: 250
     request_delay_ms: 1500
     timeout_seconds: 20
     retry_delays_seconds:
@@ -3846,6 +3926,17 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+  board: nalamoney
+  board_url: https://apply.workable.com/nalamoney/
+  collection:
+    listing_url: https://www.workable.com/api/accounts/nalamoney
+    allowed_hosts:
+    - apply.workable.com
+  posting_company: NALA
+  group_portal: true
+  official_careers_url: https://www.nala.com/
+  review_reason: Provider-level public interface investigated; source-specific official
+    linkage, terms and complete local/hosted crawls remain required.
 - id: employer_398ede9dbf408d0a
   url: https://treasury.go.ke/vacancy
   import_urls:
@@ -4019,18 +4110,18 @@ sources:
   url: https://azafinance.com/careers/
   import_urls:
   - https://azafinance.com/careers/
-  platform: custom
+  platform: workable
   status: pending
   employer_ids:
   - emp_4f18188c41e54b65
-  access_method: null
+  access_method: workable
   country_filters: []
   refresh_hours: 24
   discovery_refresh_hours: 168
   supports_absence_expiry: false
   crawl:
-    max_pages: 5
-    max_requests_per_run: 12
+    max_pages: 20
+    max_requests_per_run: 250
     request_delay_ms: 1500
     timeout_seconds: 20
     retry_delays_seconds:
@@ -4039,6 +4130,17 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+  board: azafinance
+  board_url: https://apply.workable.com/azafinance/
+  collection:
+    listing_url: https://www.workable.com/api/accounts/azafinance
+    allowed_hosts:
+    - apply.workable.com
+  posting_company: AZA Finance
+  group_portal: true
+  official_careers_url: https://azafinance.com/
+  review_reason: Provider-level public interface investigated; source-specific official
+    linkage, terms and complete local/hosted crawls remain required.
 - id: employer_3bf4c7f32738cf5a
   url: https://chippercash.com/careers
   import_urls:
@@ -4095,14 +4197,14 @@ sources:
   status: pending
   employer_ids:
   - emp_ca6d66a428dbc651
-  access_method: null
+  access_method: oracle
   country_filters: []
   refresh_hours: 24
   discovery_refresh_hours: 168
   supports_absence_expiry: false
   crawl:
-    max_pages: 5
-    max_requests_per_run: 12
+    max_pages: 20
+    max_requests_per_run: 250
     request_delay_ms: 1500
     timeout_seconds: 20
     retry_delays_seconds:
@@ -4113,6 +4215,17 @@ sources:
     platform: oracle
     needs_location_filter: true
     shared_portal: true
+  board: esal.fa.ocs.oraclecloud.com/CX_2
+  board_url: https://esal.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_2/jobs
+  collection:
+    listing_url: https://esal.fa.ocs.oraclecloud.com/hcmRestApi/resources/latest/recruitingCEJobRequisitions
+    site: CX_2
+    job_url_template: https://esal.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_2/job/{id}
+  posting_company: Central Bank of Kenya
+  group_portal: true
+  official_careers_url: https://www.centralbank.go.ke/
+  review_reason: Provider-level public interface investigated; source-specific official
+    linkage, terms and complete local/hosted crawls remain required.
 - id: employer_3d177724feacdda1
   url: https://ke.linkedin.com/company/ofgen
   import_urls:
@@ -4592,14 +4705,14 @@ sources:
   status: pending
   employer_ids:
   - emp_e157bd7466cc361d
-  access_method: null
+  access_method: workday
   country_filters: []
   refresh_hours: 24
   discovery_refresh_hours: 168
   supports_absence_expiry: false
   crawl:
-    max_pages: 5
-    max_requests_per_run: 12
+    max_pages: 20
+    max_requests_per_run: 250
     request_delay_ms: 1500
     timeout_seconds: 20
     retry_delays_seconds:
@@ -4609,6 +4722,16 @@ sources:
   suggestions:
     platform: workday
     needs_location_filter: true
+  board: wfp.wd3.myworkdayjobs.com/job_openings
+  board_url: https://wfp.wd3.myworkdayjobs.com/job_openings
+  collection:
+    listing_url: https://wfp.wd3.myworkdayjobs.com/wday/cxs/wfp/job_openings/jobs
+    public_board_url: https://wfp.wd3.myworkdayjobs.com/job_openings
+  posting_company: World Food Programme (WFP)
+  group_portal: true
+  official_careers_url: https://www.wfp.org/countries/kenya
+  review_reason: Provider-level public interface investigated; source-specific official
+    linkage, terms and complete local/hosted crawls remain required.
 - id: employer_43cdbfb4a567343f
   url: https://egpy.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/JoinAbt
   import_urls:
@@ -4617,14 +4740,14 @@ sources:
   status: pending
   employer_ids:
   - emp_25d8ee73777c713e
-  access_method: null
+  access_method: oracle
   country_filters: []
   refresh_hours: 24
   discovery_refresh_hours: 168
   supports_absence_expiry: false
   crawl:
-    max_pages: 5
-    max_requests_per_run: 12
+    max_pages: 20
+    max_requests_per_run: 250
     request_delay_ms: 1500
     timeout_seconds: 20
     retry_delays_seconds:
@@ -4634,6 +4757,17 @@ sources:
   suggestions:
     platform: oracle
     needs_location_filter: true
+  board: egpy.fa.us2.oraclecloud.com/JoinAbt
+  board_url: https://egpy.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/JoinAbt
+  collection:
+    listing_url: https://egpy.fa.us2.oraclecloud.com/hcmRestApi/resources/latest/recruitingCEJobRequisitions
+    site: JoinAbt
+    job_url_template: https://egpy.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/JoinAbt/job/{id}
+  posting_company: Abt Global
+  group_portal: true
+  official_careers_url: https://www.abtglobal.com/
+  review_reason: Provider-level public interface investigated; source-specific official
+    linkage, terms and complete local/hosted crawls remain required.
 - id: employer_4494d34d4e846387
   url: https://www.ketraco.co.ke/about-us/careers
   import_urls:
@@ -4980,7 +5114,7 @@ sources:
   import_urls:
   - https://crossboundary.applytojob.com/apply
   platform: jazzhr
-  status: verified
+  status: active
   employer_ids:
   - emp_eb492e9b9dfdaa1c
   access_method: jsonld
@@ -5009,12 +5143,16 @@ sources:
     evidence_paths:
     - docs/employer-discovery/jazzhr-local/employer_4b5f0d16f35b56cb.json
     - docs/employer-discovery/jazzhr-github/employer_4b5f0d16f35b56cb.json
+    - docs/employer-discovery/jazzhr-trial/audit.json
     collection_basis: Reviewed official employer linkage to the public JazzHR career
       board; per-path robots permit collection. Collect only factual vacancy title,
       employer, location, dates and original application URL; never descriptions,
       logos or applicant data. No automated-access restriction was identified for
       these public ATS pages. No claim of an explicit redistribution licence.
     collection_review_url: https://crossboundary.com/privacy-policy/
+    trial_review: true
+    publication_review: true
+    reviewed_at: '2026-10-25T15:25:04.910327+00:00'
   suggestions:
     platform: jazzhr
     shared_portal: true
@@ -5030,9 +5168,11 @@ sources:
       title: <div[^>]*class=[\"\x27]job-header[\"\x27][^>]*>.*?<h2[^>]*>(.*?)</h2>
       location: <div[^>]*title=[\"\x27]Location[\"\x27][^>]*>(.*?)</div>
       employment_type: <div[^>]*id=[\"\x27]resumator-job-employment[\"\x27][^>]*>(.*?)</div>
-  review_reason: Local complete vacancy crawl verified; awaiting hosted access and
-    isolated trial.
+  review_reason: Local and hosted complete crawls and isolated trial reviewed. Five
+    Watu roles explicitly list Nairobi, Kenya. Branch/CrossBoundary overseas roles
+    remain excluded.
   board: crossboundary
+  reviewed_bootstrap: true
 - id: employer_4b667497eb06186f
   url: https://jobs.ksa.go.ke/
   import_urls:
@@ -6466,18 +6606,18 @@ sources:
   url: https://www.infobip.com/careers
   import_urls:
   - https://www.infobip.com/careers
-  platform: custom
+  platform: workday
   status: pending
   employer_ids:
   - emp_0017439737eed57d
-  access_method: null
+  access_method: workday
   country_filters: []
   refresh_hours: 24
   discovery_refresh_hours: 168
   supports_absence_expiry: false
   crawl:
-    max_pages: 5
-    max_requests_per_run: 12
+    max_pages: 20
+    max_requests_per_run: 250
     request_delay_ms: 1500
     timeout_seconds: 20
     retry_delays_seconds:
@@ -6486,6 +6626,16 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+  board: infobip.wd3.myworkdayjobs.com/InfobipCareers
+  board_url: https://infobip.wd3.myworkdayjobs.com/en-US/InfobipCareers/introduceYourself
+  collection:
+    listing_url: https://infobip.wd3.myworkdayjobs.com/wday/cxs/infobip/InfobipCareers/jobs
+    public_board_url: https://infobip.wd3.myworkdayjobs.com/InfobipCareers
+  posting_company: Infobip Kenya
+  group_portal: true
+  official_careers_url: https://www.infobip.com/
+  review_reason: Provider-level public interface investigated; source-specific official
+    linkage, terms and complete local/hosted crawls remain required.
 - id: employer_6123edf0db94e3a1
   url: https://job-boards.greenhouse.io/jumia
   import_urls:
@@ -9461,18 +9611,18 @@ sources:
   url: https://ecobank.com/group/about-us/careers
   import_urls:
   - https://ecobank.com/group/about-us/careers
-  platform: custom
+  platform: oracle
   status: pending
   employer_ids:
   - emp_b78326ef88606b7e
-  access_method: null
+  access_method: oracle
   country_filters: []
   refresh_hours: 24
   discovery_refresh_hours: 168
   supports_absence_expiry: false
   crawl:
-    max_pages: 5
-    max_requests_per_run: 12
+    max_pages: 20
+    max_requests_per_run: 250
     request_delay_ms: 1500
     timeout_seconds: 20
     retry_delays_seconds:
@@ -9483,6 +9633,17 @@ sources:
     platform: custom
     needs_location_filter: true
     shared_portal: true
+  board: fa-emqf-saasfaprod1.fa.ocs.oraclecloud.com/CX_1004
+  board_url: https://fa-emqf-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1004
+  collection:
+    listing_url: https://fa-emqf-saasfaprod1.fa.ocs.oraclecloud.com/hcmRestApi/resources/latest/recruitingCEJobRequisitions
+    site: CX_1004
+    job_url_template: https://fa-emqf-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1004/job/{id}
+  posting_company: Ecobank Kenya
+  group_portal: true
+  official_careers_url: https://ecobank.com/
+  review_reason: Provider-level public interface investigated; source-specific official
+    linkage, terms and complete local/hosted crawls remain required.
 - id: employer_90e76007afd3802a
   url: https://nlsbanking.com/news/african-banking-tech/
   import_urls:
@@ -10364,14 +10525,14 @@ sources:
   status: pending
   employer_ids:
   - emp_8119feb074e3b5cc
-  access_method: null
+  access_method: workable
   country_filters: []
   refresh_hours: 24
   discovery_refresh_hours: 168
   supports_absence_expiry: false
   crawl:
-    max_pages: 5
-    max_requests_per_run: 12
+    max_pages: 20
+    max_requests_per_run: 250
     request_delay_ms: 1500
     timeout_seconds: 20
     retry_delays_seconds:
@@ -10380,6 +10541,17 @@ sources:
   verification: {}
   suggestions:
     platform: workable
+  board: genesis-analytics
+  board_url: https://apply.workable.com/genesis-analytics/
+  collection:
+    listing_url: https://www.workable.com/api/accounts/genesis-analytics
+    allowed_hosts:
+    - apply.workable.com
+  posting_company: Genesis Analytics
+  group_portal: true
+  official_careers_url: https://www.genesis-analytics.com/
+  review_reason: Provider-level public interface investigated; source-specific official
+    linkage, terms and complete local/hosted crawls remain required.
 - id: employer_a1dbcb35510e643c
   url: https://ke.linkedin.com/company/equatorenergy
   import_urls:
@@ -10536,18 +10708,18 @@ sources:
   url: https://icaocareers.icao.int/careers
   import_urls:
   - https://icaocareers.icao.int/careers
-  platform: custom
+  platform: oracle
   status: pending
   employer_ids:
   - emp_ca5740179fae7737
-  access_method: null
+  access_method: oracle
   country_filters: []
   refresh_hours: 24
   discovery_refresh_hours: 168
   supports_absence_expiry: false
   crawl:
-    max_pages: 5
-    max_requests_per_run: 12
+    max_pages: 20
+    max_requests_per_run: 250
     request_delay_ms: 1500
     timeout_seconds: 20
     retry_delays_seconds:
@@ -10556,6 +10728,17 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+  board: estm.fa.em2.oraclecloud.com/CX_1
+  board_url: https://estm.fa.em2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/requisitions/job/20288
+  collection:
+    listing_url: https://estm.fa.em2.oraclecloud.com/hcmRestApi/resources/latest/recruitingCEJobRequisitions
+    site: CX_1
+    job_url_template: https://estm.fa.em2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/{id}
+  posting_company: International Civil Aviation Organization (ICAO), ESAF
+  group_portal: true
+  official_careers_url: https://www.icao.int/
+  review_reason: Provider-level public interface investigated; source-specific official
+    linkage, terms and complete local/hosted crawls remain required.
 - id: employer_a38d40ab90955d53
   url: https://kws.go.ke/careers/
   import_urls:
@@ -10714,14 +10897,14 @@ sources:
   employer_ids:
   - emp_e3fa7e720c40fe4b
   - emp_8bd8c4545172bfad
-  access_method: null
+  access_method: workday
   country_filters: []
   refresh_hours: 24
   discovery_refresh_hours: 168
   supports_absence_expiry: false
   crawl:
-    max_pages: 5
-    max_requests_per_run: 12
+    max_pages: 20
+    max_requests_per_run: 250
     request_delay_ms: 1500
     timeout_seconds: 20
     retry_delays_seconds:
@@ -10732,6 +10915,16 @@ sources:
     platform: workday
     needs_location_filter: true
     shared_portal: true
+  board: oldmutual.wd3.myworkdayjobs.com/Old_Mutual_Careers
+  board_url: https://oldmutual.wd3.myworkdayjobs.com/Old_Mutual_Careers
+  collection:
+    listing_url: https://oldmutual.wd3.myworkdayjobs.com/wday/cxs/oldmutual/Old_Mutual_Careers/jobs
+    public_board_url: https://oldmutual.wd3.myworkdayjobs.com/Old_Mutual_Careers
+  posting_company: Faulu Microfinance Bank
+  group_portal: true
+  official_careers_url: https://www.faulukenya.com/
+  review_reason: Provider-level public interface investigated; source-specific official
+    linkage, terms and complete local/hosted crawls remain required.
 - id: employer_a76dd8e486c6387f
   url: https://www.odpc.go.ke/careers/
   import_urls:
@@ -10813,14 +11006,14 @@ sources:
   status: pending
   employer_ids:
   - emp_055af5f2568edd19
-  access_method: null
+  access_method: oracle
   country_filters: []
   refresh_hours: 24
   discovery_refresh_hours: 168
   supports_absence_expiry: false
   crawl:
-    max_pages: 5
-    max_requests_per_run: 12
+    max_pages: 20
+    max_requests_per_run: 250
     request_delay_ms: 1500
     timeout_seconds: 20
     retry_delays_seconds:
@@ -10831,6 +11024,17 @@ sources:
     platform: oracle
     needs_location_filter: true
     shared_portal: true
+  board: eoin.fa.em3.oraclecloud.com/CX_3001
+  board_url: https://eoin.fa.em3.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_3001/jobs
+  collection:
+    listing_url: https://eoin.fa.em3.oraclecloud.com/hcmRestApi/resources/latest/recruitingCEJobRequisitions
+    site: CX_3001
+    job_url_template: https://eoin.fa.em3.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_3001/job/{id}
+  posting_company: KCB Bank Kenya
+  group_portal: true
+  official_careers_url: https://ke.kcbgroup.com/
+  review_reason: Provider-level public interface investigated; source-specific official
+    linkage, terms and complete local/hosted crawls remain required.
 - id: employer_a8bcbf91d53aa45f
   url: https://www.airtelkenya.com/ke/about/Careers
   import_urls:
@@ -11589,14 +11793,14 @@ sources:
   status: pending
   employer_ids:
   - emp_d432ea94e7a883d7
-  access_method: null
+  access_method: oracle
   country_filters: []
   refresh_hours: 24
   discovery_refresh_hours: 168
   supports_absence_expiry: false
   crawl:
-    max_pages: 5
-    max_requests_per_run: 12
+    max_pages: 20
+    max_requests_per_run: 250
     request_delay_ms: 1500
     timeout_seconds: 20
     retry_delays_seconds:
@@ -11606,6 +11810,17 @@ sources:
   suggestions:
     platform: oracle
     needs_location_filter: true
+  board: hdsn.fa.us6.oraclecloud.com/CX_1
+  board_url: https://hdsn.fa.us6.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/jobs
+  collection:
+    listing_url: https://hdsn.fa.us6.oraclecloud.com/hcmRestApi/resources/latest/recruitingCEJobRequisitions
+    site: CX_1
+    job_url_template: https://hdsn.fa.us6.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/{id}
+  posting_company: American Tower / ATC Kenya
+  group_portal: true
+  official_careers_url: https://www.americantower.com/
+  review_reason: Provider-level public interface investigated; source-specific official
+    linkage, terms and complete local/hosted crawls remain required.
 - id: employer_b6972e2057a6ccc6
   url: https://creditbank.co.ke/careers/
   import_urls:
@@ -12157,7 +12372,7 @@ sources:
   import_urls:
   - https://branchinternational.applytojob.com/apply
   platform: jazzhr
-  status: verified
+  status: active
   employer_ids:
   - emp_b7eefb3774e189ef
   - emp_679d70135293eb8c
@@ -12187,12 +12402,16 @@ sources:
     evidence_paths:
     - docs/employer-discovery/jazzhr-local/employer_c193c4698b6e5e81.json
     - docs/employer-discovery/jazzhr-github/employer_c193c4698b6e5e81.json
+    - docs/employer-discovery/jazzhr-trial/audit.json
     collection_basis: Reviewed official employer linkage to the public JazzHR career
       board; per-path robots permit collection. Collect only factual vacancy title,
       employer, location, dates and original application URL; never descriptions,
       logos or applicant data. No automated-access restriction was identified for
       these public ATS pages. No claim of an explicit redistribution licence.
     collection_review_url: https://www.branch.co/legal/terms-of-use
+    trial_review: true
+    publication_review: true
+    reviewed_at: '2026-10-25T15:25:04.910327+00:00'
   suggestions:
     platform: jazzhr
     needs_location_filter: true
@@ -12209,9 +12428,11 @@ sources:
       title: <div[^>]*class=[\"\x27]job-header[\"\x27][^>]*>.*?<h2[^>]*>(.*?)</h2>
       location: <div[^>]*title=[\"\x27]Location[\"\x27][^>]*>(.*?)</div>
       employment_type: <div[^>]*id=[\"\x27]resumator-job-employment[\"\x27][^>]*>(.*?)</div>
-  review_reason: Local complete vacancy crawl verified; awaiting hosted access and
-    isolated trial.
+  review_reason: Local and hosted complete crawls and isolated trial reviewed. Five
+    Watu roles explicitly list Nairobi, Kenya. Branch/CrossBoundary overseas roles
+    remain excluded.
   board: branchinternational
+  reviewed_bootstrap: true
 - id: employer_c1bab15763b88e41
   url: https://musonisystem.com/careers/
   import_urls:
@@ -12497,7 +12718,7 @@ sources:
   import_urls:
   - https://www.umba.com/kenya/careers
   platform: custom
-  status: pending
+  status: manual
   employer_ids:
   - emp_dc3c051b4f382ae0
   - emp_4effda4abc5bca42
@@ -12514,11 +12735,14 @@ sources:
     retry_delays_seconds:
     - 5
     - 20
-  verification: {}
+  verification:
+    collection_review: false
   suggestions:
     platform: custom
     needs_location_filter: true
     shared_portal: true
+  review_reason: 'Umba Terms of Service section 21 restrict automated access without
+    permission: https://www.umba.com/kenya/transparency?tab=tab-terms'
 - id: employer_c637ac832ed9e5ee
   url: https://www.sbmbank.co.ke/jobs
   import_urls:
@@ -12798,14 +13022,14 @@ sources:
   status: pending
   employer_ids:
   - emp_94d06fea3565ca0d
-  access_method: null
+  access_method: workday
   country_filters: []
   refresh_hours: 24
   discovery_refresh_hours: 168
   supports_absence_expiry: false
   crawl:
-    max_pages: 5
-    max_requests_per_run: 12
+    max_pages: 20
+    max_requests_per_run: 250
     request_delay_ms: 1500
     timeout_seconds: 20
     retry_delays_seconds:
@@ -12816,6 +13040,16 @@ sources:
     platform: workday
     needs_location_filter: true
     shared_portal: true
+  board: absa.wd3.myworkdayjobs.com/ABSAcareersite
+  board_url: https://absa.wd3.myworkdayjobs.com/ABSAcareersite
+  collection:
+    listing_url: https://absa.wd3.myworkdayjobs.com/wday/cxs/absa/ABSAcareersite/jobs
+    public_board_url: https://absa.wd3.myworkdayjobs.com/ABSAcareersite
+  posting_company: Absa Life Assurance Kenya
+  group_portal: true
+  official_careers_url: https://www.absalife.co.ke/
+  review_reason: Provider-level public interface investigated; source-specific official
+    linkage, terms and complete local/hosted crawls remain required.
 - id: employer_caa4f929e22cfd1a
   url: https://www.kemri.go.ke/e-recruitment/
   import_urls:
@@ -13361,18 +13595,18 @@ sources:
   url: https://www.controlrisks.com/careers
   import_urls:
   - https://www.controlrisks.com/careers
-  platform: custom
+  platform: workable
   status: pending
   employer_ids:
   - emp_ce5e71603a54fc35
-  access_method: null
+  access_method: workable
   country_filters: []
   refresh_hours: 24
   discovery_refresh_hours: 168
   supports_absence_expiry: false
   crawl:
-    max_pages: 5
-    max_requests_per_run: 12
+    max_pages: 20
+    max_requests_per_run: 250
     request_delay_ms: 1500
     timeout_seconds: 20
     retry_delays_seconds:
@@ -13381,6 +13615,17 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+  board: control-risks-6
+  board_url: https://apply.workable.com/control-risks-6/
+  collection:
+    listing_url: https://www.workable.com/api/accounts/control-risks-6
+    allowed_hosts:
+    - apply.workable.com
+  posting_company: Control Risks
+  group_portal: true
+  official_careers_url: https://www.controlrisks.com/
+  review_reason: Provider-level public interface investigated; source-specific official
+    linkage, terms and complete local/hosted crawls remain required.
 - id: employer_d5f5be8670b7b42d
   url: https://choice-bank.com/careers
   import_urls:
@@ -14110,18 +14355,18 @@ sources:
   url: https://www.cloudfactory.com/careers
   import_urls:
   - https://www.cloudfactory.com/careers
-  platform: custom
+  platform: workable
   status: pending
   employer_ids:
   - emp_db3b862ccd86ca1a
-  access_method: null
+  access_method: workable
   country_filters: []
   refresh_hours: 24
   discovery_refresh_hours: 168
   supports_absence_expiry: false
   crawl:
-    max_pages: 5
-    max_requests_per_run: 12
+    max_pages: 20
+    max_requests_per_run: 250
     request_delay_ms: 1500
     timeout_seconds: 20
     retry_delays_seconds:
@@ -14130,6 +14375,17 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+  board: cloudfactory
+  board_url: https://apply.workable.com/cloudfactory/
+  collection:
+    listing_url: https://www.workable.com/api/accounts/cloudfactory
+    allowed_hosts:
+    - apply.workable.com
+  posting_company: CloudFactory
+  group_portal: true
+  official_careers_url: https://www.cloudfactory.com/
+  review_reason: Provider-level public interface investigated; source-specific official
+    linkage, terms and complete local/hosted crawls remain required.
 - id: employer_de3f8390559db033
   url: https://kijabehospital.or.ke/Recruit
   import_urls:
@@ -14233,18 +14489,18 @@ sources:
   url: https://www.bupaglobal.com/careers
   import_urls:
   - https://www.bupaglobal.com/careers
-  platform: custom
+  platform: workday
   status: pending
   employer_ids:
   - emp_9cfcb5e41a6573a8
-  access_method: null
+  access_method: workday
   country_filters: []
   refresh_hours: 24
   discovery_refresh_hours: 168
   supports_absence_expiry: false
   crawl:
-    max_pages: 5
-    max_requests_per_run: 12
+    max_pages: 20
+    max_requests_per_run: 250
     request_delay_ms: 1500
     timeout_seconds: 20
     retry_delays_seconds:
@@ -14253,6 +14509,16 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+  board: bupa.wd3.myworkdayjobs.com/EXT_CAREER
+  board_url: https://bupa.wd3.myworkdayjobs.com/EXT_CAREER
+  collection:
+    listing_url: https://bupa.wd3.myworkdayjobs.com/wday/cxs/bupa/EXT_CAREER/jobs
+    public_board_url: https://bupa.wd3.myworkdayjobs.com/EXT_CAREER
+  posting_company: Bupa Global Insurance
+  group_portal: true
+  official_careers_url: https://www.bupaglobal.com/
+  review_reason: Provider-level public interface investigated; source-specific official
+    linkage, terms and complete local/hosted crawls remain required.
 - id: employer_e2adfc186b5ce9a7
   url: https://kenafric.com/careers/
   import_urls:
@@ -14919,18 +15185,18 @@ sources:
   url: https://www.path.org/who-we-are/careers/
   import_urls:
   - https://www.path.org/who-we-are/careers/
-  platform: custom
+  platform: workday
   status: pending
   employer_ids:
   - emp_5a7078c5240cd113
-  access_method: null
+  access_method: workday
   country_filters: []
   refresh_hours: 24
   discovery_refresh_hours: 168
   supports_absence_expiry: false
   crawl:
-    max_pages: 5
-    max_requests_per_run: 12
+    max_pages: 20
+    max_requests_per_run: 250
     request_delay_ms: 1500
     timeout_seconds: 20
     retry_delays_seconds:
@@ -14940,6 +15206,16 @@ sources:
   suggestions:
     platform: custom
     needs_location_filter: true
+  board: path.wd1.myworkdayjobs.com/External
+  board_url: https://path.wd1.myworkdayjobs.com/External
+  collection:
+    listing_url: https://path.wd1.myworkdayjobs.com/wday/cxs/path/External/jobs
+    public_board_url: https://path.wd1.myworkdayjobs.com/External
+  posting_company: PATH
+  group_portal: true
+  official_careers_url: https://www.path.org/
+  review_reason: Provider-level public interface investigated; source-specific official
+    linkage, terms and complete local/hosted crawls remain required.
 - id: employer_ecee009f40fe23d8
   url: https://www.gdc.co.ke/careers/
   import_urls:

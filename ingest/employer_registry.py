@@ -318,6 +318,16 @@ def board_identity(url: str):
             and len(parts) == 4
         ):
             token = parts[3]
+    elif provider == "oracle":
+        if "sites" in parts and len(parts) > parts.index("sites") + 1:
+            return provider, f"{parsed.hostname}/{parts[parts.index('sites') + 1]}"
+    elif provider == "workday":
+        sites = [part for part in parts if not re.fullmatch(r"[a-z]{2}-[A-Z]{2}", part)]
+        if sites:
+            return provider, f"{parsed.hostname}/{sites[0]}"
+    elif provider == "workable":
+        if parsed.hostname == "apply.workable.com" and parts and parts[0] != "j":
+            token = parts[0]
     if token and re.fullmatch(r"[A-Za-z0-9_-]+", token):
         return provider, token
     return None

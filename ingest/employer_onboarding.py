@@ -13,6 +13,7 @@ from urllib.parse import urljoin, urlsplit
 
 import httpx
 
+from ingest.adapters.public_ats import API_METHODS
 from ingest.adapters.registry_boards import SUPPORTED, board_endpoint
 from ingest.audit import read_json
 from ingest.dedupe.exact import canonicalize_apply_url, deduplicate_exact
@@ -157,7 +158,7 @@ def discover(source: dict, employers: dict, client=None, *, request_budget=8) ->
         result["detected_boards"] = detected[:15]
         candidate = source.get("board_url") or source["url"]
         board = urlsplit(candidate)
-        if source["platform"] in SUPPORTED | {"jazzhr"} and source.get("board"):
+        if source["platform"] in SUPPORTED | {"jazzhr"} | API_METHODS and source.get("board"):
             result["checks"]["official_link"] = any(
                 board_identity(url) == (source["platform"], source["board"]) for url in urls
             )
@@ -170,7 +171,7 @@ def discover(source: dict, employers: dict, client=None, *, request_budget=8) ->
         if collector_supported(source):
             endpoint = (
                 source["collection"]["listing_url"]
-                if source.get("access_method") in {"jsonld", "rss", "html", "pdf"}
+                if source.get("access_method") in {"jsonld", "rss", "html", "pdf"} | API_METHODS
                 else board_endpoint(source)
             )
             result["endpoint"] = endpoint

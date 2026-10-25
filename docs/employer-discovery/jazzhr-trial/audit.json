@@ -1,0 +1,1016 @@
+{
+  "additional_unique_jobs": 5,
+  "baseline_supplied": true,
+  "candidate_jobs": 5,
+  "checked_at": "2026-10-25T15:25:04.910327+00:00",
+  "mode": "trial",
+  "outcome": "SUCCESS",
+  "production_promoted": false,
+  "schema_version": 1,
+  "sources": [
+    {
+      "complete": true,
+      "duplicates_in_accepted": 0,
+      "eligibility_review": [
+        {
+          "job_id": "employer_c193c4698b6e5e81:5Yh7vkggwj",
+          "level": "UNKNOWN"
+        },
+        {
+          "job_id": "employer_c193c4698b6e5e81:dMUBwrXI5m",
+          "level": "UNKNOWN"
+        },
+        {
+          "job_id": "employer_c193c4698b6e5e81:dot1dA8cqx",
+          "level": "UNKNOWN"
+        }
+      ],
+      "eligible_jobs": 0,
+      "filtered_jobs": [
+        {
+          "external_id": "8rfTggdrz3",
+          "reason": "unclassified_title_or_unverified_context",
+          "title": "Legal Associate"
+        },
+        {
+          "external_id": "L8Rc01URhr",
+          "reason": "unclassified_title_or_unverified_context",
+          "title": "Product Builder"
+        },
+        {
+          "external_id": "PhMQiukn6N",
+          "reason": "unclassified_title_or_unverified_context",
+          "title": "Associate - Finance"
+        },
+        {
+          "external_id": "UPs1tGklS2",
+          "reason": "unclassified_title_or_unverified_context",
+          "title": "Senior Associate – Fraud Risk"
+        },
+        {
+          "external_id": "Z5Fkpwigp6",
+          "reason": "unclassified_title_or_unverified_context",
+          "title": "Senior Associate -Finance"
+        },
+        {
+          "external_id": "gJpJWdYtkO",
+          "reason": "unclassified_title_or_unverified_context",
+          "title": "Loan Operations Associate"
+        },
+        {
+          "external_id": "ktsfvhPTL2",
+          "reason": "unclassified_title_or_unverified_context",
+          "title": "Customer Success Associate - 6 months Contract"
+        },
+        {
+          "external_id": "zBG3MFTMS0",
+          "reason": "unclassified_title_or_unverified_context",
+          "title": "Collections Analyst - Campaign Management"
+        }
+      ],
+      "raw_jobs": 11,
+      "requests": [
+        {
+          "attempt": 1,
+          "duration_seconds": 0.036,
+          "error_type": null,
+          "host": "branchinternational.applytojob.com",
+          "http_status": 200,
+          "method": "GET",
+          "started_at": "2026-10-25T15:25:04.954523+00:00"
+        },
+        {
+          "attempt": 1,
+          "duration_seconds": 0.053,
+          "error_type": null,
+          "host": "branchinternational.applytojob.com",
+          "http_status": 200,
+          "method": "GET",
+          "started_at": "2026-10-25T15:25:06.490239+00:00"
+        },
+        {
+          "attempt": 1,
+          "duration_seconds": 0.515,
+          "error_type": null,
+          "host": "branchinternational.applytojob.com",
+          "http_status": 200,
+          "method": "GET",
+          "started_at": "2026-10-25T15:25:08.043251+00:00"
+        },
+        {
+          "attempt": 1,
+          "duration_seconds": 0.507,
+          "error_type": null,
+          "host": "branchinternational.applytojob.com",
+          "http_status": 200,
+          "method": "GET",
+          "started_at": "2026-10-25T15:25:10.058204+00:00"
+        },
+        {
+          "attempt": 1,
+          "duration_seconds": 0.494,
+          "error_type": null,
+          "host": "branchinternational.applytojob.com",
+          "http_status": 200,
+          "method": "GET",
+          "started_at": "2026-10-25T15:25:12.065329+00:00"
+        },
+        {
+          "attempt": 1,
+          "duration_seconds": 0.503,
+          "error_type": null,
+          "host": "branchinternational.applytojob.com",
+          "http_status": 200,
+          "method": "GET",
+          "started_at": "2026-10-25T15:25:14.059525+00:00"
+        },
+        {
+          "attempt": 1,
+          "duration_seconds": 0.5,
+          "error_type": null,
+          "host": "branchinternational.applytojob.com",
+          "http_status": 200,
+          "method": "GET",
+          "started_at": "2026-10-25T15:25:16.062387+00:00"
+        },
+        {
+          "attempt": 1,
+          "duration_seconds": 0.497,
+          "error_type": null,
+          "host": "branchinternational.applytojob.com",
+          "http_status": 200,
+          "method": "GET",
+          "started_at": "2026-10-25T15:25:18.062783+00:00"
+        },
+        {
+          "attempt": 1,
+          "duration_seconds": 0.499,
+          "error_type": null,
+          "host": "branchinternational.applytojob.com",
+          "http_status": 200,
+          "method": "GET",
+          "started_at": "2026-10-25T15:25:20.060312+00:00"
+        },
+        {
+          "attempt": 1,
+          "duration_seconds": 0.503,
+          "error_type": null,
+          "host": "branchinternational.applytojob.com",
+          "http_status": 200,
+          "method": "GET",
+          "started_at": "2026-10-25T15:25:22.059485+00:00"
+        },
+        {
+          "attempt": 1,
+          "duration_seconds": 0.507,
+          "error_type": null,
+          "host": "branchinternational.applytojob.com",
+          "http_status": 200,
+          "method": "GET",
+          "started_at": "2026-10-25T15:25:24.062626+00:00"
+        },
+        {
+          "attempt": 1,
+          "duration_seconds": 0.503,
+          "error_type": null,
+          "host": "branchinternational.applytojob.com",
+          "http_status": 200,
+          "method": "GET",
+          "started_at": "2026-10-25T15:25:26.069616+00:00"
+        },
+        {
+          "attempt": 1,
+          "duration_seconds": 0.502,
+          "error_type": null,
+          "host": "branchinternational.applytojob.com",
+          "http_status": 200,
+          "method": "GET",
+          "started_at": "2026-10-25T15:25:28.072278+00:00"
+        }
+      ],
+      "source_id": "employer_c193c4698b6e5e81",
+      "status": "SUCCESS",
+      "technical_jobs": 3,
+      "verification_gaps": []
+    },
+    {
+      "complete": true,
+      "duplicates_in_accepted": 0,
+      "eligibility_review": [
+        {
+          "job_id": "employer_330116662c9692d6:98pneDpyMM",
+          "level": "UNKNOWN"
+        },
+        {
+          "job_id": "employer_330116662c9692d6:DjM7yWxXnm",
+          "level": "UNKNOWN"
+        },
+        {
+          "job_id": "employer_330116662c9692d6:Jmij7tunT1",
+          "level": "UNKNOWN"
+        },
+        {
+          "job_id": "employer_330116662c9692d6:SoKFKG1JmN",
+          "level": "UNKNOWN"
+        },
+        {
+          "job_id": "employer_330116662c9692d6:YoJ676lFCV",
+          "level": "UNKNOWN"
+        },
+        {
+          "job_id": "employer_330116662c9692d6:hPuA5QCBOB",
+          "level": "UNKNOWN"
+        },
+        {
+          "job_id": "employer_330116662c9692d6:puSm1JShxR",
+          "level": "UNKNOWN"
+        }
+      ],
+      "eligible_jobs": 5,
+      "filtered_jobs": [
+        {
+          "external_id": "1d8nowbcNe",
+          "reason": "unclassified_title_or_unverified_context",
+          "title": "Junior Field Marketing Officer  - EV"
+        },
+        {
+          "external_id": "6WwbkEzC1V",
+          "reason": "unclassified_title_or_unverified_context",
+          "title": "Call Centre Officer"
+        },
+        {
+          "external_id": "7VbW0qoWIe",
+          "reason": "unclassified_title_or_unverified_context",
+          "title": "HRIS Specialist"
+        },
+        {
+          "external_id": "7rboQk8G4C",
+          "reason": "unclassified_title_or_unverified_context",
+          "title": "Back Office Analyst"
+        },
+        {
+          "external_id": "835z2xd83n",
+          "reason": "non_technical_function",
+          "title": "Regional Sales Manager NO/NE"
+        },
+        {
+          "external_id": "87kNO73Xv0",
+          "reason": "unclassified_title_or_unverified_context",
+          "title": "Customer Care Officer"
+        },
+        {
+          "external_id": "9Wp2wT6CYg",
+          "reason": "unclassified_title_or_unverified_context",
+          "title": "Process Analyst- Rwanda"
+        },
+        {
+          "external_id": "D9qta904ds",
+          "reason": "unclassified_title_or_unverified_context",
+          "title": "Customer Care Manager"
+        },
+        {
+          "external_id": "Edj5JO3AbG",
+          "reason": "unclassified_title_or_unverified_context",
+          "title": "Operations Support Manager - Devices"
+        },
+        {
+          "external_id": "MNPoSBv1o6",
+          "reason": "unclassified_title_or_unverified_context",
+          "title": "HR Shared Services Specialist"
+        },
+        {
+          "external_id": "Ms3sMEojQv",
+          "reason": "unclassified_title_or_unverified_context",
+          "title": "Process Analyst-Sierra Leone"
+        },
+        {
+          "external_id": "NVOZY9ArSY",
+          "reason": "unclassified_title_or_unverified_context",
+          "title": "Client Relations Officer"
+        },
+        {
+          "external_id": "ORaQqMarXl",
+          "reason": "unclassified_title_or_unverified_context",
+          "title": "Senior Fullstack Engineer"
+        },
+        {
+          "external_id": "SUNIOOPncj",
+          "reason": "non_technical_function",
+          "title": "Sales Manager"
+        },
+        {
+          "external_id": "WDFd8LNwDR",
+          "reason": "unclassified_title_or_unverified_context",
+          "title": "Retail Channel Manager"
+        },
+        {
+          "external_id": "YdBpc5x73z",
+          "reason": "unclassified_title_or_unverified_context",
+          "title": "HRIS Specialist"
+        },
+        {
+          "external_id": "YxgQYAEt8p",
+          "reason": "non_technical_function",
+          "title": "Sales Manager"
+        },
+        {
+          "external_id": "cL7ep7SQNh",
+          "reason": "unclassified_title_or_unverified_context",
+          "title": "Sales Representative_Simu"
+        },
+        {
+          "external_id": "dRDlv3lv8O",
+          "reason": "non_technical_function",
+          "title": "Sales Executive"
+        },
+        {
+          "external_id": "ek3nWnVCXO",
+          "reason": "unclassified_title_or_unverified_context",
+          "title": "ANALISTA SÊNIOR DE PREVENÇÃO A FRAUDES"
+        },
+        {
+          "external_id": "fQ47MCjcoG",
+          "reason": "unclassified_title_or_unverified_context",
+          "title": "Dealer & Field Sales Training Lead"
+        },
+        {
+          "external_id": "fh3BNpglAj",
+          "reason": "unclassified_title_or_unverified_context",
+          "title": "Internal Auditor"
+        },
+        {
+          "external_id": "tVOmvycKmL",
+          "reason": "unclassified_title_or_unverified_context",
+          "title": "Process Analyst- Nigeria"
+        },
+        {
+          "external_id": "wLMCaZnOV5",
+          "reason": "unclassified_title_or_unverified_context",
+          "title": "Customer Care Manager"
+        },
+        {
+          "external_id": "wm3tAfaAXm",
+          "reason": "unclassified_title_or_unverified_context",
+          "title": "Call Centre Officer"
+        },
+        {
+          "external_id": "wn7L8AY1P7",
+          "reason": "non_technical_function",
+          "title": "Sales Executive"
+        }
+      ],
+      "raw_jobs": 38,
+      "requests": [
+        {
+          "attempt": 1,
+          "duration_seconds": 0.027,
+          "error_type": null,
+          "host": "watu.applytojob.com",
+          "http_status": 200,
+          "method": "GET",
+          "started_at": "2026-10-25T15:25:29.331708+00:00"
+        },
+        {
+          "attempt": 1,
+          "duration_seconds": 0.065,
+          "error_type": null,
+          "host": "watu.applytojob.com",
+          "http_status": 200,
+          "method": "GET",
+          "started_at": "2026-10-25T15:25:30.858973+00:00"
+        },
+        {
+          "attempt": 1,
+          "duration_seconds": 0.512,
+          "error_type": null,
+          "host": "watu.applytojob.com",
+          "http_status": 200,
+          "method": "GET",
+          "started_at": "2026-10-25T15:25:32.424219+00:00"
+        },
+        {
+          "attempt": 1,
+          "duration_seconds": 0.507,
+          "error_type": null,
+          "host": "watu.applytojob.com",
+          "http_status": 200,
+          "method": "GET",
+          "started_at": "2026-10-25T15:25:34.436367+00:00"
+        },
+        {
+          "attempt": 1,
+          "duration_seconds": 0.501,
+          "error_type": null,
+          "host": "watu.applytojob.com",
+          "http_status": 200,
+          "method": "GET",
+          "started_at": "2026-10-25T15:25:36.443132+00:00"
+        },
+        {
+          "attempt": 1,
+          "duration_seconds": 0.494,
+          "error_type": null,
+          "host": "watu.applytojob.com",
+          "http_status": 200,
+          "method": "GET",
+          "started_at": "2026-10-25T15:25:38.443987+00:00"
+        },
+        {
+          "attempt": 1,
+          "duration_seconds": 0.498,
+          "error_type": null,
+          "host": "watu.applytojob.com",
+          "http_status": 200,
+          "method": "GET",
+          "started_at": "2026-10-25T15:25:40.437948+00:00"
+        },
+        {
+          "attempt": 1,
+          "duration_seconds": 0.499,
+          "error_type": null,
+          "host": "watu.applytojob.com",
+          "http_status": 200,
+          "method": "GET",
+          "started_at": "2026-10-25T15:25:42.435801+00:00"
+        },
+        {
+          "attempt": 1,
+          "duration_seconds": 0.5,
+          "error_type": null,
+          "host": "watu.applytojob.com",
+          "http_status": 200,
+          "method": "GET",
+          "started_at": "2026-10-25T15:25:44.434980+00:00"
+        },
+        {
+          "attempt": 1,
+          "duration_seconds": 0.506,
+          "error_type": null,
+          "host": "watu.applytojob.com",
+          "http_status": 200,
+          "method": "GET",
+          "started_at": "2026-10-25T15:25:46.435327+00:00"
+        },
+        {
+          "attempt": 1,
+          "duration_seconds": 0.496,
+          "error_type": null,
+          "host": "watu.applytojob.com",
+          "http_status": 200,
+          "method": "GET",
+          "started_at": "2026-10-25T15:25:48.441421+00:00"
+        },
+        {
+          "attempt": 1,
+          "duration_seconds": 0.5,
+          "error_type": null,
+          "host": "watu.applytojob.com",
+          "http_status": 200,
+          "method": "GET",
+          "started_at": "2026-10-25T15:25:50.437247+00:00"
+        },
+        {
+          "attempt": 1,
+          "duration_seconds": 0.501,
+          "error_type": null,
+          "host": "watu.applytojob.com",
+          "http_status": 200,
+          "method": "GET",
+          "started_at": "2026-10-25T15:25:52.437067+00:00"
+        },
+        {
+          "attempt": 1,
+          "duration_seconds": 0.516,
+          "error_type": null,
+          "host": "watu.applytojob.com",
+          "http_status": 200,
+          "method": "GET",
+          "started_at": "2026-10-25T15:25:54.437772+00:00"
+        },
+        {
+          "attempt": 1,
+          "duration_seconds": 0.496,
+          "error_type": null,
+          "host": "watu.applytojob.com",
+          "http_status": 200,
+          "method": "GET",
+          "started_at": "2026-10-25T15:25:56.453446+00:00"
+        },
+        {
+          "attempt": 1,
+          "duration_seconds": 0.491,
+          "error_type": null,
+          "host": "watu.applytojob.com",
+          "http_status": 200,
+          "method": "GET",
+          "started_at": "2026-10-25T15:25:58.449851+00:00"
+        },
+        {
+          "attempt": 1,
+          "duration_seconds": 0.502,
+          "error_type": null,
+          "host": "watu.applytojob.com",
+          "http_status": 200,
+          "method": "GET",
+          "started_at": "2026-10-25T15:26:00.440930+00:00"
+        },
+        {
+          "attempt": 1,
+          "duration_seconds": 0.496,
+          "error_type": null,
+          "host": "watu.applytojob.com",
+          "http_status": 200,
+          "method": "GET",
+          "started_at": "2026-10-25T15:26:02.442636+00:00"
+        },
+        {
+          "attempt": 1,
+          "duration_seconds": 0.513,
+          "error_type": null,
+          "host": "watu.applytojob.com",
+          "http_status": 200,
+          "method": "GET",
+          "started_at": "2026-10-25T15:26:04.438280+00:00"
+        },
+        {
+          "attempt": 1,
+          "duration_seconds": 0.502,
+          "error_type": null,
+          "host": "watu.applytojob.com",
+          "http_status": 200,
+          "method": "GET",
+          "started_at": "2026-10-25T15:26:06.451805+00:00"
+        },
+        {
+          "attempt": 1,
+          "duration_seconds": 0.5,
+          "error_type": null,
+          "host": "watu.applytojob.com",
+          "http_status": 200,
+          "method": "GET",
+          "started_at": "2026-10-25T15:26:08.453548+00:00"
+        },
+        {
+          "attempt": 1,
+          "duration_seconds": 0.49,
+          "error_type": null,
+          "host": "watu.applytojob.com",
+          "http_status": 200,
+          "method": "GET",
+          "started_at": "2026-10-25T15:26:10.453225+00:00"
+        },
+        {
+          "attempt": 1,
+          "duration_seconds": 0.492,
+          "error_type": null,
+          "host": "watu.applytojob.com",
+          "http_status": 200,
+          "method": "GET",
+          "started_at": "2026-10-25T15:26:12.443401+00:00"
+        },
+        {
+          "attempt": 1,
+          "duration_seconds": 0.512,
+          "error_type": null,
+          "host": "watu.applytojob.com",
+          "http_status": 200,
+          "method": "GET",
+          "started_at": "2026-10-25T15:26:14.435520+00:00"
+        },
+        {
+          "attempt": 1,
+          "duration_seconds": 0.493,
+          "error_type": null,
+          "host": "watu.applytojob.com",
+          "http_status": 200,
+          "method": "GET",
+          "started_at": "2026-10-25T15:26:16.447826+00:00"
+        },
+        {
+          "attempt": 1,
+          "duration_seconds": 0.501,
+          "error_type": null,
+          "host": "watu.applytojob.com",
+          "http_status": 200,
+          "method": "GET",
+          "started_at": "2026-10-25T15:26:18.440526+00:00"
+        },
+        {
+          "attempt": 1,
+          "duration_seconds": 0.512,
+          "error_type": null,
+          "host": "watu.applytojob.com",
+          "http_status": 200,
+          "method": "GET",
+          "started_at": "2026-10-25T15:26:20.441331+00:00"
+        },
+        {
+          "attempt": 1,
+          "duration_seconds": 0.492,
+          "error_type": null,
+          "host": "watu.applytojob.com",
+          "http_status": 200,
+          "method": "GET",
+          "started_at": "2026-10-25T15:26:22.453350+00:00"
+        },
+        {
+          "attempt": 1,
+          "duration_seconds": 0.497,
+          "error_type": null,
+          "host": "watu.applytojob.com",
+          "http_status": 200,
+          "method": "GET",
+          "started_at": "2026-10-25T15:26:24.445361+00:00"
+        },
+        {
+          "attempt": 1,
+          "duration_seconds": 0.5,
+          "error_type": null,
+          "host": "watu.applytojob.com",
+          "http_status": 200,
+          "method": "GET",
+          "started_at": "2026-10-25T15:26:26.442955+00:00"
+        },
+        {
+          "attempt": 1,
+          "duration_seconds": 0.511,
+          "error_type": null,
+          "host": "watu.applytojob.com",
+          "http_status": 200,
+          "method": "GET",
+          "started_at": "2026-10-25T15:26:28.443042+00:00"
+        },
+        {
+          "attempt": 1,
+          "duration_seconds": 0.493,
+          "error_type": null,
+          "host": "watu.applytojob.com",
+          "http_status": 200,
+          "method": "GET",
+          "started_at": "2026-10-25T15:26:30.454400+00:00"
+        },
+        {
+          "attempt": 1,
+          "duration_seconds": 0.499,
+          "error_type": null,
+          "host": "watu.applytojob.com",
+          "http_status": 200,
+          "method": "GET",
+          "started_at": "2026-10-25T15:26:32.447450+00:00"
+        },
+        {
+          "attempt": 1,
+          "duration_seconds": 0.507,
+          "error_type": null,
+          "host": "watu.applytojob.com",
+          "http_status": 200,
+          "method": "GET",
+          "started_at": "2026-10-25T15:26:34.446894+00:00"
+        },
+        {
+          "attempt": 1,
+          "duration_seconds": 0.501,
+          "error_type": null,
+          "host": "watu.applytojob.com",
+          "http_status": 200,
+          "method": "GET",
+          "started_at": "2026-10-25T15:26:36.453601+00:00"
+        },
+        {
+          "attempt": 1,
+          "duration_seconds": 0.498,
+          "error_type": null,
+          "host": "watu.applytojob.com",
+          "http_status": 200,
+          "method": "GET",
+          "started_at": "2026-10-25T15:26:38.454229+00:00"
+        },
+        {
+          "attempt": 1,
+          "duration_seconds": 0.506,
+          "error_type": null,
+          "host": "watu.applytojob.com",
+          "http_status": 200,
+          "method": "GET",
+          "started_at": "2026-10-25T15:26:40.452790+00:00"
+        },
+        {
+          "attempt": 1,
+          "duration_seconds": 0.493,
+          "error_type": null,
+          "host": "watu.applytojob.com",
+          "http_status": 200,
+          "method": "GET",
+          "started_at": "2026-10-25T15:26:42.459292+00:00"
+        },
+        {
+          "attempt": 1,
+          "duration_seconds": 0.494,
+          "error_type": null,
+          "host": "watu.applytojob.com",
+          "http_status": 200,
+          "method": "GET",
+          "started_at": "2026-10-25T15:26:44.452036+00:00"
+        },
+        {
+          "attempt": 1,
+          "duration_seconds": 0.501,
+          "error_type": null,
+          "host": "watu.applytojob.com",
+          "http_status": 200,
+          "method": "GET",
+          "started_at": "2026-10-25T15:26:46.446243+00:00"
+        }
+      ],
+      "source_id": "employer_330116662c9692d6",
+      "status": "SUCCESS",
+      "technical_jobs": 12,
+      "verification_gaps": []
+    },
+    {
+      "complete": true,
+      "duplicates_in_accepted": 0,
+      "eligibility_review": [
+        {
+          "job_id": "employer_4b5f0d16f35b56cb:K2r7WGkQmC",
+          "level": "UNKNOWN"
+        }
+      ],
+      "eligible_jobs": 0,
+      "filtered_jobs": [
+        {
+          "external_id": "0m0o8TAvr0",
+          "reason": "unclassified_title_or_unverified_context",
+          "title": "Plant Supervisor"
+        },
+        {
+          "external_id": "4Hj6hko3lg",
+          "reason": "unclassified_title_or_unverified_context",
+          "title": "Financial Advisory Intern - Bogota"
+        },
+        {
+          "external_id": "H5AR9vjMfA",
+          "reason": "unclassified_title_or_unverified_context",
+          "title": "Analyst - Senegal"
+        },
+        {
+          "external_id": "Ha2mIKdhAN",
+          "reason": "unclassified_title_or_unverified_context",
+          "title": "Associate Principal - Senegal"
+        },
+        {
+          "external_id": "M5MOT140SR",
+          "reason": "unclassified_title_or_unverified_context",
+          "title": "People Operations Manager (Site Based Teams)"
+        },
+        {
+          "external_id": "U9qViVRFDb",
+          "reason": "unclassified_title_or_unverified_context",
+          "title": "Business Development Services (BDS) Specialist - Senegal"
+        },
+        {
+          "external_id": "VdyGpZUo8w",
+          "reason": "unclassified_title_or_unverified_context",
+          "title": "Associate MENA"
+        },
+        {
+          "external_id": "XwOeUO2FLt",
+          "reason": "unclassified_title_or_unverified_context",
+          "title": "Associate - Gambia"
+        },
+        {
+          "external_id": "aIzWgBx9hz",
+          "reason": "unclassified_title_or_unverified_context",
+          "title": "Site Administration Officer"
+        },
+        {
+          "external_id": "buiFmWuNJu",
+          "reason": "unclassified_title_or_unverified_context",
+          "title": "Business Development Services (BDS) Specialist - The Gambia"
+        },
+        {
+          "external_id": "cg738F9djW",
+          "reason": "unclassified_title_or_unverified_context",
+          "title": "Communications Manager"
+        },
+        {
+          "external_id": "iZ0k5DHakz",
+          "reason": "unclassified_title_or_unverified_context",
+          "title": "Monitoring and Evaluations Specialist - The Gambia"
+        },
+        {
+          "external_id": "mECNTQT8LF",
+          "reason": "unclassified_title_or_unverified_context",
+          "title": "Project Engineer - Perth"
+        },
+        {
+          "external_id": "q6vFne6XHL",
+          "reason": "unclassified_title_or_unverified_context",
+          "title": "Financial Acountant - Fixed Term Contract"
+        },
+        {
+          "external_id": "rPELyKtO9a",
+          "reason": "unclassified_title_or_unverified_context",
+          "title": "Monitoring and Evaluations Specialist - Senegal"
+        },
+        {
+          "external_id": "wSZrD7IS9k",
+          "reason": "unclassified_title_or_unverified_context",
+          "title": "Investment Professional - Private Sector Engagement - Tegucigalpa"
+        },
+        {
+          "external_id": "xfWyf5OlMB",
+          "reason": "unclassified_title_or_unverified_context",
+          "title": "Tax and Compliance Manager - DRC"
+        }
+      ],
+      "raw_jobs": 18,
+      "requests": [
+        {
+          "attempt": 1,
+          "duration_seconds": 0.032,
+          "error_type": null,
+          "host": "crossboundary.applytojob.com",
+          "http_status": 200,
+          "method": "GET",
+          "started_at": "2026-10-25T15:26:49.051112+00:00"
+        },
+        {
+          "attempt": 1,
+          "duration_seconds": 0.054,
+          "error_type": null,
+          "host": "crossboundary.applytojob.com",
+          "http_status": 200,
+          "method": "GET",
+          "started_at": "2026-10-25T15:26:50.583099+00:00"
+        },
+        {
+          "attempt": 1,
+          "duration_seconds": 0.533,
+          "error_type": null,
+          "host": "crossboundary.applytojob.com",
+          "http_status": 200,
+          "method": "GET",
+          "started_at": "2026-10-25T15:26:52.137629+00:00"
+        },
+        {
+          "attempt": 1,
+          "duration_seconds": 0.48,
+          "error_type": null,
+          "host": "crossboundary.applytojob.com",
+          "http_status": 200,
+          "method": "GET",
+          "started_at": "2026-10-25T15:26:54.170577+00:00"
+        },
+        {
+          "attempt": 1,
+          "duration_seconds": 0.506,
+          "error_type": null,
+          "host": "crossboundary.applytojob.com",
+          "http_status": 200,
+          "method": "GET",
+          "started_at": "2026-10-25T15:26:56.150510+00:00"
+        },
+        {
+          "attempt": 1,
+          "duration_seconds": 0.502,
+          "error_type": null,
+          "host": "crossboundary.applytojob.com",
+          "http_status": 200,
+          "method": "GET",
+          "started_at": "2026-10-25T15:26:58.156457+00:00"
+        },
+        {
+          "attempt": 1,
+          "duration_seconds": 0.496,
+          "error_type": null,
+          "host": "crossboundary.applytojob.com",
+          "http_status": 200,
+          "method": "GET",
+          "started_at": "2026-10-25T15:27:00.158325+00:00"
+        },
+        {
+          "attempt": 1,
+          "duration_seconds": 0.499,
+          "error_type": null,
+          "host": "crossboundary.applytojob.com",
+          "http_status": 200,
+          "method": "GET",
+          "started_at": "2026-10-25T15:27:02.153976+00:00"
+        },
+        {
+          "attempt": 1,
+          "duration_seconds": 0.5,
+          "error_type": null,
+          "host": "crossboundary.applytojob.com",
+          "http_status": 200,
+          "method": "GET",
+          "started_at": "2026-10-25T15:27:04.153456+00:00"
+        },
+        {
+          "attempt": 1,
+          "duration_seconds": 0.5,
+          "error_type": null,
+          "host": "crossboundary.applytojob.com",
+          "http_status": 200,
+          "method": "GET",
+          "started_at": "2026-10-25T15:27:06.153591+00:00"
+        },
+        {
+          "attempt": 1,
+          "duration_seconds": 0.5,
+          "error_type": null,
+          "host": "crossboundary.applytojob.com",
+          "http_status": 200,
+          "method": "GET",
+          "started_at": "2026-10-25T15:27:08.153340+00:00"
+        },
+        {
+          "attempt": 1,
+          "duration_seconds": 0.502,
+          "error_type": null,
+          "host": "crossboundary.applytojob.com",
+          "http_status": 200,
+          "method": "GET",
+          "started_at": "2026-10-25T15:27:10.153025+00:00"
+        },
+        {
+          "attempt": 1,
+          "duration_seconds": 0.499,
+          "error_type": null,
+          "host": "crossboundary.applytojob.com",
+          "http_status": 200,
+          "method": "GET",
+          "started_at": "2026-10-25T15:27:12.154869+00:00"
+        },
+        {
+          "attempt": 1,
+          "duration_seconds": 0.807,
+          "error_type": null,
+          "host": "crossboundary.applytojob.com",
+          "http_status": 200,
+          "method": "GET",
+          "started_at": "2026-10-25T15:27:14.153943+00:00"
+        },
+        {
+          "attempt": 1,
+          "duration_seconds": 0.197,
+          "error_type": null,
+          "host": "crossboundary.applytojob.com",
+          "http_status": 200,
+          "method": "GET",
+          "started_at": "2026-10-25T15:27:16.461175+00:00"
+        },
+        {
+          "attempt": 1,
+          "duration_seconds": 0.503,
+          "error_type": null,
+          "host": "crossboundary.applytojob.com",
+          "http_status": 200,
+          "method": "GET",
+          "started_at": "2026-10-25T15:27:18.158507+00:00"
+        },
+        {
+          "attempt": 1,
+          "duration_seconds": 0.496,
+          "error_type": null,
+          "host": "crossboundary.applytojob.com",
+          "http_status": 200,
+          "method": "GET",
+          "started_at": "2026-10-25T15:27:20.161816+00:00"
+        },
+        {
+          "attempt": 1,
+          "duration_seconds": 0.554,
+          "error_type": null,
+          "host": "crossboundary.applytojob.com",
+          "http_status": 200,
+          "method": "GET",
+          "started_at": "2026-10-25T15:27:22.157971+00:00"
+        },
+        {
+          "attempt": 1,
+          "duration_seconds": 0.447,
+          "error_type": null,
+          "host": "crossboundary.applytojob.com",
+          "http_status": 200,
+          "method": "GET",
+          "started_at": "2026-10-25T15:27:24.212161+00:00"
+        },
+        {
+          "attempt": 1,
+          "duration_seconds": 0.505,
+          "error_type": null,
+          "host": "crossboundary.applytojob.com",
+          "http_status": 200,
+          "method": "GET",
+          "started_at": "2026-10-25T15:27:26.159005+00:00"
+        }
+      ],
+      "source_id": "employer_4b5f0d16f35b56cb",
+      "status": "SUCCESS",
+      "technical_jobs": 1,
+      "verification_gaps": []
+    }
+  ]
+}

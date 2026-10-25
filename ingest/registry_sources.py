@@ -8,6 +8,7 @@ from hashlib import sha256
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
+from ingest.adapters.public_ats import API_METHODS, PublicATSAdapter
 from ingest.adapters.registry_boards import SUPPORTED, RegistryBoardAdapter
 from ingest.adapters.structured_employers import METHODS, StructuredEmployerAdapter
 from ingest.employer_registry import ROOT, STATES, read_registry
@@ -59,12 +60,14 @@ def verification_gaps(source: dict) -> list[str]:
 
 def collector_supported(source):
     return (source["platform"] in SUPPORTED and bool(source.get("board"))) or (
-        source.get("access_method") in METHODS
+        source.get("access_method") in METHODS | API_METHODS
         and bool(source.get("collection", {}).get("listing_url"))
     )
 
 
 def make_adapter(source, employers):
+    if source.get("access_method") in API_METHODS:
+        return PublicATSAdapter(source, employers)
     if source.get("access_method") in METHODS:
         return StructuredEmployerAdapter(source, employers)
     return RegistryBoardAdapter(source, employers)
