@@ -51,6 +51,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    historical: true
 - id: employer_008805c021fb34da
   url: https://www.kenswitch.com/careers
   import_urls:
@@ -123,6 +124,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    access_gap: true
 - id: employer_01e8e0f5962dff05
   url: https://www.carepay.com/careers
   import_urls:
@@ -147,6 +149,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    needs_location_filter: true
 - id: employer_02069f5367240087
   url: https://definiteassurance.com/index.php/careers/
   import_urls:
@@ -195,6 +198,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    historical: true
 - id: employer_0253a7600d2cdd4c
   url: https://haco.africa/careers/
   import_urls:
@@ -267,6 +271,8 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    needs_location_filter: true
+    shared_portal: true
 - id: employer_039645b59c58cc42
   url: https://www.ipoa.go.ke/ipoa/careers/
   import_urls:
@@ -317,6 +323,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    historical: true
 - id: employer_03bc1b5527ac1b94
   url: https://estm.fa.em2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1001/
   import_urls:
@@ -341,6 +348,9 @@ sources:
   verification: {}
   suggestions:
     platform: oracle
+    needs_location_filter: true
+    shared_portal: true
+    access_gap: true
 - id: employer_044b6d087b1aac02
   url: https://www.ccbagroup.com/careers/
   import_urls:
@@ -365,6 +375,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    needs_location_filter: true
 - id: employer_0467044f546eff97
   url: https://careers.jsi.org/
   import_urls:
@@ -389,6 +400,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    needs_location_filter: true
 - id: employer_04c2cdfab5c9ac9b
   url: https://dataintegrated.co.ke/careers/apply
   import_urls:
@@ -437,6 +449,8 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    needs_location_filter: true
+    shared_portal: true
 - id: employer_05df659606c5831e
   url: https://www.linkedin.com/company/africagloballogistics/jobs/
   import_urls:
@@ -461,6 +475,8 @@ sources:
   verification: {}
   suggestions:
     platform: social
+    needs_location_filter: true
+    historical: true
 - id: employer_0655257d19640833
   url: https://ombudsman.go.ke/careers
   import_urls:
@@ -509,6 +525,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    needs_location_filter: true
 - id: employer_066cfdcf27a32a63
   url: https://www.kenyare.co.ke/index.php/about-us/careers
   import_urls:
@@ -581,6 +598,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    needs_location_filter: true
 - id: employer_07a5e16a1a8b3c83
   url: https://www.kbc.co.ke/careers/
   import_urls:
@@ -605,6 +623,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    historical: true
 - id: employer_0825ff7a49f48772
   url: https://www.co-opbank.co.ke/career_tax/co-op-bank/
   import_urls:
@@ -629,6 +648,8 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    needs_location_filter: true
+    shared_portal: true
 - id: employer_087f1f3470e75997
   url: https://www.nacosti.go.ke/careers/
   import_urls:
@@ -677,6 +698,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    access_gap: true
 - id: employer_088cea5fe09aabab
   url: https://www.linkedin.com/company/capwell-industries-ltd
   import_urls:
@@ -701,6 +723,7 @@ sources:
   verification: {}
   suggestions:
     platform: social
+    access_gap: true
 - id: employer_08ac15274b7d4e28
   url: https://www.nestle.com/jobs
   import_urls:
@@ -725,6 +748,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    needs_location_filter: true
 - id: employer_08c20e1580e38d36
   url: https://gulfafricanbank.com/about-us/career-opportunities/
   import_urls:
@@ -749,6 +773,8 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    needs_location_filter: true
+    shared_portal: true
 - id: employer_08c5fc462d39c602
   url: https://www.ilri.org/join-us/jobs-careers?country=KE
   import_urls:
@@ -821,6 +847,8 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    needs_location_filter: true
+    shared_portal: true
 - id: employer_09e125fc6bb69621
   url: https://kenya.oxfam.org/get-involved/jobs
   import_urls:
@@ -893,6 +921,8 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    shared_portal: true
+    access_gap: true
 - id: employer_0cb5afeca41362f1
   url: https://www.snv.org/careers
   import_urls:
@@ -917,6 +947,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    needs_location_filter: true
 - id: employer_0cd5cb6026f02443
   url: https://ke.linkedin.com/company/malaica
   import_urls:
@@ -941,6 +972,7 @@ sources:
   verification: {}
   suggestions:
     platform: social
+    access_gap: true
 - id: employer_0d02d90bc7f89621
   url: https://bankofindia.bank.in/career
   import_urls:
@@ -989,6 +1021,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    access_gap: true
 - id: employer_0d53c0361b5e43cc
   url: https://redcross.applytojob.com/
   import_urls:
@@ -1013,6 +1046,7 @@ sources:
   verification: {}
   suggestions:
     platform: jazzhr
+    mixed_opportunities: true
 - id: employer_0f625148e61cf723
   url: https://ke.linkedin.com/company/speedaf-kenya
   import_urls:
@@ -1037,6 +1071,7 @@ sources:
   verification: {}
   suggestions:
     platform: social
+    access_gap: true
 - id: employer_0fc144814302e3aa
   url: https://kmtc.ac.ke/resource-center/careers
   import_urls:
@@ -1205,6 +1240,7 @@ sources:
   verification: {}
   suggestions:
     platform: social
+    access_gap: true
 - id: employer_12325f9fe6e0537f
   url: https://careers.rescue.org/
   import_urls:
@@ -1229,6 +1265,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    needs_location_filter: true
 - id: employer_130639812ae22976
   url: https://www.devbank.com/careers/
   import_urls:
@@ -1253,6 +1290,8 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    needs_location_filter: true
+    shared_portal: true
 - id: employer_13bfcd0b0ac602ef
   url: https://www.who.int/Careers
   import_urls:
@@ -1277,6 +1316,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    needs_location_filter: true
 - id: employer_13ed9cf23c97dbe9
   url: https://jobs.unicef.org/cw/en-us/search/?location=kenya
   import_urls:
@@ -1325,6 +1365,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    shared_portal: true
 - id: employer_142417a688451a73
   url: https://ke-actionagainsthunger.zohorecruit.com/jobs/Careers
   import_urls:
@@ -1373,6 +1414,8 @@ sources:
   verification: {}
   suggestions:
     platform: oracle
+    needs_location_filter: true
+    access_gap: true
 - id: employer_15a3cc217ccbf471
   url: https://www.meds.or.ke/careers/
   import_urls:
@@ -1397,6 +1440,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    historical: true
 - id: employer_171316a1725f2b1d
   url: https://konza.go.ke/careers/
   import_urls:
@@ -1445,6 +1489,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    access_gap: true
 - id: employer_17c15126bc540c55
   url: https://www.kirdi.go.ke/index.php/careers
   import_urls:
@@ -1565,6 +1610,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    needs_location_filter: true
 - id: employer_1a047fd979fcdf88
   url: https://ampersand-energy.breezy.hr/
   import_urls:
@@ -1589,6 +1635,7 @@ sources:
   verification: {}
   suggestions:
     platform: breezy
+    needs_location_filter: true
   board: ampersand-energy
   official_careers_url: https://www.ampersand.energy/
   pilot_rank: 8
@@ -1616,6 +1663,8 @@ sources:
   verification: {}
   suggestions:
     platform: workday
+    needs_location_filter: true
+    shared_portal: true
 - id: employer_1a46b912119f5c69
   url: https://jobs.citi.com/search-jobs/Kenya/287/2/192950/1/38/50/2
   import_urls:
@@ -1668,6 +1717,8 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    shared_portal: true
+    access_gap: true
 - id: employer_1b05177b4f6a69f8
   url: https://careers.jtl.co.ke/openings
   import_urls:
@@ -1716,6 +1767,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    needs_location_filter: true
 - id: employer_1b90da4692b350be
   url: https://wasoko.com/careers/
   import_urls:
@@ -1740,6 +1792,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    historical: true
 - id: employer_1bc72c098bfe9f56
   url: https://www.conservation.org/conservation-international-jobs
   import_urls:
@@ -1764,6 +1817,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    needs_location_filter: true
 - id: employer_1bdfedad0c2c6fe5
   url: https://careers.tnc.org/us/en
   import_urls:
@@ -1812,6 +1866,8 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    needs_location_filter: true
+    shared_portal: true
 - id: employer_1c6f7663efedc92f
   url: https://www.unhcr.org/ke/get-involved/careers-unhcr-kenya
   import_urls:
@@ -1836,6 +1892,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    access_gap: true
 - id: employer_1cb47e9f80955927
   url: https://ke.linkedin.com/company/lori-systems
   import_urls:
@@ -1860,6 +1917,7 @@ sources:
   verification: {}
   suggestions:
     platform: social
+    access_gap: true
 - id: employer_1cd76a4f1c40a7f3
   url: https://ajirahub.co.ke/jobs/cad94cc3-6485-4085-93d5-f2b71d71f6ee
   import_urls:
@@ -1884,6 +1942,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    access_gap: true
 - id: employer_1e69145f43ff1d76
   url: https://careers.unilever.com/en/kenya
   import_urls:
@@ -2004,6 +2063,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    access_gap: true
 - id: employer_1ff8fb3f851f9da6
   url: https://careers.roche.com/global/en
   import_urls:
@@ -2028,6 +2088,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    needs_location_filter: true
 - id: employer_1ffd56c1ef932428
   url: https://cannon.co.ke/open-vacancies/
   import_urls:
@@ -2052,6 +2113,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    shared_portal: true
 - id: employer_2134cfeef9c91b2c
   url: https://oldsite.mu.ac.ke/en/about-moi-university/vacancy-in-moi-university
   import_urls:
@@ -2076,6 +2138,8 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    access_gap: true
+    historical: true
 - id: employer_214d98f124b0070f
   url: https://riarauniversity.ac.ke/careers
   import_urls:
@@ -2124,6 +2188,8 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    access_gap: true
+    historical: true
 - id: employer_21bb4e761d9fac6a
   url: https://www.egerton.ac.ke/nb/job-vacancies
   import_urls:
@@ -2172,6 +2238,7 @@ sources:
   verification: {}
   suggestions:
     platform: social
+    access_gap: true
 - id: employer_2248104c95cc3a17
   url: https://www.myjobmag.co.ke/jobs-at/telesky-limited
   import_urls:
@@ -2196,6 +2263,8 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    access_gap: true
+    historical: true
 - id: employer_23f5994f8afeb1e4
   url: https://careers.sunculture.io/openings/
   import_urls:
@@ -2244,6 +2313,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    needs_location_filter: true
 - id: employer_248a270f6bc882b1
   url: https://www.dai.com/careers/search.html
   import_urls:
@@ -2268,6 +2338,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    needs_location_filter: true
 - id: employer_25813bd41d081f60
   url: https://www.cevalogistics.com/en/careers/
   import_urls:
@@ -2292,6 +2363,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    needs_location_filter: true
 - id: employer_25ed83ff1fe32873
   url: https://recruitment.sha.go.ke/
   import_urls:
@@ -2412,6 +2484,8 @@ sources:
   verification: {}
   suggestions:
     platform: manatal
+    needs_location_filter: true
+    shared_portal: true
 - id: employer_2778fd00ca87c9c9
   url: https://ira.go.ke/careers/
   import_urls:
@@ -2460,6 +2534,8 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    access_gap: true
+    historical: true
 - id: employer_27ada10ac0d95180
   url: https://ke.linkedin.com/company/kipeto-energy-plc
   import_urls:
@@ -2484,6 +2560,7 @@ sources:
   verification: {}
   suggestions:
     platform: social
+    access_gap: true
 - id: employer_2814651a32af7291
   url: https://fidelityshield.com/jobs/
   import_urls:
@@ -2556,6 +2633,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    shared_portal: true
 - id: employer_296a2011d43f4166
   url: https://www.careers-page.com/ilara-health
   import_urls:
@@ -2628,6 +2706,7 @@ sources:
   verification: {}
   suggestions:
     platform: social
+    access_gap: true
 - id: employer_29a8e9407d488fb6
   url: https://www.kstvet.ac.ke/careers/
   import_urls:
@@ -2652,6 +2731,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    access_gap: true
 - id: employer_2a360d44533fdebd
   url: https://materkenya.com/careers
   import_urls:
@@ -2676,6 +2756,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    access_gap: true
 - id: employer_2b071eefa21b59b3
   url: https://www.knchr.org/Careers/Employment-Opportunities
   import_urls:
@@ -2724,6 +2805,8 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    needs_location_filter: true
+    shared_portal: true
 - id: employer_2b896dd4f5be5709
   url: https://www.liberty.co.ke/careers
   import_urls:
@@ -2748,6 +2831,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    shared_portal: true
 - id: employer_2c1ec0927ded7686
   url: https://ltwp.co.ke/jobs/
   import_urls:
@@ -2844,6 +2928,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    access_gap: true
 - id: employer_2e436693d9c0ba59
   url: https://egjd.fa.us6.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX/jobs
   import_urls:
@@ -2893,6 +2978,8 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    needs_location_filter: true
+    shared_portal: true
 - id: employer_2ea1d3f3a074bddb
   url: https://paystack.com/careers
   import_urls:
@@ -2917,6 +3004,8 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    needs_location_filter: true
+    shared_portal: true
 - id: employer_2ec925cc5ca70317
   url: https://sybyl.com/careers/
   import_urls:
@@ -2941,6 +3030,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    access_gap: true
 - id: employer_2f06c8d48f355ae2
   url: https://basigo.bamboohr.com/careers
   import_urls:
@@ -2965,6 +3055,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    access_gap: true
 - id: employer_2f1f9a93b9db4a43
   url: https://www.fuzu.com/kenya/company/kytabu
   import_urls:
@@ -2989,6 +3080,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    access_gap: true
 - id: employer_30694ba13e504d2e
   url: https://afdb.jobs2web.com/
   import_urls:
@@ -3013,6 +3105,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    access_gap: true
 - id: employer_308b5a3d61dea0dc
   url: https://telkom.co.ke/about-us/careers/
   import_urls:
@@ -3061,6 +3154,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    access_gap: true
 - id: employer_3194852fcec2743c
   url: https://kalro.jobsoid.com/
   import_urls:
@@ -3110,6 +3204,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    shared_portal: true
 - id: employer_330116662c9692d6
   url: https://watu.applytojob.com/apply
   import_urls:
@@ -3134,6 +3229,8 @@ sources:
   verification: {}
   suggestions:
     platform: jazzhr
+    needs_location_filter: true
+    shared_portal: true
 - id: employer_33d6a4b726a4ec85
   url: https://ke.linkedin.com/company/ushahidi
   import_urls:
@@ -3158,6 +3255,7 @@ sources:
   verification: {}
   suggestions:
     platform: social
+    access_gap: true
 - id: employer_33fb0e9094c39669
   url: https://www.ku.ac.ke/career-ku/
   import_urls:
@@ -3182,6 +3280,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    access_gap: true
 - id: employer_345255d68b5daca6
   url: https://empire.co.ke/careers/
   import_urls:
@@ -3206,6 +3305,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    access_gap: true
 - id: employer_34c4c6420b9d89b2
   url: https://pawait.africa/careers/
   import_urls:
@@ -3230,6 +3330,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    access_gap: true
 - id: employer_350d4f73cd1c2f60
   url: https://www.isk.ac.ke/employment/openings
   import_urls:
@@ -3278,6 +3379,8 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    needs_location_filter: true
+    shared_portal: true
 - id: employer_35b77f6fc8aa8fac
   url: https://jobs.uber.com/en/
   import_urls:
@@ -3302,6 +3405,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    needs_location_filter: true
 - id: employer_35cbad73bee5c547
   url: https://careers.unops.org/
   import_urls:
@@ -3326,6 +3430,8 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    needs_location_filter: true
+    access_gap: true
 - id: employer_35f00cb9d5783ab4
   url: https://www.eeas.europa.eu/filter-page/vacancies_en?page=0
   import_urls:
@@ -3350,6 +3456,8 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    needs_location_filter: true
+    access_gap: true
 - id: employer_36198abe3fc57643
   url: https://www.kenexnbi.com/Careers.html
   import_urls:
@@ -3398,6 +3506,8 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    needs_location_filter: true
+    shared_portal: true
 - id: employer_36fa25d9bf181f28
   url: https://hasspetroleum.com/careers-at-hass/
   import_urls:
@@ -3447,6 +3557,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    shared_portal: true
 - id: employer_3720141913473ebd
   url: https://powerlearnprojectafrica.org/about/careers
   import_urls:
@@ -3591,6 +3702,7 @@ sources:
   verification: {}
   suggestions:
     platform: social
+    access_gap: true
 - id: employer_384e1ec5d6cb64c5
   url: https://www.tetratech.com/careers/
   import_urls:
@@ -3615,6 +3727,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    needs_location_filter: true
 - id: employer_386909ce1790f789
   url: https://www.amaco.co.ke/category/careers/
   import_urls:
@@ -3735,6 +3848,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    needs_location_filter: true
 - id: employer_3abd028fde6e91f0
   url: https://www.afd.fr/en/join-us
   import_urls:
@@ -3927,6 +4041,8 @@ sources:
   verification: {}
   suggestions:
     platform: oracle
+    needs_location_filter: true
+    shared_portal: true
 - id: employer_3d177724feacdda1
   url: https://ke.linkedin.com/company/ofgen
   import_urls:
@@ -3951,6 +4067,7 @@ sources:
   verification: {}
   suggestions:
     platform: social
+    access_gap: true
 - id: employer_3d2a408f9d01331a
   url: https://turaco.breezy.hr/
   import_urls:
@@ -3975,6 +4092,8 @@ sources:
   verification: {}
   suggestions:
     platform: breezy
+    needs_location_filter: true
+    shared_portal: true
   board: turaco
   official_careers_url: https://turaco.insure/
   pilot_rank: 7
@@ -4026,6 +4145,9 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    needs_location_filter: true
+    shared_portal: true
+    access_gap: true
 - id: employer_3ee9f83387bb4ec4
   url: https://jobs.gsk.com/
   import_urls:
@@ -4050,6 +4172,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    needs_location_filter: true
 - id: employer_3eee1bc1fab1f1aa
   url: https://www.knec.ac.ke/careers/
   import_urls:
@@ -4170,6 +4293,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    access_gap: true
 - id: employer_411497b5cc3d8a3e
   url: https://dalberg.hua.hrsmart.com/hr/ats/JobSearch/viewAll
   import_urls:
@@ -4266,6 +4390,8 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    needs_location_filter: true
+    access_gap: true
 - id: employer_427dbda967cd2174
   url: https://careers.icrc.org/go/All-Jobs/3807301/
   import_urls:
@@ -4338,6 +4464,8 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    needs_location_filter: true
+    mixed_opportunities: true
 - id: employer_433765f329966b3a
   url: https://kenyanalliance.co.ke/careers/
   import_urls:
@@ -4386,6 +4514,7 @@ sources:
   verification: {}
   suggestions:
     platform: workday
+    needs_location_filter: true
 - id: employer_43cdbfb4a567343f
   url: https://egpy.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/JoinAbt
   import_urls:
@@ -4410,6 +4539,7 @@ sources:
   verification: {}
   suggestions:
     platform: oracle
+    needs_location_filter: true
 - id: employer_4494d34d4e846387
   url: https://www.ketraco.co.ke/about-us/careers
   import_urls:
@@ -4483,6 +4613,7 @@ sources:
   verification: {}
   suggestions:
     platform: social
+    access_gap: true
 - id: employer_45ae0292ae67a594
   url: https://www.lami.world/careers.html
   import_urls:
@@ -4531,6 +4662,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    needs_location_filter: true
 - id: employer_4633f30d84b5e282
   url: https://www.mod.go.ke/download-category/jobs/
   import_urls:
@@ -4579,6 +4711,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    needs_location_filter: true
 - id: employer_478d74a59b24b82c
   url: https://corporate.quickmart.co.ke/people-careers/
   import_urls:
@@ -4699,6 +4832,7 @@ sources:
   verification: {}
   suggestions:
     platform: social
+    access_gap: true
 - id: employer_4a60f6711f9db71d
   url: https://kenindia.com/careers/
   import_urls:
@@ -4771,6 +4905,7 @@ sources:
   verification: {}
   suggestions:
     platform: jazzhr
+    shared_portal: true
 - id: employer_4b667497eb06186f
   url: https://jobs.ksa.go.ke/
   import_urls:
@@ -4819,6 +4954,8 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    needs_location_filter: true
+    shared_portal: true
 - id: employer_4dfec0204a026392
   url: https://flutterwave.com/us/careers/vacancies
   import_urls:
@@ -4891,6 +5028,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    needs_location_filter: true
 - id: employer_50c901659155c729
   url: https://krc.co.ke/careers/
   import_urls:
@@ -4939,6 +5077,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    access_gap: true
 - id: employer_511d7fcc7340002a
   url: https://www.gainsuranceltd.com/ke/about-us/working-at-ga/careers/
   import_urls:
@@ -4963,6 +5102,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    shared_portal: true
 - id: employer_51905d9546df64b7
   url: https://postbank.co.ke/careers/
   import_urls:
@@ -4987,6 +5127,8 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    needs_location_filter: true
+    shared_portal: true
 - id: employer_519c24293fb42d04
   url: https://www.cifor.org/cifor-icraf-career-list/
   import_urls:
@@ -5011,6 +5153,8 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    shared_portal: true
+    access_gap: true
 - id: employer_51d3d3a6082ea2c7
   url: https://opencapitaladvisors.applytojob.com/apply/
   import_urls:
@@ -5059,6 +5203,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    shared_portal: true
 - id: employer_51eb8f87ebd88f9d
   url: https://ouk.ac.ke/careers
   import_urls:
@@ -5132,6 +5277,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    access_gap: true
 - id: employer_529fad2c89725025
   url: https://jobs.lever.co/dlocal
   import_urls:
@@ -5156,6 +5302,7 @@ sources:
   verification: {}
   suggestions:
     platform: lever
+    needs_location_filter: true
   board: dlocal
   official_careers_url: https://www.dlocal.com/careers/
   pilot_rank: 5
@@ -5183,6 +5330,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    mixed_opportunities: true
 - id: employer_5317224f01df1cac
   url: https://www.concern.net/vacancies
   import_urls:
@@ -5207,6 +5355,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    needs_location_filter: true
 - id: employer_531bc9f4306a12d5
   url: https://www.mtrh.go.ke/?page_id=68
   import_urls:
@@ -5231,6 +5380,8 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    access_gap: true
+    mixed_opportunities: true
 - id: employer_5342ac7e01317e93
   url: https://habibbank.com/ke/careers/
   import_urls:
@@ -5255,6 +5406,8 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    needs_location_filter: true
+    shared_portal: true
 - id: employer_5372d0d430ab5f76
   url: https://www.kcaa.or.ke/about-us/careers/vacancies
   import_urls:
@@ -5303,6 +5456,8 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    access_gap: true
+    historical: true
 - id: employer_5541380ad2257ceb
   url: https://www.maersk.com/careers
   import_urls:
@@ -5351,6 +5506,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    access_gap: true
 - id: employer_562cc24f8379bd99
   url: https://dca.career.emply.com/en/national-positions
   import_urls:
@@ -5375,6 +5531,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    needs_location_filter: true
 - id: employer_566d91a76263224f
   url: https://villageenterprise.org/about-us/careers/
   import_urls:
@@ -5399,6 +5556,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    needs_location_filter: true
 - id: employer_5700587e9b812cbb
   url: https://www.nairobiwater.co.ke/work-with-us/
   import_urls:
@@ -5423,6 +5581,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    access_gap: true
 - id: employer_5725f6f69a55e4b7
   url: https://recruitment.rba.go.ke/
   import_urls:
@@ -5471,6 +5630,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    needs_location_filter: true
 - id: employer_574baf4fe5aae0a5
   url: https://jobs.ilo.org/
   import_urls:
@@ -5519,6 +5679,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    access_gap: true
 - id: employer_586dd6ce81f26a52
   url: https://aphrc.org/careers/
   import_urls:
@@ -5543,6 +5704,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    mixed_opportunities: true
 - id: employer_58b8d22cf280a524
   url: https://www.m-kopa.com/careers
   import_urls:
@@ -5647,6 +5809,7 @@ sources:
   verification: {}
   suggestions:
     platform: social
+    access_gap: true
 - id: employer_59a13d685a486cb5
   url: https://jobs.tum.ac.ke/
   import_urls:
@@ -5671,6 +5834,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    access_gap: true
 - id: employer_59a1cc3648822afc
   url: https://career.kengen.co.ke/
   import_urls:
@@ -5719,6 +5883,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    shared_portal: true
 - id: employer_5b204d51a3998700
   url: https://khrc.or.ke/careers/jobs/
   import_urls:
@@ -5815,6 +5980,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    mixed_opportunities: true
 - id: employer_5c9ee187e3a82002
   url: https://www.rsm.global/kenya/kenya/careers
   import_urls:
@@ -5863,6 +6029,8 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    needs_location_filter: true
+    shared_portal: true
 - id: employer_5ccf79bd0e7e2062
   url: https://kemri-wellcome.org/careers/
   import_urls:
@@ -5887,6 +6055,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    mixed_opportunities: true
 - id: employer_5df5a7795dfb57c3
   url: https://brs.go.ke/careers/
   import_urls:
@@ -5935,6 +6104,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    shared_portal: true
 - id: employer_5dfebd61c233ce69
   url: https://www.worldbank.org/ext/en/careers
   import_urls:
@@ -5959,6 +6129,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    shared_portal: true
 - id: employer_5ead512adf721ab2
   url: https://isonxperiences.com/careers/
   import_urls:
@@ -5983,6 +6154,8 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    shared_portal: true
+    access_gap: true
 - id: employer_5ec063daa6a62d78
   url: https://ke.linkedin.com/company/basco-paints
   import_urls:
@@ -6007,6 +6180,7 @@ sources:
   verification: {}
   suggestions:
     platform: social
+    access_gap: true
 - id: employer_5ef71ac86e3ac66b
   url: https://moringaschool.com/careers/
   import_urls:
@@ -6079,6 +6253,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    needs_location_filter: true
 - id: employer_60582b69fd7c5e29
   url: https://recruitment.kenyaforestservice.org/
   import_urls:
@@ -6127,6 +6302,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    shared_portal: true
 - id: employer_60a83346fee337de
   url: https://www.infobip.com/careers
   import_urls:
@@ -6175,10 +6351,14 @@ sources:
   verification: {}
   suggestions:
     platform: greenhouse
+    needs_location_filter: true
+    shared_portal: true
   board: jumia
   official_careers_url: https://group.jumia.com/careers/
   pilot_rank: 2
   board_url: https://job-boards.eu.greenhouse.io/jumia
+  group_portal: true
+  posting_company: Jumia
 - id: employer_61a315e00d704735
   url: https://digital.kisiiuniversity.ac.ke/job_portal/open_adverts
   import_urls:
@@ -6227,6 +6407,8 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    needs_location_filter: true
+    access_gap: true
 - id: employer_629c3e68d111e509
   url: https://cfkafrica.org/work-with-us/
   import_urls:
@@ -6251,6 +6433,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    mixed_opportunities: true
 - id: employer_633b57e1501c8297
   url: https://careers.bcg.com/global/en/locations/kenya
   import_urls:
@@ -6299,6 +6482,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    access_gap: true
 - id: employer_64bd9dc893061dd3
   url: https://www.prisons.go.ke/vacancies
   import_urls:
@@ -6347,6 +6531,8 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    needs_location_filter: true
+    shared_portal: true
 - id: employer_656ae6c5aa64a88c
   url: https://ke.linkedin.com/company/astral-aerial-solutions
   import_urls:
@@ -6371,6 +6557,8 @@ sources:
   verification: {}
   suggestions:
     platform: social
+    access_gap: true
+    mixed_opportunities: true
 - id: employer_6633b89615b8c365
   url: https://jobs.elevolt.co.ke/careers/dlight
   import_urls:
@@ -6395,6 +6583,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    access_gap: true
 - id: employer_667f00a385b43b1c
   url: https://ixafrica.co.ke/job-openings/
   import_urls:
@@ -6443,6 +6632,8 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    shared_portal: true
+    access_gap: true
 - id: employer_66f2d892b68fdad5
   url: https://ke.linkedin.com/jobs/view/commercial-pricing-executive-officer-at-kenfreight-east-africa-limited-4466673339
   import_urls:
@@ -6467,6 +6658,8 @@ sources:
   verification: {}
   suggestions:
     platform: social
+    access_gap: true
+    historical: true
 - id: employer_67392a0d734d52b4
   url: https://nationaloil.co.ke/website_11ab3dee/careers/
   import_urls:
@@ -6515,6 +6708,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    access_gap: true
 - id: employer_676d8857ec056959
   url: https://careers.un.org/
   import_urls:
@@ -6542,6 +6736,8 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    shared_portal: true
+    access_gap: true
 - id: employer_6822d8449da6a91d
   url: https://ke.sanlamallianz.com/life-insurance/about/careers
   import_urls:
@@ -6614,6 +6810,8 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    needs_location_filter: true
+    shared_portal: true
 - id: employer_6933f0a62aff2f81
   url: https://www.myjobmag.co.ke/jobs-at/kenya-ict-action-network-kictanet
   import_urls:
@@ -6638,6 +6836,8 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    access_gap: true
+    historical: true
 - id: employer_694a97c24e36ab67
   url: https://eclectics.io/job-listing-ii/
   import_urls:
@@ -6686,6 +6886,8 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    needs_location_filter: true
+    shared_portal: true
 - id: employer_6b51bbd1c91d6a8b
   url: https://www.kcau.ac.ke/career/
   import_urls:
@@ -6734,6 +6936,7 @@ sources:
   verification: {}
   suggestions:
     platform: manatal
+    mixed_opportunities: true
 - id: employer_6ba658590102c49d
   url: https://careers.aar-insurance.com/
   import_urls:
@@ -6809,6 +7012,8 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    needs_location_filter: true
+    mixed_opportunities: true
 - id: employer_6c6787b3f834a6db
   url: https://cra.go.ke/careers/
   import_urls:
@@ -6857,6 +7062,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    needs_location_filter: true
 - id: employer_6dcc9eb96b0e7be2
   url: https://careers.kuccps.net/
   import_urls:
@@ -6953,6 +7159,8 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    needs_location_filter: true
+    access_gap: true
 - id: employer_6ec62130e2356cab
   url: https://jobs.tearfund.org/jobs/home/
   import_urls:
@@ -6977,6 +7185,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    access_gap: true
 - id: employer_6f85e3d984463466
   url: https://www.amdocs.com/careers/home
   import_urls:
@@ -7001,6 +7210,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    access_gap: true
 - id: employer_6fb57c026fb3215e
   url: https://www.lolckenya.co.ke/career/
   import_urls:
@@ -7025,6 +7235,8 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    needs_location_filter: true
+    shared_portal: true
 - id: employer_708616d50b2166d1
   url: https://www.nssf.or.ke/careers
   import_urls:
@@ -7073,6 +7285,8 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    needs_location_filter: true
+    shared_portal: true
 - id: employer_719bcce71b910ca2
   url: https://www.softwaregroup.com/careers/overview
   import_urls:
@@ -7097,6 +7311,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    access_gap: true
 - id: employer_72103b3006598ae6
   url: https://career.huawei.com/en
   import_urls:
@@ -7121,6 +7336,8 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    needs_location_filter: true
+    mixed_opportunities: true
 - id: employer_72aa808b769e2aae
   url: https://www.mrgreenafrica.com/careers
   import_urls:
@@ -7241,6 +7458,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    needs_location_filter: true
 - id: employer_748a5ef5cb043b4d
   url: https://careers.remitly.com/
   import_urls:
@@ -7289,6 +7507,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    shared_portal: true
 - id: employer_74c9aaa9e00922d7
   url: https://cak.go.ke/careers
   import_urls:
@@ -7337,6 +7556,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    access_gap: true
 - id: employer_750e1dc437d41925
   url: https://www.chemonics.com/careers/
   import_urls:
@@ -7361,6 +7581,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    needs_location_filter: true
 - id: employer_751c5271cbdcf89b
   url: https://onafriq.com/careers
   import_urls:
@@ -7409,6 +7630,7 @@ sources:
   verification: {}
   suggestions:
     platform: social
+    access_gap: true
 - id: employer_76bc75394cf6c80b
   url: https://www.helb.co.ke/career/
   import_urls:
@@ -7481,6 +7703,7 @@ sources:
   verification: {}
   suggestions:
     platform: taleo
+    shared_portal: true
 - id: employer_775723d0a3791346
   url: https://www.carepay.com/terms-of-service-kenya
   import_urls:
@@ -7529,6 +7752,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    access_gap: true
 - id: employer_79157c716073efc6
   url: https://www.ku.ac.ke/careers-ku/
   import_urls:
@@ -7722,6 +7946,8 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    shared_portal: true
+    access_gap: true
 - id: employer_7b97ed0a9dd65e38
   url: https://www.comviva.com/careers/
   import_urls:
@@ -7818,6 +8044,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    needs_location_filter: true
 - id: employer_7e1bd62a988f4569
   url: https://www.kaa.go.ke/careers/
   import_urls:
@@ -7842,6 +8069,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    access_gap: true
 - id: employer_7e1d7e2921b31162
   url: https://siginon.com/careers/
   import_urls:
@@ -7866,6 +8094,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    access_gap: true
 - id: employer_7e52f264517888fc
   url: https://www.copycatgroup.com/careers
   import_urls:
@@ -7938,6 +8167,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    shared_portal: true
 - id: employer_7e8ccb7963e7a81f
   url: https://lvcthealth.org/job-openings/
   import_urls:
@@ -7986,6 +8216,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    needs_location_filter: true
 - id: employer_7eca95b8dc877a19
   url: https://jobs.unreasonablegroup.com/companies/eneza-education
   import_urls:
@@ -8010,6 +8241,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    access_gap: true
 - id: employer_7ed1f98278c363f5
   url: https://selfserviceuat.zohorecruit.com/jobs/Careers
   import_urls:
@@ -8034,6 +8266,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    shared_portal: true
 - id: employer_7fde2afaa9d3ac32
   url: https://www.amini.ai/about
   import_urls:
@@ -8106,6 +8339,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    access_gap: true
 - id: employer_80a591e8e9551f28
   url: https://liquid.tech/careers/
   import_urls:
@@ -8130,6 +8364,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    needs_location_filter: true
 - id: employer_81c0dfacf05e7110
   url: https://www.pawapay.io/careers
   import_urls:
@@ -8154,6 +8389,8 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    needs_location_filter: true
+    shared_portal: true
 - id: employer_81c44427ea94fdd0
   url: https://boakenya.com/job-listing/
   import_urls:
@@ -8178,6 +8415,8 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    needs_location_filter: true
+    shared_portal: true
 - id: employer_83876f0605116a36
   url: https://www.peponischool.org/peponi-school/peponi-school-vacancies/
   import_urls:
@@ -8274,6 +8513,8 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    needs_location_filter: true
+    shared_portal: true
 - id: employer_84a6b98ada3f9450
   url: https://www.prosperglobal.org/careers
   import_urls:
@@ -8322,6 +8563,7 @@ sources:
   verification: {}
   suggestions:
     platform: social
+    access_gap: true
 - id: employer_84f35103b71afdb4
   url: https://www.mckinsey.com/ke/careers
   import_urls:
@@ -8394,6 +8636,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    access_gap: true
 - id: employer_859b25bed23f6334
   url: https://www.dibkenya.co.ke/work-with-us/
   import_urls:
@@ -8418,6 +8661,8 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    needs_location_filter: true
+    shared_portal: true
 - id: employer_86c4dc08878bcefe
   url: https://www.icolo.io/careers/
   import_urls:
@@ -8466,6 +8711,8 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    needs_location_filter: true
+    shared_portal: true
 - id: employer_878367d4766f97fc
   url: https://www.naruwasco.co.ke/job-vacancies/
   import_urls:
@@ -8490,6 +8737,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    access_gap: true
 - id: employer_87b3cde08aeaf609
   url: https://www.gtbank.co.ke/about/career-opportunities
   import_urls:
@@ -8514,6 +8762,8 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    needs_location_filter: true
+    shared_portal: true
 - id: employer_88513f5c6f3582b1
   url: https://www.pgcareers.com/cr/en/locations/kenya
   import_urls:
@@ -8538,6 +8788,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    access_gap: true
 - id: employer_88afcfaa21a58108
   url: https://poainternet.bamboohr.com/careers
   import_urls:
@@ -8610,6 +8861,8 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    needs_location_filter: true
+    shared_portal: true
 - id: employer_8a9fc834e16a1f88
   url: https://mksu.ac.ke/careers-page/
   import_urls:
@@ -8730,6 +8983,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    access_gap: true
 - id: employer_8c7762b8aec82124
   url: https://kemsa.go.ke/careers/
   import_urls:
@@ -8754,6 +9008,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    access_gap: true
 - id: employer_8c8492de74d84b51
   url: https://www.oagkenya.go.ke/careers/
   import_urls:
@@ -8802,6 +9057,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    access_gap: true
 - id: employer_8e61f41f59dfe756
   url: https://portal.nita.go.ke/recruitment/
   import_urls:
@@ -8898,6 +9154,8 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    needs_location_filter: true
+    shared_portal: true
 - id: employer_902e37ed34ab50a5
   url: https://www.broadcom.co.ke/careers
   import_urls:
@@ -8946,6 +9204,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    historical: true
 - id: employer_9073ac10a3cb2286
   url: https://jobs.standardchartered.com/search/?q=&locationsearch=Kenya&skillsSearch=false
   import_urls:
@@ -8970,6 +9229,8 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    needs_location_filter: true
+    shared_portal: true
 - id: employer_90ca54a7a28adcfc
   url: https://ke.linkedin.com/company/artcaffe-coffee-and-bakery
   import_urls:
@@ -9018,6 +9279,8 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    needs_location_filter: true
+    shared_portal: true
 - id: employer_90e76007afd3802a
   url: https://nlsbanking.com/news/african-banking-tech/
   import_urls:
@@ -9066,6 +9329,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    access_gap: true
 - id: employer_917152f92cff9f41
   url: https://knh.or.ke/index.php/careers/
   import_urls:
@@ -9114,6 +9378,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    shared_portal: true
 - id: employer_9333b167d3cdae4d
   url: https://careers.bat.com/en/location/kenia-jobs/1045/192950/2
   import_urls:
@@ -9162,6 +9427,9 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    shared_portal: true
+    access_gap: true
+    mixed_opportunities: true
 - id: employer_93ef40e44d5c48b5
   url: https://careers.gulf.energy/
   import_urls:
@@ -9210,6 +9478,8 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    needs_location_filter: true
+    shared_portal: true
 - id: employer_94d033535ae0e9f1
   url: https://cuk.ac.ke/cuk-careers/
   import_urls:
@@ -9234,6 +9504,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    access_gap: true
 - id: employer_95e5e7e6ec2cecf8
   url: https://careers.unido.org/
   import_urls:
@@ -9330,6 +9601,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    needs_location_filter: true
 - id: employer_98ef3d76257035da
   url: https://kentrade.go.ke/careers
   import_urls:
@@ -9378,6 +9650,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    access_gap: true
 - id: employer_999a9d278f3b4857
   url: https://zepz.io/careers/
   import_urls:
@@ -9402,6 +9675,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    shared_portal: true
 - id: employer_9a08400f8d8ef9c5
   url: https://jobs.sanofi.com/
   import_urls:
@@ -9426,6 +9700,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    needs_location_filter: true
 - id: employer_9a776b698489f689
   url: https://batakenya.com/pages/who-we-are
   import_urls:
@@ -9498,6 +9773,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    needs_location_filter: true
 - id: employer_9bf041948c492428
   url: https://ke.linkedin.com/company/eclecticsio
   import_urls:
@@ -9546,6 +9822,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    access_gap: true
 - id: employer_9d54698814c8571c
   url: https://www.usajili.go.ke/careers
   import_urls:
@@ -9574,6 +9851,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    shared_portal: true
 - id: employer_9d6008f9814cf8e4
   url: https://www.continental-re.com/section/continental-re-holding/careers/?lang=eng
   import_urls:
@@ -9598,6 +9876,8 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    needs_location_filter: true
+    shared_portal: true
 - id: employer_9d93044f4f58c54c
   url: https://bboxx.co.ke/careers/
   import_urls:
@@ -9650,7 +9930,7 @@ sources:
   url: https://tala.co.ke/careers/
   import_urls:
   - https://tala.co.ke/careers/
-  platform: custom
+  platform: lever
   status: pending
   employer_ids:
   - emp_352f2f0814ad2d6c
@@ -9670,6 +9950,10 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+  pilot_rank: 14
+  official_careers_url: https://tala.co.ke/careers/
+  board: tala
+  board_url: https://jobs.lever.co/tala
 - id: employer_9f20b17731d553bb
   url: https://www.fhi360.org/join-our-team/
   import_urls:
@@ -9766,6 +10050,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    historical: true
 - id: employer_a0c03f043fd4288e
   url: https://equitybank.taleo.net/careersection/ext_new/jobsearch.ftl
   import_urls:
@@ -9793,6 +10078,9 @@ sources:
   verification: {}
   suggestions:
     platform: taleo
+    needs_location_filter: true
+    shared_portal: true
+    access_gap: true
 - id: employer_a0cebbeda33c03ce
   url: https://www.nuclear.co.ke/careers/
   import_urls:
@@ -9817,6 +10105,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    access_gap: true
 - id: employer_a131160b5168a1d8
   url: https://recruitment.kenet.or.ke/
   import_urls:
@@ -9889,6 +10178,7 @@ sources:
   verification: {}
   suggestions:
     platform: social
+    access_gap: true
 - id: employer_a1eee5682bc106ff
   url: https://jobs.lever.co/BusaraCenter
   import_urls:
@@ -9913,6 +10203,7 @@ sources:
   verification: {}
   suggestions:
     platform: lever
+    needs_location_filter: true
   board: BusaraCenter
   official_careers_url: https://busara.global/careers/
   pilot_rank: 6
@@ -9940,6 +10231,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    historical: true
 - id: employer_a23dc08d1454b366
   url: https://jobs.conquestcapital.co.ke/kwft/
   import_urls:
@@ -10108,6 +10400,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    shared_portal: true
 - id: employer_a5df927fdd6941a3
   url: https://familybank.co.ke/?page_id=2696
   import_urls:
@@ -10132,6 +10425,8 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    needs_location_filter: true
+    shared_portal: true
 - id: employer_a661e4a628ae489b
   url: https://careers.majidalfuttaim.com/global/en/
   import_urls:
@@ -10156,6 +10451,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    needs_location_filter: true
 - id: employer_a6be5460037db169
   url: https://www.linkedin.com/company/rfh-healthcare
   import_urls:
@@ -10180,6 +10476,7 @@ sources:
   verification: {}
   suggestions:
     platform: social
+    access_gap: true
 - id: employer_a76af863ab305a57
   url: https://oldmutual.wd3.myworkdayjobs.com/Old_Mutual_Careers
   import_urls:
@@ -10205,6 +10502,8 @@ sources:
   verification: {}
   suggestions:
     platform: workday
+    needs_location_filter: true
+    shared_portal: true
 - id: employer_a76dd8e486c6387f
   url: https://www.odpc.go.ke/careers/
   import_urls:
@@ -10253,6 +10552,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    needs_location_filter: true
 - id: employer_a84a3f49bcef4eb1
   url: https://hotpoint.co.ke/careers/
   import_urls:
@@ -10301,6 +10601,8 @@ sources:
   verification: {}
   suggestions:
     platform: oracle
+    needs_location_filter: true
+    shared_portal: true
 - id: employer_a8bcbf91d53aa45f
   url: https://www.airtelkenya.com/ke/about/Careers
   import_urls:
@@ -10350,6 +10652,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    needs_location_filter: true
 - id: employer_a8d7ef7a819ca97a
   url: https://www.icipe.org/news/announcement
   import_urls:
@@ -10447,6 +10750,8 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    needs_location_filter: true
+    shared_portal: true
 - id: employer_aa7c87dc5d249cfa
   url: https://www.roam-electric.com/careers
   import_urls:
@@ -10519,6 +10824,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    needs_location_filter: true
 - id: employer_abe6bcca7001f547
   url: https://www.wvi.org/careers
   import_urls:
@@ -10543,6 +10849,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    needs_location_filter: true
 - id: employer_ac25a7c35ce85b44
   url: https://bamburigroup.com/careers/
   import_urls:
@@ -10567,6 +10874,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    access_gap: true
 - id: employer_ac47f6b7616f46fc
   url: https://ke.linkedin.com/company/aar-healthcare-kenya-limited
   import_urls:
@@ -10591,6 +10899,7 @@ sources:
   verification: {}
   suggestions:
     platform: social
+    access_gap: true
 - id: employer_ac48ef5327b1194f
   url: https://jacarandahealth.org/careers/
   import_urls:
@@ -10687,6 +10996,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    needs_location_filter: true
 - id: employer_ad333f5cbeec665e
   url: https://www.avanti.space/working-at-avanti/
   import_urls:
@@ -10711,6 +11021,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    shared_portal: true
 - id: employer_ae00d6f246ff5c2d
   url: https://www.kyosk.app/our-people/join-the-team/
   import_urls:
@@ -10735,6 +11046,8 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    shared_portal: true
+    access_gap: true
 - id: employer_ae09b169b4a0b38c
   url: https://computechlimited.com/careers/
   import_urls:
@@ -10759,6 +11072,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    access_gap: true
 - id: employer_af008563bd993216
   url: https://www.fargocourier.co.ke/careers/
   import_urls:
@@ -10807,6 +11121,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    needs_location_filter: true
 - id: employer_af938c36473bf635
   url: https://waicare.com/career/
   import_urls:
@@ -10831,6 +11146,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    needs_location_filter: true
 - id: employer_affd700b6aa06dd2
   url: https://korient.co.ke/Home/Careers
   import_urls:
@@ -10879,6 +11195,10 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    needs_location_filter: true
+    shared_portal: true
+  pilot_rank: 13
+  official_careers_url: https://www.pula-advisors.com/career
 - id: employer_b1ad1e93431ea9d2
   url: https://rubiskenya.com/rubis-careers/
   import_urls:
@@ -10927,6 +11247,7 @@ sources:
   verification: {}
   suggestions:
     platform: social
+    access_gap: true
 - id: employer_b2d6aa5662b5c526
   url: https://www.cma.or.ke/careers/
   import_urls:
@@ -10977,6 +11298,9 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    needs_location_filter: true
+    shared_portal: true
+    access_gap: true
 - id: employer_b440d08555c49b01
   url: https://imarahomefibre.com/careers
   import_urls:
@@ -11049,6 +11373,7 @@ sources:
   verification: {}
   suggestions:
     platform: oracle
+    needs_location_filter: true
 - id: employer_b6972e2057a6ccc6
   url: https://creditbank.co.ke/careers/
   import_urls:
@@ -11073,6 +11398,8 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    needs_location_filter: true
+    shared_portal: true
 - id: employer_b6c932e54a0bee5e
   url: https://www.acted.org/en/get-involved/join-us/vacancies/
   import_urls:
@@ -11097,6 +11424,8 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    needs_location_filter: true
+    access_gap: true
 - id: employer_b6e4cc4364078f16
   url: https://ke.whizmo.com/careers.html
   import_urls:
@@ -11169,6 +11498,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    access_gap: true
 - id: employer_b8ff1c560f4c089b
   url: https://giz.fuzu.com/?tab=jobs
   import_urls:
@@ -11265,6 +11595,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    needs_location_filter: true
 - id: employer_bca1775fc492a3f7
   url: https://www.epra.go.ke/vacancies
   import_urls:
@@ -11289,6 +11620,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    access_gap: true
 - id: employer_bdee4912ef2d4465
   url: https://www.moriental.co.ke/careers/
   import_urls:
@@ -11313,6 +11645,8 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    needs_location_filter: true
+    shared_portal: true
 - id: employer_be12160549779fd4
   url: https://recruitment.dha.go.ke/
   import_urls:
@@ -11337,6 +11671,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    access_gap: true
 - id: employer_be14902184df4e30
   url: https://recruitment.klb.co.ke/
   import_urls:
@@ -11361,6 +11696,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    access_gap: true
 - id: employer_be2b734e165d779f
   url: https://victoryfarmskenya.com/jobs/
   import_urls:
@@ -11409,6 +11745,8 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    needs_location_filter: true
+    shared_portal: true
 - id: employer_bebbac36d4247d71
   url: https://ke.linkedin.com/company/symphonytechnologieslimited
   import_urls:
@@ -11433,6 +11771,7 @@ sources:
   verification: {}
   suggestions:
     platform: social
+    access_gap: true
 - id: employer_bf74b51cf17f66c0
   url: https://airkenya.com/careers/
   import_urls:
@@ -11529,6 +11868,8 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    needs_location_filter: true
+    access_gap: true
 - id: employer_c0fd20b0f5286cff
   url: https://ke.linkedin.com/company/amitruck-ltd
   import_urls:
@@ -11553,6 +11894,7 @@ sources:
   verification: {}
   suggestions:
     platform: social
+    access_gap: true
 - id: employer_c12684a59d2c0342
   url: https://www.kpc.co.ke/career/
   import_urls:
@@ -11603,6 +11945,8 @@ sources:
   verification: {}
   suggestions:
     platform: jazzhr
+    needs_location_filter: true
+    shared_portal: true
 - id: employer_c1bab15763b88e41
   url: https://musonisystem.com/careers/
   import_urls:
@@ -11651,6 +11995,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    needs_location_filter: true
 - id: employer_c28b86fe97545256
   url: https://careers.intellisoftkenya.com/jobs
   import_urls:
@@ -11675,6 +12020,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    access_gap: true
 - id: employer_c2a208133d878860
   url: https://www.safalgroup.com/vacancy_categories/mabati-rolling-mills-kenya/
   import_urls:
@@ -11699,6 +12045,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    access_gap: true
 - id: employer_c2fb6085d7e38437
   url: https://kenha.co.ke/careers/
   import_urls:
@@ -11772,6 +12119,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    access_gap: true
 - id: employer_c39700d8c08ec1bf
   url: https://www.novonordisk.com/careers/find-a-job.html
   import_urls:
@@ -11820,6 +12168,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    needs_location_filter: true
 - id: employer_c4baf1b55d43b7fe
   url: https://kura.go.ke/job-opportunities/
   import_urls:
@@ -11869,6 +12218,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    access_gap: true
 - id: employer_c632f4ebe2f28eb7
   url: https://www.umba.com/kenya/careers
   import_urls:
@@ -11894,6 +12244,8 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    needs_location_filter: true
+    shared_portal: true
 - id: employer_c637ac832ed9e5ee
   url: https://www.sbmbank.co.ke/jobs
   import_urls:
@@ -11918,6 +12270,8 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    needs_location_filter: true
+    shared_portal: true
 - id: employer_c6428928e37eb10a
   url: https://totalenergies.ke/careers
   import_urls:
@@ -11990,6 +12344,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    access_gap: true
 - id: employer_c7b63f1cfeba3351
   url: https://it.linkedin.com/company/kilimall-international-limited/
   import_urls:
@@ -12062,6 +12417,8 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    needs_location_filter: true
+    shared_portal: true
 - id: employer_c8dbe15d9f49697b
   url: https://www.salaammfbank.co.ke/careers/
   import_urls:
@@ -12086,6 +12443,8 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    needs_location_filter: true
+    shared_portal: true
 - id: employer_c96329128ebf5236
   url: https://www.undp.org/kenya/jobs
   import_urls:
@@ -12182,6 +12541,8 @@ sources:
   verification: {}
   suggestions:
     platform: workday
+    needs_location_filter: true
+    shared_portal: true
 - id: employer_caa4f929e22cfd1a
   url: https://www.kemri.go.ke/e-recruitment/
   import_urls:
@@ -12230,6 +12591,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    access_gap: true
 - id: employer_cbb08cdfcca01ebb
   url: https://www.unep.org/en/who-we-are/about-us/work-us
   import_urls:
@@ -12278,6 +12640,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    access_gap: true
 - id: employer_cc3b47e87a6cbdf3
   url: https://www.anu.ac.ke/vacancies/
   import_urls:
@@ -12326,6 +12689,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    needs_location_filter: true
 - id: employer_cc7d2f129ea6b207
   url: https://ndu.ac.ke/open-vacancies
   import_urls:
@@ -12374,6 +12738,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    historical: true
 - id: employer_cd30de5efc9b3692
   url: https://virtual-pay.io/careers/
   import_urls:
@@ -12470,6 +12835,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    needs_location_filter: true
 - id: employer_cfba292f61883d2e
   url: https://www.scania.com/ke/en/home/careers.html
   import_urls:
@@ -12494,6 +12860,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    shared_portal: true
 - id: employer_d081c2873d1c1ca6
   url: https://jubileeinsurance.com/ke/careers/
   import_urls:
@@ -12518,6 +12885,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    shared_portal: true
 - id: employer_d1938d224250d001
   url: https://systechafrica.com/internship/
   import_urls:
@@ -12590,6 +12958,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    needs_location_filter: true
 - id: employer_d35d24f455aceee7
   url: https://careers.smartrecruiters.com/Deloitte6/east-africa
   import_urls:
@@ -12614,6 +12983,7 @@ sources:
   verification: {}
   suggestions:
     platform: smartrecruiters
+    needs_location_filter: true
   board: Deloitte6
   official_careers_url: https://www.deloitte.com/ke/en/careers.html
   pilot_rank: 11
@@ -12641,6 +13011,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    access_gap: true
 - id: employer_d3f06c5d3f6727fd
   url: https://jobs.iebc.or.ke/jobs/
   import_urls:
@@ -12761,6 +13132,8 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    needs_location_filter: true
+    shared_portal: true
 - id: employer_d614ce5e6ae10327
   url: https://pesalink.co.ke/for-me/careers/listings
   import_urls:
@@ -12905,6 +13278,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    access_gap: true
 - id: employer_d6f8a939218c1134
   url: https://www.sasra.go.ke/careers/
   import_urls:
@@ -12953,6 +13327,8 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    historical: true
+    access_gap: true
 - id: employer_d7461447b9e3e601
   url: https://www.lemfi.com/en-us/careers
   import_urls:
@@ -13025,6 +13401,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    access_gap: true
 - id: employer_d87a2c7478b79470
   url: https://ke.linkedin.com/company/bliss-healthcare-ltd
   import_urls:
@@ -13049,6 +13426,7 @@ sources:
   verification: {}
   suggestions:
     platform: social
+    access_gap: true
 - id: employer_d8adeb4018b13f95
   url: https://www.cimmyt.org/careers/jobs/
   import_urls:
@@ -13073,6 +13451,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    needs_location_filter: true
 - id: employer_d917a07a0a496243
   url: https://www.primebank.co.ke/careers/
   import_urls:
@@ -13097,6 +13476,8 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    needs_location_filter: true
+    shared_portal: true
 - id: employer_d980ed8403fc37ed
   url: https://www.linkedin.com/company/solarise-africa
   import_urls:
@@ -13121,6 +13502,7 @@ sources:
   verification: {}
   suggestions:
     platform: social
+    access_gap: true
 - id: employer_d98dd697ac64aeaf
   url: https://www.dci.go.ke/careers
   import_urls:
@@ -13193,6 +13575,8 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    needs_location_filter: true
+    shared_portal: true
 - id: employer_da6cb811058c92ba
   url: https://www.novartis.com/careers
   import_urls:
@@ -13241,6 +13625,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    mixed_opportunities: true
 - id: employer_da7074f7c27b7f70
   url: https://eldowas.or.ke/careers/
   import_urls:
@@ -13265,6 +13650,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    access_gap: true
 - id: employer_dab4713bb2e3e41a
   url: https://bfaglobal.com/about-bfa-global/careers/
   import_urls:
@@ -13361,6 +13747,8 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    access_gap: true
+    historical: true
 - id: employer_dc7365fe60890396
   url: https://www.innovationagency.go.ke/careers
   import_urls:
@@ -13409,6 +13797,8 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    needs_location_filter: true
+    shared_portal: true
 - id: employer_dd5f9c2b4c646a24
   url: https://jobs.gdc.co.ke/
   import_urls:
@@ -13433,6 +13823,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    access_gap: true
 - id: employer_de3081f67088ad82
   url: https://www.cloudfactory.com/careers
   import_urls:
@@ -13505,6 +13896,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    needs_location_filter: true
 - id: employer_e136b2b4af3d7554
   url: https://ke.linkedin.com/company/goodlife---pharmacy-health-and-beauty
   import_urls:
@@ -13529,6 +13921,7 @@ sources:
   verification: {}
   suggestions:
     platform: social
+    access_gap: true
 - id: employer_e156b3e6ae919617
   url: https://practicalaction.org/careers/
   import_urls:
@@ -13553,6 +13946,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    needs_location_filter: true
 - id: employer_e1fa4e9ade840818
   url: https://www.bupaglobal.com/careers
   import_urls:
@@ -13748,6 +14142,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    access_gap: true
 - id: employer_e48cf933d7200ac1
   url: https://syokinet.zohorecruit.com/jobs/Careers
   import_urls:
@@ -13796,6 +14191,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    access_gap: true
 - id: employer_e55e57b017ef6e83
   url: https://elewa.odoo.com/jobs
   import_urls:
@@ -13868,6 +14264,8 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    needs_location_filter: true
+    access_gap: true
 - id: employer_e61974548aafef78
   url: https://www.davisandshirtliff.com/vacancies
   import_urls:
@@ -13892,6 +14290,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    access_gap: true
 - id: employer_e7d57bbc0b2fdf65
   url: https://jobs.ericsson.com/careers
   import_urls:
@@ -13964,6 +14363,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    access_gap: true
 - id: employer_e87a0d40e0a0040d
   url: https://www.linkedin.com/company/powerhive/
   import_urls:
@@ -13988,6 +14388,7 @@ sources:
   verification: {}
   suggestions:
     platform: social
+    access_gap: true
 - id: employer_e886227d9b261d10
   url: https://dt-global.com/careers/
   import_urls:
@@ -14012,6 +14413,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    needs_location_filter: true
 - id: employer_e8be4c03681e396d
   url: https://jobsportal.harleysltd.com/jobs/
   import_urls:
@@ -14084,6 +14486,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    access_gap: true
 - id: employer_eb72beac0108463b
   url: https://www.simbanet.net/simbanet-careers
   import_urls:
@@ -14132,6 +14535,7 @@ sources:
   verification: {}
   suggestions:
     platform: jazzhr
+    needs_location_filter: true
 - id: employer_ec01759479fb7548
   url: https://fincra.com/careers/
   import_urls:
@@ -14204,6 +14608,7 @@ sources:
   verification: {}
   suggestions:
     platform: social
+    access_gap: true
 - id: employer_ecbfad7d512d0249
   url: https://kippra.or.ke/careers/
   import_urls:
@@ -14252,6 +14657,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    needs_location_filter: true
 - id: employer_ecee009f40fe23d8
   url: https://www.gdc.co.ke/careers/
   import_urls:
@@ -14348,6 +14754,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    access_gap: true
 - id: employer_f106f07edf03624f
   url: https://pawanet.co.ke/careers
   import_urls:
@@ -14396,6 +14803,8 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    needs_location_filter: true
+    shared_portal: true
 - id: employer_f288af832e81bdd0
   url: https://ke.linkedin.com/company/ekitabu
   import_urls:
@@ -14420,6 +14829,7 @@ sources:
   verification: {}
   suggestions:
     platform: social
+    access_gap: true
 - id: employer_f299546d3b01e619
   url: https://unga-group.com/careers/
   import_urls:
@@ -14492,6 +14902,7 @@ sources:
   verification: {}
   suggestions:
     platform: smartrecruiters
+    access_gap: true
   board: CAREInternationalInKenya
   official_careers_url: https://www.care.or.ke/careers/
   pilot_rank: 12
@@ -14591,6 +15002,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    shared_portal: true
 - id: employer_f46d8bcc2e05d87b
   url: https://jumo.world/careers/
   import_urls:
@@ -14615,6 +15027,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    shared_portal: true
 - id: employer_f48c874cbcade4bf
   url: https://www.linkedin.com/company/transparency-international-kenya
   import_urls:
@@ -14639,6 +15052,7 @@ sources:
   verification: {}
   suggestions:
     platform: social
+    access_gap: true
 - id: employer_f558042a5d772ae3
   url: https://www.kenas.go.ke/careers
   import_urls:
@@ -14735,6 +15149,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    needs_location_filter: true
 - id: employer_f6eb6a981f41de2f
   url: https://recruitment.must.ac.ke/Jobs/Index
   import_urls:
@@ -14759,6 +15174,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    access_gap: true
 - id: employer_f73059431f2c58f5
   url: https://www.abcthebank.com/careers-at-abc/
   import_urls:
@@ -14783,6 +15199,8 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    needs_location_filter: true
+    shared_portal: true
 - id: employer_f806f6b3b4febe19
   url: https://careers.cihebkenya.org/
   import_urls:
@@ -14807,6 +15225,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    access_gap: true
 - id: employer_f820c50a114c60f9
   url: https://jobs.engie.com/
   import_urls:
@@ -14831,6 +15250,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    needs_location_filter: true
 - id: employer_f8f3f935327894da
   url: https://ke.linkedin.com/company/emobilis-mobile-technology-institute
   import_urls:
@@ -14855,6 +15275,8 @@ sources:
   verification: {}
   suggestions:
     platform: social
+    access_gap: true
+    mixed_opportunities: true
 - id: employer_f9975b80ea15f738
   url: https://www.myjobmag.co.ke/jobs-at/twiga-foods
   import_urls:
@@ -14879,6 +15301,8 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    access_gap: true
+    historical: true
 - id: employer_fa323962f3075273
   url: https://careers.incentro.com/
   import_urls:
@@ -14927,6 +15351,8 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    access_gap: true
+    mixed_opportunities: true
 - id: employer_fa5247342bb1ece6
   url: https://impactinitiatives.teamtailor.com/jobs
   import_urls:
@@ -14951,6 +15377,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    needs_location_filter: true
 - id: employer_fa747250db2228f3
   url: https://careers.wipro.com/
   import_urls:
@@ -15023,6 +15450,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    access_gap: true
 - id: employer_fcece2c9ee53d3d0
   url: https://careers.braeburn.com/
   import_urls:
@@ -15047,6 +15475,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    needs_location_filter: true
 - id: employer_fd1d36c4795459c2
   url: https://recruitment.kephis.org/
   import_urls:
@@ -15095,6 +15524,7 @@ sources:
   verification: {}
   suggestions:
     platform: social
+    access_gap: true
 - id: employer_fd3ce3857d2b61f1
   url: https://www.frc.go.ke/?page_id=245
   import_urls:
@@ -15143,6 +15573,8 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    needs_location_filter: true
+    access_gap: true
 - id: employer_fe32c509c8e7ef56
   url: https://mombasawater.co.ke/node/140
   import_urls:
@@ -15215,6 +15647,7 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    access_gap: true
 - id: employer_fee3bfdec04d8d28
   url: https://mebkenya.com/help-center/careers
   import_urls:
@@ -15239,6 +15672,8 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    needs_location_filter: true
+    shared_portal: true
 - id: employer_ff3ad80b30f6ef9b
   url: https://rabaipower.com/vacancies/
   import_urls:
@@ -15263,3 +15698,4 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+    access_gap: true

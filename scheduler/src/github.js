@@ -33,17 +33,6 @@ export class GitHub {
     return this.request(`/actions/runs/${runId}/jobs?per_page=100`);
   }
 
-  async claim(slot) {
-    const file = encodeURIComponent(`${slot.replaceAll(':', '-')}.json`);
-    try {
-      const payload = await this.request(`/contents/state/scheduler-slots/${file}?ref=data`);
-      return JSON.parse(atob(payload.content.replace(/\s/g, '')));
-    } catch (error) {
-      if (error.message === 'github_http_404') return null;
-      throw error;
-    }
-  }
-
   dispatch(slot) {
     return this.request(`/actions/workflows/${this.env.GITHUB_WORKFLOW}/dispatches`, {
       ref: this.env.GITHUB_REF,

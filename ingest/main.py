@@ -497,6 +497,12 @@ def run_ingestion(
             },
         )
     jobs = list(jobs_by_id.values())
+    jobs = [
+        job.model_copy(update={"status": JobStatus.EXPIRED})
+        if job.direct_employer and job.deadline_at and job.deadline_at <= started
+        else job
+        for job in jobs
+    ]
     # Preserve canonical occurrences; display exact cross-source duplicates once.
     active_jobs = deduplicate_exact(job for job in jobs if job.status == JobStatus.ACTIVE)
     previous_active = deduplicate_exact(

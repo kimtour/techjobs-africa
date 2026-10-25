@@ -29,7 +29,9 @@ def _merge(primary: CanonicalJob, duplicate: CanonicalJob) -> CanonicalJob:
     return primary.model_copy(
         update={
             "sources": sorted(set(primary.sources).union(duplicate.sources)),
-            "source_publisher": primary.source_publisher or duplicate.source_publisher,
+            "source_publisher": direct.source_publisher
+            if direct.direct_employer
+            else primary.source_publisher or duplicate.source_publisher,
             "preferred_apply_url": direct.preferred_apply_url
             if direct.direct_employer
             else primary.preferred_apply_url,

@@ -283,3 +283,42 @@ def test_exact_duplicate_bridge_keeps_identity_attribution_and_direct_metadata()
     assert merged[0].job_id == "aggregator:1"
     assert set(merged[0].sources) == {"aggregator", "other", "employer_test"}
     assert merged[0].direct_employer and merged[0].employer_id == "example"
+
+
+def test_breezy_repeated_apply_link_keeps_title_and_skips_nontechnical_detail():
+    requested = []
+    listing = (
+        '<a href="/p/sales-sales-executive"><h2>Sales Executive</h2></a>'
+        '<a href="/p/sales-sales-executive">Apply</a>'
+        '<a href="/p/tech-software-engineer"><h2>Software Engineer</h2></a>'
+    )
+    detail = (
+        '<script type="application/ld+json">'
+        + json.dumps(
+            {
+                "@type": "JobPosting",
+                "title": "Software Engineer",
+                "description": "SECRET_DESCRIPTION",
+                "jobLocation": {
+                    "address": {"addressLocality": "Nairobi", "addressCountry": "Kenya"}
+                },
+                "employmentType": ["FULL_TIME"],
+            }
+        )
+        + "</script>"
+    )
+
+    def handler(req):
+        requested.append(req.url.path)
+        if req.url.path == "/robots.txt":
+            return httpx.Response(200, text="User-agent: *\nAllow: /")
+        return httpx.Response(200, text=listing if req.url.path == "/" else detail)
+
+    adapter = RegistryBoardAdapter(
+        board("breezy"), EMPLOYERS, httpx.Client(transport=httpx.MockTransport(handler))
+    )
+    raw = adapter.fetch()
+    assert adapter.crawl_complete and len(raw) == 2
+    assert "/p/sales-sales-executive" not in requested
+    assert len(build_jobs(raw)) == 1
+    assert "SECRET_DESCRIPTION" not in "".join(r.model_dump_json() for r in raw)

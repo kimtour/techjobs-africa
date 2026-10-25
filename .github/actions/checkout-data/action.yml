@@ -1,0 +1,20 @@
+name: Check out private TechKazi state
+description: Separate private repository, scoped deploy key, same immutable data branch
+inputs:
+  ssh-key:
+    description: Dedicated write deploy key for the private data repository only
+    required: true
+  repository:
+    description: Private data repository
+    default: kimtour/techkazi-data
+runs:
+  using: composite
+  steps:
+    - uses: actions/checkout@v4
+      with:
+        repository: ${{ inputs.repository }}
+        ref: data
+        path: .private-data
+        ssh-key: ${{ inputs.ssh-key }}
+        persist-credentials: true
+        fetch-depth: 1

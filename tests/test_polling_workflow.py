@@ -45,3 +45,29 @@ def test_external_scheduler_cannot_bypass_slot_claim_or_expose_credentials():
     deployment = Path(".github/workflows/deploy-scheduler.yml").read_text()
     assert "secrets.SCHEDULER_GITHUB_TOKEN" in deployment
     assert "npx wrangler deploy --secrets-file /dev/stdin" in deployment
+
+
+def test_private_state_is_separate_and_public_pr_checks_do_not_receive_secrets():
+    checkout = yaml.load(
+        Path(".github/actions/checkout-data/action.yml").read_text(), Loader=yaml.BaseLoader
+    )
+    assert checkout["inputs"]["repository"]["default"] == "kimtour/techkazi-data"
+    assert checkout["runs"]["steps"][0]["with"]["ssh-key"] == "${{ inputs.ssh-key }}"
+    assert checkout["runs"]["steps"][0]["with"]["ref"] == "data"
+    for name in (
+        "ingest-and-build",
+        "deploy-site",
+        "migrate-techkazi",
+        "evaluate-jsearch",
+        "employer-discovery",
+    ):
+        text = Path(f".github/workflows/{name}.yml").read_text()
+        assert "./.github/actions/checkout-data" in text
+        assert "git fetch origin data" not in text
+        assert "DATA_REPO_SSH_KEY" in text
+    ci = Path(".github/workflows/ci.yml").read_text()
+    assert "pull_request:" in ci
+    assert "secrets." not in ci
+    assert "checkout-data" not in ci
+    for path in Path(".github/workflows").glob("*.yml"):
+        assert "pull_request_target" not in path.read_text()

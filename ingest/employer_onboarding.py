@@ -28,12 +28,42 @@ class Links(HTMLParser):
     def __init__(self):
         super().__init__()
         self.links = []
+        self.feeds = []
+        self.structured_job_count = 0
+        self.capture = False
+        self.parts = []
 
     def handle_starttag(self, tag, attrs):
         attrs = dict(attrs)
+        if tag == "link" and attrs.get("type") in {"application/rss+xml", "application/atom+xml"}:
+            self.feeds.append(attrs.get("href", ""))
+        if tag == "script" and attrs.get("type") == "application/ld+json":
+            self.capture = True
+            self.parts = []
         for key in ("href", "src"):
             if key in attrs and tag in ("a", "iframe", "script"):
                 self.links.append(attrs[key])
+
+    def handle_data(self, data):
+        if self.capture:
+            self.parts.append(data)
+
+    def handle_endtag(self, tag):
+        if tag != "script" or not self.capture:
+            return
+        self.capture = False
+        try:
+            payload = json.loads("".join(self.parts))
+        except ValueError:
+            return
+        nodes = payload if isinstance(payload, list) else [payload]
+        while nodes:
+            item = nodes.pop()
+            if not isinstance(item, dict):
+                continue
+            if item.get("@type") == "JobPosting":
+                self.structured_job_count += 1
+            nodes.extend(item.get("@graph", []))
 
 
 def write_json(path: Path, value):
@@ -121,6 +151,36 @@ def discover(source: dict, employers: dict, client=None, *, request_budget=8) ->
         links = Links()
         links.feed(response.text)
         urls = [urljoin(str(response.url), link) for link in links.links]
+        if not any(platform_for(url) in SUPPORTED for url in urls if safe_url(url)):
+            # Follow one observed employer careers link, never guessed URL variants.
+            careers = [
+                url
+                for url in urls
+                if safe_url(url)
+                and (urlsplit(url).hostname or "").removeprefix("www.")
+                == (urlsplit(str(response.url)).hostname or "").removeprefix("www.")
+                and urlsplit(url).path != urlsplit(str(response.url)).path
+                and any(
+                    term in urlsplit(url).path.casefold()
+                    for term in ("/career", "/jobs", "/join-our-team")
+                )
+            ]
+            if careers:
+                career_url = careers[0]
+                if not robots_allowed(observed, career_url)["allowed"]:
+                    result["status"] = "BLOCKED"
+                    return result
+                career_response = checked_get(observed, career_url)
+                career_links = Links()
+                career_links.feed(career_response.text)
+                result["careers_page"] = str(career_response.url)
+                urls += [urljoin(str(career_response.url), link) for link in career_links.links]
+        result["structured_job_count"] = links.structured_job_count
+        result["feed_urls"] = [
+            urljoin(str(response.url), feed)
+            for feed in links.feeds
+            if safe_url(urljoin(str(response.url), feed))
+        ][:5]
         detected = sorted(
             {
                 url
@@ -170,7 +230,8 @@ def discover(source: dict, employers: dict, client=None, *, request_budget=8) ->
                 {
                     "stable_ids": all(r.external_id for r in records),
                     "application_links": all(safe_url(str(r.apply_url)) for r in records),
-                    "locations": any(r.location for r in records),
+                    "locations": any(r.location for r in records)
+                    or (not records and source["platform"] in {"ashby", "greenhouse", "lever"}),
                     "dates_reviewed": True,
                     "complete": adapter.crawl_complete,
                 }
@@ -185,6 +246,9 @@ def discover(source: dict, employers: dict, client=None, *, request_budget=8) ->
                 }
                 for r in records[:5]
             ]
+            if not records:
+                result["empty_board"] = True
+                result["field_evidence"] = "Documented provider schema; no current vacancy sample"
             result["status"] = "SUCCESS" if adapter.crawl_complete else "PARTIAL"
         else:
             result["status"] = "DISCOVERED"
@@ -212,6 +276,8 @@ def trial(
     """Always start an empty candidate; accepted input is read only for comparisons."""
     if output_dir.exists() and any(output_dir.iterdir()):
         raise ValueError("Trial output must be new or empty")
+    if accepted is not None and not accepted.is_file():
+        raise ValueError("Accepted baseline file is missing")
     baseline = (
         [CanonicalJob.model_validate(j) for j in read_json(accepted, {"jobs": []})["jobs"]]
         if accepted
@@ -241,7 +307,12 @@ def trial(
             raw = adapter.fetch()
             rejected = []
             parsed = build_jobs(raw, rejections=rejected)
-            accepted_jobs = [j for j in parsed if j.eligibility_level in {"CONFIRMED", "LIKELY"}]
+            accepted_jobs = [
+                j
+                for j in parsed
+                if j.eligibility_level in {"CONFIRMED", "LIKELY"}
+                and (j.deadline_at is None or j.deadline_at > datetime.now(UTC))
+            ]
             row.update(
                 {
                     "status": "SUCCESS" if adapter.crawl_complete else "PARTIAL",
@@ -274,6 +345,11 @@ def trial(
         report["sources"].append(row)
     jobs = deduplicate_exact(jobs)
     report["candidate_jobs"] = len(jobs)
+    report["outcome"] = (
+        "SUCCESS"
+        if report["sources"] and all(r["status"] == "SUCCESS" for r in report["sources"])
+        else "INCOMPLETE"
+    )
     report["additional_unique_jobs"] = (
         sum(canonicalize_apply_url(str(j.preferred_apply_url)) not in baseline_urls for j in jobs)
         if accepted
@@ -318,7 +394,12 @@ def main():
         [registry[sid] for sid in args.source]
         if args.source
         else sorted(
-            [s for s in registry.values() if s.get("pilot_rank")], key=lambda s: s["pilot_rank"]
+            [
+                s
+                for s in registry.values()
+                if s.get("pilot_rank") or (args.mode == "discover" and s.get("discovery_enabled"))
+            ],
+            key=lambda s: (s.get("pilot_rank", 1000), s["id"]),
         )
     )
     if args.mode == "trial":

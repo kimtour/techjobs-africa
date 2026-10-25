@@ -24,7 +24,7 @@ on:
   # remain available above. Do not enable native cron alongside the Worker.
 
 permissions:
-  contents: write
+  contents: read
   deployments: write
 
 # All future workflows that write the data branch must share this group.
@@ -37,7 +37,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 25
     env:
-      DATA_DIR: /tmp/techjobs-africa-data
+      DATA_DIR: ${{ github.workspace }}/.private-data
       CANDIDATE_DIR: /tmp/techjobs-africa-candidate
     steps:
       - name: Check out application branch
@@ -61,9 +61,10 @@ jobs:
           ruff check ingest tests
 
       - name: Prepare isolated candidate from saved data
-        run: |
-          git fetch origin data
-          git worktree add "$DATA_DIR" origin/data
+        uses: ./.github/actions/checkout-data
+        with:
+          ssh-key: ${{ secrets.DATA_REPO_SSH_KEY }}
+          repository: ${{ vars.DATA_REPOSITORY || 'kimtour/techkazi-data' }}
 
       - name: Claim scheduled fetch slot before contacting sources
         id: claim
@@ -121,6 +122,7 @@ jobs:
         with:
           name: techkazi-static-site
           path: site/dist
+          retention-days: 1
           if-no-files-found: error
 
       - name: Check deployment configuration
@@ -171,15 +173,8 @@ jobs:
         with:
           name: fetch-audit-${{ github.run_id }}-${{ github.run_attempt }}
           path: |
-            /tmp/techjobs-africa-candidate/state/last-run.json
-            /tmp/techjobs-africa-candidate/state/health.json
             /tmp/techjobs-africa-candidate/state/fetch-summary.md
-            /tmp/techjobs-africa-candidate/state/fetch-progress.json
-            /tmp/techjobs-africa-candidate/state/publication-history/
-            /tmp/techjobs-africa-candidate/state/request-history/
-            /tmp/techjobs-africa-candidate/state/classification/
-            /tmp/techjobs-africa-candidate/state/employer-discovery/
-          retention-days: 90
+          retention-days: 7
           if-no-files-found: warn
 
       - name: Fail visibly when no safe fetch could be published

@@ -1,0 +1,35 @@
+name: Validate code changes
+on:
+  push:
+    branches: [main]
+    paths: ['ingest/**', 'tests/**', 'site/**', 'scheduler/**', 'config/**', '.github/**', 'requirements-dev.txt', 'pyproject.toml']
+  pull_request:
+    paths: ['ingest/**', 'tests/**', 'site/**', 'scheduler/**', 'config/**', '.github/**', 'requirements-dev.txt', 'pyproject.toml']
+permissions:
+  contents: read
+concurrency:
+  group: code-checks-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: |
+            site/package-lock.json
+            scheduler/package-lock.json
+      - run: pip install -r requirements-dev.txt
+      - run: python -m pytest tests/ -q && ruff check ingest tests
+      - run: npm ci --prefix site && npm test --prefix site && npm run check --prefix site && npm run build --prefix site
+      - run: npm ci --prefix scheduler && npm test --prefix scheduler && npm run check --prefix scheduler

@@ -60,8 +60,8 @@ python -u -m ingest.employer_onboarding discover --output-dir /tmp/employer-loca
 Run **Verify employer recruitment sources** (`employer-discovery.yml`) with
 `mode=discover` for GitHub-hosted access evidence. Results contain only sanitized
 metadata and small title/ID/location samples; never descriptions or page bodies.
-The 12-entry initial shortlist is a set of discovery candidates, not a claim
-that 12 sources passed verification. See the recorded pilot report for outcomes.
+The 14-entry initial shortlist is a set of discovery candidates, not a claim
+that 14 sources passed verification. See the recorded pilot report for outcomes.
 
 ## Isolated trial
 

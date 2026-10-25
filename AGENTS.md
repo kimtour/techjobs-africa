@@ -63,8 +63,12 @@ Astro static site. `site/src/lib/jobs.ts` exposes the `jobs` array (ACTIVE only)
 
 ### Git state
 
-- `main` — code only
-- `data` branch — persistent JSON state (schema_version, canonical jobs, sources, health, deployment metadata)
+- Public `kimtour/techjobs-africa`, `main` — code only.
+- Private `kimtour/techkazi-data`, `data` branch — persistent JSON state (schema_version, canonical jobs, sources, health, deployment metadata).
+- Use `.github/actions/checkout-data` and the scoped `DATA_REPO_SSH_KEY` secret;
+  never fetch state from the public code repository. All writers retain the
+  `techjobs-pipeline` concurrency group in the code repository. See
+  `docs/free-execution-and-private-state.md`.
 
 ## Key constraints
 

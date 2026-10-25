@@ -10,7 +10,7 @@ on:
         options: [publish, redirect-legacy]
 
 permissions:
-  contents: write
+  contents: read
   deployments: write
 
 concurrency:
@@ -23,6 +23,11 @@ jobs:
     timeout-minutes: 12
     steps:
       - uses: actions/checkout@v4
+      - uses: ./.github/actions/checkout-data
+        if: inputs.stage == 'publish'
+        with:
+          ssh-key: ${{ secrets.DATA_REPO_SSH_KEY }}
+          repository: ${{ vars.DATA_REPOSITORY || 'kimtour/techkazi-data' }}
       - uses: actions/setup-node@v4
         with:
           node-version: "22"
@@ -31,8 +36,7 @@ jobs:
       - name: Read accepted jobs and build TechKazi
         if: inputs.stage == 'publish'
         run: |
-          git fetch origin data --depth=1
-          git show FETCH_HEAD:public/jobs.json > site/src/data/jobs.json
+          cp .private-data/public/jobs.json site/src/data/jobs.json
           npm ci --prefix site
           npm test --prefix site
           npm run check --prefix site
@@ -61,7 +65,6 @@ jobs:
           DEPLOY_URL: ${{ steps.deploy.outputs.deployment-url }}
           DEPLOY_ID: ${{ steps.deploy.outputs.pages-deployment-id }}
         run: |
-          git worktree add /tmp/techkazi-deployment-state FETCH_HEAD
           node --input-type=module <<'JS'
           import { writeFileSync, appendFileSync } from 'node:fs';
           const recordedAt = new Date().toISOString();
@@ -71,14 +74,14 @@ jobs:
             run_id: process.env.GITHUB_RUN_ID, recorded_at: recordedAt,
             promoted: false, frontend_only: true, workflow_status_at_finalization: 'success', brand: 'TechKazi',
           };
-          writeFileSync('/tmp/techkazi-deployment-state/state/deployment.json', JSON.stringify(deployment, null, 2) + '\n');
-          appendFileSync(`/tmp/techkazi-deployment-state/state/publication-history/${recordedAt.slice(0, 10)}.jsonl`, JSON.stringify(deployment) + '\n');
+          writeFileSync('.private-data/state/deployment.json', JSON.stringify(deployment, null, 2) + '\n');
+          appendFileSync(`.private-data/state/publication-history/${recordedAt.slice(0, 10)}.jsonl`, JSON.stringify(deployment) + '\n');
           JS
-          git -C /tmp/techkazi-deployment-state config user.name "github-actions[bot]"
-          git -C /tmp/techkazi-deployment-state config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git -C /tmp/techkazi-deployment-state add state/deployment.json state/publication-history
-          git -C /tmp/techkazi-deployment-state commit -m "Record verified TechKazi hosting migration"
-          git -C /tmp/techkazi-deployment-state push origin HEAD:data
+          git -C .private-data config user.name "github-actions[bot]"
+          git -C .private-data config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git -C .private-data add state/deployment.json state/publication-history
+          git -C .private-data commit -m "Record verified TechKazi hosting migration"
+          git -C .private-data push origin HEAD:data
       - name: Prepare the legacy redirect after switching future updates
         if: inputs.stage == 'redirect-legacy'
         env:

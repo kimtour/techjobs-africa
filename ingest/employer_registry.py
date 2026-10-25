@@ -107,7 +107,10 @@ def workbook_rows(path: Path):
 
 
 def read_registry(path: Path, key: str) -> dict:
-    return yaml.safe_load(path.read_text()) if path.exists() else {"schema_version": 1, key: []}
+    if not path.exists():
+        return {"schema_version": 1, key: []}
+    # Safe C parsing avoids repeatedly spending seconds on the large directories.
+    return yaml.load(path.read_text(), Loader=getattr(yaml, "CSafeLoader", yaml.SafeLoader))
 
 
 def import_workbook(path: Path, config_dir: Path, *, exclude_sheets=()) -> tuple[dict, dict]:
@@ -190,6 +193,19 @@ def import_workbook(path: Path, config_dir: Path, *, exclude_sheets=()) -> tuple
                 source["employer_ids"].append(employer["id"])
             if source["id"] not in employer["source_ids"]:
                 employer["source_ids"].append(source["id"])
+            notes = values.get("E", "")
+            flags = source.setdefault("suggestions", {})
+            for flag, pattern in {
+                "needs_location_filter": (
+                    r"filter (Kenya|locations?)|global (roles|board)|group portal"
+                ),
+                "shared_portal": r"shared|parent group|group (portal|board|recruitment)",
+                "access_gap": r"fetch failed|could not be fetched|not (fully )?verified|unverified",
+                "historical": r"historical|archive",
+                "mixed_opportunities": r"talent.pool|volunteer|fellowship|training",
+            }.items():
+                if re.search(pattern, notes, re.I):
+                    flags[flag] = True
         refs.append(reference)
     employers_doc.update(
         {
@@ -208,6 +224,10 @@ def import_workbook(path: Path, config_dir: Path, *, exclude_sheets=()) -> tuple
 
 def public_registry(employers: dict, sources: dict) -> dict:
     portals = {s["id"]: s for s in sources["sources"]}
+    if any(not safe_url(s["url"]) for s in portals.values()):
+        raise ValueError("Unsafe public recruitment URL")
+    if any(e.get("website") and not safe_url(e["website"]) for e in employers["employers"]):
+        raise ValueError("Unsafe public employer website")
     return {
         "schema_version": 1,
         "directory_entries": employers["import"]["directory_entries"],

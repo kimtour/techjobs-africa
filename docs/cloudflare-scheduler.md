@@ -1,5 +1,12 @@
 # Cloudflare fetch scheduler
 
+Private-state split, 25 October 2026: immutable claims now live in
+`kimtour/techkazi-data` on branch `data`. The Worker uses actual Actions step
+evidence to identify the fetch owner, including duplicate dispatches; it has no
+credential for the private data repository. Its existing identity, encrypted
+scheduler credential and five EAT slots are retained. See
+[free execution and private state](free-execution-and-private-state.md).
+
 The dashboard is branded **TechKazi** and links to https://techkazi.pages.dev/.
 The existing Worker and Durable Object identities are retained through the
 branding migration so their scheduling history and credentials continue intact.

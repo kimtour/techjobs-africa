@@ -64,7 +64,7 @@ class _BreezyPage(HTMLParser):
         if tag == "a" and re.match(r"^/p/[^/?#]+", attrs.get("href", "")):
             self.links.add(attrs["href"])
             self.active_link = attrs["href"]
-            self.titles[self.active_link] = ""
+            self.titles.setdefault(self.active_link, "")
         if tag == "h2" and self.active_link:
             self.heading = True
         if tag == "script" and attrs.get("type") == "application/ld+json":
@@ -131,13 +131,19 @@ class RegistryBoardAdapter:
         ):
             return None
         ids = self.source["employer_ids"]
-        employer = self.employers[ids[0]] if len(ids) == 1 else None
+        employer = (
+            self.employers[ids[0]]
+            if len(ids) == 1 and not self.source.get("group_portal")
+            else None
+        )
         if isinstance(employment_type, list):
             employment_type = ", ".join(str(t) for t in employment_type)
         opportunity = "employment"
         if re.search(r"\b(intern|internship)\b", title, re.I):
             opportunity = "internship"
-        elif re.search(r"\b(consultant|consultancy)\b", title, re.I):
+        elif re.search(r"\b(consultant|consultancy)\b", employment_type or "", re.I) or re.match(
+            r"^consultancy\b", title, re.I
+        ):
             opportunity = "consultancy"
         elif re.search(r"\b(fellow|fellowship)\b", title, re.I):
             opportunity = "fellowship"
@@ -145,7 +151,7 @@ class RegistryBoardAdapter:
             source_id=self.source_id,
             external_id=str(external_id),
             title=title,
-            company=employer["name"] if employer else None,
+            company=self.source.get("posting_company") or (employer["name"] if employer else None),
             location=location,
             source_url=url,
             apply_url=apply_url or url,
