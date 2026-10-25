@@ -10933,7 +10933,7 @@ sources:
   import_urls:
   - https://oldmutual.wd3.myworkdayjobs.com/Old_Mutual_Careers
   platform: workday
-  status: pending
+  status: verified
   employer_ids:
   - emp_e3fa7e720c40fe4b
   - emp_8bd8c4545172bfad
@@ -10958,11 +10958,12 @@ sources:
     official_link: true
     stable_ids: true
     local_access: true
-    runner_access: false
+    runner_access: true
     collection_review: true
     evidence_paths:
     - docs/employer-discovery/vacancy-priority/local/employer_a76af863ab305a57.json
     - docs/employer-discovery/vacancy-priority/review.md
+    - docs/employer-discovery/vacancy-priority/hosted/employer_a76af863ab305a57.json
     collection_basis: The official Old Mutual corporate careers URL redirects to this
       exact public Workday board. The public careers site and linked privacy notice
       were reviewed; no automated-access prohibition for public vacancy metadata was
@@ -10983,8 +10984,9 @@ sources:
   posting_company: Old Mutual Group
   group_portal: true
   official_careers_url: https://www.oldmutual.com/careers/
-  review_reason: Full larger-board local M0 passed; official careers redirect verifies
-    the board. Hosted M0, isolated trial and publication review still required.
+  review_reason: Official employer-to-board linkage verified locally; independent
+    hosted ATS access and complete crawl passed. Isolated trial and publication review
+    required.
 - id: employer_a76dd8e486c6387f
   url: https://www.odpc.go.ke/careers/
   import_urls:
