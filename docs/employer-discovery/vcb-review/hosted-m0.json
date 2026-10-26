@@ -1,0 +1,155 @@
+{
+  "board_robots": {
+    "allowed": true,
+    "status": 200,
+    "url": "https://snapstartalent.com/robots.txt"
+  },
+  "candidate_metadata": [
+    {
+      "application_url": "https://snapstartalent.com/vcb/jobs/VWNcMcxkEfMDTl99rZ2L",
+      "country": "Kenya",
+      "employer": "Victoria Commercial Bank PLC",
+      "job_id": "employer_7a60d752d93bea48:VWNcMcxkEfMDTl99rZ2L",
+      "title": "Officer II - Cyber Security Analyst"
+    }
+  ],
+  "checked_at": "2026-10-26T08:33:53.407673+00:00",
+  "checks": {
+    "application_links": true,
+    "complete": true,
+    "dates_reviewed": true,
+    "locations": true,
+    "official_link": true,
+    "stable_ids": true
+  },
+  "detected_boards": [],
+  "eligible_jobs": 1,
+  "endpoint": "https://snapstartalent.com/sitemap.xml",
+  "environment": "github",
+  "feed_urls": [],
+  "official_robots": {
+    "allowed": true,
+    "status": 200,
+    "url": "https://www.victoriabank.co.ke/robots.txt"
+  },
+  "official_url": "https://www.victoriabank.co.ke/",
+  "publication_approved": false,
+  "records_found": 4,
+  "requests": [
+    {
+      "attempt": 1,
+      "duration_seconds": 0.079,
+      "error_type": null,
+      "host": "www.victoriabank.co.ke",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-26T08:33:53.450514+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.029,
+      "error_type": null,
+      "host": "www.victoriabank.co.ke",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-26T08:33:55.029949+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.219,
+      "error_type": null,
+      "host": "snapstartalent.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-26T08:33:56.559148+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.003,
+      "error_type": null,
+      "host": "snapstartalent.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-26T08:33:58.277856+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.501,
+      "error_type": null,
+      "host": "snapstartalent.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-26T08:33:59.780867+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.161,
+      "error_type": null,
+      "host": "snapstartalent.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-26T08:34:01.782439+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.149,
+      "error_type": null,
+      "host": "snapstartalent.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-26T08:34:03.443829+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.156,
+      "error_type": null,
+      "host": "snapstartalent.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-26T08:34:05.092683+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.145,
+      "error_type": null,
+      "host": "snapstartalent.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-26T08:34:06.748967+00:00"
+    }
+  ],
+  "sample": [
+    {
+      "application_url": "https://snapstartalent.com/vcb/jobs/AkOk1F4wufTFa8tY0h13",
+      "id": "AkOk1F4wufTFa8tY0h13",
+      "location": "Nairobi · Nairobi County · KE",
+      "published_at": "2026-10-21T00:00:00+00:00",
+      "title": "Officer II- Environmental and Social Governance"
+    },
+    {
+      "application_url": "https://snapstartalent.com/vcb/jobs/VWNcMcxkEfMDTl99rZ2L",
+      "id": "VWNcMcxkEfMDTl99rZ2L",
+      "location": "Nairobi · Nairobi County · KE",
+      "published_at": "2026-10-21T00:00:00+00:00",
+      "title": "Officer II - Cyber Security Analyst"
+    },
+    {
+      "application_url": "https://snapstartalent.com/vcb/jobs/XlWDb5kzanaptph40ZAI",
+      "id": "XlWDb5kzanaptph40ZAI",
+      "location": "Nairobi · Nairobi County · KE",
+      "published_at": "2026-10-22T00:00:00+00:00",
+      "title": "Officer I, Credit Administration"
+    },
+    {
+      "application_url": "https://snapstartalent.com/vcb/jobs/gcQGCelQxvdsL3fvaCL3",
+      "id": "gcQGCelQxvdsL3fvaCL3",
+      "location": "Nairobi · Nairobi County · KE",
+      "published_at": "2026-10-22T00:00:00+00:00",
+      "title": "Officer II, Credit Administration"
+    }
+  ],
+  "source_id": "employer_7a60d752d93bea48",
+  "status": "SUCCESS",
+  "structured_job_count": 0,
+  "technical_jobs": 1
+}
