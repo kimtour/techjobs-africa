@@ -1,0 +1,20 @@
+{
+  "source_id": "employer_a23dc08d1454b366",
+  "employers": [
+    "Kenya Women Microfinance Bank (KWFT)"
+  ],
+  "checked_at": "2026-10-26T07:49:51.767321+00:00",
+  "environment": "local",
+  "input_url": "https://jobs.conquestcapital.co.ke/kwft/",
+  "production_promoted": false,
+  "access": {
+    "status": "FAILED",
+    "error_type": "gaierror",
+    "http_status": null
+  },
+  "permission": {},
+  "extraction": {},
+  "outcome": "ACCESS_FAILED",
+  "requests": [],
+  "review_limit": "Bounded metadata review, not activation approval or an express reuse licence. Generic document links and template headings are not validated vacancies. Details may require full reviewed extraction rules."
+}

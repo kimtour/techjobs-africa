@@ -1,0 +1,222 @@
+{
+  "source_id": "employer_5342ac7e01317e93",
+  "employers": [
+    "Habib Bank AG Zurich Kenya"
+  ],
+  "checked_at": "2026-10-26T07:50:02.066872+00:00",
+  "environment": "local",
+  "input_url": "https://habibbank.com/ke/careers/",
+  "production_promoted": false,
+  "access": {
+    "status": "PASS",
+    "http_status": 200,
+    "final_url": "https://habibbank.com/ke/careers/",
+    "robots_allowed": true
+  },
+  "permission": {
+    "status": "NO_RESTRICTION_FOUND_IN_REVIEWED_PAGES",
+    "reviewed": [
+      {
+        "url": "https://habibbank.com/ke/terms-and-conditions",
+        "http_status": 200,
+        "status": "NO_RESTRICTION_FOUND_IN_REVIEWED_TEXT",
+        "clauses": []
+      },
+      {
+        "url": "https://habibbank.com/ke/data-privacy-notice/",
+        "http_status": 200,
+        "status": "NO_RESTRICTION_FOUND_IN_REVIEWED_TEXT",
+        "clauses": [
+          "Is the decision-making automated? No.",
+          "Habib Bank does not use automated decision-making."
+        ]
+      }
+    ],
+    "permission_granted": false
+  },
+  "extraction": {
+    "status": "DETAIL_LINKS_FOUND",
+    "structured_jobs": [],
+    "headings": [
+      "Careers",
+      "A Future Of Limitless Possibilities",
+      "Core Values",
+      "Trust",
+      "Integrity",
+      "Respect",
+      "Responsibility",
+      "Commitment",
+      "Teamwork",
+      "Open Vacancies",
+      "Relationship Officer/Manager -Liabilities Acquisition",
+      "Security Manager"
+    ],
+    "observed_role_links": [
+      {
+        "url": "https://habibbank.com/ke/job/relationship-officer-manager-liabilities-acquisition/",
+        "label": "04/11/2025 Relationship Officer/Manager -Liabilities Acquisition More Details Apply Now"
+      },
+      {
+        "url": "https://habibbank.com/ke/job/security-manager/",
+        "label": "31/10/2025 Security Manager More Details Apply Now"
+      }
+    ],
+    "empty_statements": [],
+    "pagination_clues": [],
+    "details": [
+      {
+        "url": "https://habibbank.com/ke/job/relationship-officer-manager-liabilities-acquisition/",
+        "link_label": "04/11/2025 Relationship Officer/Manager -Liabilities Acquisition More Details Apply Now",
+        "format": "html",
+        "headings": [
+          "Relationship Officer/Manager -Liabilities Acquisition",
+          "Position Summary",
+          "Responsibilities",
+          "",
+          "Areas of Expertise",
+          "",
+          "Skills & Competencies",
+          "Education & Experience",
+          "Important Information",
+          "Apply for this position"
+        ],
+        "structured_jobs": [
+          {
+            "title": "Relationship Officer/Manager -Liabilities Acquisition",
+            "datePosted": "2025-11-04T11:12:23+00:00"
+          }
+        ],
+        "fields": {
+          "location": "Mombasa & Nairobi, Kenya",
+          "closing": "10 November 2025"
+        },
+        "date_strings": [
+          "10 November 2025",
+          "4 November 2025",
+          "4th November 2025"
+        ],
+        "technical_clues": [],
+        "application_links": [
+          "mailto:hr.ke@habibbank.com"
+        ],
+        "status": "PARSED"
+      },
+      {
+        "url": "https://habibbank.com/ke/job/security-manager/",
+        "link_label": "31/10/2025 Security Manager More Details Apply Now",
+        "format": "html",
+        "headings": [
+          "Security Manager",
+          "Position Summary",
+          "Responsibilities",
+          "Areas of Expertise",
+          "",
+          "Skills & Competencies",
+          "Education & Experience",
+          "Important Information",
+          "Apply for this position"
+        ],
+        "structured_jobs": [
+          {
+            "title": "Security Manager",
+            "datePosted": "2025-10-31T11:57:55+00:00"
+          }
+        ],
+        "fields": {
+          "location": "Nairobi, Kenya",
+          "closing": "3 November 2025"
+        },
+        "date_strings": [
+          "29 October 2025",
+          "3 November 2025",
+          "3rd October 2025"
+        ],
+        "technical_clues": [],
+        "application_links": [
+          "mailto:hr.ke@habibbank.com"
+        ],
+        "status": "PARSED"
+      }
+    ],
+    "complete_verified": false,
+    "script_urls": [
+      "https://habibbank.com/ke/wp-content/plugins/wp-job-openings/assets/js/script.min.js?ver=4.1.0"
+    ]
+  },
+  "outcome": "REVIEWED",
+  "requests": [
+    {
+      "started_at": "2026-10-26T07:50:02.384053+00:00",
+      "duration_seconds": 0.649,
+      "method": "GET",
+      "host": "habibbank.com",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-26T07:50:04.538236+00:00",
+      "duration_seconds": 2.011,
+      "method": "GET",
+      "host": "habibbank.com",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-26T07:50:08.060397+00:00",
+      "duration_seconds": 0.715,
+      "method": "GET",
+      "host": "habibbank.com",
+      "http_status": 301,
+      "attempt": 1,
+      "error_type": "HTTPStatusError"
+    },
+    {
+      "started_at": "2026-10-26T07:50:10.280034+00:00",
+      "duration_seconds": 0.202,
+      "method": "GET",
+      "host": "habibbank.com",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-26T07:50:11.982360+00:00",
+      "duration_seconds": 1.643,
+      "method": "GET",
+      "host": "habibbank.com",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-26T07:50:15.130508+00:00",
+      "duration_seconds": 1.121,
+      "method": "GET",
+      "host": "habibbank.com",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-26T07:50:17.755366+00:00",
+      "duration_seconds": 1.344,
+      "method": "GET",
+      "host": "habibbank.com",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-26T07:50:20.601928+00:00",
+      "duration_seconds": 0.896,
+      "method": "GET",
+      "host": "habibbank.com",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    }
+  ],
+  "review_limit": "Bounded metadata review, not activation approval or an express reuse licence. Generic document links and template headings are not validated vacancies. Details may require full reviewed extraction rules."
+}

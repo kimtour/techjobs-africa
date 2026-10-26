@@ -1,0 +1,170 @@
+{
+  "source_id": "employer_c88674a80d4bf3b7",
+  "employers": [
+    "Paramount Bank"
+  ],
+  "checked_at": "2026-10-26T07:49:42.605383+00:00",
+  "environment": "local",
+  "input_url": "https://paramountbank.co.ke/careers/",
+  "production_promoted": false,
+  "access": {
+    "status": "PASS",
+    "http_status": 200,
+    "final_url": "https://paramountbank.co.ke/careers/",
+    "robots_allowed": true
+  },
+  "permission": {
+    "status": "NO_RESTRICTION_FOUND_IN_REVIEWED_PAGES",
+    "reviewed": [
+      {
+        "url": "https://paramountbank.co.ke/terms-and-conditions/",
+        "http_status": 200,
+        "status": "NO_RESTRICTION_FOUND_IN_REVIEWED_TEXT",
+        "clauses": []
+      },
+      {
+        "url": "https://paramountbank.co.ke/wp-content/uploads/2024/02/PBL-Data-Privacy-Statement-Final.pdf",
+        "http_status": 200,
+        "status": "NO_RESTRICTION_FOUND_IN_REVIEWED_TEXT",
+        "clauses": []
+      }
+    ],
+    "permission_granted": false
+  },
+  "extraction": {
+    "status": "DETAIL_LINKS_FOUND",
+    "structured_jobs": [],
+    "headings": [
+      "Careers",
+      "Welcome to Paramount Bank",
+      "About Us",
+      "At Paramount Bank, we're committed to creating a positive and supportive work environment where our team members can thrive. We believe that our success is driven by our talented a",
+      "Engineering",
+      "Product Design",
+      "Marketing"
+    ],
+    "observed_role_links": [
+      {
+        "url": "https://paramountbank.co.ke/wp-content/uploads/2025/05/PARAMOUNT-BANK-QUALITY-POLICY.pdf",
+        "label": "Quality Policy"
+      },
+      {
+        "url": "https://paramountbank.co.ke/wp-content/uploads/2024/09/Key-Facts-Document-PDF-2.pdf",
+        "label": "Key Facts Statement"
+      },
+      {
+        "url": "https://paramountbank.co.ke/wp-content/uploads/2024/09/Customer-Service-Charter-1.pdf",
+        "label": "Customer Service Charter"
+      },
+      {
+        "url": "https://paramountbank.co.ke/wp-content/uploads/2026/02/Tarrif-Guide-2026.pdf",
+        "label": "Tariff Guide"
+      }
+    ],
+    "empty_statements": [],
+    "pagination_clues": [],
+    "details": [
+      {
+        "url": "https://paramountbank.co.ke/wp-content/uploads/2025/05/PARAMOUNT-BANK-QUALITY-POLICY.pdf",
+        "link_label": "Quality Policy",
+        "format": "pdf",
+        "pages": 1,
+        "fields": {},
+        "date_strings": [],
+        "technical_clues": [],
+        "status": "PARSED",
+        "document_kind": "NON_VACANCY_DOCUMENT"
+      },
+      {
+        "url": "https://paramountbank.co.ke/wp-content/uploads/2024/09/Key-Facts-Document-PDF-2.pdf",
+        "link_label": "Key Facts Statement",
+        "format": "pdf",
+        "pages": 12,
+        "fields": {},
+        "date_strings": [],
+        "technical_clues": [],
+        "status": "PARSED",
+        "document_kind": "NON_VACANCY_DOCUMENT"
+      },
+      {
+        "url": "https://paramountbank.co.ke/wp-content/uploads/2024/09/Customer-Service-Charter-1.pdf",
+        "link_label": "Customer Service Charter",
+        "status": "FAILED",
+        "error_type": "ValueError",
+        "http_status": null,
+        "document_kind": "NON_VACANCY_DOCUMENT"
+      }
+    ],
+    "complete_verified": false,
+    "script_urls": [
+      "https://paramountbank.co.ke/wp-content/plugins/pixfort-core/dist/front/index.bundle-a1e258933f2061d9b3d3.js?ver=4.3.3"
+    ]
+  },
+  "outcome": "REVIEWED",
+  "requests": [
+    {
+      "started_at": "2026-10-26T07:49:42.910971+00:00",
+      "duration_seconds": 1.263,
+      "method": "GET",
+      "host": "paramountbank.co.ke",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-26T07:49:45.677213+00:00",
+      "duration_seconds": 0.418,
+      "method": "GET",
+      "host": "paramountbank.co.ke",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-26T07:49:47.597823+00:00",
+      "duration_seconds": 1.907,
+      "method": "GET",
+      "host": "paramountbank.co.ke",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-26T07:49:51.010157+00:00",
+      "duration_seconds": 0.441,
+      "method": "GET",
+      "host": "paramountbank.co.ke",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-26T07:49:52.956118+00:00",
+      "duration_seconds": 1.331,
+      "method": "GET",
+      "host": "paramountbank.co.ke",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-26T07:49:55.810352+00:00",
+      "duration_seconds": 2.52,
+      "method": "GET",
+      "host": "paramountbank.co.ke",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-26T07:49:59.835279+00:00",
+      "duration_seconds": 2.29,
+      "method": "GET",
+      "host": "paramountbank.co.ke",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    }
+  ],
+  "review_limit": "Bounded metadata review, not activation approval or an express reuse licence. Generic document links and template headings are not validated vacancies. Details may require full reviewed extraction rules."
+}

@@ -1,0 +1,124 @@
+{
+  "source_id": "employer_5904ae90e271210e",
+  "employers": [
+    "Sumac Microfinance Bank"
+  ],
+  "checked_at": "2026-10-26T07:49:53.012517+00:00",
+  "environment": "local",
+  "input_url": "https://job-boards.eu.greenhouse.io/sumac",
+  "production_promoted": false,
+  "access": {
+    "status": "PASS",
+    "http_status": 200,
+    "final_url": "https://job-boards.eu.greenhouse.io/sumac",
+    "robots_allowed": true
+  },
+  "permission": {
+    "status": "NO_RESTRICTION_FOUND_IN_REVIEWED_PAGES",
+    "reviewed": [
+      {
+        "url": "https://sumacmicrofinancebank.co.ke/privacy-policy/",
+        "http_status": 200,
+        "status": "NO_RESTRICTION_FOUND_IN_REVIEWED_TEXT",
+        "clauses": [
+          "\u2022 Processing: Any operation performed on personal data, whether automated or not, such as collection, recording, organization, structuring, storage, adaptation, retrieval, consultation, use, disclosure, alignment, combination, restriction, erasure, or destruction.",
+          "\u2022 Automated Decision-Making : Not to be subject to decisions based solely on automated processing (including profiling) with legal or significant effects; request human intervention/review.",
+          "Automated Processing & Profiling We may use automated tools for credit scoring, fraud detection, or personalized offers."
+        ]
+      }
+    ],
+    "permission_granted": false
+  },
+  "extraction": {
+    "status": "NO_VERIFIED_INVENTORY",
+    "structured_jobs": [],
+    "headings": [
+      "Current openings at Sumac Microfinance Bank"
+    ],
+    "observed_role_links": [],
+    "empty_statements": [
+      "no current openings"
+    ],
+    "pagination_clues": [],
+    "details": [],
+    "complete_verified": false,
+    "script_urls": []
+  },
+  "official_home_checked": "https://sumacmicrofinancebank.co.ke/",
+  "outcome": "REVIEWED",
+  "requests": [
+    {
+      "started_at": "2026-10-26T07:49:53.349181+00:00",
+      "duration_seconds": 0.704,
+      "method": "GET",
+      "host": "job-boards.eu.greenhouse.io",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-26T07:49:55.557589+00:00",
+      "duration_seconds": 0.313,
+      "method": "GET",
+      "host": "job-boards.eu.greenhouse.io",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-26T07:49:57.573824+00:00",
+      "duration_seconds": 0.615,
+      "method": "GET",
+      "host": "www.sumacmicrofinancebank.co.ke",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-26T07:49:59.692329+00:00",
+      "duration_seconds": 0.26,
+      "method": "GET",
+      "host": "www.sumacmicrofinancebank.co.ke",
+      "http_status": 301,
+      "attempt": 1,
+      "error_type": "HTTPStatusError"
+    },
+    {
+      "started_at": "2026-10-26T07:50:01.457098+00:00",
+      "duration_seconds": 0.606,
+      "method": "GET",
+      "host": "sumacmicrofinancebank.co.ke",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-26T07:50:03.566802+00:00",
+      "duration_seconds": 0.679,
+      "method": "GET",
+      "host": "sumacmicrofinancebank.co.ke",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-26T07:50:05.751018+00:00",
+      "duration_seconds": 0.194,
+      "method": "GET",
+      "host": "sumacmicrofinancebank.co.ke",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-26T07:50:07.449960+00:00",
+      "duration_seconds": 0.675,
+      "method": "GET",
+      "host": "sumacmicrofinancebank.co.ke",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    }
+  ],
+  "review_limit": "Bounded metadata review, not activation approval or an express reuse licence. Generic document links and template headings are not validated vacancies. Details may require full reviewed extraction rules."
+}

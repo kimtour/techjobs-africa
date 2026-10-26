@@ -1,0 +1,247 @@
+{
+  "source_id": "employer_08c20e1580e38d36",
+  "employers": [
+    "Gulf African Bank"
+  ],
+  "checked_at": "2026-10-26T07:49:26.841814+00:00",
+  "environment": "local",
+  "input_url": "https://gulfafricanbank.com/about-us/career-opportunities/",
+  "production_promoted": false,
+  "access": {
+    "status": "PASS",
+    "http_status": 200,
+    "final_url": "https://gulfafricanbank.com/about-us/career-opportunities/",
+    "robots_allowed": true
+  },
+  "permission": {
+    "status": "NO_RESTRICTION_FOUND_IN_REVIEWED_PAGES",
+    "reviewed": [
+      {
+        "url": "https://gulfafricanbank.com/terms-conditions/",
+        "http_status": 200,
+        "status": "NO_RESTRICTION_FOUND_IN_REVIEWED_TEXT",
+        "clauses": []
+      },
+      {
+        "url": "https://gulfafricanbank.com/privacy-policy/",
+        "http_status": 200,
+        "status": "NO_RESTRICTION_FOUND_IN_REVIEWED_TEXT",
+        "clauses": [
+          "Automated interactions.",
+          "tistical purposes; establishment, continuation and management of banking relationships and accounts; surveillance of premises and Automated Teller Machines (ATMs).",
+          "Please note that this right only applies to automated information which you initially provided consent for us to use or where we used the information to perform a contract with you."
+        ]
+      }
+    ],
+    "permission_granted": false
+  },
+  "extraction": {
+    "status": "DETAIL_LINKS_FOUND",
+    "structured_jobs": [],
+    "headings": [
+      "Apply for Trade Finance",
+      "Gulf African Bank",
+      "Join Us",
+      "Current Accounts",
+      "Women Banking",
+      "Savings Accounts",
+      "Diaspora Banking",
+      "Financing",
+      "Ways to Bank",
+      "Cards",
+      "Accounts",
+      "Women Banking",
+      "Financing",
+      "Ways to Bank",
+      "Cards",
+      "Accounts",
+      "Financing",
+      "Internet Banking",
+      "How to Reach Us",
+      "Gulf African Bank",
+      "Join Us",
+      "Current Accounts",
+      "Women Banking",
+      "Savings Accounts",
+      "Diaspora Banking",
+      "Financing",
+      "Ways to Bank",
+      "Cards",
+      "Accounts",
+      "Women Banking",
+      "Financing",
+      "Ways to Bank",
+      "Cards",
+      "Accounts",
+      "Financing",
+      "Internet Banking",
+      "How to Reach Us",
+      "Careers",
+      "Do you have what it takes to be part of one of Africa\u2019s most innovative and ethically driven banks?",
+      "Relationship Manager \u2013 SME",
+      "Relationship Manager \u2013 HNI",
+      "Get the latest news, straight to your inbox",
+      "Specialised Team",
+      "Find a Branch Near You",
+      "Locate an ATM Near you"
+    ],
+    "observed_role_links": [
+      {
+        "url": "https://gulfafricanbank.com/careers/relationship-manager-sme-2/",
+        "label": "Relationship Manager \u2013 SME Application Deadline: 28th October 2026"
+      },
+      {
+        "url": "https://gulfafricanbank.com/careers/relationship-manager-hni/",
+        "label": "Relationship Manager \u2013 HNI Application Deadline: 28th October 2026"
+      }
+    ],
+    "empty_statements": [],
+    "pagination_clues": [],
+    "details": [
+      {
+        "url": "https://gulfafricanbank.com/careers/relationship-manager-sme-2/",
+        "link_label": "Relationship Manager \u2013 SME Application Deadline: 28th October 2026",
+        "format": "html",
+        "headings": [
+          "Apply for Trade Finance",
+          "Gulf African Bank",
+          "Join Us",
+          "Current Accounts",
+          "Women Banking",
+          "Savings Accounts",
+          "Diaspora Banking",
+          "Financing",
+          "Ways to Bank",
+          "Cards",
+          "Accounts",
+          "Women Banking",
+          "Financing",
+          "Ways to Bank",
+          "Cards",
+          "Accounts",
+          "Financing",
+          "Internet Banking",
+          "How to Reach Us",
+          "Gulf African Bank",
+          "Join Us",
+          "Current Accounts",
+          "Women Banking",
+          "Savings Accounts",
+          "Diaspora Banking"
+        ],
+        "structured_jobs": [],
+        "fields": {},
+        "date_strings": [
+          "26/10/2026"
+        ],
+        "technical_clues": [],
+        "application_links": [],
+        "status": "PARSED"
+      },
+      {
+        "url": "https://gulfafricanbank.com/careers/relationship-manager-hni/",
+        "link_label": "Relationship Manager \u2013 HNI Application Deadline: 28th October 2026",
+        "format": "html",
+        "headings": [
+          "Apply for Trade Finance",
+          "Gulf African Bank",
+          "Join Us",
+          "Current Accounts",
+          "Women Banking",
+          "Savings Accounts",
+          "Diaspora Banking",
+          "Financing",
+          "Ways to Bank",
+          "Cards",
+          "Accounts",
+          "Women Banking",
+          "Financing",
+          "Ways to Bank",
+          "Cards",
+          "Accounts",
+          "Financing",
+          "Internet Banking",
+          "How to Reach Us",
+          "Gulf African Bank",
+          "Join Us",
+          "Current Accounts",
+          "Women Banking",
+          "Savings Accounts",
+          "Diaspora Banking"
+        ],
+        "structured_jobs": [],
+        "fields": {
+          "location": "Head Office"
+        },
+        "date_strings": [
+          "26/10/2026"
+        ],
+        "technical_clues": [],
+        "application_links": [],
+        "status": "PARSED"
+      }
+    ],
+    "complete_verified": false,
+    "script_urls": [
+      "https://gulfafricanbank.com/wp-content/themes/Gulf%20African%20Bank/assets/js/main.js?ver=1"
+    ]
+  },
+  "outcome": "REVIEWED",
+  "requests": [
+    {
+      "started_at": "2026-10-26T07:49:27.191844+00:00",
+      "duration_seconds": 1.388,
+      "method": "GET",
+      "host": "gulfafricanbank.com",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-26T07:49:31.585093+00:00",
+      "duration_seconds": 3.3,
+      "method": "GET",
+      "host": "gulfafricanbank.com",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-26T07:49:37.890254+00:00",
+      "duration_seconds": 1.32,
+      "method": "GET",
+      "host": "gulfafricanbank.com",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-26T07:49:42.211375+00:00",
+      "duration_seconds": 1.315,
+      "method": "GET",
+      "host": "gulfafricanbank.com",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-26T07:49:46.531145+00:00",
+      "duration_seconds": 1.263,
+      "method": "GET",
+      "host": "gulfafricanbank.com",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-26T07:49:50.799531+00:00",
+      "duration_seconds": 1.466,
+      "method": "GET",
+      "host": "gulfafricanbank.com",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    }
+  ],
+  "review_limit": "Bounded metadata review, not activation approval or an express reuse licence. Generic document links and template headings are not validated vacancies. Details may require full reviewed extraction rules."
+}

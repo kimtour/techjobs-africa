@@ -24,7 +24,7 @@ from ingest.employer_registry import safe_url
 from ingest.http_policy import CollectionBlocked, checked_get, read_robots
 from ingest.models import RawJob
 
-METHODS = {"jsonld", "rss", "html", "pdf"}
+METHODS = {"jsonld", "rss", "html", "pdf", "sitemap"}
 
 
 def public_target(url):
@@ -187,6 +187,22 @@ class StructuredEmployerAdapter:
             location = "Remote · " + place_text(
                 item.get("applicantLocationRequirements") or location
             )
+        deadline = item.get("validThrough")
+        if (
+            isinstance(deadline, str)
+            and re.fullmatch(r"\d{4}-\d{2}-\d{2}", deadline)
+            and self.settings.get("date_timezone")
+        ):
+            deadline = (
+                datetime.strptime(deadline, "%Y-%m-%d")
+                .replace(
+                    hour=23,
+                    minute=59,
+                    second=59,
+                    tzinfo=ZoneInfo(self.settings["date_timezone"]),
+                )
+                .isoformat()
+            )
         return self._job(
             identifier,
             item.get("title"),
@@ -194,7 +210,7 @@ class StructuredEmployerAdapter:
             url,
             description=item.get("description"),
             published=item.get("datePosted"),
-            deadline=item.get("validThrough"),
+            deadline=deadline,
             employment_type=item.get("employmentType"),
         )
 
@@ -378,7 +394,27 @@ class StructuredEmployerAdapter:
                 jobs.extend(self.pdf(response))
                 self.crawl_complete = self.settings.get("complete_listing_verified", False)
                 break
-            if self.platform == "rss":
+            if self.platform == "sitemap":
+                root = ET.fromstring(response.content)
+                namespace = "{http://www.sitemaps.org/schemas/sitemap/0.9}"
+                if root.tag != namespace + "urlset":
+                    raise ValueError("Expected a reviewed vacancy URL sitemap")
+                pattern = self.settings.get("detail_url_pattern")
+                if not pattern:
+                    raise ValueError("Sitemap needs a reviewed vacancy URL scope")
+                links = []
+                for entry in root:
+                    if entry.tag != namespace + "url":
+                        raise ValueError("Unrecognized vacancy sitemap entry")
+                    location = entry.findtext(namespace + "loc")
+                    if not location or not safe_url(location.strip()):
+                        raise ValueError("Invalid vacancy sitemap location")
+                    if re.search(pattern, location.strip()):
+                        links.append(location.strip())
+                if not links and not self.settings.get("verified_empty_sitemap"):
+                    raise ValueError("Empty vacancy sitemap needs review")
+                page_postings, next_url = [], None
+            elif self.platform == "rss":
                 root = ET.fromstring(response.content)
                 entries = root.findall(".//item") + root.findall(
                     "{http://www.w3.org/2005/Atom}entry"

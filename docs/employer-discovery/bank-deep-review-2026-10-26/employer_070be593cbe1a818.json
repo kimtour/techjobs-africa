@@ -1,0 +1,56 @@
+{
+  "source_id": "employer_070be593cbe1a818",
+  "employers": [
+    "Spire Bank"
+  ],
+  "checked_at": "2026-10-26T07:49:35.697488+00:00",
+  "environment": "local",
+  "input_url": "https://www.spirebank.co.ke/careers/",
+  "production_promoted": false,
+  "access": {
+    "status": "PASS",
+    "http_status": 200,
+    "final_url": "https://www.spirebank.co.ke/careers/",
+    "robots_allowed": true
+  },
+  "permission": {
+    "status": "POLICY_NOT_FOUND",
+    "reviewed": [],
+    "permission_granted": false
+  },
+  "extraction": {
+    "status": "NO_VERIFIED_INVENTORY",
+    "structured_jobs": [],
+    "headings": [
+      "Navigate"
+    ],
+    "observed_role_links": [],
+    "empty_statements": [],
+    "pagination_clues": [],
+    "details": [],
+    "complete_verified": false,
+    "script_urls": []
+  },
+  "outcome": "REVIEWED",
+  "requests": [
+    {
+      "started_at": "2026-10-26T07:49:36.382068+00:00",
+      "duration_seconds": 5.032,
+      "method": "GET",
+      "host": "www.spirebank.co.ke",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-26T07:49:42.916037+00:00",
+      "duration_seconds": 1.042,
+      "method": "GET",
+      "host": "www.spirebank.co.ke",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    }
+  ],
+  "review_limit": "Bounded metadata review, not activation approval or an express reuse licence. Generic document links and template headings are not validated vacancies. Details may require full reviewed extraction rules."
+}

@@ -1,0 +1,25 @@
+{
+  "source_id": "employer_c632f4ebe2f28eb7",
+  "employers": [
+    "Umba Microfinance Bank",
+    "Umba Kenya"
+  ],
+  "checked_at": "2026-10-26T07:49:26.798306+00:00",
+  "environment": "local",
+  "input_url": "https://www.umba.com/kenya/careers",
+  "production_promoted": false,
+  "access": {
+    "status": "NOT_RETRIED",
+    "reason": "Existing manual permission review retained; previously observed automation restrictions not overridden by resubmitted URL."
+  },
+  "permission": {
+    "status": "MANUAL_PERMISSION_REQUIRED",
+    "previous_evidence": "docs/employer-discovery/thirty-bank-review-2026-10-26/employer_c632f4ebe2f28eb7.json"
+  },
+  "extraction": {
+    "status": "NOT_ATTEMPTED_ON_RESTRICTED_SOURCE"
+  },
+  "outcome": "EXISTING_RESTRICTION_RETAINED",
+  "requests": [],
+  "review_limit": "Bounded metadata review, not activation approval or an express reuse licence. Generic document links and template headings are not validated vacancies. Details may require full reviewed extraction rules."
+}

@@ -1,0 +1,154 @@
+{
+  "source_id": "employer_51905d9546df64b7",
+  "employers": [
+    "Postbank"
+  ],
+  "checked_at": "2026-10-26T07:49:26.514112+00:00",
+  "environment": "local",
+  "input_url": "https://postbank.co.ke/careers/",
+  "production_promoted": false,
+  "access": {
+    "status": "PASS",
+    "http_status": 200,
+    "final_url": "https://postbank.co.ke/careers/",
+    "robots_allowed": true
+  },
+  "permission": {
+    "status": "NO_RESTRICTION_FOUND_IN_REVIEWED_PAGES",
+    "reviewed": [
+      {
+        "url": "https://postbank.co.ke/wp-content/uploads/2023/02/Personal_Account_Terms_and_Conditions.pdf",
+        "http_status": 200,
+        "status": "NO_RESTRICTION_FOUND_IN_REVIEWED_TEXT",
+        "clauses": [
+          "\u201cATM/POS\u201d means all Automated Teller Machines or Point-of-Sale \nmachines operated or affiliated to Postbank."
+        ]
+      },
+      {
+        "url": "https://postbank.co.ke/data-privacy-statement-2/",
+        "http_status": 200,
+        "status": "NO_RESTRICTION_FOUND_IN_REVIEWED_TEXT",
+        "clauses": [
+          "Any decision the Bank makes based on automated processing will be reviewed by a bank official in order to avoid algorithm bias and similar loopholes.",
+          "We will let you know of this and will give you an opportunity to request for a review of any decision made by automated means.",
+          "We may also use automated decision making for marketing purposes to choose personalized offers, discounts or recommendations to send you."
+        ]
+      }
+    ],
+    "permission_granted": false
+  },
+  "extraction": {
+    "status": "DETAIL_LINKS_FOUND",
+    "structured_jobs": [],
+    "headings": [
+      "Careers"
+    ],
+    "observed_role_links": [
+      {
+        "url": "https://postbank.co.ke/wp-content/uploads/2023/02/POSTBANK-SERVICE-CHARTER-REVIEWED-FINAL-JULY-2019.pdf",
+        "label": "Service Charter"
+      },
+      {
+        "url": "https://postbank.co.ke/wp-content/uploads/2025/06/POSTBANK-STRATEGIC-PLAN-2021-2025_.pdf",
+        "label": "Strategic Plan 2021 to 2025"
+      }
+    ],
+    "empty_statements": [
+      "No openings"
+    ],
+    "pagination_clues": [],
+    "details": [
+      {
+        "url": "https://postbank.co.ke/wp-content/uploads/2023/02/POSTBANK-SERVICE-CHARTER-REVIEWED-FINAL-JULY-2019.pdf",
+        "link_label": "Service Charter",
+        "format": "pdf",
+        "pages": 16,
+        "fields": {},
+        "date_strings": [],
+        "technical_clues": [],
+        "status": "PARSED",
+        "document_kind": "NON_VACANCY_DOCUMENT"
+      },
+      {
+        "url": "https://postbank.co.ke/wp-content/uploads/2025/06/POSTBANK-STRATEGIC-PLAN-2021-2025_.pdf",
+        "link_label": "Strategic Plan 2021 to 2025",
+        "format": "pdf",
+        "pages": 34,
+        "fields": {},
+        "date_strings": [
+          "24th July 2019"
+        ],
+        "technical_clues": [
+          "cyber",
+          "ict"
+        ],
+        "status": "PARSED",
+        "document_kind": "NON_VACANCY_DOCUMENT"
+      }
+    ],
+    "complete_verified": false,
+    "script_urls": [
+      "https://postbank.co.ke/wp-content/cache/min/1/wp-content/plugins/astra-sites/inc/lib/onboarding/assets/dist/template-preview/main.js?ver=1786970250",
+      "https://postbank.co.ke/wp-content/cache/min/1/wp-content/plugins/wp-whatsapp/assets/dist/js/njt-whatsapp.js?ver=1786970250",
+      "https://postbank.co.ke/wp-content/cache/min/1/wp-content/plugins/wp-whatsapp/assets/js/whatsapp-button.js?ver=1786970250"
+    ]
+  },
+  "outcome": "REVIEWED",
+  "requests": [
+    {
+      "started_at": "2026-10-26T07:49:26.974211+00:00",
+      "duration_seconds": 4.902,
+      "method": "GET",
+      "host": "postbank.co.ke",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-26T07:49:33.380744+00:00",
+      "duration_seconds": 0.57,
+      "method": "GET",
+      "host": "postbank.co.ke",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-26T07:49:35.455541+00:00",
+      "duration_seconds": 0.298,
+      "method": "GET",
+      "host": "postbank.co.ke",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-26T07:49:37.258598+00:00",
+      "duration_seconds": 0.666,
+      "method": "GET",
+      "host": "postbank.co.ke",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-26T07:49:39.429891+00:00",
+      "duration_seconds": 0.389,
+      "method": "GET",
+      "host": "postbank.co.ke",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-26T07:49:41.323574+00:00",
+      "duration_seconds": 0.524,
+      "method": "GET",
+      "host": "postbank.co.ke",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    }
+  ],
+  "review_limit": "Bounded metadata review, not activation approval or an express reuse licence. Generic document links and template headings are not validated vacancies. Details may require full reviewed extraction rules."
+}

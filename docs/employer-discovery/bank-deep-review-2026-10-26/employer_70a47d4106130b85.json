@@ -1,0 +1,264 @@
+{
+  "source_id": "employer_70a47d4106130b85",
+  "employers": [
+    "UBA Kenya"
+  ],
+  "checked_at": "2026-10-26T07:49:34.532673+00:00",
+  "environment": "local",
+  "input_url": "https://www.ubakenya.com/careers/",
+  "production_promoted": false,
+  "access": {
+    "status": "PASS",
+    "http_status": 200,
+    "final_url": "https://www.ubakenya.com/careers/",
+    "robots_allowed": true
+  },
+  "permission": {
+    "status": "NO_RESTRICTION_FOUND_IN_REVIEWED_PAGES",
+    "reviewed": [
+      {
+        "url": "https://www.ubakenya.com/wp-content/uploads/sites/16/2026/07/Job-Description-Legal-Officer-Clean-Version.pdf",
+        "http_status": 200,
+        "status": "NO_RESTRICTION_FOUND_IN_REVIEWED_TEXT",
+        "clauses": []
+      },
+      {
+        "url": "https://www.ubagroup.com/terms-conditions",
+        "http_status": 200,
+        "status": "NO_RESTRICTION_FOUND_IN_REVIEWED_TEXT",
+        "clauses": []
+      }
+    ],
+    "permission_granted": false
+  },
+  "extraction": {
+    "status": "DETAIL_LINKS_FOUND",
+    "structured_jobs": [],
+    "headings": [
+      "Personal",
+      "Loans & Payments",
+      "Transactional banking",
+      "Corporate Accounts",
+      "Trade Finance",
+      "News",
+      "Africa\u2019s Global Bank",
+      "Leadership",
+      "History",
+      "Help",
+      "Contact",
+      "Careers",
+      "Our Philosophy",
+      "UBA Values",
+      "Join the Tribe",
+      "Open Vacancies"
+    ],
+    "observed_role_links": [
+      {
+        "url": "https://www.ubakenya.com/wp-content/uploads/sites/16/2025/09/JOB-DESCRIPTION-RELATIONSHIP-MANAGER-PERSONAL-BANKING.pdf",
+        "label": "Relationship Manager, Personal Banking"
+      },
+      {
+        "url": "https://www.ubakenya.com/wp-content/uploads/sites/16/2025/08/RM-TRADE-SALES-1.pdf",
+        "label": "Link"
+      },
+      {
+        "url": "https://www.ubakenya.com/wp-content/uploads/sites/16/2025/08/JD-RM-Institutional-BankingNGOs-Saccos.pdf",
+        "label": "Link"
+      },
+      {
+        "url": "https://www.ubakenya.com/wp-content/uploads/sites/16/2025/12/JOB-DESCRIPTION-BRANCH-MANAGER.pdf",
+        "label": "Link"
+      },
+      {
+        "url": "https://www.ubakenya.com/wp-content/uploads/sites/16/2026/07/Advert-RM-Chinese-Desk.pdf",
+        "label": "Link"
+      },
+      {
+        "url": "https://www.ubakenya.com/wp-content/uploads/sites/16/2026/07/Human-Resource-Business-Partner.pdf",
+        "label": "Link"
+      },
+      {
+        "url": "https://www.ubakenya.com/wp-content/uploads/sites/16/2026/07/Corporate-RM-Oil-Gas.pdf",
+        "label": "Link"
+      },
+      {
+        "url": "https://www.ubakenya.com/wp-content/uploads/sites/16/2026/07/Corporate-RM-Energy-Sector.pdf",
+        "label": "Link"
+      },
+      {
+        "url": "https://www.ubakenya.com/wp-content/uploads/sites/16/2026/07/Corporate-RM-Construction-Infrastructure-Sector.pdf",
+        "label": "Link"
+      },
+      {
+        "url": "https://www.ubakenya.com/wp-content/uploads/sites/16/2026/07/Corporate-RM-FMCG-Sector.pdf",
+        "label": "Link"
+      },
+      {
+        "url": "https://www.ubakenya.com/wp-content/uploads/sites/16/2026/07/Corporate-RM-Telecommunications-Services-Sector.pdf",
+        "label": "Link"
+      },
+      {
+        "url": "https://www.ubakenya.com/wp-content/uploads/sites/16/2026/07/Corporate-RM-Agriculture-Sector.pdf",
+        "label": "Link"
+      },
+      {
+        "url": "https://www.ubakenya.com/wp-content/uploads/sites/16/2026/07/JD-Relationship-Manager-Public-Sector.pdf",
+        "label": "Link"
+      },
+      {
+        "url": "https://www.ubakenya.com/wp-content/uploads/sites/16/2026/07/Job-Description-for-EMDOs-RM-002.pdf",
+        "label": "Link"
+      },
+      {
+        "url": "https://www.ubakenya.com/wp-content/uploads/sites/16/2026/07/JD-HEAD-DIGITAL-BANKING.pdf",
+        "label": "Link"
+      },
+      {
+        "url": "https://www.ubakenya.com/wp-content/uploads/sites/16/2026/07/Job-Description-Legal-Officer-Clean-Version.pdf",
+        "label": "Link"
+      },
+      {
+        "url": "https://www.ubakenya.com/wp-content/uploads/sites/16/2026/07/Chief-Risk-Officer-UBA-Kenya.pdf",
+        "label": "Link"
+      },
+      {
+        "url": "https://www.ubakenya.com/wp-content/uploads/sites/16/2024/10/Account-reactivation-form.pdf",
+        "label": "Account Reactivation Form"
+      },
+      {
+        "url": "https://www.ubakenya.com/wp-content/uploads/sites/16/2024/04/UBA-Tariff-Guide-A3-1.pdf",
+        "label": "Tariff Guide"
+      },
+      {
+        "url": "https://www.ubakenya.com/wp-content/uploads/sites/16/2023/02/Final-UBA-KENYA-KEY-FACTS-DOCUMENT-27042022-003.docx.pdf",
+        "label": "Key Facts Document"
+      },
+      {
+        "url": "https://www.ubakenya.com/wp-content/uploads/sites/16/2025/07/ISO-CERTS.pdf",
+        "label": "Security & Privacy Certificates"
+      },
+      {
+        "url": "https://www.ubakenya.com/wp-content/uploads/sites/16/2024/07/Board-Governance-and-Board-Committee-Governance-Charter.pdf",
+        "label": "Board Charter"
+      }
+    ],
+    "empty_statements": [],
+    "pagination_clues": [],
+    "details": [
+      {
+        "url": "https://www.ubakenya.com/wp-content/uploads/sites/16/2025/09/JOB-DESCRIPTION-RELATIONSHIP-MANAGER-PERSONAL-BANKING.pdf",
+        "link_label": "Relationship Manager, Personal Banking",
+        "format": "pdf",
+        "pages": 2,
+        "fields": {},
+        "date_strings": [],
+        "technical_clues": [],
+        "status": "PARSED"
+      },
+      {
+        "url": "https://www.ubakenya.com/wp-content/uploads/sites/16/2025/08/RM-TRADE-SALES-1.pdf",
+        "link_label": "Link",
+        "format": "pdf",
+        "pages": 1,
+        "fields": {
+          "title": "Relationship Manager, Trade Sales"
+        },
+        "date_strings": [],
+        "technical_clues": [],
+        "status": "PARSED"
+      },
+      {
+        "url": "https://www.ubakenya.com/wp-content/uploads/sites/16/2025/08/JD-RM-Institutional-BankingNGOs-Saccos.pdf",
+        "link_label": "Link",
+        "format": "pdf",
+        "pages": 2,
+        "fields": {
+          "title": "Relationship Manager, Institutional Banking"
+        },
+        "date_strings": [],
+        "technical_clues": [],
+        "status": "PARSED"
+      }
+    ],
+    "complete_verified": false,
+    "script_urls": [
+      "https://www.ubakenya.com/wp-content/plugins/team-showcase/assets/js/main.js?ver=1.0"
+    ]
+  },
+  "outcome": "REVIEWED",
+  "requests": [
+    {
+      "started_at": "2026-10-26T07:49:35.142468+00:00",
+      "duration_seconds": 1.438,
+      "method": "GET",
+      "host": "www.ubakenya.com",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-26T07:49:38.085630+00:00",
+      "duration_seconds": 1.852,
+      "method": "GET",
+      "host": "www.ubakenya.com",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-26T07:49:41.442556+00:00",
+      "duration_seconds": 1.185,
+      "method": "GET",
+      "host": "www.ubakenya.com",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-26T07:49:44.130743+00:00",
+      "duration_seconds": 1.244,
+      "method": "GET",
+      "host": "www.ubagroup.com",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-26T07:49:46.883466+00:00",
+      "duration_seconds": 0.196,
+      "method": "GET",
+      "host": "www.ubagroup.com",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-26T07:49:48.584121+00:00",
+      "duration_seconds": 1.147,
+      "method": "GET",
+      "host": "www.ubakenya.com",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-26T07:49:51.236414+00:00",
+      "duration_seconds": 0.165,
+      "method": "GET",
+      "host": "www.ubakenya.com",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-26T07:49:52.902798+00:00",
+      "duration_seconds": 1.34,
+      "method": "GET",
+      "host": "www.ubakenya.com",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    }
+  ],
+  "review_limit": "Bounded metadata review, not activation approval or an express reuse licence. Generic document links and template headings are not validated vacancies. Details may require full reviewed extraction rules."
+}

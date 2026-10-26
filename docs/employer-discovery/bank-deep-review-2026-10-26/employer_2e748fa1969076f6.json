@@ -1,0 +1,69 @@
+{
+  "source_id": "employer_2e748fa1969076f6",
+  "employers": [
+    "I&M Bank Kenya"
+  ],
+  "checked_at": "2026-10-26T07:49:54.871130+00:00",
+  "environment": "local",
+  "input_url": "https://imbank.myadrenalin.com/CANDMICROSITE/#/",
+  "production_promoted": false,
+  "access": {
+    "status": "PORTAL_ACCESSIBLE_CORPORATE_CHECK_BLOCKED",
+    "portal_http_status": 200,
+    "official_corporate_http_status": 403,
+    "reason": "Portal request succeeded. Subsequent official employer home request returned403; do not mislabel the public ATS as blocked."
+  },
+  "permission": {
+    "status": "OFFICIAL_CORPORATE_CHECK_BLOCKED"
+  },
+  "extraction": {},
+  "outcome": "CORPORATE_LINKAGE_POLICY_CHECK_BLOCKED",
+  "requests": [
+    {
+      "started_at": "2026-10-26T07:49:55.241144+00:00",
+      "duration_seconds": 0.758,
+      "method": "GET",
+      "host": "imbank.myadrenalin.com",
+      "http_status": 302,
+      "attempt": 1,
+      "error_type": "HTTPStatusError"
+    },
+    {
+      "started_at": "2026-10-26T07:49:57.574136+00:00",
+      "duration_seconds": 0.344,
+      "method": "GET",
+      "host": "hrconnect.myadrenalin.com",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-26T07:49:59.423438+00:00",
+      "duration_seconds": 0.27,
+      "method": "GET",
+      "host": "imbank.myadrenalin.com",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-26T07:50:01.198825+00:00",
+      "duration_seconds": 0.35,
+      "method": "GET",
+      "host": "www.imbankgroup.com",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-26T07:50:03.052394+00:00",
+      "duration_seconds": 0.148,
+      "method": "GET",
+      "host": "www.imbankgroup.com",
+      "http_status": 403,
+      "attempt": 1,
+      "error_type": "HTTPStatusError"
+    }
+  ],
+  "review_limit": "Bounded metadata review, not activation approval or an express reuse licence. Generic document links and template headings are not validated vacancies. Details may require full reviewed extraction rules."
+}

@@ -1,0 +1,215 @@
+{
+  "source_id": "employer_c96e1d5e893d3e0d",
+  "employers": [
+    "National Bank of Kenya"
+  ],
+  "checked_at": "2026-10-26T07:49:10.571769+00:00",
+  "environment": "local",
+  "input_url": "https://www.nationalbank.co.ke/about-us/careers",
+  "production_promoted": false,
+  "access": {
+    "status": "PASS",
+    "http_status": 200,
+    "final_url": "https://www.nationalbank.co.ke/about-us/careers",
+    "robots_allowed": true
+  },
+  "permission": {
+    "status": "NO_RESTRICTION_FOUND_IN_REVIEWED_PAGES",
+    "reviewed": [
+      {
+        "url": "https://www.nationalbank.co.ke/terms-and-conditions",
+        "http_status": 200,
+        "status": "NO_RESTRICTION_FOUND_IN_REVIEWED_TEXT",
+        "clauses": []
+      },
+      {
+        "url": "https://www.nationalbank.co.ke/disclaimer",
+        "http_status": 200,
+        "status": "NO_RESTRICTION_FOUND_IN_REVIEWED_TEXT",
+        "clauses": []
+      }
+    ],
+    "permission_granted": false
+  },
+  "extraction": {
+    "status": "DETAIL_LINKS_FOUND",
+    "structured_jobs": [],
+    "headings": [
+      "SME Business Loan",
+      "Jenga Biashara Loan",
+      "Jenga Chama Loan",
+      "Trade Finance",
+      "Short Term Financing",
+      "Banking Sectors",
+      "Treasury Services",
+      "Treasury Bond Trading",
+      "Transactional Solutions",
+      "Custody Services",
+      "Trade Finance",
+      "Senior Management",
+      "Board of Directors",
+      "Careers",
+      "For You",
+      "For Your Biashara",
+      "For Corporate",
+      "Quick Links",
+      "Banking Hours"
+    ],
+    "observed_role_links": [
+      {
+        "url": "https://www.nationalbank.co.ke/images/Treasury_Sales_Dealer_External.pdf",
+        "label": "Treasury Sales Dealer"
+      },
+      {
+        "url": "https://www.nationalbank.co.ke/images/Job_Profile_-__Manager_Tax__Fixed_Assets.pdf",
+        "label": "Manager, Tax & Fixed Asset"
+      },
+      {
+        "url": "https://www.nationalbank.co.ke/images/dowloads/jobs/JOB_ADVERT_-_Head_Commercial_Funtions__Branch_Network_Audit.pdf",
+        "label": "Head Commercial Functions and Branch Network Audits"
+      },
+      {
+        "url": "https://www.nationalbank.co.ke/images/dowloads/jobs/Bancassurance_Sales_Representative_-Job_Advert.pdf",
+        "label": "Bancassurance Sales Representative"
+      },
+      {
+        "url": "https://www.nationalbank.co.ke/images/dowloads/jobs/Bancassurance_Regional_Sales_Manager-Rift_Job_Advert.pdf",
+        "label": "Bancassurance Regional Sales Manager"
+      },
+      {
+        "url": "https://www.nationalbank.co.ke/images/National_Bank_Complaint_Handling_Process.pdf",
+        "label": "Complaint Handling"
+      },
+      {
+        "url": "https://www.nationalbank.co.ke/images/NBK_CUSTOMER_SERVICE_CHARTER.pdf",
+        "label": "Service Charter"
+      },
+      {
+        "url": "https://www.nationalbank.co.ke/images/National-BankTarrif-Guide.pdf",
+        "label": "Tarrif Guide"
+      }
+    ],
+    "empty_statements": [],
+    "pagination_clues": [],
+    "details": [
+      {
+        "url": "https://www.nationalbank.co.ke/images/Treasury_Sales_Dealer_External.pdf",
+        "link_label": "Treasury Sales Dealer",
+        "format": "pdf",
+        "pages": 2,
+        "fields": {
+          "title": "Treasury Sales Dealer",
+          "location": "Head Office"
+        },
+        "date_strings": [
+          "27th August 2026"
+        ],
+        "technical_clues": [
+          "ict"
+        ],
+        "status": "PARSED"
+      },
+      {
+        "url": "https://www.nationalbank.co.ke/images/Job_Profile_-__Manager_Tax__Fixed_Assets.pdf",
+        "link_label": "Manager, Tax & Fixed Asset",
+        "format": "pdf",
+        "pages": 2,
+        "fields": {
+          "title": "Manager, Tax & Fixed Assets",
+          "location": "Head Office",
+          "reference": "NBK/FIN/01/2026"
+        },
+        "date_strings": [
+          "27th August 2026"
+        ],
+        "technical_clues": [],
+        "status": "PARSED"
+      },
+      {
+        "url": "https://www.nationalbank.co.ke/images/dowloads/jobs/JOB_ADVERT_-_Head_Commercial_Funtions__Branch_Network_Audit.pdf",
+        "link_label": "Head Commercial Functions and Branch Network Audits",
+        "format": "pdf",
+        "pages": 3,
+        "fields": {},
+        "date_strings": [
+          "21st July 2026"
+        ],
+        "technical_clues": [
+          "ict"
+        ],
+        "status": "PARSED"
+      }
+    ],
+    "complete_verified": false,
+    "script_urls": [
+      "https://www.nationalbank.co.ke/templates/nbk/js/main.js"
+    ]
+  },
+  "outcome": "REVIEWED",
+  "requests": [
+    {
+      "started_at": "2026-10-26T07:49:11.175360+00:00",
+      "duration_seconds": 1.35,
+      "method": "GET",
+      "host": "www.nationalbank.co.ke",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-26T07:49:14.028542+00:00",
+      "duration_seconds": 1.315,
+      "method": "GET",
+      "host": "www.nationalbank.co.ke",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-26T07:49:16.848093+00:00",
+      "duration_seconds": 0.961,
+      "method": "GET",
+      "host": "www.nationalbank.co.ke",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-26T07:49:19.320068+00:00",
+      "duration_seconds": 1.184,
+      "method": "GET",
+      "host": "www.nationalbank.co.ke",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-26T07:49:22.009076+00:00",
+      "duration_seconds": 1.252,
+      "method": "GET",
+      "host": "www.nationalbank.co.ke",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-26T07:49:24.766147+00:00",
+      "duration_seconds": 2.01,
+      "method": "GET",
+      "host": "www.nationalbank.co.ke",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-26T07:49:28.280818+00:00",
+      "duration_seconds": 1.065,
+      "method": "GET",
+      "host": "www.nationalbank.co.ke",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    }
+  ],
+  "review_limit": "Bounded metadata review, not activation approval or an express reuse licence. Generic document links and template headings are not validated vacancies. Details may require full reviewed extraction rules."
+}

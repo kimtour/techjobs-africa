@@ -1,0 +1,295 @@
+{
+  "source_id": "employer_1c5ea7eb95daf0b1",
+  "employers": [
+    "Stanbic Bank Kenya"
+  ],
+  "checked_at": "2026-10-26T07:49:37.166245+00:00",
+  "environment": "local",
+  "input_url": "https://www.standardbank.com/sbg/standard-bank-group/careers/apply/jobs/view-all-jobs",
+  "production_promoted": false,
+  "access": {
+    "status": "PASS",
+    "http_status": 200,
+    "final_url": "https://www.standardbank.com/sbg/standard-bank-group/careers/apply/jobs/view-all-jobs",
+    "robots_allowed": true
+  },
+  "permission": {
+    "status": "NO_RESTRICTION_FOUND_IN_REVIEWED_PAGES",
+    "reviewed": [
+      {
+        "url": "https://www.standardbank.com/sbg/standard-bank-group/careers/our-teams/legal",
+        "http_status": 200,
+        "status": "NO_RESTRICTION_FOUND_IN_REVIEWED_TEXT",
+        "clauses": []
+      },
+      {
+        "url": "https://www.standardbank.com/sbg/standard-bank-group/legal",
+        "http_status": 200,
+        "status": "NO_RESTRICTION_FOUND_IN_REVIEWED_TEXT",
+        "clauses": []
+      }
+    ],
+    "permission_granted": false
+  },
+  "extraction": {
+    "status": "DETAIL_LINKS_FOUND",
+    "structured_jobs": [],
+    "headings": [
+      "Search jobs",
+      "Find your next growth opportunity",
+      "Service Consultants-Multiple Locations in Uganda",
+      "Service Consultants-Multiple Locations in Uganda"
+    ],
+    "observed_role_links": [
+      {
+        "url": "https://www.standardbank.com/sbg/standard-bank-group/careers/life-at-sbg",
+        "label": "Discover life at SBG"
+      },
+      {
+        "url": "https://www.standardbank.com/sbg/standard-bank-group/careers/our-teams",
+        "label": "Explore our teams"
+      },
+      {
+        "url": "https://www.standardbank.com/sbg/standard-bank-group/careers/students-and-graduates",
+        "label": "Start your journey"
+      },
+      {
+        "url": "https://www.standardbank.com/sbg/standard-bank-group/careers/how-we-hire",
+        "label": "Learn more"
+      },
+      {
+        "url": "https://www.standardbank.com/sbg/standard-bank-group/careers/life-at-sbg",
+        "label": "Life at SBG"
+      },
+      {
+        "url": "https://www.standardbank.com/sbg/standard-bank-group/careers/our-teams",
+        "label": "Our structure"
+      },
+      {
+        "url": "https://www.standardbank.com/sbg/standard-bank-group/careers/our-teams/marketing-and-communications",
+        "label": "Marketing and Communications"
+      },
+      {
+        "url": "https://www.standardbank.com/sbg/standard-bank-group/careers/our-teams/business-and-commercial",
+        "label": "Business and Commercial Banking"
+      },
+      {
+        "url": "https://www.standardbank.com/sbg/standard-bank-group/careers/our-teams/insurance-and-asset-management",
+        "label": "Insurance and Asset Management"
+      },
+      {
+        "url": "https://www.standardbank.com/sbg/standard-bank-group/careers/our-teams/compliance",
+        "label": "Compliance"
+      },
+      {
+        "url": "https://www.standardbank.com/sbg/standard-bank-group/careers/our-teams/personal-and-private-banking",
+        "label": "Personal and Private Banking"
+      },
+      {
+        "url": "https://www.standardbank.com/sbg/standard-bank-group/careers/our-teams/cib",
+        "label": "Corporate and Investment Banking"
+      },
+      {
+        "url": "https://www.standardbank.com/sbg/standard-bank-group/careers/our-teams/technology",
+        "label": "Technology"
+      },
+      {
+        "url": "https://www.standardbank.com/sbg/standard-bank-group/careers/our-teams/finance-and-value-management",
+        "label": "Finance and Value Management"
+      },
+      {
+        "url": "https://www.standardbank.com/sbg/standard-bank-group/careers/our-teams/risk",
+        "label": "Risk"
+      },
+      {
+        "url": "https://www.standardbank.com/sbg/standard-bank-group/careers/our-teams/data-and-analytics",
+        "label": "Data and Analytics"
+      },
+      {
+        "url": "https://www.standardbank.com/sbg/standard-bank-group/careers/our-teams/internal-audit",
+        "label": "Internal Audit"
+      },
+      {
+        "url": "https://www.standardbank.com/sbg/standard-bank-group/careers/our-teams/legal",
+        "label": "Legal"
+      },
+      {
+        "url": "https://www.standardbank.com/sbg/standard-bank-group/careers/our-teams/people-and-culture",
+        "label": "People and Culture"
+      },
+      {
+        "url": "https://www.standardbank.com/sbg/standard-bank-group/careers/our-teams/real-estate-services",
+        "label": "Real Estate Services"
+      },
+      {
+        "url": "https://www.standardbank.com/sbg/standard-bank-group/careers/our-teams/operations",
+        "label": "Operations"
+      },
+      {
+        "url": "https://www.standardbank.com/sbg/standard-bank-group/careers/students-and-graduates",
+        "label": "Overview"
+      },
+      {
+        "url": "https://www.standardbank.com/sbg/standard-bank-group/careers/students-and-graduates/bursaries",
+        "label": "Bursaries"
+      },
+      {
+        "url": "https://www.standardbank.com/sbg/standard-bank-group/careers/students-and-graduates/graduate-programmes",
+        "label": "Graduate programmes"
+      },
+      {
+        "url": "https://www.standardbank.com/sbg/standard-bank-group/careers/students-and-graduates/internships",
+        "label": "Internships"
+      },
+      {
+        "url": "https://www.standardbank.com/sbg/standard-bank-group/careers/students-and-graduates/learnerships",
+        "label": "Learnerships"
+      },
+      {
+        "url": "https://www.standardbank.com/sbg/standard-bank-group/careers/students-and-graduates/PluggedIn",
+        "label": "PluggedIn"
+      },
+      {
+        "url": "https://www.standardbank.com/sbg/standard-bank-group/careers/how-we-hire/how-we-hire-professional",
+        "label": "How we hire professional"
+      },
+      {
+        "url": "https://www.standardbank.com/sbg/standard-bank-group/careers/how-we-hire/how-we-hire-student-and-grad",
+        "label": "How we hire student and grad"
+      },
+      {
+        "url": "https://www.standardbank.com/sbg/standard-bank-group/careers/how-we-hire/How-we-hire-bursary",
+        "label": "How we hire bursary"
+      }
+    ],
+    "empty_statements": [],
+    "pagination_clues": [],
+    "details": [
+      {
+        "url": "https://www.standardbank.com/sbg/standard-bank-group/careers/life-at-sbg",
+        "link_label": "Discover life at SBG",
+        "format": "html",
+        "headings": [
+          "Life at Standard Bank",
+          "Support for work, life, and everything in between"
+        ],
+        "structured_jobs": [],
+        "fields": {},
+        "date_strings": [
+          "31 December 2025"
+        ],
+        "technical_clues": [],
+        "application_links": [],
+        "status": "PARSED"
+      },
+      {
+        "url": "https://www.standardbank.com/sbg/standard-bank-group/careers/our-teams",
+        "link_label": "Explore our teams",
+        "format": "html",
+        "headings": [
+          "Our teams"
+        ],
+        "structured_jobs": [],
+        "fields": {},
+        "date_strings": [],
+        "technical_clues": [],
+        "application_links": [],
+        "status": "PARSED"
+      },
+      {
+        "url": "https://www.standardbank.com/sbg/standard-bank-group/careers/students-and-graduates",
+        "link_label": "Start your journey",
+        "format": "html",
+        "headings": [
+          "Students and graduates"
+        ],
+        "structured_jobs": [],
+        "fields": {},
+        "date_strings": [],
+        "technical_clues": [],
+        "application_links": [],
+        "status": "PARSED"
+      }
+    ],
+    "complete_verified": false,
+    "script_urls": [
+      "https://www.standardbank.com/static_file/assets/js/bundle.js"
+    ]
+  },
+  "outcome": "REVIEWED",
+  "requests": [
+    {
+      "started_at": "2026-10-26T07:49:37.453397+00:00",
+      "duration_seconds": 0.756,
+      "method": "GET",
+      "host": "www.standardbank.com",
+      "http_status": 301,
+      "attempt": 1,
+      "error_type": "HTTPStatusError"
+    },
+    {
+      "started_at": "2026-10-26T07:49:39.715410+00:00",
+      "duration_seconds": 0.288,
+      "method": "GET",
+      "host": "www.standardbank.com",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-26T07:49:41.508366+00:00",
+      "duration_seconds": 0.162,
+      "method": "GET",
+      "host": "www.standardbank.com",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-26T07:49:43.175721+00:00",
+      "duration_seconds": 1.932,
+      "method": "GET",
+      "host": "www.standardbank.com",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-26T07:49:46.608544+00:00",
+      "duration_seconds": 0.589,
+      "method": "GET",
+      "host": "www.standardbank.com",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-26T07:49:48.697706+00:00",
+      "duration_seconds": 0.361,
+      "method": "GET",
+      "host": "www.standardbank.com",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-26T07:49:50.563446+00:00",
+      "duration_seconds": 0.483,
+      "method": "GET",
+      "host": "www.standardbank.com",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-26T07:49:52.551619+00:00",
+      "duration_seconds": 0.408,
+      "method": "GET",
+      "host": "www.standardbank.com",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    }
+  ],
+  "review_limit": "Bounded metadata review, not activation approval or an express reuse licence. Generic document links and template headings are not validated vacancies. Details may require full reviewed extraction rules."
+}

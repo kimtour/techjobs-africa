@@ -1,0 +1,24 @@
+{
+  "source_id": "employer_d917a07a0a496243",
+  "employers": [
+    "Prime Bank"
+  ],
+  "checked_at": "2026-10-26T07:49:29.487644+00:00",
+  "environment": "local",
+  "input_url": "https://www.primebank.co.ke/careers/",
+  "production_promoted": false,
+  "access": {
+    "status": "NOT_RETRIED",
+    "reason": "Careers collection disallowed by robots. Blocked; no bypass."
+  },
+  "permission": {
+    "status": "ROBOTS_BLOCKED",
+    "previous_evidence": "docs/employer-discovery/thirty-bank-review-2026-10-26/employer_d917a07a0a496243.json"
+  },
+  "extraction": {
+    "status": "NOT_ATTEMPTED_ON_RESTRICTED_SOURCE"
+  },
+  "outcome": "EXISTING_RESTRICTION_RETAINED",
+  "requests": [],
+  "review_limit": "Bounded metadata review, not activation approval or an express reuse licence. Generic document links and template headings are not validated vacancies. Details may require full reviewed extraction rules."
+}

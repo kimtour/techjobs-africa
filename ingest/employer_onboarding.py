@@ -15,6 +15,7 @@ import httpx
 
 from ingest.adapters.public_ats import API_METHODS
 from ingest.adapters.registry_boards import SUPPORTED, board_endpoint
+from ingest.adapters.structured_employers import METHODS
 from ingest.audit import read_json
 from ingest.dedupe.exact import canonicalize_apply_url, deduplicate_exact
 from ingest.employer_registry import ROOT, board_identity, platform_for, safe_url
@@ -201,7 +202,7 @@ def discover(source: dict, employers: dict, client=None, *, request_budget=8) ->
         if collector_supported(source):
             endpoint = (
                 source["collection"]["listing_url"]
-                if source.get("access_method") in {"jsonld", "rss", "html", "pdf"} | API_METHODS
+                if source.get("access_method") in METHODS | API_METHODS
                 else board_endpoint(source)
             )
             result["endpoint"] = endpoint

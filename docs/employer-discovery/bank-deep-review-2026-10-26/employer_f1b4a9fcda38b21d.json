@@ -1,0 +1,86 @@
+{
+  "source_id": "employer_f1b4a9fcda38b21d",
+  "employers": [
+    "U & I Microfinance Bank"
+  ],
+  "checked_at": "2026-10-26T07:49:52.300265+00:00",
+  "environment": "local",
+  "input_url": "https://uni-microfinance.co.ke/careers/",
+  "production_promoted": false,
+  "access": {
+    "status": "PASS",
+    "http_status": 200,
+    "final_url": "https://uni-microfinance.co.ke/careers/",
+    "robots_allowed": true
+  },
+  "permission": {
+    "status": "POLICY_NOT_FOUND",
+    "reviewed": [],
+    "permission_granted": false
+  },
+  "extraction": {
+    "status": "DETAIL_LINKS_FOUND",
+    "structured_jobs": [],
+    "headings": [
+      "Build your career with U&I",
+      "Open positions",
+      "Send us your CV"
+    ],
+    "observed_role_links": [
+      {
+        "url": "https://uni-microfinance.co.ke/wp-content/uploads/2026/08/Assistant-Marketing-Manager-Position.pdf",
+        "label": "View job details"
+      }
+    ],
+    "empty_statements": [],
+    "pagination_clues": [],
+    "details": [
+      {
+        "url": "https://uni-microfinance.co.ke/wp-content/uploads/2026/08/Assistant-Marketing-Manager-Position.pdf",
+        "link_label": "View job details",
+        "format": "pdf",
+        "pages": 3,
+        "fields": {},
+        "date_strings": [],
+        "technical_clues": [],
+        "status": "PARSED"
+      }
+    ],
+    "complete_verified": false,
+    "script_urls": [
+      "https://uni-microfinance.co.ke/wp-content/plugins/ui-site-core/assets/js/whatsapp-chat.js?ver=1787538006",
+      "https://uni-microfinance.co.ke/wp-content/plugins/ui-site-core/assets/js/careers.js?ver=1786724744"
+    ]
+  },
+  "outcome": "REVIEWED",
+  "requests": [
+    {
+      "started_at": "2026-10-26T07:49:52.694510+00:00",
+      "duration_seconds": 4.334,
+      "method": "GET",
+      "host": "uni-microfinance.co.ke",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-26T07:49:58.535631+00:00",
+      "duration_seconds": 0.237,
+      "method": "GET",
+      "host": "uni-microfinance.co.ke",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-26T07:50:00.277688+00:00",
+      "duration_seconds": 0.204,
+      "method": "GET",
+      "host": "uni-microfinance.co.ke",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    }
+  ],
+  "review_limit": "Bounded metadata review, not activation approval or an express reuse licence. Generic document links and template headings are not validated vacancies. Details may require full reviewed extraction rules."
+}

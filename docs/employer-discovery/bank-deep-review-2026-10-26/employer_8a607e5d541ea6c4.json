@@ -1,0 +1,105 @@
+{
+  "source_id": "employer_8a607e5d541ea6c4",
+  "employers": [
+    "SMEP Microfinance Bank"
+  ],
+  "checked_at": "2026-10-26T07:49:59.695010+00:00",
+  "environment": "local",
+  "input_url": "https://www.smep.co.ke/careers",
+  "production_promoted": false,
+  "access": {
+    "status": "PASS",
+    "http_status": 200,
+    "final_url": "https://www.smep.co.ke/careers",
+    "robots_allowed": true
+  },
+  "permission": {
+    "status": "RESTRICTION_REQUIRES_REVIEW",
+    "reviewed": [
+      {
+        "url": "https://smep.co.ke/assets/docs/SMEP Terms and Conditions_100425.pdf",
+        "http_status": 200,
+        "status": "RESTRICTION_REQUIRES_REVIEW",
+        "clauses": [
+          "Such shall not be copied, \nreproduced, transmitted or \ndistributed in any medium \nwithout the bank\u2019s \npermission \n \n21."
+        ]
+      }
+    ],
+    "permission_granted": false
+  },
+  "extraction": {
+    "status": "DETAIL_LINKS_FOUND",
+    "structured_jobs": [],
+    "headings": [
+      "Career Opportunities",
+      "Discover More Products",
+      "Logbook Loans",
+      "Asset Finance",
+      "Msingi Imara Account",
+      "Our Esteemed Partners",
+      "Subscribe to Our Newsletter"
+    ],
+    "observed_role_links": [
+      {
+        "url": "https://www.smep.co.ke/assets/docs/jobs/Advert for RM - Business Development .pdf",
+        "label": "Relationship Manager \u2013 Business Development"
+      },
+      {
+        "url": "https://www.smep.co.ke/assets/docs/jobs/Advert for RM - Business Development .pdf",
+        "label": "Download"
+      },
+      {
+        "url": "https://www.smep.co.ke/assets/docs/jobs/Risk & Compliance Officer - Sept '26.pdf",
+        "label": "Risk & Compliance Officer (HR/09/26)"
+      },
+      {
+        "url": "https://www.smep.co.ke/assets/docs/jobs/Risk & Compliance Officer - Sept '26.pdf",
+        "label": "Download"
+      }
+    ],
+    "empty_statements": [],
+    "pagination_clues": [],
+    "details": [],
+    "complete_verified": false
+  },
+  "outcome": "PERMISSION_REVIEW",
+  "requests": [
+    {
+      "started_at": "2026-10-26T07:50:00.005289+00:00",
+      "duration_seconds": 0.779,
+      "method": "GET",
+      "host": "www.smep.co.ke",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-26T07:50:02.288760+00:00",
+      "duration_seconds": 0.701,
+      "method": "GET",
+      "host": "www.smep.co.ke",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-26T07:50:04.493936+00:00",
+      "duration_seconds": 0.756,
+      "method": "GET",
+      "host": "smep.co.ke",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-26T07:50:06.754724+00:00",
+      "duration_seconds": 1.083,
+      "method": "GET",
+      "host": "smep.co.ke",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    }
+  ],
+  "review_limit": "Bounded metadata review, not activation approval or an express reuse licence. Generic document links and template headings are not validated vacancies. Details may require full reviewed extraction rules."
+}

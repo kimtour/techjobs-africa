@@ -1,0 +1,80 @@
+{
+  "source_id": "employer_fee3bfdec04d8d28",
+  "employers": [
+    "Middle East Bank Kenya"
+  ],
+  "checked_at": "2026-10-26T07:50:00.620419+00:00",
+  "environment": "local",
+  "input_url": "https://mebkenya.com/help-center/careers",
+  "production_promoted": false,
+  "access": {
+    "status": "PASS",
+    "http_status": 200,
+    "final_url": "https://mebkenya.com/help-center/careers",
+    "robots_allowed": true
+  },
+  "permission": {
+    "status": "NO_RESTRICTION_FOUND_IN_REVIEWED_PAGES",
+    "reviewed": [
+      {
+        "url": "https://mebkenya.com/Privacy-Notice",
+        "http_status": 200,
+        "status": "NO_RESTRICTION_FOUND_IN_REVIEWED_TEXT",
+        "clauses": []
+      }
+    ],
+    "permission_granted": false
+  },
+  "extraction": {
+    "status": "NO_VERIFIED_INVENTORY",
+    "structured_jobs": [],
+    "headings": [
+      "Careers",
+      "Careers",
+      "Join Our Team",
+      "Quick Links",
+      "Other Links",
+      "Help & Support",
+      "Contact Us"
+    ],
+    "observed_role_links": [],
+    "empty_statements": [
+      "There are currently no vacancies"
+    ],
+    "pagination_clues": [],
+    "details": [],
+    "complete_verified": false,
+    "script_urls": []
+  },
+  "outcome": "REVIEWED",
+  "requests": [
+    {
+      "started_at": "2026-10-26T07:50:01.097481+00:00",
+      "duration_seconds": 0.674,
+      "method": "GET",
+      "host": "mebkenya.com",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-26T07:50:11.772727+00:00",
+      "duration_seconds": 0.979,
+      "method": "GET",
+      "host": "mebkenya.com",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-26T07:50:22.756121+00:00",
+      "duration_seconds": 1.015,
+      "method": "GET",
+      "host": "mebkenya.com",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    }
+  ],
+  "review_limit": "Bounded metadata review, not activation approval or an express reuse licence. Generic document links and template headings are not validated vacancies. Details may require full reviewed extraction rules."
+}

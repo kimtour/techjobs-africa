@@ -1,0 +1,108 @@
+{
+  "source_id": "employer_7a60d752d93bea48",
+  "employers": [
+    "Victoria Commercial Bank"
+  ],
+  "checked_at": "2026-10-26T07:49:13.816637+00:00",
+  "environment": "local",
+  "input_url": "https://snapstartalent.com/vcb/vacancies",
+  "production_promoted": false,
+  "access": {
+    "status": "PASS",
+    "http_status": 200,
+    "final_url": "https://snapstartalent.com/vcb/vacancies",
+    "robots_allowed": true
+  },
+  "permission": {
+    "status": "NO_RESTRICTION_FOUND_IN_REVIEWED_PAGES",
+    "reviewed": [
+      {
+        "url": "https://www.victoriabank.co.ke/legal/privacy",
+        "http_status": 200,
+        "status": "NO_RESTRICTION_FOUND_IN_REVIEWED_TEXT",
+        "clauses": []
+      },
+      {
+        "url": "https://www.victoriabank.co.ke/download/GENERAL-TERMS-AND-CONDITIONS.pdf",
+        "http_status": 200,
+        "status": "NO_RESTRICTION_FOUND_IN_REVIEWED_TEXT",
+        "clauses": []
+      }
+    ],
+    "permission_granted": false
+  },
+  "extraction": {
+    "status": "NO_VERIFIED_INVENTORY",
+    "structured_jobs": [],
+    "headings": [
+      "SnapStar Talent - Find Jobs in Kenya"
+    ],
+    "observed_role_links": [],
+    "empty_statements": [],
+    "pagination_clues": [],
+    "details": [],
+    "complete_verified": false,
+    "script_urls": [
+      "https://snapstartalent.com/vcb/main.9fcebe414abdc368.js"
+    ]
+  },
+  "official_home_checked": "https://www.victoriabank.co.ke/",
+  "outcome": "REVIEWED",
+  "requests": [
+    {
+      "started_at": "2026-10-26T07:49:14.185802+00:00",
+      "duration_seconds": 0.364,
+      "method": "GET",
+      "host": "snapstartalent.com",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-26T07:49:16.052590+00:00",
+      "duration_seconds": 0.299,
+      "method": "GET",
+      "host": "snapstartalent.com",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-26T07:49:17.874566+00:00",
+      "duration_seconds": 0.912,
+      "method": "GET",
+      "host": "www.victoriabank.co.ke",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-26T07:49:20.291143+00:00",
+      "duration_seconds": 0.321,
+      "method": "GET",
+      "host": "www.victoriabank.co.ke",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-26T07:49:22.116160+00:00",
+      "duration_seconds": 0.532,
+      "method": "GET",
+      "host": "www.victoriabank.co.ke",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-26T07:49:24.152765+00:00",
+      "duration_seconds": 0.902,
+      "method": "GET",
+      "host": "www.victoriabank.co.ke",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    }
+  ],
+  "review_limit": "Bounded metadata review, not activation approval or an express reuse licence. Generic document links and template headings are not validated vacancies. Details may require full reviewed extraction rules."
+}

@@ -1,0 +1,24 @@
+{
+  "source_id": "employer_c637ac832ed9e5ee",
+  "employers": [
+    "SBM Bank Kenya"
+  ],
+  "checked_at": "2026-10-26T07:49:35.675936+00:00",
+  "environment": "local",
+  "input_url": "https://www.sbmbank.co.ke/jobs",
+  "production_promoted": false,
+  "access": {
+    "status": "NOT_RETRIED",
+    "reason": "Manager Core Systems advert closes28October2026, job location Head Office only. Terms explicitly prohibit storing/reprocessing/reutilising/distributing website content without permission. Manual permission review; no production collection."
+  },
+  "permission": {
+    "status": "MANUAL_PERMISSION_REQUIRED",
+    "previous_evidence": "docs/employer-discovery/thirty-bank-review-2026-10-26/employer_c637ac832ed9e5ee.json"
+  },
+  "extraction": {
+    "status": "NOT_ATTEMPTED_ON_RESTRICTED_SOURCE"
+  },
+  "outcome": "EXISTING_RESTRICTION_RETAINED",
+  "requests": [],
+  "review_limit": "Bounded metadata review, not activation approval or an express reuse licence. Generic document links and template headings are not validated vacancies. Details may require full reviewed extraction rules."
+}

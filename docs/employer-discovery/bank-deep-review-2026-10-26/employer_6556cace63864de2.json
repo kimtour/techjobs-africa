@@ -1,0 +1,168 @@
+{
+  "source_id": "employer_6556cace63864de2",
+  "employers": [
+    "HFCB"
+  ],
+  "checked_at": "2026-10-26T07:49:10.572208+00:00",
+  "environment": "local",
+  "input_url": "https://hfcb.co.ke/careers",
+  "production_promoted": false,
+  "access": {
+    "status": "PASS",
+    "http_status": 200,
+    "final_url": "https://hfcb.co.ke/careers",
+    "robots_allowed": true
+  },
+  "permission": {
+    "status": "NO_RESTRICTION_FOUND_IN_REVIEWED_PAGES",
+    "reviewed": [
+      {
+        "url": "https://hfcb.co.ke/documents/terms-conditions",
+        "http_status": 200,
+        "status": "NO_RESTRICTION_FOUND_IN_REVIEWED_TEXT",
+        "clauses": []
+      },
+      {
+        "url": "https://hfcb.co.ke/documents/privacy-policy",
+        "http_status": 200,
+        "status": "NO_RESTRICTION_FOUND_IN_REVIEWED_TEXT",
+        "clauses": []
+      }
+    ],
+    "permission_granted": false
+  },
+  "extraction": {
+    "status": "DETAIL_LINKS_FOUND",
+    "structured_jobs": [],
+    "headings": [
+      "Quick Links",
+      "Helpful Info",
+      "Bank With Us",
+      "Disclosures",
+      "Calculators",
+      "Build Your Career With Us"
+    ],
+    "observed_role_links": [
+      {
+        "url": "https://hfcb.co.ke/documents/policies/internet-banking-security-tips.pdf",
+        "label": "Internet Banking Security Tips"
+      },
+      {
+        "url": "https://hfcb.co.ke/documents/policies/Environmental and Social Risk Policy.pdf",
+        "label": "Environmental & Social Risk Policy"
+      },
+      {
+        "url": "https://hfcb.co.ke/documents/policies/Consumer complaints handling.pdf",
+        "label": "Consumer complaints handling"
+      }
+    ],
+    "empty_statements": [
+      "No open positions"
+    ],
+    "pagination_clues": [],
+    "details": [
+      {
+        "url": "https://hfcb.co.ke/documents/policies/internet-banking-security-tips.pdf",
+        "link_label": "Internet Banking Security Tips",
+        "format": "pdf",
+        "pages": 1,
+        "fields": {},
+        "date_strings": [],
+        "technical_clues": [],
+        "status": "PARSED",
+        "document_kind": "NON_VACANCY_DOCUMENT"
+      },
+      {
+        "url": "https://hfcb.co.ke/documents/policies/Environmental and Social Risk Policy.pdf",
+        "link_label": "Environmental & Social Risk Policy",
+        "format": "pdf",
+        "pages": 3,
+        "fields": {},
+        "date_strings": [],
+        "technical_clues": [],
+        "status": "PARSED",
+        "document_kind": "NON_VACANCY_DOCUMENT"
+      },
+      {
+        "url": "https://hfcb.co.ke/documents/policies/Consumer complaints handling.pdf",
+        "link_label": "Consumer complaints handling",
+        "format": "pdf",
+        "pages": 1,
+        "fields": {},
+        "date_strings": [],
+        "technical_clues": [],
+        "status": "PARSED",
+        "document_kind": "NON_VACANCY_DOCUMENT"
+      }
+    ],
+    "complete_verified": false,
+    "script_urls": []
+  },
+  "outcome": "REVIEWED",
+  "requests": [
+    {
+      "started_at": "2026-10-26T07:49:11.179695+00:00",
+      "duration_seconds": 2.054,
+      "method": "GET",
+      "host": "hfcb.co.ke",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-26T07:49:14.737864+00:00",
+      "duration_seconds": 0.621,
+      "method": "GET",
+      "host": "hfcb.co.ke",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-26T07:49:16.863874+00:00",
+      "duration_seconds": 0.311,
+      "method": "GET",
+      "host": "hfcb.co.ke",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-26T07:49:18.680004+00:00",
+      "duration_seconds": 0.63,
+      "method": "GET",
+      "host": "hfcb.co.ke",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-26T07:49:20.815282+00:00",
+      "duration_seconds": 7.126,
+      "method": "GET",
+      "host": "hfcb.co.ke",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-26T07:49:29.452504+00:00",
+      "duration_seconds": 1.714,
+      "method": "GET",
+      "host": "hfcb.co.ke",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-26T07:49:32.670174+00:00",
+      "duration_seconds": 1.833,
+      "method": "GET",
+      "host": "hfcb.co.ke",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    }
+  ],
+  "review_limit": "Bounded metadata review, not activation approval or an express reuse licence. Generic document links and template headings are not validated vacancies. Details may require full reviewed extraction rules."
+}

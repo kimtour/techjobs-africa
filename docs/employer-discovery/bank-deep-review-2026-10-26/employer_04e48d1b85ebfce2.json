@@ -1,0 +1,54 @@
+{
+  "source_id": "employer_04e48d1b85ebfce2",
+  "employers": [
+    "Kingdom Bank"
+  ],
+  "checked_at": "2026-10-26T07:49:20.844296+00:00",
+  "environment": "local",
+  "input_url": "https://www.kingdombankltd.co.ke/careers/",
+  "production_promoted": false,
+  "access": {
+    "status": "PASS",
+    "http_status": 200,
+    "final_url": "https://www.kingdombankltd.co.ke/careers/",
+    "robots_allowed": true
+  },
+  "permission": {
+    "status": "POLICY_NOT_FOUND",
+    "reviewed": [],
+    "permission_granted": false
+  },
+  "extraction": {
+    "status": "NO_VERIFIED_INVENTORY",
+    "structured_jobs": [],
+    "headings": [],
+    "observed_role_links": [],
+    "empty_statements": [],
+    "pagination_clues": [],
+    "details": [],
+    "complete_verified": false,
+    "script_urls": []
+  },
+  "outcome": "REVIEWED",
+  "requests": [
+    {
+      "started_at": "2026-10-26T07:49:21.704088+00:00",
+      "duration_seconds": 3.227,
+      "method": "GET",
+      "host": "www.kingdombankltd.co.ke",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-26T07:49:26.512195+00:00",
+      "duration_seconds": 0.263,
+      "method": "GET",
+      "host": "www.kingdombankltd.co.ke",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    }
+  ],
+  "review_limit": "Bounded metadata review, not activation approval or an express reuse licence. Generic document links and template headings are not validated vacancies. Details may require full reviewed extraction rules."
+}

@@ -8593,35 +8593,63 @@ sources:
   suggestions:
     platform: custom
 - id: employer_7a60d752d93bea48
-  url: https://snapstartalent.com/vcb/vacancies
+  url: https://snapstartalent.com/vcb
   import_urls:
   - https://snapstartalent.com/vcb/vacancies
   platform: custom
   status: pending
   employer_ids:
   - emp_dfe0073baf4a8273
-  access_method: null
+  access_method: sitemap
   country_filters: []
   refresh_hours: 24
   discovery_refresh_hours: 168
   supports_absence_expiry: false
   crawl:
-    max_pages: 5
-    max_requests_per_run: 12
+    max_pages: 1
+    max_requests_per_run: 16
     request_delay_ms: 1500
     timeout_seconds: 20
-    retry_delays_seconds:
-    - 5
-    - 20
-  verification: {}
+    retry_delays_seconds: []
+  verification:
+    official_link: true
+    collection_review: true
+    evidence_paths:
+    - docs/employer-discovery/vcb-review/source-link-and-policy-review.json
+    - docs/employer-discovery/vcb-review/local-field-review.json
+    - docs/employer-discovery/vcb-review/local-m0.json
+    identity_basis: Immutable SnapStar provider identifiers embedded in individual JSON-LD
+      JobPosting identifiers and canonical role URLs.
+    collection_basis: Official bank homepage CAREERS link points to SnapStar /vcb. Provider
+      robots explicitly opens public vacancies and individual roles to crawlers and publishes
+      their sitemap. Reviewed bank privacy/general terms and provider FAQ/public footer; no
+      automated vacancy-metadata restriction identified. This review does not claim an express
+      reuse licence. Collect only titles, dates, explicit locations, provider identifiers
+      and original application entry points; never descriptions or candidate/account surfaces.
+      Sitemap company scope matches all4 roles in the fully loaded public UI.
+    application_links: true
+    complete: true
+    dates_reviewed: true
+    locations: true
+    stable_ids: true
+    local_access: true
   suggestions:
     platform: custom
   requested_review:
-    checked_at: '2026-10-26T07:27:49.297915+00:00'
+    checked_at: '2026-10-26T08:08:03+00:00'
     result: REVIEWED_PAGE
-    evidence_path: docs/employer-discovery/thirty-bank-review-2026-10-26/employer_7a60d752d93bea48.json
-  review_reason: SnapStarTalent public application shell reachable; full vacancy loading and
-    fields unverified.
+    evidence_path: docs/employer-discovery/thirty-bank-review-2026-10-26/review.md
+  review_reason: Official employer linkage and scoped4-role sitemap/JSON-LD field inspection
+    confirmed; local adapter and hosted verification plus isolated trial remain required.1
+    explicit Nairobi cybersecurity candidate; not yet active.
+  official_careers_url: https://www.victoriabank.co.ke/
+  posting_company: Victoria Commercial Bank PLC
+  collection:
+    listing_url: https://snapstartalent.com/sitemap.xml
+    detail_url_pattern: ^https://snapstartalent\.com/vcb/jobs/[A-Za-z0-9]+$
+    complete_listing_verified: true
+    verified_empty_sitemap: true
+    date_timezone: Africa/Nairobi
 - id: employer_7afce37a85c69486
   url: https://ucl.co.ke/career/
   import_urls:
@@ -12699,11 +12727,12 @@ sources:
     needs_location_filter: true
     shared_portal: true
   requested_review:
-    checked_at: '2026-10-26T07:27:54.803150+00:00'
+    checked_at: '2026-10-26T08:08:03+00:00'
     result: REVIEWED_PAGE
-    evidence_path: docs/employer-discovery/thirty-bank-review-2026-10-26/employer_bdee4912ef2d4465.json
-  review_reason: Official page explicitly reports no positions. Empty-state observation only;
-    no verified vacancy collector.
+    evidence_path: docs/employer-discovery/thirty-bank-review-2026-10-26/review.md
+  review_reason: Current official careers page lists a Digital Solutions & Full Stack Developer role,
+    but no location, publication/deadline date, or role-specific URL; application is by email.
+    Collection permission is unverified, so source stays pending.
 - id: employer_be12160549779fd4
   url: https://recruitment.dha.go.ke/
   import_urls:

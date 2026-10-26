@@ -1,0 +1,29 @@
+{
+  "recorded_at": "2026-10-26T08:32:29.347996+00:00",
+  "source_id": "employer_9073ac10a3cb2286",
+  "observed_via": "Fully loaded interactive browser Kenya-filtered search",
+  "loaded_jobs": 3,
+  "vacancies": [
+    {
+      "title": "Relationship Manager, Business Banking (Mombasa)",
+      "id": "64358",
+      "location": "Mombasa, KEN",
+      "closing_date": "2026-10-27"
+    },
+    {
+      "title": "Relationship Manager, Priority Banking (Nairobi)",
+      "id": "64587",
+      "location": "Nairobi, KEN",
+      "closing_date": "2026-11-04"
+    },
+    {
+      "title": "Portfolio Wealth Specialist",
+      "id": "64578",
+      "location": "Nairobi, KEN",
+      "closing_date": "2026-11-05"
+    }
+  ],
+  "technical_matches": 0,
+  "initial_loading_state_was_not_empty_proof": true,
+  "production_promoted": false
+}

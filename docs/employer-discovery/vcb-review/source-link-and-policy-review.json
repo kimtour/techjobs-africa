@@ -1,0 +1,20 @@
+{
+  "checked_at": "2026-10-26T08:27:33.319147+00:00",
+  "official_url": "https://www.victoriabank.co.ke/",
+  "official_careers_link": "https://snapstartalent.com/vcb",
+  "official_link_label": "CAREERS",
+  "platform_robots": "https://snapstartalent.com/robots.txt",
+  "public_crawl_statement": "Public pages (landing, vacancies, individual roles, help) are open to crawlers.",
+  "sitemap": "https://snapstartalent.com/sitemap.xml",
+  "public_ui_role_count": 4,
+  "sitemap_scoped_role_count": 4,
+  "reviewed_policy_urls": [
+    "https://www.victoriabank.co.ke/legal/privacy",
+    "https://www.victoriabank.co.ke/download/GENERAL-TERMS-AND-CONDITIONS.pdf",
+    "https://snapstartalent.com/faq"
+  ],
+  "provider_policy_links": "Privacy and Terms footer links are placeholders (#); no separate published collection restriction was located.",
+  "review_scope": "Public vacancy metadata and original official application entry points only; no descriptions, candidate profiles, accounts or application surfaces collected.",
+  "permission_granted_by_review": false,
+  "restriction_identified_in_reviewed_pages": false
+}

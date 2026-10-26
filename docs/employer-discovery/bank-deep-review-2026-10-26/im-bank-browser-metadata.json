@@ -1,0 +1,26 @@
+{
+  "recorded_at": "2026-10-26T08:32:29.346944+00:00",
+  "source_id": "employer_2e748fa1969076f6",
+  "observed_via": "Interactive browser during this bank review",
+  "public_portal": "https://imbank.myadrenalin.com/CANDMICROSITE/#/",
+  "loaded_jobs": 5,
+  "technical_candidate": {
+    "title": "ASSISTANT MANAGER, INFORMATION SYSTEMS AUDIT_339",
+    "location": "Nairobi",
+    "posted_date": "2026-10-23",
+    "closing_date": "2026-11-02"
+  },
+  "other_titles": [
+    "CONTACT CENTRE OFFICER_340",
+    "ASSISTANT RELATIONSHIP MANAGER, MID-SME BANKING_338",
+    "BUSINESS CONTINUITY MANAGEMENT ANALYST_337",
+    "SENIOR ASSOCIATE, TRANSACTIONAL BANKING SALES_336"
+  ],
+  "production_promoted": false,
+  "remaining_gates": [
+    "Employer linkage/policy check (corporate403)",
+    "Repeatable approved collector and immutable identity/application link",
+    "Local and hosted full collection",
+    "Isolated trial/publication review"
+  ]
+}

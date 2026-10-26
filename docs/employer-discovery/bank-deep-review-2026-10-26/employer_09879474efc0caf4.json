@@ -1,0 +1,345 @@
+{
+  "source_id": "employer_09879474efc0caf4",
+  "employers": [
+    "Sidian Bank"
+  ],
+  "checked_at": "2026-10-26T07:49:10.571094+00:00",
+  "environment": "local",
+  "input_url": "https://sidianbank.co.ke/about-sidian-bank/#careers-at-SidianBank",
+  "production_promoted": false,
+  "access": {
+    "status": "PASS",
+    "http_status": 200,
+    "final_url": "https://sidianbank.co.ke/about-sidian-bank/#careers-at-SidianBank",
+    "robots_allowed": true
+  },
+  "permission": {
+    "status": "NO_RESTRICTION_FOUND_IN_REVIEWED_PAGES",
+    "reviewed": [
+      {
+        "url": "https://sidianbank.co.ke/policies/terms-and-conditions/",
+        "http_status": 200,
+        "status": "NO_RESTRICTION_FOUND_IN_REVIEWED_TEXT",
+        "clauses": []
+      },
+      {
+        "url": "https://sidianbank.co.ke/fuliza-terms-conditions/",
+        "http_status": 200,
+        "status": "NO_RESTRICTION_FOUND_IN_REVIEWED_TEXT",
+        "clauses": []
+      }
+    ],
+    "permission_granted": false
+  },
+  "extraction": {
+    "status": "DETAIL_LINKS_FOUND",
+    "structured_jobs": [],
+    "headings": [
+      "About Sidian Bank",
+      "Company Profile",
+      "Our People",
+      "Our Team",
+      "Board Chairman",
+      "Managing Director & Chief Executive Officer",
+      "Member of the Board",
+      "Member of the Board",
+      "Member of the Board",
+      "Member of the Board",
+      "Member of the Board",
+      "Member of the Board",
+      "Member of the Board",
+      "Member of the Board",
+      "Managing Director & Chief Executive Officer",
+      "Director-Finance and Strategy",
+      "Director - Credit Risk",
+      "Director - IT & Operations",
+      "Head-Internal Audit",
+      "Head - Human Resources",
+      "Head - Enterprise Risk Management",
+      "Careers at SidianBank",
+      "Careers at Sidian Bank",
+      "Senior Relationship Officer-HNI",
+      "Senior Manager \u2013 Credit Analysis",
+      "Open Application",
+      "Financial Statements",
+      "Shareholder Information",
+      "Shareholding Structure",
+      "Corporate Shareholding Structure",
+      "Local Ownership",
+      "Contact Us",
+      "Contact Us",
+      "Let\u2019s Connect",
+      "About Us",
+      "Product Offering",
+      "Quick Links",
+      "Resources"
+    ],
+    "observed_role_links": [
+      {
+        "url": "https://sidianbank.co.ke/vacancy/senior-relationship-officer-hni/?vacancy_id=5402",
+        "label": "Apply Now"
+      },
+      {
+        "url": "https://sidianbank.co.ke/vacancy/senior-manager-credit-analysis/?vacancy_id=5263",
+        "label": "Apply Now"
+      },
+      {
+        "url": "https://sidianbank.co.ke/vacancy/open-application/?vacancy_id=4031",
+        "label": "Apply Now"
+      },
+      {
+        "url": "https://sidianbank.co.ke/wp-content/uploads/2026/08/UNAUDITED-FINANCIAL-STATEMENTS-OTHER-DISCLOSURES-FOR-THE-PERION-ENDED-30-JUNE-2026.pdf",
+        "label": "Unaudited Financial Statements and Other Disclosures for the Period Ended 30 June 2026"
+      },
+      {
+        "url": "https://sidianbank.co.ke/wp-content/uploads/2026/05/UNAUDITED-FINANCIAL-STATEMENTS-AND-OTHER-DISCLOSURES-FOR-THE-PERIOD-ENDED-31-MARCH-2026-FINAL-19.05.2026.pdf",
+        "label": "Unaudited Financial Statements and Other Disclosures for the Period Ended 31 March 2026"
+      },
+      {
+        "url": "https://sidianbank.co.ke/wp-content/uploads/2026/03/AUDITED-FINANCIAL-STATEMENTS-AND-OTHER-DISCLOSURES-FOR-THE-YEAR-ENDED-31-DECEMBER-2025.pdf",
+        "label": "Audited Financial Statements and Other Disclosures for the Year Ended 31 December 2025"
+      },
+      {
+        "url": "https://sidianbank.co.ke/wp-content/uploads/2026/04/Sidian-Bank-Annual-Report-and-Financial-Statements-for-the-Year-Ended-31-December-2025_compressed.pdf",
+        "label": "Annual Report and Financial Statements for the Year Ended 31 December 2025"
+      },
+      {
+        "url": "https://sidianbank.co.ke/wp-content/uploads/2025/03/AUDITED-FINANCIAL-STATEMENTS-AND-OTHER-DISCLOSURES-FOR-THE-YEAR-ENDED-31-DEC-2024.pdf",
+        "label": "Audited Financial Statements and Other Disclosures for the Year Ended 31 December 2024"
+      },
+      {
+        "url": "https://sidianbank.co.ke/wp-content/uploads/2025/03/Sidian-Bank-Annual-Report-and-Financial-Statements-for-the-Year-Ended-31-December-2024.pdf",
+        "label": "Annual Report and Financial Statements for the Year Ended 31 December 2024"
+      },
+      {
+        "url": "https://sidianbank.co.ke/wp-content/uploads/2024/04/AUDITED-FINANCIAL-STATEMENTS-AND-OTHER-DISCLOSURES-FOR-THE-YEAR-ENDED-31-DECEMBER-2023.pdf",
+        "label": "Audited Financial Statements and Other Disclosures for the Year Ended 31 December 2023"
+      },
+      {
+        "url": "https://sidianbank.co.ke/wp-content/uploads/2025/03/Sidian-Bank-Annual-Report-and-Financial-Statements-for-the-year-ended-31-December-2023.pdf",
+        "label": "Annual Report and Financial Statements for the Year Ended 31 December 2023"
+      },
+      {
+        "url": "https://sidianbank.co.ke/wp-content/uploads/2023/03/AUDITED-FINANCIAL-STATEMENTS-AND-OTHER-DISCLOSURES-FOR-THE-YEAR-ENDED-31-DECEMBER-2022.pdf",
+        "label": "Audited Financial Statements and Other Disclosures for the Year Ended 31 December 2022"
+      },
+      {
+        "url": "https://sidianbank.co.ke/wp-content/uploads/2023/06/Sidian-Bank-Annual-Report-and-Financial-Statements-for-the-year-ended-31-December-2022.pdf",
+        "label": "Annual Report and Financial Statements for the Year Ended 31 December 2022"
+      },
+      {
+        "url": "https://sidianbank.co.ke/wp-content/uploads/2022/03/AUDITED-FINANCIAL-STATEMENTS-AND-OTHER-DISCLOSURES-FOR-THE-YEAR-ENDED-31-DECEMBER-2021.pdf",
+        "label": "Audited Financial Statements & Other Disclosures For The year Ended \u2013 December 2021"
+      },
+      {
+        "url": "https://sidianbank.co.ke/wp-content/uploads/2022/04/Annual-report-and-Financial-statements-for-the-year-ended-31-December-2022.pdf",
+        "label": "Annual Report And Financial Statements For the year ended \u2013 December 2021"
+      },
+      {
+        "url": "https://sidianbank.co.ke/wp-content/uploads/2021/03/Audited-Financial-Statements-Other-Disclosures-For-The-year-Ended-December-2020.pdf",
+        "label": "Audited Financial Statements & Other Disclosures For The year Ended \u2013 December 2020"
+      },
+      {
+        "url": "https://sidianbank.co.ke/wp-content/uploads/2021/03/Annual-report-and-Financial-Statements-for-the-year-ended-31-December-2020.pdf",
+        "label": "Annual Report and Financial Statements for the year ended \u2013 31 December 2020"
+      },
+      {
+        "url": "https://sidianbank.co.ke/wp-content/uploads/2020/06/Sidian-Bank-Limited-Annual-Report-and-Financial-Statements-2019.pdf",
+        "label": "Sidian-Bank-Limited-Annual-Report-and-Financial-Statements-2019"
+      },
+      {
+        "url": "https://sidianbank.co.ke/wp-content/uploads/2020/06/Audited-Financial-Statements-Other-Disclosures-For-The-Period-Ended-31-December-2019.pdf",
+        "label": "Audited-Financial-Statements-Other-Disclosures-For-The-Period-Ended-31-December-2019"
+      },
+      {
+        "url": "https://sidianbank.co.ke/wp-content/uploads/2020/06/Annual-Report-and-Financial-Statements-2018.pdf",
+        "label": "Annual-Report-and-Financial-Statements-2018"
+      },
+      {
+        "url": "https://sidianbank.co.ke/wp-content/uploads/2020/06/Audited-Financial-Statements-Other-Disclosures-For-The-Year-Ended-31-December-2018.pdf",
+        "label": "Audited-Financial-Statements-Other-Disclosures-For-The-Year-Ended-31-December-2018"
+      },
+      {
+        "url": "https://sidianbank.co.ke/wp-content/uploads/2020/06/2017-Annual-Report-Financial-Statements.pdf",
+        "label": "2017-Annual-Report-Financial-Statements"
+      },
+      {
+        "url": "https://sidianbank.co.ke/wp-content/uploads/2020/06/Audited-Financial-Statements-Other-Disclosures-For-the-Year-Ended-31-December-2017.pdf",
+        "label": "Audited-Financial-Statements-Other-Disclosures-For-the-Year-Ended-31-December-2017"
+      },
+      {
+        "url": "https://sidianbank.co.ke/wp-content/uploads/2020/06/2016-Annual-Report-Financial-Statements.pdf",
+        "label": "2016-Annual-Report-Financial-Statements"
+      },
+      {
+        "url": "https://sidianbank.co.ke/wp-content/uploads/2020/06/Audited-Financial-Statements-Other-Disclosures-\u2013-December-31-2016.pdf",
+        "label": "Audited-Financial-Statements-Other-Disclosures-December-31-2016"
+      },
+      {
+        "url": "https://sidianbank.co.ke/wp-content/uploads/2025/06/Key-Facts-Document-Sidian-Bank.pdf",
+        "label": "Key Facts Document"
+      },
+      {
+        "url": "https://sidianbank.co.ke/wp-content/uploads/2026/10/Sidian-Bank-Tariff-Guide-August-2026.pdf",
+        "label": "Tariff Guide"
+      },
+      {
+        "url": "https://sidianbank.co.ke/wp-content/uploads/2020/09/Customer-Service-Charter-.pdf",
+        "label": "Customer Service Charter"
+      },
+      {
+        "url": "https://sidianbank.co.ke/wp-content/uploads/2024/05/CREDIT-CARD-LIFE-INSURANCE-50.pdf",
+        "label": "Credit Card Life Insurance Terms and Conditions"
+      },
+      {
+        "url": "https://sidianbank.co.ke/wp-content/uploads/2024/09/COMPLAINT-HANDLING-PDF76.pdf",
+        "label": "Complaint Handling"
+      }
+    ],
+    "empty_statements": [],
+    "pagination_clues": [],
+    "details": [
+      {
+        "url": "https://sidianbank.co.ke/vacancy/senior-relationship-officer-hni/?vacancy_id=5402",
+        "link_label": "Apply Now",
+        "format": "html",
+        "headings": [
+          "Senior Relationship Officer-HNI",
+          "Senior Relationship Officer-HNI",
+          "Application Form",
+          "Step 1 of 2",
+          "Personal Information",
+          "Career Information",
+          "Document Uploads",
+          "About Us",
+          "Product Offering",
+          "Quick Links",
+          "Resources"
+        ],
+        "structured_jobs": [],
+        "fields": {},
+        "date_strings": [],
+        "technical_clues": [],
+        "application_links": [],
+        "status": "PARSED"
+      },
+      {
+        "url": "https://sidianbank.co.ke/vacancy/senior-manager-credit-analysis/?vacancy_id=5263",
+        "link_label": "Apply Now",
+        "format": "html",
+        "headings": [
+          "Senior Manager \u2013 Credit Analysis",
+          "Senior Manager \u2013 Credit Analysis",
+          "Application Form",
+          "Step 1 of 2",
+          "Personal Information",
+          "Career Information",
+          "Document Uploads",
+          "About Us",
+          "Product Offering",
+          "Quick Links",
+          "Resources"
+        ],
+        "structured_jobs": [],
+        "fields": {},
+        "date_strings": [],
+        "technical_clues": [],
+        "application_links": [],
+        "status": "PARSED"
+      },
+      {
+        "url": "https://sidianbank.co.ke/vacancy/open-application/?vacancy_id=4031",
+        "link_label": "Apply Now",
+        "format": "html",
+        "headings": [
+          "Open Application",
+          "Open Application",
+          "Application Form",
+          "Step 1 of 2",
+          "Personal Information",
+          "Career Information",
+          "Document Uploads",
+          "About Us",
+          "Product Offering",
+          "Quick Links",
+          "Resources"
+        ],
+        "structured_jobs": [],
+        "fields": {},
+        "date_strings": [],
+        "technical_clues": [],
+        "application_links": [],
+        "status": "PARSED"
+      }
+    ],
+    "complete_verified": false,
+    "script_urls": []
+  },
+  "outcome": "REVIEWED",
+  "requests": [
+    {
+      "started_at": "2026-10-26T07:49:11.179270+00:00",
+      "duration_seconds": 0.431,
+      "method": "GET",
+      "host": "sidianbank.co.ke",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-26T07:49:13.115755+00:00",
+      "duration_seconds": 0.662,
+      "method": "GET",
+      "host": "sidianbank.co.ke",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-26T07:49:15.283125+00:00",
+      "duration_seconds": 0.407,
+      "method": "GET",
+      "host": "sidianbank.co.ke",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-26T07:49:17.212431+00:00",
+      "duration_seconds": 0.484,
+      "method": "GET",
+      "host": "sidianbank.co.ke",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-26T07:49:19.201271+00:00",
+      "duration_seconds": 4.267,
+      "method": "GET",
+      "host": "sidianbank.co.ke",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-26T07:49:24.973251+00:00",
+      "duration_seconds": 4.269,
+      "method": "GET",
+      "host": "sidianbank.co.ke",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-26T07:49:30.747358+00:00",
+      "duration_seconds": 4.263,
+      "method": "GET",
+      "host": "sidianbank.co.ke",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    }
+  ],
+  "review_limit": "Bounded metadata review, not activation approval or an express reuse licence. Generic document links and template headings are not validated vacancies. Details may require full reviewed extraction rules."
+}

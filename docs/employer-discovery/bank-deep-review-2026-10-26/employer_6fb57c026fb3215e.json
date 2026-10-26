@@ -1,0 +1,138 @@
+{
+  "source_id": "employer_6fb57c026fb3215e",
+  "employers": [
+    "LOLC Kenya Microfinance Bank"
+  ],
+  "checked_at": "2026-10-26T07:49:35.047757+00:00",
+  "environment": "local",
+  "input_url": "https://www.lolckenya.co.ke/career/",
+  "production_promoted": false,
+  "access": {
+    "status": "PASS",
+    "http_status": 200,
+    "final_url": "https://www.lolckenya.co.ke/career/",
+    "robots_allowed": true
+  },
+  "permission": {
+    "status": "POLICY_NOT_FOUND",
+    "reviewed": [],
+    "permission_granted": false
+  },
+  "extraction": {
+    "status": "DETAIL_LINKS_FOUND",
+    "structured_jobs": [],
+    "headings": [
+      "Jobs",
+      "Head/Manager-Collection & Recovery",
+      "Liability Sales Manage-Fixed Deposit",
+      "Management Accountant",
+      "Business Development Officer",
+      "About Us",
+      "Quick Links",
+      "Products & Services",
+      "Subscribe With Us"
+    ],
+    "observed_role_links": [
+      {
+        "url": "https://www.lolckenya.co.ke/jobs/management-accountant/?preview=true",
+        "label": "Management Accountant"
+      },
+      {
+        "url": "https://www.lolckenya.co.ke/jobs/business-development-officer/?preview=true",
+        "label": "Business Development Officer"
+      }
+    ],
+    "empty_statements": [],
+    "pagination_clues": [],
+    "details": [
+      {
+        "url": "https://www.lolckenya.co.ke/jobs/management-accountant/?preview=true",
+        "link_label": "Management Accountant",
+        "format": "html",
+        "headings": [
+          "Management Accountant",
+          "How to Apply",
+          "About Us",
+          "Quick Links",
+          "Products & Services",
+          "Subscribe With Us"
+        ],
+        "structured_jobs": [],
+        "fields": {},
+        "date_strings": [],
+        "technical_clues": [],
+        "application_links": [
+          "https://www.lolckenya.co.ke/jobs/management-accountant/?preview=true#"
+        ],
+        "status": "PARSED"
+      },
+      {
+        "url": "https://www.lolckenya.co.ke/jobs/business-development-officer/?preview=true",
+        "link_label": "Business Development Officer",
+        "format": "html",
+        "headings": [
+          "BUSINESS DEVELOPMENT OFFICER (MERU & NAIROBI).",
+          "How to Apply",
+          "About Us",
+          "Quick Links",
+          "Products & Services",
+          "Subscribe With Us"
+        ],
+        "structured_jobs": [],
+        "fields": {},
+        "date_strings": [],
+        "technical_clues": [],
+        "application_links": [
+          "https://www.lolckenya.co.ke/jobs/business-development-officer/?preview=true#"
+        ],
+        "status": "PARSED"
+      }
+    ],
+    "complete_verified": false,
+    "script_urls": [
+      "https://www.lolckenya.co.ke/wp-content/plugins/jobwp/assets/js/iziModal.min.js?ver=2.4.8",
+      "https://www.lolckenya.co.ke/wp-content/plugins/jobwp/assets/js/jobwp-front.js?ver=2.4.8",
+      "https://www.lolckenya.co.ke/wp-content/plugins/classic-elementor-addons-pro/assets/js/jquery.appear.min.js?ver=1.0"
+    ]
+  },
+  "outcome": "REVIEWED",
+  "requests": [
+    {
+      "started_at": "2026-10-26T07:49:35.330230+00:00",
+      "duration_seconds": 1.003,
+      "method": "GET",
+      "host": "www.lolckenya.co.ke",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-26T07:49:37.838103+00:00",
+      "duration_seconds": 4.679,
+      "method": "GET",
+      "host": "www.lolckenya.co.ke",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-26T07:49:44.022373+00:00",
+      "duration_seconds": 2.843,
+      "method": "GET",
+      "host": "www.lolckenya.co.ke",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-26T07:49:48.366991+00:00",
+      "duration_seconds": 3.31,
+      "method": "GET",
+      "host": "www.lolckenya.co.ke",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    }
+  ],
+  "review_limit": "Bounded metadata review, not activation approval or an express reuse licence. Generic document links and template headings are not validated vacancies. Details may require full reviewed extraction rules."
+}

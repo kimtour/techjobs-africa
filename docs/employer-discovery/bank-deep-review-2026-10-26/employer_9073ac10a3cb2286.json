@@ -1,0 +1,171 @@
+{
+  "source_id": "employer_9073ac10a3cb2286",
+  "employers": [
+    "Standard Chartered Kenya"
+  ],
+  "checked_at": "2026-10-26T07:49:10.571905+00:00",
+  "environment": "local",
+  "input_url": "https://jobs.standardchartered.com/search/?q=&locationsearch=Kenya&skillsSearch=false",
+  "production_promoted": false,
+  "access": {
+    "status": "PASS",
+    "http_status": 200,
+    "final_url": "https://jobs.standardchartered.com/search/?q=&locationsearch=Kenya&skillsSearch=false",
+    "robots_allowed": true
+  },
+  "permission": {
+    "status": "NO_RESTRICTION_FOUND_IN_REVIEWED_PAGES",
+    "reviewed": [
+      {
+        "url": "https://www.sc.com/en/terms-of-use/",
+        "http_status": 200,
+        "status": "NO_RESTRICTION_FOUND_IN_REVIEWED_TEXT",
+        "clauses": []
+      }
+    ],
+    "permission_granted": false
+  },
+  "extraction": {
+    "status": "DETAIL_LINKS_FOUND",
+    "structured_jobs": [],
+    "headings": [
+      "",
+      "",
+      "Cookie preferences",
+      "Stricly necessary cookies (always active)",
+      "Functional Cookies",
+      "Advertising Cookies"
+    ],
+    "observed_role_links": [
+      {
+        "url": "https://sc.com/en/uploads/sites/66/content/docs/modern-slavery-statement.pdf",
+        "label": "Modern slavery statement"
+      }
+    ],
+    "empty_statements": [],
+    "pagination_clues": [],
+    "details": [
+      {
+        "url": "https://sc.com/en/uploads/sites/66/content/docs/modern-slavery-statement.pdf",
+        "link_label": "Modern slavery statement",
+        "format": "pdf",
+        "pages": 20,
+        "fields": {},
+        "date_strings": [],
+        "technical_clues": [],
+        "status": "PARSED",
+        "document_kind": "NON_VACANCY_DOCUMENT"
+      }
+    ],
+    "complete_verified": false,
+    "script_urls": [
+      "https://jobs.standardchartered.com/platform/js/j2w/min/j2w.cookiemanagershared.min.js?h=275f70e9",
+      "https://jobs.standardchartered.com/platform/bootstrap/3.4.8_NES/js/lib/dompurify/purify.min.js",
+      "https://jobs.standardchartered.com/platform/bootstrap/3.4.8_NES/js/bootstrap.min.js",
+      "https://jobs.standardchartered.com/platform/js/j2w/min/j2w.apply.min.js?h=275f70e9"
+    ]
+  },
+  "outcome": "REVIEWED",
+  "requests": [
+    {
+      "started_at": "2026-10-26T07:49:11.471417+00:00",
+      "duration_seconds": 0.682,
+      "method": "GET",
+      "host": "jobs.standardchartered.com",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-26T07:49:13.654859+00:00",
+      "duration_seconds": 0.709,
+      "method": "GET",
+      "host": "jobs.standardchartered.com",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-26T07:49:15.866633+00:00",
+      "duration_seconds": 1.402,
+      "method": "GET",
+      "host": "www.sc.com",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-26T07:49:18.773354+00:00",
+      "duration_seconds": 2.472,
+      "method": "GET",
+      "host": "www.sc.com",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-26T07:49:22.798233+00:00",
+      "duration_seconds": 0.847,
+      "method": "GET",
+      "host": "policies.google.com",
+      "http_status": 404,
+      "attempt": 1,
+      "error_type": "HTTPStatusError"
+    },
+    {
+      "started_at": "2026-10-26T07:49:25.155736+00:00",
+      "duration_seconds": 1.362,
+      "method": "GET",
+      "host": "policies.google.com",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-26T07:49:28.022234+00:00",
+      "duration_seconds": 0.385,
+      "method": "GET",
+      "host": "sc.com",
+      "http_status": 301,
+      "attempt": 1,
+      "error_type": "HTTPStatusError"
+    },
+    {
+      "started_at": "2026-10-26T07:49:29.911361+00:00",
+      "duration_seconds": 0.436,
+      "method": "GET",
+      "host": "www.sc.com",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-26T07:49:31.852209+00:00",
+      "duration_seconds": 0.354,
+      "method": "GET",
+      "host": "sc.com",
+      "http_status": 301,
+      "attempt": 1,
+      "error_type": "HTTPStatusError"
+    },
+    {
+      "started_at": "2026-10-26T07:49:33.710999+00:00",
+      "duration_seconds": 0.132,
+      "method": "GET",
+      "host": "www.sc.com",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-26T07:49:35.344835+00:00",
+      "duration_seconds": 1.491,
+      "method": "GET",
+      "host": "www.sc.com",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    }
+  ],
+  "review_limit": "Bounded metadata review, not activation approval or an express reuse licence. Generic document links and template headings are not validated vacancies. Details may require full reviewed extraction rules."
+}

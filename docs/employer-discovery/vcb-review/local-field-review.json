@@ -1,0 +1,97 @@
+{
+  "checked_at": "2026-10-26T08:25:26.735123+00:00",
+  "source_id": "employer_7a60d752d93bea48",
+  "urls": [
+    "https://snapstartalent.com/vcb/jobs/AkOk1F4wufTFa8tY0h13",
+    "https://snapstartalent.com/vcb/jobs/VWNcMcxkEfMDTl99rZ2L",
+    "https://snapstartalent.com/vcb/jobs/XlWDb5kzanaptph40ZAI",
+    "https://snapstartalent.com/vcb/jobs/gcQGCelQxvdsL3fvaCL3"
+  ],
+  "sitemap_roles": 4,
+  "roles": [
+    {
+      "url": "https://snapstartalent.com/vcb/jobs/AkOk1F4wufTFa8tY0h13",
+      "status": 200,
+      "postings": [
+        {
+          "title": "Officer II- Environmental and Social Governance",
+          "datePosted": "2026-10-21",
+          "jobLocation": "Nairobi \u00b7 Nairobi County \u00b7 KE",
+          "identifier": {
+            "@type": "PropertyValue",
+            "name": "SnapStar Talent",
+            "value": "AkOk1F4wufTFa8tY0h13"
+          },
+          "url": "https://snapstartalent.com/vcb/jobs/AkOk1F4wufTFa8tY0h13",
+          "validThrough": "2026-10-29"
+        }
+      ],
+      "headings": [
+        "Officer II- Environmental and Social Governance"
+      ]
+    },
+    {
+      "url": "https://snapstartalent.com/vcb/jobs/VWNcMcxkEfMDTl99rZ2L",
+      "status": 200,
+      "postings": [
+        {
+          "title": "Officer II - Cyber Security Analyst",
+          "datePosted": "2026-10-21",
+          "jobLocation": "Nairobi \u00b7 Nairobi County \u00b7 KE",
+          "identifier": {
+            "@type": "PropertyValue",
+            "name": "SnapStar Talent",
+            "value": "VWNcMcxkEfMDTl99rZ2L"
+          },
+          "url": "https://snapstartalent.com/vcb/jobs/VWNcMcxkEfMDTl99rZ2L",
+          "validThrough": "2026-10-27"
+        }
+      ],
+      "headings": [
+        "Officer II - Cyber Security Analyst"
+      ]
+    },
+    {
+      "url": "https://snapstartalent.com/vcb/jobs/XlWDb5kzanaptph40ZAI",
+      "status": 200,
+      "postings": [
+        {
+          "title": "Officer I, Credit Administration",
+          "datePosted": "2026-10-22",
+          "jobLocation": "Nairobi \u00b7 Nairobi County \u00b7 KE",
+          "identifier": {
+            "@type": "PropertyValue",
+            "name": "SnapStar Talent",
+            "value": "XlWDb5kzanaptph40ZAI"
+          },
+          "url": "https://snapstartalent.com/vcb/jobs/XlWDb5kzanaptph40ZAI",
+          "validThrough": "2026-10-29"
+        }
+      ],
+      "headings": [
+        "Officer I, Credit Administration"
+      ]
+    },
+    {
+      "url": "https://snapstartalent.com/vcb/jobs/gcQGCelQxvdsL3fvaCL3",
+      "status": 200,
+      "postings": [
+        {
+          "title": "Officer II, Credit Administration",
+          "datePosted": "2026-10-22",
+          "jobLocation": "Nairobi \u00b7 Nairobi County \u00b7 KE",
+          "identifier": {
+            "@type": "PropertyValue",
+            "name": "SnapStar Talent",
+            "value": "gcQGCelQxvdsL3fvaCL3"
+          },
+          "url": "https://snapstartalent.com/vcb/jobs/gcQGCelQxvdsL3fvaCL3",
+          "validThrough": "2026-10-29"
+        }
+      ],
+      "headings": [
+        "Officer II, Credit Administration"
+      ]
+    }
+  ]
+}

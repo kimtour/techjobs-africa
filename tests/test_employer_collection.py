@@ -1,6 +1,7 @@
 import json
 from datetime import UTC, datetime, timedelta
 from io import BytesIO
+from xml.etree.ElementTree import ParseError
 
 import httpx
 import pytest
@@ -697,3 +698,104 @@ def test_reviewed_human_deadline_preserves_expiry_and_never_silently_loses_bad_d
     collector = adapter(config, respond)
     assert collector.fetch() == []
     assert not collector.crawl_complete
+
+
+def test_sitemap_scope_fetches_only_reviewed_employer_and_keeps_metadata():
+    seen = []
+    config = source(
+        "sitemap",
+        detail_url_pattern=r"^https://example\.test/ours/job/[a-z]+$",
+        verified_empty_sitemap=True,
+    )
+
+    def respond(request):
+        seen.append(request.url.path)
+        if request.url.path == "/robots.txt":
+            return httpx.Response(200, text="User-agent: *\nAllow: /")
+        if request.url.path == "/careers":
+            return httpx.Response(
+                200,
+                text=(
+                    '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'
+                    "<url><loc>https://example.test/other/job/two</loc></url>"
+                    "<url><loc>https://example.test/ours/job/one</loc></url></urlset>"
+                ),
+            )
+        return httpx.Response(200, text=posting())
+
+    collector = adapter(config, respond)
+    jobs = collector.fetch()
+    assert collector.crawl_complete
+    assert [j.external_id for j in jobs] == ["REQ1"]
+    assert "/other/job/two" not in seen
+    assert "DO NOT PERSIST" not in json.dumps(collector.candidate_state)
+
+
+@pytest.mark.parametrize("reviewed", [True, False])
+def test_sitemap_empty_requires_reviewed_complete_contract(reviewed):
+    config = source("sitemap", verified_empty_sitemap=reviewed)
+
+    def respond(request):
+        return httpx.Response(
+            200,
+            text=(
+                "User-agent: *\nAllow: /"
+                if request.url.path == "/robots.txt"
+                else '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" />'
+            ),
+        )
+
+    collector = adapter(config, respond)
+    if reviewed:
+        assert collector.fetch() == []
+        assert collector.crawl_complete
+    else:
+        with pytest.raises(ValueError, match="Empty vacancy sitemap"):
+            collector.fetch()
+        assert not collector.crawl_complete
+
+
+@pytest.mark.parametrize(
+    "body",
+    [
+        "<html>temporarily unavailable</html>",
+        '<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" />',
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url/></urlset>',
+        "<urlset",
+    ],
+)
+def test_sitemap_invalid_response_never_becomes_healthy_empty(body):
+    config = source("sitemap", verified_empty_sitemap=True)
+
+    def respond(request):
+        return httpx.Response(
+            200, text=("User-agent: *\nAllow: /" if request.url.path == "/robots.txt" else body)
+        )
+
+    collector = adapter(config, respond)
+    with pytest.raises((ValueError, ParseError)):
+        collector.fetch()
+    assert not collector.crawl_complete
+
+
+@pytest.mark.parametrize(
+    "deadline,expected",
+    [
+        ("2026-10-27", "2026-10-27T23:59:59+03:00"),
+        ("2026-10-27T09:00:00Z", "2026-10-27T09:00:00+00:00"),
+    ],
+)
+def test_jsonld_date_only_deadline_uses_reviewed_timezone_without_changing_timestamps(
+    deadline, expected
+):
+    collector = adapter(source(date_timezone="Africa/Nairobi"), lambda request: None)
+    job = collector.json_job(
+        {
+            "identifier": "REQ1",
+            "title": "Software Engineer",
+            "jobLocation": "Nairobi, Kenya",
+            "validThrough": deadline,
+        },
+        "https://example.test/job/one",
+    )
+    assert job.deadline_at.isoformat() == expected
