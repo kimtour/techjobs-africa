@@ -1037,3 +1037,34 @@ def test_monitor_review_queue_never_publishes_jobs(tmp_path, monkeypatch):
     assert not signal["publication_approved"]
     assert result["configured_employers"] == 0
     assert public.read_bytes() == before
+
+
+@pytest.mark.parametrize("scoped", [True, False])
+def test_reviewed_vacancy_location_scope_does_not_use_company_office_boilerplate(scoped):
+    config = source(
+        "jsonld",
+        description_location_pattern=(
+            r"Candidates may join our team[^<]*?Locations include\s*([^<]+)"
+        ),
+    )
+    client = adapter(config, lambda req: httpx.Response(200, text=""))
+    description = (
+        "<p>Candidates may join our team in one of our offices, pending local work "
+        "authorisation. Locations include Accra, Nairobi, London.</p>"
+        if scoped
+        else "<p>About the company: our offices include Accra and Nairobi.</p>"
+    )
+    job = client.json_job(
+        {
+            "@type": "JobPosting",
+            "identifier": "REQ1",
+            "title": "Security Engineer",
+            "jobLocation": {"address": {"addressLocality": "Mumbai", "addressCountry": "India"}},
+            "description": description,
+        },
+        "https://example.test/job/REQ1",
+    )
+    assert job.location == ("Accra, Nairobi, London." if scoped else "Mumbai · India")
+    assert "description" not in job.model_dump()
+    assert job.external_id == "REQ1"
+    assert canonicalize_raw_job(job).eligibility_level == ("CONFIRMED" if scoped else "UNKNOWN")

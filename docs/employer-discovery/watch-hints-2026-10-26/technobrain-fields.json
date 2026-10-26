@@ -1,0 +1,63 @@
+[
+  {
+    "url": "https://www.technobraingroup.com/job-list/",
+    "robots": {
+      "status": 200,
+      "allowed": true,
+      "url": "https://www.technobraingroup.com/robots.txt"
+    },
+    "status": 200,
+    "stable_post_ids": [
+      [
+        "",
+        "20"
+      ],
+      [
+        "",
+        "22"
+      ],
+      [
+        "",
+        "7666"
+      ]
+    ],
+    "shortlink_tags": [
+      "<link rel='shortlink' href='https://www.technobraingroup.com/?p=7666' />"
+    ],
+    "structured_job_count": 0,
+    "policy_links": [],
+    "listing_card_markup": "/span></span></div></div><div id=\"uid2255488418608_6\" class=\"uid2255488418608 uid2255488418608_6 zb-el-iconList__item--iconRight zb-element zb-el-iconList\" id=\"uid2255488418608_6\"><span class=\"zb-el-iconList__item zb-el-iconList__item--0 zb-el-iconList__item--iconRight\"><span data-znpbiconfam=\"Font Awesome 5 Free Solid\" data-znpbicon=\"\uf061\" class=\"zb-el-iconList__itemIcon\"></span><span class=\"zb-el-iconList__itemText\">Learn More</span></span></div></a></div><div id=\"uid2255488418602_7\" class=\"uid2255488418602 uid2255488418602_7 zb-column--4 zb-column zb-element zb-el-zionColumn ajs__element\" id=\"uid2255488418602_7\" data-ajs-animation=\"fadeInUp\"><a id=\"uid2255488418603_7\" class=\"uid2255488418603 uid2255488418603_7 zb-column zb-element zb-el-zionColumn\" id=\"uid2255488418603_7\" href=\"https://www.technobraingroup.com/jobs/senior-automation-engineer/\"><div id=\"uid2255488418604_7\" class=\"uid2255488418604 uid2255488418604_7 zb-element zb-el-container\" id=\"uid2255488418604_7\"><h1 id=\"uid2255488418605_7\" class=\"uid2255488418605 uid2255488418605_7 zb-element zb-el-zionHeading ajs__element\" id=\"uid2255488418605_7\" data-ajs-animation=\"fadeInUp\">Senior Automation Engineer</h1><h1 id=\"uid2255488418606_7\" class=\"uid2255488418606 uid2255488418606_7 zb-element zb-el-zionHeading ajs__element\" id=\"uid225548"
+  },
+  {
+    "url": "https://www.technobraingroup.com/jobs/senior-automation-engineer/",
+    "robots": {
+      "status": 200,
+      "allowed": true,
+      "url": "https://www.technobraingroup.com/robots.txt"
+    },
+    "status": 200,
+    "stable_post_ids": [
+      [
+        "",
+        "20"
+      ],
+      [
+        "",
+        "22"
+      ],
+      [
+        "",
+        "6919"
+      ],
+      [
+        "7419",
+        ""
+      ]
+    ],
+    "shortlink_tags": [
+      "<link rel='shortlink' href='https://www.technobraingroup.com/?p=7419' />"
+    ],
+    "structured_job_count": 0,
+    "policy_links": []
+  }
+]

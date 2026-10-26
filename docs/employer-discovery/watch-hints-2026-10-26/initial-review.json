@@ -1,0 +1,105 @@
+[
+  {
+    "source_id": "employer_18dbf2fbac6caddf",
+    "url": "https://crossboundary.com/our-vacancies/",
+    "robots": {
+      "status": 200,
+      "allowed": true,
+      "url": "https://crossboundary.com/robots.txt"
+    },
+    "status": 200,
+    "observed_ats_urls": [
+      "https://crossboundary.applytojob.com/apply/0m0o8TAvr0/plant-supervisor",
+      "https://crossboundary.applytojob.com/apply/4Hj6hko3lg/financial-advisory-intern-bogota",
+      "https://crossboundary.applytojob.com/apply/H5AR9vjMfA/analyst-senegal",
+      "https://crossboundary.applytojob.com/apply/Ha2mIKdhAN/associate-principal-senegal",
+      "https://crossboundary.applytojob.com/apply/K2r7WGkQmC/systems-and-security-engineer",
+      "https://crossboundary.applytojob.com/apply/M5MOT140SR/people-operations-manager-site-based-teams",
+      "https://crossboundary.applytojob.com/apply/U9qViVRFDb/business-development-services-bds-specialist-senegal",
+      "https://crossboundary.applytojob.com/apply/VdyGpZUo8w/associate-mena",
+      "https://crossboundary.applytojob.com/apply/XwOeUO2FLt/associate-gambia",
+      "https://crossboundary.applytojob.com/apply/aIzWgBx9hz/site-administration-officer",
+      "https://crossboundary.applytojob.com/apply/buiFmWuNJu/business-development-services-bds-specialist-the-gambia",
+      "https://crossboundary.applytojob.com/apply/cg738F9djW/communications-manager",
+      "https://crossboundary.applytojob.com/apply/iZ0k5DHakz/monitoring-and-evaluations-specialist-the-gambia",
+      "https://crossboundary.applytojob.com/apply/mECNTQT8LF/project-engineer-perth",
+      "https://crossboundary.applytojob.com/apply/q6vFne6XHL/financial-acountant-fixed-term-contract",
+      "https://crossboundary.applytojob.com/apply/rPELyKtO9a/monitoring-and-evaluations-specialist-senegal",
+      "https://crossboundary.applytojob.com/apply/wSZrD7IS9k/investment-professional-private-sector-engagement-tegucigalpa",
+      "https://crossboundary.applytojob.com/apply/xfWyf5OlMB/tax-and-compliance-manager-drc"
+    ],
+    "job_and_policy_links": [
+      "https://crossboundary.com/privacy-policy/"
+    ],
+    "structured_jobs": []
+  },
+  {
+    "source_id": "employer_3dda30bac825666c",
+    "url": "https://www.technobraingroup.com/job-list/",
+    "robots": {
+      "status": 200,
+      "allowed": true,
+      "url": "https://www.technobraingroup.com/robots.txt"
+    },
+    "status": 200,
+    "observed_ats_urls": [],
+    "job_and_policy_links": [
+      "https://www.technobraingroup.com/careers/",
+      "https://www.technobraingroup.com/jobs/automation-engineer/",
+      "https://www.technobraingroup.com/jobs/cloud-infrastructure-consultant/",
+      "https://www.technobraingroup.com/jobs/head-pre-sales-solution-strategy/",
+      "https://www.technobraingroup.com/jobs/odoo-technical-developer/",
+      "https://www.technobraingroup.com/jobs/sales-executive-tanzania/",
+      "https://www.technobraingroup.com/jobs/sales-executive-zambia/",
+      "https://www.technobraingroup.com/jobs/sales-manager/",
+      "https://www.technobraingroup.com/jobs/senior-automation-engineer/",
+      "https://www.technobraingroup.com/jobs/software-development-engineer/",
+      "https://www.technobraingroup.com/jobs/sr-manager-technology-products/",
+      "https://www.technobraingroup.com/jobs/technical-project-manager/"
+    ],
+    "structured_jobs": []
+  },
+  {
+    "source_id": "employer_9a827c4054e9a72d",
+    "url": "https://www.tangazoletu.com/careers/",
+    "robots": {
+      "status": 200,
+      "allowed": true,
+      "url": "https://www.tangazoletu.com/robots.txt"
+    },
+    "status": 200,
+    "observed_ats_urls": [],
+    "job_and_policy_links": [
+      "https://www.tangazoletu.com/careers/"
+    ],
+    "structured_jobs": []
+  },
+  {
+    "source_id": "employer_2c1ec0927ded7686",
+    "url": "https://ltwp.co.ke/jobs/",
+    "robots": {
+      "status": 200,
+      "allowed": true,
+      "url": "https://ltwp.co.ke/robots.txt"
+    },
+    "status": 200,
+    "observed_ats_urls": [],
+    "job_and_policy_links": [
+      "https://ltwp.co.ke/jobs/",
+      "https://ltwp.co.ke/jobs/communications-intern-opportunity/",
+      "https://ltwp.co.ke/jobs/deputy-satellite-camps-supervisor/",
+      "https://ltwp.co.ke/jobs/driver-duty-station-nairobi/",
+      "https://ltwp.co.ke/jobs/finance-intern-opportunity/",
+      "https://ltwp.co.ke/jobs/hr-intern-opportunity/",
+      "https://ltwp.co.ke/jobs/hse-intern-opportunity/",
+      "https://ltwp.co.ke/jobs/it-intern-opportunity/",
+      "https://ltwp.co.ke/jobs/legal-intern-opportunity/",
+      "https://ltwp.co.ke/jobs/page/2/",
+      "https://ltwp.co.ke/jobs/security-control-room-systems-supervisor-job-opportunity/",
+      "https://ltwp.co.ke/jobs/technical-intern-opportunity/",
+      "https://ltwp.co.ke/main/privacy-policy/",
+      "https://ltwp.co.ke/main/terms-of-use/"
+    ],
+    "structured_jobs": []
+  }
+]

@@ -1,0 +1,17 @@
+{
+  "workflow_url": "https://github.com/kimtour/techjobs-africa/actions/runs/40319281030",
+  "accepted_private_commit": "dc91674",
+  "outcome": "SUCCESS",
+  "new_jobs": {
+    "myjobmag": 8,
+    "corporate_staffing": 4,
+    "elevolt": 2,
+    "openedcareer": 1
+  },
+  "all_jobs": 2812,
+  "company_career_jobs": 33,
+  "local_build_and_live_html": "passed",
+  "interactive_browser": "unavailable",
+  "pending_review_signals": 0,
+  "new_collectors": 0
+}

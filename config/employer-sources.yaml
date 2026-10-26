@@ -1701,29 +1701,64 @@ sources:
   suggestions:
     platform: custom
 - id: employer_18dbf2fbac6caddf
-  url: https://crossboundary.com/our-vacancies/
+  url: https://crossboundary.applytojob.com/apply/
   import_urls:
   - https://crossboundary.com/our-vacancies/
-  platform: custom
+  platform: jazzhr
   status: pending
   employer_ids:
   - emp_5f69e7c276763c89
-  access_method: null
+  access_method: jsonld
   country_filters: []
   refresh_hours: 24
   discovery_refresh_hours: 168
   supports_absence_expiry: false
   crawl:
-    max_pages: 5
-    max_requests_per_run: 12
+    max_pages: 20
+    max_requests_per_run: 150
     request_delay_ms: 1500
     timeout_seconds: 20
     retry_delays_seconds:
     - 5
     - 20
-  verification: {}
+  verification:
+    official_link: true
+    stable_ids: true
+    application_links: true
+    locations: true
+    dates_reviewed: true
+    complete: true
+    collection_review: true
+    local_access: true
+    runner_access: false
+    evidence_paths:
+    - docs/employer-discovery/crossboundary-review-2026-10-26/local-m0.json
+    - docs/employer-discovery/crossboundary-review-2026-10-26/policy-review.json
+    collection_review_url: https://crossboundary.com/privacy-policy/
+    collection_basis: Official corporate vacancy page links18 individual postings on this exact
+      public JazzHR tenant. Static all-openings inventory and complete per-vacancy local crawl
+      verified; corporate-linked privacy policy reviewed with no public-vacancy metadata automation
+      restriction identified. Robots permit board and detail paths. Retain factual titles, IDs,
+      job-scope locations, dates and original application URLs only; never descriptions or applicant
+      data. This does not claim an express redistribution licence.
   suggestions:
     platform: custom
+  board: crossboundary
+  official_careers_url: https://crossboundary.com/our-vacancies/
+  collection:
+    listing_url: https://crossboundary.applytojob.com/apply/
+    complete_listing_verified: true
+    detail_url_pattern: /apply/[A-Za-z0-9]+/[^/#?]+
+    identifier_url_pattern: /apply/([A-Za-z0-9]+)/
+    fields:
+      title: <div[^>]*class=[\"\x27]job-header[\"\x27][^>]*>.*?<h2[^>]*>(.*?)</h2>
+      location: <div[^>]*title=[\"\x27]Location[\"\x27][^>]*>(.*?)</div>
+      employment_type: <div[^>]*id=[\"\x27]resumator-job-employment[\"\x27][^>]*>(.*?)</div>
+    description_location_pattern: Candidates may join our team[^<]*?Locations include\s*([^<]+)
+  review_reason: Complete local M0:18raw/1technical/1eligible. Reviewed role-specific location
+    paragraph lists African offices despite default Mumbai schema; preserve local work-authorisation
+    requirement. Hosted M0, isolated trial and publication approval remain required; source
+    pending.
 - id: employer_1958e161d051541c
   url: https://www.nrc.no/careers
   import_urls:

@@ -183,6 +183,16 @@ class StructuredEmployerAdapter:
         url = urljoin(detail_url, item.get("url") or detail_url)
         identifier = self.identity(url, item.get("identifier"))
         location = place_text(item.get("jobLocation"))
+        # Some providers expose a default office while the vacancy itself offers
+        # additional offices. Only a reviewed, job-scoped pattern may replace it.
+        location_pattern = self.settings.get("description_location_pattern")
+        if location_pattern and isinstance(item.get("description"), str):
+            match = re.search(location_pattern, unescape(item["description"]), re.I | re.S)
+            if match:
+                scoped_location = " ".join(re.sub(r"<[^>]+>", " ", match.group(1)).split())
+                if not scoped_location or len(scoped_location) > 2000:
+                    raise ValueError("Invalid scoped vacancy location")
+                location = scoped_location
         if item.get("jobLocationType") == "TELECOMMUTE":
             location = "Remote · " + place_text(
                 item.get("applicantLocationRequirements") or location
