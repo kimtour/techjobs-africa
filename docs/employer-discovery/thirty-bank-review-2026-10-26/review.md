@@ -39,7 +39,7 @@ Initial page checks: {"REVIEWED_PAGE": 26, "FAILED": 1, "ALREADY_ACTIVE": 1, "PE
 
 Progress at initial review was10 additional linked employer records; the deployment below updates that snapshot. NCBA subsequently completed all checks and was activated; see delivery receipt below. SBM requires permission.
 
-NCBA now has an inactive, locally verified HTML collector:4 roles,1 eligible technical role (Assistant Manager, ICT Risk; Tanzania; closes31October2026). Official employer pages provide the vacancy data and application entry points; blocked SuccessFactors collection is excluded. Stable provider jobIds plus a seeded surrogate UUID are used. Hosted checks and isolated trial remain required before production.
+NCBA initially passed local verification while inactive: 4 roles, 1 eligible technical role (Assistant Manager, ICT Risk; Tanzania; closes31October2026). Official employer pages provide the vacancy data and application entry points; blocked SuccessFactors collection is excluded. Stable provider jobIds plus a seeded surrogate UUID are used. The hosted checks and isolated trial subsequently passed, as recorded below.
 
 ## Verified delivery
 
