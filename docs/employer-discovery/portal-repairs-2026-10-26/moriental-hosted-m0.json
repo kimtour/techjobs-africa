@@ -1,0 +1,141 @@
+{
+  "board_robots": {
+    "allowed": true,
+    "status": 200,
+    "url": "https://www.moriental.co.ke/robots.txt"
+  },
+  "candidate_metadata": [
+    {
+      "application_url": "https://www.moriental.co.ke/?post_type=career&p=6728",
+      "country": "Kenya",
+      "employer": "M-Oriental Bank",
+      "job_id": "employer_bdee4912ef2d4465:6728",
+      "title": "Digital solutions and full stack developer"
+    }
+  ],
+  "careers_page": "https://www.moriental.co.ke/careers/",
+  "checked_at": "2026-10-26T09:26:24.332641+00:00",
+  "checks": {
+    "application_links": true,
+    "complete": true,
+    "dates_reviewed": true,
+    "locations": true,
+    "official_link": true,
+    "stable_ids": true
+  },
+  "detected_boards": [],
+  "eligible_jobs": 1,
+  "endpoint": "https://www.moriental.co.ke/careers/",
+  "environment": "github",
+  "feed_urls": [
+    "https://www.moriental.co.ke/feed/",
+    "https://www.moriental.co.ke/comments/feed/"
+  ],
+  "official_robots": {
+    "allowed": true,
+    "status": 200,
+    "url": "https://www.moriental.co.ke/robots.txt"
+  },
+  "official_url": "https://www.moriental.co.ke/",
+  "publication_approved": false,
+  "records_found": 4,
+  "requests": [
+    {
+      "attempt": 1,
+      "duration_seconds": 1.57,
+      "error_type": null,
+      "host": "www.moriental.co.ke",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-26T09:26:24.358233+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 1.302,
+      "error_type": null,
+      "host": "www.moriental.co.ke",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-26T09:26:27.428205+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.206,
+      "error_type": null,
+      "host": "www.moriental.co.ke",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-26T09:26:30.230409+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 1.501,
+      "error_type": null,
+      "host": "www.moriental.co.ke",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-26T09:26:31.936345+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.204,
+      "error_type": null,
+      "host": "www.moriental.co.ke",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-26T09:26:34.937966+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.204,
+      "error_type": null,
+      "host": "www.moriental.co.ke",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-26T09:26:36.641773+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 1.485,
+      "error_type": null,
+      "host": "www.moriental.co.ke",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-26T09:26:38.345505+00:00"
+    }
+  ],
+  "sample": [
+    {
+      "application_url": "https://www.moriental.co.ke/?post_type=career&p=6728",
+      "id": "6728",
+      "location": "Nairobi, Kenya",
+      "published_at": null,
+      "title": "Digital solutions and full stack developer"
+    },
+    {
+      "application_url": "https://www.moriental.co.ke/?post_type=career&p=6727",
+      "id": "6727",
+      "location": "Nairobi, Kenya",
+      "published_at": null,
+      "title": "COMPLIANCE OFFICER:"
+    },
+    {
+      "application_url": "https://www.moriental.co.ke/?post_type=career&p=6726",
+      "id": "6726",
+      "location": "Nairobi, Kenya",
+      "published_at": null,
+      "title": "RECEPTIONIST"
+    },
+    {
+      "application_url": "https://www.moriental.co.ke/?post_type=career&p=6725",
+      "id": "6725",
+      "location": "Nairobi, Kenya",
+      "published_at": null,
+      "title": "SAMEER BUSINESS PARK: RELATIONSHIP MANAGER & RELATIONSHIP OFFICER"
+    }
+  ],
+  "source_id": "employer_bdee4912ef2d4465",
+  "status": "SUCCESS",
+  "structured_job_count": 0,
+  "technical_jobs": 1
+}

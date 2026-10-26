@@ -12841,7 +12841,7 @@ sources:
   import_urls:
   - https://www.moriental.co.ke/careers/
   platform: custom
-  status: pending
+  status: verified
   employer_ids:
   - emp_a242a67e4dc7b1ee
   access_method: html
@@ -12872,12 +12872,14 @@ sources:
     - docs/employer-discovery/portal-repairs-2026-10-26/moriental-rest-fields.json
     - docs/employer-discovery/portal-repairs-2026-10-26/moriental-api-discovery.json
     - docs/employer-discovery/portal-repairs-2026-10-26/moriental-local-m0.json
+    - docs/employer-discovery/portal-repairs-2026-10-26/moriental-hosted-m0.json
     application_links: true
     complete: true
     dates_reviewed: true
     locations: true
     stable_ids: true
     local_access: true
+    runner_access: true
   suggestions:
     platform: custom
     needs_location_filter: true
@@ -12886,9 +12888,9 @@ sources:
     checked_at: '2026-10-26T08:08:03+00:00'
     result: REVIEWED_PAGE
     evidence_path: docs/employer-discovery/thirty-bank-review-2026-10-26/review.md
-  review_reason: Repaired previously missing explicit role location, stable provider identity
-    and individual job URL. Four inline records fully scoped; local/hosted checks and isolated
-    trial remain required before activation.
+  review_reason: Local and hosted complete4-role inline-card collection passed with1eligible
+    Nairobi developer candidate. Stable WordPress provider IDs and original individual job
+    page verified. Isolated trial/publication review next; inactive.
   reviewed_source_checks:
     observed_at: '2026-10-26T07:49:29.518535+00:00'
     access: PASS
