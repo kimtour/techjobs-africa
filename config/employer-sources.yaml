@@ -4670,7 +4670,7 @@ sources:
     retry_delays_seconds: []
   verification:
     local_access: true
-    runner_access: false
+    runner_access: true
     complete: true
     stable_ids: true
     locations: true
@@ -4682,6 +4682,7 @@ sources:
     - docs/employer-discovery/technobrain-review-2026-10-26/local-prototype.json
     - docs/employer-discovery/technobrain-review-2026-10-26/policy-review.json
     - docs/employer-discovery/technobrain-review-2026-10-26/automation-application-review.json
+    - docs/employer-discovery/technobrain-review-2026-10-26/hosted-m0.json
     collection_review_url: https://www.technobraingroup.com/techno-brain-privacy-policy/
     collection_basis: Public first-party vacancy metadata and privacy policy reviewed; no automated
       public-vacancy metadata restriction identified. Robots permit inspected paths. Retain
@@ -4704,10 +4705,10 @@ sources:
       url: href=[\"\x27]([^\"\x27]+)
       title: <h1[^>]*>(.*?)</h1>
       location: </h1>\s*<h1[^>]*>([^<]+)
-  review_reason: Local11-role complete extraction and listing-card location joins passed:3eligible
-    Kenya candidates. Web3Developer and TechnicalProjectManager have original Zoho application
-    links; AutomationEngineer ApplyNow label has no verified destination. Official root linkage,
-    application-gap resolution, hosted M0/trial/publication still pending. No activation.
+  review_reason: Local and hosted complete11-role extraction passed:3eligible Kenya candidates.2have
+    original Zoho application destinations; AutomationEngineer ApplyNow destination remains
+    unconfirmed. Application URL syntax checks do not clear that substantive gate. Official
+    root linkage, application-gap review and isolated publication trial remain pending. Inactive.
 - id: employer_3e6f47e99f98b4d9
   url: https://careers.amref.org/
   import_urls:

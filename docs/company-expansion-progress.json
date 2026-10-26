@@ -49,7 +49,7 @@
   "current_verified_employer_records": 27,
   "current_linked_registry_records": 29,
   "coverage_basis": "Count only each source verified_employer_ids where specified; unverified shared links remain separate discovery records, not completed companies.",
-  "coverage_state_reconciliation_pending": false,
+  "coverage_state_reconciliation_pending": true,
   "last_publication_run": "https://github.com/kimtour/techjobs-africa/actions/runs/40300532700",
   "accepted_private_commit": "dc91674"
 }

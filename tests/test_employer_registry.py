@@ -458,3 +458,14 @@ def test_observed_careers_script_literal_board_link_is_reviewable_without_execut
     assert report["careers_page"] == "https://example.com/assets/careers/jobs.js"
     assert source["status"] == "pending"
     assert not any("example.applytojob.com" in url for url in requested)
+
+
+def test_active_shared_sources_have_reciprocal_employer_links():
+    employers = {
+        row["id"]: row
+        for row in yaml.safe_load(Path("config/employers.yaml").read_text())["employers"]
+    }
+    _, sources = active_factories()
+    for sid, row in sources.items():
+        for eid in row["employer_ids"]:
+            assert sid in employers[eid]["source_ids"], (sid, eid)

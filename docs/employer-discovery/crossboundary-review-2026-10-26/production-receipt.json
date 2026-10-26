@@ -1,0 +1,18 @@
+{
+  "publication_run": "https://github.com/kimtour/techjobs-africa/actions/runs/40326952809",
+  "code_commit": "67d0851b195da4224bdbfcbca6909643029239ca",
+  "publication_private_commit": "79d7945db7a8d2dc06a9d817102128d0da4e40f1",
+  "outcome": "SUCCESS",
+  "source_id": "employer_4b5f0d16f35b56cb",
+  "job_id": "employer_4b5f0d16f35b56cb:K2r7WGkQmC",
+  "raw_records": 18,
+  "new_jobs": 1,
+  "company_career_jobs": 34,
+  "all_jobs": 2813,
+  "local_build_and_live_html": "passed",
+  "interactive_browser": "unavailable",
+  "source_absence_expiry": false,
+  "shared_source_identity_preserved": true,
+  "additional_collectors": 0,
+  "coverage_reconciliation_pending": true
+}
