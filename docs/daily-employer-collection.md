@@ -146,3 +146,11 @@ cooldowns, and uses the same serialized production writer and publication gates.
 It does not reset health history, change baselines, delete scheduler claims, or
 activate unverified sources. Use it when reviewed baseline publication is approved
 after that day's collection already ran.
+
+For an explicit manual refresh of all feeds, dispatch `ingest-and-build.yml`
+with `source=all` and `refresh_employers=true`. This bypasses only the healthy
+employer daily interval for the selected, already-approved boards. Per-source
+cooldowns, failure backoff, request budgets, verification gates and the single
+private-state writer remain unchanged. `refresh_employer` retains its existing
+single-source restriction. `refresh_jsearch=true` can recheck the Google feed
+within its existing daily/monthly API limits. Scheduled runs leave these flags off.

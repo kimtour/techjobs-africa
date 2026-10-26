@@ -846,3 +846,65 @@ def test_daily_coverage_does_not_credit_unverified_shared_employer(tmp_path, mon
     assert not rows["insurer"]["checked_successfully_today"]
     assert rows["insurer"]["outcomes"] == ["awaiting_employer_verification"]
     assert rows["insurer"]["source_ids"] == ["shared"]
+
+
+def test_batch_refresh_fetches_multiple_approved_boards_but_keeps_backoff(tmp_path, monkeypatch):
+    import ingest.main as pipeline
+
+    now = datetime.now(UTC)
+    ids = ["employer_one", "employer_two", "employer_cooldown", "employer_failed"]
+    configs = {
+        sid: {
+            "id": sid,
+            "status": "active",
+            "refresh_hours": 24,
+            "reviewed_bootstrap": True,
+            "crawl": {"max_pages": 1},
+        }
+        for sid in ids
+    }
+
+    class Collector:
+        crawl_complete = True
+
+        def __init__(self, sid):
+            self.sid = sid
+
+        def fetch(self):
+            return [
+                raw().model_copy(
+                    update={
+                        "source_id": self.sid,
+                        "apply_url": f"https://example.test/job/{self.sid}",
+                    }
+                )
+            ]
+
+    factories = {sid: (lambda sid=sid: Collector(sid)) for sid in ids}
+    monkeypatch.setattr(pipeline, "active_factories", lambda *a: (factories, configs))
+    previous = {
+        sid: {
+            "last_attempt_at": (now - timedelta(minutes=30)).isoformat(),
+            "consecutive_failures": 0,
+        }
+        for sid in ids
+    }
+    previous["employer_cooldown"]["next_allowed_at"] = (now + timedelta(hours=2)).isoformat()
+    previous["employer_failed"]["consecutive_failures"] = 1
+    _write_json(tmp_path / "state/health.json", {"sources": previous})
+    result = pipeline.run_ingestion(tmp_path, source_ids=ids, refresh_employers=True)
+    assert set(result) == {"employer_one", "employer_two"}
+    assert all(h.status == "SUCCESS" for h in result.values())
+    health = json.loads((tmp_path / "state/health.json").read_text())["sources"]
+    assert (
+        health["employer_cooldown"]["last_attempt_at"]
+        == previous["employer_cooldown"]["last_attempt_at"]
+    )
+    assert (
+        health["employer_failed"]["last_attempt_at"]
+        == previous["employer_failed"]["last_attempt_at"]
+    )
+    with pytest.raises(ValueError, match="active status and full verification"):
+        pipeline.run_ingestion(
+            tmp_path, source_ids=["employer_not_approved"], refresh_employers=True
+        )

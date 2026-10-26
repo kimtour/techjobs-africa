@@ -19,6 +19,11 @@ on:
         required: false
         default: false
         type: boolean
+      refresh_employers:
+        description: Refresh all selected approved employer boards now (keeps cooldowns and backoff)
+        required: false
+        default: false
+        type: boolean
       scheduler_slot:
         description: Cloudflare scheduler slot (leave empty for a manual fetch)
         required: false
@@ -90,9 +95,11 @@ jobs:
           FETCH_SOURCE: ${{ inputs.source || 'all' }}
           REFRESH_JSEARCH: ${{ inputs.refresh_jsearch || 'false' }}
           REFRESH_EMPLOYER: ${{ inputs.refresh_employer || 'false' }}
+          REFRESH_EMPLOYERS: ${{ inputs.refresh_employers || 'false' }}
         run: |
           REFRESH_ARGS=()
           if [ "$REFRESH_JSEARCH" = "true" ]; then REFRESH_ARGS+=(--refresh-jsearch); fi
+          if [ "$REFRESH_EMPLOYERS" = "true" ]; then REFRESH_ARGS+=(--refresh-employers); fi
           if [ "$REFRESH_EMPLOYER" = "true" ]; then
             if [ "$FETCH_SOURCE" = "all" ] || [ "$FETCH_SOURCE" = "employers" ]; then
               echo "::error::Employer refresh requires one active employer source ID."
@@ -101,7 +108,7 @@ jobs:
             REFRESH_ARGS+=(--refresh-employer)
           fi
           if [ "$FETCH_SOURCE" = "employers" ]; then
-            python -u -m ingest.main --output-dir "$CANDIDATE_DIR" --employers-only
+            python -u -m ingest.main --output-dir "$CANDIDATE_DIR" --employers-only "${REFRESH_ARGS[@]}"
           elif [ "$FETCH_SOURCE" != "all" ]; then
             python -u -m ingest.main --output-dir "$CANDIDATE_DIR" --source "$FETCH_SOURCE" "${REFRESH_ARGS[@]}"
           else

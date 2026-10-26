@@ -134,6 +134,7 @@ def run_ingestion(
     adapters: Mapping[str, object] = ADAPTERS,
     refresh_jsearch: bool = False,
     refresh_employer: bool = False,
+    refresh_employers: bool = False,
 ) -> dict[str, SourceHealth]:
     """Fetch each source independently and write safe static files on success."""
 
@@ -146,6 +147,8 @@ def run_ingestion(
     registry_adapters, registry_config = active_factories(CONFIG_PATH.parent)
     adapters = {**adapters, **registry_adapters}
     source_config.update(registry_config)
+    if refresh_employer and refresh_employers:
+        raise ValueError("Choose either single or batch employer refresh")
     if refresh_employer and (len(selected_ids) != 1 or selected_ids[0] not in registry_config):
         raise ValueError("Employer refresh requires one explicitly selected active employer source")
     if any(sid.startswith("employer_") and sid not in registry_config for sid in selected_ids):
@@ -211,7 +214,7 @@ def run_ingestion(
             registry_config[source_id],
             previous_health.get(source_id, {}),
             started,
-            **({"refresh": True} if refresh_employer else {}),
+            **({"refresh": True} if refresh_employer or refresh_employers else {}),
         ):
             record_policy_skip(source_id, "employer_source_not_due")
             continue
@@ -636,6 +639,11 @@ def main() -> int:
         help="Refresh one selected active employer now; cooldowns and failure backoff still apply",
     )
     parser.add_argument(
+        "--refresh-employers",
+        action="store_true",
+        help="Refresh selected approved employer boards now; retain cooldowns and failure backoff",
+    )
+    parser.add_argument(
         "--refresh-jsearch",
         action="store_true",
         help="Refresh changed Google queries today; monthly quota still applies",
@@ -648,6 +656,7 @@ def main() -> int:
         source_ids=args.sources,
         refresh_jsearch=args.refresh_jsearch,
         refresh_employer=args.refresh_employer,
+        refresh_employers=args.refresh_employers,
     )
     summary = ", ".join(f"{key}={value.status}" for key, value in health.items())
     print("Ingestion complete: " + summary)
