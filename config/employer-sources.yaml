@@ -1705,7 +1705,7 @@ sources:
   import_urls:
   - https://crossboundary.com/our-vacancies/
   platform: jazzhr
-  status: active
+  status: retired
   employer_ids:
   - emp_5f69e7c276763c89
   access_method: jsonld
@@ -1759,11 +1759,11 @@ sources:
       location: <div[^>]*title=[\"\x27]Location[\"\x27][^>]*>(.*?)</div>
       employment_type: <div[^>]*id=[\"\x27]resumator-job-employment[\"\x27][^>]*>(.*?)</div>
     description_location_pattern: Candidates may join our team[^<]*?Locations include\s*([^<]+)
-  review_reason: Reviewed complete local/hosted extraction and isolated trial:18raw/1eligible/1additional
-    unique Systems and Security Engineer. Explicit job-scope office alternatives include African
-    cities, pending local work authorisation. Daily collector approved; absence expiry remains
-    off.
+  review_reason: Duplicate fetching consolidated into existing active tenant source employer_4b5f0d16f35b56cb.
+    Employer Group remains distinct from Energy. No production job used this candidate source
+    ID; candidate evidence retained.
   reviewed_bootstrap: true
+  shared_fetch_source_id: employer_4b5f0d16f35b56cb
 - id: employer_1958e161d051541c
   url: https://www.nrc.no/careers
   import_urls:
@@ -5525,6 +5525,7 @@ sources:
   status: active
   employer_ids:
   - emp_eb492e9b9dfdaa1c
+  - emp_5f69e7c276763c89
   access_method: jsonld
   country_filters: []
   refresh_hours: 24
@@ -5552,11 +5553,14 @@ sources:
     - docs/employer-discovery/jazzhr-local/employer_4b5f0d16f35b56cb.json
     - docs/employer-discovery/jazzhr-github/employer_4b5f0d16f35b56cb.json
     - docs/employer-discovery/jazzhr-trial/audit.json
-    collection_basis: Reviewed official employer linkage to the public JazzHR career
-      board; per-path robots permit collection. Collect only factual vacancy title,
-      employer, location, dates and original application URL; never descriptions,
-      logos or applicant data. No automated-access restriction was identified for
-      these public ATS pages. No claim of an explicit redistribution licence.
+    - docs/employer-discovery/crossboundary-review-2026-10-26/local-m0.json
+    - docs/employer-discovery/crossboundary-review-2026-10-26/hosted-m0.json
+    - docs/employer-discovery/crossboundary-review-2026-10-26/trial-review.json
+    collection_basis: Reviewed official employer linkage to the public JazzHR career board;
+      per-path robots permit collection. Collect only factual vacancy title, employer, location,
+      dates and original application URL; never descriptions, logos or applicant data. No automated-access
+      restriction was identified for these public ATS pages. No claim of an explicit redistribution
+      licence.
     collection_review_url: https://crossboundary.com/privacy-policy/
     trial_review: true
     publication_review: true
@@ -5576,11 +5580,15 @@ sources:
       title: <div[^>]*class=[\"\x27]job-header[\"\x27][^>]*>.*?<h2[^>]*>(.*?)</h2>
       location: <div[^>]*title=[\"\x27]Location[\"\x27][^>]*>(.*?)</div>
       employment_type: <div[^>]*id=[\"\x27]resumator-job-employment[\"\x27][^>]*>(.*?)</div>
-  review_reason: Local and hosted complete crawls and isolated trial reviewed. Five
-    Watu roles explicitly list Nairobi, Kenya. Branch/CrossBoundary overseas roles
-    remain excluded.
+    description_location_pattern: Candidates may join our team[^<]*?Locations include\s*([^<]+)
+  review_reason: Existing shared CrossBoundary tenant retains original source ID and verified
+    Energy record. Group is a distinct discovery link pending shared-source trial identity review.
+    New job-scoped location extraction passed local/hosted/trial review under the candidate
+    source; repeat shared-source hosted checks before production refresh.
   board: crossboundary
   reviewed_bootstrap: true
+  verified_employer_ids:
+  - emp_eb492e9b9dfdaa1c
 - id: employer_4b667497eb06186f
   url: https://jobs.ksa.go.ke/
   import_urls:
