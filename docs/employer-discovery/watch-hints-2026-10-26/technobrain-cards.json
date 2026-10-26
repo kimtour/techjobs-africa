@@ -1,0 +1,107 @@
+[
+  {
+    "url": "https://www.technobraingroup.com/jobs/sr-manager-technology-products/",
+    "card_fields": [
+      "Sr Manager Technology & Products",
+      "India"
+    ]
+  },
+  {
+    "url": "https://www.technobraingroup.com/jobs/head-pre-sales-solution-strategy/",
+    "card_fields": [
+      "Head \u2013 Pre-Sales & Solution Strategy",
+      "India"
+    ]
+  },
+  {
+    "url": "https://www.technobraingroup.com/jobs/sales-manager/",
+    "card_fields": [
+      "Sales Manager",
+      "Kenya"
+    ]
+  },
+  {
+    "url": "https://www.technobraingroup.com/jobs/sales-executive-tanzania/",
+    "card_fields": [
+      "Sales Executive \u2013 Tanzania",
+      "Tanzania"
+    ]
+  },
+  {
+    "url": "https://www.technobraingroup.com/jobs/sales-executive-zambia/",
+    "card_fields": [
+      "Sales Executive \u2013 Zambia",
+      "Zambia"
+    ]
+  },
+  {
+    "url": "https://www.technobraingroup.com/jobs/cloud-infrastructure-consultant/",
+    "card_fields": [
+      "Cloud Infrastructure Consultant",
+      "India"
+    ]
+  },
+  {
+    "url": "https://www.technobraingroup.com/jobs/odoo-technical-developer/",
+    "card_fields": [
+      "Odoo Technical Developer",
+      "India"
+    ]
+  },
+  {
+    "url": "https://www.technobraingroup.com/jobs/senior-automation-engineer/",
+    "card_fields": [
+      "Senior Automation Engineer",
+      "Kenya"
+    ],
+    "detail_status": 200,
+    "provider_id": "7419",
+    "detail_title": [
+      "Senior Automation Engineer",
+      "Our Business Solutions",
+      "About Us"
+    ]
+  },
+  {
+    "url": "https://www.technobraingroup.com/jobs/automation-engineer/",
+    "card_fields": [
+      "Automation Engineer",
+      "Kenya"
+    ],
+    "detail_status": 200,
+    "provider_id": "7408",
+    "detail_title": [
+      "Automation Engineer",
+      "Our Business Solutions",
+      "About Us"
+    ]
+  },
+  {
+    "url": "https://www.technobraingroup.com/jobs/software-development-engineer/",
+    "card_fields": [
+      "Web3 Blockchain Developer",
+      "Kenya"
+    ],
+    "detail_status": 200,
+    "provider_id": "4838",
+    "detail_title": [
+      "Web3 Blockchain Developer",
+      "Our Business Solutions",
+      "About Us"
+    ]
+  },
+  {
+    "url": "https://www.technobraingroup.com/jobs/technical-project-manager/",
+    "card_fields": [
+      "Technical Project Manager",
+      "Kenya"
+    ],
+    "detail_status": 200,
+    "provider_id": "7416",
+    "detail_title": [
+      "Technical Project Manager",
+      "Our Business Solutions",
+      "About Us"
+    ]
+  }
+]

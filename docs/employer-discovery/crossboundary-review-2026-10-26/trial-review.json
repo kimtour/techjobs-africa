@@ -1,0 +1,292 @@
+{
+  "additional_unique_jobs": 1,
+  "baseline_supplied": true,
+  "candidate_jobs": 1,
+  "checked_at": "2026-10-26T12:44:08.872971+00:00",
+  "mode": "trial",
+  "outcome": "SUCCESS",
+  "production_promoted": false,
+  "schema_version": 1,
+  "sources": [
+    {
+      "complete": true,
+      "duplicates_in_accepted": 0,
+      "eligibility_review": [],
+      "eligible_jobs": 1,
+      "filtered_jobs": [
+        {
+          "external_id": "0m0o8TAvr0",
+          "reason": "unclassified_title_or_unverified_context",
+          "title": "Plant Supervisor"
+        },
+        {
+          "external_id": "4Hj6hko3lg",
+          "reason": "unclassified_title_or_unverified_context",
+          "title": "Financial Advisory Intern - Bogota"
+        },
+        {
+          "external_id": "H5AR9vjMfA",
+          "reason": "unclassified_title_or_unverified_context",
+          "title": "Analyst - Senegal"
+        },
+        {
+          "external_id": "Ha2mIKdhAN",
+          "reason": "unclassified_title_or_unverified_context",
+          "title": "Associate Principal - Senegal"
+        },
+        {
+          "external_id": "M5MOT140SR",
+          "reason": "unclassified_title_or_unverified_context",
+          "title": "People Operations Manager (Site Based Teams)"
+        },
+        {
+          "external_id": "U9qViVRFDb",
+          "reason": "unclassified_title_or_unverified_context",
+          "title": "Business Development Services (BDS) Specialist - Senegal"
+        },
+        {
+          "external_id": "VdyGpZUo8w",
+          "reason": "unclassified_title_or_unverified_context",
+          "title": "Associate MENA"
+        },
+        {
+          "external_id": "XwOeUO2FLt",
+          "reason": "unclassified_title_or_unverified_context",
+          "title": "Associate - Gambia"
+        },
+        {
+          "external_id": "aIzWgBx9hz",
+          "reason": "unclassified_title_or_unverified_context",
+          "title": "Site Administration Officer"
+        },
+        {
+          "external_id": "buiFmWuNJu",
+          "reason": "unclassified_title_or_unverified_context",
+          "title": "Business Development Services (BDS) Specialist - The Gambia"
+        },
+        {
+          "external_id": "cg738F9djW",
+          "reason": "unclassified_title_or_unverified_context",
+          "title": "Communications Manager"
+        },
+        {
+          "external_id": "iZ0k5DHakz",
+          "reason": "unclassified_title_or_unverified_context",
+          "title": "Monitoring and Evaluations Specialist - The Gambia"
+        },
+        {
+          "external_id": "mECNTQT8LF",
+          "reason": "unclassified_title_or_unverified_context",
+          "title": "Project Engineer - Perth"
+        },
+        {
+          "external_id": "q6vFne6XHL",
+          "reason": "unclassified_title_or_unverified_context",
+          "title": "Financial Acountant - Fixed Term Contract"
+        },
+        {
+          "external_id": "rPELyKtO9a",
+          "reason": "unclassified_title_or_unverified_context",
+          "title": "Monitoring and Evaluations Specialist - Senegal"
+        },
+        {
+          "external_id": "wSZrD7IS9k",
+          "reason": "unclassified_title_or_unverified_context",
+          "title": "Investment Professional - Private Sector Engagement - Tegucigalpa"
+        },
+        {
+          "external_id": "xfWyf5OlMB",
+          "reason": "unclassified_title_or_unverified_context",
+          "title": "Tax and Compliance Manager - DRC"
+        }
+      ],
+      "raw_jobs": 18,
+      "requests": [
+        {
+          "attempt": 1,
+          "duration_seconds": 0.273,
+          "error_type": null,
+          "host": "crossboundary.applytojob.com",
+          "http_status": 200,
+          "method": "GET",
+          "started_at": "2026-10-26T12:44:08.940236+00:00"
+        },
+        {
+          "attempt": 1,
+          "duration_seconds": 0.178,
+          "error_type": null,
+          "host": "crossboundary.applytojob.com",
+          "http_status": 200,
+          "method": "GET",
+          "started_at": "2026-10-26T12:44:10.713151+00:00"
+        },
+        {
+          "attempt": 1,
+          "duration_seconds": 0.46,
+          "error_type": null,
+          "host": "crossboundary.applytojob.com",
+          "http_status": 200,
+          "method": "GET",
+          "started_at": "2026-10-26T12:44:12.390845+00:00"
+        },
+        {
+          "attempt": 1,
+          "duration_seconds": 0.497,
+          "error_type": null,
+          "host": "crossboundary.applytojob.com",
+          "http_status": 200,
+          "method": "GET",
+          "started_at": "2026-10-26T12:44:14.351309+00:00"
+        },
+        {
+          "attempt": 1,
+          "duration_seconds": 0.5,
+          "error_type": null,
+          "host": "crossboundary.applytojob.com",
+          "http_status": 200,
+          "method": "GET",
+          "started_at": "2026-10-26T12:44:16.348211+00:00"
+        },
+        {
+          "attempt": 1,
+          "duration_seconds": 0.507,
+          "error_type": null,
+          "host": "crossboundary.applytojob.com",
+          "http_status": 200,
+          "method": "GET",
+          "started_at": "2026-10-26T12:44:18.348816+00:00"
+        },
+        {
+          "attempt": 1,
+          "duration_seconds": 0.497,
+          "error_type": null,
+          "host": "crossboundary.applytojob.com",
+          "http_status": 200,
+          "method": "GET",
+          "started_at": "2026-10-26T12:44:20.356321+00:00"
+        },
+        {
+          "attempt": 1,
+          "duration_seconds": 0.507,
+          "error_type": null,
+          "host": "crossboundary.applytojob.com",
+          "http_status": 200,
+          "method": "GET",
+          "started_at": "2026-10-26T12:44:22.353815+00:00"
+        },
+        {
+          "attempt": 1,
+          "duration_seconds": 0.503,
+          "error_type": null,
+          "host": "crossboundary.applytojob.com",
+          "http_status": 200,
+          "method": "GET",
+          "started_at": "2026-10-26T12:44:24.360798+00:00"
+        },
+        {
+          "attempt": 1,
+          "duration_seconds": 0.489,
+          "error_type": null,
+          "host": "crossboundary.applytojob.com",
+          "http_status": 200,
+          "method": "GET",
+          "started_at": "2026-10-26T12:44:26.364103+00:00"
+        },
+        {
+          "attempt": 1,
+          "duration_seconds": 0.509,
+          "error_type": null,
+          "host": "crossboundary.applytojob.com",
+          "http_status": 200,
+          "method": "GET",
+          "started_at": "2026-10-26T12:44:28.353027+00:00"
+        },
+        {
+          "attempt": 1,
+          "duration_seconds": 0.497,
+          "error_type": null,
+          "host": "crossboundary.applytojob.com",
+          "http_status": 200,
+          "method": "GET",
+          "started_at": "2026-10-26T12:44:30.362340+00:00"
+        },
+        {
+          "attempt": 1,
+          "duration_seconds": 0.49,
+          "error_type": null,
+          "host": "crossboundary.applytojob.com",
+          "http_status": 200,
+          "method": "GET",
+          "started_at": "2026-10-26T12:44:32.359684+00:00"
+        },
+        {
+          "attempt": 1,
+          "duration_seconds": 0.5,
+          "error_type": null,
+          "host": "crossboundary.applytojob.com",
+          "http_status": 200,
+          "method": "GET",
+          "started_at": "2026-10-26T12:44:34.350191+00:00"
+        },
+        {
+          "attempt": 1,
+          "duration_seconds": 0.505,
+          "error_type": null,
+          "host": "crossboundary.applytojob.com",
+          "http_status": 200,
+          "method": "GET",
+          "started_at": "2026-10-26T12:44:36.350382+00:00"
+        },
+        {
+          "attempt": 1,
+          "duration_seconds": 0.507,
+          "error_type": null,
+          "host": "crossboundary.applytojob.com",
+          "http_status": 200,
+          "method": "GET",
+          "started_at": "2026-10-26T12:44:38.355391+00:00"
+        },
+        {
+          "attempt": 1,
+          "duration_seconds": 0.497,
+          "error_type": null,
+          "host": "crossboundary.applytojob.com",
+          "http_status": 200,
+          "method": "GET",
+          "started_at": "2026-10-26T12:44:40.362401+00:00"
+        },
+        {
+          "attempt": 1,
+          "duration_seconds": 0.496,
+          "error_type": null,
+          "host": "crossboundary.applytojob.com",
+          "http_status": 200,
+          "method": "GET",
+          "started_at": "2026-10-26T12:44:42.359295+00:00"
+        },
+        {
+          "attempt": 1,
+          "duration_seconds": 0.498,
+          "error_type": null,
+          "host": "crossboundary.applytojob.com",
+          "http_status": 200,
+          "method": "GET",
+          "started_at": "2026-10-26T12:44:44.355282+00:00"
+        },
+        {
+          "attempt": 1,
+          "duration_seconds": 0.505,
+          "error_type": null,
+          "host": "crossboundary.applytojob.com",
+          "http_status": 200,
+          "method": "GET",
+          "started_at": "2026-10-26T12:44:46.353588+00:00"
+        }
+      ],
+      "source_id": "employer_18dbf2fbac6caddf",
+      "status": "SUCCESS",
+      "technical_jobs": 1,
+      "verification_gaps": []
+    }
+  ]
+}
