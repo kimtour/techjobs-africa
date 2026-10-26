@@ -20,5 +20,18 @@
   "browser_limitation": "Browser control unavailable in Work settings at delivery check; no interactive acceptance claimed.",
   "python_tests_at_publication": 311,
   "absence_expiry_enabled": false,
-  "coverage_state_reconciliation_pending": true
+  "coverage_state_reconciliation_pending": false,
+  "coverage_reconciliation": {
+    "run": "https://github.com/kimtour/techjobs-africa/actions/runs/40294908186",
+    "accepted_private_commit": "183f648",
+    "configured_verified_employers": 26,
+    "successfully_checked_employers_today": 15,
+    "unverified_shared_links_excluded": 2,
+    "source_crawl_complete": true,
+    "source_records_found": 4,
+    "new_jobs_this_refresh": 0
+  },
+  "final_python_tests_passed": 312,
+  "final_local_build_and_live_html_acceptance": true,
+  "final_checked_at": "2026-10-26T08:53:42.201207+00:00"
 }

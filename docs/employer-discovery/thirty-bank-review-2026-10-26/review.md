@@ -6,7 +6,7 @@ All30 supplied URLs were already registered. Follow-up extraction/access/policy 
 
 - Victoria:1new Nairobi Cyber Security Analyst vacancy, posted21October, closing27October2026. Four raw roles collected completely; three nontechnical roles excluded.
 - Hosted M0 run40293101361, isolated trial40293441684 and [production40293787035](https://github.com/kimtour/techjobs-africa/actions/runs/40293787035) succeeded. Private publication state9845e1f.
-- Company Career Page:32; All Jobs:2,782. Local build/live HTML identity, second-feed placement, original-link and site-asset checks passed.311Python tests passed at publication. No interactive browser acceptance is claimed; browser control was unavailable at delivery.
+- Company Career Page:32; All Jobs:2,782. Local build/live HTML identity, second-feed placement, original-link and site-asset checks passed.312Python tests and lint passed after the final reporting fix. No interactive browser acceptance is claimed; browser control was unavailable at delivery.
 
 ## Source outcomes
 
@@ -49,4 +49,4 @@ Detailed bounded HTTP, policy and field metadata: [bank-deep-review-2026-10-26](
 
 Robots access is not an express republication licence. Collection review uses official linkage, relevant published restrictions and bounded factual metadata; missing policy pages are not automatically treated as permission. No restricted source is activated merely because its URL is reachable.
 
-Current configuration:24active registry collectors;26verified employer records;28total linked records. The two extra unverified NCBA shared links stay in discovery and are excluded from the verified count. Compared with the14-record baseline,12additional employer records are verified, not100. The100-company expansion remains incomplete. Saved-state coverage reconciliation is being completed separately; the published vacancy is already verified.
+Current configuration:24active registry collectors;26verified employer records;28total linked records. The two extra unverified NCBA shared links stay in discovery and are excluded from the verified count. Compared with the14-record baseline,12additional employer records are verified, not100. The100-company expansion remains incomplete. Saved-state coverage reconciliation passed in run40294908186 and private state183f648:26verified configured records,15successfully checked today. The fresh VCB crawl remained healthy and complete with4roles and0additional jobs, so the same job was not counted twice. Local-build/live HTML checks passed again with32CompanyCareerPage jobs and2,782AllJobs.
