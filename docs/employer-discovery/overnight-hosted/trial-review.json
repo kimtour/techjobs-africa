@@ -1,0 +1,102 @@
+{
+  "additional_unique_jobs": 0,
+  "baseline_supplied": true,
+  "candidate_jobs": 0,
+  "checked_at": "2026-10-26T06:04:39.094856+00:00",
+  "mode": "trial",
+  "outcome": "SUCCESS",
+  "production_promoted": false,
+  "schema_version": 1,
+  "sources": [
+    {
+      "complete": true,
+      "duplicates_in_accepted": 0,
+      "eligible_jobs": 0,
+      "raw_jobs": 12,
+      "source_id": "employer_43cdbfb4a567343f",
+      "status": "SUCCESS",
+      "technical_jobs": 1,
+      "verification_gaps": []
+    },
+    {
+      "complete": true,
+      "duplicates_in_accepted": 0,
+      "eligible_jobs": 0,
+      "raw_jobs": 30,
+      "source_id": "employer_de3081f67088ad82",
+      "status": "SUCCESS",
+      "technical_jobs": 5,
+      "verification_gaps": []
+    },
+    {
+      "complete": true,
+      "duplicates_in_accepted": 0,
+      "eligible_jobs": 0,
+      "raw_jobs": 107,
+      "source_id": "employer_d5765c76e9008f2e",
+      "status": "SUCCESS",
+      "technical_jobs": 8,
+      "verification_gaps": []
+    },
+    {
+      "complete": true,
+      "duplicates_in_accepted": 0,
+      "eligible_jobs": 0,
+      "raw_jobs": 3,
+      "source_id": "employer_b4d3017368570ae1",
+      "status": "SUCCESS",
+      "technical_jobs": 0,
+      "verification_gaps": []
+    },
+    {
+      "complete": true,
+      "duplicates_in_accepted": 0,
+      "eligible_jobs": 0,
+      "raw_jobs": 0,
+      "source_id": "employer_1b90da4692b350be",
+      "status": "SUCCESS",
+      "technical_jobs": 0,
+      "verification_gaps": []
+    },
+    {
+      "complete": true,
+      "duplicates_in_accepted": 0,
+      "eligible_jobs": 0,
+      "raw_jobs": 9,
+      "source_id": "employer_416ee9b26a529f41",
+      "status": "SUCCESS",
+      "technical_jobs": 0,
+      "verification_gaps": []
+    },
+    {
+      "complete": true,
+      "duplicates_in_accepted": 0,
+      "eligible_jobs": 0,
+      "raw_jobs": 1,
+      "source_id": "employer_0d53c0361b5e43cc",
+      "status": "SUCCESS",
+      "technical_jobs": 0,
+      "verification_gaps": []
+    },
+    {
+      "complete": true,
+      "duplicates_in_accepted": 0,
+      "eligible_jobs": 0,
+      "raw_jobs": 24,
+      "source_id": "employer_eb9fb4e50ccf9e88",
+      "status": "SUCCESS",
+      "technical_jobs": 1,
+      "verification_gaps": []
+    },
+    {
+      "complete": true,
+      "duplicates_in_accepted": 0,
+      "eligible_jobs": 0,
+      "raw_jobs": 1,
+      "source_id": "employer_51d3d3a6082ea2c7",
+      "status": "SUCCESS",
+      "technical_jobs": 0,
+      "verification_gaps": []
+    }
+  ]
+}
