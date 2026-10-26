@@ -1,0 +1,13 @@
+{
+  "checked_at": "2026-10-26T08:43:03.124177+00:00",
+  "source_id": "employer_a23dc08d1454b366",
+  "original_access_failure": "Recruitment hostname DNS failed; this is an official employer homepage check, not a block bypass",
+  "homepage": "https://kwftbank.com/",
+  "production_promoted": false,
+  "homepage_status": 200,
+  "observed_careers_links": [
+    "https://jobs.conquestcapital.co.ke/kwft/"
+  ],
+  "error_type": "gaierror",
+  "http_status": null
+}

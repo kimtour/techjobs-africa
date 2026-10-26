@@ -799,3 +799,50 @@ def test_jsonld_date_only_deadline_uses_reviewed_timezone_without_changing_times
         "https://example.test/job/one",
     )
     assert job.deadline_at.isoformat() == expected
+
+
+def test_daily_coverage_does_not_credit_unverified_shared_employer(tmp_path, monkeypatch):
+    from ingest.employer_state import daily_coverage
+    from ingest.registry_sources import CHECKS
+
+    employers = {
+        key: {"id": key, "name": key, "source_ids": ["shared"]} for key in ["bank", "insurer"]
+    }
+    config = {
+        "id": "shared",
+        "status": "active",
+        "platform": "lever",
+        "board": "group",
+        "employer_ids": ["bank", "insurer"],
+        "verified_employer_ids": ["bank"],
+        "verification": {
+            **dict.fromkeys(CHECKS, True),
+            "trial_review": True,
+            "publication_review": True,
+            "evidence_paths": ["review.json"],
+            "collection_basis": "Reviewed public board",
+        },
+    }
+    monkeypatch.setattr(
+        "ingest.employer_state.load_sources", lambda: (employers, {"shared": config})
+    )
+    now = datetime(2026, 10, 26, 8, tzinfo=UTC)
+    _write_json(
+        tmp_path / "state/health.json",
+        {
+            "sources": {
+                "shared": {
+                    "status": "SUCCESS",
+                    "crawl_complete": True,
+                    "last_attempt_at": now.isoformat(),
+                }
+            }
+        },
+    )
+    result = daily_coverage(tmp_path, now)
+    rows = {x["employer_id"]: x for x in result["companies"]}
+    assert result["configured_employers"] == result["successfully_checked_employers"] == 1
+    assert rows["bank"]["checked_successfully_today"]
+    assert not rows["insurer"]["checked_successfully_today"]
+    assert rows["insurer"]["outcomes"] == ["awaiting_employer_verification"]
+    assert rows["insurer"]["source_ids"] == ["shared"]

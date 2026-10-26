@@ -183,7 +183,15 @@ def daily_coverage(data_dir: Path, now=None, config_dir=None):
         }
     companies = []
     for employer in employers.values():
-        linked = [results[sid] for sid in employer["source_ids"] if sid in results]
+        linked = []
+        for sid in employer["source_ids"]:
+            if sid not in results:
+                continue
+            row = results[sid]
+            source = sources[sid]
+            if employer["id"] not in source.get("verified_employer_ids", source["employer_ids"]):
+                row = {**row, "configured": False, "outcome": "awaiting_employer_verification"}
+            linked.append(row)
         outcomes = sorted({r["outcome"] for r in linked}) or ["unsupported"]
         companies.append(
             {
