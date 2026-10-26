@@ -4657,22 +4657,57 @@ sources:
   status: pending
   employer_ids:
   - emp_a9f8db42c94c8b80
-  access_method: null
+  access_method: html
   country_filters: []
   refresh_hours: 24
   discovery_refresh_hours: 168
   supports_absence_expiry: false
   crawl:
     max_pages: 5
-    max_requests_per_run: 12
+    max_requests_per_run: 100
     request_delay_ms: 1500
     timeout_seconds: 20
-    retry_delays_seconds:
-    - 5
-    - 20
-  verification: {}
+    retry_delays_seconds: []
+  verification:
+    local_access: true
+    runner_access: false
+    complete: true
+    stable_ids: true
+    locations: true
+    dates_reviewed: true
+    application_links: false
+    collection_review: true
+    official_link: false
+    evidence_paths:
+    - docs/employer-discovery/technobrain-review-2026-10-26/local-prototype.json
+    - docs/employer-discovery/technobrain-review-2026-10-26/policy-review.json
+    - docs/employer-discovery/technobrain-review-2026-10-26/automation-application-review.json
+    collection_review_url: https://www.technobraingroup.com/techno-brain-privacy-policy/
+    collection_basis: Public first-party vacancy metadata and privacy policy reviewed; no automated
+      public-vacancy metadata restriction identified. Robots permit inspected paths. Retain
+      IDs, titles, scoped location fields and original application links only, never descriptions
+      or applicant data. No express redistribution licence claimed.
   suggestions:
     platform: custom
+  official_careers_url: https://www.technobraingroup.com/job-list/
+  collection:
+    listing_url: https://www.technobraingroup.com/job-list/
+    detail_url_pattern: /jobs/[^/#?]+/$
+    complete_listing_verified: true
+    fields:
+      identifier: rel=['"]shortlink['"][^>]*href=['"][^'"]*\?p=(\d+)
+      title: <h1[^>]*>(.*?)</h1>
+      description: <h1[^>]*>[^<]+</h1>(.*?)<h1[^>]*>Our Business Solutions
+      apply_url: href=[\"\x27](https://technobraingroup\.zohorecruit\.in/jobs/Careers/[^\"\x27]+)[\"\x27]
+    listing_metadata_pattern: (?P<record><a\b[^>]*href=[\"\x27]https://www\.technobraingroup\.com/jobs/[^\"\x27]+[\"\x27][^>]*>.*?</a>)
+    listing_metadata_fields:
+      url: href=[\"\x27]([^\"\x27]+)
+      title: <h1[^>]*>(.*?)</h1>
+      location: </h1>\s*<h1[^>]*>([^<]+)
+  review_reason: Local11-role complete extraction and listing-card location joins passed:3eligible
+    Kenya candidates. Web3Developer and TechnicalProjectManager have original Zoho application
+    links; AutomationEngineer ApplyNow label has no verified destination. Official root linkage,
+    application-gap resolution, hosted M0/trial/publication still pending. No activation.
 - id: employer_3e6f47e99f98b4d9
   url: https://careers.amref.org/
   import_urls:
@@ -5556,6 +5591,8 @@ sources:
     - docs/employer-discovery/crossboundary-review-2026-10-26/local-m0.json
     - docs/employer-discovery/crossboundary-review-2026-10-26/hosted-m0.json
     - docs/employer-discovery/crossboundary-review-2026-10-26/trial-review.json
+    - docs/employer-discovery/crossboundary-review-2026-10-26/shared-source-hosted-m0.json
+    - docs/employer-discovery/crossboundary-review-2026-10-26/shared-source-trial-review.json
     collection_basis: Reviewed official employer linkage to the public JazzHR career board;
       per-path robots permit collection. Collect only factual vacancy title, employer, location,
       dates and original application URL; never descriptions, logos or applicant data. No automated-access
@@ -5581,14 +5618,16 @@ sources:
       location: <div[^>]*title=[\"\x27]Location[\"\x27][^>]*>(.*?)</div>
       employment_type: <div[^>]*id=[\"\x27]resumator-job-employment[\"\x27][^>]*>(.*?)</div>
     description_location_pattern: Candidates may join our team[^<]*?Locations include\s*([^<]+)
-  review_reason: Existing shared CrossBoundary tenant retains original source ID and verified
-    Energy record. Group is a distinct discovery link pending shared-source trial identity review.
-    New job-scoped location extraction passed local/hosted/trial review under the candidate
-    source; repeat shared-source hosted checks before production refresh.
+  review_reason: Existing tenant source ID retained after full local/hosted extraction and isolated
+    hosted trial on the preserved source ID. CrossBoundary Group and Energy are separate individually
+    reviewed employer records sharing one fetch. Systems and Security Engineer explicitly offers
+    African office alternatives subject to local work authorisation. Publication approved; absence
+    expiry remains off.
   board: crossboundary
   reviewed_bootstrap: true
   verified_employer_ids:
   - emp_eb492e9b9dfdaa1c
+  - emp_5f69e7c276763c89
 - id: employer_4b667497eb06186f
   url: https://jobs.ksa.go.ke/
   import_urls:

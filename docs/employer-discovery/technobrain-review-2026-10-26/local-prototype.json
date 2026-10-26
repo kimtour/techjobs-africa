@@ -1,0 +1,233 @@
+{
+  "source_id": "employer_3dda30bac825666c",
+  "environment": "local",
+  "production_promoted": false,
+  "prototype_only": false,
+  "status": "SUCCESS",
+  "complete": true,
+  "records_found": 11,
+  "sample": [
+    {
+      "id": "7408",
+      "title": "Automation Engineer",
+      "location": "Kenya",
+      "application_url": "https://www.technobraingroup.com/jobs/automation-engineer/",
+      "technical_context": "software_application_development"
+    },
+    {
+      "id": "7771",
+      "title": "Cloud Infrastructure Consultant",
+      "location": "India",
+      "application_url": "https://www.technobraingroup.com/jobs/cloud-infrastructure-consultant/",
+      "technical_context": null
+    },
+    {
+      "id": "7835",
+      "title": "Head \u2013 Pre-Sales & Solution Strategy",
+      "location": "India",
+      "application_url": "https://www.technobraingroup.com/jobs/head-pre-sales-solution-strategy/",
+      "technical_context": null
+    },
+    {
+      "id": "7441",
+      "title": "Odoo Technical Developer",
+      "location": "India",
+      "application_url": "https://www.technobraingroup.com/jobs/odoo-technical-developer/",
+      "technical_context": null
+    },
+    {
+      "id": "7778",
+      "title": "Sales Executive \u2013 Tanzania",
+      "location": "Tanzania",
+      "application_url": "https://www.technobraingroup.com/jobs/sales-executive-tanzania/",
+      "technical_context": null
+    },
+    {
+      "id": "7774",
+      "title": "Sales Executive \u2013 Zambia",
+      "location": "Zambia",
+      "application_url": "https://www.technobraingroup.com/jobs/sales-executive-zambia/",
+      "technical_context": null
+    },
+    {
+      "id": "7781",
+      "title": "Sales Manager",
+      "location": "Kenya",
+      "application_url": "https://www.technobraingroup.com/jobs/sales-manager/",
+      "technical_context": null
+    },
+    {
+      "id": "7419",
+      "title": "Senior Automation Engineer",
+      "location": "Kenya",
+      "application_url": "https://technobraingroup.zohorecruit.in/jobs/Careers/129533000002714005/Senior-Automation-Engineer?source=CareerSite",
+      "technical_context": null
+    },
+    {
+      "id": "4838",
+      "title": "Web3 Blockchain Developer",
+      "location": "Kenya",
+      "application_url": "https://technobraingroup.zohorecruit.in/jobs/Careers/129533000002479373/Web3-Developer?source=CareerSite",
+      "technical_context": null
+    },
+    {
+      "id": "8022",
+      "title": "Sr Manager Technology & Products",
+      "location": "India",
+      "application_url": "https://www.technobraingroup.com/jobs/sr-manager-technology-products/",
+      "technical_context": null
+    },
+    {
+      "id": "7416",
+      "title": "Technical Project Manager",
+      "location": "Kenya",
+      "application_url": "https://technobraingroup.zohorecruit.in/jobs/Careers/129533000002020205/Technical-Project-Manager?source=CareerSite",
+      "technical_context": null
+    }
+  ],
+  "technical_jobs": 5,
+  "eligible_jobs": 3,
+  "publication_approved": false,
+  "candidate_metadata": [
+    {
+      "job_id": "employer_3dda30bac825666c:7408",
+      "title": "Automation Engineer",
+      "employer": "Techno Brain",
+      "country": "Kenya",
+      "application_url": "https://www.technobraingroup.com/jobs/automation-engineer/"
+    },
+    {
+      "job_id": "employer_3dda30bac825666c:4838",
+      "title": "Web3 Blockchain Developer",
+      "employer": "Techno Brain",
+      "country": "Kenya",
+      "application_url": "https://technobraingroup.zohorecruit.in/jobs/Careers/129533000002479373/Web3-Developer?source=CareerSite"
+    },
+    {
+      "job_id": "employer_3dda30bac825666c:7416",
+      "title": "Technical Project Manager",
+      "employer": "Techno Brain",
+      "country": "Kenya",
+      "application_url": "https://technobraingroup.zohorecruit.in/jobs/Careers/129533000002020205/Technical-Project-Manager?source=CareerSite"
+    }
+  ],
+  "requests": [
+    {
+      "started_at": "2026-10-26T12:55:13.783272+00:00",
+      "duration_seconds": 0.736,
+      "method": "GET",
+      "host": "www.technobraingroup.com",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-26T12:55:16.025367+00:00",
+      "duration_seconds": 0.61,
+      "method": "GET",
+      "host": "www.technobraingroup.com",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-26T12:55:18.145817+00:00",
+      "duration_seconds": 0.641,
+      "method": "GET",
+      "host": "www.technobraingroup.com",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-26T12:55:20.296632+00:00",
+      "duration_seconds": 0.567,
+      "method": "GET",
+      "host": "www.technobraingroup.com",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-26T12:55:22.373202+00:00",
+      "duration_seconds": 0.757,
+      "method": "GET",
+      "host": "www.technobraingroup.com",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-26T12:55:24.630769+00:00",
+      "duration_seconds": 0.611,
+      "method": "GET",
+      "host": "www.technobraingroup.com",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-26T12:55:26.752095+00:00",
+      "duration_seconds": 0.677,
+      "method": "GET",
+      "host": "www.technobraingroup.com",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-26T12:55:28.934919+00:00",
+      "duration_seconds": 0.607,
+      "method": "GET",
+      "host": "www.technobraingroup.com",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-26T12:55:31.051499+00:00",
+      "duration_seconds": 0.602,
+      "method": "GET",
+      "host": "www.technobraingroup.com",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-26T12:55:33.163111+00:00",
+      "duration_seconds": 0.596,
+      "method": "GET",
+      "host": "www.technobraingroup.com",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-26T12:55:35.268791+00:00",
+      "duration_seconds": 0.635,
+      "method": "GET",
+      "host": "www.technobraingroup.com",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-26T12:55:37.413788+00:00",
+      "duration_seconds": 0.597,
+      "method": "GET",
+      "host": "www.technobraingroup.com",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-26T12:55:39.521190+00:00",
+      "duration_seconds": 0.66,
+      "method": "GET",
+      "host": "www.technobraingroup.com",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    }
+  ]
+}

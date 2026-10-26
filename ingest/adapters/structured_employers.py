@@ -322,6 +322,7 @@ class StructuredEmployerAdapter:
                             fields.get("title"),
                             fields.get("location"),
                             url,
+                            apply_url=fields.get("apply_url"),
                             description=fields.get("description"),
                             published=fields.get("published"),
                             deadline=fields.get("deadline"),
@@ -421,6 +422,7 @@ class StructuredEmployerAdapter:
         self.detail_failures = 0
         jobs, seen_pages, seen_links = [], set(), set()
         expected_links = None
+        listing_metadata = {}
         url = self.endpoint
         for _ in range(self.max_pages):
             if url in seen_pages:
@@ -482,6 +484,22 @@ class StructuredEmployerAdapter:
                 parser = Page()
                 parser.feed(response.text)
                 inline_records = 0
+                metadata_pattern = self.settings.get("listing_metadata_pattern")
+                if metadata_pattern:
+                    for match in re.finditer(metadata_pattern, response.text, re.I | re.S):
+                        fields = {}
+                        for name, pattern in self.settings["listing_metadata_fields"].items():
+                            value = re.search(pattern, match.group("record"), re.I | re.S)
+                            if value:
+                                fields[name] = " ".join(
+                                    unescape(re.sub(r"<[^>]+>", " ", value.group(1))).split()
+                                )
+                        if not fields.get("url") or not fields.get("location"):
+                            raise ValueError("Incomplete scoped vacancy card metadata")
+                        key = canonicalize_apply_url(urljoin(str(response.url), fields["url"]))
+                        if key in listing_metadata and listing_metadata[key] != fields:
+                            raise ValueError("Conflicting scoped vacancy card metadata")
+                        listing_metadata[key] = fields
                 if self.settings.get("listing_record_pattern"):
                     for match in re.finditer(
                         self.settings["listing_record_pattern"], response.text, re.I | re.S
@@ -541,7 +559,22 @@ class StructuredEmployerAdapter:
             )
             for link in sorted(set(links) - seen_links):
                 seen_links.add(link)
-                jobs.extend(self.detail(link))
+                metadata = listing_metadata.get(canonicalize_apply_url(link))
+                if self.settings.get("listing_metadata_pattern") and not metadata:
+                    raise ValueError("Vacancy detail lacks its scoped listing card")
+                for job in self.detail(link):
+                    if (
+                        metadata
+                        and metadata.get("title")
+                        and (
+                            " ".join(job.title.casefold().split())
+                            != " ".join(metadata["title"].casefold().split())
+                        )
+                    ):
+                        raise ValueError("Vacancy card and detail titles disagree")
+                    if metadata and not job.location:
+                        job = job.model_copy(update={"location": metadata["location"]})
+                    jobs.append(job)
             if not next_url:
                 self.crawl_complete = not self.detail_failures and self.settings.get(
                     "complete_listing_verified", False

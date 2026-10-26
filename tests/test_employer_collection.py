@@ -1068,3 +1068,70 @@ def test_reviewed_vacancy_location_scope_does_not_use_company_office_boilerplate
     assert "description" not in job.model_dump()
     assert job.external_id == "REQ1"
     assert canonicalize_raw_job(job).eligibility_level == ("CONFIRMED" if scoped else "UNKNOWN")
+
+
+@pytest.mark.parametrize("extra_link", [False, True])
+def test_scoped_card_location_joins_to_detail_identity_without_footer_inference(extra_link):
+    config = source(
+        "jsonld",
+        listing_metadata_pattern=r"(?P<record><article>.*?</article>)",
+        listing_metadata_fields={
+            "url": r'href="([^"]+)"',
+            "title": r"<h2>(.*?)</h2>",
+            "location": r"<span>(.*?)</span>",
+        },
+    )
+    listing = (
+        '<article><a href="/job/one"><h2>Software Engineer</h2></a>'
+        "<span>Nairobi, Kenya</span></article><footer>London office</footer>"
+    )
+    if extra_link:
+        listing += '<a href="/job/unrelated">Other role</a>'
+    detail = posting().replace(
+        '"addressLocality": "Nairobi", "addressCountry": "Kenya"',
+        '"addressLocality": "", "addressCountry": ""',
+    )
+
+    def handler(req):
+        if req.url.path == "/robots.txt":
+            return httpx.Response(200, text="User-agent: *\nAllow: /\n")
+        return httpx.Response(200, text=listing if req.url.path == "/careers" else detail)
+
+    client = adapter(config, handler)
+    if extra_link:
+        with pytest.raises(ValueError, match="lacks its scoped listing card"):
+            client.fetch()
+        assert not client.crawl_complete
+    else:
+        jobs = client.fetch()
+        assert client.crawl_complete and len(jobs) == 1
+        assert jobs[0].location == "Nairobi, Kenya"
+        assert jobs[0].external_id == "REQ1"
+        assert "DO NOT PERSIST THIS DESCRIPTION" not in jobs[0].model_dump_json()
+
+
+def test_html_detail_preserves_original_external_application_destination():
+    config = source(
+        "html",
+        fields={
+            "identifier": r'data-id="([^"]+)"',
+            "title": r"<h1>(.*?)</h1>",
+            "location": r"<span>(.*?)</span>",
+            "apply_url": r'href="(https://apply.example.test/[^"]+)"',
+        },
+    )
+    listing = '<a href="/job/one">Software Engineer</a>'
+    detail = (
+        "<h1>Software Engineer</h1><span>Nairobi, Kenya</span>"
+        '<a data-id="REQ1" href="https://apply.example.test/jobs/REQ1">Apply Now</a>'
+    )
+
+    def handler(req):
+        if req.url.path == "/robots.txt":
+            return httpx.Response(200, text="User-agent: *\nAllow: /\n")
+        return httpx.Response(200, text=listing if req.url.path == "/careers" else detail)
+
+    jobs = adapter(config, handler).fetch()
+    assert str(jobs[0].source_url) == "https://example.test/job/one"
+    assert str(jobs[0].apply_url) == "https://apply.example.test/jobs/REQ1"
+    assert jobs[0].external_id == "REQ1"
