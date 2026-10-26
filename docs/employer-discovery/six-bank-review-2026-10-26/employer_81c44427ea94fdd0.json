@@ -1,0 +1,32 @@
+{
+  "source_id": "employer_81c44427ea94fdd0",
+  "employers": [
+    "Bank of Africa Kenya"
+  ],
+  "url": "https://boakenya.com/job-listing/",
+  "checked_at": "2026-10-26T06:18:48.880584+00:00",
+  "production_promoted": false,
+  "status": "REVIEWED_PAGE",
+  "http_status": 200,
+  "final_url": "https://boakenya.com/job-listing/",
+  "headings": [
+    "Current Job Openings",
+    "No Current Openings",
+    "Personal Banking",
+    "Business Banking",
+    "Digital Banking",
+    "Correspondent Banking",
+    "Help & Support",
+    "Contact Us",
+    "Follow Us",
+    "Newsletter Subscription"
+  ],
+  "links": [
+    "https://boakenya.com/job-listing/#sidr",
+    "https://boakenya.com/job-listing/",
+    "https://boakenya.com/privacy-policy/"
+  ],
+  "empty": true,
+  "closing_dates": [],
+  "postings": []
+}

@@ -1,0 +1,12 @@
+{
+  "source_id": "employer_3d01c912e05505da",
+  "employers": [
+    "Central Bank of Kenya"
+  ],
+  "url": "https://esal.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_2/jobs",
+  "checked_at": "2026-10-26T06:18:50.203838+00:00",
+  "production_promoted": false,
+  "status": "BLOCKED",
+  "http_status": 403,
+  "access_limit": "http_access_limit"
+}

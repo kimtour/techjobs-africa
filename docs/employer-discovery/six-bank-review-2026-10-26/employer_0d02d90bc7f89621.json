@@ -1,0 +1,12 @@
+{
+  "source_id": "employer_0d02d90bc7f89621",
+  "employers": [
+    "Bank of India Kenya"
+  ],
+  "url": "https://bankofindia.bank.in/career",
+  "checked_at": "2026-10-26T06:18:48.881776+00:00",
+  "production_promoted": false,
+  "status": "BLOCKED",
+  "http_status": 403,
+  "access_limit": "http_access_limit"
+}

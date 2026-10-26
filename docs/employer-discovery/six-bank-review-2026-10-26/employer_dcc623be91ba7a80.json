@@ -1,0 +1,12 @@
+{
+  "source_id": "employer_dcc623be91ba7a80",
+  "employers": [
+    "Bank of Baroda Kenya"
+  ],
+  "url": "https://www.bankofbarodakenya.co.ke/careers",
+  "checked_at": "2026-10-26T06:18:48.881559+00:00",
+  "production_promoted": false,
+  "status": "FAILED",
+  "error_type": "ConnectTimeout",
+  "http_status": null
+}

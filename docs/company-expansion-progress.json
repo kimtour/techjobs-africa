@@ -1,0 +1,43 @@
+{
+  "goal_additional_companies": 100,
+  "baseline_commit": "21802b5",
+  "baseline_employer_ids": [
+    "emp_055af5f2568edd19",
+    "emp_1b78eb6a44295461",
+    "emp_33c4082222aae66f",
+    "emp_352f2f0814ad2d6c",
+    "emp_5444066ed894ac2c",
+    "emp_580a587ccfe2a3ca",
+    "emp_679d70135293eb8c",
+    "emp_8bd8c4545172bfad",
+    "emp_8d29fd81b7a68542",
+    "emp_958c0f998e01b89c",
+    "emp_b62851db272a19a3",
+    "emp_b7eefb3774e189ef",
+    "emp_e3fa7e720c40fe4b",
+    "emp_eb492e9b9dfdaa1c"
+  ],
+  "current_active_registry_collectors": 21,
+  "current_configured_employer_records": 23,
+  "additional_verified_employer_records": 9,
+  "additional_employer_ids": [
+    "emp_25d8ee73777c713e",
+    "emp_4ca677fb74ae68fc",
+    "emp_52285f5d7961316d",
+    "emp_5d743a707e7dfd2e",
+    "emp_987105690850cf49",
+    "emp_aedf0b6ecff82884",
+    "emp_ce5e71603a54fc35",
+    "emp_db3b862ccd86ca1a",
+    "emp_fd919d872acd8d48"
+  ],
+  "target_achieved": false,
+  "company_career_jobs": 28,
+  "all_jobs": 2778,
+  "last_production_run": "https://github.com/kimtour/techjobs-africa/actions/runs/40278312976",
+  "monitor_only_excluded": [
+    "ABC Bank",
+    "Bank of Africa Kenya"
+  ],
+  "pending_and_blocked_sources_excluded": true
+}

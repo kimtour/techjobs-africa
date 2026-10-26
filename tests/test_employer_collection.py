@@ -662,3 +662,38 @@ def test_reviewed_listing_schema_can_be_skipped_for_query_identifier_details():
     assert collector.crawl_complete
     assert len(jobs) == 1
     assert jobs[0].external_id == "REQ1"  # Detail's own provider identifier wins.
+
+
+def test_reviewed_human_deadline_preserves_expiry_and_never_silently_loses_bad_dates():
+    config = source(
+        fields={
+            "title": r"<h1>(.*?)</h1>",
+            "location": r"<aside>(.*?)</aside>",
+            "deadline": r"<time>(.*?)</time>",
+        },
+        field_date_formats={"deadline": "%d %B %Y"},
+        date_timezone="Africa/Nairobi",
+    )
+
+    def respond(request):
+        if request.url.path == "/robots.txt":
+            return httpx.Response(200, text="User-agent: *\nAllow: /")
+        if request.url.path == "/careers":
+            return httpx.Response(200, text='<a href="/job/one">Role</a>')
+        return httpx.Response(
+            200,
+            text=(
+                "<h1>Data Engineer</h1><aside>Nairobi, Kenya</aside>"
+                "<time>30th November, 2025</time>"
+            ),
+        )
+
+    collector = adapter(config, respond)
+    jobs = collector.fetch()
+    assert collector.crawl_complete
+    assert jobs[0].deadline_at.year == 2025
+    assert jobs[0].deadline_at.hour == 23
+    config["collection"]["field_date_formats"]["deadline"] = "%Y-%m-%d"
+    collector = adapter(config, respond)
+    assert collector.fetch() == []
+    assert not collector.crawl_complete

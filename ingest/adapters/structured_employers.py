@@ -14,6 +14,7 @@ from io import BytesIO
 from urllib.parse import parse_qs, urljoin, urlsplit
 from uuid import uuid4
 from xml.etree import ElementTree as ET
+from zoneinfo import ZoneInfo
 
 import httpx
 
@@ -241,6 +242,19 @@ class StructuredEmployerAdapter:
                     match = re.search(pattern, response.text, re.I | re.S)
                     if match:
                         fields[name] = unescape(re.sub(r"<[^>]+>", " ", match.group(1))).strip()
+                for name, date_format in self.settings.get("field_date_formats", {}).items():
+                    if not fields.get(name):
+                        continue
+                    value = re.sub(r"(?<=\d)(st|nd|rd|th)\b", "", fields[name], flags=re.I)
+                    value = " ".join(value.replace(",", " ").split())
+                    parsed = datetime.strptime(value, date_format).replace(
+                        tzinfo=ZoneInfo(self.settings.get("date_timezone", "UTC"))
+                    )
+                    if name == "deadline" and not any(
+                        token in date_format for token in ("%H", "%I")
+                    ):
+                        parsed = parsed.replace(hour=23, minute=59, second=59)
+                    fields[name] = parsed.isoformat()
                 jobs = [
                     self.json_job(
                         {**item, "identifier": item.get("identifier") or fields.get("identifier")},

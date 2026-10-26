@@ -258,7 +258,7 @@ sources:
   access_method: null
   country_filters: []
   refresh_hours: 24
-  discovery_refresh_hours: 168
+  discovery_refresh_hours: 24
   supports_absence_expiry: false
   crawl:
     max_pages: 5
@@ -273,6 +273,17 @@ sources:
     platform: custom
     needs_location_filter: true
     shared_portal: true
+    current_non_technical_role: Legal Officer 2026
+    extractor_review_required: true
+  requested_review:
+    checked_at: '2026-10-26T06:18:48.882226+00:00'
+    result: REVIEWED_PAGE
+    evidence_path: docs/employer-discovery/six-bank-review-2026-10-26/employer_0387194ad4b7c6c0.json
+  discovery_enabled: true
+  review_reason: 'Official careers inventory reviewed: Legal Officer2026 closes30October2026;
+    the other displayed adverts closed21October,20September and15September2026. No
+    current qualifying technical vacancy established. Follow observed careers portal/download
+    records in extraction review; no career links published as jobs.'
 - id: employer_039645b59c58cc42
   url: https://www.ipoa.go.ke/ipoa/careers/
   import_urls:
@@ -989,7 +1000,7 @@ sources:
   import_urls:
   - https://bankofindia.bank.in/career
   platform: custom
-  status: pending
+  status: blocked
   employer_ids:
   - emp_8177d9d0766fd6cb
   access_method: null
@@ -1008,6 +1019,12 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+  requested_review:
+    checked_at: '2026-10-26T06:18:48.881776+00:00'
+    result: BLOCKED
+    evidence_path: docs/employer-discovery/six-bank-review-2026-10-26/employer_0d02d90bc7f89621.json
+  review_reason: User-requested direct review returned HTTP403. Do not retry around
+    robots/access blocks or classify unavailable pages as empty.
 - id: employer_0d0365a1dc1e3a3d
   url: https://www.pu.ac.ke/index.php/information-desk/vacancies
   import_urls:
@@ -4319,7 +4336,7 @@ sources:
   import_urls:
   - https://esal.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_2/jobs
   platform: oracle
-  status: pending
+  status: blocked
   employer_ids:
   - emp_ca6d66a428dbc651
   access_method: oracle
@@ -4349,8 +4366,12 @@ sources:
   posting_company: Central Bank of Kenya
   group_portal: true
   official_careers_url: https://www.centralbank.go.ke/
-  review_reason: Provider-level public interface investigated; source-specific official
-    linkage, terms and complete local/hosted crawls remain required.
+  review_reason: User-requested direct review returned HTTP403. Do not retry around
+    robots/access blocks or classify unavailable pages as empty.
+  requested_review:
+    checked_at: '2026-10-26T06:18:50.203838+00:00'
+    result: BLOCKED
+    evidence_path: docs/employer-discovery/six-bank-review-2026-10-26/employer_3d01c912e05505da.json
 - id: employer_3d177724feacdda1
   url: https://ke.linkedin.com/company/ofgen
   import_urls:
@@ -8983,7 +9004,7 @@ sources:
   access_method: null
   country_filters: []
   refresh_hours: 24
-  discovery_refresh_hours: 168
+  discovery_refresh_hours: 24
   supports_absence_expiry: false
   crawl:
     max_pages: 5
@@ -8998,6 +9019,16 @@ sources:
     platform: custom
     needs_location_filter: true
     shared_portal: true
+  requested_review:
+    checked_at: '2026-10-26T06:18:48.880584+00:00'
+    result: REVIEWED_PAGE
+    evidence_path: docs/employer-discovery/six-bank-review-2026-10-26/employer_81c44427ea94fdd0.json
+  reviewed_empty_marker: No Current Openings
+  known_non_vacancy_documents: []
+  discovery_enabled: true
+  review_reason: Official page explicitly reports no current openings. Daily empty-state
+    monitoring enabled; changed content/new vacancies require extraction review. Not
+    counted as a complete publication-capable collector.
 - id: employer_83876f0605116a36
   url: https://www.peponischool.org/peponi-school/peponi-school-vacancies/
   import_urls:
@@ -12736,11 +12767,15 @@ sources:
       title: <div[^>]*class=[\"\x27]job-header[\"\x27][^>]*>.*?<h2[^>]*>(.*?)</h2>
       location: <div[^>]*title=[\"\x27]Location[\"\x27][^>]*>(.*?)</div>
       employment_type: <div[^>]*id=[\"\x27]resumator-job-employment[\"\x27][^>]*>(.*?)</div>
-  review_reason: Local and hosted complete crawls and isolated trial reviewed. Five
-    Watu roles explicitly list Nairobi, Kenya. Branch/CrossBoundary overseas roles
-    remain excluded.
+  review_reason: 'Existing shared Branch collector rechecked: complete11-role crawl,3
+    technical roles,0 eligible African technical jobs. No duplicate source or employer
+    merge created.'
   board: branchinternational
   reviewed_bootstrap: true
+  requested_review:
+    checked_at: '2026-10-26T06:18:48.881946+00:00'
+    result: SUCCESS
+    evidence_path: docs/employer-discovery/six-bank-review-2026-10-26/employer_c193c4698b6e5e81.json
 - id: employer_c1bab15763b88e41
   url: https://musonisystem.com/careers/
   import_urls:
@@ -14658,6 +14693,13 @@ sources:
     platform: custom
     needs_location_filter: true
     shared_portal: true
+  requested_review:
+    checked_at: '2026-10-26T06:18:48.881559+00:00'
+    result: FAILED
+    evidence_path: docs/employer-discovery/six-bank-review-2026-10-26/employer_dcc623be91ba7a80.json
+  discovery_enabled: true
+  review_reason: User-requested careers check timed out. Keep pending and use existing
+    discovery backoff; vacancy availability unknown, not zero.
 - id: employer_dd5f9c2b4c646a24
   url: https://jobs.gdc.co.ke/
   import_urls:
@@ -16664,3 +16706,73 @@ sources:
   suggestions:
     platform: custom
     access_gap: true
+- id: employer_f3e0064cbce58d03
+  url: https://pezesha.com/careers/
+  platform: custom
+  status: pending
+  employer_ids:
+  - emp_9044c182049cf8d6
+  access_method: html
+  refresh_hours: 24
+  supports_absence_expiry: false
+  crawl:
+    max_pages: 1
+    max_requests_per_run: 40
+    request_delay_ms: 1500
+    timeout_seconds: 20
+    retry_delays_seconds: []
+  collection:
+    listing_url: https://pezesha.com/careers/
+    detail_url_pattern: ^https://pezesha\.com/careers/(?!(?:our-stories)/)[^/?#]+/$
+    complete_listing_verified: true
+    fields:
+      title: <h2\b[^>]*>\s*([^<]+)\s*</h2>
+      location: Location(?:\s|&nbsp;|</?[^>]+>)*:(?:\s|&nbsp;|</?[^>]+>)*([^<]+)
+      deadline: (?:Closing Date|Application Deadline)(?:\s|&nbsp;|</?[^>]+>)*:(?:\s|&nbsp;|</?[^>]+>)*(\d{1,2}(?:st|nd|rd|th)?\s+[A-Za-z]+[,]?\s+20\d{2})
+    field_date_formats:
+      deadline: '%d %B %Y'
+    date_timezone: Africa/Nairobi
+    initial_url_identities:
+      https://pezesha.com/careers/junior-data-scientist/: 098e9246-5950-4dc5-8c84-f8a01f01292f
+      https://pezesha.com/careers/software- engineer-intern /: 1ae31129-86df-4b02-901e-9a8176f3889b
+      https://pezesha.com/careers/qa-engineer-intern/: 3775fdc2-cd52-4a54-a9e5-e733db546ffb
+      https://pezesha.com/careers/people-and-culture-coordinator/: 89f0b39e-8004-4a6e-a6a0-cae4605d2a04
+      https://pezesha.com/careers/business-development-associate-bda/: eb22e7a4-8a53-43b3-ba1b-3e6c67afeca7
+      https://pezesha.com/careers/credit-operations-and-recoveries-lead-consultant/: 14787987-501f-4e4c-b52f-3aa6c741ec70
+      https://pezesha.com/careers/partnerships-and-projects-coordinator/: cc583bcd-cc20-4979-a457-53d5023f075e
+      https://pezesha.com/careers/senior-data-scientist/: 9a635e58-1f96-4984-bcb6-8bedc94de910
+      https://pezesha.com/careers/senior-software-engineer-lms-loan-management-system-and-mis-management/: a739a45f-10b9-4b8f-adcf-1005b7a6012f
+      https://pezesha.com/careers/full-time-consultant-senior-data-and-risk-manager/: 808195c1-bc91-4a9e-a628-fc5a5e6f9c1b
+  verification:
+    official_link: true
+    local_access: true
+    stable_ids: true
+    application_links: true
+    locations: true
+    dates_reviewed: true
+    complete: true
+    collection_review: true
+    runner_access: false
+    trial_review: false
+    publication_review: false
+    evidence_paths:
+    - docs/employer-discovery/pezesha-review/local.json
+    - docs/employer-discovery/pezesha-review/review.md
+    identity_basis: Persistent surrogate UUIDs seeded by distinct official vacancy
+      URL; not employer requisition IDs; never title hashes.
+    collection_basis: Official employer-owned careers listing with distinct individual
+      vacancy URLs. Public careers and linked privacy notice reviewed; no automated-access
+      restriction identified. Metadata only; no descriptions/applicant data retained.
+      Seeded persistent surrogate UUIDs identify reviewed official URLs independently
+      of mutable titles; these are not provider requisition IDs. Explicit expired
+      vacancy remains parsed with its actual deadline rather than permanently excluded.
+    collection_review_url: https://pezesha.com/privacy/
+  import_urls:
+  - https://pezesha.com/careers/
+  discovery_refresh_hours: 168
+  country_filters: []
+  official_careers_url: https://pezesha.com/careers/
+  posting_company: Pezesha
+  review_reason: Local full10-role crawl passed with2 Kenya DataScientist candidates.
+    Explicit expired consultancy deadline30November2025 parsed and excluded; hosted
+    access/trial/publication review remain required.

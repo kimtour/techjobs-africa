@@ -1,0 +1,242 @@
+{
+  "board_robots": {
+    "allowed": true,
+    "status": 200,
+    "url": "https://pezesha.com/robots.txt"
+  },
+  "candidate_metadata": [
+    {
+      "application_url": "https://pezesha.com/careers/junior-data-scientist/",
+      "country": "Kenya",
+      "employer": "Pezesha",
+      "job_id": "employer_f3e0064cbce58d03:098e9246-5950-4dc5-8c84-f8a01f01292f",
+      "title": "Junior Data Scientist"
+    },
+    {
+      "application_url": "https://pezesha.com/careers/senior-data-scientist/",
+      "country": "Kenya",
+      "employer": "Pezesha",
+      "job_id": "employer_f3e0064cbce58d03:9a635e58-1f96-4984-bcb6-8bedc94de910",
+      "title": "Senior Data Scientist"
+    }
+  ],
+  "careers_page": "https://pezesha.com/careers/our-stories/pezesha-gets-license-approval-as-a-digital-credit-provider-dcp-from-central/",
+  "checked_at": "2026-10-26T06:09:35.617153+00:00",
+  "checks": {
+    "application_links": true,
+    "complete": true,
+    "dates_reviewed": true,
+    "locations": true,
+    "official_link": true,
+    "stable_ids": true
+  },
+  "detected_boards": [],
+  "eligible_jobs": 2,
+  "endpoint": "https://pezesha.com/careers/",
+  "environment": "local",
+  "feed_urls": [],
+  "official_robots": {
+    "allowed": true,
+    "status": 200,
+    "url": "https://pezesha.com/robots.txt"
+  },
+  "official_url": "https://pezesha.com/careers/",
+  "publication_approved": false,
+  "records_found": 10,
+  "requests": [
+    {
+      "attempt": 1,
+      "duration_seconds": 1.938,
+      "error_type": null,
+      "host": "pezesha.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-26T06:09:35.668095+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.758,
+      "error_type": null,
+      "host": "pezesha.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-26T06:09:39.108594+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.959,
+      "error_type": null,
+      "host": "pezesha.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-26T06:09:41.366960+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 1.363,
+      "error_type": null,
+      "host": "pezesha.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-26T06:09:43.827805+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 1.274,
+      "error_type": null,
+      "host": "pezesha.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-26T06:09:46.695929+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 1.241,
+      "error_type": null,
+      "host": "pezesha.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-26T06:09:49.473497+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 1.396,
+      "error_type": null,
+      "host": "pezesha.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-26T06:09:52.219558+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 1.201,
+      "error_type": null,
+      "host": "pezesha.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-26T06:09:55.120575+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 1.311,
+      "error_type": null,
+      "host": "pezesha.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-26T06:09:57.826457+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 2.28,
+      "error_type": null,
+      "host": "pezesha.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-26T06:10:00.642632+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 2.576,
+      "error_type": null,
+      "host": "pezesha.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-26T06:10:04.427625+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 3.198,
+      "error_type": null,
+      "host": "pezesha.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-26T06:10:08.508961+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 2.528,
+      "error_type": null,
+      "host": "pezesha.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-26T06:10:13.207929+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 2.155,
+      "error_type": null,
+      "host": "pezesha.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-26T06:10:17.239222+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 1.794,
+      "error_type": null,
+      "host": "pezesha.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-26T06:10:20.899739+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 1.641,
+      "error_type": null,
+      "host": "pezesha.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-26T06:10:24.196819+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 1.18,
+      "error_type": null,
+      "host": "pezesha.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-26T06:10:27.339232+00:00"
+    }
+  ],
+  "sample": [
+    {
+      "application_url": "https://pezesha.com/careers/business-development-associate-bda/",
+      "id": "eb22e7a4-8a53-43b3-ba1b-3e6c67afeca7",
+      "location": null,
+      "published_at": null,
+      "title": "Business Development Associate (BDA)"
+    },
+    {
+      "application_url": "https://pezesha.com/careers/credit-operations-and-recoveries-lead-consultant/",
+      "id": "14787987-501f-4e4c-b52f-3aa6c741ec70",
+      "location": "Kenya (with oversight of Uganda portfolio)",
+      "published_at": null,
+      "title": "Credit Operations & Recoveries Lead- Consultant"
+    },
+    {
+      "application_url": "https://pezesha.com/careers/full-time-consultant-senior-data-and-risk-manager/",
+      "id": "808195c1-bc91-4a9e-a628-fc5a5e6f9c1b",
+      "location": null,
+      "published_at": null,
+      "title": "Full-Time Consultant – Senior Data & Risk Manager."
+    },
+    {
+      "application_url": "https://pezesha.com/careers/junior-data-scientist/",
+      "id": "098e9246-5950-4dc5-8c84-f8a01f01292f",
+      "location": "Nairobi, Kenya",
+      "published_at": null,
+      "title": "Junior Data Scientist"
+    },
+    {
+      "application_url": "https://pezesha.com/careers/partnerships-and-projects-coordinator/",
+      "id": "cc583bcd-cc20-4979-a457-53d5023f075e",
+      "location": null,
+      "published_at": null,
+      "title": "Partnerships & Projects Coordinator"
+    }
+  ],
+  "source_id": "employer_f3e0064cbce58d03",
+  "status": "SUCCESS",
+  "structured_job_count": 0,
+  "technical_jobs": 5
+}
