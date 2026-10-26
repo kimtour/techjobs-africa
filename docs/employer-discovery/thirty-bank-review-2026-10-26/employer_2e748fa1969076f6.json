@@ -1,0 +1,17 @@
+{
+  "source_id": "employer_2e748fa1969076f6",
+  "employers": [
+    "I&M Bank Kenya"
+  ],
+  "url": "https://imbank.myadrenalin.com/CANDMICROSITE/#/",
+  "checked_at": "2026-10-26T07:27:44.916434+00:00",
+  "production_promoted": false,
+  "status": "REVIEWED_PAGE",
+  "http_status": 200,
+  "final_url": "https://imbank.myadrenalin.com/CANDMICROSITE/#/",
+  "headings": [],
+  "links": [],
+  "empty_statements": [],
+  "postings": [],
+  "review_note": "Adrenalin public application shell reachable; vacancy inventory and pagination not established."
+}

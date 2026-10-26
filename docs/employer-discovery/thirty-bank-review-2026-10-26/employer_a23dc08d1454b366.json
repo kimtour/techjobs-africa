@@ -1,0 +1,13 @@
+{
+  "source_id": "employer_a23dc08d1454b366",
+  "employers": [
+    "Kenya Women Microfinance Bank (KWFT)"
+  ],
+  "url": "https://jobs.conquestcapital.co.ke/kwft/",
+  "checked_at": "2026-10-26T07:27:53.366660+00:00",
+  "production_promoted": false,
+  "status": "FAILED",
+  "error_type": "gaierror",
+  "http_status": null,
+  "review_note": "Recruitment hostname DNS resolution failed; vacancy availability unknown. Discovery backoff retained."
+}

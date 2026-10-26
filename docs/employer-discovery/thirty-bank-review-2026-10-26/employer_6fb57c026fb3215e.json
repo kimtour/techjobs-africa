@@ -1,0 +1,35 @@
+{
+  "source_id": "employer_6fb57c026fb3215e",
+  "employers": [
+    "LOLC Kenya Microfinance Bank"
+  ],
+  "url": "https://www.lolckenya.co.ke/career/",
+  "checked_at": "2026-10-26T07:27:48.670179+00:00",
+  "production_promoted": false,
+  "status": "REVIEWED_PAGE",
+  "http_status": 200,
+  "final_url": "https://www.lolckenya.co.ke/career/",
+  "headings": [
+    "Jobs",
+    "Head/Manager-Collection & Recovery",
+    "Liability Sales Manage-Fixed Deposit",
+    "Management Accountant",
+    "Business Development Officer",
+    "About Us",
+    "Quick Links",
+    "Products & Services",
+    "Subscribe With Us"
+  ],
+  "links": [
+    "https://www.lolckenya.co.ke/career/#content",
+    "https://www.lolckenya.co.ke/career/#",
+    "https://www.lolckenya.co.ke/career/",
+    "https://www.lolckenya.co.ke/jobs/management-accountant/?preview=true",
+    "https://www.lolckenya.co.ke/jobs/business-development-officer/?preview=true",
+    "https://www.lolckenya.co.ke/wp-content/plugins/jobwp/assets/js/iziModal.min.js?ver=2.4.8",
+    "https://www.lolckenya.co.ke/wp-content/plugins/jobwp/assets/js/jobwp-front.js?ver=2.4.8"
+  ],
+  "empty_statements": [],
+  "postings": [],
+  "review_note": "Collections/recovery management openings observed; technical match not established."
+}

@@ -1,0 +1,177 @@
+{
+  "board_robots": {
+    "allowed": true,
+    "status": 200,
+    "url": "https://ncbagroup.com/robots.txt"
+  },
+  "candidate_metadata": [
+    {
+      "application_url": "https://ncbagroup.com/blog/job/manager-ict-enterprise-risk-management/",
+      "country": "Tanzania",
+      "employer": "NCBA Group",
+      "job_id": "employer_b2e2ecc189a1df66:4069",
+      "title": "Assistant Manager, ICT Risk"
+    }
+  ],
+  "careers_page": "https://ncbagroup.com/careers/",
+  "checked_at": "2026-10-26T07:35:33.702691+00:00",
+  "checks": {
+    "application_links": true,
+    "complete": true,
+    "dates_reviewed": true,
+    "locations": true,
+    "official_link": true,
+    "stable_ids": true
+  },
+  "detected_boards": [],
+  "eligible_jobs": 1,
+  "endpoint": "https://ncbagroup.com/careers/join-our-team/",
+  "environment": "local",
+  "feed_urls": [
+    "https://ncbagroup.com/feed/",
+    "https://ncbagroup.com/comments/feed/"
+  ],
+  "official_robots": {
+    "allowed": true,
+    "status": 200,
+    "url": "https://ncbagroup.com/robots.txt"
+  },
+  "official_url": "https://ncbagroup.com/careers/join-our-team/",
+  "publication_approved": false,
+  "records_found": 4,
+  "requests": [
+    {
+      "attempt": 1,
+      "duration_seconds": 0.684,
+      "error_type": null,
+      "host": "ncbagroup.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-26T07:35:33.752705+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.375,
+      "error_type": null,
+      "host": "ncbagroup.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-26T07:35:35.940011+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.11,
+      "error_type": null,
+      "host": "ncbagroup.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-26T07:35:37.820114+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.187,
+      "error_type": null,
+      "host": "ncbagroup.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-26T07:35:39.435187+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.238,
+      "error_type": null,
+      "host": "ncbagroup.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-26T07:35:41.127481+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.149,
+      "error_type": null,
+      "host": "ncbagroup.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-26T07:35:42.868778+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.108,
+      "error_type": null,
+      "host": "ncbagroup.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-26T07:35:44.522548+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.144,
+      "error_type": null,
+      "host": "ncbagroup.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-26T07:35:46.135803+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 2.08,
+      "error_type": null,
+      "host": "ncbagroup.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-26T07:35:47.784822+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 2.173,
+      "error_type": null,
+      "host": "ncbagroup.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-26T07:35:51.369431+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 1.731,
+      "error_type": null,
+      "host": "ncbagroup.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-26T07:35:55.050514+00:00"
+    }
+  ],
+  "sample": [
+    {
+      "application_url": "https://ncbagroup.com/blog/job/manager-ict-enterprise-risk-management/",
+      "id": "4069",
+      "location": "Tanzania",
+      "published_at": null,
+      "title": "Assistant Manager, ICT Risk"
+    },
+    {
+      "application_url": "https://ncbagroup.com/blog/job/procurement-officer/",
+      "id": "4543",
+      "location": "Tanzania",
+      "published_at": null,
+      "title": "Procurement Officer"
+    },
+    {
+      "application_url": "https://ncbagroup.com/blog/job/senior-manager-compliance-data-privacy-ncba-ig/",
+      "id": "6f90a9cc-f4f2-46e6-accd-fc923b00b797",
+      "location": "Kenya",
+      "published_at": null,
+      "title": "Senior Manager, Compliance & Data Privacy \u2013 NCBA IG"
+    },
+    {
+      "application_url": "https://ncbagroup.com/blog/job/senior-manager-trade-finance/",
+      "id": "4631",
+      "location": "Tanzania",
+      "published_at": null,
+      "title": "Senior Manager, Trade Finance"
+    }
+  ],
+  "source_id": "employer_b2e2ecc189a1df66",
+  "status": "SUCCESS",
+  "structured_job_count": 0,
+  "technical_jobs": 1
+}

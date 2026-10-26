@@ -1,0 +1,12 @@
+{
+  "source_id": "employer_a89e7ddc7350f19e",
+  "employers": [
+    "KCB Bank Kenya"
+  ],
+  "url": "https://eoin.fa.em3.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_3001/jobs",
+  "checked_at": "2026-10-26T07:27:53.729415+00:00",
+  "production_promoted": false,
+  "status": "ALREADY_ACTIVE",
+  "access_method": "oracle",
+  "review_note": "Existing active KCB Oracle collector retained; no duplicate."
+}

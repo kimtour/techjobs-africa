@@ -1,0 +1,13 @@
+{
+  "source_id": "employer_c632f4ebe2f28eb7",
+  "employers": [
+    "Umba Microfinance Bank",
+    "Umba Kenya"
+  ],
+  "url": "https://www.umba.com/kenya/careers",
+  "checked_at": "2026-10-26T07:27:55.482103+00:00",
+  "production_promoted": false,
+  "status": "PERMISSION_REVIEW",
+  "reason": "Umba Terms of Service section 21 restrict automated access without permission: https://www.umba.com/kenya/transparency?tab=tab-terms",
+  "review_note": "Existing manual permission review retained; previously observed automation restrictions not overridden by resubmitted URL."
+}

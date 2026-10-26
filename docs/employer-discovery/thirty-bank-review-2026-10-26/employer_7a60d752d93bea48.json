@@ -1,0 +1,27 @@
+{
+  "source_id": "employer_7a60d752d93bea48",
+  "employers": [
+    "Victoria Commercial Bank"
+  ],
+  "url": "https://snapstartalent.com/vcb/vacancies",
+  "checked_at": "2026-10-26T07:27:49.297915+00:00",
+  "production_promoted": false,
+  "status": "REVIEWED_PAGE",
+  "http_status": 200,
+  "final_url": "https://snapstartalent.com/vcb/vacancies",
+  "headings": [
+    "SnapStar Talent - Find Jobs in Kenya"
+  ],
+  "links": [
+    "https://snapstartalent.com/vacancies",
+    "https://snapstartalent.com/jobs-in-kenya",
+    "https://snapstartalent.com/jobs-in-nairobi",
+    "https://snapstartalent.com/jobs-in-limuru",
+    "https://snapstartalent.com/sales-jobs-in-nairobi",
+    "https://snapstartalent.com/accounting-finance-jobs-in-nairobi",
+    "https://snapstartalent.com/engineering-jobs-in-nairobi"
+  ],
+  "empty_statements": [],
+  "postings": [],
+  "review_note": "SnapStarTalent public application shell reachable; full vacancy loading and fields unverified."
+}

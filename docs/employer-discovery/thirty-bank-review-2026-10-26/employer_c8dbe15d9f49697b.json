@@ -1,0 +1,17 @@
+{
+  "source_id": "employer_c8dbe15d9f49697b",
+  "employers": [
+    "Salaam Microfinance Bank"
+  ],
+  "url": "https://www.salaammfbank.co.ke/careers/",
+  "checked_at": "2026-10-26T07:27:56.159479+00:00",
+  "production_promoted": false,
+  "status": "REVIEWED_PAGE",
+  "http_status": 200,
+  "final_url": "https://www.salaammfbank.co.ke/cgi-sys/suspendedpage.cgi",
+  "headings": [],
+  "links": [],
+  "empty_statements": [],
+  "postings": [],
+  "review_note": "Careers page reachable; vacancy extraction and dates require review."
+}

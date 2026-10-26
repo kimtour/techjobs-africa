@@ -1,0 +1,26 @@
+{
+  "source_id": "employer_f1b4a9fcda38b21d",
+  "employers": [
+    "U & I Microfinance Bank"
+  ],
+  "url": "https://uni-microfinance.co.ke/careers/",
+  "checked_at": "2026-10-26T07:27:59.086959+00:00",
+  "production_promoted": false,
+  "status": "REVIEWED_PAGE",
+  "http_status": 200,
+  "final_url": "https://uni-microfinance.co.ke/careers/",
+  "headings": [
+    "Build your career\t\t\t\t\t\t\t\t\t\t\t with U&I",
+    "Open positions",
+    "Send us your CV"
+  ],
+  "links": [
+    "https://uni-microfinance.co.ke/careers/",
+    "https://uni-microfinance.co.ke/careers/#",
+    "https://uni-microfinance.co.ke/wp-content/uploads/2026/08/Assistant-Marketing-Manager-Position.pdf",
+    "https://uni-microfinance.co.ke/wp-content/plugins/ui-site-core/assets/js/careers.js?ver=1786724744"
+  ],
+  "empty_statements": [],
+  "postings": [],
+  "review_note": "Career documents require individual title/date/location/identity review."
+}

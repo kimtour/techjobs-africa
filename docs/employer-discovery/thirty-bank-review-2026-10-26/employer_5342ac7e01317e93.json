@@ -1,0 +1,40 @@
+{
+  "source_id": "employer_5342ac7e01317e93",
+  "employers": [
+    "Habib Bank AG Zurich Kenya"
+  ],
+  "url": "https://habibbank.com/ke/careers/",
+  "checked_at": "2026-10-26T07:27:45.505531+00:00",
+  "production_promoted": false,
+  "status": "REVIEWED_PAGE",
+  "http_status": 200,
+  "final_url": "https://habibbank.com/ke/careers/",
+  "headings": [
+    "Careers",
+    "A Future Of Limitless Possibilities",
+    "Core Values",
+    "Trust",
+    "Integrity",
+    "Respect",
+    "Responsibility",
+    "Commitment",
+    "Teamwork",
+    "Open Vacancies",
+    "Relationship Officer/Manager -Liabilities Acquisition",
+    "Security Manager"
+  ],
+  "links": [
+    "https://habibbank.com/ke/careers/#content",
+    "https://habibbank.com/ke/careers/#",
+    "mailto:careers@habibbank.com",
+    "https://habibbank.com/ke/job/relationship-officer-manager-liabilities-acquisition/",
+    "https://habibbank.com/ke/job/security-manager/",
+    "https://habibbank.com/ke/careers/",
+    "https://habibbank.com/ke/data-privacy-notice/",
+    "https://habibbank.com/ke/terms-and-conditions",
+    "https://habibbank.com/ke/wp-content/plugins/wp-job-openings/assets/js/script.min.js?ver=4.1.0"
+  ],
+  "empty_statements": [],
+  "postings": [],
+  "review_note": "Relationship and Security Manager titles observed; physical-security title is not presumed cybersecurity. Field and date review pending."
+}

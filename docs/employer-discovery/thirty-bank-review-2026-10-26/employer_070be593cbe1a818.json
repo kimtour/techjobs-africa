@@ -1,0 +1,25 @@
+{
+  "source_id": "employer_070be593cbe1a818",
+  "employers": [
+    "Spire Bank"
+  ],
+  "url": "https://www.spirebank.co.ke/careers/",
+  "checked_at": "2026-10-26T07:27:40.802309+00:00",
+  "production_promoted": false,
+  "status": "REVIEWED_PAGE",
+  "http_status": 200,
+  "final_url": "https://www.spirebank.co.ke/careers/",
+  "headings": [
+    "Navigate"
+  ],
+  "links": [
+    "https://www.spirebank.co.ke/careers/#",
+    "http://www.spirebank.co.ke/wp-content/uploads/2018/12/SPIRE-BANK_PERSONAL-JOINT-ACCOUNT-APPLICATION-FORM-V11-1.pdf",
+    "http://www.spirebank.co.ke/wp-content/uploads/2018/12/Business-Corporate-Account-Application-Form.pdf",
+    "https://www.spirebank.co.ke/careers/#nextpage",
+    "https://www.spirebank.co.ke/careers/"
+  ],
+  "empty_statements": [],
+  "postings": [],
+  "review_note": "Reachable page does not establish a complete current vacancy inventory."
+}

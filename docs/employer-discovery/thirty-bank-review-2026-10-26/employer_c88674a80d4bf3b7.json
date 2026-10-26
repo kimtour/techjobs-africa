@@ -1,0 +1,39 @@
+{
+  "source_id": "employer_c88674a80d4bf3b7",
+  "employers": [
+    "Paramount Bank"
+  ],
+  "url": "https://paramountbank.co.ke/careers/",
+  "checked_at": "2026-10-26T07:27:55.665055+00:00",
+  "production_promoted": false,
+  "status": "REVIEWED_PAGE",
+  "http_status": 200,
+  "final_url": "https://paramountbank.co.ke/careers/",
+  "headings": [
+    "Careers",
+    "Welcome    to    Paramount    Bank",
+    "About Us",
+    "At Paramount Bank, we're committed to creating a positive and supportive work environment where our team members can thrive. We believe that our success is driven by our talented a",
+    "Engineering",
+    "Product    Design",
+    "Marketing"
+  ],
+  "links": [
+    "https://paramountbank.co.ke/wp-content/uploads/2023/11/CREDIT-CARD-APPLICATION-FORM.pdf",
+    "https://paramountbank.co.ke/careers/#",
+    "https://paramountbank.co.ke/careers/",
+    "https://paramountbank.co.ke/wp-content/uploads/2025/05/PARAMOUNT-BANK-QUALITY-POLICY.pdf",
+    "https://paramountbank.co.ke/wp-content/uploads/2024/09/Key-Facts-Document-PDF-2.pdf",
+    "https://paramountbank.co.ke/wp-content/uploads/2024/09/Customer-Service-Charter-1.pdf",
+    "https://paramountbank.co.ke/wp-content/uploads/2022/02/careers-image-1.jpg",
+    "https://paramountbank.co.ke/careers/#pix_section_careers",
+    "https://paramountbank.co.ke/consulting-elementor/job-description/",
+    "https://paramountbank.co.ke/wp-content/uploads/2026/02/Tarrif-Guide-2026.pdf",
+    "https://paramountbank.co.ke/wp-content/uploads/2024/02/PBL-Data-Privacy-Statement-Final.pdf",
+    "https://paramountbank.co.ke/terms-and-conditions/",
+    "https://paramountbank.co.ke/privacy-policy/"
+  ],
+  "empty_statements": [],
+  "postings": [],
+  "review_note": "Careers page reachable; Engineering heading alone is not a validated vacancy."
+}

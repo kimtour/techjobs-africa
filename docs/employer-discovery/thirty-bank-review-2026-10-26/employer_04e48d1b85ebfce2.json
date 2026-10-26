@@ -1,0 +1,17 @@
+{
+  "source_id": "employer_04e48d1b85ebfce2",
+  "employers": [
+    "Kingdom Bank"
+  ],
+  "url": "https://www.kingdombankltd.co.ke/careers/",
+  "checked_at": "2026-10-26T07:27:40.800428+00:00",
+  "production_promoted": false,
+  "status": "REVIEWED_PAGE",
+  "http_status": 200,
+  "final_url": "https://www.kingdombankltd.co.ke/careers/",
+  "headings": [],
+  "links": [],
+  "empty_statements": [],
+  "postings": [],
+  "review_note": "Careers shell reachable; loaded vacancy inventory not established."
+}

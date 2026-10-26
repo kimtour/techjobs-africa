@@ -1,0 +1,28 @@
+{
+  "source_id": "employer_51905d9546df64b7",
+  "employers": [
+    "Postbank"
+  ],
+  "url": "https://postbank.co.ke/careers/",
+  "checked_at": "2026-10-26T07:27:45.504862+00:00",
+  "production_promoted": false,
+  "status": "REVIEWED_PAGE",
+  "http_status": 200,
+  "final_url": "https://postbank.co.ke/careers/",
+  "headings": [
+    "Careers"
+  ],
+  "links": [
+    "https://postbank.co.ke/careers/#content",
+    "https://postbank.co.ke/careers/#",
+    "https://postbank.co.ke/wp-content/uploads/2023/02/POSTBANK-SERVICE-CHARTER-REVIEWED-FINAL-JULY-2019.pdf",
+    "https://postbank.co.ke/data-privacy-statement-2/",
+    "https://postbank.co.ke/wp-content/uploads/2023/02/Personal_Account_Terms_and_Conditions.pdf",
+    "https://postbank.co.ke/wp-content/uploads/2025/06/POSTBANK-STRATEGIC-PLAN-2021-2025_.pdf"
+  ],
+  "empty_statements": [
+    "No openings"
+  ],
+  "postings": [],
+  "review_note": "Official page explicitly reports no openings. Empty-state observation only; no verified vacancy collector."
+}

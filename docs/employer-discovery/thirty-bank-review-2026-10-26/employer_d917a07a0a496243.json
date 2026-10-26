@@ -1,0 +1,13 @@
+{
+  "source_id": "employer_d917a07a0a496243",
+  "employers": [
+    "Prime Bank"
+  ],
+  "url": "https://www.primebank.co.ke/careers/",
+  "checked_at": "2026-10-26T07:27:57.687429+00:00",
+  "production_promoted": false,
+  "status": "BLOCKED",
+  "http_status": null,
+  "access_limit": "robots_disallow",
+  "review_note": "Careers collection disallowed by robots. Blocked; no bypass."
+}

@@ -1,0 +1,51 @@
+{
+  "source_id": "employer_c96e1d5e893d3e0d",
+  "employers": [
+    "National Bank of Kenya"
+  ],
+  "url": "https://www.nationalbank.co.ke/about-us/careers",
+  "checked_at": "2026-10-26T07:27:57.406798+00:00",
+  "production_promoted": false,
+  "status": "REVIEWED_PAGE",
+  "http_status": 200,
+  "final_url": "https://www.nationalbank.co.ke/about-us/careers",
+  "headings": [
+    "SME Business Loan",
+    "Jenga Biashara Loan",
+    "Jenga Chama Loan",
+    "Trade Finance",
+    "Short Term Financing",
+    "Banking Sectors",
+    "Treasury Services",
+    "Treasury Bond Trading",
+    "Transactional Solutions",
+    "Custody Services",
+    "Trade Finance",
+    "Senior Management",
+    "Board of Directors",
+    "Careers",
+    "For You",
+    "For Your Biashara",
+    "For Corporate",
+    "Quick Links",
+    "Banking Hours"
+  ],
+  "links": [
+    "https://www.nationalbank.co.ke/about-us/careers#",
+    "https://www.nationalbank.co.ke/about-us/careers",
+    "https://www.nationalbank.co.ke/images/Treasury_Sales_Dealer_External.pdf",
+    "https://www.nationalbank.co.ke/images/Job_Profile_-__Manager_Tax__Fixed_Assets.pdf",
+    "https://www.nationalbank.co.ke/images/dowloads/jobs/JOB_ADVERT_-_Head_Commercial_Funtions__Branch_Network_Audit.pdf",
+    "https://www.nationalbank.co.ke/images/dowloads/jobs/Bancassurance_Sales_Representative_-Job_Advert.pdf",
+    "https://www.nationalbank.co.ke/images/dowloads/jobs/Bancassurance_Regional_Sales_Manager-Rift_Job_Advert.pdf",
+    "https://www.nationalbank.co.ke/images/National_Bank_Complaint_Handling_Process.pdf",
+    "https://www.nationalbank.co.ke/images/NBK_CUSTOMER_SERVICE_CHARTER.pdf",
+    "https://www.nationalbank.co.ke/terms-and-conditions",
+    "https://www.nationalbank.co.ke/images/National-BankTarrif-Guide.pdf",
+    "https://www.nationalbank.co.ke/data-privacy-statement",
+    "https://www.nationalbank.co.ke/about-us/careers#top"
+  ],
+  "empty_statements": [],
+  "postings": [],
+  "review_note": "Official careers page reachable; advert extraction/date/completeness review pending."
+}

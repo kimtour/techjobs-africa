@@ -1,0 +1,32 @@
+{
+  "source_id": "employer_8a607e5d541ea6c4",
+  "employers": [
+    "SMEP Microfinance Bank"
+  ],
+  "url": "https://www.smep.co.ke/careers",
+  "checked_at": "2026-10-26T07:27:51.098844+00:00",
+  "production_promoted": false,
+  "status": "REVIEWED_PAGE",
+  "http_status": 200,
+  "final_url": "https://www.smep.co.ke/careers",
+  "headings": [
+    "Career   Opportunities",
+    "Discover    More Products",
+    "Logbook Loans",
+    "Asset Finance",
+    "Msingi Imara Account",
+    "Our Esteemed  Partners",
+    "Subscribe to Our Newsletter"
+  ],
+  "links": [
+    "https://www.smep.co.ke/careers#main-wrapper",
+    "https://www.smep.co.ke/careers",
+    "https://www.smep.co.ke/assets/docs/jobs/SMEP Employment Application Form - 2025.pdf",
+    "https://www.smep.co.ke/assets/docs/jobs/Advert for RM - Business Development .pdf",
+    "https://www.smep.co.ke/assets/docs/jobs/Risk & Compliance Officer - Sept '26.pdf",
+    "https://smep.co.ke/assets/docs/SMEP Terms and Conditions_100425.pdf"
+  ],
+  "empty_statements": [],
+  "postings": [],
+  "review_note": "Careers documents require individual PDF title/date/location/identity review."
+}

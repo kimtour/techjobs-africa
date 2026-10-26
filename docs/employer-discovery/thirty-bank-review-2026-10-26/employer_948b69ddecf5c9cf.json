@@ -1,0 +1,31 @@
+{
+  "source_id": "employer_948b69ddecf5c9cf",
+  "employers": [
+    "Premier Bank Kenya"
+  ],
+  "url": "https://premierbank.ke/job-openings/",
+  "checked_at": "2026-10-26T07:27:53.046621+00:00",
+  "production_promoted": false,
+  "status": "REVIEWED_PAGE",
+  "http_status": 200,
+  "final_url": "https://premierbank.ke/job-openings/",
+  "headings": [
+    "Jobs",
+    "About",
+    "Our Bank Accounts",
+    "Our Services",
+    "Help",
+    "Get Your Card"
+  ],
+  "links": [
+    "https://premierbank.ke/job-openings/#content",
+    "http://premierbank.ke/job-openings/",
+    "https://premierbank.ke/job-openings/#",
+    "https://premierbank.ke/privacy-statement/",
+    "https://premierbank.ke/wp-content/uploads/2023/07/Terms-and-Conditions.pdf",
+    "https://premierbank.ke/wp-content/plugins/wp-job-openings/assets/js/script.min.js?ver=4.0.4"
+  ],
+  "empty_statements": [],
+  "postings": [],
+  "review_note": "Jobs page reachable; role identity/date/completeness review pending."
+}

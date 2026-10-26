@@ -1,0 +1,36 @@
+{
+  "source_id": "employer_6556cace63864de2",
+  "employers": [
+    "HFCB"
+  ],
+  "url": "https://hfcb.co.ke/careers",
+  "checked_at": "2026-10-26T07:27:48.180640+00:00",
+  "production_promoted": false,
+  "status": "REVIEWED_PAGE",
+  "http_status": 200,
+  "final_url": "https://hfcb.co.ke/careers",
+  "headings": [
+    "Quick Links",
+    "Helpful Info",
+    "Bank With Us",
+    "Disclosures",
+    "Calculators",
+    "Build Your Career With Us"
+  ],
+  "links": [
+    "https://hfcb.co.ke/careers",
+    "https://hfcb.co.ke/documents/privacy-policy",
+    "https://hfcb.co.ke/documents/data-privacy-statement",
+    "https://hfcb.co.ke/hfcb-whizz-data-privacy-statement",
+    "https://hfcb.co.ke/documents/policies/internet-banking-security-tips.pdf",
+    "https://hfcb.co.ke/documents/terms-conditions",
+    "https://hfcb.co.ke/documents/data-privacy-documents",
+    "https://hfcb.co.ke/documents/policies/Environmental and Social Risk Policy.pdf",
+    "https://hfcb.co.ke/documents/policies/Consumer complaints handling.pdf"
+  ],
+  "empty_statements": [
+    "No open positions"
+  ],
+  "postings": [],
+  "review_note": "Official page explicitly says no open positions. Empty-state observation only; no verified vacancy collector."
+}

@@ -1,0 +1,31 @@
+{
+  "source_id": "employer_fee3bfdec04d8d28",
+  "employers": [
+    "Middle East Bank Kenya"
+  ],
+  "url": "https://mebkenya.com/help-center/careers",
+  "checked_at": "2026-10-26T07:27:59.166374+00:00",
+  "production_promoted": false,
+  "status": "REVIEWED_PAGE",
+  "http_status": 200,
+  "final_url": "https://mebkenya.com/help-center/careers",
+  "headings": [
+    "Careers",
+    "Careers",
+    "Join Our Team",
+    "Quick Links",
+    "Other Links",
+    "Help & Support",
+    "Contact Us"
+  ],
+  "links": [
+    "https://mebkenya.com/help-center/careers#main-menu",
+    "https://mebkenya.com/help-center/careers",
+    "https://mebkenya.com/Privacy-Notice"
+  ],
+  "empty_statements": [
+    "There are currently no vacancies"
+  ],
+  "postings": [],
+  "review_note": "Official page explicitly reports no vacancies. Empty-state observation only; no verified vacancy collector."
+}

@@ -473,6 +473,11 @@ sources:
     platform: custom
     needs_location_filter: true
     shared_portal: true
+  requested_review:
+    checked_at: '2026-10-26T07:27:40.800428+00:00'
+    result: REVIEWED_PAGE
+    evidence_path: docs/employer-discovery/thirty-bank-review-2026-10-26/employer_04e48d1b85ebfce2.json
+  review_reason: Careers shell reachable; loaded vacancy inventory not established.
 - id: employer_05df659606c5831e
   url: https://www.linkedin.com/company/africagloballogistics/jobs/
   import_urls:
@@ -596,6 +601,11 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+  requested_review:
+    checked_at: '2026-10-26T07:27:40.802309+00:00'
+    result: REVIEWED_PAGE
+    evidence_path: docs/employer-discovery/thirty-bank-review-2026-10-26/employer_070be593cbe1a818.json
+  review_reason: Reachable page does not establish a complete current vacancy inventory.
 - id: employer_071bf1c4edf5e2e2
   url: https://jobs.jobvite.com/heifer/jobs
   import_urls:
@@ -806,6 +816,12 @@ sources:
     platform: custom
     needs_location_filter: true
     shared_portal: true
+  requested_review:
+    checked_at: '2026-10-26T07:27:40.802720+00:00'
+    result: REVIEWED_PAGE
+    evidence_path: docs/employer-discovery/thirty-bank-review-2026-10-26/employer_08c20e1580e38d36.json
+  review_reason: Relationship manager openings observed; technical match not established.
+    Full extraction/date review pending.
 - id: employer_08c5fc462d39c602
   url: https://www.ilri.org/join-us/jobs-careers?country=KE
   import_urls:
@@ -880,6 +896,11 @@ sources:
     platform: custom
     needs_location_filter: true
     shared_portal: true
+  requested_review:
+    checked_at: '2026-10-26T07:27:40.802972+00:00'
+    result: REVIEWED_PAGE
+    evidence_path: docs/employer-discovery/thirty-bank-review-2026-10-26/employer_09879474efc0caf4.json
+  review_reason: Senior Manager Credit Analysis observed; no technical match established.
 - id: employer_09e125fc6bb69621
   url: https://kenya.oxfam.org/get-involved/jobs
   import_urls:
@@ -2103,6 +2124,12 @@ sources:
     platform: custom
     needs_location_filter: true
     shared_portal: true
+  requested_review:
+    checked_at: '2026-10-26T07:27:40.803225+00:00'
+    result: REVIEWED_PAGE
+    evidence_path: docs/employer-discovery/thirty-bank-review-2026-10-26/employer_1c5ea7eb95daf0b1.json
+  review_reason: Group search shell reachable; official vacancy loading and country filtering
+    unresolved. Prior API robots restrictions remain in force.
 - id: employer_1c6f7663efedc92f
   url: https://www.unhcr.org/ke/get-involved/careers-unhcr-kenya
   import_urls:
@@ -3062,6 +3089,12 @@ sources:
     platform: custom
     needs_location_filter: true
     shared_portal: true
+  requested_review:
+    checked_at: '2026-10-26T07:27:40.804271+00:00'
+    result: REVIEWED_PAGE
+    evidence_path: docs/employer-discovery/thirty-bank-review-2026-10-26/employer_2b443ec347e95a93.json
+  review_reason: Finance/administration/strategy manager advertisement observed; no technical
+    match established.
 - id: employer_2b896dd4f5be5709
   url: https://www.liberty.co.ke/careers
   import_urls:
@@ -3246,6 +3279,12 @@ sources:
     platform: custom
     needs_location_filter: true
     shared_portal: true
+  requested_review:
+    checked_at: '2026-10-26T07:27:44.916434+00:00'
+    result: REVIEWED_PAGE
+    evidence_path: docs/employer-discovery/thirty-bank-review-2026-10-26/employer_2e748fa1969076f6.json
+  review_reason: Adrenalin public application shell reachable; vacancy inventory and pagination
+    not established.
 - id: employer_2ea1d3f3a074bddb
   url: https://paystack.com/careers
   import_urls:
@@ -5656,6 +5695,12 @@ sources:
     platform: custom
     needs_location_filter: true
     shared_portal: true
+  requested_review:
+    checked_at: '2026-10-26T07:27:45.504862+00:00'
+    result: REVIEWED_PAGE
+    evidence_path: docs/employer-discovery/thirty-bank-review-2026-10-26/employer_51905d9546df64b7.json
+  review_reason: Official page explicitly reports no openings. Empty-state observation only;
+    no verified vacancy collector.
 - id: employer_519c24293fb42d04
   url: https://www.cifor.org/cifor-icraf-career-list/
   import_urls:
@@ -5973,6 +6018,12 @@ sources:
     platform: custom
     needs_location_filter: true
     shared_portal: true
+  requested_review:
+    checked_at: '2026-10-26T07:27:45.505531+00:00'
+    result: REVIEWED_PAGE
+    evidence_path: docs/employer-discovery/thirty-bank-review-2026-10-26/employer_5342ac7e01317e93.json
+  review_reason: Relationship and Security Manager titles observed; physical-security title
+    is not presumed cybersecurity. Field and date review pending.
 - id: employer_5372d0d430ab5f76
   url: https://www.kcaa.or.ke/about-us/careers/vacancies
   import_urls:
@@ -6382,6 +6433,13 @@ sources:
   board: sumac
   official_careers_url: https://www.sumacmicrofinancebank.co.ke/
   pilot_rank: 3
+  requested_review:
+    checked_at: '2026-10-26T07:27:45.625182+00:00'
+    result: REVIEWED_PAGE
+    evidence_path: docs/employer-discovery/thirty-bank-review-2026-10-26/employer_5904ae90e271210e.json
+  review_reason: Supplied Greenhouse page is empty but official employer-to-board linkage
+    not verified. Official corporate vacancies page instead links a Relationship Officer post.
+    Do not activate or infer zero official vacancies from empty unlinked ATS.
 - id: employer_593e360e0e9302f8
   url: https://www.linkedin.com/school/brookhouse-schools/
   import_urls:
@@ -7167,6 +7225,12 @@ sources:
     platform: custom
     needs_location_filter: true
     shared_portal: true
+  requested_review:
+    checked_at: '2026-10-26T07:27:48.180640+00:00'
+    result: REVIEWED_PAGE
+    evidence_path: docs/employer-discovery/thirty-bank-review-2026-10-26/employer_6556cace63864de2.json
+  review_reason: Official page explicitly says no open positions. Empty-state observation only;
+    no verified vacancy collector.
 - id: employer_656ae6c5aa64a88c
   url: https://ke.linkedin.com/company/astral-aerial-solutions
   import_urls:
@@ -7873,6 +7937,11 @@ sources:
     platform: custom
     needs_location_filter: true
     shared_portal: true
+  requested_review:
+    checked_at: '2026-10-26T07:27:48.670179+00:00'
+    result: REVIEWED_PAGE
+    evidence_path: docs/employer-discovery/thirty-bank-review-2026-10-26/employer_6fb57c026fb3215e.json
+  review_reason: Collections/recovery management openings observed; technical match not established.
 - id: employer_708616d50b2166d1
   url: https://www.nssf.or.ke/careers
   import_urls:
@@ -7923,6 +7992,11 @@ sources:
     platform: custom
     needs_location_filter: true
     shared_portal: true
+  requested_review:
+    checked_at: '2026-10-26T07:27:49.251198+00:00'
+    result: REVIEWED_PAGE
+    evidence_path: docs/employer-discovery/thirty-bank-review-2026-10-26/employer_70a47d4106130b85.json
+  review_reason: Open-vacancy documents require individual title/date/location/identity review.
 - id: employer_719bcce71b910ca2
   url: https://www.softwaregroup.com/careers/overview
   import_urls:
@@ -8542,6 +8616,12 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+  requested_review:
+    checked_at: '2026-10-26T07:27:49.297915+00:00'
+    result: REVIEWED_PAGE
+    evidence_path: docs/employer-discovery/thirty-bank-review-2026-10-26/employer_7a60d752d93bea48.json
+  review_reason: SnapStarTalent public application shell reachable; full vacancy loading and
+    fields unverified.
 - id: employer_7afce37a85c69486
   url: https://ucl.co.ke/career/
   import_urls:
@@ -9385,6 +9465,11 @@ sources:
     platform: custom
     needs_location_filter: true
     shared_portal: true
+  requested_review:
+    checked_at: '2026-10-26T07:27:49.570433+00:00'
+    result: REVIEWED_PAGE
+    evidence_path: docs/employer-discovery/thirty-bank-review-2026-10-26/employer_877a50e41b0351b6.json
+  review_reason: Careers page reachable; vacancy extraction and dates require review.
 - id: employer_878367d4766f97fc
   url: https://www.naruwasco.co.ke/job-vacancies/
   import_urls:
@@ -9544,6 +9629,11 @@ sources:
     platform: custom
     needs_location_filter: true
     shared_portal: true
+  requested_review:
+    checked_at: '2026-10-26T07:27:51.098844+00:00'
+    result: REVIEWED_PAGE
+    evidence_path: docs/employer-discovery/thirty-bank-review-2026-10-26/employer_8a607e5d541ea6c4.json
+  review_reason: Careers documents require individual PDF title/date/location/identity review.
 - id: employer_8a9fc834e16a1f88
   url: https://mksu.ac.ke/careers-page/
   import_urls:
@@ -9912,6 +10002,12 @@ sources:
     platform: custom
     needs_location_filter: true
     shared_portal: true
+  requested_review:
+    checked_at: '2026-10-26T07:27:52.297518+00:00'
+    result: REVIEWED_PAGE
+    evidence_path: docs/employer-discovery/thirty-bank-review-2026-10-26/employer_9073ac10a3cb2286.json
+  review_reason: Country-filtered public search shell reachable; actual inventory and pagination
+    unresolved. Kenya filter preserved.
 - id: employer_90ca54a7a28adcfc
   url: https://ke.linkedin.com/company/artcaffe-coffee-and-bakery
   import_urls:
@@ -10178,6 +10274,11 @@ sources:
     platform: custom
     needs_location_filter: true
     shared_portal: true
+  requested_review:
+    checked_at: '2026-10-26T07:27:53.046621+00:00'
+    result: REVIEWED_PAGE
+    evidence_path: docs/employer-discovery/thirty-bank-review-2026-10-26/employer_948b69ddecf5c9cf.json
+  review_reason: Jobs page reachable; role identity/date/completeness review pending.
 - id: employer_94d033535ae0e9f1
   url: https://cuk.ac.ke/cuk-careers/
   import_urls:
@@ -11000,6 +11101,12 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+  requested_review:
+    checked_at: '2026-10-26T07:27:53.366660+00:00'
+    result: FAILED
+    evidence_path: docs/employer-discovery/thirty-bank-review-2026-10-26/employer_a23dc08d1454b366.json
+  review_reason: Recruitment hostname DNS resolution failed; vacancy availability unknown.
+    Discovery backoff retained.
 - id: employer_a26bada2d153455f
   url: https://kcdf.or.ke/careers-and-consultancies/
   import_urls:
@@ -11414,13 +11521,13 @@ sources:
     evidence_paths:
     - docs/employer-discovery/kcb-oracle-review-2026-10-25.md
     - docs/employer-discovery/kcb-oracle-trial-2026-10-25.md
-    collection_basis: The official KCB careers page links to the public Oracle Candidate
-      Experience board. Local and hosted crawls were complete with stable requisition
-      IDs, locations, dates, and individual application links. Careers-linked product
-      terms and the data privacy policy were reviewed; no automated-collection prohibition
-      was identified in the accessible material. Collection is limited to factual
-      vacancy metadata and original application URLs; descriptions, applicant data,
-      and recruiter contacts are not stored. No redistribution licence is claimed.
+    collection_basis: The official KCB careers page links to the public Oracle Candidate Experience
+      board. Local and hosted crawls were complete with stable requisition IDs, locations,
+      dates, and individual application links. Careers-linked product terms and the data privacy
+      policy were reviewed; no automated-collection prohibition was identified in the accessible
+      material. Collection is limited to factual vacancy metadata and original application
+      URLs; descriptions, applicant data, and recruiter contacts are not stored. No redistribution
+      licence is claimed.
     collection_review_url: https://ke.kcbgroup.com/terms-and-conditions
     privacy_policy_url: https://ke.kcbgroup.com/data-privacy-policy
     trial_review: true
@@ -11440,8 +11547,12 @@ sources:
   group_portal: true
   reviewed_bootstrap: true
   official_careers_url: https://ke.kcbgroup.com/
-  review_reason: Hosted isolated trial produced two new CONFIRMED African technical
-    jobs with stable IDs and original application URLs; candidate review passed.
+  review_reason: Hosted isolated trial produced two new CONFIRMED African technical jobs with
+    stable IDs and original application URLs; candidate review passed.
+  requested_review:
+    checked_at: '2026-10-26T07:27:53.729415+00:00'
+    result: ALREADY_ACTIVE
+    evidence_path: docs/employer-discovery/thirty-bank-review-2026-10-26/employer_a89e7ddc7350f19e.json
 - id: employer_a8bcbf91d53aa45f
   url: https://www.airtelkenya.com/ke/about/Careers
   import_urls:
@@ -12121,25 +12232,66 @@ sources:
   - emp_3f778e960b3ff280
   - emp_4490bd01772a3750
   - emp_83bbfc01c4c68d1d
-  access_method: null
+  access_method: html
   country_filters: []
   refresh_hours: 24
   discovery_refresh_hours: 168
   supports_absence_expiry: false
   crawl:
-    max_pages: 5
-    max_requests_per_run: 12
+    max_pages: 1
+    max_requests_per_run: 16
     request_delay_ms: 1500
     timeout_seconds: 20
-    retry_delays_seconds:
-    - 5
-    - 20
-  verification: {}
+    retry_delays_seconds: []
+  verification:
+    official_link: true
+    collection_review: true
+    evidence_paths:
+    - docs/employer-discovery/thirty-bank-review-2026-10-26/review.md
+    - docs/employer-discovery/thirty-bank-review-2026-10-26/ncba-local-m0.json
+    collection_basis: Employer-owned public vacancy pages and privacy policy reviewed. No
+      automated collection restriction identified on these pages. Do not fetch blocked external
+      SuccessFactors application surface. Provider jobId extracted from employer-published
+      application link is stable identity; vacancy details parsed from official employer page
+      only. Descriptions not retained.
+    collection_review_url: https://ncbagroup.com/privacy-policy
+    application_links: true
+    complete: true
+    dates_reviewed: true
+    locations: true
+    stable_ids: true
+    local_access: true
+    identity_basis: Original provider jobId from published application link; explicitly seeded
+      persistent surrogate UUID for compliance/privacy role without provider ID. No title
+      hashes.
   suggestions:
     platform: custom
     needs_location_filter: true
     shared_portal: true
     access_gap: true
+  requested_review:
+    checked_at: '2026-10-26T07:27:53.730324+00:00'
+    result: REVIEWED_PAGE
+    evidence_path: docs/employer-discovery/thirty-bank-review-2026-10-26/employer_b2e2ecc189a1df66.json
+  review_reason: Complete local4-role crawl found1 eligible ICT Risk role explicitly Tanzania,
+    deadline31October2026. Hosted access and isolated trial required before activation. No
+    external blocked SuccessFactors collection.
+  official_careers_url: https://ncbagroup.com/careers/join-our-team/
+  posting_company: NCBA Group
+  collection:
+    listing_url: https://ncbagroup.com/careers/join-our-team/
+    detail_url_pattern: ^https://ncbagroup\.com/blog/job/[^/?#]+/$
+    complete_listing_verified: true
+    fields:
+      title: <h1\b[^>]*>\s*([^<]+)\s*</h1>
+      identifier: jobreqcareer\?jobId=(\d+)
+      location: Country:</p>(?:\s|</?[^>]+>)*([^<]+)
+      deadline: Closing on:</p>(?:\s|</?[^>]+>)*(\d{1,2}\s+[A-Za-z]+\s+20\d{2})
+    field_date_formats:
+      deadline: '%d %B %Y'
+    date_timezone: Africa/Nairobi
+    initial_url_identities:
+      https://ncbagroup.com/blog/job/senior-manager-compliance-data-privacy-ncba-ig/: 6f90a9cc-f4f2-46e6-accd-fc923b00b797
 - id: employer_b440d08555c49b01
   url: https://imarahomefibre.com/careers
   import_urls:
@@ -12538,6 +12690,12 @@ sources:
     platform: custom
     needs_location_filter: true
     shared_portal: true
+  requested_review:
+    checked_at: '2026-10-26T07:27:54.803150+00:00'
+    result: REVIEWED_PAGE
+    evidence_path: docs/employer-discovery/thirty-bank-review-2026-10-26/employer_bdee4912ef2d4465.json
+  review_reason: Official page explicitly reports no positions. Empty-state observation only;
+    no verified vacancy collector.
 - id: employer_be12160549779fd4
   url: https://recruitment.dha.go.ke/
   import_urls:
@@ -13189,14 +13347,18 @@ sources:
     platform: custom
     needs_location_filter: true
     shared_portal: true
-  review_reason: 'Umba Terms of Service section 21 restrict automated access without
-    permission: https://www.umba.com/kenya/transparency?tab=tab-terms'
+  review_reason: Existing manual permission review retained; previously observed automation
+    restrictions not overridden by resubmitted URL.
+  requested_review:
+    checked_at: '2026-10-26T07:27:55.482103+00:00'
+    result: PERMISSION_REVIEW
+    evidence_path: docs/employer-discovery/thirty-bank-review-2026-10-26/employer_c632f4ebe2f28eb7.json
 - id: employer_c637ac832ed9e5ee
   url: https://www.sbmbank.co.ke/jobs
   import_urls:
   - https://www.sbmbank.co.ke/jobs
   platform: custom
-  status: pending
+  status: manual
   employer_ids:
   - emp_f0a723d9559fa537
   access_method: null
@@ -13217,6 +13379,13 @@ sources:
     platform: custom
     needs_location_filter: true
     shared_portal: true
+  requested_review:
+    checked_at: '2026-10-26T07:27:55.482571+00:00'
+    result: REVIEWED_PAGE
+    evidence_path: docs/employer-discovery/thirty-bank-review-2026-10-26/employer_c637ac832ed9e5ee.json
+  review_reason: Manager Core Systems advert closes28October2026, job location Head Office
+    only. Terms explicitly prohibit storing/reprocessing/reutilising/distributing website
+    content without permission. Manual permission review; no production collection.
 - id: employer_c6428928e37eb10a
   url: https://totalenergies.ke/careers
   import_urls:
@@ -13364,6 +13533,11 @@ sources:
     platform: custom
     needs_location_filter: true
     shared_portal: true
+  requested_review:
+    checked_at: '2026-10-26T07:27:55.665055+00:00'
+    result: REVIEWED_PAGE
+    evidence_path: docs/employer-discovery/thirty-bank-review-2026-10-26/employer_c88674a80d4bf3b7.json
+  review_reason: Careers page reachable; Engineering heading alone is not a validated vacancy.
 - id: employer_c8dbe15d9f49697b
   url: https://www.salaammfbank.co.ke/careers/
   import_urls:
@@ -13390,6 +13564,11 @@ sources:
     platform: custom
     needs_location_filter: true
     shared_portal: true
+  requested_review:
+    checked_at: '2026-10-26T07:27:56.159479+00:00'
+    result: REVIEWED_PAGE
+    evidence_path: docs/employer-discovery/thirty-bank-review-2026-10-26/employer_c8dbe15d9f49697b.json
+  review_reason: Careers page reachable; vacancy extraction and dates require review.
 - id: employer_c96329128ebf5236
   url: https://www.undp.org/kenya/jobs
   import_urls:
@@ -13438,6 +13617,12 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+  requested_review:
+    checked_at: '2026-10-26T07:27:57.406798+00:00'
+    result: REVIEWED_PAGE
+    evidence_path: docs/employer-discovery/thirty-bank-review-2026-10-26/employer_c96e1d5e893d3e0d.json
+  review_reason: Official careers page reachable; advert extraction/date/completeness review
+    pending.
 - id: employer_c9c1afd7b373d342
   url: https://www.kra.go.ke/careers
   import_urls:
@@ -14465,7 +14650,7 @@ sources:
   import_urls:
   - https://www.primebank.co.ke/careers/
   platform: custom
-  status: pending
+  status: blocked
   employer_ids:
   - emp_64b6c323a539c3a6
   access_method: null
@@ -14486,6 +14671,11 @@ sources:
     platform: custom
     needs_location_filter: true
     shared_portal: true
+  requested_review:
+    checked_at: '2026-10-26T07:27:57.687429+00:00'
+    result: BLOCKED
+    evidence_path: docs/employer-discovery/thirty-bank-review-2026-10-26/employer_d917a07a0a496243.json
+  review_reason: Careers collection disallowed by robots. Blocked; no bypass.
 - id: employer_d980ed8403fc37ed
   url: https://www.linkedin.com/company/solarise-africa
   import_urls:
@@ -15916,6 +16106,11 @@ sources:
     platform: custom
     needs_location_filter: true
     shared_portal: true
+  requested_review:
+    checked_at: '2026-10-26T07:27:59.086959+00:00'
+    result: REVIEWED_PAGE
+    evidence_path: docs/employer-discovery/thirty-bank-review-2026-10-26/employer_f1b4a9fcda38b21d.json
+  review_reason: Career documents require individual title/date/location/identity review.
 - id: employer_f288af832e81bdd0
   url: https://ke.linkedin.com/company/ekitabu
   import_urls:
@@ -16795,6 +16990,12 @@ sources:
     platform: custom
     needs_location_filter: true
     shared_portal: true
+  requested_review:
+    checked_at: '2026-10-26T07:27:59.166374+00:00'
+    result: REVIEWED_PAGE
+    evidence_path: docs/employer-discovery/thirty-bank-review-2026-10-26/employer_fee3bfdec04d8d28.json
+  review_reason: Official page explicitly reports no vacancies. Empty-state observation only;
+    no verified vacancy collector.
 - id: employer_ff3ad80b30f6ef9b
   url: https://rabaipower.com/vacancies/
   import_urls:

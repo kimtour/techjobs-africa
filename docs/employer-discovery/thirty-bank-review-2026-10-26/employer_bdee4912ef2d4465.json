@@ -1,0 +1,31 @@
+{
+  "source_id": "employer_bdee4912ef2d4465",
+  "employers": [
+    "M-Oriental Bank"
+  ],
+  "url": "https://www.moriental.co.ke/careers/",
+  "checked_at": "2026-10-26T07:27:54.803150+00:00",
+  "production_promoted": false,
+  "status": "REVIEWED_PAGE",
+  "http_status": 200,
+  "final_url": "https://www.moriental.co.ke/careers/",
+  "headings": [
+    "Careers",
+    "Why Work With Us?",
+    "Open Positions",
+    "Job Application",
+    "\u00a9 Copyright 2026 M-Oriental Bank",
+    "Regulated by The Central Bank of Kenya"
+  ],
+  "links": [
+    "https://www.moriental.co.ke/careers/#",
+    "https://www.moriental.co.ke/careers/",
+    "https://www.moriental.co.ke/wp-content/themes/mor/img/MOrientalBankTariffGuide.pdf",
+    "https://www.moriental.co.ke/privacy/"
+  ],
+  "empty_statements": [
+    "NO POSITIONS"
+  ],
+  "postings": [],
+  "review_note": "Official page explicitly reports no positions. Empty-state observation only; no verified vacancy collector."
+}
