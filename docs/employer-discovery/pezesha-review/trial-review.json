@@ -1,0 +1,23 @@
+{
+  "additional_unique_jobs": 2,
+  "baseline_supplied": true,
+  "candidate_jobs": 2,
+  "checked_at": "2026-10-26T06:42:46.467473+00:00",
+  "mode": "trial",
+  "outcome": "SUCCESS",
+  "production_promoted": false,
+  "schema_version": 1,
+  "sources": [
+    {
+      "complete": true,
+      "duplicates_in_accepted": 0,
+      "eligible_jobs": 2,
+      "raw_jobs": 10,
+      "source_id": "employer_f3e0064cbce58d03",
+      "status": "SUCCESS",
+      "technical_jobs": 5,
+      "verification_gaps": []
+    }
+  ],
+  "run_url": "https://github.com/kimtour/techjobs-africa/actions/runs/40281406759"
+}
