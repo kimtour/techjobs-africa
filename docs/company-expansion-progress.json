@@ -17,9 +17,9 @@
     "emp_e3fa7e720c40fe4b",
     "emp_eb492e9b9dfdaa1c"
   ],
-  "current_active_registry_collectors": 24,
-  "current_configured_employer_records": 26,
-  "additional_verified_employer_records": 12,
+  "current_active_registry_collectors": 25,
+  "current_configured_employer_records": 27,
+  "additional_verified_employer_records": 13,
   "additional_employer_ids": [
     "emp_25d8ee73777c713e",
     "emp_3f778e960b3ff280",
@@ -28,6 +28,7 @@
     "emp_5d743a707e7dfd2e",
     "emp_9044c182049cf8d6",
     "emp_987105690850cf49",
+    "emp_a242a67e4dc7b1ee",
     "emp_aedf0b6ecff82884",
     "emp_ce5e71603a54fc35",
     "emp_db3b862ccd86ca1a",
@@ -35,20 +36,20 @@
     "emp_fd919d872acd8d48"
   ],
   "target_achieved": false,
-  "company_career_jobs": 32,
-  "all_jobs": 2782,
-  "last_production_run": "https://github.com/kimtour/techjobs-africa/actions/runs/40294908186",
+  "company_career_jobs": 33,
+  "all_jobs": 2793,
+  "last_production_run": "https://github.com/kimtour/techjobs-africa/actions/runs/40300532700",
   "monitor_only_excluded": [
     "ABC Bank",
     "Bank of Africa Kenya",
     "Consolidated Bank"
   ],
   "pending_and_blocked_sources_excluded": true,
-  "checked_at": "2026-10-26T08:53:42.201207+00:00",
-  "current_verified_employer_records": 26,
-  "current_linked_registry_records": 28,
+  "checked_at": "2026-10-26T09:39:14.191669+00:00",
+  "current_verified_employer_records": 27,
+  "current_linked_registry_records": 29,
   "coverage_basis": "Count only each source verified_employer_ids where specified; unverified shared links remain separate discovery records, not completed companies.",
   "coverage_state_reconciliation_pending": false,
-  "last_publication_run": "https://github.com/kimtour/techjobs-africa/actions/runs/40293787035",
-  "accepted_private_commit": "183f648"
+  "last_publication_run": "https://github.com/kimtour/techjobs-africa/actions/runs/40300532700",
+  "accepted_private_commit": "625c845"
 }

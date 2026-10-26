@@ -1,3 +1,5 @@
+Latest repair update: [M-Oriental delivered; I&M/Sumac corrected](../portal-repairs-2026-10-26/review.md). Four of the30requested sources are now active (KCB, NCBA, VCB, M-Oriental);26remain inactive. Earlier snapshots below are historical.
+
 # Requested bank-source checks — 26 October 2026
 
 All30 supplied URLs were already registered. Follow-up extraction/access/policy checks covered the28remaining sources after KCB and NCBA. The unnamed row was skipped. One more source, Victoria Commercial Bank, has now passed every gate and been deployed. The other27 remain inactive; check completion is not the same as collector approval.

@@ -1,0 +1,23 @@
+{
+  "checked_at": "2026-10-26T09:39:14.191669+00:00",
+  "source_id": "employer_bdee4912ef2d4465",
+  "production_run": "https://github.com/kimtour/techjobs-africa/actions/runs/40300532700",
+  "code_commit": "b9fa722c3efd872e10613611d1e36af4197349de",
+  "accepted_private_commit": "625c845",
+  "outcome": "SUCCESS",
+  "complete": true,
+  "raw_records": 4,
+  "technical_eligible_jobs": 1,
+  "new_published_jobs": 1,
+  "job_id": "employer_bdee4912ef2d4465:6728",
+  "job_title": "Digital solutions and full stack developer",
+  "job_location": "Nairobi,Kenya",
+  "company_career_jobs": 33,
+  "all_jobs": 2793,
+  "python_tests_passed": 314,
+  "lint_passed": true,
+  "local_build_and_live_html_acceptance": true,
+  "interactive_browser_acceptance_claimed": false,
+  "absence_expiry_enabled": false,
+  "user_notified_in_commentary": true
+}
