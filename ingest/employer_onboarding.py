@@ -175,6 +175,12 @@ def discover(source: dict, employers: dict, client=None, *, request_budget=8) ->
                 career_links.feed(career_response.text)
                 result["careers_page"] = str(career_response.url)
                 urls += [urljoin(str(career_response.url), link) for link in career_links.links]
+                # A directly observed public careers script may contain a literal
+                # board URL. Inspect text only; never execute employer JavaScript.
+                urls += re.findall(
+                    r'https?://[A-Za-z0-9-]+\.applytojob\.com/apply/[^\s<>"\x27]*',
+                    career_response.text,
+                )
         result["structured_job_count"] = links.structured_job_count
         result["feed_urls"] = [
             urljoin(str(response.url), feed)

@@ -346,6 +346,7 @@ def test_project_delivery_and_fintech_sector_do_not_prove_technical_function():
         "Finance Analyst: Data Governance & Accounting",
         "Shelter & Wash Project Manager Chad Iriba (national only)",
         "ICLA Project Manager CAR Bouar",
+        "Carbon Project Manager - Senegal",
         "Cash and Markets Project Manager Sudan Khartoum",
         "Regulatory & Licensing Officer – Middle East and North Africa (Payments/ Fintech)",
     ):

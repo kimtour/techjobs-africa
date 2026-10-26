@@ -1,0 +1,77 @@
+[
+  {
+    "url": "https://www.burnstoves.com/policies/privacy-policy",
+    "robots": {
+      "status": 200,
+      "allowed": true,
+      "url": "https://www.burnstoves.com/robots.txt"
+    },
+    "status": 200,
+    "final_url": "https://www.burnstoves.com/policies/privacy-policy",
+    "policy_and_board_links": [
+      "/policies/privacy-policy"
+    ],
+    "soft_404_detected": true,
+    "policy_review_complete": false
+  },
+  {
+    "url": "https://burnmanufacturing.applytojob.com/apply/",
+    "robots": {
+      "status": 200,
+      "allowed": true,
+      "url": "https://burnmanufacturing.applytojob.com/robots.txt"
+    },
+    "status": 200,
+    "final_url": "https://burnmanufacturing.applytojob.com/apply/",
+    "policy_and_board_links": [
+      "http://burnmanufacturing.applytojob.com/apply/",
+      "https://burnmanufacturing.applytojob.com/apply/0EYzCamZhy/Senior-Quality-Engineer-Biomass",
+      "https://burnmanufacturing.applytojob.com/apply/1qDofFosNc/Quality-Assurance-Technician",
+      "https://burnmanufacturing.applytojob.com/apply/DOgrNkNLib/Agent-Care-Officer-Zambia",
+      "https://burnmanufacturing.applytojob.com/apply/ETN9aADPVr/Head-Of-Market-Research",
+      "https://burnmanufacturing.applytojob.com/apply/FDfjfPC0eW/Senior-Project-Engineer",
+      "https://burnmanufacturing.applytojob.com/apply/GPJGxnNKBh/Carbon-Project-Manager-Senegal",
+      "https://burnmanufacturing.applytojob.com/apply/LUCyahgU8A/Mechanical-Technician-Kano-Nigeria",
+      "https://burnmanufacturing.applytojob.com/apply/MUhefvWDIl/Global-Head-Of-Portfolio-Performance",
+      "https://burnmanufacturing.applytojob.com/apply/NWDb19HtMT/Director-Of-Strategy-Innovation",
+      "https://burnmanufacturing.applytojob.com/apply/NygTGdNanF/Channel-Sales-Manager-B2C-Carbon-Programmes-Beira-Mozambique",
+      "https://burnmanufacturing.applytojob.com/apply/PyRbKyO0cL/Head-Of-HR-Operations",
+      "https://burnmanufacturing.applytojob.com/apply/Qc0FDbVNVK/Information-Security-Lead",
+      "https://burnmanufacturing.applytojob.com/apply/SY6PaHK1cP/Business-Unit-Lead-Electric-Cooking-Restaurants-Institutions",
+      "https://burnmanufacturing.applytojob.com/apply/cJzhlfXbk6/Government-Relations-Lead-Malawi",
+      "https://burnmanufacturing.applytojob.com/apply/ev0Tk0WMD0/Head-Of-External-Affairs",
+      "https://burnmanufacturing.applytojob.com/apply/iksdEmsTHN/Quality-Officer-Kumasi-Ghana-3-Months-Contract",
+      "https://burnmanufacturing.applytojob.com/apply/iulgCN4bzi/Aftersales-Field-Technical-Support-Coordinator-Mozambique",
+      "https://burnmanufacturing.applytojob.com/apply/oH3lNBfKSi/Senior-Strategy-Associate",
+      "https://burnmanufacturing.applytojob.com/apply/p1A4OA4Mcz/Territory-Sales-Manager-Zambia",
+      "https://burnmanufacturing.applytojob.com/apply/pNDkkfGk2G/MRV-Country-Coordinator-Senegal",
+      "https://burnmanufacturing.applytojob.com/apply/sDCAEAcUAe/Carbon-Excellence-Country-Coordinator-Kinshasa-DRC",
+      "https://burnmanufacturing.applytojob.com/apply/vsnF66Edgc/Head-Of-Capital-Raising-Europe"
+    ]
+  },
+  {
+    "url": "https://www.tropicalheatgroup.com/careers/",
+    "robots": {
+      "status": 200,
+      "allowed": true,
+      "url": "https://www.tropicalheatgroup.com/robots.txt"
+    },
+    "status": 200,
+    "final_url": "https://www.tropicalheatgroup.com/careers/",
+    "policy_and_board_links": []
+  },
+  {
+    "url": "https://corporate.spinners.co.ke/page/careers",
+    "robots": {
+      "status": 200,
+      "allowed": true,
+      "url": "https://corporate.spinners.co.ke/robots.txt"
+    },
+    "status": 200,
+    "final_url": "https://corporate.spinners.co.ke/page/careers",
+    "policy_and_board_links": [
+      "https://corporate.spinners.co.ke/page/privacy-and-policy",
+      "https://corporate.spinners.co.ke/page/terms-and-conditions"
+    ]
+  }
+]

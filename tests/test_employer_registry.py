@@ -431,3 +431,30 @@ def test_discovery_candidate_summary_ranks_real_roles_without_publication():
     assert not summary["publication_approved"]
     assert candidate_summary([])["eligible_jobs"] == 0
     assert "description" not in json.dumps(summary)
+
+
+def test_observed_careers_script_literal_board_link_is_reviewable_without_execution():
+    source = {
+        "id": "employer_test",
+        "platform": "custom",
+        "status": "pending",
+        "employer_ids": ["example"],
+        "url": "https://example.applytojob.com/apply/",
+        "official_careers_url": "https://example.com/careers/jobs",
+        "crawl": {"request_delay_ms": 0},
+    }
+    requested = []
+
+    def handler(request):
+        requested.append(str(request.url))
+        if request.url.path == "/robots.txt":
+            return httpx.Response(200, text="User-agent: *\nAllow: /\n")
+        if request.url.path == "/careers/jobs":
+            return httpx.Response(200, text='<script src="/assets/careers/jobs.js"></script>')
+        return httpx.Response(200, text='const board="https://example.applytojob.com/apply/";')
+
+    report = discover(source, EMPLOYERS, httpx.Client(transport=httpx.MockTransport(handler)))
+    assert report["checks"]["official_link"]
+    assert report["careers_page"] == "https://example.com/assets/careers/jobs.js"
+    assert source["status"] == "pending"
+    assert not any("example.applytojob.com" in url for url in requested)
