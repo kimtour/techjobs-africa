@@ -1,0 +1,29 @@
+{
+  "workflow_url": "https://github.com/kimtour/techjobs-africa/actions/runs/40304226748",
+  "code_commit": "e5987a29e51eaa14c293b1a1446e6a514408fd17",
+  "accepted_private_commit": "4cc4c9bc62b9effe2a0b5aa0c5804d2bca4ad6b6",
+  "outcome": "SUCCESS",
+  "public_changed": false,
+  "review_queue_persisted": true,
+  "pending_review_sources": 0,
+  "all_jobs": 2797,
+  "company_career_jobs": 33,
+  "new_companies": 0,
+  "new_jobs": 0,
+  "local_build_and_live_html_checks": "passed",
+  "interactive_browser_checks": "unavailable",
+  "python_tests": 318,
+  "preceding_requested_feed_refresh": {
+    "workflow_url": "https://github.com/kimtour/techjobs-africa/actions/runs/40301729890",
+    "accepted_private_commit": "af9a14c",
+    "successful_sources": 10,
+    "skipped_sources": {
+      "jsearch": "monthly quota",
+      "expertini": "access restriction"
+    },
+    "additional_jobs": {
+      "myjobmag": 2,
+      "corporate_staffing": 2
+    }
+  }
+}

@@ -25,3 +25,5 @@ HFC's public HTML contains both a loading label and a no-open-positions placehol
 Equity's Taleo form exposes a default no-results message and a public FacetedSearchPage module. The live result set, active/closed state and pagination remain unverified. An indexed October2026 enterprise-development program-manager posting is nontechnical; it is not evidence of an empty board or an eligible technology role. Source remains pending, with its linked employer records distinct.
 
 This update introduces monitoring/review behaviour only; no additional employer or vacancy is claimed from it.
+
+Deployment verified: run40304226748 accepted private4cc4c9b; private review queue persisted with0pending signals.318Python tests and lint passed. Local build and live HTML checks pass for2797AllJobs /33CompanyCareerPage. This monitoring update adds0collectors and0jobs; preceding requested feed refresh40301729890 added4jobs. Interactive browser checks unavailable. See production-receipt.json.
