@@ -1,0 +1,123 @@
+{
+  "candidate_metadata": [],
+  "checked_at": "2026-10-26T06:00:40.794950+00:00",
+  "checks": {
+    "application_links": true,
+    "complete": true,
+    "dates_reviewed": true,
+    "locations": true,
+    "stable_ids": true
+  },
+  "eligible_jobs": 0,
+  "environment": "github",
+  "official_link_checked_this_run": false,
+  "prior_official_evidence": [
+    "docs/employer-discovery/overnight-structured/local/employer_416ee9b26a529f41.json"
+  ],
+  "publication_approved": false,
+  "records_found": 9,
+  "requests": [
+    {
+      "attempt": 1,
+      "duration_seconds": 0.23,
+      "error_type": null,
+      "host": "pendahealth.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-26T06:00:40.892430+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.15,
+      "error_type": null,
+      "host": "pendahealth.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-26T06:00:42.622198+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.472,
+      "error_type": null,
+      "host": "pendahealth.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-26T06:00:44.271891+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.511,
+      "error_type": null,
+      "host": "pendahealth.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-26T06:00:46.244399+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.495,
+      "error_type": null,
+      "host": "pendahealth.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-26T06:00:48.255168+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.504,
+      "error_type": null,
+      "host": "pendahealth.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-26T06:00:50.250299+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.514,
+      "error_type": null,
+      "host": "pendahealth.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-26T06:00:52.254471+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.488,
+      "error_type": null,
+      "host": "pendahealth.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-26T06:00:54.268482+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.51,
+      "error_type": null,
+      "host": "pendahealth.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-26T06:00:56.256451+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.488,
+      "error_type": null,
+      "host": "pendahealth.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-26T06:00:58.267065+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.504,
+      "error_type": null,
+      "host": "pendahealth.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-26T06:01:00.255669+00:00"
+    }
+  ],
+  "source_id": "employer_416ee9b26a529f41",
+  "status": "SUCCESS",
+  "technical_jobs": 0
+}

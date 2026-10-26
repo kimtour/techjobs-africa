@@ -1,0 +1,51 @@
+{
+  "candidate_metadata": [],
+  "checked_at": "2026-10-26T06:01:56.433923+00:00",
+  "checks": {
+    "application_links": true,
+    "complete": true,
+    "dates_reviewed": true,
+    "locations": true,
+    "stable_ids": true
+  },
+  "eligible_jobs": 0,
+  "environment": "github",
+  "official_link_checked_this_run": false,
+  "prior_official_evidence": [
+    "docs/employer-discovery/overnight-structured/local/employer_51d3d3a6082ea2c7.json"
+  ],
+  "publication_approved": false,
+  "records_found": 1,
+  "requests": [
+    {
+      "attempt": 1,
+      "duration_seconds": 0.272,
+      "error_type": null,
+      "host": "opencapitaladvisors.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-26T06:01:56.492976+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.173,
+      "error_type": null,
+      "host": "opencapitaladvisors.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-26T06:01:58.264639+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.477,
+      "error_type": null,
+      "host": "opencapitaladvisors.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-26T06:01:59.937365+00:00"
+    }
+  ],
+  "source_id": "employer_51d3d3a6082ea2c7",
+  "status": "SUCCESS",
+  "technical_jobs": 0
+}

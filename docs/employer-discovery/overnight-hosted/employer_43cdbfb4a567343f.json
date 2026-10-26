@@ -1,0 +1,44 @@
+{
+  "candidate_metadata": [],
+  "checked_at": "2026-10-26T06:00:18.259941+00:00",
+  "checks": {
+    "application_links": true,
+    "complete": true,
+    "dates_reviewed": true,
+    "locations": true,
+    "stable_ids": true
+  },
+  "eligible_jobs": 0,
+  "environment": "github",
+  "official_link_checked_this_run": false,
+  "prior_official_evidence": [
+    "docs/employer-discovery/overnight-ats/employer_43cdbfb4a567343f-local.json",
+    "docs/employer-discovery/overnight-ats/employer_43cdbfb4a567343f-official.json",
+    "docs/employer-discovery/overnight-ats/employer_43cdbfb4a567343f-previous-m0.json"
+  ],
+  "publication_approved": false,
+  "records_found": 12,
+  "requests": [
+    {
+      "attempt": 1,
+      "duration_seconds": 0.301,
+      "error_type": "HTTPStatusError",
+      "host": "egpy.fa.us2.oraclecloud.com",
+      "http_status": 404,
+      "method": "GET",
+      "started_at": "2026-10-26T06:00:18.563745+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.675,
+      "error_type": null,
+      "host": "egpy.fa.us2.oraclecloud.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-26T06:00:20.364923+00:00"
+    }
+  ],
+  "source_id": "employer_43cdbfb4a567343f",
+  "status": "SUCCESS",
+  "technical_jobs": 1
+}

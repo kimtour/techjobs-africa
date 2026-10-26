@@ -1,0 +1,62 @@
+{
+  "candidate_metadata": [],
+  "checked_at": "2026-10-26T06:00:21.704393+00:00",
+  "checks": {
+    "application_links": true,
+    "complete": true,
+    "dates_reviewed": true,
+    "locations": true,
+    "stable_ids": true
+  },
+  "eligible_jobs": 0,
+  "environment": "github",
+  "official_link_checked_this_run": false,
+  "prior_official_evidence": [
+    "docs/employer-discovery/overnight-ats/employer_de3081f67088ad82-local.json",
+    "docs/employer-discovery/overnight-ats/employer_de3081f67088ad82-official.json",
+    "docs/employer-discovery/overnight-ats/employer_de3081f67088ad82-previous-m0.json"
+  ],
+  "publication_approved": false,
+  "records_found": 30,
+  "requests": [
+    {
+      "attempt": 1,
+      "duration_seconds": 0.108,
+      "error_type": null,
+      "host": "www.workable.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-26T06:00:21.779678+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.029,
+      "error_type": "HTTPStatusError",
+      "host": "www.workable.com",
+      "http_status": 302,
+      "method": "GET",
+      "started_at": "2026-10-26T06:00:23.387855+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.113,
+      "error_type": null,
+      "host": "apply.workable.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-26T06:00:24.917023+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.117,
+      "error_type": null,
+      "host": "apply.workable.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-26T06:00:26.530280+00:00"
+    }
+  ],
+  "source_id": "employer_de3081f67088ad82",
+  "status": "SUCCESS",
+  "technical_jobs": 5
+}

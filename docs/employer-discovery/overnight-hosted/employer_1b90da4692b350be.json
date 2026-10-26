@@ -1,0 +1,43 @@
+{
+  "candidate_metadata": [],
+  "checked_at": "2026-10-26T06:00:38.721529+00:00",
+  "checks": {
+    "application_links": true,
+    "complete": true,
+    "dates_reviewed": true,
+    "locations": true,
+    "stable_ids": true
+  },
+  "eligible_jobs": 0,
+  "environment": "github",
+  "official_link_checked_this_run": false,
+  "prior_official_evidence": [
+    "docs/employer-discovery/overnight-ats/employer_1b90da4692b350be-local.json",
+    "docs/employer-discovery/overnight-ats/employer_1b90da4692b350be-official.json"
+  ],
+  "publication_approved": false,
+  "records_found": 0,
+  "requests": [
+    {
+      "attempt": 1,
+      "duration_seconds": 0.182,
+      "error_type": null,
+      "host": "wasoko.breezy.hr",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-26T06:00:38.737940+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.372,
+      "error_type": null,
+      "host": "wasoko.breezy.hr",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-26T06:00:40.419890+00:00"
+    }
+  ],
+  "source_id": "employer_1b90da4692b350be",
+  "status": "SUCCESS",
+  "technical_jobs": 0
+}

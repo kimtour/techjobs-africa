@@ -1,0 +1,258 @@
+{
+  "candidate_metadata": [],
+  "checked_at": "2026-10-26T06:01:05.233474+00:00",
+  "checks": {
+    "application_links": true,
+    "complete": true,
+    "dates_reviewed": true,
+    "locations": true,
+    "stable_ids": true
+  },
+  "eligible_jobs": 0,
+  "environment": "github",
+  "official_link_checked_this_run": false,
+  "prior_official_evidence": [
+    "docs/employer-discovery/overnight-structured/local/employer_eb9fb4e50ccf9e88.json"
+  ],
+  "publication_approved": false,
+  "records_found": 24,
+  "requests": [
+    {
+      "attempt": 1,
+      "duration_seconds": 0.227,
+      "error_type": null,
+      "host": "novapioneer.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-26T06:01:05.327465+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.145,
+      "error_type": null,
+      "host": "novapioneer.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-26T06:01:07.054297+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.479,
+      "error_type": null,
+      "host": "novapioneer.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-26T06:01:08.699192+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.498,
+      "error_type": null,
+      "host": "novapioneer.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-26T06:01:10.678231+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.499,
+      "error_type": null,
+      "host": "novapioneer.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-26T06:01:12.676204+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.5,
+      "error_type": null,
+      "host": "novapioneer.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-26T06:01:14.674897+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.496,
+      "error_type": null,
+      "host": "novapioneer.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-26T06:01:16.675213+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.512,
+      "error_type": null,
+      "host": "novapioneer.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-26T06:01:18.671729+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.493,
+      "error_type": null,
+      "host": "novapioneer.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-26T06:01:20.683897+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.503,
+      "error_type": null,
+      "host": "novapioneer.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-26T06:01:22.677257+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.504,
+      "error_type": null,
+      "host": "novapioneer.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-26T06:01:24.680773+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.498,
+      "error_type": null,
+      "host": "novapioneer.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-26T06:01:26.685142+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.504,
+      "error_type": null,
+      "host": "novapioneer.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-26T06:01:28.682951+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.512,
+      "error_type": null,
+      "host": "novapioneer.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-26T06:01:30.687085+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.481,
+      "error_type": null,
+      "host": "novapioneer.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-26T06:01:32.699109+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.498,
+      "error_type": null,
+      "host": "novapioneer.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-26T06:01:34.680230+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.514,
+      "error_type": null,
+      "host": "novapioneer.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-26T06:01:36.678044+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.497,
+      "error_type": null,
+      "host": "novapioneer.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-26T06:01:38.692096+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.499,
+      "error_type": null,
+      "host": "novapioneer.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-26T06:01:40.688800+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.507,
+      "error_type": null,
+      "host": "novapioneer.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-26T06:01:42.687766+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.506,
+      "error_type": null,
+      "host": "novapioneer.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-26T06:01:44.695062+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.486,
+      "error_type": null,
+      "host": "novapioneer.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-26T06:01:46.701493+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.497,
+      "error_type": null,
+      "host": "novapioneer.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-26T06:01:48.687597+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.514,
+      "error_type": null,
+      "host": "novapioneer.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-26T06:01:50.685149+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.493,
+      "error_type": null,
+      "host": "novapioneer.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-26T06:01:52.699172+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.492,
+      "error_type": null,
+      "host": "novapioneer.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-26T06:01:54.692179+00:00"
+    }
+  ],
+  "source_id": "employer_eb9fb4e50ccf9e88",
+  "status": "SUCCESS",
+  "technical_jobs": 1
+}
