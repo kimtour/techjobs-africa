@@ -251,3 +251,5 @@ Preserve unrelated `.vscode/` and `_build/` files.
 
 - Official employer page embeds18links to exact JazzHR tenant. Local complete M0:18raw/1technical/1eligible SystemsSecurityEngineer K2r7WGkQmC. Privacy/robots and vacancy metadata scope reviewed; no automation restriction identified, no express licence claimed. Pending hosted M0/trial/publication; NOT yet active.
 - Provider default Mumbai omits vacancy's explicit candidate office alternatives. New opt-in description_location_pattern extracts only that job-scoped location paragraph in RAM; generic company-office boilerplate does not qualify (regression). Lists African offices subject to local work authorisation; normalizedSouthAfrica is one valid offered office, not invented Kenya-only/remote eligibility.321Python tests/lint passed. Source remains absence-off and employers distinct.
+
+- CrossBoundary hostedM0 40324526722 on4d2a3ab SUCCESS18raw/1technical/1eligible, allchecks pass; CI40324490629 SUCCESS. Status verified/inactive. NEXT isolated hosted trial then publication review before activation/production; no new livecompany yet.

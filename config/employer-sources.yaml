@@ -1705,7 +1705,7 @@ sources:
   import_urls:
   - https://crossboundary.com/our-vacancies/
   platform: jazzhr
-  status: pending
+  status: verified
   employer_ids:
   - emp_5f69e7c276763c89
   access_method: jsonld
@@ -1730,10 +1730,11 @@ sources:
     complete: true
     collection_review: true
     local_access: true
-    runner_access: false
+    runner_access: true
     evidence_paths:
     - docs/employer-discovery/crossboundary-review-2026-10-26/local-m0.json
     - docs/employer-discovery/crossboundary-review-2026-10-26/policy-review.json
+    - docs/employer-discovery/crossboundary-review-2026-10-26/hosted-m0.json
     collection_review_url: https://crossboundary.com/privacy-policy/
     collection_basis: Official corporate vacancy page links18 individual postings on this exact
       public JazzHR tenant. Static all-openings inventory and complete per-vacancy local crawl
@@ -1755,10 +1756,8 @@ sources:
       location: <div[^>]*title=[\"\x27]Location[\"\x27][^>]*>(.*?)</div>
       employment_type: <div[^>]*id=[\"\x27]resumator-job-employment[\"\x27][^>]*>(.*?)</div>
     description_location_pattern: Candidates may join our team[^<]*?Locations include\s*([^<]+)
-  review_reason: Complete local M0:18raw/1technical/1eligible. Reviewed role-specific location
-    paragraph lists African offices despite default Mumbai schema; preserve local work-authorisation
-    requirement. Hosted M0, isolated trial and publication approval remain required; source
-    pending.
+  review_reason: Local and hosted complete M0 passed:18raw/1technical/1eligible. Isolated trial
+    and explicit publication review remain required; source inactive.
 - id: employer_1958e161d051541c
   url: https://www.nrc.no/careers
   import_urls:
