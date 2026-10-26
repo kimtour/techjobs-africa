@@ -1,0 +1,29 @@
+{
+  "source_id": "employer_a0c03f043fd4288e",
+  "employers": [
+    "Equity Bank Kenya",
+    "Equity Insurance Group",
+    "Finserve Africa / Equitel / Jenga",
+    "Finserve Africa / Equitel"
+  ],
+  "url": "https://equitybank.taleo.net/careersection/ext_new/jobsearch.ftl",
+  "checked_at": "2026-10-26T06:45:22.618900+00:00",
+  "production_promoted": false,
+  "status": "REVIEWED_PAGE",
+  "http_status": 200,
+  "final_url": "https://equitybank.taleo.net/careersection/ext_new/jobsearch.ftl",
+  "headings": [
+    "Welcome. You are not signed in.",
+    "Vacancy",
+    "Vacancy"
+  ],
+  "links": [
+    "https://equitybank.taleo.net/careersection/2026PRD.1.4.14.3.0/js/common/require.js",
+    "https://equitybank.taleo.net/careersection/2026PRD.1.4.14.3.0/js/integration/iframes_communication.js",
+    "https://equitybank.taleo.net/careersection/2026PRD.1.4.14.3.0/js/common/json2.js",
+    "https://equitybank.taleo.net/careersection/ext_new/jobsearch.ftl#",
+    "https://equitybank.taleo.net/careersection/ext_new/mysearches.ftl"
+  ],
+  "empty_statements": [],
+  "postings": []
+}

@@ -1,0 +1,12 @@
+{
+  "source_id": "employer_130639812ae22976",
+  "employers": [
+    "Development Bank of Kenya"
+  ],
+  "url": "https://www.devbank.com/careers/",
+  "checked_at": "2026-10-26T06:45:20.764194+00:00",
+  "production_promoted": false,
+  "status": "FAILED",
+  "error_type": "ConnectError",
+  "http_status": null
+}

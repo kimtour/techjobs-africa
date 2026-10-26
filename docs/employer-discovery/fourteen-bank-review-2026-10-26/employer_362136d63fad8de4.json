@@ -1,0 +1,30 @@
+{
+  "source_id": "employer_362136d63fad8de4",
+  "employers": [
+    "Consolidated Bank of Kenya"
+  ],
+  "url": "https://www.consolidated-bank.com/career-opportunities.php",
+  "checked_at": "2026-10-26T06:45:20.764687+00:00",
+  "production_promoted": false,
+  "status": "REVIEWED_PAGE",
+  "http_status": 200,
+  "final_url": "https://www.consolidated-bank.com/career-opportunities.php",
+  "headings": [
+    "Personal Details",
+    "Consolidated Bank Client?",
+    "Query type",
+    "Career Opportunities",
+    "FINANCE TIP"
+  ],
+  "links": [
+    "https://www.consolidated-bank.com/career-opportunities.php#test",
+    "https://www.consolidated-bank.com/career-opportunities.php#",
+    "https://www.consolidated-bank.com/career-opportunities.php",
+    "https://www.consolidated-bank.com/pdf/SUPPORTED ATMS,POS AND AGENCY TERMINALS.pdf",
+    "https://www.consolidated-bank.com/career-opportunities.php#http://oncuedigital.com/blog/category/blog/"
+  ],
+  "empty_statements": [
+    "we have no vacancies"
+  ],
+  "postings": []
+}

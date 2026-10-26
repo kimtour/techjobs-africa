@@ -1,0 +1,23 @@
+[
+  {
+    "role": "assistant-manager-information-security",
+    "explicit_kenyan_applicant_rule": false,
+    "date_facts": [
+      "Apply by: 30 October 2026",
+      "deadline Friday, 30 October 2026"
+    ],
+    "job_scope_location_words": false
+  },
+  {
+    "role": "programmer",
+    "explicit_kenyan_applicant_rule": false,
+    "date_facts": [],
+    "job_scope_location_words": false
+  },
+  {
+    "role": "officer-network-administration",
+    "explicit_kenyan_applicant_rule": false,
+    "date_facts": [],
+    "job_scope_location_words": false
+  }
+]

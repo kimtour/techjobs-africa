@@ -1,0 +1,11 @@
+{
+  "source_id": "employer_90cb202c4dc33edf",
+  "employers": [
+    "Ecobank Kenya"
+  ],
+  "url": "https://ecobank.com/group/about-us/careers",
+  "checked_at": "2026-10-26T06:45:22.617813+00:00",
+  "production_promoted": false,
+  "status": "PERMISSION_REVIEW",
+  "reason": "Previously reviewed terms restrict data reuse; do not assume API availability grants permission."
+}

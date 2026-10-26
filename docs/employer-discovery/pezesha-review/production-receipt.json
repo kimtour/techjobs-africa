@@ -1,0 +1,15 @@
+{
+  "run_url": "https://github.com/kimtour/techjobs-africa/actions/runs/40283036347",
+  "activation_commit": "156cd1f",
+  "private_state_commit": "144cbfa",
+  "outcome": "SUCCESS",
+  "new_jobs": 2,
+  "country": "Kenya",
+  "jobs": [
+    "Junior Data Scientist",
+    "Senior Data Scientist"
+  ],
+  "company_career_jobs": 30,
+  "all_jobs": 2780,
+  "verification": "Local-build and live HTML acceptance passed, including all job IDs, second-feed placement and original links."
+}

@@ -1,0 +1,26 @@
+{
+  "source_id": "employer_a5df927fdd6941a3",
+  "employers": [
+    "Family Bank"
+  ],
+  "url": "https://familybank.co.ke/?page_id=2696",
+  "checked_at": "2026-10-26T06:45:23.520323+00:00",
+  "production_promoted": false,
+  "status": "REVIEWED_PAGE",
+  "http_status": 200,
+  "final_url": "https://familybank.co.ke/?page_id=2696",
+  "headings": [
+    "Personal",
+    "Search",
+    "Careers - Family Bank Limited, Kenya",
+    "Can't find what you are looking for?"
+  ],
+  "links": [
+    "https://familybank.co.ke/family-bank/wp-content/uploads/2026/01/Tariff_Guide_as_at_January_2026.pdf",
+    "https://familybank.co.ke/family-bank/wp-content/uploads/2022/03/Remittance_Details.pdf",
+    "https://familybank.co.ke/family-bank/wp-content/uploads/2026/04/Family_Bank_Newspaper_Advert_2026_25_03_2026.pdf",
+    "https://familybank.co.ke/family-bank/wp-content/uploads/2022/12/Branches_and_Codes.pdf"
+  ],
+  "empty_statements": [],
+  "postings": []
+}

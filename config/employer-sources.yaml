@@ -672,6 +672,15 @@ sources:
     platform: custom
     needs_location_filter: true
     shared_portal: true
+  requested_review:
+    checked_at: '2026-10-26T06:45:20.763249+00:00'
+    result: REVIEWED_PAGE
+    evidence_path: docs/employer-discovery/fourteen-bank-review-2026-10-26/employer_0825ff7a49f48772.json
+  discovery_enabled: true
+  review_priority: user_requested
+  review_reason: Requested public careers page reached. Full vacancy extraction, current
+    dates, location evidence, pagination and permission checks remain required before
+    publication.
 - id: employer_087f1f3470e75997
   url: https://www.nacosti.go.ke/careers/
   import_urls:
@@ -1358,6 +1367,13 @@ sources:
     platform: custom
     needs_location_filter: true
     shared_portal: true
+  requested_review:
+    checked_at: '2026-10-26T06:45:20.764194+00:00'
+    result: FAILED
+    evidence_path: docs/employer-discovery/fourteen-bank-review-2026-10-26/employer_130639812ae22976.json
+  discovery_enabled: true
+  review_reason: Requested careers URL connection failed. Pending discovery backoff;
+    vacancy availability unknown, not zero.
 - id: employer_13bfcd0b0ac602ef
   url: https://www.who.int/Careers
   import_urls:
@@ -1849,7 +1865,7 @@ sources:
   import_urls:
   - https://jobs.citi.com/search-jobs/Kenya/287/2/192950/1/38/50/2
   platform: custom
-  status: pending
+  status: blocked
   employer_ids:
   - emp_ac21d4928b4aa47c
   access_method: null
@@ -1868,6 +1884,12 @@ sources:
   verification: {}
   suggestions:
     platform: custom
+  requested_review:
+    checked_at: '2026-10-26T06:45:20.764376+00:00'
+    result: BLOCKED
+    evidence_path: docs/employer-discovery/fourteen-bank-review-2026-10-26/employer_1a46b912119f5c69.json
+  review_reason: Requested careers URL disallows this automated collection via robots
+    policy; no bypass or alternate hidden endpoint used.
 - id: employer_1aece88d790f6479
   url: https://pscims.publicservice.go.ke/jobs/ActiveJobsAdverts.aspx
   import_urls:
@@ -3673,6 +3695,15 @@ sources:
     platform: custom
     needs_location_filter: true
     shared_portal: true
+  requested_review:
+    checked_at: '2026-10-26T06:45:20.764529+00:00'
+    result: REVIEWED_PAGE
+    evidence_path: docs/employer-discovery/fourteen-bank-review-2026-10-26/employer_357f5afab98e077e.json
+  discovery_enabled: true
+  review_priority: user_requested
+  review_reason: Requested public careers page reached. Full vacancy extraction, current
+    dates, location evidence, pagination and permission checks remain required before
+    publication.
 - id: employer_35b77f6fc8aa8fac
   url: https://jobs.uber.com/en/
   import_urls:
@@ -3785,7 +3816,7 @@ sources:
   access_method: null
   country_filters: []
   refresh_hours: 24
-  discovery_refresh_hours: 168
+  discovery_refresh_hours: 24
   supports_absence_expiry: false
   crawl:
     max_pages: 5
@@ -3800,6 +3831,17 @@ sources:
     platform: custom
     needs_location_filter: true
     shared_portal: true
+  requested_review:
+    checked_at: '2026-10-26T06:45:20.764687+00:00'
+    result: REVIEWED_PAGE
+    evidence_path: docs/employer-discovery/fourteen-bank-review-2026-10-26/employer_362136d63fad8de4.json
+  reviewed_empty_marker: we have no vacancies
+  known_non_vacancy_documents:
+  - https://www.consolidated-bank.com/pdf/SUPPORTED ATMS,POS AND AGENCY TERMINALS.pdf
+  discovery_enabled: true
+  review_reason: Official page explicitly reports no vacancies. Daily empty-state
+    monitoring only; changed content/new roles require extraction review. Not counted
+    as a full collector.
 - id: employer_36fa25d9bf181f28
   url: https://hasspetroleum.com/careers-at-hass/
   import_urls:
@@ -5432,6 +5474,15 @@ sources:
     platform: custom
     needs_location_filter: true
     shared_portal: true
+  requested_review:
+    checked_at: '2026-10-26T06:45:20.764809+00:00'
+    result: REVIEWED_PAGE
+    evidence_path: docs/employer-discovery/fourteen-bank-review-2026-10-26/employer_4c387c8de1de5d36.json
+  discovery_enabled: true
+  review_priority: user_requested
+  review_reason: Requested public careers page reached. Full vacancy extraction, current
+    dates, location evidence, pagination and permission checks remain required before
+    publication.
 - id: employer_4dfec0204a026392
   url: https://flutterwave.com/us/careers/vacancies
   import_urls:
@@ -9275,6 +9326,15 @@ sources:
     platform: custom
     needs_location_filter: true
     shared_portal: true
+  requested_review:
+    checked_at: '2026-10-26T06:45:21.669774+00:00'
+    result: REVIEWED_PAGE
+    evidence_path: docs/employer-discovery/fourteen-bank-review-2026-10-26/employer_859b25bed23f6334.json
+  discovery_enabled: true
+  review_priority: user_requested
+  review_reason: Requested public careers page reached. Full vacancy extraction, current
+    dates, location evidence, pagination and permission checks remain required before
+    publication.
 - id: employer_86c4dc08878bcefe
   url: https://www.icolo.io/careers/
   import_urls:
@@ -9376,6 +9436,15 @@ sources:
     platform: custom
     needs_location_filter: true
     shared_portal: true
+  requested_review:
+    checked_at: '2026-10-26T06:45:22.614932+00:00'
+    result: REVIEWED_PAGE
+    evidence_path: docs/employer-discovery/fourteen-bank-review-2026-10-26/employer_87b3cde08aeaf609.json
+  discovery_enabled: true
+  review_priority: user_requested
+  review_reason: Requested public careers page reached. Full vacancy extraction, current
+    dates, location evidence, pagination and permission checks remain required before
+    publication.
 - id: employer_88513f5c6f3582b1
   url: https://www.pgcareers.com/cr/en/locations/kenya
   import_urls:
@@ -9872,7 +9941,7 @@ sources:
   import_urls:
   - https://ecobank.com/group/about-us/careers
   platform: oracle
-  status: pending
+  status: manual
   employer_ids:
   - emp_b78326ef88606b7e
   access_method: oracle
@@ -9888,7 +9957,9 @@ sources:
     retry_delays_seconds:
     - 5
     - 20
-  verification: {}
+  verification:
+    collection_review: false
+    collection_review_url: https://ecobank.com/personal-banking/terms-of-use
   suggestions:
     platform: custom
     needs_location_filter: true
@@ -9899,11 +9970,15 @@ sources:
     listing_url: https://fa-emqf-saasfaprod1.fa.ocs.oraclecloud.com/hcmRestApi/resources/latest/recruitingCEJobRequisitions
     site: CX_1004
     job_url_template: https://fa-emqf-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1004/job/{id}
-  posting_company: Ecobank Kenya
+  posting_company: Ecobank Group
   group_portal: true
   official_careers_url: https://ecobank.com/
-  review_reason: Provider-level public interface investigated; source-specific official
-    linkage, terms and complete local/hosted crawls remain required.
+  review_reason: Previously reviewed reuse restrictions require permission clarification
+    before collection/publication; accessible Oracle interface is not permission.
+  requested_review:
+    checked_at: '2026-10-26T06:45:22.617813+00:00'
+    result: PERMISSION_REVIEW
+    evidence_path: docs/employer-discovery/fourteen-bank-review-2026-10-26/employer_90cb202c4dc33edf.json
 - id: employer_90e76007afd3802a
   url: https://nlsbanking.com/news/african-banking-tech/
   import_urls:
@@ -10728,6 +10803,15 @@ sources:
     needs_location_filter: true
     shared_portal: true
     access_gap: true
+  requested_review:
+    checked_at: '2026-10-26T06:45:22.618900+00:00'
+    result: REVIEWED_PAGE
+    evidence_path: docs/employer-discovery/fourteen-bank-review-2026-10-26/employer_a0c03f043fd4288e.json
+  discovery_enabled: true
+  review_priority: user_requested
+  review_reason: Requested public careers page reached. Full vacancy extraction, current
+    dates, location evidence, pagination and permission checks remain required before
+    publication.
 - id: employer_a0cebbeda33c03ce
   url: https://www.nuclear.co.ke/careers/
   import_urls:
@@ -11098,6 +11182,15 @@ sources:
     platform: custom
     needs_location_filter: true
     shared_portal: true
+  requested_review:
+    checked_at: '2026-10-26T06:45:23.520323+00:00'
+    result: REVIEWED_PAGE
+    evidence_path: docs/employer-discovery/fourteen-bank-review-2026-10-26/employer_a5df927fdd6941a3.json
+  discovery_enabled: true
+  review_priority: user_requested
+  review_reason: Requested public careers page reached. Full vacancy extraction, current
+    dates, location evidence, pagination and permission checks remain required before
+    publication.
 - id: employer_a661e4a628ae489b
   url: https://careers.majidalfuttaim.com/global/en/
   import_urls:
@@ -11207,10 +11300,13 @@ sources:
   posting_company: Old Mutual Group
   group_portal: true
   official_careers_url: https://www.oldmutual.com/careers/
-  review_reason: 'Hosted isolated trial passed: 2 reviewed eligible jobs, no accepted
-    application-URL duplicates. Daily collection approved; reviewed first snapshot
-    may publish. Absence expiry remains disabled.'
+  review_reason: Requested shared OldMutual board already has verified daily collection.
+    Existing employer records preserved; no duplicate collector.
   reviewed_bootstrap: true
+  requested_review:
+    checked_at: '2026-10-26T06:45:23.692511+00:00'
+    result: ALREADY_ACTIVE
+    evidence_path: docs/employer-discovery/fourteen-bank-review-2026-10-26/employer_a76af863ab305a57.json
 - id: employer_a76dd8e486c6387f
   url: https://www.odpc.go.ke/careers/
   import_urls:
@@ -12186,6 +12282,15 @@ sources:
     platform: custom
     needs_location_filter: true
     shared_portal: true
+  requested_review:
+    checked_at: '2026-10-26T06:45:23.692734+00:00'
+    result: REVIEWED_PAGE
+    evidence_path: docs/employer-discovery/fourteen-bank-review-2026-10-26/employer_b6972e2057a6ccc6.json
+  discovery_enabled: true
+  review_priority: user_requested
+  review_reason: Requested public careers page reached. Full vacancy extraction, current
+    dates, location evidence, pagination and permission checks remain required before
+    publication.
 - id: employer_b6c932e54a0bee5e
   url: https://www.acted.org/en/get-involved/join-us/vacancies/
   import_urls:
@@ -14019,6 +14124,15 @@ sources:
     platform: custom
     needs_location_filter: true
     shared_portal: true
+  requested_review:
+    checked_at: '2026-10-26T06:45:24.096311+00:00'
+    result: REVIEWED_PAGE
+    evidence_path: docs/employer-discovery/fourteen-bank-review-2026-10-26/employer_d5f5be8670b7b42d.json
+  discovery_enabled: true
+  review_priority: user_requested
+  review_reason: Requested public careers page reached. Full vacancy extraction, current
+    dates, location evidence, pagination and permission checks remain required before
+    publication.
 - id: employer_d614ce5e6ae10327
   url: https://pesalink.co.ke/for-me/careers/listings
   import_urls:
