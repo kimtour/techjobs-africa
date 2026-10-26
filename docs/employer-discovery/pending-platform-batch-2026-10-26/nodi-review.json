@@ -1,0 +1,24 @@
+{
+  "url": "https://app.nodi.global/company/dlocal",
+  "robots": {
+    "status": 200,
+    "allowed": true,
+    "url": "https://app.nodi.global/robots.txt"
+  },
+  "status": 200,
+  "structured_job_count": 0,
+  "job_titles": [],
+  "job_links": [
+    "/privacy-policy"
+  ],
+  "public_script_links": [
+    "/_next/static/immutable/chunks/0ff0b5gzp9a_8.js",
+    "/_next/static/immutable/chunks/3xm4g7rec6vnx.js",
+    "/_next/static/immutable/chunks/0vcgzpu5z_ihl.js",
+    "/_next/static/immutable/chunks/1e2k4cg0w2viw.js",
+    "/_next/static/immutable/chunks/turbopack-0s6ex38snci17.js",
+    "/_next/static/immutable/chunks/1k6_nzb378gok.js",
+    "/_next/static/immutable/chunks/2sv9cr43d3a6q.js",
+    "/_next/static/immutable/chunks/1i1zr7eg38b6p.js"
+  ]
+}

@@ -1,0 +1,87 @@
+[
+  {
+    "url": "https://www.nala.com/terms-of-service",
+    "robots": {
+      "status": 200,
+      "allowed": true,
+      "url": "https://www.nala.com/robots.txt"
+    },
+    "status": 200,
+    "title": [
+      "Terms of Service"
+    ],
+    "embedded_and_policy_urls": [
+      "https://apply.workable.com/nalamoney/",
+      "https://cdn.prod.website-files.com/5f89ad61c0ef675e5948350e/69fb7b484a06fc3b8cfe96cf_NALA%20Terms%20of%20Service%20USA.pdf",
+      "https://nalateam.notion.site/NALA-Press-Kit-42f4f19e0d4a4427bed1bd47709cda02",
+      "https://www.nala.com/cookies-policy",
+      "https://www.nala.com/fr/terms-of-service",
+      "https://www.nala.com/kes-account-terms-of-service",
+      "https://www.nala.com/nala-global-accounts-terms-of-service",
+      "https://www.nala.com/nala-referral-program-terms-of-service",
+      "https://www.nala.com/privacy-policy",
+      "https://www.nala.com/rwf-account-terms-of-service",
+      "https://www.nala.com/terms-of-service",
+      "https://www.nala.com/terms-of-service-eu",
+      "https://www.nala.com/terms-of-service-uk",
+      "https://www.nala.com/terms-of-service-usa",
+      "https://www.nala.com/terms-of-service-usa-eft-agreement",
+      "https://www.nala.com/terms-of-service-usa-electronic-communications-agreement",
+      "https://www.nala.com/terms-of-service-usa-lead-funds-transfer-agreement",
+      "https://www.nala.com/tzs-account-terms-of-service",
+      "https://www.nala.com/ugx-account-terms-of-service",
+      "https://www.notion.so/nalateam/Live-product-updates-deployed-9c24643c5fca4475adf022083955ce75",
+      "https://www.notion.so/nalateam/NALA-Roadmap-057eef46825944f298233c316f24f6e9"
+    ],
+    "iframe_urls": [
+      "https://www.googletagmanager.com/ns.html?id=GTM-TTHZ8QX",
+      "https://www.googletagmanager.com/ns.html?id=GTM-TTHZ8QX"
+    ]
+  },
+  {
+    "url": "https://www.nala.com/privacy-policy",
+    "robots": {
+      "status": 200,
+      "allowed": true,
+      "url": "https://www.nala.com/robots.txt"
+    },
+    "status": 200,
+    "title": [
+      "NALA | Privacy Policy"
+    ],
+    "embedded_and_policy_urls": [
+      "https://apply.workable.com/nalamoney/",
+      "https://nalateam.notion.site/NALA-Press-Kit-42f4f19e0d4a4427bed1bd47709cda02",
+      "https://www.lead.bank/privacy-and-terms",
+      "https://www.nala.com/acceptable-use-policy",
+      "https://www.nala.com/cookies-policy",
+      "https://www.nala.com/fr/privacy-policy",
+      "https://www.nala.com/global-privacy-policy",
+      "https://www.nala.com/privacy-policy",
+      "https://www.nala.com/privacy-policy-eu",
+      "https://www.nala.com/privacy-policy-uk",
+      "https://www.nala.com/privacy-policy-us",
+      "https://www.nala.com/terms-of-service",
+      "https://www.notion.so/nalateam/Live-product-updates-deployed-9c24643c5fca4475adf022083955ce75",
+      "https://www.notion.so/nalateam/NALA-Roadmap-057eef46825944f298233c316f24f6e9"
+    ],
+    "iframe_urls": [
+      "https://www.googletagmanager.com/ns.html?id=GTM-TTHZ8QX",
+      "https://www.googletagmanager.com/ns.html?id=GTM-TTHZ8QX"
+    ]
+  },
+  {
+    "url": "https://www.genesis-analytics.com/",
+    "robots": {
+      "status": 200,
+      "allowed": true,
+      "url": "https://www.genesis-analytics.com/robots.txt"
+    },
+    "status": 200,
+    "title": [
+      "Genesis Analytics"
+    ],
+    "embedded_and_policy_urls": [],
+    "iframe_urls": []
+  }
+]

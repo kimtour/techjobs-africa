@@ -4177,7 +4177,7 @@ sources:
   import_urls:
   - https://www.nala.com/careers1
   platform: workable
-  status: pending
+  status: manual
   employer_ids:
   - emp_984566006e343721
   access_method: workable
@@ -4193,7 +4193,19 @@ sources:
     retry_delays_seconds:
     - 5
     - 20
-  verification: {}
+  verification:
+    official_link: true
+    stable_ids: true
+    application_links: true
+    locations: true
+    dates_reviewed: true
+    complete: true
+    collection_review: false
+    runner_access: false
+    local_access: true
+    evidence_paths:
+    - docs/employer-discovery/pending-platform-batch-2026-10-26/employer_396f371eef69e62d-local.json
+    - docs/employer-discovery/pending-platform-batch-2026-10-26/policy-review.json
   suggestions:
     platform: custom
   board: nalamoney
@@ -4205,8 +4217,14 @@ sources:
   posting_company: NALA
   group_portal: true
   official_careers_url: https://www.nala.com/
-  review_reason: Provider-level public interface investigated; source-specific official
-    linkage, terms and complete local/hosted crawls remain required.
+  review_reason: Complete local Workable board has2technical jobs, both explicitly London UK;0eligible.
+    Official board linkage confirmed. NALA acceptable-use policy contains scraping/copying restrictions
+    on its Service; scope relative to external public ATS requires review before collection
+    approval. No source activation.
+  reviewed_source_checks:
+    checked_at: '2026-10-26'
+    evidence_path: docs/employer-discovery/pending-platform-batch-2026-10-26/employer_396f371eef69e62d-local.json
+    policy_evidence_path: docs/employer-discovery/pending-platform-batch-2026-10-26/policy-review.json
 - id: employer_398ede9dbf408d0a
   url: https://treasury.go.ke/vacancy
   import_urls:
@@ -4381,7 +4399,7 @@ sources:
   import_urls:
   - https://azafinance.com/careers/
   platform: workable
-  status: pending
+  status: manual
   employer_ids:
   - emp_4f18188c41e54b65
   access_method: workable
@@ -4397,7 +4415,14 @@ sources:
     retry_delays_seconds:
     - 5
     - 20
-  verification: {}
+  verification:
+    official_link: true
+    collection_review: false
+    runner_access: false
+    local_access: false
+    evidence_paths:
+    - docs/employer-discovery/pending-platform-batch-2026-10-26/employer_3be05c0cdbcee6d2-local.json
+    - docs/employer-discovery/pending-platform-batch-2026-10-26/policy-review.json
   suggestions:
     platform: custom
   board: azafinance
@@ -4409,8 +4434,14 @@ sources:
   posting_company: AZA Finance
   group_portal: true
   official_careers_url: https://azafinance.com/
-  review_reason: Provider-level public interface investigated; source-specific official
-    linkage, terms and complete local/hosted crawls remain required.
+  review_reason: Official Workable linkage confirmed, but public account endpoint returns404
+    (not a healthy empty board). Corporate terms expressly restrict robots/automatic monitoring
+    and copying/redistribution. Permission or authoritative scope review required; no bypass,
+    automated retries or activation.
+  reviewed_source_checks:
+    checked_at: '2026-10-26'
+    evidence_path: docs/employer-discovery/pending-platform-batch-2026-10-26/employer_3be05c0cdbcee6d2-local.json
+    policy_evidence_path: docs/employer-discovery/pending-platform-batch-2026-10-26/policy-review.json
 - id: employer_3bf4c7f32738cf5a
   url: https://chippercash.com/careers
   import_urls:
@@ -5942,10 +5973,10 @@ sources:
     platform: custom
     access_gap: true
 - id: employer_529fad2c89725025
-  url: https://jobs.lever.co/dlocal
+  url: https://app.nodi.global/company/dlocal
   import_urls:
   - https://jobs.lever.co/dlocal
-  platform: lever
+  platform: custom
   status: pending
   employer_ids:
   - emp_645f4793ff509f72
@@ -5962,13 +5993,26 @@ sources:
     retry_delays_seconds:
     - 5
     - 20
-  verification: {}
+  verification:
+    official_link: true
+    collection_review: false
+    evidence_paths:
+    - docs/employer-discovery/pending-platform-batch-2026-10-26/nodi-review.json
+    - docs/employer-discovery/pending-platform-batch-2026-10-26/employer_529fad2c89725025-local.json
   suggestions:
     platform: lever
     needs_location_filter: true
-  board: dlocal
   official_careers_url: https://www.dlocal.com/careers/
-  pilot_rank: 5
+  review_reason: Official dLocal careers URL redirects to Nodi company/dlocal, now the discovery
+    URL. Previous Lever API had40raw/6technical/0eligible but current official-to-Lever linkage
+    is unconfirmed. Nodi HTML is a dynamic shell with no scoped job links/JobPosting records;
+    inventory is unconfirmed, not empty. Collector, policy, hosted/trial/publication gates remain
+    pending.
+  reviewed_source_checks:
+    checked_at: '2026-10-26'
+    evidence_path: docs/employer-discovery/pending-platform-batch-2026-10-26/employer_529fad2c89725025-local.json
+    policy_evidence_path: docs/employer-discovery/pending-platform-batch-2026-10-26/policy-review.json
+  historical_board_url: https://jobs.lever.co/dlocal
 - id: employer_52aad316c64536de
   url: https://silensec.com/careers/
   import_urls:
@@ -11164,7 +11208,19 @@ sources:
     retry_delays_seconds:
     - 5
     - 20
-  verification: {}
+  verification:
+    official_link: false
+    stable_ids: true
+    application_links: true
+    locations: true
+    dates_reviewed: true
+    complete: true
+    collection_review: false
+    runner_access: false
+    local_access: true
+    evidence_paths:
+    - docs/employer-discovery/pending-platform-batch-2026-10-26/employer_a16402b9c3caceef-local.json
+    - docs/employer-discovery/pending-platform-batch-2026-10-26/policy-review.json
   suggestions:
     platform: workable
   board: genesis-analytics
@@ -11176,8 +11232,13 @@ sources:
   posting_company: Genesis Analytics
   group_portal: true
   official_careers_url: https://www.genesis-analytics.com/
-  review_reason: Provider-level public interface investigated; source-specific official
-    linkage, terms and complete local/hosted crawls remain required.
+  review_reason: Complete public Workable response has2roles,0technical and0eligible. Official
+    homepage did not establish exact board linkage; corporate policy links also unconfirmed.
+    Remains pending; a successful API response is not permission or verified employer coverage.
+  reviewed_source_checks:
+    checked_at: '2026-10-26'
+    evidence_path: docs/employer-discovery/pending-platform-batch-2026-10-26/employer_a16402b9c3caceef-local.json
+    policy_evidence_path: docs/employer-discovery/pending-platform-batch-2026-10-26/policy-review.json
 - id: employer_a1dbcb35510e643c
   url: https://ke.linkedin.com/company/equatorenergy
   import_urls:

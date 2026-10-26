@@ -1,0 +1,128 @@
+{
+  "source_id": "employer_529fad2c89725025",
+  "checked_at": "2026-10-26T12:05:41.320135+00:00",
+  "environment": "local",
+  "status": "SUCCESS",
+  "checks": {
+    "official_link": false,
+    "stable_ids": true,
+    "application_links": true,
+    "locations": true,
+    "dates_reviewed": true,
+    "complete": true
+  },
+  "requests": [
+    {
+      "started_at": "2026-10-26T12:05:41.345516+00:00",
+      "duration_seconds": 1.128,
+      "method": "GET",
+      "host": "www.dlocal.com",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-26T12:05:43.983481+00:00",
+      "duration_seconds": 0.559,
+      "method": "GET",
+      "host": "www.dlocal.com",
+      "http_status": 301,
+      "attempt": 1,
+      "error_type": "HTTPStatusError"
+    },
+    {
+      "started_at": "2026-10-26T12:05:46.052633+00:00",
+      "duration_seconds": 1.072,
+      "method": "GET",
+      "host": "app.nodi.global",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-26T12:05:48.626289+00:00",
+      "duration_seconds": 3.396,
+      "method": "GET",
+      "host": "app.nodi.global",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-26T12:05:53.532173+00:00",
+      "duration_seconds": 1.598,
+      "method": "GET",
+      "host": "api.lever.co",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-26T12:05:56.640321+00:00",
+      "duration_seconds": 2.103,
+      "method": "GET",
+      "host": "api.lever.co",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    }
+  ],
+  "official_url": "https://www.dlocal.com/careers/",
+  "official_robots": {
+    "status": 200,
+    "allowed": true,
+    "url": "https://www.dlocal.com/robots.txt"
+  },
+  "official_redirect": "https://app.nodi.global/company/dlocal",
+  "structured_job_count": 0,
+  "feed_urls": [],
+  "detected_boards": [],
+  "endpoint": "https://api.lever.co/v0/postings/dlocal?mode=json",
+  "board_robots": {
+    "status": 200,
+    "allowed": true,
+    "url": "https://api.lever.co/robots.txt"
+  },
+  "records_found": 40,
+  "technical_jobs": 6,
+  "eligible_jobs": 0,
+  "publication_approved": false,
+  "candidate_metadata": [],
+  "sample": [
+    {
+      "id": "773f00cd-a959-430c-9121-dc6dd49a4f77",
+      "title": "Account Management Director",
+      "location": "China \u00b7 Shanghai \u00b7 Shenzhen",
+      "application_url": "https://jobs.lever.co/dlocal/773f00cd-a959-430c-9121-dc6dd49a4f77/apply",
+      "published_at": null
+    },
+    {
+      "id": "9a30f231-9e7d-42bf-afab-59ede687eb41",
+      "title": "Account Manager",
+      "location": "Buenos Aires \u00b7 Montevideo \u00b7 Sao Paulo (Hybrid)",
+      "application_url": "https://jobs.lever.co/dlocal/9a30f231-9e7d-42bf-afab-59ede687eb41/apply",
+      "published_at": null
+    },
+    {
+      "id": "4a8b6ed4-063a-46c4-a624-d406a7b6f932",
+      "title": "Account Manager China",
+      "location": "Shanghai \u00b7 Shenzhen",
+      "application_url": "https://jobs.lever.co/dlocal/4a8b6ed4-063a-46c4-a624-d406a7b6f932/apply",
+      "published_at": null
+    },
+    {
+      "id": "d3aa9436-a537-4ca7-bfe0-6636a53e2cfd",
+      "title": "Business Development Manager - APAC",
+      "location": "Singapore",
+      "application_url": "https://jobs.lever.co/dlocal/d3aa9436-a537-4ca7-bfe0-6636a53e2cfd/apply",
+      "published_at": null
+    },
+    {
+      "id": "eb2f90a4-95ef-42eb-af11-a14e9efeb530",
+      "title": "Business Development Manager - China",
+      "location": "Shanghai \u00b7 Shenzhen",
+      "application_url": "https://jobs.lever.co/dlocal/eb2f90a4-95ef-42eb-af11-a14e9efeb530/apply",
+      "published_at": null
+    }
+  ]
+}

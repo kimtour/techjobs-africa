@@ -1,0 +1,115 @@
+{
+  "source_id": "employer_a16402b9c3caceef",
+  "checked_at": "2026-10-26T12:05:29.701079+00:00",
+  "environment": "local",
+  "status": "SUCCESS",
+  "checks": {
+    "official_link": false,
+    "stable_ids": true,
+    "application_links": true,
+    "locations": true,
+    "dates_reviewed": true,
+    "complete": true
+  },
+  "requests": [
+    {
+      "started_at": "2026-10-26T12:05:29.732414+00:00",
+      "duration_seconds": 1.028,
+      "method": "GET",
+      "host": "www.genesis-analytics.com",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-26T12:05:32.270288+00:00",
+      "duration_seconds": 0.206,
+      "method": "GET",
+      "host": "www.genesis-analytics.com",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-26T12:05:33.976790+00:00",
+      "duration_seconds": 0.28,
+      "method": "GET",
+      "host": "www.workable.com",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-26T12:05:35.766662+00:00",
+      "duration_seconds": 0.126,
+      "method": "GET",
+      "host": "www.workable.com",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-26T12:05:37.393908+00:00",
+      "duration_seconds": 0.098,
+      "method": "GET",
+      "host": "www.workable.com",
+      "http_status": 302,
+      "attempt": 1,
+      "error_type": "HTTPStatusError"
+    },
+    {
+      "started_at": "2026-10-26T12:05:38.995621+00:00",
+      "duration_seconds": 0.292,
+      "method": "GET",
+      "host": "apply.workable.com",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-26T12:05:40.791358+00:00",
+      "duration_seconds": 0.374,
+      "method": "GET",
+      "host": "apply.workable.com",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    }
+  ],
+  "official_url": "https://www.genesis-analytics.com/",
+  "official_robots": {
+    "status": 200,
+    "allowed": true,
+    "url": "https://www.genesis-analytics.com/robots.txt"
+  },
+  "structured_job_count": 0,
+  "feed_urls": [],
+  "detected_boards": [],
+  "endpoint": "https://www.workable.com/api/accounts/genesis-analytics",
+  "board_robots": {
+    "status": 200,
+    "allowed": true,
+    "url": "https://www.workable.com/robots.txt"
+  },
+  "records_found": 2,
+  "technical_jobs": 0,
+  "eligible_jobs": 0,
+  "publication_approved": false,
+  "candidate_metadata": [],
+  "sample": [
+    {
+      "id": "7317D0A8D9",
+      "title": "Global Young Professionals Programme 2027",
+      "location": "London \u00b7 United Kingdom / Johannesburg \u00b7 South Africa / Nairobi \u00b7 Kenya / Cape Town \u00b7 South Africa",
+      "application_url": "https://apply.workable.com/j/7317D0A8D9/apply",
+      "published_at": "2026-09-20T00:00:00+00:00"
+    },
+    {
+      "id": "807E05E212",
+      "title": "Senior Associate - Payments and Digital Financial Services",
+      "location": "London \u00b7 United Kingdom",
+      "application_url": "https://apply.workable.com/j/807E05E212/apply",
+      "published_at": "2026-09-29T00:00:00+00:00"
+    }
+  ]
+}

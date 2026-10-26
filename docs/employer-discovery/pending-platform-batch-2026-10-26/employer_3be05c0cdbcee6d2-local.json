@@ -1,0 +1,112 @@
+{
+  "source_id": "employer_3be05c0cdbcee6d2",
+  "checked_at": "2026-10-26T12:05:13.142322+00:00",
+  "environment": "local",
+  "status": "FAILED",
+  "checks": {
+    "official_link": true
+  },
+  "requests": [
+    {
+      "started_at": "2026-10-26T12:05:13.163651+00:00",
+      "duration_seconds": 1.287,
+      "method": "GET",
+      "host": "azafinance.com",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-26T12:05:15.960424+00:00",
+      "duration_seconds": 0.655,
+      "method": "GET",
+      "host": "azafinance.com",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-26T12:05:18.125864+00:00",
+      "duration_seconds": 0.842,
+      "method": "GET",
+      "host": "azafinance.com",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-26T12:05:20.470707+00:00",
+      "duration_seconds": 0.442,
+      "method": "GET",
+      "host": "azafinance.com",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-26T12:05:22.423169+00:00",
+      "duration_seconds": 0.329,
+      "method": "GET",
+      "host": "www.workable.com",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-26T12:05:24.256279+00:00",
+      "duration_seconds": 0.131,
+      "method": "GET",
+      "host": "www.workable.com",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-26T12:05:25.897323+00:00",
+      "duration_seconds": 0.133,
+      "method": "GET",
+      "host": "www.workable.com",
+      "http_status": 302,
+      "attempt": 1,
+      "error_type": "HTTPStatusError"
+    },
+    {
+      "started_at": "2026-10-26T12:05:27.534709+00:00",
+      "duration_seconds": 0.287,
+      "method": "GET",
+      "host": "apply.workable.com",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-26T12:05:29.327336+00:00",
+      "duration_seconds": 0.372,
+      "method": "GET",
+      "host": "apply.workable.com",
+      "http_status": 404,
+      "attempt": 1,
+      "error_type": "HTTPStatusError"
+    }
+  ],
+  "official_url": "https://azafinance.com/",
+  "official_robots": {
+    "status": 200,
+    "allowed": true,
+    "url": "https://azafinance.com/robots.txt"
+  },
+  "careers_page": "https://azafinance.com/careers/",
+  "structured_job_count": 0,
+  "feed_urls": [],
+  "detected_boards": [
+    "https://apply.workable.com/azafinance/"
+  ],
+  "endpoint": "https://www.workable.com/api/accounts/azafinance",
+  "board_robots": {
+    "status": 200,
+    "allowed": true,
+    "url": "https://www.workable.com/robots.txt"
+  },
+  "error_type": "HTTPStatusError",
+  "http_status": 404
+}

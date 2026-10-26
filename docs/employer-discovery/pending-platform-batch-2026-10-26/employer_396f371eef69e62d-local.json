@@ -1,0 +1,117 @@
+{
+  "source_id": "employer_396f371eef69e62d",
+  "checked_at": "2026-10-26T12:05:00.750911+00:00",
+  "environment": "local",
+  "status": "SUCCESS",
+  "checks": {
+    "official_link": true,
+    "stable_ids": true,
+    "application_links": true,
+    "locations": true,
+    "dates_reviewed": true,
+    "complete": true
+  },
+  "requests": [
+    {
+      "started_at": "2026-10-26T12:05:00.798673+00:00",
+      "duration_seconds": 0.748,
+      "method": "GET",
+      "host": "www.nala.com",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-26T12:05:03.056765+00:00",
+      "duration_seconds": 0.467,
+      "method": "GET",
+      "host": "www.nala.com",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-26T12:05:05.033910+00:00",
+      "duration_seconds": 0.726,
+      "method": "GET",
+      "host": "www.workable.com",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-26T12:05:07.269425+00:00",
+      "duration_seconds": 0.106,
+      "method": "GET",
+      "host": "www.workable.com",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-26T12:05:08.885322+00:00",
+      "duration_seconds": 0.107,
+      "method": "GET",
+      "host": "www.workable.com",
+      "http_status": 302,
+      "attempt": 1,
+      "error_type": "HTTPStatusError"
+    },
+    {
+      "started_at": "2026-10-26T12:05:10.502073+00:00",
+      "duration_seconds": 0.554,
+      "method": "GET",
+      "host": "apply.workable.com",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-26T12:05:12.559000+00:00",
+      "duration_seconds": 0.417,
+      "method": "GET",
+      "host": "apply.workable.com",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    }
+  ],
+  "official_url": "https://www.nala.com/",
+  "official_robots": {
+    "status": 200,
+    "allowed": true,
+    "url": "https://www.nala.com/robots.txt"
+  },
+  "structured_job_count": 0,
+  "feed_urls": [],
+  "detected_boards": [
+    "https://apply.workable.com/nalamoney/"
+  ],
+  "endpoint": "https://www.workable.com/api/accounts/nalamoney",
+  "board_robots": {
+    "status": 200,
+    "allowed": true,
+    "url": "https://www.workable.com/robots.txt"
+  },
+  "records_found": 2,
+  "technical_jobs": 2,
+  "eligible_jobs": 0,
+  "publication_approved": false,
+  "candidate_metadata": [],
+  "sample": [
+    {
+      "id": "EB27694F12",
+      "title": "Senior Analytics Engineer",
+      "location": "London \u00b7 United Kingdom",
+      "application_url": "https://apply.workable.com/j/EB27694F12/apply",
+      "published_at": "2026-10-20T00:00:00+00:00"
+    },
+    {
+      "id": "5934106C04",
+      "title": "Senior Backend Engineer, Squad T-Rex",
+      "location": "London \u00b7 United Kingdom",
+      "application_url": "https://apply.workable.com/j/5934106C04/apply",
+      "published_at": "2026-10-06T00:00:00+00:00"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+[
+  {
+    "url": "https://salixdata.com/",
+    "robots": {
+      "status": 200,
+      "allowed": true,
+      "url": "https://salixdata.com/robots.txt"
+    },
+    "status": 200,
+    "final_url": "https://salixdata.com/",
+    "links": [
+      "https://salixdata.com/privacy-policy",
+      "https://salixdata.com/terms-and-conditions"
+    ]
+  },
+  {
+    "url": "https://amalitech.org/careersgh/",
+    "error": "HTTPStatusError:Client error '405 Method Not Allowed' for url 'https://www.amalitech.com/robots.txt'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HT"
+  },
+  {
+    "url": "https://amalitech.org/careersrw/",
+    "error": "HTTPStatusError:Client error '405 Method Not Allowed' for url 'https://www.amalitech.com/robots.txt'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HT"
+  }
+]
