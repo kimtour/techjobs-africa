@@ -1,0 +1,21 @@
+{
+  "checked_at": "2026-10-26T09:21:30.941294+00:00",
+  "official_sources": {
+    "im_career_page": "https://www.imbankgroup.com/ke/career-page/",
+    "im_open_positions_link": "https://imbank.myadrenalin.com/CANDMICROSITE/",
+    "moriental_careers": "https://www.moriental.co.ke/careers/",
+    "moriental_public_rest_index": "https://www.moriental.co.ke/wp-json/",
+    "moriental_privacy": "https://www.moriental.co.ke/privacy/",
+    "sumac_official_vacancies": "https://sumacmicrofinancebank.co.ke/vacancies/",
+    "salaam_regulator_directory": "https://www.centralbank.go.ke/wp-content/uploads/2025/05/Directory-of-Licenced-Microfinance-Banks-May-2025.pdf",
+    "prime_careers": "https://www.primebank.co.ke/careers/"
+  },
+  "observations": {
+    "im": "Official Open Positions link confirms existing Adrenalin tenant. Corporate access problems are not evidence that the tenant URL is wrong. Collector/API remains unverified.",
+    "moriental": "Four public career records6725\u20136728 match four scoped HTML cards with explicit Nairobi,Kenya and fulltime metadata. WordPress record6728 is the developer role; public individual page and HR application email were verified. Dates are not displayed by the collected job-card template, so publish first-found separately rather than invent a posting/closing date. Public API confirms CMS publication6October2026, kept separately in discovery evidence.",
+    "sumac": "Correct official careers portal is employer-owned /vacancies/. Supplied Greenhouse board was not officially linked. Inspected post6957 covers two relationship-officer roles dated10September2025; no eligible technical job verified.",
+    "salaam": "Regulator still lists supplied .co.ke employer domain. No replacement recruitment portal was established; SalaamPay banking app is not a job board.",
+    "prime": "Official indexed careers page says no vacancies, but robots restriction remains; do not use search retrieval as a production collection bypass."
+  },
+  "restrictions": "No proxy, altered user-agent or blocked-endpoint workaround introduced. Collection review covers bounded public vacancy facts and original employer application entry points; it does not grant a reuse licence."
+}

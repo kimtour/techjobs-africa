@@ -11,7 +11,7 @@ from datetime import UTC, datetime, timedelta
 from html import unescape
 from html.parser import HTMLParser
 from io import BytesIO
-from urllib.parse import parse_qs, urljoin, urlsplit
+from urllib.parse import parse_qs, quote, urljoin, urlsplit
 from uuid import uuid4
 from xml.etree import ElementTree as ET
 from zoneinfo import ZoneInfo
@@ -213,6 +213,33 @@ class StructuredEmployerAdapter:
             deadline=deadline,
             employment_type=item.get("employmentType"),
         )
+
+    def inline_job(self, record):
+        """Read a reviewed individual vacancy card with an explicit provider ID."""
+        fields = {}
+        for name, pattern in self.settings.get("fields", {}).items():
+            match = re.search(pattern, record, re.I | re.S)
+            if match:
+                fields[name] = unescape(re.sub(r"<[^>]+>", " ", match.group(1))).strip()
+        identifier = fields.get("identifier")
+        template = self.settings.get("record_url_template")
+        if not identifier or not template or "{identifier}" not in template:
+            raise ValueError("Inline vacancy requires a provider ID and reviewed original URL")
+        url = template.format(identifier=quote(identifier, safe=""))
+        self.target(url)
+        job = self._job(
+            identifier,
+            fields.get("title"),
+            fields.get("location"),
+            url,
+            description=fields.get("description"),
+            published=fields.get("published"),
+            deadline=fields.get("deadline"),
+            employment_type=fields.get("employment_type"),
+        )
+        if job and self.settings.get("shared_apply_url"):
+            return job.model_copy(update={"shared_apply_url": True})
+        return job
 
     def detail(self, url):
         key = self.identity(url)
@@ -444,6 +471,15 @@ class StructuredEmployerAdapter:
             else:
                 parser = Page()
                 parser.feed(response.text)
+                inline_records = 0
+                if self.settings.get("listing_record_pattern"):
+                    for match in re.finditer(
+                        self.settings["listing_record_pattern"], response.text, re.I | re.S
+                    ):
+                        inline_records += 1
+                        job = self.inline_job(match.group("record"))
+                        if job:
+                            jobs.append(job)
                 if len(seen_pages) == 1 and self.settings.get("declared_count_pattern"):
                     text = unescape(re.sub(r"<[^>]+>", " ", response.text))
                     matches = re.findall(self.settings["declared_count_pattern"], text, re.I)
@@ -484,6 +520,7 @@ class StructuredEmployerAdapter:
                 if (
                     not page_postings
                     and not links
+                    and not inline_records
                     and not re.search(
                         self.settings.get("empty_marker", r"(?!)"), response.text, re.I
                     )

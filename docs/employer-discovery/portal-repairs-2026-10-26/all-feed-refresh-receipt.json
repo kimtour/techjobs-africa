@@ -1,0 +1,17 @@
+{
+  "checked_at": "2026-10-26T09:25:04.306592+00:00",
+  "run_url": "https://github.com/kimtour/techjobs-africa/actions/runs/40295869509",
+  "accepted_private_commit": "655cf8a",
+  "sources_selected": 36,
+  "sources_fetched_successfully": 34,
+  "skipped": {
+    "jsearch": "monthly_request_budget",
+    "expertini": "access_blocked_pending_authorized_feed"
+  },
+  "new_jobs": {
+    "myjobmag": 8,
+    "fuzu": 1
+  },
+  "all_jobs": 2791,
+  "company_career_jobs": 32
+}

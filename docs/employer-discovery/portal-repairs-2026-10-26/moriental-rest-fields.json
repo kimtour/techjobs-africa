@@ -1,0 +1,91 @@
+{
+  "checked_at": "2026-10-26T09:13:07.773823+00:00",
+  "api_url": "https://www.moriental.co.ke/wp-json/wp/v2/career?per_page=100",
+  "total": "4",
+  "pages": "1",
+  "records": [
+    {
+      "id": 6728,
+      "date": "2026-10-06T12:15:45",
+      "date_gmt": "2026-10-06T12:15:45",
+      "modified": "2026-10-06T12:15:45",
+      "slug": "digital-solutions-and-full-stack-developer",
+      "status": "publish",
+      "type": "career",
+      "link": "https://www.moriental.co.ke/career/digital-solutions-and-full-stack-developer/",
+      "title": {
+        "rendered": "Digital solutions and full stack developer"
+      },
+      "acf_keys": [],
+      "meta_keys": [],
+      "content_location_clues": []
+    },
+    {
+      "id": 6727,
+      "date": "2026-10-06T12:14:35",
+      "date_gmt": "2026-10-06T12:14:35",
+      "modified": "2026-10-06T12:14:35",
+      "slug": "compliance-officer",
+      "status": "publish",
+      "type": "career",
+      "link": "https://www.moriental.co.ke/career/compliance-officer/",
+      "title": {
+        "rendered": "COMPLIANCE OFFICER:"
+      },
+      "acf_keys": [],
+      "meta_keys": [],
+      "content_location_clues": []
+    },
+    {
+      "id": 6726,
+      "date": "2026-10-06T12:13:45",
+      "date_gmt": "2026-10-06T12:13:45",
+      "modified": "2026-10-06T12:13:45",
+      "slug": "receptionist",
+      "status": "publish",
+      "type": "career",
+      "link": "https://www.moriental.co.ke/career/receptionist/",
+      "title": {
+        "rendered": "RECEPTIONIST"
+      },
+      "acf_keys": [],
+      "meta_keys": [],
+      "content_location_clues": []
+    },
+    {
+      "id": 6725,
+      "date": "2026-10-06T12:12:41",
+      "date_gmt": "2026-10-06T12:12:41",
+      "modified": "2026-10-06T12:12:41",
+      "slug": "sameer-business-park-relationship-manager-relationship-officer",
+      "status": "publish",
+      "type": "career",
+      "link": "https://www.moriental.co.ke/career/sameer-business-park-relationship-manager-relationship-officer/",
+      "title": {
+        "rendered": "SAMEER BUSINESS PARK: RELATIONSHIP MANAGER &#038; RELATIONSHIP OFFICER"
+      },
+      "acf_keys": [],
+      "meta_keys": [],
+      "content_location_clues": []
+    }
+  ],
+  "sample_detail": {
+    "url": "https://www.moriental.co.ke/career/digital-solutions-and-full-stack-developer/",
+    "status": 200,
+    "headings": [
+      "About",
+      "Digital solutions and full stack developer",
+      "\u00a9 Copyright 2026 M-Oriental Bank",
+      "Regulated by The Central Bank of Kenya"
+    ],
+    "postings": [],
+    "location_clues": [
+      "NAIROBI, KENYA"
+    ]
+  },
+  "policy": {
+    "url": "https://www.moriental.co.ke/privacy/",
+    "status": "NO_RESTRICTION_FOUND_IN_REVIEWED_TEXT",
+    "clauses": []
+  }
+}

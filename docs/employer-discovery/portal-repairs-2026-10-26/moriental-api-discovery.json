@@ -1,0 +1,170 @@
+{
+  "checked_at": "2026-10-26T09:10:56.014823+00:00",
+  "url": "https://www.moriental.co.ke/careers/",
+  "api_index": "https://www.moriental.co.ke/wp-json/",
+  "job_cards": [
+    {
+      "title": "digital solutions and full stack developer",
+      "heading_tags": [
+        "<button\n                                    type=\"button\"\n                                    class=\"career-job-header\"\n                                    aria-expanded=\"true\"\n                                    aria-controls=\"career-job-6728\"\n                                >",
+        "<span class=\"career-job-icon\">",
+        "<span class=\"career-job-title-wrap\">",
+        "<span class=\"career-job-title\">",
+        "<span class=\"career-job-meta\">",
+        "<span class=\"career-job-meta-item\">",
+        "<span class=\"career-job-meta-item\">",
+        "<span class=\"career-job-meta-item\">",
+        "<span class=\"career-job-toggle\">",
+        "<button\n                                            type=\"button\"\n                                            class=\"apply-position-btn\"\n                                            data-position=\"Digital solutions and full stack developer\"\n                                        >",
+        "<span>"
+      ],
+      "location_mentions": [
+        "Nairobi, Kenya"
+      ],
+      "role_links": []
+    },
+    {
+      "title": "compliance officer:",
+      "heading_tags": [
+        "<button\n                                    type=\"button\"\n                                    class=\"career-job-header\"\n                                    aria-expanded=\"false\"\n                                    aria-controls=\"career-job-6727\"\n                                >",
+        "<span class=\"career-job-icon\">",
+        "<span class=\"career-job-title-wrap\">",
+        "<span class=\"career-job-title\">",
+        "<span class=\"career-job-meta\">",
+        "<span class=\"career-job-meta-item\">",
+        "<span class=\"career-job-meta-item\">",
+        "<span class=\"career-job-meta-item\">",
+        "<span class=\"career-job-toggle\">",
+        "<button\n                                            type=\"button\"\n                                            class=\"apply-position-btn\"\n                                            data-position=\"COMPLIANCE OFFICER:\"\n                                        >",
+        "<span>"
+      ],
+      "location_mentions": [
+        "Nairobi, Kenya"
+      ],
+      "role_links": []
+    },
+    {
+      "title": "receptionist",
+      "heading_tags": [
+        "<button\n                                    type=\"button\"\n                                    class=\"career-job-header\"\n                                    aria-expanded=\"false\"\n                                    aria-controls=\"career-job-6726\"\n                                >",
+        "<span class=\"career-job-icon\">",
+        "<span class=\"career-job-title-wrap\">",
+        "<span class=\"career-job-title\">",
+        "<span class=\"career-job-meta\">",
+        "<span class=\"career-job-meta-item\">",
+        "<span class=\"career-job-meta-item\">",
+        "<span class=\"career-job-meta-item\">",
+        "<span class=\"career-job-toggle\">",
+        "<button\n                                            type=\"button\"\n                                            class=\"apply-position-btn\"\n                                            data-position=\"RECEPTIONIST\"\n                                        >",
+        "<span>"
+      ],
+      "location_mentions": [
+        "Nairobi, Kenya"
+      ],
+      "role_links": []
+    },
+    {
+      "title": "sameer business park: relationship manager &#038; relationship officer",
+      "heading_tags": [
+        "<button\n                                    type=\"button\"\n                                    class=\"career-job-header\"\n                                    aria-expanded=\"false\"\n                                    aria-controls=\"career-job-6725\"\n                                >",
+        "<span class=\"career-job-icon\">",
+        "<span class=\"career-job-title-wrap\">",
+        "<span class=\"career-job-title\">",
+        "<span class=\"career-job-meta\">",
+        "<span class=\"career-job-meta-item\">",
+        "<span class=\"career-job-meta-item\">",
+        "<span class=\"career-job-meta-item\">",
+        "<span class=\"career-job-toggle\">",
+        "<button\n                                            type=\"button\"\n                                            class=\"apply-position-btn\"\n                                            data-position=\"SAMEER BUSINESS PARK: RELATIONSHIP MANAGER &#038; RELATIONSHIP OFFICER\"\n                                        >",
+        "<span>"
+      ],
+      "location_mentions": [
+        "Nairobi, Kenya"
+      ],
+      "role_links": []
+    }
+  ],
+  "form_option_values": [
+    "",
+    "COMPLIANCE OFFICER:",
+    "Digital solutions and full stack developer",
+    "RECEPTIONIST",
+    "SAMEER BUSINESS PARK: RELATIONSHIP MANAGER &#038; RELATIONSHIP OFFICER"
+  ],
+  "job_routes": [
+    "/wp/v2/career",
+    "/wp/v2/career/(?P<id>[\\d]+)",
+    "/wp/v2/career/(?P<id>[\\d]+)/autosaves",
+    "/wp/v2/career/(?P<parent>[\\d]+)/autosaves/(?P<id>[\\d]+)"
+  ],
+  "types_route": [
+    "/wp/v2/types"
+  ],
+  "public_post_types": [
+    {
+      "name": "Posts",
+      "slug": "post",
+      "rest_base": "posts"
+    },
+    {
+      "name": "Pages",
+      "slug": "page",
+      "rest_base": "pages"
+    },
+    {
+      "name": "Media",
+      "slug": "attachment",
+      "rest_base": "media"
+    },
+    {
+      "name": "Navigation Menu Items",
+      "slug": "nav_menu_item",
+      "rest_base": "menu-items"
+    },
+    {
+      "name": "Patterns",
+      "slug": "wp_block",
+      "rest_base": "blocks"
+    },
+    {
+      "name": "Templates",
+      "slug": "wp_template",
+      "rest_base": "templates"
+    },
+    {
+      "name": "Template Parts",
+      "slug": "wp_template_part",
+      "rest_base": "template-parts"
+    },
+    {
+      "name": "Global Styles",
+      "slug": "wp_global_styles",
+      "rest_base": "global-styles"
+    },
+    {
+      "name": "Navigation Menus",
+      "slug": "wp_navigation",
+      "rest_base": "navigation"
+    },
+    {
+      "name": "Font Families",
+      "slug": "wp_font_family",
+      "rest_base": "font-families"
+    },
+    {
+      "name": "Font Faces",
+      "slug": "wp_font_face",
+      "rest_base": "font-families/(?P<font_family_id>[\\d]+)/font-faces"
+    },
+    {
+      "name": "Store Locator",
+      "slug": "wpsl_stores",
+      "rest_base": "wpsl_stores"
+    },
+    {
+      "name": "career",
+      "slug": "career",
+      "rest_base": "career"
+    }
+  ]
+}

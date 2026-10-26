@@ -3310,7 +3310,10 @@ sources:
     retry_delays_seconds:
     - 5
     - 20
-  verification: {}
+  verification:
+    official_link: true
+    evidence_paths:
+    - docs/employer-discovery/portal-repairs-2026-10-26/official-source-review.json
   suggestions:
     platform: custom
     needs_location_filter: true
@@ -3319,14 +3322,16 @@ sources:
     checked_at: '2026-10-26T07:27:44.916434+00:00'
     result: REVIEWED_PAGE
     evidence_path: docs/employer-discovery/thirty-bank-review-2026-10-26/employer_2e748fa1969076f6.json
-  review_reason: Adrenalin public application shell reachable; vacancy inventory and pagination
-    not established.
+  review_reason: Official career-page Open Positions link confirms Adrenalin tenant. Correct
+    portal/linkage now verified through official public source; repeatable full collection/API
+    fields, policy and hosted trial still pending.
   reviewed_source_checks:
     observed_at: '2026-10-26T07:49:54.871130+00:00'
     access: PORTAL_ACCESSIBLE_CORPORATE_CHECK_BLOCKED
     policy: OFFICIAL_CORPORATE_CHECK_BLOCKED
     extraction: UNRESOLVED
     evidence_path: docs/employer-discovery/bank-deep-review-2026-10-26/employer_2e748fa1969076f6.json
+  official_careers_url: https://www.imbankgroup.com/ke/career-page/
 - id: employer_2ea1d3f3a074bddb
   url: https://paystack.com/careers
   import_urls:
@@ -6461,10 +6466,10 @@ sources:
   review_reason: Website terms restrict automated use and republication; collection
     permission required.
 - id: employer_5904ae90e271210e
-  url: https://job-boards.eu.greenhouse.io/sumac
+  url: https://sumacmicrofinancebank.co.ke/vacancies/
   import_urls:
   - https://job-boards.eu.greenhouse.io/sumac
-  platform: greenhouse
+  platform: custom
   status: pending
   employer_ids:
   - emp_18224a4eba689b98
@@ -6481,19 +6486,22 @@ sources:
     retry_delays_seconds:
     - 5
     - 20
-  verification: {}
+  verification:
+    official_link: true
+    evidence_paths:
+    - docs/employer-discovery/portal-repairs-2026-10-26/official-source-review.json
+    - docs/employer-discovery/portal-repairs-2026-10-26/sumac.json
   suggestions:
     platform: greenhouse
-  board: sumac
-  official_careers_url: https://www.sumacmicrofinancebank.co.ke/
+  official_careers_url: https://sumacmicrofinancebank.co.ke/
   pilot_rank: 3
   requested_review:
     checked_at: '2026-10-26T07:27:45.625182+00:00'
     result: REVIEWED_PAGE
     evidence_path: docs/employer-discovery/thirty-bank-review-2026-10-26/employer_5904ae90e271210e.json
-  review_reason: Supplied Greenhouse page is empty but official employer-to-board linkage
-    not verified. Official corporate vacancies page instead links a Relationship Officer post.
-    Do not activate or infer zero official vacancies from empty unlinked ATS.
+  review_reason: Corrected unlinked Greenhouse URL to official employer-owned /vacancies/
+    portal. Inspected grouped relationship-officer post6957 dated10September2025, no technical
+    match verified; full individual-vacancy collector remains unapproved.
   reviewed_source_checks:
     observed_at: '2026-10-26T07:49:53.012517+00:00'
     access: PASS
@@ -12836,20 +12844,40 @@ sources:
   status: pending
   employer_ids:
   - emp_a242a67e4dc7b1ee
-  access_method: null
+  access_method: html
   country_filters: []
   refresh_hours: 24
   discovery_refresh_hours: 168
   supports_absence_expiry: false
   crawl:
-    max_pages: 5
-    max_requests_per_run: 12
+    max_pages: 1
+    max_requests_per_run: 8
     request_delay_ms: 1500
     timeout_seconds: 20
-    retry_delays_seconds:
-    - 5
-    - 20
-  verification: {}
+    retry_delays_seconds: []
+  verification:
+    official_link: true
+    collection_review: true
+    identity_basis: Numeric provider career post IDs in aria-controls, independently matched
+      to published WordPress career records; never derived from titles. Functional WordPress
+      post query redirects to the original individual job permalink.
+    collection_basis: Official employer careers page lists4scoped job cards with explicit
+      Nairobi,Kenya and FullTime fields. Public linked REST schema/records confirm stable
+      provider IDs and individual published pages. Observed privacy notice reviewed, no automated
+      vacancy-metadata restriction identified; no express reuse licence claimed. Fetch public
+      vacancy facts only; no descriptions or candidate forms retained, no applications submitted.
+      Undated job-card publication/deadline fields remain unknown; first-found is separate.
+    evidence_paths:
+    - docs/employer-discovery/portal-repairs-2026-10-26/official-source-review.json
+    - docs/employer-discovery/portal-repairs-2026-10-26/moriental-rest-fields.json
+    - docs/employer-discovery/portal-repairs-2026-10-26/moriental-api-discovery.json
+    - docs/employer-discovery/portal-repairs-2026-10-26/moriental-local-m0.json
+    application_links: true
+    complete: true
+    dates_reviewed: true
+    locations: true
+    stable_ids: true
+    local_access: true
   suggestions:
     platform: custom
     needs_location_filter: true
@@ -12858,15 +12886,28 @@ sources:
     checked_at: '2026-10-26T08:08:03+00:00'
     result: REVIEWED_PAGE
     evidence_path: docs/employer-discovery/thirty-bank-review-2026-10-26/review.md
-  review_reason: Current official careers page lists a Digital Solutions & Full Stack Developer
-    role, but no location, publication/deadline date, or role-specific URL; application is
-    by email. Collection permission is unverified, so source stays pending.
+  review_reason: Repaired previously missing explicit role location, stable provider identity
+    and individual job URL. Four inline records fully scoped; local/hosted checks and isolated
+    trial remain required before activation.
   reviewed_source_checks:
     observed_at: '2026-10-26T07:49:29.518535+00:00'
     access: PASS
     policy: NO_RESTRICTION_FOUND_IN_REVIEWED_PAGES
     extraction: NO_VERIFIED_INVENTORY
     evidence_path: docs/employer-discovery/bank-deep-review-2026-10-26/employer_bdee4912ef2d4465.json
+  official_careers_url: https://www.moriental.co.ke/
+  posting_company: M-Oriental Bank
+  collection:
+    listing_url: https://www.moriental.co.ke/careers/
+    listing_record_pattern: <article\b[^>]*\bclass="[^\"]*\bcareer-job-card\b[^\"]*"[^>]*>(?P<record>.*?)</article>
+    record_url_template: https://www.moriental.co.ke/?post_type=career&p={identifier}
+    complete_listing_verified: true
+    fields:
+      identifier: aria-controls="career-job-(\d+)"
+      title: <span\s+class="career-job-title">\s*([^<]+)\s*</span>
+      location: <span\s+class="career-job-meta-item">(?:\s|<(?!/?span\b)[^>]+>)*([^<]+,[^<]+)\s*</span>
+      employment_type: <span\s+class="career-job-meta-item">(?:\s|<(?!/?span\b)[^>]+>)*(Full
+        Time|Part Time|Contract|Internship)\s*</span>
 - id: employer_be12160549779fd4
   url: https://recruitment.dha.go.ke/
   import_urls:

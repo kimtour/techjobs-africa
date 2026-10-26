@@ -908,3 +908,48 @@ def test_batch_refresh_fetches_multiple_approved_boards_but_keeps_backoff(tmp_pa
         pipeline.run_ingestion(
             tmp_path, source_ids=["employer_not_approved"], refresh_employers=True
         )
+
+
+def test_inline_vacancies_keep_provider_ids_with_shared_application_page():
+    config = source(
+        listing_record_pattern=r"<article>(?P<record>.*?)</article>",
+        record_url_template="https://example.test/careers#role-{identifier}",
+        shared_apply_url=True,
+        fields={
+            "identifier": r'data-id="(\d+)"',
+            "title": r"<h2>([^<]+)</h2>",
+            "location": r"<aside>([^<]+)</aside>",
+            "description": r"<p>(.*?)</p>",
+        },
+    )
+    records = [
+        '<article data-id="41"><h2>Software Engineer</h2><aside>Nairobi, Kenya</aside>'
+        "<p>DO NOT PERSIST INLINE DESCRIPTION</p></article>",
+        '<article data-id="42"><h2>QA Engineer</h2><aside>Nairobi, Kenya</aside></article>',
+    ]
+    # The record scope includes its provider-ID attribute, not a positional index.
+    config["collection"]["listing_record_pattern"] = r"(?P<record><article\b.*?</article>)"
+
+    def respond(request):
+        return httpx.Response(
+            200,
+            text=(
+                "User-agent: *\nAllow: /" if request.url.path == "/robots.txt" else "".join(records)
+            ),
+        )
+
+    collector = adapter(config, respond)
+    jobs = collector.fetch()
+    assert collector.crawl_complete
+    assert [j.external_id for j in jobs] == ["41", "42"]
+    assert len(deduplicate_exact([canonicalize_raw_job(j) for j in jobs])) == 2
+    assert "DO NOT PERSIST" not in json.dumps([j.model_dump(mode="json") for j in jobs])
+    records.reverse()
+    records[1] = records[1].replace("Software Engineer", "Senior Software Engineer")
+    changed = adapter(config, respond).fetch()
+    assert {j.title: j.external_id for j in changed}["Senior Software Engineer"] == "41"
+    records[0] = records[0].replace('data-id="42"', "")
+    broken = adapter(config, respond)
+    with pytest.raises(ValueError, match="provider ID"):
+        broken.fetch()
+    assert not broken.crawl_complete
