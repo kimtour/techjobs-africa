@@ -37,6 +37,12 @@ All30 actual URLs were already in the source registry. No duplicate employer/sou
 
 Initial page checks: {"REVIEWED_PAGE": 26, "FAILED": 1, "ALREADY_ACTIVE": 1, "PERMISSION_REVIEW": 1, "BLOCKED": 1}. Reachability does not prove collection.
 
-Verified additional-company progress remains10 of100:22 active registry collectors covering24 employer records, against14 baseline employer records. No new jobs or functioning collectors are claimed from this30-URL review. NCBA employer-owned detail extraction is the next priority; SBM requires permission.
+Progress at initial review was10 additional linked employer records; the deployment below updates that snapshot. NCBA subsequently completed all checks and was activated; see delivery receipt below. SBM requires permission.
 
 NCBA now has an inactive, locally verified HTML collector:4 roles,1 eligible technical role (Assistant Manager, ICT Risk; Tanzania; closes31October2026). Official employer pages provide the vacancy data and application entry points; blocked SuccessFactors collection is excluded. Stable provider jobIds plus a seeded surrogate UUID are used. Hosted checks and isolated trial remain required before production.
+
+## Verified delivery
+
+NCBA is active after hosted M0 run40286880400, isolated trial40286993849 and production40287236820. One new validated vacancy is published: Assistant Manager, ICT Risk; Tanzania; closes31October2026.4roles fetched completely,3nontechnical excluded. Accepted private state05adec9, Company Career Page31, All Jobs2781. Local-build/live HTML identity and original-link checks passed;301Python tests and lint passed. No interactive browser verification is claimed.
+
+Current configuration:23 functioning registry collectors linked to27 separate employer records;13 additional linked records relative to baseline14. These are registry coverage counts; they do not mean30 new collectors or100 completed companies. KCB was already active; the other28 supplied sources remain pending, blocked, failed or manual review.

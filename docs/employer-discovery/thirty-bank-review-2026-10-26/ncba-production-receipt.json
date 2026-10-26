@@ -1,0 +1,21 @@
+{
+  "checked_at": "2026-10-26T07:44:34.521266+00:00",
+  "source_id": "employer_b2e2ecc189a1df66",
+  "production_run": "https://github.com/kimtour/techjobs-africa/actions/runs/40287236820",
+  "code_commit": "37d3e2d86ad6a3588db7aa7fc6f016735a9b50b4",
+  "private_commit": "05adec9",
+  "production_outcome": "SUCCESS",
+  "complete": true,
+  "records_found": 4,
+  "new_jobs": 1,
+  "job_ids": [
+    "employer_b2e2ecc189a1df66:4069"
+  ],
+  "company_career_jobs": 31,
+  "all_jobs": 2781,
+  "python_tests_passed": 301,
+  "lint_passed": true,
+  "local_build_and_live_html_acceptance": true,
+  "interactive_browser_check_claimed": false,
+  "absence_expiry_enabled": false
+}
