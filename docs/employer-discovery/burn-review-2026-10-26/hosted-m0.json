@@ -1,0 +1,343 @@
+{
+  "board_robots": {
+    "allowed": true,
+    "status": 200,
+    "url": "https://burnmanufacturing.applytojob.com/robots.txt"
+  },
+  "candidate_metadata": [
+    {
+      "application_url": "https://burnmanufacturing.applytojob.com/apply/Qc0FDbVNVK/Information-Security-Lead",
+      "country": "Kenya",
+      "employer": "BURN Manufacturing",
+      "job_id": "employer_8aa05ad779651797:Qc0FDbVNVK",
+      "title": "Information Security Lead"
+    }
+  ],
+  "careers_page": "https://www.burnstoves.com/_next/static/chunks/app/careers/jobs/page-7206616fdfd572c6.js",
+  "checked_at": "2026-10-26T11:39:11.093424+00:00",
+  "checks": {
+    "application_links": true,
+    "complete": true,
+    "dates_reviewed": true,
+    "locations": true,
+    "official_link": true,
+    "stable_ids": true
+  },
+  "detected_boards": [],
+  "eligible_jobs": 1,
+  "endpoint": "https://burnmanufacturing.applytojob.com/apply/",
+  "environment": "github",
+  "feed_urls": [],
+  "official_robots": {
+    "allowed": true,
+    "status": 200,
+    "url": "https://www.burnstoves.com/robots.txt"
+  },
+  "official_url": "https://www.burnstoves.com/careers/jobs",
+  "publication_approved": false,
+  "records_found": 22,
+  "requests": [
+    {
+      "attempt": 1,
+      "duration_seconds": 0.436,
+      "error_type": null,
+      "host": "www.burnstoves.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-26T11:39:11.128018+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 1.881,
+      "error_type": null,
+      "host": "www.burnstoves.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-26T11:39:13.064490+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.054,
+      "error_type": null,
+      "host": "www.burnstoves.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-26T11:39:16.445486+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.236,
+      "error_type": null,
+      "host": "www.burnstoves.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-26T11:39:17.999283+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.473,
+      "error_type": null,
+      "host": "burnmanufacturing.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-26T11:39:19.735381+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.094,
+      "error_type": null,
+      "host": "burnmanufacturing.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-26T11:39:21.708150+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.191,
+      "error_type": null,
+      "host": "burnmanufacturing.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-26T11:39:23.301836+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.791,
+      "error_type": null,
+      "host": "burnmanufacturing.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-26T11:39:24.992949+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.216,
+      "error_type": null,
+      "host": "burnmanufacturing.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-26T11:39:27.284058+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.501,
+      "error_type": null,
+      "host": "burnmanufacturing.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-26T11:39:29.000492+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.5,
+      "error_type": null,
+      "host": "burnmanufacturing.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-26T11:39:31.002085+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.739,
+      "error_type": null,
+      "host": "burnmanufacturing.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-26T11:39:33.002389+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.266,
+      "error_type": null,
+      "host": "burnmanufacturing.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-26T11:39:35.241845+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.493,
+      "error_type": null,
+      "host": "burnmanufacturing.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-26T11:39:37.008020+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.506,
+      "error_type": null,
+      "host": "burnmanufacturing.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-26T11:39:39.000682+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.5,
+      "error_type": null,
+      "host": "burnmanufacturing.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-26T11:39:41.006538+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.498,
+      "error_type": null,
+      "host": "burnmanufacturing.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-26T11:39:43.006979+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.438,
+      "error_type": null,
+      "host": "burnmanufacturing.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-26T11:39:45.005221+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.504,
+      "error_type": null,
+      "host": "burnmanufacturing.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-26T11:39:46.943184+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.497,
+      "error_type": null,
+      "host": "burnmanufacturing.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-26T11:39:48.947074+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.5,
+      "error_type": null,
+      "host": "burnmanufacturing.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-26T11:39:50.943994+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.563,
+      "error_type": null,
+      "host": "burnmanufacturing.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-26T11:39:52.944212+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.435,
+      "error_type": null,
+      "host": "burnmanufacturing.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-26T11:39:55.007742+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.507,
+      "error_type": null,
+      "host": "burnmanufacturing.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-26T11:39:56.942975+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.495,
+      "error_type": null,
+      "host": "burnmanufacturing.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-26T11:39:58.949981+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.503,
+      "error_type": null,
+      "host": "burnmanufacturing.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-26T11:40:00.944950+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.502,
+      "error_type": null,
+      "host": "burnmanufacturing.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-26T11:40:02.947885+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.497,
+      "error_type": null,
+      "host": "burnmanufacturing.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-26T11:40:04.949794+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.506,
+      "error_type": null,
+      "host": "burnmanufacturing.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-26T11:40:06.946896+00:00"
+    }
+  ],
+  "sample": [
+    {
+      "application_url": "https://burnmanufacturing.applytojob.com/apply/0EYzCamZhy/Senior-Quality-Engineer-Biomass",
+      "id": "0EYzCamZhy",
+      "location": "Ruiru \u00b7 Kiambu",
+      "published_at": "2026-10-13T00:00:00+00:00",
+      "title": "Senior Quality Engineer - Biomass"
+    },
+    {
+      "application_url": "https://burnmanufacturing.applytojob.com/apply/1qDofFosNc/Quality-Assurance-Technician",
+      "id": "1qDofFosNc",
+      "location": "Ruiru \u00b7 Kiambu",
+      "published_at": "2026-10-13T00:00:00+00:00",
+      "title": "Quality Assurance Technician"
+    },
+    {
+      "application_url": "https://burnmanufacturing.applytojob.com/apply/DOgrNkNLib/Agent-Care-Officer-Zambia",
+      "id": "DOgrNkNLib",
+      "location": "Lusaka \u00b7 Lusaka",
+      "published_at": "2026-10-15T00:00:00+00:00",
+      "title": "Agent Care Officer - Zambia"
+    },
+    {
+      "application_url": "https://burnmanufacturing.applytojob.com/apply/ETN9aADPVr/Head-Of-Market-Research",
+      "id": "ETN9aADPVr",
+      "location": "Nairobi, Nairobi, Kenya",
+      "published_at": null,
+      "title": "Head of Market Research"
+    },
+    {
+      "application_url": "https://burnmanufacturing.applytojob.com/apply/FDfjfPC0eW/Senior-Project-Engineer",
+      "id": "FDfjfPC0eW",
+      "location": "Ruiru \u00b7 Kiambu",
+      "published_at": "2026-10-13T00:00:00+00:00",
+      "title": "Senior Project Engineer"
+    }
+  ],
+  "source_id": "employer_8aa05ad779651797",
+  "status": "SUCCESS",
+  "structured_job_count": 0,
+  "technical_jobs": 2
+}

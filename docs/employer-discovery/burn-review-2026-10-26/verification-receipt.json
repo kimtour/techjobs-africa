@@ -1,0 +1,15 @@
+{
+  "workflow_url": "https://github.com/kimtour/techjobs-africa/actions/runs/40316620890",
+  "code_commit": "07f03dc80f1f171d01f49faed13706db8a4cc71f",
+  "hosted_status": "SUCCESS",
+  "raw_records": 22,
+  "eligible_jobs": 1,
+  "eligible_external_id": "Qc0FDbVNVK",
+  "ci_run": "https://github.com/kimtour/techjobs-africa/actions/runs/40316600046",
+  "ci_conclusion": "success",
+  "collection_review": false,
+  "trial_run": null,
+  "production_run": null,
+  "companies_added": 0,
+  "jobs_published": 0
+}

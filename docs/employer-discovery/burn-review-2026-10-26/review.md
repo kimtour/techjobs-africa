@@ -7,3 +7,5 @@ The linked corporate privacy URL returns HTTP200 with a resource-not-found page.
 Tropical Heat's corporate careers page and Spinners' corporate careers page do not establish an official link to the observed scoped SnapStar tenants. Search results identify an expired Tropical Heat Head of Technology role (closed16October); it must not be published as current. Other observed roles are nontechnical. These are discovery leads, not verified additional companies.
 
 Local Python suite:319 passed; lint passed. Source expansion remains25 active collectors /27 verified employer records /13 additional versus baseline14. No new publication is claimed by these checks.
+
+Hosted M0 [40316620890](https://github.com/kimtour/techjobs-africa/actions/runs/40316620890) and code CI40316600046 both succeeded on07f03dc. Same22records and1eligible vacancy as local; no trial or production activation while collection-policy gate is unresolved.

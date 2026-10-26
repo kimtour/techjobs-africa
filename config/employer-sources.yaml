@@ -9823,11 +9823,12 @@ sources:
     - 20
   verification:
     local_access: true
-    runner_access: false
+    runner_access: true
     collection_review: false
     evidence_paths:
     - docs/employer-discovery/burn-review-2026-10-26/local-m0.json
     - docs/employer-discovery/burn-review-2026-10-26/policy-and-linkage.json
+    - docs/employer-discovery/burn-review-2026-10-26/hosted-m0.json
     official_link: true
     stable_ids: true
     application_links: true
@@ -9835,7 +9836,7 @@ sources:
     dates_reviewed: true
     complete: true
   suggestions:
-    platform: custom
+    platform: jazzhr
   official_careers_url: https://www.burnstoves.com/careers/jobs
   collection:
     listing_url: https://burnmanufacturing.applytojob.com/apply/
@@ -9846,10 +9847,9 @@ sources:
       title: <div[^>]*class=[\"\x27]job-header[\"\x27][^>]*>.*?<h2[^>]*>(.*?)</h2>
       location: <div[^>]*title=[\"\x27]Location[\"\x27][^>]*>(.*?)</div>
       employment_type: <div[^>]*id=[\"\x27]resumator-job-employment[\"\x27][^>]*>(.*?)</div>
-  review_reason: Official careers page observed script links this exact JazzHR board. Complete
-    local crawl:22raw records,1eligible Nairobi Information Security Lead. Linked privacy page
-    is a soft 404; collection-policy review, hosted access, isolated trial and publication approval
-    remain pending.
+  review_reason: Complete local and hosted M0 passed:22raw records,1eligible Nairobi Information
+    Security Lead. Corporate-linked privacy page is a soft404; collection_review=false. Isolated
+    trial and publication approval remain gated; source pending and absence expiry off.
 - id: employer_8ac13aaeb67b51ef
   url: https://lutheranworld.hire.trakstar.com/
   import_urls:

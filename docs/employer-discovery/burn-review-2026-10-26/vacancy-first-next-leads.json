@@ -1,0 +1,33 @@
+{
+  "publication_approved": false,
+  "collector_approved": false,
+  "leads": [
+    {
+      "employer": "SALIX Data Africa Limited",
+      "url": "https://jobs.smartrecruiters.com/SALIXDataAfricaLimited/744000146204970-mid-level-developer",
+      "title": "Mid-Level Developer",
+      "indexed_location": "Nairobi, Kenya",
+      "remaining": [
+        "official employer-board linkage",
+        "current open state and complete board",
+        "collection-policy review",
+        "local and hosted extraction",
+        "trial and publication review"
+      ]
+    },
+    {
+      "employer": "AmaliTech",
+      "url": "https://jobs.smartrecruiters.com/AmaliTech/744000111402636",
+      "title": "Senior Software Engineer",
+      "remaining": [
+        "explicit vacancy location",
+        "official employer-board linkage",
+        "current open state and complete board",
+        "collection-policy review",
+        "local and hosted extraction",
+        "trial and publication review"
+      ]
+    }
+  ],
+  "incentro_review": "Observed current listing primarily Netherlands; employer references to Kenya or temporary overseas work are not vacancy-scope Kenya eligibility."
+}
