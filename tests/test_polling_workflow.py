@@ -71,3 +71,48 @@ def test_private_state_is_separate_and_public_pr_checks_do_not_receive_secrets()
     assert "checkout-data" not in ci
     for path in Path(".github/workflows").glob("*.yml"):
         assert "pull_request_target" not in path.read_text()
+
+
+def test_workflow_passes_selected_feed_sources_as_separate_arguments(tmp_path):
+    import os
+    import subprocess
+
+    workflow = yaml.load(
+        Path(".github/workflows/ingest-and-build.yml").read_text(), Loader=yaml.BaseLoader
+    )
+    step = next(x for x in workflow["jobs"]["ingest-and-build"]["steps"] if x.get("id") == "fetch")
+    shim = tmp_path / "python"
+    shim.write_text('#!/bin/sh\nprintf "%s\\n" "$@" > "$RECORDED_ARGS"\n')
+    shim.chmod(0o755)
+    recorded = tmp_path / "args.txt"
+    env = {
+        **os.environ,
+        "PATH": str(tmp_path) + os.pathsep + os.environ["PATH"],
+        "RECORDED_ARGS": str(recorded),
+        "CANDIDATE_DIR": str(tmp_path / "candidate"),
+        "REFRESH_JSEARCH": "true",
+        "REFRESH_EMPLOYER": "false",
+        "REFRESH_EMPLOYERS": "false",
+    }
+    for selected, expected in [
+        (
+            "myjobmag,corporate_staffing,ashby",
+            ["--source", "myjobmag", "--source", "corporate_staffing", "--source", "ashby"],
+        ),
+        ("myjobmag", ["--source", "myjobmag"]),
+        ("all", []),
+        ("employers", ["--employers-only"]),
+    ]:
+        subprocess.run(
+            ["bash", "-e", "-c", step["run"]], env={**env, "FETCH_SOURCE": selected}, check=True
+        )
+        args = recorded.read_text().splitlines()
+        assert args == [
+            "-u",
+            "-m",
+            "ingest.main",
+            "--output-dir",
+            str(tmp_path / "candidate"),
+            *expected,
+            "--refresh-jsearch",
+        ]

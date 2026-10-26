@@ -5,7 +5,7 @@ on:
   workflow_dispatch:
     inputs:
       source:
-        description: all, employers, or one approved active source ID
+        description: all, employers, or comma-separated approved source IDs
         required: false
         default: all
         type: string
@@ -110,7 +110,10 @@ jobs:
           if [ "$FETCH_SOURCE" = "employers" ]; then
             python -u -m ingest.main --output-dir "$CANDIDATE_DIR" --employers-only "${REFRESH_ARGS[@]}"
           elif [ "$FETCH_SOURCE" != "all" ]; then
-            python -u -m ingest.main --output-dir "$CANDIDATE_DIR" --source "$FETCH_SOURCE" "${REFRESH_ARGS[@]}"
+            SOURCE_ARGS=()
+            IFS=',' read -r -a SELECTED_SOURCES <<< "$FETCH_SOURCE"
+            for SOURCE_ID in "${SELECTED_SOURCES[@]}"; do SOURCE_ARGS+=(--source "$SOURCE_ID"); done
+            python -u -m ingest.main --output-dir "$CANDIDATE_DIR" "${SOURCE_ARGS[@]}" "${REFRESH_ARGS[@]}"
           else
             python -u -m ingest.main --output-dir "$CANDIDATE_DIR" "${REFRESH_ARGS[@]}"
           fi

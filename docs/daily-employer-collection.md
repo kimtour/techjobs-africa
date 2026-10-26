@@ -154,3 +154,7 @@ cooldowns, failure backoff, request budgets, verification gates and the single
 private-state writer remain unchanged. `refresh_employer` retains its existing
 single-source restriction. `refresh_jsearch=true` can recheck the Google feed
 within its existing daily/monthly API limits. Scheduled runs leave these flags off.
+
+Manual runs can target a subset using comma-separated `source` IDs, for example
+`myjobmag,corporate_staffing,fuzu`. Each becomes a separate CLI `--source`
+argument; source budgets and the shared private-state writer are unchanged.
