@@ -291,6 +291,7 @@ def coverage(employers, sources, results):
             s["id"]
             for s in linked
             if s["status"] == "active"
+            and employer["id"] in s.get("verified_employer_ids", s["employer_ids"])
             and not verification_gaps(s)
             and all(
                 s["verification"].get(k) is True for k in ("trial_review", "publication_review")

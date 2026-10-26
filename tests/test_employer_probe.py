@@ -229,3 +229,31 @@ def test_reviewed_empty_state_never_promotes_or_hides_new_vacancies(html, expect
         assert source["status"] == "pending"
     finally:
         http.close()
+
+
+def test_shared_board_requires_evidenced_employer_coverage_without_merging_records():
+    from ingest.registry_sources import CHECKS
+
+    employers = {e: {"id": e, "name": e} for e in ("bank", "insurer")}
+    source = {
+        "id": "shared",
+        "status": "active",
+        "platform": "lever",
+        "board": "group",
+        "employer_ids": ["bank", "insurer"],
+        "verified_employer_ids": ["bank"],
+        "verification": {
+            **dict.fromkeys(CHECKS, True),
+            "trial_review": True,
+            "publication_review": True,
+            "evidence_paths": ["review.json"],
+            "collection_basis": "Reviewed public board",
+        },
+    }
+    result = coverage(employers, {"shared": source}, {})
+    rows = {x["employer_id"]: x for x in result["companies"]}
+    assert result["daily_collection_configured"] == 1
+    assert rows["bank"]["active_verified_sources"] == ["shared"]
+    assert rows["insurer"]["active_verified_sources"] == []
+    assert rows["insurer"]["source_ids"] == ["shared"]
+    assert result["recruitment_sources"] == 1

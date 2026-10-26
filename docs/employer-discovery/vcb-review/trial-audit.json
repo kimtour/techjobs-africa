@@ -1,0 +1,96 @@
+{
+  "additional_unique_jobs": 1,
+  "baseline_supplied": true,
+  "candidate_jobs": 1,
+  "checked_at": "2026-10-26T08:36:42.734140+00:00",
+  "mode": "trial",
+  "outcome": "SUCCESS",
+  "production_promoted": false,
+  "schema_version": 1,
+  "sources": [
+    {
+      "complete": true,
+      "duplicates_in_accepted": 0,
+      "eligibility_review": [],
+      "eligible_jobs": 1,
+      "filtered_jobs": [
+        {
+          "external_id": "AkOk1F4wufTFa8tY0h13",
+          "reason": "unclassified_title_or_unverified_context",
+          "title": "Officer II- Environmental and Social Governance"
+        },
+        {
+          "external_id": "XlWDb5kzanaptph40ZAI",
+          "reason": "unclassified_title_or_unverified_context",
+          "title": "Officer I, Credit Administration"
+        },
+        {
+          "external_id": "gcQGCelQxvdsL3fvaCL3",
+          "reason": "unclassified_title_or_unverified_context",
+          "title": "Officer II, Credit Administration"
+        }
+      ],
+      "raw_jobs": 4,
+      "requests": [
+        {
+          "attempt": 1,
+          "duration_seconds": 0.051,
+          "error_type": null,
+          "host": "snapstartalent.com",
+          "http_status": 200,
+          "method": "GET",
+          "started_at": "2026-10-26T08:36:42.817341+00:00"
+        },
+        {
+          "attempt": 1,
+          "duration_seconds": 0.384,
+          "error_type": null,
+          "host": "snapstartalent.com",
+          "http_status": 200,
+          "method": "GET",
+          "started_at": "2026-10-26T08:36:44.368977+00:00"
+        },
+        {
+          "attempt": 1,
+          "duration_seconds": 0.157,
+          "error_type": null,
+          "host": "snapstartalent.com",
+          "http_status": 200,
+          "method": "GET",
+          "started_at": "2026-10-26T08:36:46.252793+00:00"
+        },
+        {
+          "attempt": 1,
+          "duration_seconds": 0.138,
+          "error_type": null,
+          "host": "snapstartalent.com",
+          "http_status": 200,
+          "method": "GET",
+          "started_at": "2026-10-26T08:36:47.909500+00:00"
+        },
+        {
+          "attempt": 1,
+          "duration_seconds": 0.127,
+          "error_type": null,
+          "host": "snapstartalent.com",
+          "http_status": 200,
+          "method": "GET",
+          "started_at": "2026-10-26T08:36:49.547399+00:00"
+        },
+        {
+          "attempt": 1,
+          "duration_seconds": 0.129,
+          "error_type": null,
+          "host": "snapstartalent.com",
+          "http_status": 200,
+          "method": "GET",
+          "started_at": "2026-10-26T08:36:51.174986+00:00"
+        }
+      ],
+      "source_id": "employer_7a60d752d93bea48",
+      "status": "SUCCESS",
+      "technical_jobs": 1,
+      "verification_gaps": []
+    }
+  ]
+}

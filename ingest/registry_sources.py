@@ -39,6 +39,9 @@ def load_sources(config_dir: Path = ROOT / "config") -> tuple[dict, dict]:
             raise ValueError("Unknown source lifecycle status")
         if not source["employer_ids"] or any(e not in employers for e in source["employer_ids"]):
             raise ValueError("Unresolved employer-source link")
+        reviewed = source.get("verified_employer_ids", source["employer_ids"])
+        if not reviewed or not set(reviewed).issubset(source["employer_ids"]):
+            raise ValueError("Verified employers must be linked to the source")
         if source.get("refresh_hours", 0) < 24:
             raise ValueError("Employer boards must not run more than daily")
         if source.get("supports_absence_expiry"):

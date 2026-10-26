@@ -8675,7 +8675,7 @@ sources:
   import_urls:
   - https://snapstartalent.com/vcb/vacancies
   platform: custom
-  status: verified
+  status: active
   employer_ids:
   - emp_dfe0073baf4a8273
   access_method: sitemap
@@ -8697,6 +8697,8 @@ sources:
     - docs/employer-discovery/vcb-review/local-field-review.json
     - docs/employer-discovery/vcb-review/local-m0.json
     - docs/employer-discovery/vcb-review/hosted-m0.json
+    - docs/employer-discovery/vcb-review/trial-audit.json
+    - docs/employer-discovery/vcb-review/publication-review.json
     identity_basis: Immutable SnapStar provider identifiers embedded in individual JSON-LD
       JobPosting identifiers and canonical role URLs.
     collection_basis: Official bank homepage CAREERS link points to SnapStar /vcb. Provider
@@ -8713,15 +8715,18 @@ sources:
     stable_ids: true
     local_access: true
     runner_access: true
+    trial_review: true
+    publication_review: true
   suggestions:
     platform: custom
   requested_review:
     checked_at: '2026-10-26T08:08:03+00:00'
     result: REVIEWED_PAGE
     evidence_path: docs/employer-discovery/thirty-bank-review-2026-10-26/review.md
-  review_reason: Local and hosted4-role sitemap/JSON-LD M0 passed;1 eligible Nairobi CyberSecurityAnalyst.
-    Original employer linkage confirmed. Isolated trial and publication review next; not yet
-    active.
+  review_reason: Complete local/hosted4-role sitemap crawls and isolated trial approved1 additional
+    Nairobi CyberSecurityAnalyst job, posted21October, closes27October2026. Official employer
+    link and scoped public crawler/data-policy review recorded. Daily collection active, source
+    absence expiry off.
   official_careers_url: https://www.victoriabank.co.ke/
   posting_company: Victoria Commercial Bank PLC
   collection:
@@ -8737,6 +8742,7 @@ sources:
     extraction: NO_VERIFIED_INVENTORY
     evidence_path: docs/employer-discovery/bank-deep-review-2026-10-26/employer_7a60d752d93bea48.json
   board: vcb
+  reviewed_bootstrap: true
 - id: employer_7afce37a85c69486
   url: https://ucl.co.ke/career/
   import_urls:
@@ -12415,6 +12421,9 @@ sources:
     runner_access: true
     trial_review: true
     publication_review: true
+    employer_coverage_basis: Only the reviewed NCBA Bank record counts as verified coverage.
+      NCBA Insurance and Loop Payco stay linked for discovery but require separate employer-to-board
+      evidence; no automatic extra companies from a shared URL.
   suggestions:
     platform: custom
     needs_location_filter: true
@@ -12445,6 +12454,8 @@ sources:
     initial_url_identities:
       https://ncbagroup.com/blog/job/senior-manager-compliance-data-privacy-ncba-ig/: 6f90a9cc-f4f2-46e6-accd-fc923b00b797
   reviewed_bootstrap: true
+  verified_employer_ids:
+  - emp_3f778e960b3ff280
 - id: employer_b440d08555c49b01
   url: https://imarahomefibre.com/careers
   import_urls:
