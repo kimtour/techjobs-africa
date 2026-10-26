@@ -14,5 +14,17 @@
   "source_absence_expiry": false,
   "shared_source_identity_preserved": true,
   "additional_collectors": 0,
-  "coverage_reconciliation_pending": true
+  "coverage_reconciliation_pending": false,
+  "reconciliation_run": "https://github.com/kimtour/techjobs-africa/actions/runs/40328112022",
+  "reconciliation_code_commit": "711c6ed8c85edb90379608b1748c0c44f01324ef",
+  "accepted_private_commit": "2a904fc67409bde06a6a01ab494b45cb5896acc4",
+  "reconciliation_new_jobs": 0,
+  "additional_verified_employers": 1,
+  "total_verified_employers": 28,
+  "additional_verified_employers_since_baseline": 14,
+  "active_collectors": 25,
+  "python_tests": 325,
+  "hosted_ci_run": "https://github.com/kimtour/techjobs-africa/actions/runs/40327772880",
+  "publication_hash": "bddeeee7361cc685dd1ee00d8cbe36a06cc37d88ec16796d86374cc56d45beca",
+  "publication_hash_unchanged_on_reconciliation": true
 }
