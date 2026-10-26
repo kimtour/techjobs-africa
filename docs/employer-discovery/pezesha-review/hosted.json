@@ -1,0 +1,148 @@
+{
+  "candidate_metadata": [
+    {
+      "application_url": "https://pezesha.com/careers/junior-data-scientist/",
+      "country": "Kenya",
+      "employer": "Pezesha",
+      "job_id": "employer_f3e0064cbce58d03:098e9246-5950-4dc5-8c84-f8a01f01292f",
+      "title": "Junior Data Scientist"
+    },
+    {
+      "application_url": "https://pezesha.com/careers/senior-data-scientist/",
+      "country": "Kenya",
+      "employer": "Pezesha",
+      "job_id": "employer_f3e0064cbce58d03:9a635e58-1f96-4984-bcb6-8bedc94de910",
+      "title": "Senior Data Scientist"
+    }
+  ],
+  "checked_at": "2026-10-26T06:30:43.266039+00:00",
+  "checks": {
+    "application_links": true,
+    "complete": true,
+    "dates_reviewed": true,
+    "locations": true,
+    "stable_ids": true
+  },
+  "eligible_jobs": 2,
+  "environment": "github",
+  "official_link_checked_this_run": false,
+  "prior_official_evidence": [
+    "docs/employer-discovery/pezesha-review/local.json",
+    "docs/employer-discovery/pezesha-review/review.md"
+  ],
+  "publication_approved": false,
+  "records_found": 10,
+  "requests": [
+    {
+      "attempt": 1,
+      "duration_seconds": 1.321,
+      "error_type": null,
+      "host": "pezesha.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-26T06:30:43.368737+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.655,
+      "error_type": null,
+      "host": "pezesha.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-26T06:30:46.189367+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.651,
+      "error_type": null,
+      "host": "pezesha.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-26T06:30:48.344579+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.651,
+      "error_type": null,
+      "host": "pezesha.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-26T06:30:50.496135+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.652,
+      "error_type": null,
+      "host": "pezesha.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-26T06:30:52.646834+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.65,
+      "error_type": null,
+      "host": "pezesha.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-26T06:30:54.798612+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.651,
+      "error_type": null,
+      "host": "pezesha.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-26T06:30:56.949031+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.654,
+      "error_type": null,
+      "host": "pezesha.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-26T06:30:59.100122+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.65,
+      "error_type": null,
+      "host": "pezesha.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-26T06:31:01.253923+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.651,
+      "error_type": null,
+      "host": "pezesha.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-26T06:31:03.404292+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.652,
+      "error_type": null,
+      "host": "pezesha.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-26T06:31:05.555626+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.651,
+      "error_type": null,
+      "host": "pezesha.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-26T06:31:07.707408+00:00"
+    }
+  ],
+  "source_id": "employer_f3e0064cbce58d03",
+  "status": "SUCCESS",
+  "technical_jobs": 5
+}

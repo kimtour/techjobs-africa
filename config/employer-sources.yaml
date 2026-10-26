@@ -16709,7 +16709,7 @@ sources:
 - id: employer_f3e0064cbce58d03
   url: https://pezesha.com/careers/
   platform: custom
-  status: pending
+  status: verified
   employer_ids:
   - emp_9044c182049cf8d6
   access_method: html
@@ -16752,12 +16752,13 @@ sources:
     dates_reviewed: true
     complete: true
     collection_review: true
-    runner_access: false
+    runner_access: true
     trial_review: false
     publication_review: false
     evidence_paths:
     - docs/employer-discovery/pezesha-review/local.json
     - docs/employer-discovery/pezesha-review/review.md
+    - docs/employer-discovery/pezesha-review/hosted.json
     identity_basis: Persistent surrogate UUIDs seeded by distinct official vacancy
       URL; not employer requisition IDs; never title hashes.
     collection_basis: Official employer-owned careers listing with distinct individual
@@ -16773,6 +16774,5 @@ sources:
   country_filters: []
   official_careers_url: https://pezesha.com/careers/
   posting_company: Pezesha
-  review_reason: Local full10-role crawl passed with2 Kenya DataScientist candidates.
-    Explicit expired consultancy deadline30November2025 parsed and excluded; hosted
-    access/trial/publication review remain required.
+  review_reason: Local and hosted complete10-role collection verified;2 Nairobi DataScientist
+    candidates require isolated trial and publication review.
