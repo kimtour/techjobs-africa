@@ -12227,7 +12227,7 @@ sources:
   import_urls:
   - https://ncbagroup.com/careers/join-our-team/
   platform: custom
-  status: pending
+  status: verified
   employer_ids:
   - emp_3f778e960b3ff280
   - emp_4490bd01772a3750
@@ -12249,6 +12249,7 @@ sources:
     evidence_paths:
     - docs/employer-discovery/thirty-bank-review-2026-10-26/review.md
     - docs/employer-discovery/thirty-bank-review-2026-10-26/ncba-local-m0.json
+    - docs/employer-discovery/thirty-bank-review-2026-10-26/ncba-hosted-m0.json
     collection_basis: Employer-owned public vacancy pages and privacy policy reviewed. No
       automated collection restriction identified on these pages. Do not fetch blocked external
       SuccessFactors application surface. Provider jobId extracted from employer-published
@@ -12264,6 +12265,7 @@ sources:
     identity_basis: Original provider jobId from published application link; explicitly seeded
       persistent surrogate UUID for compliance/privacy role without provider ID. No title
       hashes.
+    runner_access: true
   suggestions:
     platform: custom
     needs_location_filter: true
@@ -12273,9 +12275,8 @@ sources:
     checked_at: '2026-10-26T07:27:53.730324+00:00'
     result: REVIEWED_PAGE
     evidence_path: docs/employer-discovery/thirty-bank-review-2026-10-26/employer_b2e2ecc189a1df66.json
-  review_reason: Complete local4-role crawl found1 eligible ICT Risk role explicitly Tanzania,
-    deadline31October2026. Hosted access and isolated trial required before activation. No
-    external blocked SuccessFactors collection.
+  review_reason: Complete local and hosted4-role M0 passed;1 eligible Tanzania ICT Risk role.
+    Isolated trial and publication review pending. No blocked external ATS collection.
   official_careers_url: https://ncbagroup.com/careers/join-our-team/
   posting_company: NCBA Group
   collection:
