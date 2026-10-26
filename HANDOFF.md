@@ -168,3 +168,5 @@ Preserve unrelated `.vscode/` and `_build/` files.
 - Current verified progress unchanged22 active registry collectors /24 employer records /10 additional against baseline14. This bank review is not30 functioning collectors. Prior original checkout remains preserved. Automation continues the100-company target.
 
 - NCBA hosted full M0 run40286880400 SUCCESS on6e30e62, all4roles complete,1eligibleTanzania. Status verified, not active. Provider jobIds and seeded UUID identical locally/hosted. Next isolated trial, then explicit publication review before activation.
+
+- NCBA isolated trial40286993849 SUCCESS:4raw/1technical/1eligible/1additional unique application URL,3nontechnical withheld. ICT Risk externalID4069 explicitly Tanzania; deadline2026-10-31T23:59:59+03:00. Hosted CI40286985105 passed. Approved activation after review; next production through accepted private state/live checks. No source absence expiry.

@@ -1,0 +1,16 @@
+{
+  "checked_at": "2026-10-26T07:40:13.475572+00:00",
+  "source_id": "employer_b2e2ecc189a1df66",
+  "trial_run": 40286993849,
+  "approved_job_ids": [
+    "employer_b2e2ecc189a1df66:4069"
+  ],
+  "title": "Assistant Manager, ICT Risk",
+  "country": "Tanzania",
+  "deadline_at": "2026-10-31T23:59:59+03:00",
+  "application_url": "https://ncbagroup.com/blog/job/manager-ict-enterprise-risk-management/",
+  "additional_unique_jobs": 1,
+  "excluded_nontechnical_roles": 3,
+  "absence_expiry_enabled": false,
+  "production_promoted": false
+}
