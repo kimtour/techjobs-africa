@@ -1,0 +1,60 @@
+{
+  "additional_unique_jobs": 1,
+  "baseline_supplied": true,
+  "candidate_jobs": 1,
+  "checked_at": "2026-10-26T09:30:01.328921+00:00",
+  "mode": "trial",
+  "outcome": "SUCCESS",
+  "production_promoted": false,
+  "schema_version": 1,
+  "sources": [
+    {
+      "complete": true,
+      "duplicates_in_accepted": 0,
+      "eligibility_review": [],
+      "eligible_jobs": 1,
+      "filtered_jobs": [
+        {
+          "external_id": "6727",
+          "reason": "unclassified_title_or_unverified_context",
+          "title": "COMPLIANCE OFFICER:"
+        },
+        {
+          "external_id": "6726",
+          "reason": "non_technical_function",
+          "title": "RECEPTIONIST"
+        },
+        {
+          "external_id": "6725",
+          "reason": "unclassified_title_or_unverified_context",
+          "title": "SAMEER BUSINESS PARK: RELATIONSHIP MANAGER & RELATIONSHIP OFFICER"
+        }
+      ],
+      "raw_jobs": 4,
+      "requests": [
+        {
+          "attempt": 1,
+          "duration_seconds": 0.68,
+          "error_type": null,
+          "host": "www.moriental.co.ke",
+          "http_status": 200,
+          "method": "GET",
+          "started_at": "2026-10-26T09:30:06.403371+00:00"
+        },
+        {
+          "attempt": 1,
+          "duration_seconds": 1.641,
+          "error_type": null,
+          "host": "www.moriental.co.ke",
+          "http_status": 200,
+          "method": "GET",
+          "started_at": "2026-10-26T09:30:08.583913+00:00"
+        }
+      ],
+      "source_id": "employer_bdee4912ef2d4465",
+      "status": "SUCCESS",
+      "technical_jobs": 1,
+      "verification_gaps": []
+    }
+  ]
+}

@@ -6492,9 +6492,8 @@ sources:
     - docs/employer-discovery/portal-repairs-2026-10-26/official-source-review.json
     - docs/employer-discovery/portal-repairs-2026-10-26/sumac.json
   suggestions:
-    platform: greenhouse
+    platform: custom
   official_careers_url: https://sumacmicrofinancebank.co.ke/
-  pilot_rank: 3
   requested_review:
     checked_at: '2026-10-26T07:27:45.625182+00:00'
     result: REVIEWED_PAGE
@@ -12841,7 +12840,7 @@ sources:
   import_urls:
   - https://www.moriental.co.ke/careers/
   platform: custom
-  status: verified
+  status: active
   employer_ids:
   - emp_a242a67e4dc7b1ee
   access_method: html
@@ -12873,6 +12872,8 @@ sources:
     - docs/employer-discovery/portal-repairs-2026-10-26/moriental-api-discovery.json
     - docs/employer-discovery/portal-repairs-2026-10-26/moriental-local-m0.json
     - docs/employer-discovery/portal-repairs-2026-10-26/moriental-hosted-m0.json
+    - docs/employer-discovery/portal-repairs-2026-10-26/moriental-trial-audit.json
+    - docs/employer-discovery/portal-repairs-2026-10-26/moriental-publication-review.json
     application_links: true
     complete: true
     dates_reviewed: true
@@ -12880,17 +12881,20 @@ sources:
     stable_ids: true
     local_access: true
     runner_access: true
+    trial_review: true
+    publication_review: true
   suggestions:
     platform: custom
-    needs_location_filter: true
-    shared_portal: true
+    needs_location_filter: false
+    shared_portal: false
   requested_review:
     checked_at: '2026-10-26T08:08:03+00:00'
     result: REVIEWED_PAGE
     evidence_path: docs/employer-discovery/thirty-bank-review-2026-10-26/review.md
-  review_reason: Local and hosted complete4-role inline-card collection passed with1eligible
-    Nairobi developer candidate. Stable WordPress provider IDs and original individual job
-    page verified. Isolated trial/publication review next; inactive.
+  review_reason: Complete local/hosted4-record inline collection and isolated trial approved1additional
+    Nairobi developer vacancy. Stable WordPress career ID6728, explicit role location and
+    individual original application page verified. Reviewed first snapshot may publish with
+    first-found date; no posting/deadline invented, absence expiry off.
   reviewed_source_checks:
     observed_at: '2026-10-26T07:49:29.518535+00:00'
     access: PASS
@@ -12910,6 +12914,7 @@ sources:
       location: <span\s+class="career-job-meta-item">(?:\s|<(?!/?span\b)[^>]+>)*([^<]+,[^<]+)\s*</span>
       employment_type: <span\s+class="career-job-meta-item">(?:\s|<(?!/?span\b)[^>]+>)*(Full
         Time|Part Time|Contract|Internship)\s*</span>
+  reviewed_bootstrap: true
 - id: employer_be12160549779fd4
   url: https://recruitment.dha.go.ke/
   import_urls:
