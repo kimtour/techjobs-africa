@@ -38,6 +38,7 @@ class Links(HTMLParser):
         self.links = []
         self.feeds = []
         self.structured_job_count = 0
+        self.job_titles = []
         self.capture = False
         self.parts = []
 
@@ -71,6 +72,9 @@ class Links(HTMLParser):
                 continue
             if item.get("@type") == "JobPosting":
                 self.structured_job_count += 1
+                title = item.get("title")
+                if isinstance(title, str) and len(title) <= 200:
+                    self.job_titles.append(title)
             nodes.extend(item.get("@graph", []))
 
 

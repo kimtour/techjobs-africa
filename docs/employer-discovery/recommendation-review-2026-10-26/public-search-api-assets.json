@@ -1,0 +1,69 @@
+{
+  "checked_at": "2026-10-26T09:54:23.271238+00:00",
+  "public_assets": [
+    {
+      "url": "https://hfcb.co.ke/_next/static/chunks/0von25r2dwheo.js",
+      "status": 200,
+      "bytes": 8131,
+      "clues": []
+    },
+    {
+      "url": "https://hfcb.co.ke/_next/static/chunks/0c2_whgpzh4rh.js",
+      "status": 200,
+      "bytes": 54646,
+      "clues": []
+    },
+    {
+      "url": "https://hfcb.co.ke/_next/static/chunks/0bah_1j-t~_k-.js",
+      "status": 200,
+      "bytes": 29999,
+      "clues": [
+        "https://hfcbmarketplace.hfcb.co.ke",
+        "https://livechat.infobip.com/widget.js"
+      ]
+    },
+    {
+      "url": "https://hfcb.co.ke/_next/static/chunks/05pv.pyda.8-2.js",
+      "status": 200,
+      "bytes": 85120,
+      "clues": []
+    },
+    {
+      "url": "https://hfcb.co.ke/_next/static/chunks/0pv6kjylj13lx.js",
+      "status": 200,
+      "bytes": 26757,
+      "clues": [
+        "http://www.w3.org/2000/svg"
+      ]
+    },
+    {
+      "url": "https://hfcb.co.ke/_next/static/chunks/03~yq9q893hmn.js",
+      "status": 200,
+      "bytes": 112594,
+      "clues": [
+        "https://a",
+        "https://a#\u0431",
+        "https://a/c%20d?a=1&c=3",
+        "https://a@b",
+        "https://github.com/zloirock/core-js",
+        "https://github.com/zloirock/core-js/blob/v3.38.1/LICENSE",
+        "https://x",
+        "https://\u0442\u0435\u0441\u0442"
+      ]
+    },
+    {
+      "url": "https://hfcb.co.ke/_next/static/chunks/0_ovy~dyroghb.js",
+      "status": 200,
+      "bytes": 6546,
+      "clues": []
+    },
+    {
+      "url": "https://equitybank.taleo.net/careersection/2026PRD.1.4.14.3.0/js/facetedsearch/FacetedSearchPage.js",
+      "status": 200,
+      "bytes": 7216,
+      "clues": [
+        "jobsTableContainer"
+      ]
+    }
+  ]
+}

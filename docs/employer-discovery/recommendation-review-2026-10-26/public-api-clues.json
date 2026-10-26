@@ -1,0 +1,31 @@
+{
+  "checked_at": "2026-10-26T09:52:26.879857+00:00",
+  "assets": [
+    {
+      "url": "https://hfcb.co.ke/_next/static/chunks/0cg28a2.rwewr.js",
+      "bytes": 19739,
+      "route_clues": [
+        "/images/careers/hr-careers.png",
+        "/images/careers/jack-omondi.jpg",
+        "CareersContent"
+      ]
+    },
+    {
+      "url": "https://hfcb.co.ke/_next/static/chunks/0284givjrsqve.js",
+      "bytes": 827,
+      "route_clues": []
+    }
+  ],
+  "taleo_public_script_metadata": {
+    "url": "https://equitybank.taleo.net/careersection/ext_new/jobsearch.ftl",
+    "data_main": [
+      "/careersection/2026PRD.1.4.14.3.0/js/facetedsearch/FacetedSearchPage.js"
+    ],
+    "public_api_url_clues": [
+      "accessibility.jobListReloaded",
+      "jobList",
+      "jobListPanel",
+      "resultListPanel.jobListReloaded"
+    ]
+  }
+}

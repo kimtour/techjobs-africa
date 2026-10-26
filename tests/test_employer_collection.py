@@ -953,3 +953,87 @@ def test_inline_vacancies_keep_provider_ids_with_shared_application_page():
     with pytest.raises(ValueError, match="provider ID"):
         broken.fetch()
     assert not broken.crawl_complete
+
+
+def test_discovery_review_signal_baselines_quietly_and_survives_failed_checks():
+    from ingest.employer_watch import review_change
+
+    row = {
+        "source_id": "employer_test",
+        "input_url": "https://example.test/careers",
+        "checked_at": "2026-10-26T09:00:00+00:00",
+        "status": "DISCOVERED",
+        "observed_vacancy_links": ["https://example.test/careers/one?country=KE&utm_source=a"],
+        "technical_title_hints": ["Software Engineer"],
+    }
+    assert review_change(row, {}) is None
+    same = {
+        **row,
+        "observed_vacancy_links": ["https://example.test/careers/one?country=KE&utm_source=b"],
+    }
+    assert review_change(same, row) is None
+    failure = {"source_id": "employer_test", "status": "BLOCKED"}
+    assert review_change(failure, row) is None
+    assert failure["review_baseline"] == row["review_baseline"]
+    shell = {"source_id": "employer_test", "status": "DISCOVERED", "input_url": row["input_url"]}
+    assert review_change(shell, row) is None
+    assert shell["review_baseline"] == row["review_baseline"]
+    changed = {
+        **row,
+        "observed_vacancy_links": ["https://example.test/careers/two?country=KE"],
+        "technical_title_hints": ["Data Engineer"],
+    }
+    signal = review_change(changed, failure)
+    assert signal["new_urls"] == ["https://example.test/careers/two?country=KE"]
+    assert signal["technical_title_hints"] == ["Data Engineer"]
+    assert signal["status"] == "pending_review" and not signal["publication_approved"]
+    moved = {**changed, "input_url": "https://new.example.test/jobs"}
+    assert review_change(moved, changed) is None
+
+
+def test_monitor_review_queue_never_publishes_jobs(tmp_path, monkeypatch):
+    from types import SimpleNamespace
+
+    import ingest.employer_watch as watch
+
+    source_config = {"id": "employer_test", "status": "pending", "url": "https://example.test/jobs"}
+    monkeypatch.setattr(watch, "load_sources", lambda: ({}, {"employer_test": source_config}))
+    monkeypatch.setattr(watch, "watch_due", lambda *a: True)
+    monkeypatch.setattr(
+        watch,
+        "daily_coverage",
+        lambda *a: {
+            "employers": 1,
+            "configured_employers": 0,
+            "successfully_checked_employers": 0,
+            "day_eat": "2026-10-26",
+            "source_outcomes": {"unsupported": 1},
+        },
+    )
+    links = ["https://example.test/jobs/one"]
+    monkeypatch.setattr(
+        watch,
+        "probe_source",
+        lambda *a: {
+            "source_id": "employer_test",
+            "input_url": source_config["url"],
+            "status": "DISCOVERED",
+            "checked_at": datetime.now(UTC).isoformat(),
+            "observed_vacancy_links": links[:],
+            "technical_title_hints": ["Software Engineer"],
+        },
+    )
+    public = tmp_path / "public/jobs.json"
+    _write_json(public, {"jobs": []})
+    before = public.read_bytes()
+    client = SimpleNamespace(requests=0)
+    watch.run_watch(tmp_path, workers=1, client=client)
+    queue_path = tmp_path / "state/employer-review-queue.json"
+    assert json.loads(queue_path.read_text())["sources"] == {}
+    links.append("https://example.test/jobs/two")
+    result = watch.run_watch(tmp_path, workers=1, client=client)
+    signal = json.loads(queue_path.read_text())["sources"]["employer_test"]
+    assert signal["new_urls"] == ["https://example.test/jobs/two"]
+    assert not signal["publication_approved"]
+    assert result["configured_employers"] == 0
+    assert public.read_bytes() == before

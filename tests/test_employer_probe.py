@@ -257,3 +257,30 @@ def test_shared_board_requires_evidenced_employer_coverage_without_merging_recor
     assert rows["insurer"]["active_verified_sources"] == []
     assert rows["insurer"]["source_ids"] == ["shared"]
     assert result["recruitment_sources"] == 1
+
+
+def test_discovery_hints_are_titles_only_and_keep_functional_job_links():
+    import json
+
+    html = (
+        "<h3>Software Engineer</h3><p>DO NOT PERSIST DESCRIPTION: Data Engineer duties</p>"
+        "<script>Software Engineer secret body</script>"
+        '<a href="/careers/338?country=KE&utm_source=mail">View role</a>'
+        '<script type="application/ld+json">'
+        + json.dumps(
+            {
+                "@type": "JobPosting",
+                "title": "Cyber Security Analyst",
+                "description": "DO NOT PERSIST JSON DESCRIPTION",
+            }
+        )
+        + "</script>"
+    )
+    result = inspect_page(
+        httpx.Response(200, text=html, request=httpx.Request("GET", "https://example.test/careers"))
+    )
+    assert result["technical_title_hints"] == ["Cyber Security Analyst", "Software Engineer"]
+    assert result["observed_vacancy_links"] == [
+        "https://example.test/careers/338?country=KE&utm_source=mail"
+    ]
+    assert "DO NOT PERSIST" not in json.dumps(result)

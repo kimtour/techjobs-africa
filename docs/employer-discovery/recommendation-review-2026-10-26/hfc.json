@@ -1,0 +1,26 @@
+{
+  "checked_at": "2026-10-26T09:48:00.033106+00:00",
+  "url": "https://hfcb.co.ke/careers",
+  "status": 200,
+  "headings": [
+    "Quick Links",
+    "Helpful Info",
+    "Bank With Us",
+    "Disclosures",
+    "Calculators",
+    "Build Your Career With Us"
+  ],
+  "structured_jobs": [],
+  "job_links": [
+    "https://hfcb.co.ke/careers",
+    "https://hfcb.co.ke/careers",
+    "https://hfcb.co.ke/careers"
+  ],
+  "date_strings": [],
+  "explicit_states": [
+    "No open positions",
+    "Loading opportunities",
+    "Past Positions"
+  ],
+  "application_urls": []
+}

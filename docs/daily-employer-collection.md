@@ -158,3 +158,17 @@ within its existing daily/monthly API limits. Scheduled runs leave these flags o
 Manual runs can target a subset using comma-separated `source` IDs, for example
 `myjobmag,corporate_staffing,fuzu`. Each becomes a separate CLI `--source`
 argument; source budgets and the shared private-state writer are unchanged.
+
+### Discovery change review
+
+Pending-source page checks keep a silent baseline of observed vacancy/document
+URLs and technical titles from headings or JobPosting title fields. Later
+changes enter private `state/employer-review-queue.json` for review. Failures,
+partial checks, blocks and unrecognized loading shells preserve the previous
+baseline; known tracking changes are ignored. A corrected portal URL starts a
+new quiet baseline. A source with JavaScript-only inventory still needs a
+verified data collector; these signals are not complete vacancy coverage.
+
+Queue entries never publish jobs, approve sources, expire vacancies or count as
+working collectors. No descriptions or applicant data are retained. Existing
+source budgets, robots rules, cooldowns and the single private-state writer apply.

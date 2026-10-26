@@ -12,15 +12,45 @@ import time
 from collections import Counter
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import UTC, datetime
+from html.parser import HTMLParser
 from pathlib import Path
 from urllib.parse import urljoin, urlsplit
 from urllib.robotparser import RobotFileParser
 
 import httpx
 
+from ingest.classify.tech import classify_technology_title
 from ingest.employer_onboarding import Links, write_json
 from ingest.employer_registry import ROOT, platform_for, safe_url
 from ingest.registry_sources import load_sources, verification_gaps
+
+
+class VacancyHeadings(HTMLParser):
+    """Title clues only; never retain paragraphs, descriptions or script bodies."""
+
+    def __init__(self):
+        super().__init__()
+        self.tag, self.parts, self.titles = None, [], []
+        self.ignored = 0
+
+    def handle_starttag(self, tag, attrs):
+        if tag in {"script", "style", "noscript"}:
+            self.ignored += 1
+        if tag in {"h1", "h2", "h3", "h4"} and not self.ignored:
+            self.tag, self.parts = tag, []
+
+    def handle_data(self, value):
+        if self.tag and not self.ignored and sum(map(len, self.parts)) < 300:
+            self.parts.append(value)
+
+    def handle_endtag(self, tag):
+        if tag in {"script", "style", "noscript"}:
+            self.ignored = max(0, self.ignored - 1)
+        if tag == self.tag:
+            title = " ".join(" ".join(self.parts).split())
+            if 2 <= len(title) <= 120:
+                self.titles.append(title)
+            self.tag = None
 
 
 class AccessBlocked(RuntimeError):
@@ -182,7 +212,17 @@ def inspect_page(response) -> dict:
             term in urlsplit(link).path.lower()
             for term in ("/job/", "/jobs/", "/vacanc", "/position/")
         )
+        or re.search(r"/careers?/[^/]+", urlsplit(link).path, re.I)
     ]
+    headings = VacancyHeadings()
+    headings.feed(response.text)
+    technical_titles = sorted(
+        {
+            title
+            for title in [*parser.job_titles, *headings.titles]
+            if classify_technology_title(title).category
+        }
+    )[:20]
     method = (
         "ats_api"
         if boards
@@ -205,6 +245,8 @@ def inspect_page(response) -> dict:
         "feed_urls": feeds[:5],
         "pdf_urls": pdfs[:15],
         "vacancy_links_sample": vacancies[:10],
+        "observed_vacancy_links": vacancies[:200],
+        "technical_title_hints": technical_titles,
         "careers_links": [
             link
             for link in links

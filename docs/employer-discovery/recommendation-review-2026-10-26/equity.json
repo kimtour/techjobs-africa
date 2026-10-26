@@ -1,0 +1,19 @@
+{
+  "checked_at": "2026-10-26T09:48:00.033223+00:00",
+  "url": "https://equitybank.taleo.net/careersection/ext_new/jobsearch.ftl",
+  "status": 200,
+  "headings": [
+    "Welcome. You are not signed in.",
+    "Vacancy",
+    "Vacancy"
+  ],
+  "structured_jobs": [],
+  "job_links": [
+    "https://equitybank.taleo.net/careersection/ext_new/mysearches.ftl"
+  ],
+  "date_strings": [],
+  "explicit_states": [
+    "No jobs correspond to the specified criteria"
+  ],
+  "application_urls": []
+}

@@ -7293,11 +7293,13 @@ sources:
     needs_location_filter: true
     shared_portal: true
   requested_review:
-    checked_at: '2026-10-26T07:27:48.180640+00:00'
-    result: REVIEWED_PAGE
-    evidence_path: docs/employer-discovery/thirty-bank-review-2026-10-26/employer_6556cace63864de2.json
-  review_reason: Official page explicitly says no open positions. Empty-state observation
-    only; no verified vacancy collector.
+    checked_at: '2026-10-26T09:56:52.116323+00:00'
+    result: DYNAMIC_INVENTORY_UNCONFIRMED
+    evidence_path: docs/employer-discovery/recommendation-review-2026-10-26/review.md
+  review_reason: Current HFC HTML contains both Loading opportunities and No open positions
+    placeholders; indexed Systems Administrator338 is a lead, not proof it remains open. Public
+    linked assets reviewed, but complete live inventory, current/archived status and API schema
+    remain unverified. Do not classify the loading shell as healthy empty.
   reviewed_source_checks:
     observed_at: '2026-10-26T07:49:10.572208+00:00'
     access: PASS
@@ -11057,14 +11059,15 @@ sources:
     shared_portal: true
     access_gap: true
   requested_review:
-    checked_at: '2026-10-26T06:45:22.618900+00:00'
-    result: REVIEWED_PAGE
-    evidence_path: docs/employer-discovery/fourteen-bank-review-2026-10-26/employer_a0c03f043fd4288e.json
+    checked_at: '2026-10-26T09:56:52.117765+00:00'
+    result: DYNAMIC_INVENTORY_UNCONFIRMED
+    evidence_path: docs/employer-discovery/recommendation-review-2026-10-26/review.md
   discovery_enabled: true
   review_priority: user_requested
-  review_reason: Requested public careers page reached. Full vacancy extraction, current
-    dates, location evidence, pagination and permission checks remain required before
-    publication.
+  review_reason: Equity Taleo public search form returns default No jobs correspond criteria
+    text while dynamic results are unresolved. Public FacetedSearchPage module identified;
+    full live data, pagination, country/job fields and policy still require verification.
+    Neither empty nor blocked is established by the static shell.
 - id: employer_a0cebbeda33c03ce
   url: https://www.nuclear.co.ke/careers/
   import_urls:
