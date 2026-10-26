@@ -1,0 +1,26 @@
+{
+  "source_id": "employer_de3081f67088ad82",
+  "pages": [
+    {
+      "url": "https://www.cloudfactory.com/careers",
+      "status": "SUCCESS",
+      "final_url": "https://www.cloudfactory.com/careers",
+      "boards": [
+        "https://apply.workable.com/cloudfactory/",
+        "https://apply.workable.com/cloudfactory/"
+      ],
+      "policies": [
+        "https://www.cloudfactory.com/privacy"
+      ],
+      "careers": [
+        "https://www.cloudfactory.com/careers#main-tab-1",
+        "https://www.cloudfactory.com/careers#main-tab-2",
+        "https://www.cloudfactory.com/careers#main-tab-3",
+        "https://www.cloudfactory.com/careers#main-tab-4",
+        "https://www.cloudfactory.com/careers#main-tab-5",
+        "https://www.cloudfactory.com/careers/data-specialist",
+        "https://www.cloudfactory.com/careers"
+      ]
+    }
+  ]
+}

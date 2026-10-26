@@ -1,0 +1,94 @@
+{
+  "board_robots": {
+    "allowed": true,
+    "status": 200,
+    "url": "https://www.workable.com/robots.txt"
+  },
+  "careers_page": "https://www.controlrisks.com/careers",
+  "checked_at": "2026-10-25T15:29:12.967366+00:00",
+  "checks": {
+    "official_link": true
+  },
+  "detected_boards": [
+    "https://apply.workable.com/control-risks-6/"
+  ],
+  "endpoint": "https://www.workable.com/api/accounts/control-risks-6",
+  "environment": "local",
+  "error_type": "ValueError",
+  "feed_urls": [],
+  "http_status": null,
+  "official_robots": {
+    "allowed": true,
+    "status": 200,
+    "url": "https://www.controlrisks.com/robots.txt"
+  },
+  "official_url": "https://www.controlrisks.com/",
+  "requests": [
+    {
+      "attempt": 1,
+      "duration_seconds": 0.755,
+      "error_type": null,
+      "host": "www.controlrisks.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T15:29:13.050548+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 1.356,
+      "error_type": null,
+      "host": "www.controlrisks.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T15:29:15.312600+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 1.072,
+      "error_type": null,
+      "host": "www.controlrisks.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T15:35:08.087839+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 1.356,
+      "error_type": null,
+      "host": "www.controlrisks.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T15:35:10.670663+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.725,
+      "error_type": null,
+      "host": "www.workable.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T15:35:13.536134+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.104,
+      "error_type": null,
+      "host": "www.workable.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T15:35:15.761244+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.1,
+      "error_type": "HTTPStatusError",
+      "host": "www.workable.com",
+      "http_status": 302,
+      "method": "GET",
+      "started_at": "2026-10-25T15:35:17.369113+00:00"
+    }
+  ],
+  "source_id": "employer_d5765c76e9008f2e",
+  "status": "FAILED",
+  "structured_job_count": 0
+}

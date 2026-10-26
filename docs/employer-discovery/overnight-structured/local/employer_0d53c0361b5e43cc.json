@@ -1,0 +1,135 @@
+{
+  "board_robots": {
+    "allowed": true,
+    "status": 200,
+    "url": "https://redcross.applytojob.com/robots.txt"
+  },
+  "careers_page": "https://redcross.or.ke/careers/?fbclid=IwZXh0bgNhZW0CMTEAcGRvZgNzcnRjBmFwcF9pZA8yNzUyNTQ2OTI1OTgyNzkAAR5l35E4zeSk37yjoU2HIujdtns9wEEruo_v-fGkWhXCjVXjJgZP-4QelOOM0w_aem_fuG2vABSt-VEdvExahoY_Q",
+  "checked_at": "2026-10-25T16:15:12.618001+00:00",
+  "checks": {
+    "application_links": true,
+    "complete": true,
+    "dates_reviewed": true,
+    "locations": true,
+    "official_link": true,
+    "stable_ids": true
+  },
+  "detected_boards": [],
+  "endpoint": "https://redcross.applytojob.com/",
+  "environment": "local",
+  "feed_urls": [
+    "https://redcross.or.ke/feed/",
+    "https://redcross.or.ke/comments/feed/"
+  ],
+  "official_robots": {
+    "allowed": true,
+    "status": 200,
+    "url": "https://redcross.or.ke/robots.txt"
+  },
+  "official_url": "https://redcross.or.ke/careers/",
+  "records_found": 1,
+  "requests": [
+    {
+      "attempt": 1,
+      "duration_seconds": 0.347,
+      "error_type": null,
+      "host": "redcross.or.ke",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T16:15:12.786893+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 1.589,
+      "error_type": null,
+      "host": "redcross.or.ke",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T16:15:14.634787+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.101,
+      "error_type": null,
+      "host": "redcross.or.ke",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T16:15:17.728287+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.35,
+      "error_type": "HTTPStatusError",
+      "host": "redcross.or.ke",
+      "http_status": 301,
+      "method": "GET",
+      "started_at": "2026-10-25T16:15:19.334147+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.091,
+      "error_type": null,
+      "host": "redcross.or.ke",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T16:15:21.184982+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.549,
+      "error_type": null,
+      "host": "redcross.or.ke",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T16:15:22.783697+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 1.418,
+      "error_type": null,
+      "host": "redcross.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T16:15:24.837820+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.321,
+      "error_type": null,
+      "host": "redcross.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T16:15:27.764198+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.587,
+      "error_type": null,
+      "host": "redcross.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T16:15:29.590044+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.401,
+      "error_type": null,
+      "host": "redcross.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T16:15:31.682498+00:00"
+    }
+  ],
+  "sample": [
+    {
+      "application_url": "https://redcross.applytojob.com/apply/EIasCTJzLa/LecturerDisaster-Management-And-Occupational-Health-And-Safety-Programs",
+      "id": "EIasCTJzLa",
+      "location": "Nairobi",
+      "published_at": "2026-10-22T00:00:00+00:00",
+      "title": "Lecturer-Disaster Management and Occupational Health and Safety Programs"
+    }
+  ],
+  "source_id": "employer_0d53c0361b5e43cc",
+  "status": "SUCCESS",
+  "structured_job_count": 0
+}

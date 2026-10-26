@@ -5,6 +5,7 @@ from __future__ import annotations
 import argparse
 import ipaddress
 import json
+import re
 import socket
 import threading
 import time
@@ -239,6 +240,21 @@ def probe_source(source, http) -> dict:
         result["http_status"] = response.status_code
         response.raise_for_status()
         result.update(inspect_page(response))
+        empty_marker = source.get("reviewed_empty_marker")
+        if empty_marker:
+            text = re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", response.text))
+            new_documents = set(result.get("pdf_urls", [])) - set(
+                source.get("known_non_vacancy_documents", [])
+            )
+            empty = (
+                bool(re.search(empty_marker, text, re.I))
+                and not result.get("structured_job_count")
+                and not result.get("vacancy_links_sample")
+                and not new_documents
+            )
+            result["vacancy_state"] = "EMPTY" if empty else "REVIEW_REQUIRED"
+            result["method_suggestion"] = "empty_state_watch"
+            # This is an explicit page-state check, never vacancy publication approval.
         # At most one observed same-host careers link, only if no method is visible.
         if result["method_suggestion"] == "needs_review":
             host = urlsplit(str(response.url)).hostname

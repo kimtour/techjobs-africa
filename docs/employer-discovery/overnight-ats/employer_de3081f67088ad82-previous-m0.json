@@ -1,0 +1,94 @@
+{
+  "board_robots": {
+    "allowed": true,
+    "status": 200,
+    "url": "https://www.workable.com/robots.txt"
+  },
+  "careers_page": "https://www.cloudfactory.com/careers",
+  "checked_at": "2026-10-25T15:35:17.649005+00:00",
+  "checks": {
+    "official_link": true
+  },
+  "detected_boards": [
+    "https://apply.workable.com/cloudfactory/"
+  ],
+  "endpoint": "https://www.workable.com/api/accounts/cloudfactory",
+  "environment": "local",
+  "error_type": "ValueError",
+  "feed_urls": [],
+  "http_status": null,
+  "official_robots": {
+    "allowed": true,
+    "status": 200,
+    "url": "https://www.cloudfactory.com/robots.txt"
+  },
+  "official_url": "https://www.cloudfactory.com/",
+  "requests": [
+    {
+      "attempt": 1,
+      "duration_seconds": 0.701,
+      "error_type": null,
+      "host": "www.cloudfactory.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T15:35:17.684190+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.302,
+      "error_type": null,
+      "host": "www.cloudfactory.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T15:35:19.894517+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.112,
+      "error_type": null,
+      "host": "www.cloudfactory.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T15:35:21.705628+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.338,
+      "error_type": null,
+      "host": "www.cloudfactory.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T15:35:23.321111+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.536,
+      "error_type": null,
+      "host": "www.workable.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T15:35:25.169099+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.11,
+      "error_type": null,
+      "host": "www.workable.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T15:35:27.214998+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.123,
+      "error_type": "HTTPStatusError",
+      "host": "www.workable.com",
+      "http_status": 302,
+      "method": "GET",
+      "started_at": "2026-10-25T15:35:28.834858+00:00"
+    }
+  ],
+  "source_id": "employer_de3081f67088ad82",
+  "status": "FAILED",
+  "structured_job_count": 0
+}

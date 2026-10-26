@@ -1,0 +1,304 @@
+{
+  "source_id": "employer_2ea1d3f3a074bddb",
+  "checked_at": "2026-10-25T20:51:12.188230+00:00",
+  "environment": "local",
+  "status": "SUCCESS",
+  "checks": {
+    "official_link": true,
+    "stable_ids": true,
+    "application_links": true,
+    "locations": true,
+    "dates_reviewed": true,
+    "complete": true
+  },
+  "requests": [
+    {
+      "started_at": "2026-10-25T20:51:12.256252+00:00",
+      "duration_seconds": 0.338,
+      "method": "GET",
+      "host": "paystack.com",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-25T20:51:14.101345+00:00",
+      "duration_seconds": 1.867,
+      "method": "GET",
+      "host": "paystack.com",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-25T20:51:17.470051+00:00",
+      "duration_seconds": 0.107,
+      "method": "GET",
+      "host": "paystack.com",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-25T20:51:19.086739+00:00",
+      "duration_seconds": 0.966,
+      "method": "GET",
+      "host": "paystack.com",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-25T20:51:21.553499+00:00",
+      "duration_seconds": 0.751,
+      "method": "GET",
+      "host": "careers.paystack.com",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-25T20:51:23.814314+00:00",
+      "duration_seconds": 0.219,
+      "method": "GET",
+      "host": "careers.paystack.com",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-25T20:51:25.543318+00:00",
+      "duration_seconds": 0.293,
+      "method": "GET",
+      "host": "careers.paystack.com",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-25T20:51:27.346002+00:00",
+      "duration_seconds": 0.262,
+      "method": "GET",
+      "host": "careers.paystack.com",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-25T20:51:29.109801+00:00",
+      "duration_seconds": 0.263,
+      "method": "GET",
+      "host": "careers.paystack.com",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-25T20:51:30.881920+00:00",
+      "duration_seconds": 0.318,
+      "method": "GET",
+      "host": "careers.paystack.com",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-25T20:51:32.709729+00:00",
+      "duration_seconds": 0.333,
+      "method": "GET",
+      "host": "careers.paystack.com",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-25T20:51:34.551303+00:00",
+      "duration_seconds": 0.325,
+      "method": "GET",
+      "host": "careers.paystack.com",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-25T20:51:36.381564+00:00",
+      "duration_seconds": 0.352,
+      "method": "GET",
+      "host": "careers.paystack.com",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-25T20:51:38.236881+00:00",
+      "duration_seconds": 0.306,
+      "method": "GET",
+      "host": "careers.paystack.com",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-25T20:51:40.053054+00:00",
+      "duration_seconds": 0.331,
+      "method": "GET",
+      "host": "careers.paystack.com",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-25T20:51:41.893282+00:00",
+      "duration_seconds": 0.342,
+      "method": "GET",
+      "host": "careers.paystack.com",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-25T20:51:43.744820+00:00",
+      "duration_seconds": 0.308,
+      "method": "GET",
+      "host": "careers.paystack.com",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-25T20:51:45.553644+00:00",
+      "duration_seconds": 0.323,
+      "method": "GET",
+      "host": "careers.paystack.com",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-25T20:51:47.385003+00:00",
+      "duration_seconds": 0.336,
+      "method": "GET",
+      "host": "careers.paystack.com",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-25T20:51:49.226692+00:00",
+      "duration_seconds": 0.328,
+      "method": "GET",
+      "host": "careers.paystack.com",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    }
+  ],
+  "official_url": "https://paystack.com/careers",
+  "official_robots": {
+    "status": 200,
+    "allowed": true,
+    "url": "https://paystack.com/robots.txt"
+  },
+  "careers_page": "https://paystack.com/ci/careers?localeUpdate=true",
+  "structured_job_count": 0,
+  "feed_urls": [],
+  "detected_boards": [],
+  "endpoint": "https://careers.paystack.com/jobs",
+  "board_robots": {
+    "status": 200,
+    "allowed": true,
+    "url": "https://careers.paystack.com/robots.txt"
+  },
+  "records_found": 13,
+  "technical_jobs": 8,
+  "eligible_jobs": 7,
+  "publication_approved": false,
+  "candidate_metadata": [
+    {
+      "job_id": "employer_2ea1d3f3a074bddb:7862199",
+      "title": "Senior Database Administrator",
+      "employer": "Paystack",
+      "country": "South Africa",
+      "application_url": "https://careers.paystack.com/jobs/7862199-senior-database-administrator"
+    },
+    {
+      "job_id": "employer_2ea1d3f3a074bddb:8271121",
+      "title": "Senior IT Engineer",
+      "employer": "Paystack",
+      "country": "Nigeria",
+      "application_url": "https://careers.paystack.com/jobs/8271121-senior-it-engineer"
+    },
+    {
+      "job_id": "employer_2ea1d3f3a074bddb:8272899",
+      "title": "Senior Platform Security Engineer",
+      "employer": "Paystack",
+      "country": "South Africa",
+      "application_url": "https://careers.paystack.com/jobs/8272899-senior-platform-security-engineer"
+    },
+    {
+      "job_id": "employer_2ea1d3f3a074bddb:8341899",
+      "title": "Product Manager, South Africa",
+      "employer": "Paystack",
+      "country": "South Africa",
+      "application_url": "https://careers.paystack.com/jobs/8341899-product-manager-south-africa"
+    },
+    {
+      "job_id": "employer_2ea1d3f3a074bddb:8434292",
+      "title": "Senior Product Manager - Processing",
+      "employer": "Paystack",
+      "country": "Nigeria",
+      "application_url": "https://careers.paystack.com/jobs/8434292-senior-product-manager-processing"
+    },
+    {
+      "job_id": "employer_2ea1d3f3a074bddb:8463678",
+      "title": "Product Manager - Financial Systems",
+      "employer": "Paystack",
+      "country": "Nigeria",
+      "application_url": "https://careers.paystack.com/jobs/8463678-product-manager-financial-systems"
+    },
+    {
+      "job_id": "employer_2ea1d3f3a074bddb:8506003",
+      "title": "Financial Crime Insights &amp; Systems Analyst",
+      "employer": "Paystack",
+      "country": "South Africa",
+      "application_url": "https://careers.paystack.com/jobs/8506003-financial-crime-insights-systems-analyst"
+    }
+  ],
+  "sample": [
+    {
+      "id": "7785326",
+      "title": "Business Development Lead, South Africa",
+      "location": "Cape Town \u00b7 Cape Town, South Africa \u00b7 ZA",
+      "application_url": "https://careers.paystack.com/jobs/7785326-business-development-lead-south-africa",
+      "published_at": "2026-05-24T20:50:47+01:00"
+    },
+    {
+      "id": "7862199",
+      "title": "Senior Database Administrator",
+      "location": "Cape Town \u00b7 Cape Town, South Africa \u00b7 ZA \u00b7 Accra \u00b7 Accra, Ghana \u00b7 GH \u00b7 Dubai \u00b7 Dubai, UAE \u00b7 AE \u00b7 Lagos \u00b7 Lagos, Nigeria \u00b7 NG \u00b7 Nairobi \u00b7 Nairobi, Kenya \u00b7 KE \u00b7 Abidjan \u00b7 Abidjan, C\u00f4te d'Ivoire \u00b7 CI",
+      "application_url": "https://careers.paystack.com/jobs/7862199-senior-database-administrator",
+      "published_at": "2026-06-06T19:16:31+01:00"
+    },
+    {
+      "id": "8042968",
+      "title": "QA Lead",
+      "location": "Lagos \u00b7 Lagos, Nigeria \u00b7 NG \u00b7 Cape Town \u00b7 Cape Town, South Africa \u00b7 ZA \u00b7 Dubai \u00b7 Dubai, UAE \u00b7 AE \u00b7 Nairobi \u00b7 Nairobi, Kenya \u00b7 KE \u00b7 Accra \u00b7 Accra, Ghana \u00b7 GH",
+      "application_url": "https://careers.paystack.com/jobs/8042968-qa-lead",
+      "published_at": "2026-07-09T07:23:21+01:00"
+    },
+    {
+      "id": "8049582",
+      "title": "Data Science Lead",
+      "location": "Dubai \u00b7 Dubai, UAE \u00b7 AE",
+      "application_url": "https://careers.paystack.com/jobs/8049582-data-science-lead",
+      "published_at": "2026-07-10T05:33:02+01:00"
+    },
+    {
+      "id": "8271121",
+      "title": "Senior IT Engineer",
+      "location": "Lagos \u00b7 Lagos, Nigeria \u00b7 NG",
+      "application_url": "https://careers.paystack.com/jobs/8271121-senior-it-engineer",
+      "published_at": "2026-08-26T09:10:32+01:00"
+    }
+  ]
+}

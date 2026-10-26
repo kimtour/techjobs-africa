@@ -1041,23 +1041,55 @@ sources:
   status: pending
   employer_ids:
   - emp_987105690850cf49
-  access_method: null
+  access_method: jsonld
   country_filters: []
   refresh_hours: 24
   discovery_refresh_hours: 168
   supports_absence_expiry: false
   crawl:
-    max_pages: 5
-    max_requests_per_run: 12
+    max_pages: 20
+    max_requests_per_run: 150
     request_delay_ms: 1500
     timeout_seconds: 20
     retry_delays_seconds:
     - 5
     - 20
-  verification: {}
+  verification:
+    application_links: true
+    complete: true
+    dates_reviewed: true
+    locations: true
+    official_link: true
+    stable_ids: true
+    collection_review: true
+    local_access: true
+    runner_access: false
+    evidence_paths:
+    - docs/employer-discovery/overnight-structured/local/employer_0d53c0361b5e43cc.json
+    collection_basis: Reviewed official employer careers page links the exact public
+      JazzHR board. Board and per-vacancy robots paths permit collection. A static
+      all-openings listing exposes every observed posting with no pagination controls;
+      the complete local crawl validates every vacancy. Retain only factual employer/title/location/date/application-link
+      metadata with attribution, never descriptions, logos or applicant data. Corporate
+      policies were reviewed; no automated-access prohibition on these public ATS
+      pages was identified. This is not a claim of an express content-redistribution
+      licence.
+    collection_review_url: https://redcross.or.ke/privacy-policy/
   suggestions:
     platform: jazzhr
     mixed_opportunities: true
+  official_careers_url: https://redcross.or.ke/careers/
+  collection:
+    listing_url: https://redcross.applytojob.com/
+    complete_listing_verified: true
+    detail_url_pattern: /apply/[A-Za-z0-9]+/[^/#?]+
+    identifier_url_pattern: /apply/([A-Za-z0-9]+)/
+    fields:
+      title: <div[^>]*class=[\"\x27]job-header[\"\x27][^>]*>.*?<h2[^>]*>(.*?)</h2>
+      location: <div[^>]*title=[\"\x27]Location[\"\x27][^>]*>(.*?)</div>
+      employment_type: <div[^>]*id=[\"\x27]resumator-job-employment[\"\x27][^>]*>(.*?)</div>
+  review_reason: Complete local crawl verified; hosted access, isolated trial and
+    publication review are still required.
 - id: employer_0f625148e61cf723
   url: https://ke.linkedin.com/company/speedaf-kenya
   import_urls:
@@ -1782,6 +1814,13 @@ sources:
     application-URL duplicates. Daily collection approved; reviewed first snapshot
     may publish. Absence expiry remains disabled.'
   reviewed_bootstrap: true
+  reviewed_import_filters:
+  - url: https://absa.wd3.myworkdayjobs.com/ABSAcareersite?locationCountry=9e684fd7be1e469d9ee955a4c3b754be
+    country: Kenya
+    country_code: KE
+    locationCountry: 9e684fd7be1e469d9ee955a4c3b754be
+    fetch_strategy: One complete shared board fetch; retain per-vacancy structured
+      location and site country filter. No duplicate Kenya-only collector.
 - id: employer_1a46b912119f5c69
   url: https://jobs.citi.com/search-jobs/Kenya/287/2/192950/1/38/50/2
   import_urls:
@@ -1906,7 +1945,27 @@ sources:
     retry_delays_seconds:
     - 5
     - 20
-  verification: {}
+  verification:
+    official_link: true
+    collection_review: true
+    local_access: true
+    collection_basis: Official employer link to public recruitment board verified.
+      Careers-linked policy reviewed; no automation restriction for factual vacancy
+      metadata identified. Collect titles, employer, location, dates, immutable vacancy
+      IDs and original application URLs only; no descriptions, logos or applicant
+      data. No redistribution licence claimed. Healthy empty array verified against
+      the existing reviewed Breezy vacancy schema and tested shared parser; not an
+      HTML shell.
+    evidence_paths:
+    - docs/employer-discovery/overnight-ats/employer_1b90da4692b350be-local.json
+    - docs/employer-discovery/overnight-ats/employer_1b90da4692b350be-official.json
+    stable_ids: true
+    application_links: true
+    locations: true
+    dates_reviewed: true
+    complete: true
+    runner_access: false
+    collection_review_url: https://wasoko.com/privacy-policy/
   suggestions:
     platform: custom
     historical: true
@@ -1914,6 +1973,10 @@ sources:
   board_url: https://wasoko.breezy.hr/
   official_careers_url: https://wasoko.com/careers/
   pilot_rank: 20
+  posting_company: Wasoko
+  verified_empty_schema: true
+  review_reason: Complete reviewed local collection passed; hosted access and isolated
+    trial still required.
 - id: employer_1bc72c098bfe9f56
   url: https://www.conservation.org/conservation-international-jobs
   import_urls:
@@ -4583,22 +4646,54 @@ sources:
   status: pending
   employer_ids:
   - emp_5d743a707e7dfd2e
-  access_method: null
+  access_method: jsonld
   country_filters: []
   refresh_hours: 24
   discovery_refresh_hours: 168
   supports_absence_expiry: false
   crawl:
-    max_pages: 5
-    max_requests_per_run: 12
+    max_pages: 20
+    max_requests_per_run: 150
     request_delay_ms: 1500
     timeout_seconds: 20
     retry_delays_seconds:
     - 5
     - 20
-  verification: {}
+  verification:
+    application_links: true
+    complete: true
+    dates_reviewed: true
+    locations: true
+    official_link: true
+    stable_ids: true
+    collection_review: true
+    local_access: true
+    runner_access: false
+    evidence_paths:
+    - docs/employer-discovery/overnight-structured/local/employer_416ee9b26a529f41.json
+    collection_basis: Reviewed official employer careers page links the exact public
+      JazzHR board. Board and per-vacancy robots paths permit collection. A static
+      all-openings listing exposes every observed posting with no pagination controls;
+      the complete local crawl validates every vacancy. Retain only factual employer/title/location/date/application-link
+      metadata with attribution, never descriptions, logos or applicant data. Corporate
+      policies were reviewed; no automated-access prohibition on these public ATS
+      pages was identified. This is not a claim of an express content-redistribution
+      licence.
+    collection_review_url: https://www.pendahealth.com/terms
   suggestions:
     platform: jazzhr
+  official_careers_url: https://www.pendahealth.com/careers
+  collection:
+    listing_url: https://pendahealth.applytojob.com/
+    complete_listing_verified: true
+    detail_url_pattern: /apply/[A-Za-z0-9]+/[^/#?]+
+    identifier_url_pattern: /apply/([A-Za-z0-9]+)/
+    fields:
+      title: <div[^>]*class=[\"\x27]job-header[\"\x27][^>]*>.*?<h2[^>]*>(.*?)</h2>
+      location: <div[^>]*title=[\"\x27]Location[\"\x27][^>]*>(.*?)</div>
+      employment_type: <div[^>]*id=[\"\x27]resumator-job-employment[\"\x27][^>]*>(.*?)</div>
+  review_reason: Complete local crawl verified; hosted access, isolated trial and
+    publication review are still required.
 - id: employer_4189689afb9d89bc
   url: https://recruitment.tenwekhosp.org/
   import_urls:
@@ -4803,7 +4898,26 @@ sources:
     retry_delays_seconds:
     - 5
     - 20
-  verification: {}
+  verification:
+    official_link: true
+    collection_review: true
+    local_access: true
+    collection_basis: Official employer link to public recruitment board verified.
+      Careers-linked policy reviewed; no automation restriction for factual vacancy
+      metadata identified. Collect titles, employer, location, dates, immutable vacancy
+      IDs and original application URLs only; no descriptions, logos or applicant
+      data. No redistribution licence claimed.
+    evidence_paths:
+    - docs/employer-discovery/overnight-ats/employer_43cdbfb4a567343f-local.json
+    - docs/employer-discovery/overnight-ats/employer_43cdbfb4a567343f-official.json
+    - docs/employer-discovery/overnight-ats/employer_43cdbfb4a567343f-previous-m0.json
+    stable_ids: true
+    application_links: true
+    locations: true
+    dates_reviewed: true
+    complete: true
+    runner_access: false
+    collection_review_url: https://www.abtglobal.com/privacy-at-abt
   suggestions:
     platform: oracle
     needs_location_filter: true
@@ -4815,9 +4929,9 @@ sources:
     job_url_template: https://egpy.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/JoinAbt/job/{id}
   posting_company: Abt Global
   group_portal: true
-  official_careers_url: https://www.abtglobal.com/
-  review_reason: Provider-level public interface investigated; source-specific official
-    linkage, terms and complete local/hosted crawls remain required.
+  official_careers_url: https://www.abtglobal.com/careers
+  review_reason: Complete reviewed local collection passed; hosted access and isolated
+    trial still required.
 - id: employer_4494d34d4e846387
   url: https://www.ketraco.co.ke/about-us/careers
   import_urls:
@@ -5480,22 +5594,54 @@ sources:
   status: pending
   employer_ids:
   - emp_aedf0b6ecff82884
-  access_method: null
+  access_method: jsonld
   country_filters: []
   refresh_hours: 24
   discovery_refresh_hours: 168
   supports_absence_expiry: false
   crawl:
-    max_pages: 5
-    max_requests_per_run: 12
+    max_pages: 20
+    max_requests_per_run: 150
     request_delay_ms: 1500
     timeout_seconds: 20
     retry_delays_seconds:
     - 5
     - 20
-  verification: {}
+  verification:
+    application_links: true
+    complete: true
+    dates_reviewed: true
+    locations: true
+    official_link: true
+    stable_ids: true
+    collection_review: true
+    local_access: true
+    runner_access: false
+    evidence_paths:
+    - docs/employer-discovery/overnight-structured/local/employer_51d3d3a6082ea2c7.json
+    collection_basis: Reviewed official employer careers page links the exact public
+      JazzHR board. Board and per-vacancy robots paths permit collection. A static
+      all-openings listing exposes every observed posting with no pagination controls;
+      the complete local crawl validates every vacancy. Retain only factual employer/title/location/date/application-link
+      metadata with attribution, never descriptions, logos or applicant data. Corporate
+      policies were reviewed; no automated-access prohibition on these public ATS
+      pages was identified. This is not a claim of an express content-redistribution
+      licence.
+    collection_review_url: https://www.opencapital.com/terms-of-service
   suggestions:
     platform: jazzhr
+  official_careers_url: https://www.opencapital.com/join-us
+  collection:
+    listing_url: https://opencapitaladvisors.applytojob.com/apply/
+    complete_listing_verified: true
+    detail_url_pattern: /apply/[A-Za-z0-9]+/[^/#?]+
+    identifier_url_pattern: /apply/([A-Za-z0-9]+)/
+    fields:
+      title: <div[^>]*class=[\"\x27]job-header[\"\x27][^>]*>.*?<h2[^>]*>(.*?)</h2>
+      location: <div[^>]*title=[\"\x27]Location[\"\x27][^>]*>(.*?)</div>
+      employment_type: <div[^>]*id=[\"\x27]resumator-job-employment[\"\x27][^>]*>(.*?)</div>
+  review_reason: Complete local crawl verified; hosted access, isolated trial and
+    publication review are still required.
 - id: employer_51dc0ba405b59884
   url: https://devkigroupke.com/job-openings/
   import_urls:
@@ -6359,7 +6505,7 @@ sources:
   import_urls:
   - https://careers.accessbankplc.com/jobs
   platform: custom
-  status: pending
+  status: blocked
   employer_ids:
   - emp_b472f93e87a2df2e
   access_method: null
@@ -6380,6 +6526,9 @@ sources:
     platform: custom
     needs_location_filter: true
     shared_portal: true
+  review_reason: Requested official careers URL returned an automated access limit
+    during direct review. Do not retry around the block or treat the JavaScript shell
+    as an empty vacancy board.
 - id: employer_5ccf79bd0e7e2062
   url: https://kemri-wellcome.org/careers/
   import_urls:
@@ -11879,13 +12028,35 @@ sources:
     retry_delays_seconds:
     - 5
     - 20
-  verification: {}
+  verification:
+    official_link: true
+    collection_review: true
+    local_access: true
+    collection_basis: Official employer link to public recruitment board verified.
+      Careers-linked policy reviewed; no automation restriction for factual vacancy
+      metadata identified. Collect titles, employer, location, dates, immutable vacancy
+      IDs and original application URLs only; no descriptions, logos or applicant
+      data. No redistribution licence claimed. Linked terms are a client-services
+      agreement, not a licence for vacancy redistribution.
+    evidence_paths:
+    - docs/employer-discovery/overnight-ats/employer_b4d3017368570ae1-local.json
+    - docs/employer-discovery/overnight-ats/employer_b4d3017368570ae1-official.json
+    stable_ids: true
+    application_links: true
+    locations: true
+    dates_reviewed: true
+    complete: true
+    runner_access: false
+    collection_review_url: https://www.sama.com/terms-of-service
   suggestions:
     platform: custom
   board: samainc
   board_url: https://boards.greenhouse.io/samainc
   official_careers_url: https://www.sama.com/careers
   pilot_rank: 24
+  posting_company: Sama
+  review_reason: Complete reviewed local collection passed; hosted access and isolated
+    trial still required.
 - id: employer_b5cb835c65d8759a
   url: https://hdsn.fa.us6.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/jobs
   import_urls:
@@ -13713,7 +13884,25 @@ sources:
     retry_delays_seconds:
     - 5
     - 20
-  verification: {}
+  verification:
+    official_link: true
+    collection_review: true
+    local_access: true
+    collection_basis: Official careers link and public board verified. Legal notice
+      permits reasonable attributed excerpts for free noncommercial use. Limit collection
+      to factual job metadata and original application links; no descriptions, branding
+      or applicant data. Re-review before monetizing.
+    evidence_paths:
+    - docs/employer-discovery/overnight-ats/employer_d5765c76e9008f2e-local.json
+    - docs/employer-discovery/overnight-ats/employer_d5765c76e9008f2e-official.json
+    - docs/employer-discovery/overnight-ats/employer_d5765c76e9008f2e-previous-m0.json
+    stable_ids: true
+    application_links: true
+    locations: true
+    dates_reviewed: true
+    complete: true
+    runner_access: false
+    collection_review_url: https://www.controlrisks.com/legal-1/legal-notices
   suggestions:
     platform: custom
   board: control-risks-6
@@ -13724,9 +13913,9 @@ sources:
     - apply.workable.com
   posting_company: Control Risks
   group_portal: true
-  official_careers_url: https://www.controlrisks.com/
-  review_reason: Provider-level public interface investigated; source-specific official
-    linkage, terms and complete local/hosted crawls remain required.
+  official_careers_url: https://www.controlrisks.com/careers
+  review_reason: Complete reviewed local collection passed; hosted access and isolated
+    trial still required.
 - id: employer_d5f5be8670b7b42d
   url: https://choice-bank.com/careers
   import_urls:
@@ -14473,7 +14662,26 @@ sources:
     retry_delays_seconds:
     - 5
     - 20
-  verification: {}
+  verification:
+    official_link: true
+    collection_review: true
+    local_access: true
+    collection_basis: Official employer link to public recruitment board verified.
+      Careers-linked policy reviewed; no automation restriction for factual vacancy
+      metadata identified. Collect titles, employer, location, dates, immutable vacancy
+      IDs and original application URLs only; no descriptions, logos or applicant
+      data. No redistribution licence claimed.
+    evidence_paths:
+    - docs/employer-discovery/overnight-ats/employer_de3081f67088ad82-local.json
+    - docs/employer-discovery/overnight-ats/employer_de3081f67088ad82-official.json
+    - docs/employer-discovery/overnight-ats/employer_de3081f67088ad82-previous-m0.json
+    stable_ids: true
+    application_links: true
+    locations: true
+    dates_reviewed: true
+    complete: true
+    runner_access: false
+    collection_review_url: https://www.cloudfactory.com/privacy
   suggestions:
     platform: custom
   board: cloudfactory
@@ -14484,9 +14692,9 @@ sources:
     - apply.workable.com
   posting_company: CloudFactory
   group_portal: true
-  official_careers_url: https://www.cloudfactory.com/
-  review_reason: Provider-level public interface investigated; source-specific official
-    linkage, terms and complete local/hosted crawls remain required.
+  official_careers_url: https://www.cloudfactory.com/careers
+  review_reason: Complete reviewed local collection passed; hosted access and isolated
+    trial still required.
 - id: employer_de3f8390559db033
   url: https://kijabehospital.or.ke/Recruit
   import_urls:
@@ -15168,23 +15376,57 @@ sources:
   status: pending
   employer_ids:
   - emp_4ca677fb74ae68fc
-  access_method: null
+  access_method: jsonld
   country_filters: []
   refresh_hours: 24
   discovery_refresh_hours: 168
   supports_absence_expiry: false
   crawl:
-    max_pages: 5
-    max_requests_per_run: 12
+    max_pages: 20
+    max_requests_per_run: 150
     request_delay_ms: 1500
     timeout_seconds: 20
     retry_delays_seconds:
     - 5
     - 20
-  verification: {}
+  verification:
+    application_links: true
+    complete: true
+    dates_reviewed: true
+    locations: true
+    official_link: true
+    stable_ids: true
+    collection_review: true
+    local_access: true
+    runner_access: false
+    evidence_paths:
+    - docs/employer-discovery/overnight-structured/local/employer_eb9fb4e50ccf9e88.json
+    collection_basis: Reviewed official employer careers page links the exact public
+      JazzHR board. Board and per-vacancy robots paths permit collection. A static
+      all-openings listing exposes every observed posting with no pagination controls;
+      the complete local crawl validates every vacancy. Retain only factual employer/title/location/date/application-link
+      metadata with attribution, never descriptions, logos or applicant data. Corporate
+      policies were reviewed; no automated-access prohibition on these public ATS
+      pages was identified. This is not a claim of an express content-redistribution
+      licence.
+    collection_review_url: https://www.novapioneer.com/careers/
   suggestions:
     platform: jazzhr
     needs_location_filter: true
+  official_careers_url: https://www.novapioneer.com/careers/apply/
+  collection:
+    listing_url: https://novapioneer.applytojob.com/
+    complete_listing_verified: true
+    detail_url_pattern: /apply/[A-Za-z0-9]+/[^/#?]+
+    identifier_url_pattern: /apply/([A-Za-z0-9]+)/
+    fields:
+      title: <div[^>]*class=[\"\x27]job-header[\"\x27][^>]*>.*?<h2[^>]*>(.*?)</h2>
+      location: <div[^>]*title=[\"\x27]Location[\"\x27][^>]*>(.*?)</div>
+      employment_type: <div[^>]*id=[\"\x27]resumator-job-employment[\"\x27][^>]*>(.*?)</div>
+  review_reason: Complete local crawl verified; hosted access, isolated trial and
+    publication review are still required.
+  group_portal: true
+  posting_company: Nova Pioneer
 - id: employer_ec01759479fb7548
   url: https://fincra.com/careers/
   import_urls:
@@ -15845,7 +16087,7 @@ sources:
   access_method: null
   country_filters: []
   refresh_hours: 24
-  discovery_refresh_hours: 168
+  discovery_refresh_hours: 24
   supports_absence_expiry: false
   crawl:
     max_pages: 5
@@ -15860,6 +16102,16 @@ sources:
     platform: custom
     needs_location_filter: true
     shared_portal: true
+  reviewed_empty_marker: We currently do not have open positions
+  known_non_vacancy_documents:
+  - https://www.abcthebank.com/wp-content/uploads/2020/12/Privacy_Notice.pdf
+  - https://www.abcthebank.com/wp-content/uploads/2024/08/CRS-2024-FAQ.pdf
+  - https://www.abcthebank.com/wp-content/uploads/2026/04/LEGAL-DISCLAIMER-WEBSITE-TERMS-OF-USE.pdf
+  - https://www.abcthebank.com/wp-content/uploads/2026/04/ABC-Bank-Cookie-Policy.pdf
+  discovery_enabled: true
+  review_reason: Reviewed official careers page explicitly has no open positions.
+    Daily page-state monitoring enabled; any vacancy/schema change requires extractor
+    review. No careers link or talent-pool form is published as a job.
 - id: employer_f806f6b3b4febe19
   url: https://careers.cihebkenya.org/
   import_urls:

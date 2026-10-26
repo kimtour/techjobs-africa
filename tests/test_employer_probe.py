@@ -188,3 +188,44 @@ def test_compressed_responses_are_decoded_once():
         assert result["platform_suggestions"] == ["lever"]
     finally:
         http.close()
+
+
+@pytest.mark.parametrize(
+    "html,expected",
+    [
+        ("<h1>Careers</h1><p>We currently do not have open positions</p>", "EMPTY"),
+        ("<h1>Careers</h1><p>New opportunities coming soon</p>", "REVIEW_REQUIRED"),
+        (
+            '<p>We currently do not have open positions</p><a href="/jobs/123">Engineer</a>',
+            "REVIEW_REQUIRED",
+        ),
+        (
+            '<p>We currently do not have open positions</p><a href="/new-advert.pdf">Advert</a>',
+            "REVIEW_REQUIRED",
+        ),
+    ],
+)
+def test_reviewed_empty_state_never_promotes_or_hides_new_vacancies(html, expected):
+    def respond(request):
+        return (
+            httpx.Response(404)
+            if request.url.path == "/robots.txt"
+            else httpx.Response(200, text=html)
+        )
+
+    http = ProbeHTTP(transport=httpx.MockTransport(respond), validate=lambda url: None, interval=0)
+    source = {
+        "id": "s",
+        "url": "https://a.example/careers",
+        "status": "pending",
+        "platform": "custom",
+        "reviewed_empty_marker": "We currently do not have open positions",
+    }
+    try:
+        result = probe_source(source, http)
+        assert result["vacancy_state"] == expected
+        assert result["collection_verified"] is False
+        assert result["production_promoted"] is False
+        assert source["status"] == "pending"
+    finally:
+        http.close()

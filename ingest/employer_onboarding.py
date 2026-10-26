@@ -157,7 +157,7 @@ def discover(source: dict, employers: dict, client=None, *, request_budget=8) ->
                 and urlsplit(url).path != urlsplit(str(response.url)).path
                 and any(
                     term in urlsplit(url).path.casefold()
-                    for term in ("/career", "/jobs", "/join-our-team")
+                    for term in ("/career", "/jobs", "/join-our-team", "/vacanc", "/work-with-us")
                 )
             ]
             if careers:
@@ -188,7 +188,7 @@ def discover(source: dict, employers: dict, client=None, *, request_budget=8) ->
         result["detected_boards"] = detected[:15]
         candidate = source.get("board_url") or source["url"]
         board = urlsplit(candidate)
-        if source["platform"] in SUPPORTED | {"jazzhr"} | API_METHODS and source.get("board"):
+        if source.get("board") and board_identity(candidate):
             result["checks"]["official_link"] = any(
                 board_identity(url) == (source["platform"], source["board"]) for url in urls
             )
@@ -303,7 +303,12 @@ def verify_board_access(source: dict, employers: dict) -> dict:
         report["checks"] = {
             "stable_ids": all(job.external_id for job in raw),
             "application_links": all(safe_url(str(job.apply_url)) for job in raw),
-            "locations": any(job.location for job in raw),
+            "locations": any(job.location for job in raw)
+            or (
+                not raw
+                and source["platform"] in SUPPORTED
+                and source.get("verified_empty_schema") is True
+            ),
             "dates_reviewed": True,
             "complete": adapter.crawl_complete,
         }

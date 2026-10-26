@@ -1,0 +1,195 @@
+{
+  "board_robots": {
+    "allowed": true,
+    "status": 200,
+    "url": "https://pendahealth.applytojob.com/robots.txt"
+  },
+  "checked_at": "2026-10-25T16:15:12.616962+00:00",
+  "checks": {
+    "application_links": true,
+    "complete": true,
+    "dates_reviewed": true,
+    "locations": true,
+    "official_link": true,
+    "stable_ids": true
+  },
+  "detected_boards": [],
+  "endpoint": "https://pendahealth.applytojob.com/",
+  "environment": "local",
+  "feed_urls": [],
+  "official_robots": {
+    "allowed": true,
+    "status": 200,
+    "url": "https://www.pendahealth.com/robots.txt"
+  },
+  "official_url": "https://www.pendahealth.com/careers",
+  "records_found": 9,
+  "requests": [
+    {
+      "attempt": 1,
+      "duration_seconds": 2.411,
+      "error_type": null,
+      "host": "www.pendahealth.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T16:15:12.786566+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.151,
+      "error_type": null,
+      "host": "www.pendahealth.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T16:15:16.700434+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 1.486,
+      "error_type": null,
+      "host": "pendahealth.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T16:15:18.356156+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.379,
+      "error_type": null,
+      "host": "pendahealth.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T16:15:21.347316+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.581,
+      "error_type": null,
+      "host": "pendahealth.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T16:15:23.226818+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.391,
+      "error_type": null,
+      "host": "pendahealth.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T16:15:25.312524+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.54,
+      "error_type": null,
+      "host": "pendahealth.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T16:15:27.208476+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.443,
+      "error_type": null,
+      "host": "pendahealth.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T16:15:29.253782+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.499,
+      "error_type": null,
+      "host": "pendahealth.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T16:15:31.202090+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.493,
+      "error_type": null,
+      "host": "pendahealth.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T16:15:33.206541+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.502,
+      "error_type": null,
+      "host": "pendahealth.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T16:15:35.204866+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.494,
+      "error_type": null,
+      "host": "pendahealth.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T16:15:37.211880+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.557,
+      "error_type": null,
+      "host": "pendahealth.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T16:15:39.210098+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.465,
+      "error_type": null,
+      "host": "pendahealth.applytojob.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T16:15:41.271704+00:00"
+    }
+  ],
+  "sample": [
+    {
+      "application_url": "https://pendahealth.applytojob.com/apply/76X0bMVUv4/Reproductive-Health-Officer-Partime",
+      "id": "76X0bMVUv4",
+      "location": "Nairobi, Nairobi, Kenya",
+      "published_at": null,
+      "title": "Reproductive Health Officer - Partime"
+    },
+    {
+      "application_url": "https://pendahealth.applytojob.com/apply/AIVs8JSqt0/Community-Oral-Health-Officer-COHO",
+      "id": "AIVs8JSqt0",
+      "location": "Nairobi Metropolitant · Kitengela",
+      "published_at": "2026-09-17T00:00:00+00:00",
+      "title": "Community Oral Health Officer (COHO)"
+    },
+    {
+      "application_url": "https://pendahealth.applytojob.com/apply/Opgaqc277o/Dentist-Parttime",
+      "id": "Opgaqc277o",
+      "location": "Nairobi Metropolitan, Kenya · Nairobi Metropolitan, Kenya",
+      "published_at": "2026-09-17T00:00:00+00:00",
+      "title": "Dentist (Part-time)"
+    },
+    {
+      "application_url": "https://pendahealth.applytojob.com/apply/Pi7mUpv7k5/Pharmaceutical-Technologist-Locum",
+      "id": "Pi7mUpv7k5",
+      "location": "Nairobi Metropolitant",
+      "published_at": "2026-09-17T00:00:00+00:00",
+      "title": "Pharmaceutical Technologist (Locum)"
+    },
+    {
+      "application_url": "https://pendahealth.applytojob.com/apply/UqRxeLwNxY/Pharmaceutical-Technologist",
+      "id": "UqRxeLwNxY",
+      "location": "Nairobi, Nairobi, Kenya",
+      "published_at": null,
+      "title": "Pharmaceutical Technologist"
+    }
+  ],
+  "source_id": "employer_416ee9b26a529f41",
+  "status": "SUCCESS",
+  "structured_job_count": 0
+}

@@ -1,0 +1,26 @@
+{
+  "source_id": "employer_1a36185bfa8761a4",
+  "shared_board_already_active": true,
+  "filter_country": "Kenya",
+  "filter_id": "9e684fd7be1e469d9ee955a4c3b754be",
+  "declared_results": 3,
+  "listings": [
+    {
+      "title": "Credit Analysts - Digital Credit",
+      "location": "Absa Headquarters (KE)",
+      "path": "/job/Absa-Headquarters-KE/Credit-Analysts---Digital-Credit_R-15992135-1"
+    },
+    {
+      "title": "Legal Counsel",
+      "location": "Absa Headquarters (KE)",
+      "path": "/job/Absa-Headquarters-KE/Legal-Counsel_R-15992136"
+    },
+    {
+      "title": "Lead Generator",
+      "location": "Queensway House",
+      "path": "/job/Queensway-House/Lead-Generator_R-15984439"
+    }
+  ],
+  "technical_title_candidates": 0,
+  "complete_page": true
+}

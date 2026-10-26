@@ -1,0 +1,91 @@
+{
+  "source_id": "employer_d5765c76e9008f2e",
+  "employers": [
+    "Control Risks"
+  ],
+  "checked_at": "2026-10-25T20:48:35.574138+00:00",
+  "mode": "unapproved_local_probe",
+  "production_promoted": false,
+  "status": "SUCCESS",
+  "complete": true,
+  "records_found": 108,
+  "technical_jobs": 8,
+  "eligible_jobs": 0,
+  "publication_approved": false,
+  "candidate_metadata": [],
+  "sample": [
+    {
+      "id": "8C4BD439A1",
+      "title": "Accounts Receivable & Retainer Administration Specialist",
+      "location": "Cardiff \u00b7 United Kingdom",
+      "url": "https://apply.workable.com/j/8C4BD439A1/apply",
+      "published_at": "2026-09-10 00:00:00+00:00"
+    },
+    {
+      "id": "7812C6E6B1",
+      "title": "Assistant Financial Accountant",
+      "location": "Cardiff \u00b7 United Kingdom",
+      "url": "https://apply.workable.com/j/7812C6E6B1/apply",
+      "published_at": "2026-09-28 00:00:00+00:00"
+    },
+    {
+      "id": "4FF617AAD4",
+      "title": "Assistant Financial Accountant",
+      "location": "New Delhi \u00b7 India",
+      "url": "https://apply.workable.com/j/4FF617AAD4/apply",
+      "published_at": "2026-08-28 00:00:00+00:00"
+    },
+    {
+      "id": "ABF352E9E5",
+      "title": "Associate Consultant",
+      "location": "Tokyo \u00b7 Japan",
+      "url": "https://apply.workable.com/j/ABF352E9E5/apply",
+      "published_at": "2026-09-18 00:00:00+00:00"
+    },
+    {
+      "id": "2762387CE8",
+      "title": "Associate Consultant - Forensic Investigations",
+      "location": "Mexico City \u00b7 Mexico",
+      "url": "https://apply.workable.com/j/2762387CE8/apply",
+      "published_at": "2026-08-26 00:00:00+00:00"
+    }
+  ],
+  "requests": [
+    {
+      "started_at": "2026-10-25T20:48:35.598167+00:00",
+      "duration_seconds": 0.33,
+      "method": "GET",
+      "host": "www.workable.com",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-25T20:48:37.433616+00:00",
+      "duration_seconds": 0.088,
+      "method": "GET",
+      "host": "www.workable.com",
+      "http_status": 302,
+      "attempt": 1,
+      "error_type": "HTTPStatusError"
+    },
+    {
+      "started_at": "2026-10-25T20:48:39.021844+00:00",
+      "duration_seconds": 0.302,
+      "method": "GET",
+      "host": "apply.workable.com",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-25T20:48:40.826848+00:00",
+      "duration_seconds": 1.117,
+      "method": "GET",
+      "host": "apply.workable.com",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    }
+  ]
+}

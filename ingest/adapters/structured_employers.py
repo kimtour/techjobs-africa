@@ -11,7 +11,7 @@ from datetime import UTC, datetime, timedelta
 from html import unescape
 from html.parser import HTMLParser
 from io import BytesIO
-from urllib.parse import urljoin, urlsplit
+from urllib.parse import parse_qs, urljoin, urlsplit
 from uuid import uuid4
 from xml.etree import ElementTree as ET
 
@@ -142,7 +142,8 @@ class StructuredEmployerAdapter:
                 self._client.policy.get("request_delay_ms", 1500), delay * 1000
             )
         response = checked_get(self._client, url, self.target, **kwargs)
-        if len(response.content) > 2_000_000:
+        limit = min(self.settings.get("max_response_bytes", 2_000_000), 5_000_000)
+        if len(response.content) > limit:
             raise ValueError("Employer response exceeds budget")
         return response
 
@@ -151,6 +152,12 @@ class StructuredEmployerAdapter:
             identifier = identifier.get("value")
         if identifier:
             return str(identifier)
+        query_key = self.settings.get("identifier_query_parameter")
+        if query_key:
+            values = parse_qs(urlsplit(url).query).get(query_key, [])
+            if len(values) != 1 or not values[0].strip():
+                raise ValueError("Vacancy URL lacks its reviewed query identifier")
+            return values[0]
         pattern = self.settings.get("identifier_url_pattern")
         if pattern:
             match = re.search(pattern, urlsplit(url).path)
@@ -158,6 +165,11 @@ class StructuredEmployerAdapter:
                 raise ValueError("Vacancy URL lacks the reviewed immutable posting ID")
             return match.group(1)
         identities = self.candidate_state.setdefault("url_identities", {})
+        for original_url, identity in self.settings.get("initial_url_identities", {}).items():
+            key = canonicalize_apply_url(original_url)
+            if key in identities and identities[key] != identity:
+                raise ValueError("Reviewed URL identity conflicts with persistent identity")
+            identities[key] = identity
         return identities.setdefault(canonicalize_apply_url(url), str(uuid4()))
 
     def json_job(self, item, detail_url):
@@ -229,7 +241,13 @@ class StructuredEmployerAdapter:
                     match = re.search(pattern, response.text, re.I | re.S)
                     if match:
                         fields[name] = unescape(re.sub(r"<[^>]+>", " ", match.group(1))).strip()
-                jobs = [self.json_job(item, str(response.url)) for item in parser.postings]
+                jobs = [
+                    self.json_job(
+                        {**item, "identifier": item.get("identifier") or fields.get("identifier")},
+                        str(response.url),
+                    )
+                    for item in parser.postings
+                ]
                 if not parser.postings and self.settings.get("fields"):
                     jobs = [
                         self._job(
@@ -238,6 +256,7 @@ class StructuredEmployerAdapter:
                             fields.get("location"),
                             url,
                             description=fields.get("description"),
+                            published=fields.get("published"),
                             deadline=fields.get("deadline"),
                             employment_type=fields.get("employment_type"),
                         )
@@ -249,6 +268,9 @@ class StructuredEmployerAdapter:
                     for job in jobs
                 ]
                 jobs = [job for job in jobs if job]
+                if not jobs and parser.postings:
+                    row.update(processing_status="filtered", attempts=0, next_attempt_at=None)
+                    return []  # Recognized talent pools/internal posts are deliberate exclusions.
                 if not jobs:
                     raise ValueError("No individual vacancy data")
             row.update(
@@ -331,6 +353,7 @@ class StructuredEmployerAdapter:
         self.crawl_complete = False
         self.detail_failures = 0
         jobs, seen_pages, seen_links = [], set(), set()
+        expected_links = None
         url = self.endpoint
         for _ in range(self.max_pages):
             if url in seen_pages:
@@ -371,14 +394,43 @@ class StructuredEmployerAdapter:
             else:
                 parser = Page()
                 parser.feed(response.text)
-                page_postings = parser.postings
+                if len(seen_pages) == 1 and self.settings.get("declared_count_pattern"):
+                    text = unescape(re.sub(r"<[^>]+>", " ", response.text))
+                    matches = re.findall(self.settings["declared_count_pattern"], text, re.I)
+                    if not matches:
+                        raise ValueError("Listing no longer supplies its reviewed vacancy total")
+                    counts = [int(value) for value in matches]
+                    expected_links = (
+                        sum(counts) if self.settings.get("sum_declared_counts") else counts[0]
+                    )
+                page_postings = (
+                    [] if self.settings.get("ignore_listing_postings") else parser.postings
+                )
                 pattern = self.settings.get("detail_url_pattern")
                 links = [
                     urljoin(str(response.url), link)
                     for link in parser.links
                     if pattern and re.search(pattern, urljoin(str(response.url), link))
                 ]
+                embedded = self.settings.get("embedded_detail_url_pattern")
+                if embedded:
+                    links.extend(
+                        unescape(match.group(0)) for match in re.finditer(embedded, response.text)
+                    )
                 next_url = urljoin(str(response.url), parser.next_url) if parser.next_url else None
+                pagination = self.settings.get("pagination_url_pattern")
+                if pagination and not next_url:
+                    candidates = {
+                        urljoin(str(response.url), link)
+                        for link in parser.links
+                        if re.search(pagination, urljoin(str(response.url), link))
+                    }
+                    unseen = candidates - seen_pages
+                    if len(unseen) > 1:
+                        raise ValueError("Ambiguous listing pagination")
+                    if candidates and not unseen:
+                        raise ValueError("Listing pagination cycle")
+                    next_url = next(iter(unseen), None)
                 if (
                     not page_postings
                     and not links
@@ -409,5 +461,7 @@ class StructuredEmployerAdapter:
             ):
                 jobs.extend(self.detail(link))
         if self.detail_failures:
+            self.crawl_complete = False
+        if expected_links is not None and len(seen_links) != expected_links:
             self.crawl_complete = False
         return jobs

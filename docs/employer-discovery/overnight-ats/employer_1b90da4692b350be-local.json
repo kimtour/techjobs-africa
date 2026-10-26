@@ -1,0 +1,37 @@
+{
+  "source_id": "employer_1b90da4692b350be",
+  "employers": [
+    "Wasoko / MaxAB-Wasoko"
+  ],
+  "checked_at": "2026-10-25T20:47:39.672150+00:00",
+  "mode": "unapproved_local_probe",
+  "production_promoted": false,
+  "status": "SUCCESS",
+  "complete": true,
+  "records_found": 0,
+  "technical_jobs": 0,
+  "eligible_jobs": 0,
+  "publication_approved": false,
+  "candidate_metadata": [],
+  "sample": [],
+  "requests": [
+    {
+      "started_at": "2026-10-25T20:47:39.928728+00:00",
+      "duration_seconds": 0.476,
+      "method": "GET",
+      "host": "wasoko.breezy.hr",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-25T20:47:41.909914+00:00",
+      "duration_seconds": 0.629,
+      "method": "GET",
+      "host": "wasoko.breezy.hr",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    }
+  ]
+}

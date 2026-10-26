@@ -1,0 +1,193 @@
+{
+  "employer_sources_checked": 214,
+  "page_outcomes": {
+    "SUCCESS": 336,
+    "FAILED": 21
+  },
+  "sources_with_ats_clues": [
+    {
+      "source_id": "employer_fa323962f3075273",
+      "employers": [
+        "Incentro Africa"
+      ],
+      "pages": [
+        {
+          "input_url": "https://careers.incentro.com/jobs",
+          "status": "SUCCESS",
+          "final_url": "https://careers.incentro.com/jobs",
+          "boards": [
+            "https://www.teamtailor.com/?utm_campaign=poweredby&amp;utm_content=careers.incentro.com&amp;utm_medium=referral&amp;utm_source=career-site",
+            "https://www.teamtailor.com/?utm_campaign=poweredby&utm_content=careers.incentro.com&utm_medium=referral&utm_source=career-site"
+          ],
+          "policies": [
+            "https://careers.incentro.com/data-privacy"
+          ]
+        }
+      ]
+    },
+    {
+      "source_id": "employer_8aa05ad779651797",
+      "employers": [
+        "BURN Manufacturing"
+      ],
+      "pages": [
+        {
+          "input_url": "https://www.burnstoves.com/_next/static/chunks/app/careers/jobs/page-7206616fdfd572c6.js",
+          "status": "SUCCESS",
+          "final_url": "https://www.burnstoves.com/_next/static/chunks/app/careers/jobs/page-7206616fdfd572c6.js",
+          "boards": [
+            "https://burnmanufacturing.applytojob.com/apply/"
+          ],
+          "policies": []
+        },
+        {
+          "input_url": "https://www.burnstoves.com/careers/life-at-burn",
+          "status": "SUCCESS",
+          "final_url": "https://www.burnstoves.com/careers/life-at-burn",
+          "boards": [],
+          "policies": [
+            "https://www.burnstoves.com/policies/privacy-policy",
+            "https://www.burnstoves.com/policies/privacy-policy"
+          ]
+        }
+      ]
+    },
+    {
+      "source_id": "employer_93ef40e44d5c48b5",
+      "employers": [
+        "Gulf Energy Kenya"
+      ],
+      "pages": [
+        {
+          "input_url": "https://careers.gulf.energy/jobs/90271ef2-58f8-44d2-9b6f-75b9ba689ce4",
+          "status": "SUCCESS",
+          "final_url": "https://careers.gulf.energy/jobs/90271ef2-58f8-44d2-9b6f-75b9ba689ce4",
+          "boards": [],
+          "policies": []
+        },
+        {
+          "input_url": "https://careers.gulf.energy/jobs/90271ef2-58f8-44d2-9b6f-75b9ba689ce4/apply",
+          "status": "SUCCESS",
+          "final_url": "https://careers.gulf.energy/jobs/90271ef2-58f8-44d2-9b6f-75b9ba689ce4/apply",
+          "boards": [
+            "https://api.careers-page.com"
+          ],
+          "policies": []
+        }
+      ]
+    },
+    {
+      "source_id": "employer_84a6b98ada3f9450",
+      "employers": [
+        "Prosper Global / formerly Mercy Corps"
+      ],
+      "pages": [
+        {
+          "input_url": "https://www.prosperglobal.org/careers#main",
+          "status": "SUCCESS",
+          "final_url": "https://www.prosperglobal.org/careers#main",
+          "boards": [
+            "https://jobs.jobvite.com/prosperglobal/jobs?t=Part-Time-%7C-Full-Time-%7C-Temp-%7C-Pipeline&amp;r=Field-%7C-Administrative%20Offices",
+            "https://jobs.jobvite.com/prosperglobal/jobs?t=Part-Time-%7C-Full-Time-%7C-Temp-%7C-Pipeline&r=Field-%7C-Administrative%20Offices",
+            "https://jobs.jobvite.com/prosperglobal?t=Consultant"
+          ],
+          "policies": [
+            "https://www.prosperglobal.org/who-we-are/privacy-policy",
+            "https://www.prosperglobal.org/who-we-are/privacy-policy"
+          ]
+        },
+        {
+          "input_url": "https://www.prosperglobal.org/careers/benefits",
+          "status": "SUCCESS",
+          "final_url": "https://www.prosperglobal.org/careers/benefits",
+          "boards": [],
+          "policies": [
+            "https://www.prosperglobal.org/who-we-are/privacy-policy",
+            "https://www.prosperglobal.org/who-we-are/privacy-policy"
+          ]
+        }
+      ]
+    },
+    {
+      "source_id": "employer_5df98bab785a8970",
+      "employers": [
+        "Workpay"
+      ],
+      "pages": [
+        {
+          "input_url": "https://www.myworkpay.com/careers#",
+          "status": "SUCCESS",
+          "final_url": "https://www.myworkpay.com/careers#",
+          "boards": [
+            "https://workpay-2.careers-page.com"
+          ],
+          "policies": [
+            "https://talent.vettedai.app/jobs/workpay/senior-legal-executive-635058d7",
+            "https://www.myworkpay.com/privacy-policy",
+            "https://www.myworkpay.com/terms",
+            "https://talent.vettedai.app/jobs/workpay/senior-legal-executive-635058d7"
+          ]
+        }
+      ]
+    },
+    {
+      "source_id": "employer_0c897e2189dffb31",
+      "employers": [
+        "Jumia Kenya"
+      ],
+      "pages": [
+        {
+          "input_url": "https://group.jumia.com/careers",
+          "status": "SUCCESS",
+          "final_url": "https://group.jumia.com/careers",
+          "boards": [
+            "https://job-boards.eu.greenhouse.io/jumia/jobs/4906703101",
+            "https://job-boards.eu.greenhouse.io/jumia/jobs/4921105101",
+            "https://job-boards.eu.greenhouse.io/jumia/jobs/4937277101",
+            "https://job-boards.eu.greenhouse.io/jumia/jobs/4945238101",
+            "https://job-boards.eu.greenhouse.io/jumia/jobs/4945663101",
+            "https://job-boards.eu.greenhouse.io/jumia/jobs/4966810101",
+            "https://job-boards.eu.greenhouse.io/jumia/jobs/4969220101",
+            "https://job-boards.eu.greenhouse.io/jumia/jobs/4970753101",
+            "https://job-boards.eu.greenhouse.io/jumia/jobs/4970823101",
+            "https://job-boards.eu.greenhouse.io/jumia/jobs/4970829101",
+            "https://job-boards.eu.greenhouse.io/jumia/jobs/4974610101",
+            "https://job-boards.eu.greenhouse.io/jumia/jobs/4975134101",
+            "https://job-boards.eu.greenhouse.io/jumia/jobs/4975687101",
+            "https://job-boards.eu.greenhouse.io/jumia/jobs/4976709101",
+            "https://job-boards.eu.greenhouse.io/jumia/jobs/4976710101",
+            "https://job-boards.eu.greenhouse.io/jumia/jobs/4978607101",
+            "https://job-boards.eu.greenhouse.io/jumia/jobs/4980196101",
+            "https://job-boards.eu.greenhouse.io/jumia/jobs/4983751101",
+            "https://job-boards.eu.greenhouse.io/jumia/jobs/4989622101",
+            "https://job-boards.eu.greenhouse.io/jumia/jobs/5004035101",
+            "https://job-boards.eu.greenhouse.io/jumia/jobs/5004058101",
+            "https://job-boards.eu.greenhouse.io/jumia/jobs/5004089101",
+            "https://job-boards.eu.greenhouse.io/jumia/jobs/5009504101",
+            "https://job-boards.eu.greenhouse.io/jumia/jobs/5009507101",
+            "https://job-boards.eu.greenhouse.io/jumia/jobs/5010674101"
+          ],
+          "policies": [
+            "https://group.jumia.com/data-privacy-policy"
+          ]
+        },
+        {
+          "input_url": "https://group.jumia.com/careers?location=kenya",
+          "status": "SUCCESS",
+          "final_url": "https://group.jumia.com/careers?location=kenya",
+          "boards": [
+            "https://job-boards.eu.greenhouse.io/jumia/jobs/4937277101",
+            "https://job-boards.eu.greenhouse.io/jumia/jobs/4966810101",
+            "https://job-boards.eu.greenhouse.io/jumia/jobs/5004035101",
+            "https://job-boards.eu.greenhouse.io/jumia/jobs/5004058101",
+            "https://job-boards.eu.greenhouse.io/jumia/jobs/5004089101",
+            "https://job-boards.eu.greenhouse.io/jumia/jobs/5010674101"
+          ],
+          "policies": [
+            "https://group.jumia.com/data-privacy-policy"
+          ]
+        }
+      ]
+    }
+  ]
+}

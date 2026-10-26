@@ -1,0 +1,133 @@
+{
+  "board_robots": {
+    "allowed": true,
+    "status": 404,
+    "url": "https://egpy.fa.us2.oraclecloud.com/robots.txt"
+  },
+  "careers_page": "https://www.abtglobal.com/careers",
+  "checked_at": "2026-10-25T15:28:47.464900+00:00",
+  "checks": {
+    "application_links": true,
+    "complete": true,
+    "dates_reviewed": true,
+    "locations": true,
+    "official_link": true,
+    "stable_ids": true
+  },
+  "detected_boards": [],
+  "endpoint": "https://egpy.fa.us2.oraclecloud.com/hcmRestApi/resources/latest/recruitingCEJobRequisitions",
+  "environment": "local",
+  "feed_urls": [],
+  "official_robots": {
+    "allowed": true,
+    "status": 200,
+    "url": "https://www.abtglobal.com/robots.txt"
+  },
+  "official_url": "https://www.abtglobal.com/",
+  "records_found": 12,
+  "requests": [
+    {
+      "attempt": 1,
+      "duration_seconds": 1.166,
+      "error_type": null,
+      "host": "www.abtglobal.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T15:28:47.495803+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.05,
+      "error_type": null,
+      "host": "www.abtglobal.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T15:28:50.170810+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 1.243,
+      "error_type": null,
+      "host": "www.abtglobal.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T15:28:51.730611+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.129,
+      "error_type": null,
+      "host": "www.abtglobal.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T15:28:54.475056+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 1.577,
+      "error_type": "HTTPStatusError",
+      "host": "egpy.fa.us2.oraclecloud.com",
+      "http_status": 404,
+      "method": "GET",
+      "started_at": "2026-10-25T15:28:56.114358+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.102,
+      "error_type": "HTTPStatusError",
+      "host": "egpy.fa.us2.oraclecloud.com",
+      "http_status": 404,
+      "method": "GET",
+      "started_at": "2026-10-25T15:28:59.201833+00:00"
+    },
+    {
+      "attempt": 1,
+      "duration_seconds": 0.817,
+      "error_type": null,
+      "host": "egpy.fa.us2.oraclecloud.com",
+      "http_status": 200,
+      "method": "GET",
+      "started_at": "2026-10-25T15:29:00.811828+00:00"
+    }
+  ],
+  "sample": [
+    {
+      "application_url": "https://egpy.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/JoinAbt/job/107249",
+      "id": "107249",
+      "location": "Rockville, MD, United States \u00b7 US",
+      "published_at": "2026-10-23T00:00:00+00:00",
+      "title": "Client Account Manager- Medicaid Finance & Program Integrity"
+    },
+    {
+      "application_url": "https://egpy.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/JoinAbt/job/107326",
+      "id": "107326",
+      "location": "Tamale, Ghana \u00b7 GH",
+      "published_at": "2026-10-19T00:00:00+00:00",
+      "title": "Finance and Administration Manager- Ghana Malaria Activity"
+    },
+    {
+      "application_url": "https://egpy.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/JoinAbt/job/107308",
+      "id": "107308",
+      "location": "Rockville, MD, United States \u00b7 US",
+      "published_at": "2026-10-14T00:00:00+00:00",
+      "title": "Lead Retirement Specialist"
+    },
+    {
+      "application_url": "https://egpy.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/JoinAbt/job/107314",
+      "id": "107314",
+      "location": "Port Moresby, Papua New Guinea \u00b7 PG",
+      "published_at": "2026-10-14T00:00:00+00:00",
+      "title": "Legal Officer | APEP"
+    },
+    {
+      "application_url": "https://egpy.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/JoinAbt/job/107318",
+      "id": "107318",
+      "location": "Suva, Fiji \u00b7 FJ",
+      "published_at": "2026-10-14T00:00:00+00:00",
+      "title": "Health Information Systems Developer/Analyst - Australia Fiji Health Program"
+    }
+  ],
+  "source_id": "employer_43cdbfb4a567343f",
+  "status": "SUCCESS",
+  "structured_job_count": 0
+}

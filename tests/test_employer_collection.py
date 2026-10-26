@@ -545,3 +545,120 @@ def test_explicit_refresh_publishes_reviewed_baseline_without_changing_health_hi
     assert result["employer_test"].status == "SUCCESS"
     public = json.loads((tmp_path / "public/jobs.json").read_text())
     assert [job["job_id"] for job in public["jobs"]] == ["employer_test:one"]
+
+
+def test_reviewed_load_more_pagination_checks_declared_total_including_filtered_posts():
+    config = source(
+        pagination_url_pattern=r"/jobs/show_more\?page=\d+$",
+        declared_count_pattern=r"(\d+) jobs",
+    )
+
+    def respond(request):
+        if request.url.path == "/robots.txt":
+            return httpx.Response(200, text="User-agent: *\nAllow: /")
+        if request.url.path == "/careers":
+            return httpx.Response(
+                200,
+                text='2 jobs<a href="/job/one">One</a><a href="/jobs/show_more?page=2">More</a>',
+            )
+        if request.url.path == "/jobs/show_more":
+            return httpx.Response(200, text='<a href="/job/two">Two</a>')
+        title = (
+            "Software Engineer"
+            if request.url.path.endswith("one")
+            else "Engineer - Internal Applicants"
+        )
+        return httpx.Response(200, text=posting(title))
+
+    collector = adapter(config, respond)
+    jobs = collector.fetch()
+    assert collector.crawl_complete
+    assert len(jobs) == 1
+    assert collector.detail_failures == 0
+    config["crawl"]["max_pages"] = 1
+    collector = adapter(config, respond)
+    collector.fetch()
+    assert not collector.crawl_complete
+
+
+def test_declared_vacancy_count_mismatch_is_incomplete_even_without_next_link():
+    config = source(declared_count_pattern=r"(\d+) jobs")
+
+    def respond(request):
+        if request.url.path == "/robots.txt":
+            return httpx.Response(200, text="User-agent: *\nAllow: /")
+        if request.url.path == "/careers":
+            return httpx.Response(200, text='2 jobs<a href="/job/one">One</a>')
+        return httpx.Response(200, text=posting())
+
+    collector = adapter(config, respond)
+    assert len(collector.fetch()) == 1
+    assert not collector.crawl_complete
+
+
+def test_reviewed_embedded_posting_urls_are_read_without_executing_scripts():
+    config = source(embedded_detail_url_pattern=r"https://example\.test/job/[a-z]+")
+
+    def respond(request):
+        if request.url.path == "/robots.txt":
+            return httpx.Response(200, text="User-agent: *\nAllow: /")
+        if request.url.path == "/careers":
+            return httpx.Response(
+                200, text='<script>var job="https://example.test/job/one";</script>'
+            )
+        return httpx.Response(200, text=posting())
+
+    collector = adapter(config, respond)
+    assert len(collector.fetch()) == 1
+    assert collector.crawl_complete
+
+
+def test_reviewed_query_identity_and_seeded_surrogate_are_stable_and_conflicts_fail():
+    collector = adapter(
+        source(identifier_query_parameter="reqNo"), lambda request: httpx.Response(200)
+    )
+    assert (
+        collector.identity("https://example.test/Recruit/JobDetails?reqNo=REQ42&jobId=1") == "REQ42"
+    )
+    assert collector.identity("https://example.test/changed?jobId=1&reqNo=REQ42") == "REQ42"
+    with pytest.raises(ValueError, match="query identifier"):
+        collector.identity("https://example.test/changed?jobId=1")
+    config = source(
+        initial_url_identities={
+            "https://example.test/job/one": "40f5b847-9c1c-46b0-b963-b229a02fa143"
+        }
+    )
+    a = adapter(config, lambda request: httpx.Response(200))
+    b = adapter(config, lambda request: httpx.Response(200))
+    assert a.identity("https://example.test/job/one") == b.identity("https://example.test/job/one")
+    b.candidate_state["url_identities"]["https://example.test/job/one"] = "conflicting"
+    with pytest.raises(ValueError, match="conflicts"):
+        b.identity("https://example.test/job/one")
+
+
+def test_reviewed_listing_schema_can_be_skipped_for_query_identifier_details():
+    config = source(
+        ignore_listing_postings=True,
+        detail_url_pattern=r"/Recruit/JobDetails\?",
+        identifier_query_parameter="reqNo",
+    )
+
+    def respond(request):
+        if request.url.path == "/robots.txt":
+            return httpx.Response(200, text="User-agent: *\nAllow: /")
+        if request.url.path == "/careers":
+            return httpx.Response(
+                200,
+                text=(
+                    '<script type="application/ld+json">'
+                    '{"@type":"JobPosting","title":"Listing without identity"}</script>'
+                    '<a href="/Recruit/JobDetails?reqNo=REQ42">Vacancy</a>'
+                ),
+            )
+        return httpx.Response(200, text=posting())
+
+    collector = adapter(config, respond)
+    jobs = collector.fetch()
+    assert collector.crawl_complete
+    assert len(jobs) == 1
+    assert jobs[0].external_id == "REQ1"  # Detail's own provider identifier wins.

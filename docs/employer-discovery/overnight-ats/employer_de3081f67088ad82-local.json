@@ -1,0 +1,91 @@
+{
+  "source_id": "employer_de3081f67088ad82",
+  "employers": [
+    "CloudFactory"
+  ],
+  "checked_at": "2026-10-25T20:48:47.527601+00:00",
+  "mode": "unapproved_local_probe",
+  "production_promoted": false,
+  "status": "SUCCESS",
+  "complete": true,
+  "records_found": 30,
+  "technical_jobs": 5,
+  "eligible_jobs": 0,
+  "publication_approved": false,
+  "candidate_metadata": [],
+  "sample": [
+    {
+      "id": "AE27E8339D",
+      "title": "AI Marketing Operations Manager",
+      "location": "Remote \u00b7 Los Angeles \u00b7 United States",
+      "url": "https://apply.workable.com/j/AE27E8339D/apply",
+      "published_at": "2026-10-07 00:00:00+00:00"
+    },
+    {
+      "id": "194BFDA0C0",
+      "title": "AI Marketing Operations Manager",
+      "location": "Remote \u00b7 Costa Rica",
+      "url": "https://apply.workable.com/j/194BFDA0C0/apply",
+      "published_at": "2026-10-07 00:00:00+00:00"
+    },
+    {
+      "id": "DC7A88B817",
+      "title": "Client Principal - AI Consulting (Energy, Oil & Gas)",
+      "location": "Remote \u00b7 United States",
+      "url": "https://apply.workable.com/j/DC7A88B817/apply",
+      "published_at": "2026-09-24 00:00:00+00:00"
+    },
+    {
+      "id": "9AABAC003B",
+      "title": "Client Principal - AI Consulting (Energy, Oil & Gas)",
+      "location": "Reading \u00b7 United Kingdom",
+      "url": "https://apply.workable.com/j/9AABAC003B/apply",
+      "published_at": "2026-10-01 00:00:00+00:00"
+    },
+    {
+      "id": "57F6C75B29",
+      "title": "Commercial Roofing Expert - Drone Imagery & AI Quality Review",
+      "location": "Remote \u00b7 Dallas \u00b7 United States / Fort Worth \u00b7 United States / United States",
+      "url": "https://apply.workable.com/j/57F6C75B29/apply",
+      "published_at": "2026-09-22 00:00:00+00:00"
+    }
+  ],
+  "requests": [
+    {
+      "started_at": "2026-10-25T20:48:47.557490+00:00",
+      "duration_seconds": 0.331,
+      "method": "GET",
+      "host": "www.workable.com",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-25T20:48:49.388659+00:00",
+      "duration_seconds": 0.192,
+      "method": "GET",
+      "host": "www.workable.com",
+      "http_status": 302,
+      "attempt": 1,
+      "error_type": "HTTPStatusError"
+    },
+    {
+      "started_at": "2026-10-25T20:48:51.091848+00:00",
+      "duration_seconds": 0.846,
+      "method": "GET",
+      "host": "apply.workable.com",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    },
+    {
+      "started_at": "2026-10-25T20:48:53.449279+00:00",
+      "duration_seconds": 0.999,
+      "method": "GET",
+      "host": "apply.workable.com",
+      "http_status": 200,
+      "attempt": 1,
+      "error_type": null
+    }
+  ]
+}

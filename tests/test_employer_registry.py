@@ -360,10 +360,18 @@ def test_official_redirect_proves_link_but_board_itself_does_not(monkeypatch, re
     assert source["status"] == "trial"
 
 
-def test_independent_board_check_requires_official_evidence_and_never_visits_employer(monkeypatch):
+@pytest.mark.parametrize(
+    "platform,empty_schema,expected",
+    [("ashby", False, False), ("ashby", True, True), ("custom", True, False)],
+)
+def test_independent_board_check_requires_official_evidence_and_never_visits_employer(
+    monkeypatch, platform, empty_schema, expected
+):
     from ingest.employer_onboarding import verify_board_access
 
     source = board()
+    source["platform"] = platform
+    source["verified_empty_schema"] = empty_schema
     source["verification"]["local_access"] = False
     with pytest.raises(ValueError, match="reviewed official linkage"):
         verify_board_access(source, EMPLOYERS)
@@ -388,6 +396,7 @@ def test_independent_board_check_requires_official_evidence_and_never_visits_emp
     report = verify_board_access(source, EMPLOYERS)
     assert report["status"] == "SUCCESS"
     assert not report["official_link_checked_this_run"]
+    assert report["checks"]["locations"] is expected
     assert report["prior_official_evidence"] == source["verification"]["evidence_paths"]
     assert "official_link" not in report["checks"]
     assert source["status"] == "trial"
