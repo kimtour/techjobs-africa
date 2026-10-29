@@ -100,7 +100,10 @@ def test_fetch_follows_discovered_pagination_without_guessing_urls() -> None:
     }
 
     jobs = MyJobMagAdapter(
-        client=_PaginatedClient(pages), listing_url=root, request_delay_seconds=0
+        client=_PaginatedClient(pages),
+        listing_url=root,
+        request_delay_seconds=0,
+        today=date(2026, 9, 28),
     ).fetch()
 
     assert [job.external_id for job in jobs] == ["/job/first-role", "/job/second-role"]
@@ -227,7 +230,7 @@ def test_fetch_collects_scoped_detail_evidence_without_fetching_every_job():
             detail_url: '<div class="job-details">Routing and switching on a fiber network.</div>',
         }
     )
-    jobs = MyJobMagAdapter(client=client, request_delay_seconds=0).fetch()
+    jobs = MyJobMagAdapter(client=client, request_delay_seconds=0, today=date(2026, 9, 28)).fetch()
     assert client.calls == [LISTING_URL, detail_url]
     assert jobs[0].technical_context == "network_service_delivery"
     assert jobs[1].technical_context is None
