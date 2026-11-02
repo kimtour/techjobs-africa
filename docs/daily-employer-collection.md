@@ -14,7 +14,7 @@ public standard hosted runners successfully. A second crawler repository plus a
 private importer would duplicate coordination and reintroduce private-minute
 limits on publication. No extra Worker change-detection layer is needed.
 
-Preserve all five existing daily EAT slots. Spread approved employer sources
+Preserve all three daily EAT slots. Spread approved employer sources
 across them using per-source due times; measure runtime and requests before
 changing schedules or increasing concurrency. Discovery/probing is separate from
 vacancy collection and must not activate sources automatically.
@@ -100,7 +100,7 @@ See [pilot results](employer-pilot-results.md) and
 
 ## Implemented daily operation
 
-The existing five scheduler slots retain one private-state writer. Active boards
+The three scheduler slots retain one private-state writer. Active boards
 are due once per EAT calendar day, with exponential failure backoff and server
 cooldowns. `python -m ingest.main --employers-only --output-dir ...` refreshes
 only approved employer collectors. Ordinary all-source runs include them too.
@@ -129,8 +129,7 @@ fallback. Employer posting dates remain primary when supplied. Operational check
 timestamps alone do not trigger builds. Source absence expiry remains disabled.
 See the dated activation review for permissions and field-verification limits.
 
-A stable source-ID hash assigns daily work to 06:00, 09:00, 12:00, 15:00 or
-19:00 EAT. Later slots catch up missed work; completed checks do not repeat.
+A stable source-ID hash assigns daily work to 08:00, 13:00 or 18:00 EAT. Later slots catch up missed work; completed checks do not repeat.
 Discovery has a separate ceiling of 150 sources per invocation (12 requests per
 source, at most 1,800), oldest checks first. Deferred pages remain due rather
 than being reported successful. Newly activated collectors may establish their

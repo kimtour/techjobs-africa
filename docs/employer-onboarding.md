@@ -102,7 +102,7 @@ fetches retain previous accepted jobs. An initially empty, validated employer bo
 can be healthy; unexpected inventory drops still trigger the existing gates.
 
 The current scheduler, updated on remote main before this implementation, has
-five EAT slots: 06:00, 09:00, 12:00, 15:00 and 19:00. Employer-specific due checks
+three EAT slots: 08:00, 13:00 and 18:00. Employer-specific due checks
 reuse those slots; the Worker schedule is not changed by onboarding.
 The ingestion workflow also checks at most two due shortlisted discovery sources
 per slot, at an independent eight-request budget each and a weekly interval.
@@ -129,7 +129,7 @@ coverage: pending and unsupported sites still require onboarding. Use provider
 APIs first, then permitted feeds/structured pages and individually reviewed
 custom HTML/PDF adapters. Count employers covered separately from portals fetched;
 a shared portal must retain separate employer attribution. Spread due sources
-across the five existing daily slots, maintaining one state writer. A healthy
+across the three daily slots, maintaining one state writer. A healthy
 complete crawl with no new jobs, a failed crawl and an unsupported source are
 separate outcomes. Never infer coverage from a successful workflow alone.
 

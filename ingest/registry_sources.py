@@ -109,10 +109,10 @@ def active_factories(config_dir: Path = ROOT / "config") -> tuple[dict, dict]:
 
 
 def daily_slot(source: dict) -> int:
-    """Spread collection across the five existing EAT slots, with late catch-up."""
-    slots = (6, 9, 12, 15, 19)
+    """Spread collection across the three daily EAT slots, with late catch-up."""
+    slots = (8, 13, 18)
     identity = source.get("id")
-    return slots[int(sha256(identity.encode()).hexdigest()[:8], 16) % len(slots)] if identity else 6
+    return slots[int(sha256(identity.encode()).hexdigest()[:8], 16) % len(slots)] if identity else 8
 
 
 def source_due(source: dict, health: dict, now: datetime, *, refresh: bool = False) -> bool:

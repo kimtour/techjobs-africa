@@ -323,7 +323,7 @@ def test_pending_candidates_are_not_marked_published_until_promotion(tmp_path):
 def test_daily_due_uses_kenya_day_and_keeps_failure_backoff():
     from ingest.registry_sources import source_due
 
-    now = datetime(2026, 10, 26, 3, tzinfo=UTC)
+    now = datetime(2026, 10, 26, 5, tzinfo=UTC)
     previous = datetime(2026, 10, 25, 19, tzinfo=UTC)
     assert source_due({"refresh_hours": 24}, {"last_attempt_at": previous.isoformat()}, now)
     assert not source_due(
@@ -379,7 +379,7 @@ def test_atom_pagination_checks_every_page_and_rejects_truncation():
 def test_page_monitor_preserves_blocks_manual_review_and_failure_backoff():
     from ingest.employer_watch import watch_due
 
-    now = datetime(2026, 10, 26, 3, tzinfo=UTC)
+    now = datetime(2026, 10, 26, 5, tzinfo=UTC)
     yesterday = now - timedelta(days=1)
     for state in ("active", "manual", "blocked", "retired"):
         assert not watch_due({"status": state}, {}, now)
@@ -416,7 +416,7 @@ def test_daily_work_is_spread_over_existing_slots_with_late_catchup():
     from ingest.registry_sources import daily_slot, source_due
 
     slots = {daily_slot({"id": f"employer_{i}"}) for i in range(100)}
-    assert slots == {6, 9, 12, 15, 19}
+    assert slots == {8, 13, 18}
     config = {"id": "employer_test", "status": "pending", "refresh_hours": 24}
     slot = daily_slot(config)
     before = datetime(2026, 10, 26, slot - 4, tzinfo=UTC)

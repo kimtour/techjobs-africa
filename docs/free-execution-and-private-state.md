@@ -51,7 +51,7 @@ All data writes still originate in the public code repository's serialized
 GitHub concurrency groups do not coordinate across repositories. Actions are
 disabled in the private state repository.
 
-The scheduler retains its Worker/Durable Object identities and five daily EAT
+The scheduler retains its Worker/Durable Object identities and three daily EAT
 slots. It reads public run/step evidence to choose the actual fetch owner when
 duplicate dispatches occur; it no longer requires private state access. A run that
 fails before ingestion, including a quota-blocked job, is not counted as fetching.
