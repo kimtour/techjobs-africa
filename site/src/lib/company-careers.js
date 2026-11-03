@@ -8,4 +8,5 @@ export const isDirectJob = (job) => job.direct_employer === true
  * @param {import('./jobs').Job[]} acceptedJobs
  */
 export const companyCareerJobs = (acceptedJobs) => acceptedJobs.filter(job =>
-  job.status === 'ACTIVE' && job.eligibility_level !== 'RESTRICTED' && isDirectJob(job));
+  job.status === 'ACTIVE' && job.eligibility_level !== 'RESTRICTED'
+  && job.country === 'Kenya' && isDirectJob(job));

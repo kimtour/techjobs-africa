@@ -20,7 +20,10 @@ roles found on BrighterMonday's Engineering & Technology and Software & Data pag
 
 - Employer onboarding keeps the employer registry as an internal collection
   inventory. Only actual vacancies enter All Jobs; careers websites are not job
-  cards. The Company Career Page feed shows accepted direct-employer vacancies
+  cards. The Company Career Page feed shows accepted direct-employer vacancies with an explicit
+  normalized country of Kenya. Jobs in other countries or with unknown/regional/worldwide
+  locations are excluded from this panel; All Jobs and other feeds retain their existing scope.
+  It shows Kenya vacancies
   immediately after All Jobs, including future registry vacancies only after
   production activation and validation. Trials and discovery links never populate
   it. It retains its header and controls when empty.

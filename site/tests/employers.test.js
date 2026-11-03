@@ -22,7 +22,7 @@ test('direct employer, employer and sector filters intersect and reset scrolling
 
 test('company career feed includes accepted employer vacancies without counting other job boards', async () => {
   const { companyCareerJobs, isDirectJob } = await import('../src/lib/company-careers.js');
-  const job = (id, source, extra = {}) => ({job_id: id, sources: [source], status: 'ACTIVE', eligibility_level: 'CONFIRMED', ...extra});
+  const job = (id, source, extra = {}) => ({job_id: id, sources: [source], status: 'ACTIVE', eligibility_level: 'CONFIRMED', country: 'Kenya', ...extra});
   const accepted = [
     job('aggregator', 'myjobmag'),
     job('employer', 'employer_verified_board', {direct_employer: true}),
@@ -36,4 +36,18 @@ test('company career feed includes accepted employer vacancies without counting 
   assert.equal(isDirectJob(accepted[0]), false);
   assert.equal(companyCareerJobs([]).length, 0);
   assert.equal(accepted.length, 7);
+});
+
+
+test('company career feed requires an explicit Kenya location for every direct source', async () => {
+  const { companyCareerJobs } = await import('../src/lib/company-careers.js');
+  const jobs = ['employer_absa', 'camunda', 'blacksmith', 'sdg'].flatMap(source =>
+    ['Kenya', 'South Africa', null].map(country => ({
+      job_id: `${source}:${country}`, sources: [source], direct_employer: true,
+      status: 'ACTIVE', eligibility_level: 'CONFIRMED', country,
+      region: 'Worldwide', city: country === 'South Africa' ? 'Johannesburg' : null,
+    })));
+  assert.deepEqual(companyCareerJobs(jobs).map(job => job.job_id),
+    ['employer_absa:Kenya', 'camunda:Kenya', 'blacksmith:Kenya', 'sdg:Kenya']);
+  assert.equal(jobs.length, 12);
 });
