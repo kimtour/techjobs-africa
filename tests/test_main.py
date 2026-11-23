@@ -27,9 +27,6 @@ class _FailingAdapter:
 
 
 def test_approved_sources_exclude_discovery_and_disabled_sources():
-    from ingest.registry_sources import active_factories
-
-    registered, _ = active_factories()
     assert approved_source_ids() == [
         "jsearch",
         "expertini",
@@ -43,7 +40,7 @@ def test_approved_sources_exclude_discovery_and_disabled_sources():
         "camunda",
         "blacksmith",
         "sdg",
-    ] + list(registered)
+    ]
 
 
 def test_run_isolates_a_failed_source_and_writes_static_output(tmp_path):
@@ -58,6 +55,39 @@ def test_run_isolates_a_failed_source_and_writes_static_output(tmp_path):
     public_jobs = json.loads((tmp_path / "public/jobs.json").read_text())
     assert public_jobs["jobs"][0]["category"] == "Technical Product"
     assert "description" not in public_jobs["jobs"][0]
+
+
+def test_retired_company_sources_are_removed_from_saved_state_and_public_output(tmp_path):
+    from ingest.models import CanonicalJob
+
+    original = build_jobs(_SuccessfulAdapter().fetch())[0].model_dump(mode="json")
+    retired = {**original, "job_id": "employer_old:1", "sources": ["employer_old"]}
+    cross_listed = {
+        **original,
+        "sources": ["elevolt", "employer_old"],
+        "employer_id": "old-company",
+        "employer_sectors": ["Banks"],
+        "direct_employer": True,
+    }
+    (tmp_path / "canonical").mkdir()
+    (tmp_path / "canonical/jobs.json").write_text(json.dumps({"jobs": [retired, cross_listed]}))
+    (tmp_path / "state").mkdir()
+    (tmp_path / "state/health.json").write_text(
+        json.dumps({"sources": {"employer_old": {"status": "SUCCESS"}}})
+    )
+    (tmp_path / "state/source-baselines.json").write_text(json.dumps({"employer_old": [100]}))
+
+    run_ingestion(tmp_path, source_ids=["elevolt"], adapters={"elevolt": _SuccessfulAdapter})
+
+    saved = json.loads((tmp_path / "canonical/jobs.json").read_text())["jobs"]
+    assert [job["job_id"] for job in saved] == [original["job_id"]]
+    assert saved[0]["sources"] == ["elevolt"]
+    CanonicalJob.model_validate(saved[0])
+    assert "direct_employer" not in saved[0]
+    public = json.loads((tmp_path / "public/jobs.json").read_text())["jobs"]
+    assert [job["job_id"] for job in public] == [original["job_id"]]
+    assert "employer_old" not in (tmp_path / "state/health.json").read_text()
+    assert "employer_old" not in (tmp_path / "state/source-baselines.json").read_text()
 
 
 def test_build_jobs_rejects_unclassified_job_from_a_technical_source_page():

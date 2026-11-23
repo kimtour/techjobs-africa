@@ -32,13 +32,12 @@ from ingest.classify.tech import (
     mixed_technology_roles,
 )
 from ingest.dedupe.exact import canonicalize_apply_url, deduplicate_exact
-from ingest.employer_state import EmployerLedger, daily_coverage
 from ingest.expiry.absence import JobOccurrence, reconcile_occurrences
 from ingest.export.static import build_public_files
 from ingest.fetch import ObservedClient
 from ingest.models import CanonicalJob, JobStatus, RawJob, SourceHealth, SourceHealthStatus
 from ingest.normalize.canonicalize import canonicalize_raw_job, normalize_text
-from ingest.registry_sources import active_factories, source_due
+from ingest.retired_sources import is_retired_source, retained_job
 
 CONFIG_PATH = Path("config/sources.yaml")
 AdapterFactory = Callable[[], object]
@@ -62,13 +61,11 @@ def approved_source_ids(config_path: Path = CONFIG_PATH) -> list[str]:
     """Return enabled sources that have an implemented production method."""
 
     config = yaml.safe_load(config_path.read_text(encoding="utf-8"))
-    legacy = [
+    return [
         source["id"]
         for source in config["sources"]
         if source.get("enabled") and source.get("production_method") and source["id"] in ADAPTERS
     ]
-    _, registry_config = active_factories(config_path.parent)
-    return legacy + list(registry_config)
 
 
 def build_jobs(
@@ -133,8 +130,6 @@ def run_ingestion(
     source_ids: Sequence[str] | None = None,
     adapters: Mapping[str, object] = ADAPTERS,
     refresh_jsearch: bool = False,
-    refresh_employer: bool = False,
-    refresh_employers: bool = False,
 ) -> dict[str, SourceHealth]:
     """Fetch each source independently and write safe static files on success."""
 
@@ -144,46 +139,28 @@ def run_ingestion(
     source_config = {
         item["id"]: item for item in yaml.safe_load(CONFIG_PATH.read_text())["sources"]
     }
-    registry_adapters, registry_config = active_factories(CONFIG_PATH.parent)
-    adapters = {**adapters, **registry_adapters}
-    source_config.update(registry_config)
-    if refresh_employer and refresh_employers:
-        raise ValueError("Choose either single or batch employer refresh")
-    if refresh_employer and (len(selected_ids) != 1 or selected_ids[0] not in registry_config):
-        raise ValueError("Employer refresh requires one explicitly selected active employer source")
-    if any(sid.startswith("employer_") and sid not in registry_config for sid in selected_ids):
-        raise ValueError("Employer sources require active status and full verification")
     gates = yaml.safe_load(Path("config/quality_gates.yaml").read_text())["quality_gates"]
+    # Retirement is explicit, separate from health-aware vacancy expiry.
     previous_jobs = [
-        CanonicalJob.model_validate(job)
+        CanonicalJob.model_validate(retained)
         for job in read_json(output_dir / "canonical/jobs.json", {"jobs": []})["jobs"]
-    ]
-    # Explicit source retirement is separate from absence/closure processing.
-    # Preserve other providers' identities and remove retired attribution.
-    previous_jobs = [
-        job.model_copy(update={"sources": [source for source in job.sources if source != "bebee"]})
-        for job in previous_jobs
-        if not job.job_id.startswith("bebee:") and any(source != "bebee" for source in job.sources)
+        if (retained := retained_job(job)) is not None
     ]
     previous_health = read_json(output_dir / "state/health.json", {"sources": {}})["sources"]
-    previous_health.pop("bebee", None)
+    previous_health = {k: v for k, v in previous_health.items() if not is_retired_source(k)}
     baselines = read_json(output_dir / "state/source-baselines.json", {})
-    baselines.pop("bebee", None)
+    baselines = {k: v for k, v in baselines.items() if not is_retired_source(k)}
     occurrences = [
         JobOccurrence.model_validate(item)
         for item in read_json(output_dir / "state/occurrences.json", {"occurrences": []})[
             "occurrences"
         ]
     ]
-    occurrences = [item for item in occurrences if item.source_id != "bebee"]
+    occurrences = [item for item in occurrences if not is_retired_source(item.source_id)]
     jobs_by_id = {job.job_id: job for job in previous_jobs}
     health: dict[str, SourceHealth] = {}
     rows: dict[str, dict] = {}
     warnings: list[str] = []
-    employer_ledger = EmployerLedger(output_dir / "state/employer-candidates.json")
-    employer_metrics = read_json(
-        output_dir / "state/employer-collection-metrics.json", {"schema_version": 1, "sources": {}}
-    )
 
     def record_policy_skip(source_id, reason):
         old = previous_health.get(source_id, {})
@@ -210,14 +187,6 @@ def run_ingestion(
         }
 
     for source_id in selected_ids:
-        if source_id in registry_config and not source_due(
-            registry_config[source_id],
-            previous_health.get(source_id, {}),
-            started,
-            **({"refresh": True} if refresh_employer or refresh_employers else {}),
-        ):
-            record_policy_skip(source_id, "employer_source_not_due")
-            continue
         if pause_reason := source_config[source_id].get("fetch_paused_reason"):
             record_policy_skip(source_id, pause_reason)
             continue
@@ -274,12 +243,6 @@ def run_ingestion(
         observer = None
         fetched = []
         source_jobs = []
-        validation_failed = set()
-        known_before = (
-            set(employer_ledger.source(source_id)["items"])
-            if source_id in registry_config
-            else set()
-        )
         rejected_jobs: list[dict] = []
         complete = False
         error_type = None
@@ -293,8 +256,6 @@ def run_ingestion(
             else:
                 next_allowed = None
                 adapter = factory()
-                if source_id in registry_config:
-                    adapter.candidate_state = employer_ledger.source(source_id)
                 policy = source_config[source_id]["crawl"]
                 if hasattr(adapter, "max_pages"):
                     adapter.max_pages = policy["max_pages"]
@@ -337,20 +298,7 @@ def run_ingestion(
                 fetched = adapter.fetch()
                 if any(raw.source_id != source_id for raw in fetched):
                     raise ValueError("adapter returned a foreign source")
-                if source_id in registry_config:
-                    for raw in fetched:
-                        try:
-                            source_jobs.extend(build_jobs([raw], rejections=rejected_jobs))
-                        except Exception:
-                            validation_failed.add(str(raw.external_id))
-                else:
-                    source_jobs = build_jobs(fetched, rejections=rejected_jobs)
-                if source_id in registry_config:
-                    source_jobs = [
-                        job.model_copy(update={"last_checked_at": attempt_at})
-                        for job in source_jobs
-                        if job.eligibility_level in {"CONFIRMED", "LIKELY"}
-                    ]
+                source_jobs = build_jobs(fetched, rejections=rejected_jobs)
                 _write_json(
                     output_dir / "state/classification" / f"{source_id}.json",
                     {
@@ -360,7 +308,7 @@ def run_ingestion(
                         "filtered_jobs": rejected_jobs,
                     },
                 )
-                complete = getattr(adapter, "crawl_complete", False) and not validation_failed
+                complete = getattr(adapter, "crawl_complete", False)
                 status = SourceHealthStatus.SUCCESS if complete else SourceHealthStatus.PARTIAL
                 reason = None if complete else "pagination_incomplete"
                 counts = baselines.get(source_id, [])
@@ -403,30 +351,6 @@ def run_ingestion(
                 closer = getattr(observer.client, "close", None)
                 if closer:
                     closer()
-        if source_id in registry_config:
-            source_jobs = employer_ledger.observe(
-                source_id,
-                fetched,
-                source_jobs,
-                attempt_at,
-                complete=status == SourceHealthStatus.SUCCESS and complete,
-                publish_existing=source_config[source_id].get("reviewed_bootstrap", False),
-                known_before=known_before,
-                validation_failed=validation_failed,
-            )
-            employer_ledger.save(_write_json)
-            if status == SourceHealthStatus.SUCCESS and complete:
-                employer_metrics["sources"][source_id] = {
-                    "day_eat": attempt_at.astimezone(timezone(timedelta(hours=3)))
-                    .date()
-                    .isoformat(),
-                    "new_jobs": employer_ledger.source(source_id).get("new_eligible_ids", 0),
-                    "new_vacancies_seen": employer_ledger.source(source_id).get("new_ids", 0),
-                    "eligible_jobs": len(source_jobs),
-                    "raw_jobs": len(fetched),
-                    "filtered_jobs": len(rejected_jobs),
-                }
-                _write_json(output_dir / "state/employer-collection-metrics.json", employer_metrics)
         current = {job.job_id: job for job in source_jobs}
         # Observed records can refresh; missing records need separate absence evidence.
         if status == SourceHealthStatus.SUCCESS:
@@ -553,12 +477,6 @@ def run_ingestion(
             },
         )
     jobs = list(jobs_by_id.values())
-    jobs = [
-        job.model_copy(update={"status": JobStatus.EXPIRED})
-        if job.direct_employer and job.deadline_at and job.deadline_at <= started
-        else job
-        for job in jobs
-    ]
     # Preserve canonical occurrences; display exact cross-source duplicates once.
     active_jobs = deduplicate_exact(job for job in jobs if job.status == JobStatus.ACTIVE)
     previous_active = deduplicate_exact(
@@ -616,7 +534,6 @@ def run_ingestion(
         },
         _write_json,
     )
-    _write_json(output_dir / "state/employer-coverage.json", daily_coverage(output_dir, started))
     _write_json(
         output_dir / "state/fetch-progress.json",
         {
@@ -632,31 +549,16 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output-dir", required=True, type=Path)
     parser.add_argument("--source", action="append", dest="sources")
-    parser.add_argument("--employers-only", action="store_true")
-    parser.add_argument(
-        "--refresh-employer",
-        action="store_true",
-        help="Refresh one selected active employer now; cooldowns and failure backoff still apply",
-    )
-    parser.add_argument(
-        "--refresh-employers",
-        action="store_true",
-        help="Refresh selected approved employer boards now; retain cooldowns and failure backoff",
-    )
     parser.add_argument(
         "--refresh-jsearch",
         action="store_true",
         help="Refresh changed Google queries today; monthly quota still applies",
     )
     args = parser.parse_args()
-    if args.employers_only:
-        args.sources = list(active_factories()[1])
     health = run_ingestion(
         args.output_dir,
         source_ids=args.sources,
         refresh_jsearch=args.refresh_jsearch,
-        refresh_employer=args.refresh_employer,
-        refresh_employers=args.refresh_employers,
     )
     summary = ", ".join(f"{key}={value.status}" for key, value in health.items())
     print("Ingestion complete: " + summary)

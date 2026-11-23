@@ -18,27 +18,13 @@ roles found on BrighterMonday's Engineering & Technology and Software & Data pag
 
 ## Implementation contract
 
-- Employer onboarding keeps the employer registry as an internal collection
-  inventory. Only actual vacancies enter All Jobs; careers websites are not job
-  cards. The Company Career Page feed shows accepted direct-employer vacancies with an explicit
-  normalized country of Kenya. Jobs in other countries or with unknown/regional/worldwide
-  locations are excluded from this panel; All Jobs and other feeds retain their existing scope.
-  It shows Kenya vacancies
-  immediately after All Jobs, including future registry vacancies only after
-  production activation and validation. Trials and discovery links never populate
-  it. It retains its header and controls when empty.
-  Direct-employer, employer and sector controls are global filters: like search
-  and category, they reset pagination/scroll while retaining each panel's period.
-  Employer and sector controls appear only when accepted job metadata supplies
-  them. Registry entries never count as jobs. Existing source order is retained.
-
-- Feed order updated on 25 October 2026: All Jobs, Company Career Page, MyJobMag,
+- Feed order updated on 23 November 2026: All Jobs, MyJobMag,
   Corporate Staffing, Other/Google/Linkedin, Fuzu, OpenedCareer, BrighterMonday, Elevolt, TalentSafari.
   Desktop reads left to right across the two columns; mobile uses this sequence
   in one column. All Jobs contains each active, unrestricted job once, newest first,
   and displays its source. It shares the independent period and pagination controls.
   Global result counts count unique jobs across matching feeds.
-- Other/Google/Linkedin is fifth, after Corporate Staffing and before Fuzu.
+- Other/Google/Linkedin is fourth, after Corporate Staffing and before Fuzu.
   It combines Kenya and Africa/worldwide remote Google Jobs discoveries, previously accepted LinkedIn jobs,
   direct Expertini sitemap listings, verified public Camunda/Blacksmith/SDG remote career postings,
   and Careerjet if that provider is activated. Each job retains its true publisher
@@ -101,26 +87,3 @@ participate in date periods and carry Expertini RSS labels. Sitemap-only records
 have labelled URL-derived technical titles and unknown dates, so they appear in
 Latest and All Jobs and are absent from bounded periods. No separate Expertini
 panel is added. Same-ID source refreshes preserve cross-source attribution.
-
-## Company Career Page delivery — 25 October 2026
-
-Revision `9f79691` deployed successfully through run
-[40200704093](https://github.com/kimtour/techjobs-africa/actions/runs/40200704093).
-Local and live browser checks confirmed second-feed placement on desktop and
-390px mobile, fixed-height bodies with external headers, load-more scroll/layout
-isolation, empty-period recovery and direct filtering. HTML verification matched
-all 14 company vacancies and all 2,760 accepted All Jobs identities. Shared cards
-do not inflate global counts. New registry sources remain gated and inactive.
-The final code passed 255 Python tests, 14 frontend tests and hosted scheduler
-checks in validation run 40198930006.
-
-## Daily employer pipeline delivery — 25 October 2026
-
-Revision `fcc8ca0` deployed in run 40204044721. Company Career Page now has 16
-accepted jobs and All Jobs 2,762. Local/live desktop and 390px mobile checks passed:
-second placement, independent periods, empty recovery, 10-to-16 loading with
-1,178px body scroll retained, and other feeds' document positions/state unchanged.
-Employer/direct filters preserve unique global counts. Full accepted identity and
-publisher/application-link checks passed. Final hosted validation: 269 Python,
-14 frontend and 17 scheduler tests. See the daily delivery report for the five
-active registry sources and remaining 758-employer coverage limitations.

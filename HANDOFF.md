@@ -1,3 +1,18 @@
+# Company Career Page retirement — 23 November 2026
+
+The Company Career Page panel, direct/employer/sector filters, employer registry,
+discovery workflow, registry collectors, ledgers and monitoring have been removed.
+Old accepted snapshots are migrated by `ingest/retired_sources.py`; the site also
+filters retired source identities until the next accepted ingestion snapshot.
+The independently supported Camunda/Blacksmith/SDG sources remain in
+Other/Google/Linkedin. Source-panel ordering now starts All Jobs, MyJobMag.
+
+Validation: 244 Python tests, 12 frontend tests, 17 scheduler tests, Ruff,
+Astro check/build, built-page acceptance and scheduler dry-run passed.
+Prior delivery notes below describe historical behavior.
+
+---
+
 # TechKazi continuation handoff
 
 Updated: 25 October 2026, Africa/Nairobi.

@@ -1,6 +1,5 @@
 import jobsPayload from "../data/jobs.json";
-import { sourceEmployers } from "./employers";
-export { isDirectJob, companyCareerJobs } from "./company-careers.js";
+import { retainedJob } from "./retired-sources.js";
 
 export type Job = {
   job_id: string;
@@ -19,9 +18,6 @@ export type Job = {
   sources: string[];
   source_publisher?: string | null;
   status: "ACTIVE" | "STALE" | "CLOSED" | "EXPIRED";
-  employer_id?: string | null;
-  employer_sectors?: string[];
-  direct_employer?: boolean;
   employment_type?: string | null;
   opportunity_type?: string | null;
   deadline_at?: string | null;
@@ -36,11 +32,8 @@ type JobsPayload = {
 
 const payload = jobsPayload as JobsPayload;
 
-export const jobs = payload.jobs
-  .filter((job) => job.status === "ACTIVE"
-    && !job.job_id.startsWith("bebee:")
-    && job.sources.some((source) => source !== "bebee"))
-  .map((job) => ({ ...job, sources: job.sources.filter((source) => source !== "bebee") }));
+export const jobs = payload.jobs.filter(job => job.status === "ACTIVE")
+  .flatMap(job => { const retained = retainedJob(job); return retained ? [retained] : []; });
 
 export const sourceOrder = [
   "myjobmag",
@@ -58,7 +51,6 @@ export const combinedSources = ["careerjet", "jsearch", "expertini", "camunda", 
 export const sourceName = (sourceId: string) =>
   ({
     all: "All Jobs",
-    company_careers: "Company Career Page",
     ashby: "TalentSafari",
     brightermonday: "BrighterMonday",
     corporate_staffing: "Corporate Staffing",
@@ -73,10 +65,7 @@ export const sourceName = (sourceId: string) =>
     camunda: "Camunda careers",
     blacksmith: "Blacksmith Agency careers",
     sdg: "Social Discovery Group careers",
-  })[sourceId] ?? (sourceEmployers.has(sourceId)
-    ? sourceEmployers.get(sourceId)?.length === 1
-      ? `${sourceEmployers.get(sourceId)![0].name} careers` : "Shared employer board"
-    : sourceId);
+  })[sourceId] ?? sourceId;
 
 export const primarySource = (job: Job) =>
   sourceOrder.find((sourceId) => job.sources.includes(sourceId)) ?? job.sources[0];
@@ -121,8 +110,6 @@ export const sourceLabels = (job: Job) => job.sources.map((source) =>
     ? (job.source_publisher === "Expertini RSS" ? "Expertini RSS" : "Expertini (title from listing link)")
     : ["jsearch", "camunda", "blacksmith", "sdg"].includes(source) && job.source_publisher
     ? (source === "jsearch" ? `${job.source_publisher} via Google Jobs / JSearch` : job.source_publisher)
-    : sourceEmployers.has(source) && job.source_publisher
-    ? job.source_publisher
     : sourceName(source)
 ).join(", ");
 

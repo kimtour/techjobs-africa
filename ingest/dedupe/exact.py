@@ -25,20 +25,11 @@ def canonicalize_apply_url(url: str) -> str:
 
 
 def _merge(primary: CanonicalJob, duplicate: CanonicalJob) -> CanonicalJob:
-    direct = primary if primary.direct_employer else duplicate
     return primary.model_copy(
         update={
             "sources": sorted(set(primary.sources).union(duplicate.sources)),
-            "source_publisher": direct.source_publisher
-            if direct.direct_employer
-            else primary.source_publisher or duplicate.source_publisher,
-            "preferred_apply_url": direct.preferred_apply_url
-            if direct.direct_employer
-            else primary.preferred_apply_url,
-            "direct_employer": primary.direct_employer or duplicate.direct_employer,
+            "source_publisher": primary.source_publisher or duplicate.source_publisher,
             "shared_apply_url": primary.shared_apply_url or duplicate.shared_apply_url,
-            "employer_id": primary.employer_id or duplicate.employer_id,
-            "employer_sectors": sorted(set(primary.employer_sectors + duplicate.employer_sectors)),
             "last_checked_at": max(
                 (v for v in (primary.last_checked_at, duplicate.last_checked_at) if v is not None),
                 default=None,

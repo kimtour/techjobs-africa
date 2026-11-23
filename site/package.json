@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "astro dev",
     "check": "astro check",
-    "build": "astro build",
+    "build": "astro build && node scripts/verify-source-panels.mjs",
     "preview": "astro preview",
     "test": "node --test tests/*.test.js"
   },

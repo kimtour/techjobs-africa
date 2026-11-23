@@ -28,7 +28,7 @@ This is a job-discovery site, not an application-tracking system, job employer o
 
 ## Start here
 
-Employer onboarding: [registry, discovery and isolated trials](docs/employer-onboarding.md).
+The Company Career Page feature and its registry collection pipeline have been retired.
 Execution and storage: [public code, private state and free fallbacks](docs/free-execution-and-private-state.md).
 The private `kimtour/techkazi-data` repository retains the `data` branch and full
 operational history; it is accessed only by trusted workflows using a dedicated

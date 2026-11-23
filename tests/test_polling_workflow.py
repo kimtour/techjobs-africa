@@ -59,7 +59,6 @@ def test_private_state_is_separate_and_public_pr_checks_do_not_receive_secrets()
         "deploy-site",
         "migrate-techkazi",
         "evaluate-jsearch",
-        "employer-discovery",
     ):
         text = Path(f".github/workflows/{name}.yml").read_text()
         assert "./.github/actions/checkout-data" in text
@@ -91,8 +90,6 @@ def test_workflow_passes_selected_feed_sources_as_separate_arguments(tmp_path):
         "RECORDED_ARGS": str(recorded),
         "CANDIDATE_DIR": str(tmp_path / "candidate"),
         "REFRESH_JSEARCH": "true",
-        "REFRESH_EMPLOYER": "false",
-        "REFRESH_EMPLOYERS": "false",
     }
     for selected, expected in [
         (
@@ -101,7 +98,6 @@ def test_workflow_passes_selected_feed_sources_as_separate_arguments(tmp_path):
         ),
         ("myjobmag", ["--source", "myjobmag"]),
         ("all", []),
-        ("employers", ["--employers-only"]),
     ]:
         subprocess.run(
             ["bash", "-e", "-c", step["run"]], env={**env, "FETCH_SOURCE": selected}, check=True
