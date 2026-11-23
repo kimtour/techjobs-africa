@@ -1,5 +1,7 @@
 import json
 
+import pytest
+
 from ingest.main import approved_source_ids, build_jobs, run_ingestion
 from ingest.models import RawJob, SourceHealthStatus
 
@@ -36,7 +38,6 @@ def test_approved_sources_exclude_discovery_and_disabled_sources():
         "fuzu",
         "openedcareer",
         "elevolt",
-        "ashby",
         "camunda",
         "blacksmith",
         "sdg",
@@ -46,25 +47,26 @@ def test_approved_sources_exclude_discovery_and_disabled_sources():
 def test_run_isolates_a_failed_source_and_writes_static_output(tmp_path):
     health = run_ingestion(
         tmp_path,
-        source_ids=["elevolt", "ashby"],
-        adapters={"elevolt": _SuccessfulAdapter, "ashby": _FailingAdapter},
+        source_ids=["elevolt", "myjobmag"],
+        adapters={"elevolt": _SuccessfulAdapter, "myjobmag": _FailingAdapter},
     )
 
     assert health["elevolt"].status == SourceHealthStatus.SUCCESS
-    assert health["ashby"].status == SourceHealthStatus.FAILED
+    assert health["myjobmag"].status == SourceHealthStatus.FAILED
     public_jobs = json.loads((tmp_path / "public/jobs.json").read_text())
     assert public_jobs["jobs"][0]["category"] == "Technical Product"
     assert "description" not in public_jobs["jobs"][0]
 
 
-def test_retired_company_sources_are_removed_from_saved_state_and_public_output(tmp_path):
+@pytest.mark.parametrize("retired_source", ["employer_old", "ashby"])
+def test_retired_sources_are_removed_from_saved_state_and_public_output(tmp_path, retired_source):
     from ingest.models import CanonicalJob
 
     original = build_jobs(_SuccessfulAdapter().fetch())[0].model_dump(mode="json")
-    retired = {**original, "job_id": "employer_old:1", "sources": ["employer_old"]}
+    retired = {**original, "job_id": f"{retired_source}:1", "sources": [retired_source]}
     cross_listed = {
         **original,
-        "sources": ["elevolt", "employer_old"],
+        "sources": ["elevolt", retired_source],
         "employer_id": "old-company",
         "employer_sectors": ["Banks"],
         "direct_employer": True,
@@ -73,9 +75,9 @@ def test_retired_company_sources_are_removed_from_saved_state_and_public_output(
     (tmp_path / "canonical/jobs.json").write_text(json.dumps({"jobs": [retired, cross_listed]}))
     (tmp_path / "state").mkdir()
     (tmp_path / "state/health.json").write_text(
-        json.dumps({"sources": {"employer_old": {"status": "SUCCESS"}}})
+        json.dumps({"sources": {retired_source: {"status": "SUCCESS"}}})
     )
-    (tmp_path / "state/source-baselines.json").write_text(json.dumps({"employer_old": [100]}))
+    (tmp_path / "state/source-baselines.json").write_text(json.dumps({retired_source: [100]}))
 
     run_ingestion(tmp_path, source_ids=["elevolt"], adapters={"elevolt": _SuccessfulAdapter})
 
@@ -86,8 +88,8 @@ def test_retired_company_sources_are_removed_from_saved_state_and_public_output(
     assert "direct_employer" not in saved[0]
     public = json.loads((tmp_path / "public/jobs.json").read_text())["jobs"]
     assert [job["job_id"] for job in public] == [original["job_id"]]
-    assert "employer_old" not in (tmp_path / "state/health.json").read_text()
-    assert "employer_old" not in (tmp_path / "state/source-baselines.json").read_text()
+    assert retired_source not in (tmp_path / "state/health.json").read_text()
+    assert retired_source not in (tmp_path / "state/source-baselines.json").read_text()
 
 
 def test_build_jobs_rejects_unclassified_job_from_a_technical_source_page():
@@ -167,12 +169,14 @@ def test_partial_fetch_retains_unseen_jobs(tmp_path):
     run_ingestion(tmp_path, source_ids=["elevolt"], adapters={"elevolt": _SuccessfulAdapter})
 
     # A second healthy source lets the mixed candidate publish safely.
-    class Ashby(_SuccessfulAdapter):
+    class MyJobMag(_SuccessfulAdapter):
         def fetch(self):
-            return [super().fetch()[0].model_copy(update={"source_id": "ashby"})]
+            return [super().fetch()[0].model_copy(update={"source_id": "myjobmag"})]
 
     health = run_ingestion(
-        tmp_path, source_ids=["elevolt", "ashby"], adapters={"elevolt": Partial, "ashby": Ashby}
+        tmp_path,
+        source_ids=["elevolt", "myjobmag"],
+        adapters={"elevolt": Partial, "myjobmag": MyJobMag},
     )
     assert health["elevolt"].status == SourceHealthStatus.PARTIAL
     ids = {
@@ -213,14 +217,28 @@ def test_cooldown_does_not_contact_source(tmp_path):
     assert health["elevolt"].requests_made == 0
 
 
-def test_supported_absence_requires_three_complete_crawls_and_never_counts_failures(tmp_path):
-    class Ashby(_SuccessfulAdapter):
+def test_supported_absence_requires_three_complete_crawls_and_never_counts_failures(
+    tmp_path, monkeypatch
+):
+    import yaml
+
+    import ingest.main as main
+
+    config = yaml.safe_load(main.CONFIG_PATH.read_text())
+    for source in config["sources"]:
+        if source["id"] == "myjobmag":
+            source["supports_absence_expiry"] = True
+    config_path = tmp_path / "sources.yaml"
+    config_path.write_text(yaml.safe_dump(config))
+    monkeypatch.setattr(main, "CONFIG_PATH", config_path)
+
+    class MyJobMag(_SuccessfulAdapter):
         remaining = 10
 
         def fetch(self):
             return [
                 RawJob(
-                    source_id="ashby",
+                    source_id="myjobmag",
                     external_id=str(i),
                     title=f"Product Manager {i}",
                     company="Example Technologies",
@@ -231,27 +249,27 @@ def test_supported_absence_requires_three_complete_crawls_and_never_counts_failu
                 for i in range(self.remaining)
             ]
 
-    run_ingestion(tmp_path, source_ids=["ashby"], adapters={"ashby": Ashby})
-    Ashby.remaining = 9
+    run_ingestion(tmp_path, source_ids=["myjobmag"], adapters={"myjobmag": MyJobMag})
+    MyJobMag.remaining = 9
     for _ in range(2):
-        health = run_ingestion(tmp_path, source_ids=["ashby"], adapters={"ashby": Ashby})
-        assert health["ashby"].safe_to_process_absences
+        health = run_ingestion(tmp_path, source_ids=["myjobmag"], adapters={"myjobmag": MyJobMag})
+        assert health["myjobmag"].safe_to_process_absences
         assert len(json.loads((tmp_path / "public/jobs.json").read_text())["jobs"]) == 10
-    run_ingestion(tmp_path, source_ids=["ashby"], adapters={"ashby": _FailingAdapter})
+    run_ingestion(tmp_path, source_ids=["myjobmag"], adapters={"myjobmag": _FailingAdapter})
     occurrence = next(
         x
         for x in json.loads((tmp_path / "state/occurrences.json").read_text())["occurrences"]
-        if x["job_id"] == "ashby:9"
+        if x["job_id"] == "myjobmag:9"
     )
     assert occurrence["missed_crawls"] == 2
-    run_ingestion(tmp_path, source_ids=["ashby"], adapters={"ashby": Ashby})
+    run_ingestion(tmp_path, source_ids=["myjobmag"], adapters={"myjobmag": MyJobMag})
     assert len(json.loads((tmp_path / "public/jobs.json").read_text())["jobs"]) == 9
 
 
 def test_http_metrics_are_persisted_per_source_without_descriptions(tmp_path):
     import httpx
 
-    from ingest.adapters.ashby import AshbyAdapter
+    from ingest.adapters.employer_boards import AshbyEmployerAdapter
 
     def handler(request):
         return httpx.Response(
@@ -262,9 +280,10 @@ def test_http_metrics_are_persisted_per_source_without_descriptions(tmp_path):
                         "id": "x",
                         "isListed": True,
                         "title": "Software Engineer",
-                        "location": "Nairobi",
-                        "jobUrl": "https://example.com/x",
-                        "applyUrl": "https://example.com/x",
+                        "location": "Remote · Kenya",
+                        "isRemote": True,
+                        "jobUrl": "https://jobs.ashbyhq.com/camunda/x",
+                        "applyUrl": "https://jobs.ashbyhq.com/camunda/x",
                         "descriptionHtml": "private description",
                     }
                 ]
@@ -273,19 +292,19 @@ def test_http_metrics_are_persisted_per_source_without_descriptions(tmp_path):
 
     health = run_ingestion(
         tmp_path,
-        source_ids=["ashby"],
+        source_ids=["camunda"],
         adapters={
-            "ashby": lambda: AshbyAdapter(
-                "talentsafari", httpx.Client(transport=httpx.MockTransport(handler))
+            "camunda": lambda: AshbyEmployerAdapter(
+                "camunda", httpx.Client(transport=httpx.MockTransport(handler))
             )
         },
     )
-    assert health["ashby"].pages_fetched == health["ashby"].requests_made == 1
-    assert health["ashby"].http_status_counts == {"200": 1}
+    assert health["camunda"].pages_fetched == health["camunda"].requests_made == 1
+    assert health["camunda"].http_status_counts == {"200": 1}
     run = json.loads((tmp_path / "state/last-run.json").read_text())
-    assert len(run["sources"]["ashby"]["requests"]) == 1
+    assert len(run["sources"]["camunda"]["requests"]) == 1
     request_log = next((tmp_path / "state/request-history").glob("*.jsonl"))
-    assert json.loads(request_log.read_text())["source_id"] == "ashby"
+    assert json.loads(request_log.read_text())["source_id"] == "camunda"
     assert "private description" not in str(list(tmp_path.rglob("*")))
     for path in tmp_path.rglob("*.json*"):
         assert "private description" not in path.read_text()

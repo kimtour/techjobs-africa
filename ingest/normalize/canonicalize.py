@@ -15,7 +15,6 @@ from ingest.classify.tech import (
 from ingest.models import CanonicalJob, RawJob
 from ingest.normalize.location import normalize_location
 
-ASHBY_POSTING_COMPANY = "TalentSafari"
 SOURCE_COUNTRY_FALLBACKS = {
     "brightermonday": "Kenya",
     "corporate_staffing": "Kenya",
@@ -31,26 +30,6 @@ def normalize_text(value: str) -> str:
 
     normalized = unicodedata.normalize("NFKC", value).casefold()
     return re.sub(r"\s+", " ", re.sub(r"[^\w\s]", " ", normalized)).strip()
-
-
-def canonicalize_ashby_job(
-    raw: RawJob, *, posting_company: str = ASHBY_POSTING_COMPANY
-) -> CanonicalJob:
-    """Canonicalize an Ashby job using its immutable external ID.
-
-    TalentSafari is an agency board, so its name remains the posting company
-    while a supplied company name is retained as the hiring company.
-    """
-
-    if raw.source_id != "ashby" or not raw.external_id:
-        raise ValueError("Ashby canonicalization requires a RawJob with an Ashby external ID.")
-
-    return canonicalize_raw_job(
-        raw,
-        posting_company=posting_company,
-        hiring_company=raw.company,
-        is_agency_posting=True,
-    )
 
 
 def canonicalize_raw_job(

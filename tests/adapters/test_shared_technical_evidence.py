@@ -4,10 +4,9 @@ import json
 
 import pytest
 
-from ingest.adapters.ashby import parse_ashby_jobs
 from ingest.adapters.corporate_staffing import parse_corporate_staffing_jobs
 from ingest.adapters.elevolt import parse_elevolt_jobs
-from ingest.adapters.employer_boards import SDG_URL, parse_sdg_job
+from ingest.adapters.employer_boards import SDG_URL, parse_ashby_jobs, parse_sdg_job
 from ingest.adapters.jsearch import parse_record
 from ingest.adapters.openedcareer import parse_openedcareer_jobs
 from ingest.main import build_jobs
@@ -38,7 +37,7 @@ def parse(source):
                 ]
             }
         )[0]
-    if source == "ashby":
+    if source == "camunda":
         return parse_ashby_jobs(
             {
                 "jobs": [
@@ -51,7 +50,8 @@ def parse(source):
                         "descriptionHtml": BODY,
                     }
                 ]
-            }
+            },
+            source_id="camunda",
         )[0]
     if source == "jsearch":
         return parse_record(
@@ -80,7 +80,7 @@ def parse(source):
 
 
 @pytest.mark.parametrize(
-    "source", ["corporate_staffing", "openedcareer", "elevolt", "ashby", "jsearch", "sdg"]
+    "source", ["corporate_staffing", "openedcareer", "elevolt", "camunda", "jsearch", "sdg"]
 )
 def test_each_api_uses_own_evidence_and_keeps_native_identity_without_body(source):
     raw = parse(source)

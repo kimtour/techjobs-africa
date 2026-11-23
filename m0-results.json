@@ -126,31 +126,6 @@
       "source_id": "greenhouse",
       "status_class": "ACCESSIBLE",
       "status_code": 200
-    },
-    {
-      "clues": {
-        "has_job_schema": true,
-        "has_next_data": false,
-        "has_pagination_words": false,
-        "mentions_rss": false,
-        "mentions_wp_json": false
-      },
-      "content_type": "text/html; charset=utf-8",
-      "error": null,
-      "final_url": "https://jobs.ashbyhq.com/talentsafari",
-      "format": "html",
-      "redirect_count": 0,
-      "requested_url": "https://jobs.ashbyhq.com/talentsafari",
-      "response_bytes": 20783,
-      "retry_after": null,
-      "robots_allowed": true,
-      "robots_error": null,
-      "robots_status": 200,
-      "robots_url": "https://jobs.ashbyhq.com/robots.txt",
-      "sample": "<!DOCTYPE html> <html lang=\"en\"> <head> <meta charset=\"utf-8\"> <meta name=\"viewport\" content=\"width=device-width, initial-scale=1, shrink-to-fit=no\"> <meta name=\"theme-color\" content=\"#473BCE\"> <meta name=\"csp-nonce\" id=\"csp-nonce\" content=\"boVnUABfXMfgvsGrowyKrOGID4xTJx_-s9FyxA5JYXE\"> <link rel=\"icon\" type=\"image/svg+xml\" href=\"https://cdn.ashbyprd.com/cdn_assets/7e7e1a70a20f742343268feefb33d210a6dbda67/favicon.svg\"> <link rel=\"icon\" type=\"image/png\" href=\"https://cdn.",
-      "source_id": "ashby",
-      "status_class": "ACCESSIBLE",
-      "status_code": 200
     }
   ],
   "schema_version": 1,

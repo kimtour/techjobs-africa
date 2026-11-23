@@ -12,8 +12,8 @@ async function verify() {
   const response = await fetch(`${origin}/`, { signal: AbortSignal.timeout(20000) });
   if (!response.ok) throw new Error(`TechKazi page returned HTTP ${response.status}`);
   const document = new JSDOM(await response.text()).window.document;
-  if (document.querySelector('[data-source="company_careers"], #direct-filter, #employer-filter, #sector-filter')) {
-    throw new Error("Retired company career panel or filters remain live");
+  if (document.querySelector('[data-source="company_careers"], [data-source="ashby"], #direct-filter, #employer-filter, #sector-filter')) {
+    throw new Error("Retired feed panel or filters remain live");
   }
   if (document.title !== built.title || document.querySelector(".eyebrow")?.textContent !== "TechKazi") {
     throw new Error("Live TechKazi branding does not match the build");

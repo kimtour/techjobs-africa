@@ -13,7 +13,6 @@ Environment: local
 - **Greenhouse:** approved for attributed access. The configured generic search URL still redirects to a MyGreenhouse sign-in page, so it remains a discovery aid only; production ingestion requires verified company Job Board API boards.
 - **MyJobMag:** approved by the source owner for minimal, attributed link-out aggregation through its advertised detailed XML feed. Do not persist descriptions.
 - **Corporate Staffing:** approved by the source owner for fair-use, attributed access through its public WordPress jobs API. Do not persist descriptions.
-- **Ashby:** use the official public API confirmed below instead of HTML collection; the GitHub Actions probe also confirmed its board page is reachable.
 
 ### Newly approved source routes
 
@@ -24,18 +23,9 @@ Environment: local
 
 The required hosted-runner probe completed successfully on 2026-09-28 in [run 36403117088](https://github.com/kimtour/techjobs-africa/actions/runs/36403117088).
 
-- **MyJobMag, Corporate Staffing, Greenhouse, and Ashby:** HTTP 200, `ACCESSIBLE`, and allowed by their current `robots.txt` paths.
+- **MyJobMag, Corporate Staffing, and Greenhouse:** HTTP 200, `ACCESSIBLE`, and allowed by their current `robots.txt` paths.
 - **LinkedIn, OpenedCareer, and Elevolt:** `SKIPPED` because they are disabled in `config/sources.yaml`; the probe made no request to them.
 - The GitHub result matches the local technical baseline for every active source.
-
-### Official API confirmation
-
-The TalentSafari Ashby board is available through Ashby's documented public Job Postings API:
-
-- Endpoint: `https://api.ashbyhq.com/posting-api/job-board/talentsafari`
-- Local M0 API check: HTTP 200, JSON, API version 1, 19 listed public postings.
-- Confirmed useful fields: stable `id`, `title`, `location`, `workplaceType`, `isRemote`, `employmentType`, `publishedAt`, `applyUrl`, and `jobUrl`.
-- Production rule: request and publish listed public postings only; do not store the response descriptions.
 
 ### Corporate Staffing public-feed confirmation
 
@@ -60,7 +50,6 @@ The `/feeds/` page is HTML, but it explicitly publishes XML feed URLs.
 | openedcareer | 200 | ACCESSIBLE | html | 0 | True | 267197 |
 | elevolt | 200 | ACCESSIBLE | html | 0 | True | 326071 |
 | greenhouse | 200 | ACCESSIBLE | html | 2 | True | 7292 |
-| ashby | 200 | ACCESSIBLE | html | 0 | True | 20783 |
 
 ## Per-source details
 
@@ -185,31 +174,6 @@ Sanitized first 500 chars:
 
 ```text
 <!DOCTYPE html> <html lang="en"> <head> <title>MyGreenhouse</title> <meta name="viewport" content="width=device-width,initial-scale=1"> <meta name="description" content="Take control of your job hunt by autofilling applications and getting new roles delivered to your inbox." /> <link rel="icon" type="image/x-icon" href="https://job-seekers.cdn.greenhouse.io/assets/favicon-db928f695ac699a6677db69398dccbdf12615243618f00e5a9d6e94b0c6fdd0f.ico" /> <meta name
-```
-
-Manual ToS / permission review: **PENDING**
-
-### ashby
-
-- Requested URL: `https://jobs.ashbyhq.com/talentsafari`
-- Final URL: `https://jobs.ashbyhq.com/talentsafari`
-- Access: `ACCESSIBLE`
-- HTTP: `200`
-- Content-Type: `text/html; charset=utf-8`
-- Format hypothesis: `html`
-- Redirects: `0`
-- Retry-After: `None`
-- robots.txt: `https://jobs.ashbyhq.com/robots.txt`
-- robots HTTP: `200`
-- robots allowed for configured agent/path: `True`
-- Response bytes: `20783`
-- Clues: `{"has_job_schema": true, "has_next_data": false, "has_pagination_words": false, "mentions_rss": false, "mentions_wp_json": false}`
-- Error: `None`
-
-Sanitized first 500 chars:
-
-```text
-<!DOCTYPE html> <html lang="en"> <head> <meta charset="utf-8"> <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> <meta name="theme-color" content="#473BCE"> <meta name="csp-nonce" id="csp-nonce" content="boVnUABfXMfgvsGrowyKrOGID4xTJx_-s9FyxA5JYXE"> <link rel="icon" type="image/svg+xml" href="https://cdn.ashbyprd.com/cdn_assets/7e7e1a70a20f742343268feefb33d210a6dbda67/favicon.svg"> <link rel="icon" type="image/png" href="https://cdn.
 ```
 
 Manual ToS / permission review: **PENDING**

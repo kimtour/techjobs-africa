@@ -1,3 +1,18 @@
+# TalentSafari retirement — 23 November 2026
+
+Removed the TalentSafari (`ashby`) source, standalone adapter, normalization
+helper, board/agency configuration, fixtures and panel styling. Shared Ashby
+parsing now lives in `employer_boards.py` for Camunda and Blacksmith.
+Retirement filtering covers saved canonical/public records and source state,
+while preserving other providers' native identities and cross-listing attribution.
+
+Validation: 242 Python tests, 13 frontend tests, 17 scheduler tests, Ruff,
+Astro check/build and scheduler dry-run passed. The accepted private snapshot
+built eight feeds with 3,502 visible jobs. Local browser checks passed for
+load-more isolation, period reset, and empty-search recovery.
+
+---
+
 # Company Career Page retirement — 23 November 2026
 
 The Company Career Page panel, direct/employer/sector filters, employer registry,

@@ -19,7 +19,7 @@ roles found on BrighterMonday's Engineering & Technology and Software & Data pag
 ## Implementation contract
 
 - Feed order updated on 23 November 2026: All Jobs, MyJobMag,
-  Corporate Staffing, Other/Google/Linkedin, Fuzu, OpenedCareer, BrighterMonday, Elevolt, TalentSafari.
+  Corporate Staffing, Other/Google/Linkedin, Fuzu, OpenedCareer, BrighterMonday, Elevolt.
   Desktop reads left to right across the two columns; mobile uses this sequence
   in one column. All Jobs contains each active, unrestricted job once, newest first,
   and displays its source. It shares the independent period and pagination controls.

@@ -36,7 +36,7 @@ GitHub workflow; another trigger is unnecessary for this defect.
 ## All-board coverage
 
 The follow-up audit runs the shared taxonomy across Corporate Staffing,
-BrighterMonday, Fuzu, OpenedCareer, Elevolt, TalentSafari, the verified employer
+BrighterMonday, Fuzu, OpenedCareer, Elevolt, the verified employer
 boards, and Google Jobs. Domain/function patterns cover IT/ICT roles, software
 stacks, architecture, networking, data, technical education and enterprise
 applications. Broad IT patterns are fallbacks so specific support, security,

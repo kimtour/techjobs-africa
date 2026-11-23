@@ -93,8 +93,8 @@ def test_workflow_passes_selected_feed_sources_as_separate_arguments(tmp_path):
     }
     for selected, expected in [
         (
-            "myjobmag,corporate_staffing,ashby",
-            ["--source", "myjobmag", "--source", "corporate_staffing", "--source", "ashby"],
+            "myjobmag,corporate_staffing,fuzu",
+            ["--source", "myjobmag", "--source", "corporate_staffing", "--source", "fuzu"],
         ),
         ("myjobmag", ["--source", "myjobmag"]),
         ("all", []),

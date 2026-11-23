@@ -1,7 +1,7 @@
 /** Filter old accepted exports until ingestion migrates the private snapshot.
  * @param {string} source
  */
-const isRetiredSource = source => source === 'bebee' || source.startsWith('employer_');
+const isRetiredSource = source => ['bebee', 'ashby'].includes(source) || source.startsWith('employer_');
 
 /** @param {import('./jobs').Job} job */
 export function retainedJob(job) {

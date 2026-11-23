@@ -15,7 +15,6 @@ from urllib.parse import unquote, urlparse
 
 import yaml
 
-from ingest.adapters.ashby import AshbyAdapter
 from ingest.adapters.brightermonday import BrighterMondayAdapter
 from ingest.adapters.corporate_staffing import CorporateStaffingAdapter
 from ingest.adapters.elevolt import ElevoltAdapter
@@ -44,7 +43,6 @@ AdapterFactory = Callable[[], object]
 ADAPTERS: Mapping[str, AdapterFactory] = {
     "jsearch": GoogleJobsJSearchAdapter,
     "expertini": ExpertiniSitemapAdapter,
-    "ashby": lambda: AshbyAdapter("talentsafari"),
     "brightermonday": BrighterMondayAdapter,
     "corporate_staffing": CorporateStaffingAdapter,
     "elevolt": ElevoltAdapter,

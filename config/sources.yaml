@@ -244,31 +244,6 @@ sources:
       permission: approved_by_source_owner
       notes: "Source owner approved attributed access. The generic search remains a discovery aid because it redirects to sign-in; production ingestion requires verified company-specific Job Board API tokens."
 
-  - id: ashby
-    supports_absence_expiry: true
-    name: TalentSafari / Ashby
-    enabled: true
-    discovery_url: "https://jobs.ashbyhq.com/talentsafari"
-    method: official_public_api
-    production_method: official_public_api
-    api_url: "https://api.ashbyhq.com/posting-api/job-board/talentsafari"
-    interval_hours: 2
-    timezone: null
-    crawl:
-      max_pages: 1
-      max_requests_per_run: 3
-      request_delay_ms: 500
-      timeout_seconds: 15
-      retry_delays_seconds: [5, 20]
-      complete_when: unknown
-    closed_markers: []
-    ttl_days: 30
-    legal:
-      robots_checked: true
-      tos_checked: true
-      permission: official_public_api
-      notes: "M0 confirmed Ashby's public Job Postings API for the talentsafari board. Fetch listed public postings only; do not persist descriptions."
-
   - id: camunda
     name: Camunda careers
     enabled: true

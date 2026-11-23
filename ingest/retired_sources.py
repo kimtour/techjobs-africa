@@ -4,7 +4,7 @@ RETIRED_FIELDS = {"employer_id", "employer_sectors", "direct_employer"}
 
 
 def is_retired_source(source: str) -> bool:
-    return source == "bebee" or source.startswith("employer_")
+    return source in {"bebee", "ashby"} or source.startswith("employer_")
 
 
 def retained_job(job: dict) -> dict | None:

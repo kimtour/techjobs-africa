@@ -43,7 +43,6 @@ export const sourceOrder = [
   "openedcareer",
   "brightermonday",
   "elevolt",
-  "ashby",
 ];
 
 export const combinedSources = ["careerjet", "jsearch", "expertini", "camunda", "blacksmith", "sdg"];
@@ -51,7 +50,6 @@ export const combinedSources = ["careerjet", "jsearch", "expertini", "camunda", 
 export const sourceName = (sourceId: string) =>
   ({
     all: "All Jobs",
-    ashby: "TalentSafari",
     brightermonday: "BrighterMonday",
     corporate_staffing: "Corporate Staffing",
     elevolt: "Elevolt",

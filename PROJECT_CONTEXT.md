@@ -98,7 +98,6 @@ Never substitute these URLs during M0.
 | `openedcareer` | https://openedcareer.com/job-category/computer-science/ | Method unverified until M0 |
 | `elevolt` | https://jobs.elevolt.co.ke/jobs/category/software-it?page=1&location=&type=&qualification=&search= | Method unverified until M0 |
 | `greenhouse` | https://my.greenhouse.io/jobs/search?location=Kenya&lat=0.554064&lon=37.903148&location_type=country&country_short_name=KE&work_type[]=remote | Discovery aid only; production ingestion should use company Job Board API tokens discovered later |
-| `ashby` | https://jobs.ashbyhq.com/talentsafari | Use official posting API only if M0 confirms it |
 
 Method priority:
 1. official documented API
@@ -163,7 +162,7 @@ techjobs-africa/                       # main branch
 ├── docs/source-discovery.md
 ├── site/{src/{pages,components,layouts,lib},public,astro.config.mjs,package.json}
 ├── ingest/
-│   ├── adapters/{base,ashby,greenhouse,myjobmag,corporate_staffing,openedcareer,elevolt}.py
+│   ├── adapters/{base,greenhouse,myjobmag,corporate_staffing,openedcareer,elevolt}.py
 │   ├── normalize/
 │   ├── classify/
 │   ├── dedupe/
@@ -174,7 +173,7 @@ techjobs-africa/                       # main branch
 │   ├── main.py
 │   ├── finalize.py
 │   └── m0_probe.py
-├── config/{sources,ats_boards,geography,categories,agencies,quality_gates}.yaml
+├── config/{sources,geography,categories,agencies,quality_gates}.yaml
 ├── tests/{fixtures,adapters,normalization,classification,eligibility,dedupe,expiry}/
 └── .github/workflows/{m0-discovery,ingest-and-deploy,link-health}.yml
 ```
@@ -794,7 +793,7 @@ Do these in order:
 2. Scaffold the repo layout with pinned deps, ruff/pytest config, and empty modules.
 3. Create the data-branch bootstrap script and state schemas.
 4. Use the exact six URLs in `config/sources.yaml`.
-5. Create/configure `geography.yaml`, `categories.yaml`, `agencies.yaml`, `ats_boards.yaml`, `quality_gates.yaml`.
+5. Create/configure `geography.yaml`, `categories.yaml`, `agencies.yaml`, `quality_gates.yaml`.
 6. Run the local M0 probe.
 7. Run `.github/workflows/m0-discovery.yml`.
 8. Record real findings in `docs/source-discovery.md`.

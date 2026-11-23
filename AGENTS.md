@@ -47,7 +47,7 @@ Pipeline stages (from `main.py`):
 
 Key modules:
 - `ingest/models.py` — `RawJob`, `CanonicalJob`, `SourceHealth`, enums
-- `ingest/adapters/` — source-specific adapters (ashby, myjobmag, corporate_staffing, openedcareer, elevolt)
+- `ingest/adapters/` — source-specific adapters (myjobmag, corporate_staffing, openedcareer, elevolt)
 - `ingest/normalize/` — `canonicalize.py`, `location.py`
 - `ingest/classify/` — `eligibility.py`, `tech.py`
 - `ingest/dedupe/` — `exact.py`
@@ -55,7 +55,7 @@ Key modules:
 
 ### Config (`config/`)
 
-YAML-driven: `sources.yaml` (source definitions, methods, legal status), `geography.yaml` (African countries/cities), `categories.yaml` (tech taxonomy), `ats_boards.yaml`, `agencies.yaml`, `quality_gates.yaml`.
+YAML-driven: `sources.yaml` (source definitions, methods, legal status), `geography.yaml` (African countries/cities), `categories.yaml` (tech taxonomy), `agencies.yaml`, `quality_gates.yaml`.
 
 ### Frontend (`site/`)
 

@@ -4,14 +4,14 @@ from __future__ import annotations
 
 import json
 import re
-from collections.abc import Mapping
-from datetime import date
+from collections.abc import Mapping, Sequence
+from datetime import date, datetime
 from html.parser import HTMLParser
+from typing import Any
 from urllib.parse import quote, urljoin, urlsplit
 
 import httpx
 
-from ingest.adapters.ashby import parse_ashby_jobs
 from ingest.classify.evidence import description_technical_context
 from ingest.classify.tech import classify_technology_title, needs_detail_technical_context
 from ingest.models import RawJob
@@ -44,11 +44,56 @@ def _eligible_remote_location(values: list[str], remote: bool) -> str | None:
     return None
 
 
+def _as_optional_text(value: object) -> str | None:
+    return value.strip() if isinstance(value, str) and value.strip() else None
+
+
+def parse_ashby_jobs(payload: Mapping[str, Any], source_id: str) -> list[RawJob]:
+    """Convert listed public Ashby postings into minimal RawJob records.
+
+    Description fields supply scoped technical evidence in memory only.
+    """
+
+    jobs = payload.get("jobs")
+    if not isinstance(jobs, Sequence) or isinstance(jobs, (str, bytes)):
+        raise ValueError("Ashby response does not contain a jobs list.")
+
+    parsed: list[RawJob] = []
+    for job in jobs:
+        if not isinstance(job, Mapping) or job.get("isListed") is not True:
+            continue
+
+        external_id = _as_optional_text(job.get("id"))
+        title = _as_optional_text(job.get("title"))
+        source_url = _as_optional_text(job.get("jobUrl"))
+        apply_url = _as_optional_text(job.get("applyUrl"))
+        if not all((external_id, title, source_url, apply_url)):
+            continue
+
+        published_at = _as_optional_text(job.get("publishedAt"))
+        parsed.append(
+            RawJob(
+                source_id=source_id,
+                external_id=external_id,
+                title=title,
+                technical_context=description_technical_context(
+                    title, job.get("descriptionHtml") or job.get("descriptionPlain")
+                ),
+                company=None,
+                location=_as_optional_text(job.get("location")),
+                source_url=source_url,
+                apply_url=apply_url,
+                published_at=datetime.fromisoformat(published_at) if published_at else None,
+            )
+        )
+    return parsed
+
+
 def parse_employer_ashby(payload: Mapping, source_id: str) -> list[RawJob]:
     board, company = ASHBY_EMPLOYERS[source_id]
     metadata = {job.get("id"): job for job in payload.get("jobs", []) if isinstance(job, Mapping)}
     jobs = []
-    for raw in parse_ashby_jobs(payload):
+    for raw in parse_ashby_jobs(payload, source_id):
         job = metadata[raw.external_id]
         values = [job.get("location")]
         for secondary in job.get("secondaryLocations") or []:

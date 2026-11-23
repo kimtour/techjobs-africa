@@ -4,15 +4,17 @@ import { readFileSync } from 'node:fs';
 import { JSDOM } from 'jsdom';
 import { retainedJob } from '../src/lib/retired-sources.js';
 
-test('old accepted company listings stay retired while cross-listed provider jobs survive', () => {
-  const job = (job_id, sources) => ({job_id, sources, status: 'ACTIVE'});
-  assert.equal(retainedJob(job('employer_old:123', ['employer_old'])), null);
-  assert.equal(retainedJob(job('employer_old:123', ['employer_old', 'myjobmag'])), null);
-  const original = job('myjobmag:123', ['myjobmag', 'employer_old']);
-  assert.deepEqual(retainedJob(original), {...original, sources: ['myjobmag']});
-  assert.deepEqual(original.sources, ['myjobmag', 'employer_old']);
-  assert.deepEqual(retainedJob(job('camunda:123', ['camunda'])), job('camunda:123', ['camunda']));
-});
+for (const retired of ['employer_old', 'ashby']) {
+  test(`old ${retired} listings stay retired while cross-listed provider jobs survive`, () => {
+    const job = (job_id, sources) => ({job_id, sources, status: 'ACTIVE'});
+    assert.equal(retainedJob(job(`${retired}:123`, [retired])), null);
+    assert.equal(retainedJob(job(`${retired}:123`, [retired, 'myjobmag'])), null);
+    const original = job('myjobmag:123', ['myjobmag', retired]);
+    assert.deepEqual(retainedJob(original), {...original, sources: ['myjobmag']});
+    assert.deepEqual(original.sources, ['myjobmag', retired]);
+    assert.deepEqual(retainedJob(job('camunda:123', ['camunda'])), job('camunda:123', ['camunda']));
+  });
+}
 
 const script = readFileSync(new URL('../src/scripts/filters.js', import.meta.url), 'utf8');
 const now = Date.parse('2026-09-30T12:00:00Z');
