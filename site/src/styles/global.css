@@ -62,3 +62,6 @@ h1 { font-size: clamp(2rem, 4vw, 3rem); letter-spacing: -.04em; line-height: 1.0
 
 .source-group[data-source="himalayas"] { --source-color: #276a72; }
 .source-provider a { color: inherit; text-decoration: underline; }
+
+.source-group[data-source="jobicy"] { --source-color: #6253a2; }
+.source-group[data-source="remoteok"] { --source-color: #ac3937; }

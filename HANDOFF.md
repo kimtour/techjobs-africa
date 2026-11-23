@@ -1,3 +1,20 @@
+## 23 November 2026 — Jobicy and Remote OK feeds
+
+Added two approved public API sources, independent panels after Himalayas,
+original followed listing links and text attribution in All Jobs and source feeds.
+Jobicy traverses its seven-day cursor feed and uses rotating batch status checks;
+only explicit closed status removes listings. Remote OK uses its recent JSON
+window. Both disable absence expiry and retain data on malformed/blocked/failed
+fetches. No descriptions or excerpts are persisted. Discovery contract is in
+`docs/jobicy-remoteok-discovery.md`.
+
+Local live run: Jobicy SUCCESS (15 HTTP 200 pages, 10 accepted technical jobs),
+Remote OK SUCCESS (one HTTP 200 request, one accepted job). All ten Jobicy jobs
+returned active in a live batch status check. Combined preview: 11 source panels,
+3,661 accepted jobs. Desktop/mobile checks covered independent scrolling and
+periods, empty states, search/category recovery, credit, date labels and links.
+317 Python tests, 15 frontend tests, Ruff and Astro check/build passed.
+
 # Himalayas feed — 23 November 2026
 
 Added a documented public API source with eight bounded Kenya search windows,

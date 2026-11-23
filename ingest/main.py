@@ -22,9 +22,11 @@ from ingest.adapters.employer_boards import AshbyEmployerAdapter, SocialDiscover
 from ingest.adapters.expertini import ExpertiniSitemapAdapter
 from ingest.adapters.fuzu import FuzuAdapter
 from ingest.adapters.himalayas import HimalayasAdapter
+from ingest.adapters.jobicy import JobicyAdapter
 from ingest.adapters.jsearch import GoogleJobsJSearchAdapter, queries_for_day
 from ingest.adapters.myjobmag import MyJobMagAdapter
 from ingest.adapters.openedcareer import OpenedCareerAdapter
+from ingest.adapters.remoteok import RemoteOKAdapter
 from ingest.audit import public_hash, read_json, record_run, run_identity
 from ingest.classify.tech import (
     classification_title,
@@ -44,6 +46,8 @@ AdapterFactory = Callable[[], object]
 ADAPTERS: Mapping[str, AdapterFactory] = {
     "jsearch": GoogleJobsJSearchAdapter,
     "himalayas": HimalayasAdapter,
+    "jobicy": JobicyAdapter,
+    "remoteok": RemoteOKAdapter,
     "expertini": ExpertiniSitemapAdapter,
     "brightermonday": BrighterMondayAdapter,
     "corporate_staffing": CorporateStaffingAdapter,
@@ -256,7 +260,7 @@ def run_ingestion(
             else:
                 next_allowed = None
                 adapter = factory()
-                if source_id == "himalayas":
+                if source_id in {"himalayas", "jobicy"}:
                     adapter.previous_jobs = list(previous_for_source.values())
                 policy = source_config[source_id]["crawl"]
                 if hasattr(adapter, "max_pages"):
@@ -301,7 +305,7 @@ def run_ingestion(
                 if any(raw.source_id != source_id for raw in fetched):
                     raise ValueError("adapter returned a foreign source")
                 source_jobs = build_jobs(fetched, rejections=rejected_jobs)
-                if source_id == "himalayas":
+                if source_id in {"himalayas", "jobicy", "remoteok"}:
                     source_jobs = [
                         job.model_copy(
                             update={
@@ -334,10 +338,10 @@ def run_ingestion(
                 tech_drop = previous_for_source and len(source_jobs) < len(previous_for_source) * (
                     1 - gates["max_source_job_drop_percent"] / 100
                 )
-                # JSearch and Himalayas return bounded discovery windows; accepted jobs
+                # Remote APIs and JSearch return discovery windows; accepted jobs
                 # accumulate across queries/days. A smaller valid sample is not
                 # evidence of an incomplete inventory. Absence expiry stays off.
-                if source_id in {"jsearch", "himalayas"}:
+                if source_id in {"jsearch", "himalayas", "jobicy", "remoteok"}:
                     raw_drop = tech_drop = False
                 verified_empty = (
                     source_config[source_id].get("allow_verified_empty", False)
@@ -345,7 +349,7 @@ def run_ingestion(
                     and not fetched
                     and not reference
                 )
-                if source_id == "himalayas" and complete:
+                if source_id in {"himalayas", "jobicy", "remoteok"} and complete:
                     verified_empty = True
                 if (not fetched and not verified_empty) or raw_drop or tech_drop:
                     status = SourceHealthStatus.PARTIAL
@@ -368,7 +372,7 @@ def run_ingestion(
                 closer = getattr(observer.client, "close", None)
                 if closer:
                     closer()
-        if source_id == "himalayas" and status == SourceHealthStatus.SUCCESS:
+        if source_id in {"himalayas", "jobicy"} and status == SourceHealthStatus.SUCCESS:
             for job_id in adapter.checked_job_ids:
                 if job_id in jobs_by_id:
                     jobs_by_id[job_id] = jobs_by_id[job_id].model_copy(

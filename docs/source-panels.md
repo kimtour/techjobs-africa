@@ -19,7 +19,7 @@ roles found on BrighterMonday's Engineering & Technology and Software & Data pag
 ## Implementation contract
 
 - Feed order updated on 23 November 2026: All Jobs, MyJobMag,
-  Corporate Staffing, Other/Google/Linkedin, Fuzu, OpenedCareer, BrighterMonday, Elevolt, Himalayas.
+  Corporate Staffing, Other/Google/Linkedin, Fuzu, OpenedCareer, BrighterMonday, Elevolt, Himalayas, Jobicy, Remote OK.
   Desktop reads left to right across the two columns; mobile uses this sequence
   in one column. All Jobs contains each active, unrestricted job once, newest first,
   and displays its source. It shares the independent period and pagination controls.
@@ -98,3 +98,13 @@ Updated and participates in periods/sorting; expiryDate is labelled Listing
 expires, not an employer application deadline. Expired cards are also hidden at
 page load if they expired after the static build. All standard independent
 scroll, pagination, periods, search, category and opened-link behavior applies.
+
+## Jobicy and Remote OK
+
+Append Jobicy then Remote OK after Himalayas; keep both headers and controls when
+empty. Each source has text attribution in its header and on every card in both
+its own panel and All Jobs. Original application links remain followed, with no
+provider logos. Both use original publication dates and Last checked timestamps.
+Jobicy closures come only from its explicit batch status endpoint; neither recent
+feed supports absence expiry. Independent scroll/period/load-more/search/category
+and opened-link behavior is identical to the other panels.

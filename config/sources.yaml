@@ -334,3 +334,49 @@ sources:
       tos_checked: true
       permission: api_terms_clause_113
       notes: "M0 verified 200 JSON and allowed robots access on 23 November 2026. Own-site display permitted with Himalayas attribution and unchanged API applicationLink. No downstream syndication or JobPosting structured data. Kenya/worldwide country restrictions and UTC+3 timezone compatibility required. Descriptions processed only in memory. Bounded discovery does not support absence expiry; use supplied expiryDate and authoritative 410 status checks."
+
+  - id: jobicy
+    name: Jobicy
+    enabled: true
+    supports_absence_expiry: false
+    discovery_url: "https://jobicy.com/jobs-rss-feed"
+    method: documented_public_jobs_api
+    production_method: documented_public_jobs_api
+    interval_hours: 5
+    timezone: Africa/Nairobi
+    crawl:
+      max_pages: 20
+      max_requests_per_run: 32
+      request_delay_ms: 1200
+      timeout_seconds: 30
+      retry_delays_seconds: []
+      complete_when: documented_recent_feed_window_complete
+    allow_verified_empty: true
+    legal:
+      robots_checked: true
+      tos_checked: true
+      permission: documented_api_aggregator_reuse
+      notes: "M0 verified 23 November 2026; see docs/jobicy-remoteok-discovery.md. Visible text credit and original followed listing links required. No descriptions persisted. Explicit worldwide/Africa/Kenya eligibility and independent technical classification. Recent windows do not permit absence expiry."
+
+  - id: remoteok
+    name: Remote OK
+    enabled: true
+    supports_absence_expiry: false
+    discovery_url: "https://remoteok.com/faq"
+    method: documented_public_jobs_api
+    production_method: documented_public_jobs_api
+    interval_hours: 5
+    timezone: Africa/Nairobi
+    crawl:
+      max_pages: 1
+      max_requests_per_run: 2
+      request_delay_ms: 1200
+      timeout_seconds: 30
+      retry_delays_seconds: []
+      complete_when: documented_recent_feed_window_complete
+    allow_verified_empty: true
+    legal:
+      robots_checked: true
+      tos_checked: true
+      permission: documented_api_aggregator_reuse
+      notes: "M0 verified 23 November 2026; see docs/jobicy-remoteok-discovery.md. Visible text credit and original followed listing links required. No descriptions persisted. Explicit worldwide/Africa/Kenya eligibility and independent technical classification. Recent windows do not permit absence expiry."

@@ -39,6 +39,21 @@ for (const job of expectedHimalayas) {
     }
   }
 }
+for (const [source, name, home] of [['jobicy', 'Jobicy', 'https://jobicy.com/'], ['remoteok', 'Remote OK', 'https://remoteok.com/']]) {
+  const panel = document.querySelector(`[data-source="${source}"]`);
+  assert(panel, `${name} retains its panel when empty`);
+  assert.equal(panel.querySelector('.source-provider a')?.href, home);
+  assert.deepEqual([...panel.querySelectorAll('[data-job-id]')].map(c => c.dataset.jobId).sort(),
+    expected.filter(j => j.sources.includes(source)).map(j => j.job_id).sort());
+  for (const job of expected.filter(j => j.sources.includes(source))) {
+    for (const card of copies.get(job.job_id) ?? []) {
+      const link = card.querySelector('.job-title');
+      assert.equal(link?.getAttribute('href'), job.preferred_apply_url);
+      assert(!link?.relList.contains('nofollow'));
+      assert(card.querySelector('.source')?.textContent.includes(name));
+    }
+  }
+}
 for (const panel of panels) {
   assert(!retired(panel.dataset.source));
   assert(panel.querySelector('h3'));

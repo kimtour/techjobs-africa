@@ -27,7 +27,7 @@ const sourceGroups = orderedSources
     sourceId,
     jobs: visibleJobs.filter((job) => (job.sources.includes(sourceId) || (sourceId === "linkedin" && job.sources.some((source) => combinedSources.includes(source))))).sort(newestFirst),
   }))
-  .filter((group) => group.jobs.length > 0 || ["linkedin", "himalayas"].includes(group.sourceId));
+  .filter((group) => group.jobs.length > 0 || ["linkedin", "himalayas", "jobicy", "remoteok"].includes(group.sourceId));
 const sourceColumns: (typeof sourceGroups)[] = [[], []];
 const feedGroups = [
   { sourceId: "all", jobs: [...visibleJobs].sort(newestFirst) },
@@ -73,6 +73,8 @@ feedGroups.forEach((group, index) => sourceColumns[index % sourceColumns.length]
                 <div class="source-heading">
                   <div>
                     <h3 id={`source-${group.sourceId}`}>{feedName(group.sourceId)}</h3>
+                    {group.sourceId === "jobicy" && <p class="source-provider">Remote tech jobs · <a href="https://jobicy.com" rel="noreferrer" target="_blank">Source: Jobicy</a></p>}
+                    {group.sourceId === "remoteok" && <p class="source-provider">Remote tech jobs · <a href="https://remoteok.com" rel="noreferrer" target="_blank">Source: Remote OK</a></p>}
                     {group.sourceId === "himalayas" && <p class="source-provider">Kenya-compatible remote jobs · <a href="https://himalayas.app" rel="noreferrer" target="_blank">Source: Himalayas</a></p>}
                     {group.sourceId === "linkedin" && <p class="source-provider">Kenya + Africa remote · Original publisher links</p>}
                     <div class="source-periods" aria-label={`${feedName(group.sourceId)} listing period`}>
@@ -123,7 +125,7 @@ feedGroups.forEach((group, index) => sourceColumns[index % sourceColumns.length]
                         </p>
                         {job.deadline_at && <p class="posted">{job.job_id.startsWith("himalayas:") ? "Listing expires" : "Closes"}: <time datetime={job.deadline_at}>{checkedDateLabel(job.deadline_at)}</time></p>}
                         {job.last_checked_at && <p class="posted">Last checked: <time datetime={job.last_checked_at}>{checkedDateLabel(job.last_checked_at)}</time></p>}
-                        {(["all", "linkedin", "himalayas"].includes(group.sourceId) || job.sources.length > 1) && <p class="source">{(["all", "linkedin", "himalayas"].includes(group.sourceId)) ? "Source: " : "Also listed by: "}{sourceLabels(job)}</p>}
+                        {(["all", "linkedin", "himalayas", "jobicy", "remoteok"].includes(group.sourceId) || job.sources.length > 1) && <p class="source">{(["all", "linkedin", "himalayas", "jobicy", "remoteok"].includes(group.sourceId)) ? "Source: " : "Also listed by: "}{sourceLabels(job)}</p>}
                       </div>
                     </li>
                   ))}

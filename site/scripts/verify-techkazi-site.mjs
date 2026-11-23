@@ -24,6 +24,23 @@ async function verify() {
       throw new Error("Live canonical or sharing address is incorrect");
     }
   }
+  for (const [source, home] of [['jobicy', 'https://jobicy.com/'], ['remoteok', 'https://remoteok.com/']]) {
+    const actual = document.querySelector(`[data-source="${source}"]`);
+    const expected = built.querySelector(`[data-source="${source}"]`);
+    if (!actual || actual.querySelector('.source-provider a')?.href !== home) {
+      throw new Error(`${source} source panel/attribution missing`);
+    }
+    const links = p => [...p.querySelectorAll('[data-job-id]')].map(c =>
+      [c.dataset.jobId, c.querySelector('.job-title')?.getAttribute('href')]).sort();
+    if (JSON.stringify(links(actual)) !== JSON.stringify(links(expected))) {
+      throw new Error(`${source} live jobs/links do not match build`);
+    }
+    for (const card of actual.querySelectorAll('[data-job-id]')) {
+      if (card.querySelector('.job-title')?.relList.contains('nofollow')) {
+        throw new Error(`${source} application link must be followed`);
+      }
+    }
+  }
   const h = document.querySelector('[data-source="himalayas"]');
   const expectedH = built.querySelector('[data-source="himalayas"]');
   if (expectedH && (!h || h.querySelector('.source-provider a')?.href !== 'https://himalayas.app/')) {

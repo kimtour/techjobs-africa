@@ -31,9 +31,9 @@ def _merge(primary: CanonicalJob, duplicate: CanonicalJob) -> CanonicalJob:
             "source_publisher": primary.source_publisher or duplicate.source_publisher,
             "preferred_apply_url": (
                 primary.preferred_apply_url
-                if "himalayas" in primary.sources
+                if set(primary.sources) & {"himalayas", "jobicy", "remoteok"}
                 else duplicate.preferred_apply_url
-                if "himalayas" in duplicate.sources
+                if set(duplicate.sources) & {"himalayas", "jobicy", "remoteok"}
                 else primary.preferred_apply_url
             ),
             "source_updated_at": max(
