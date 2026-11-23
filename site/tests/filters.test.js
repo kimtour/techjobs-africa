@@ -17,6 +17,12 @@ for (const retired of ['employer_old', 'ashby']) {
 }
 
 const script = readFileSync(new URL('../src/scripts/filters.js', import.meta.url), 'utf8');
+test('expired Himalayas snapshots are excluded before rendering', () => {
+  const job = {job_id:'himalayas:example',sources:['himalayas'],deadline_at:'2020-01-01T00:00:00Z'};
+  assert.equal(retainedJob(job), null);
+  assert(retainedJob({...job, deadline_at:'2099-01-01T00:00:00Z'}));
+  assert(retainedJob({...job, job_id:'other:example', sources:['other']}));
+});
 const now = Date.parse('2026-09-30T12:00:00Z');
 const day = 86400000;
 function setup({ allJobs = false } = {}) {
@@ -132,4 +138,12 @@ test('All Jobs keeps independent controls and counts shared job identities once'
   assert.equal(doc.querySelector('#job-count').textContent, '0 active roles');
   assert.equal(doc.querySelector('#no-results').hidden,false);
   assert.equal(shown(b),0);
+});
+
+test('a Himalayas listing that expires after the static build is hidden on page load', () => {
+  const dom = new JSDOM(`<p id="job-count"></p><section data-source-group data-source="himalayas"><h3>Himalayas</h3><div data-source-feed><article data-source-card data-job-id="expired" data-expires="2020-01-01T00:00:00Z"></article><article data-source-card data-job-id="open" data-expires="2099-01-01T00:00:00Z"></article></div><p data-source-empty hidden></p></section>`, {runScripts:'outside-only'});
+  dom.window.eval(script);
+  assert.equal(dom.window.document.querySelector('[data-job-id="expired"]').hidden,true);
+  assert.equal(dom.window.document.querySelector('[data-job-id="open"]').hidden,false);
+  assert.equal(dom.window.document.querySelector('#job-count').textContent,'1 active role');
 });

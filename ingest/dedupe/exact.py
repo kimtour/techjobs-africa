@@ -29,6 +29,21 @@ def _merge(primary: CanonicalJob, duplicate: CanonicalJob) -> CanonicalJob:
         update={
             "sources": sorted(set(primary.sources).union(duplicate.sources)),
             "source_publisher": primary.source_publisher or duplicate.source_publisher,
+            "preferred_apply_url": (
+                primary.preferred_apply_url
+                if "himalayas" in primary.sources
+                else duplicate.preferred_apply_url
+                if "himalayas" in duplicate.sources
+                else primary.preferred_apply_url
+            ),
+            "source_updated_at": max(
+                (
+                    v
+                    for v in (primary.source_updated_at, duplicate.source_updated_at)
+                    if v is not None
+                ),
+                default=None,
+            ),
             "shared_apply_url": primary.shared_apply_url or duplicate.shared_apply_url,
             "last_checked_at": max(
                 (v for v in (primary.last_checked_at, duplicate.last_checked_at) if v is not None),

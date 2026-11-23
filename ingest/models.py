@@ -52,6 +52,7 @@ class RawJob(BaseModel):
     apply_url: AnyHttpUrl
     published_at: datetime | None = None
     published_date: date | None = None
+    source_updated_at: datetime | None = None
     deadline_at: datetime | None = None
     employment_type: str | None = Field(default=None, max_length=100)
     shared_apply_url: bool = False
@@ -122,6 +123,7 @@ class CanonicalJob(BaseModel):
     eligibility_source: str
     published_at: datetime | None = None
     published_date: date | None = None
+    source_updated_at: datetime | None = None
     deadline_at: datetime | None = None
     first_seen_at: datetime | None = None
     last_checked_at: datetime | None = None

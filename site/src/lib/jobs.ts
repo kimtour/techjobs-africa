@@ -14,6 +14,7 @@ export type Job = {
   eligibility_level: "CONFIRMED" | "LIKELY" | "VERIFY" | "RESTRICTED" | "UNKNOWN";
   published_at: string | null;
   published_date: string | null;
+  source_updated_at?: string | null;
   preferred_apply_url: string;
   sources: string[];
   source_publisher?: string | null;
@@ -43,6 +44,7 @@ export const sourceOrder = [
   "openedcareer",
   "brightermonday",
   "elevolt",
+  "himalayas",
 ];
 
 export const combinedSources = ["careerjet", "jsearch", "expertini", "camunda", "blacksmith", "sdg"];
@@ -50,6 +52,7 @@ export const combinedSources = ["careerjet", "jsearch", "expertini", "camunda", 
 export const sourceName = (sourceId: string) =>
   ({
     all: "All Jobs",
+    himalayas: "Himalayas",
     brightermonday: "BrighterMonday",
     corporate_staffing: "Corporate Staffing",
     elevolt: "Elevolt",
@@ -90,7 +93,7 @@ export const postedLabel = (job: Job) => {
   }).format(postedAt)} EAT`;
 };
 
-export const listingDate = (job: Job) => job.published_at || job.published_date || job.first_seen_at || "";
+export const listingDate = (job: Job) => job.published_at || job.published_date || job.source_updated_at || job.first_seen_at || "";
 
 // Missing/invalid dates stay last; use identity for deterministic ties.
 export const newestFirst = (a: Job, b: Job) => {

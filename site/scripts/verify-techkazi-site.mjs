@@ -24,6 +24,18 @@ async function verify() {
       throw new Error("Live canonical or sharing address is incorrect");
     }
   }
+  const h = document.querySelector('[data-source="himalayas"]');
+  const expectedH = built.querySelector('[data-source="himalayas"]');
+  if (expectedH && (!h || h.querySelector('.source-provider a')?.href !== 'https://himalayas.app/')) {
+    throw new Error("Himalayas panel or source attribution is missing");
+  }
+  if (h && expectedH) {
+    const cards = panel => [...panel.querySelectorAll('[data-job-id]')].map(card =>
+      [card.dataset.jobId, card.querySelector('.job-title')?.getAttribute('href')]).sort();
+    if (JSON.stringify(cards(h)) !== JSON.stringify(cards(expectedH))) {
+      throw new Error("Live Himalayas identities/application links do not match the build");
+    }
+  }
   if (JSON.stringify(jobIds(document)) !== JSON.stringify(expectedIds)) {
     throw new Error("Live job identities do not match the accepted production build");
   }

@@ -21,6 +21,7 @@ from ingest.adapters.elevolt import ElevoltAdapter
 from ingest.adapters.employer_boards import AshbyEmployerAdapter, SocialDiscoveryAdapter
 from ingest.adapters.expertini import ExpertiniSitemapAdapter
 from ingest.adapters.fuzu import FuzuAdapter
+from ingest.adapters.himalayas import HimalayasAdapter
 from ingest.adapters.jsearch import GoogleJobsJSearchAdapter, queries_for_day
 from ingest.adapters.myjobmag import MyJobMagAdapter
 from ingest.adapters.openedcareer import OpenedCareerAdapter
@@ -42,6 +43,7 @@ CONFIG_PATH = Path("config/sources.yaml")
 AdapterFactory = Callable[[], object]
 ADAPTERS: Mapping[str, AdapterFactory] = {
     "jsearch": GoogleJobsJSearchAdapter,
+    "himalayas": HimalayasAdapter,
     "expertini": ExpertiniSitemapAdapter,
     "brightermonday": BrighterMondayAdapter,
     "corporate_staffing": CorporateStaffingAdapter,
@@ -254,6 +256,8 @@ def run_ingestion(
             else:
                 next_allowed = None
                 adapter = factory()
+                if source_id == "himalayas":
+                    adapter.previous_jobs = list(previous_for_source.values())
                 policy = source_config[source_id]["crawl"]
                 if hasattr(adapter, "max_pages"):
                     adapter.max_pages = policy["max_pages"]
@@ -297,6 +301,19 @@ def run_ingestion(
                 if any(raw.source_id != source_id for raw in fetched):
                     raise ValueError("adapter returned a foreign source")
                 source_jobs = build_jobs(fetched, rejections=rejected_jobs)
+                if source_id == "himalayas":
+                    source_jobs = [
+                        job.model_copy(
+                            update={
+                                "first_seen_at": previous_for_source[job.job_id].first_seen_at
+                                if job.job_id in previous_for_source
+                                and previous_for_source[job.job_id].first_seen_at
+                                else attempt_at,
+                                "last_checked_at": attempt_at,
+                            }
+                        )
+                        for job in source_jobs
+                    ]
                 _write_json(
                     output_dir / "state/classification" / f"{source_id}.json",
                     {
@@ -317,10 +334,10 @@ def run_ingestion(
                 tech_drop = previous_for_source and len(source_jobs) < len(previous_for_source) * (
                     1 - gates["max_source_job_drop_percent"] / 100
                 )
-                # JSearch returns a bounded, ranked sample, while accepted jobs
+                # JSearch and Himalayas return bounded discovery windows; accepted jobs
                 # accumulate across queries/days. A smaller valid sample is not
                 # evidence of an incomplete inventory. Absence expiry stays off.
-                if source_id == "jsearch":
+                if source_id in {"jsearch", "himalayas"}:
                     raw_drop = tech_drop = False
                 verified_empty = (
                     source_config[source_id].get("allow_verified_empty", False)
@@ -328,6 +345,8 @@ def run_ingestion(
                     and not fetched
                     and not reference
                 )
+                if source_id == "himalayas" and complete:
+                    verified_empty = True
                 if (not fetched and not verified_empty) or raw_drop or tech_drop:
                     status = SourceHealthStatus.PARTIAL
                     reason = "suspicious_count_drop" if fetched else "unexpected_empty_result"
@@ -349,6 +368,23 @@ def run_ingestion(
                 closer = getattr(observer.client, "close", None)
                 if closer:
                     closer()
+        if source_id == "himalayas" and status == SourceHealthStatus.SUCCESS:
+            for job_id in adapter.checked_job_ids:
+                if job_id in jobs_by_id:
+                    jobs_by_id[job_id] = jobs_by_id[job_id].model_copy(
+                        update={"last_checked_at": attempt_at}
+                    )
+            for job_id in adapter.closed_job_ids:
+                if job_id in jobs_by_id:
+                    jobs_by_id[job_id] = jobs_by_id[job_id].model_copy(
+                        update={"status": JobStatus.EXPIRED}
+                    )
+            occurrences = [
+                item.model_copy(update={"active": False, "closure_reason": "source_unavailable"})
+                if item.job_id in adapter.closed_job_ids and item.source_id == source_id
+                else item
+                for item in occurrences
+            ]
         current = {job.job_id: job for job in source_jobs}
         # Observed records can refresh; missing records need separate absence evidence.
         if status == SourceHealthStatus.SUCCESS:
@@ -474,7 +510,12 @@ def run_ingestion(
                 },
             },
         )
-    jobs = list(jobs_by_id.values())
+    jobs = [
+        job.model_copy(update={"status": JobStatus.EXPIRED})
+        if job.job_id.startswith("himalayas:") and job.deadline_at and job.deadline_at <= started
+        else job
+        for job in jobs_by_id.values()
+    ]
     # Preserve canonical occurrences; display exact cross-source duplicates once.
     active_jobs = deduplicate_exact(job for job in jobs if job.status == JobStatus.ACTIVE)
     previous_active = deduplicate_exact(

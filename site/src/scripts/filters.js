@@ -87,7 +87,8 @@ function applyFilters(targetGroup) {
     for (const [index, card] of cards.entries()) {
       const matchesSearch = (card.dataset.search ?? "").toLocaleLowerCase().includes(searchTerm);
       const matchesCategory = !selectedCategory || card.dataset.category === selectedCategory;
-      const matches = matchesSearch && matchesCategory && matchesPeriod(card, period);
+      const expired = card.dataset.expires && Date.parse(card.dataset.expires) <= Date.now();
+      const matches = !expired && matchesSearch && matchesCategory && matchesPeriod(card, period);
       if (matches) {
         matching += 1;
         ids.push(card.dataset.jobId ?? `${group.dataset.source}:${index}`);

@@ -140,13 +140,18 @@ jobs:
           command: pages deploy site/dist --project-name=${{ vars.CLOUDFLARE_PAGES_PROJECT }}
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Verify published site
+        id: verify
+        if: steps.deploy.outcome == 'success'
+        run: node site/scripts/verify-techkazi-site.mjs
+
       - name: Finalize safe data and record publication outcome
         if: always() && steps.fetch.outcome != 'skipped'
         env:
           FETCH_OUTCOME: ${{ steps.fetch.outcome }}
           PUBLISHABLE: ${{ steps.fetch.outputs.publishable }}
           PUBLIC_CHANGED: ${{ steps.fetch.outputs.public_changed }}
-          DEPLOY_OUTCOME: ${{ steps.deploy.outcome }}
+          DEPLOY_OUTCOME: ${{ steps.verify.outcome == 'failure' && 'failure' || steps.deploy.outcome }}
           DEPLOY_URL: ${{ steps.deploy.outputs.deployment-url }}
           DEPLOY_ID: ${{ steps.deploy.outputs.pages-deployment-id }}
           WORKFLOW_STATUS: ${{ job.status }}

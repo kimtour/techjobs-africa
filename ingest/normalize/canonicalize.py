@@ -108,6 +108,7 @@ def canonicalize_raw_job(
         eligibility_source=eligibility.source,
         published_at=raw.published_at,
         published_date=raw.published_date,
+        source_updated_at=raw.source_updated_at,
         deadline_at=raw.deadline_at,
         employment_type=raw.employment_type,
         shared_apply_url=raw.shared_apply_url,

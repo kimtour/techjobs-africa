@@ -19,7 +19,7 @@ roles found on BrighterMonday's Engineering & Technology and Software & Data pag
 ## Implementation contract
 
 - Feed order updated on 23 November 2026: All Jobs, MyJobMag,
-  Corporate Staffing, Other/Google/Linkedin, Fuzu, OpenedCareer, BrighterMonday, Elevolt.
+  Corporate Staffing, Other/Google/Linkedin, Fuzu, OpenedCareer, BrighterMonday, Elevolt, Himalayas.
   Desktop reads left to right across the two columns; mobile uses this sequence
   in one column. All Jobs contains each active, unrestricted job once, newest first,
   and displays its source. It shares the independent period and pagination controls.
@@ -87,3 +87,14 @@ participate in date periods and carry Expertini RSS labels. Sitemap-only records
 have labelled URL-derived technical titles and unknown dates, so they appear in
 Latest and All Jobs and are absent from bounded periods. No separate Expertini
 panel is added. Same-ID source refreshes preserve cross-source attribution.
+
+## Himalayas
+
+Himalayas is appended after Elevolt. Only independently classified tech vacancies
+whose country/timezone restrictions admit Kenya (UTC+3) enter this feed and All
+Jobs. The header stays available when empty. Both copies credit Himalayas and
+retain the API applicationLink unchanged. The source's pubDate is displayed as
+Updated and participates in periods/sorting; expiryDate is labelled Listing
+expires, not an employer application deadline. Expired cards are also hidden at
+page load if they expired after the static build. All standard independent
+scroll, pagination, periods, search, category and opened-link behavior applies.

@@ -18,6 +18,8 @@ def _sort_key(job: CanonicalJob) -> tuple[str, str]:
         if job.published_at
         else job.published_date.isoformat()
         if job.published_date
+        else job.source_updated_at.isoformat()
+        if job.source_updated_at
         else job.first_seen_at.isoformat()
         if job.first_seen_at
         else ""

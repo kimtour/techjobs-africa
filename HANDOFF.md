@@ -1,3 +1,28 @@
+# Himalayas feed — 23 November 2026
+
+Added a documented public API source with eight bounded Kenya search windows,
+UTC+3/country admission gates, stable provider GUID identities, source credit
+and unchanged API application links. The new panel follows Elevolt and shares
+All Jobs, filters, independent periods/scrolling and opened-link history.
+Update dates are labelled Updated; API expiry dates are labelled Listing expires.
+Descriptions and excerpts are never persisted.
+
+Absence expiry stays disabled. Each run checks up to 20 older accepted listings
+through the single-job API; authoritative closures/changed eligibility and known
+expiry remove listings, while 404/403/429/5xx retain previous data safely. The
+existing scheduler runs collection at 08:00, 13:00 and 18:00 EAT. Published HTML
+is now verified before the ingestion workflow promotes its private snapshot.
+
+Validation: 272 Python, 15 frontend and 17 scheduler tests passed, with Ruff,
+Astro check/build and scheduler dry-run. Local collection returned 16 HTTP 200s,
+256 distinct eligible raw records and 136 accepted tech jobs. Three real status
+lookups matched stable GUIDs. Populated local desktop/mobile checks passed
+scroll/load-more isolation, periods, search/category recovery, attribution,
+application destinations and update/expiry labels. Discovery is a bounded newest
+window, not a complete mirror of Himalayas. See docs/himalayas-discovery.md.
+
+---
+
 # TalentSafari retirement — 23 November 2026
 
 Removed the TalentSafari (`ashby`) source, standalone adapter, normalization

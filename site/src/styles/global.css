@@ -59,3 +59,6 @@ h1 { font-size: clamp(2rem, 4vw, 3rem); letter-spacing: -.04em; line-height: 1.0
 .source-periods button { min-height: 24px; }
 @media (max-width: 760px) { .source-feed { height: 24rem; } .source-periods button { min-height: 32px; padding: 0 .15rem; } }
 @media (max-width: 760px) { .source-column { display: contents; } }
+
+.source-group[data-source="himalayas"] { --source-color: #276a72; }
+.source-provider a { color: inherit; text-decoration: underline; }
